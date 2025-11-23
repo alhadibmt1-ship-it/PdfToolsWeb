@@ -428,16 +428,28 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const linesWithIndent = rawLines.map(raw => ({
         raw: raw,
         trimmed: raw.trim(),
-        indent: raw.length - raw.trimStart().length
-      })).filter(l => l.trimmed.length > 0);
+        indent: raw.length - raw.trimStart().length,
+        isBlank: raw.trim().length === 0
+      }));
 
       const paragraphs: Paragraph[] = [];
       let currentParagraph: string[] = [];
 
       for (let i = 0; i < linesWithIndent.length; i++) {
-        const { raw, trimmed, indent } = linesWithIndent[i];
-        const nextLine = linesWithIndent[i + 1]?.trimmed || '';
-        const prevLine = linesWithIndent[i - 1]?.trimmed || '';
+        const { raw, trimmed, indent, isBlank } = linesWithIndent[i];
+        const nextLine = linesWithIndent[i + 1];
+        const prevLine = linesWithIndent[i - 1];
+
+        if (isBlank) {
+          if (currentParagraph.length > 0) {
+            paragraphs.push(new Paragraph({
+              children: [new TextRun({ text: currentParagraph.join(' '), size: 22 })],
+              spacing: { after: 220 }
+            }));
+            currentParagraph = [];
+          }
+          continue;
+        }
 
         const isPageNumber = /^[\divxlc]+$|^Page\s+\d+/i.test(trimmed) && trimmed.length < 15;
         const isFooterHeader = trimmed.length < 40 && (/^\d{1,2}\/\d{1,2}\/\d{2,4}|©|\(c\)|copyright/i.test(trimmed));
@@ -490,7 +502,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           continue;
         }
 
-        if (isProbablyTitle && !prevLine) {
+        if (isProbablyTitle && (!prevLine || prevLine.isBlank)) {
           if (currentParagraph.length > 0) {
             paragraphs.push(new Paragraph({
               children: [new TextRun({ text: currentParagraph.join(' '), size: 22 })],
@@ -527,7 +539,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           continue;
         }
 
-        if (isProbablyTitle && nextLine && !endsWithPeriod) {
+        if (isProbablyTitle && nextLine && !nextLine.isBlank && !endsWithPeriod) {
           if (currentParagraph.length > 0) {
             paragraphs.push(new Paragraph({
               children: [new TextRun({ text: currentParagraph.join(' '), size: 22 })],
@@ -545,7 +557,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
         currentParagraph.push(trimmed);
 
-        const nextIsDifferentType = !nextLine || isProbablyTitle || isAllCaps || isBullet;
+        const nextIsDifferentType = !nextLine || nextLine.isBlank || isProbablyTitle || isAllCaps || isBullet;
         if (endsWithPeriod && nextIsDifferentType) {
           paragraphs.push(new Paragraph({
             children: [new TextRun({ text: currentParagraph.join(' '), size: 22 })],
