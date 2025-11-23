@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { FileText } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Header() {
   return (
@@ -13,18 +14,21 @@ export default function Header() {
             <span className="text-xl font-bold">PDF Master Tools</span>
           </div>
         </Link>
-        <nav className="hidden md:flex items-center gap-1">
-          <Link href="/" data-testid="link-nav-home">
-            <span className="px-4 py-2 text-sm font-medium rounded-md hover-elevate active-elevate-2 cursor-pointer transition-all">
-              Home
-            </span>
-          </Link>
-          <Link href="/#tools" data-testid="link-nav-tools">
-            <span className="px-4 py-2 text-sm font-medium rounded-md hover-elevate active-elevate-2 cursor-pointer transition-all">
-              All Tools
-            </span>
-          </Link>
-        </nav>
+        <div className="flex items-center gap-2">
+          <nav className="hidden md:flex items-center gap-1">
+            <Link href="/" data-testid="link-nav-home">
+              <span className="px-4 py-2 text-sm font-medium rounded-md hover-elevate active-elevate-2 cursor-pointer transition-all">
+                Home
+              </span>
+            </Link>
+            <Link href="/#tools" data-testid="link-nav-tools">
+              <span className="px-4 py-2 text-sm font-medium rounded-md hover-elevate active-elevate-2 cursor-pointer transition-all">
+                All Tools
+              </span>
+            </Link>
+          </nav>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );
