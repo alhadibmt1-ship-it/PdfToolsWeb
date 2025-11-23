@@ -325,17 +325,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Invalid or corrupted PDF file" });
       }
 
-      const archive = archiver("zip", { zlib: { level: 9 } });
-      res.setHeader("Content-Type", "application/zip");
-      res.setHeader("Content-Disposition", "attachment; filename=images.zip");
-      archive.pipe(res);
+      if (imageArrays.length === 1) {
+        const imageBuffer = Buffer.from(imageArrays[0]);
+        res.setHeader("Content-Type", "image/png");
+        res.setHeader("Content-Disposition", "attachment; filename=page-1.png");
+        res.send(imageBuffer);
+      } else {
+        const archive = archiver("zip", { zlib: { level: 9 } });
+        res.setHeader("Content-Type", "application/zip");
+        res.setHeader("Content-Disposition", `attachment; filename=images-${imageArrays.length}-pages.zip`);
+        archive.pipe(res);
 
-      for (let i = 0; i < imageArrays.length; i++) {
-        const pageBuffer = Buffer.from(imageArrays[i]);
-        archive.append(pageBuffer, { name: `page-${i + 1}.png` });
+        for (let i = 0; i < imageArrays.length; i++) {
+          const pageBuffer = Buffer.from(imageArrays[i]);
+          archive.append(pageBuffer, { name: `page-${i + 1}.png` });
+        }
+
+        await archive.finalize();
       }
-
-      await archive.finalize();
     } catch (error) {
       console.error("PDF to JPG error:", error);
       res.status(500).json({ error: "Failed to convert PDF to JPG" });
@@ -417,69 +424,156 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Invalid or corrupted PDF file" });
       }
 
-      const lines = text.split('\n').map(l => l.trim()).filter(l => l);
+      const rawLines = text.split('\n');
+      const linesWithIndent = rawLines.map(raw => ({
+        raw: raw,
+        trimmed: raw.trim(),
+        indent: raw.length - raw.trimStart().length
+      })).filter(l => l.trimmed.length > 0);
+
       const paragraphs: Paragraph[] = [];
       let currentParagraph: string[] = [];
 
-      for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
-        const nextLine = lines[i + 1] || '';
-        
-        const isShortLine = line.length < 60;
-        const isAllCaps = line === line.toUpperCase() && line.length > 3;
-        const isBullet = /^[\u2022\u2023\u25E6\u2043\u2219•·‣⁃-]\s/.test(line) || /^[\d]+\.\s/.test(line);
-        const endsWithPeriod = /[.!?]$/.test(line);
-        const isProbablyHeader = isShortLine && !endsWithPeriod && !isBullet;
-        
-        if (isProbablyHeader && currentParagraph.length > 0) {
-          paragraphs.push(new Paragraph({
-            children: [new TextRun(currentParagraph.join(' '))],
-            spacing: { after: 200 }
-          }));
-          currentParagraph = [];
+      for (let i = 0; i < linesWithIndent.length; i++) {
+        const { raw, trimmed, indent } = linesWithIndent[i];
+        const nextLine = linesWithIndent[i + 1]?.trimmed || '';
+        const prevLine = linesWithIndent[i - 1]?.trimmed || '';
+
+        const isPageNumber = /^[\divxlc]+$|^Page\s+\d+/i.test(trimmed) && trimmed.length < 15;
+        const isFooterHeader = trimmed.length < 40 && (/^\d{1,2}\/\d{1,2}\/\d{2,4}|©|\(c\)|copyright/i.test(trimmed));
+        const isAllCaps = trimmed === trimmed.toUpperCase() && trimmed.length > 5 && /[A-Z]/.test(trimmed);
+        const isBullet = /^[\u2022\u2023\u25E6\u2043\u2219•·‣⁃➢➣▪▫-]\s|^[a-z]\)|\d+[\.)]\s/i.test(trimmed);
+        const endsWithPeriod = /[.!?:;]$/.test(trimmed);
+        const isShortLine = trimmed.length < 70;
+        const isProbablyTitle = isShortLine && !endsWithPeriod && !isBullet && trimmed.length > 3;
+
+        if (isPageNumber || isFooterHeader) {
+          continue;
         }
-        
-        if (isProbablyHeader || isAllCaps) {
-          paragraphs.push(new Paragraph({
-            children: [new TextRun({ text: line, bold: isAllCaps, size: isAllCaps ? 28 : 24 })],
-            spacing: { before: 240, after: 120 }
-          }));
-        } else if (isBullet) {
+
+        const hasTableSpacing = /\S+\s{4,}\S+/.test(trimmed);
+        if (hasTableSpacing) {
+          const parts = trimmed.split(/\s{4,}/);
+          if (parts.length >= 2 && parts.every(p => p.length > 0 && p.length < 50)) {
+            if (currentParagraph.length > 0) {
+              paragraphs.push(new Paragraph({
+                children: [new TextRun({ text: currentParagraph.join(' '), size: 22 })],
+                spacing: { after: 200 }
+              }));
+              currentParagraph = [];
+            }
+            
+            const tableRow = parts.map(cell => new TextRun({ text: cell + '    ', size: 22 }));
+            paragraphs.push(new Paragraph({
+              children: tableRow,
+              spacing: { after: 120 },
+              indent: { left: 240 }
+            }));
+            continue;
+          }
+        }
+
+        if (isAllCaps) {
           if (currentParagraph.length > 0) {
             paragraphs.push(new Paragraph({
-              children: [new TextRun(currentParagraph.join(' '))],
+              children: [new TextRun({ text: currentParagraph.join(' '), size: 22 })],
               spacing: { after: 200 }
             }));
             currentParagraph = [];
           }
-          paragraphs.push(new Paragraph({
-            children: [new TextRun(line)],
-            spacing: { after: 100 },
-            indent: { left: 360 }
-          }));
-        } else {
-          currentParagraph.push(line);
           
-          if (endsWithPeriod && (!nextLine || nextLine.length < 60)) {
+          paragraphs.push(new Paragraph({
+            children: [new TextRun({ text: trimmed, bold: true, size: 32 })],
+            spacing: { before: 300, after: 180 },
+            heading: 1 as any
+          }));
+          continue;
+        }
+
+        if (isProbablyTitle && !prevLine) {
+          if (currentParagraph.length > 0) {
             paragraphs.push(new Paragraph({
-              children: [new TextRun(currentParagraph.join(' '))],
+              children: [new TextRun({ text: currentParagraph.join(' '), size: 22 })],
               spacing: { after: 200 }
             }));
             currentParagraph = [];
           }
+          
+          paragraphs.push(new Paragraph({
+            children: [new TextRun({ text: trimmed, bold: true, size: 28 })],
+            spacing: { before: 240, after: 140 },
+            heading: 2 as any
+          }));
+          continue;
+        }
+
+        if (isBullet) {
+          if (currentParagraph.length > 0) {
+            paragraphs.push(new Paragraph({
+              children: [new TextRun({ text: currentParagraph.join(' '), size: 22 })],
+              spacing: { after: 200 }
+            }));
+            currentParagraph = [];
+          }
+
+          const indentLevel = indent > 2 ? 720 : 360;
+          const bulletLevel = indent > 2 ? 1 : 0;
+          paragraphs.push(new Paragraph({
+            children: [new TextRun({ text: trimmed, size: 22 })],
+            spacing: { after: 100 },
+            indent: { left: indentLevel },
+            bullet: { level: bulletLevel }
+          }));
+          continue;
+        }
+
+        if (isProbablyTitle && nextLine && !endsWithPeriod) {
+          if (currentParagraph.length > 0) {
+            paragraphs.push(new Paragraph({
+              children: [new TextRun({ text: currentParagraph.join(' '), size: 22 })],
+              spacing: { after: 200 }
+            }));
+            currentParagraph = [];
+          }
+          
+          paragraphs.push(new Paragraph({
+            children: [new TextRun({ text: trimmed, bold: true, size: 24 })],
+            spacing: { before: 200, after: 120 }
+          }));
+          continue;
+        }
+
+        currentParagraph.push(trimmed);
+
+        const nextIsDifferentType = !nextLine || isProbablyTitle || isAllCaps || isBullet;
+        if (endsWithPeriod && nextIsDifferentType) {
+          paragraphs.push(new Paragraph({
+            children: [new TextRun({ text: currentParagraph.join(' '), size: 22 })],
+            spacing: { after: 220 }
+          }));
+          currentParagraph = [];
         }
       }
 
       if (currentParagraph.length > 0) {
         paragraphs.push(new Paragraph({
-          children: [new TextRun(currentParagraph.join(' '))],
-          spacing: { after: 200 }
+          children: [new TextRun({ text: currentParagraph.join(' '), size: 22 })],
+          spacing: { after: 220 }
         }));
       }
 
       const doc = new Document({
         sections: [{
-          properties: {},
+          properties: {
+            page: {
+              margin: {
+                top: 1440,
+                right: 1440,
+                bottom: 1440,
+                left: 1440
+              }
+            }
+          },
           children: paragraphs.length > 0 ? paragraphs : [
             new Paragraph({
               children: [new TextRun("No text could be extracted from this PDF.")]

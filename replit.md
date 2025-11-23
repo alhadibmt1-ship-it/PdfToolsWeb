@@ -36,6 +36,22 @@ PDF Master Tools is a web-based PDF utility application that provides 12 differe
   - Better spacing between paragraphs, headers, and list items
 - Optimized pdf-parse module loading with module-level caching to prevent repetitive dynamic imports
 
+**November 23, 2025 - Major PDF to Word & PDF to JPG Enhancements**
+- Enhanced PDF to Word conversion with professional-grade formatting:
+  - **Page number filtering**: Automatically skips page numbers and footer/header text
+  - **Table detection**: Recognizes multi-column data (3+ spaces) and formats as aligned table rows
+  - **Multi-level headers**: ALL CAPS text formatted as H1 (32pt bold), titles as H2 (28pt bold)
+  - **Nested bullets**: Detects indented sub-bullets with proper hierarchy (level 0 and level 1)
+  - **Quote blocks**: Formats quoted text with italics, indentation, and left border
+  - **Code blocks**: Detects code-like content and formats with Courier New monospace font
+  - **Smart paragraph merging**: Joins lines intelligently based on sentence endings and context
+  - **Professional spacing**: Proper margins (1 inch all sides) and line spacing throughout
+  - **Text size consistency**: All body text at 22pt for better readability
+- Improved PDF to JPG conversion:
+  - **Single-page PDFs**: Returns direct PNG image file (not ZIP) for convenience
+  - **Multi-page PDFs**: Returns ZIP archive with descriptive filename showing page count
+  - High-resolution output (2000x2000px) for quality preservation
+
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
