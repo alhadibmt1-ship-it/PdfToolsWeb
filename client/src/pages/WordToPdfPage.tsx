@@ -7,13 +7,14 @@ import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { useConversionProgress } from "@/hooks/useConversionProgress";
 
 export default function WordToPdfPage() {
   const [files, setFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
-  const [progress, setProgress] = useState(0);
   const [resultUrl, setResultUrl] = useState<string | null>(null);
   const { toast } = useToast();
+  const { progress, runWithProgress } = useConversionProgress();
 
   const handleConvert = async () => {
     if (files.length === 0) {
@@ -26,29 +27,24 @@ export default function WordToPdfPage() {
     }
 
     setStatus("processing");
-    setProgress(0);
 
     const formData = new FormData();
     formData.append("file", files[0]);
 
     try {
-      const progressInterval = setInterval(() => {
-        setProgress((prev) => Math.min(prev + 10, 90));
-      }, 200);
+      const blob = await runWithProgress(async () => {
+        const response = await fetch("/api/word-to-pdf", {
+          method: "POST",
+          body: formData,
+        });
 
-      const response = await fetch("/api/word-to-pdf", {
-        method: "POST",
-        body: formData,
+        if (!response.ok) {
+          throw new Error("Failed to convert Word document");
+        }
+
+        return await response.blob();
       });
 
-      clearInterval(progressInterval);
-      setProgress(100);
-
-      if (!response.ok) {
-        throw new Error("Failed to convert Word document");
-      }
-
-      const blob = await response.blob();
       const url = URL.createObjectURL(blob);
       setResultUrl(url);
       setStatus("success");

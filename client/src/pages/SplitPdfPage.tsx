@@ -9,15 +9,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { useConversionProgress } from "@/hooks/useConversionProgress";
 
 export default function SplitPdfPage() {
   const [files, setFiles] = useState<File[]>([]);
   const [startPage, setStartPage] = useState<number>(1);
   const [endPage, setEndPage] = useState<number>(1);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
-  const [progress, setProgress] = useState(0);
   const [resultUrl, setResultUrl] = useState<string | null>(null);
   const { toast } = useToast();
+  const { progress, runWithProgress } = useConversionProgress();
 
   const handleSplit = async () => {
     if (files.length === 0) {
@@ -39,7 +40,6 @@ export default function SplitPdfPage() {
     }
 
     setStatus("processing");
-    setProgress(0);
 
     const formData = new FormData();
     formData.append("file", files[0]);
@@ -47,23 +47,19 @@ export default function SplitPdfPage() {
     formData.append("endPage", endPage.toString());
 
     try {
-      const progressInterval = setInterval(() => {
-        setProgress((prev) => Math.min(prev + 10, 90));
-      }, 200);
+      const blob = await runWithProgress(async () => {
+        const response = await fetch("/api/split", {
+          method: "POST",
+          body: formData,
+        });
 
-      const response = await fetch("/api/split", {
-        method: "POST",
-        body: formData,
+        if (!response.ok) {
+          throw new Error("Failed to split PDF");
+        }
+
+        return await response.blob();
       });
 
-      clearInterval(progressInterval);
-      setProgress(100);
-
-      if (!response.ok) {
-        throw new Error("Failed to split PDF");
-      }
-
-      const blob = await response.blob();
       const url = URL.createObjectURL(blob);
       setResultUrl(url);
       setStatus("success");

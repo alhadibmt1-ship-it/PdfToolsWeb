@@ -118,6 +118,92 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  const uploadAnyPdf = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 50 * 1024 * 1024 },
+    fileFilter: pdfFileFilter
+  });
+
+  app.post("/api/merge-enhanced", uploadAnyPdf.any(), async (req, res) => {
+    try {
+      const files = req.files as Express.Multer.File[];
+      if (!files || files.length === 0) {
+        return res.status(400).json({ error: "At least one PDF file is required" });
+      }
+
+      const pageSelectionStr = req.body.pageSelection;
+      if (!pageSelectionStr) {
+        return res.status(400).json({ error: "Page selection data is required" });
+      }
+
+      let pageSelection: Array<{ fileIndex: number; pageNumber: number }>;
+      try {
+        pageSelection = JSON.parse(pageSelectionStr);
+      } catch {
+        return res.status(400).json({ error: "Invalid page selection format" });
+      }
+
+      if (pageSelection.length === 0) {
+        return res.status(400).json({ error: "At least one page must be selected" });
+      }
+
+      const fileMap = new Map<number, Express.Multer.File>();
+      files.forEach((file) => {
+        const match = file.fieldname.match(/file_(\d+)/);
+        if (match) {
+          const index = parseInt(match[1], 10);
+          fileMap.set(index, file);
+        }
+      });
+
+      for (const file of files) {
+        if (!isPdfFile(file.buffer)) {
+          return res.status(400).json({ error: "Invalid PDF file detected" });
+        }
+      }
+
+      const pdfDocuments: PDFDocument[] = [];
+      for (let i = 0; i < fileMap.size; i++) {
+        const file = fileMap.get(i);
+        if (!file) {
+          return res.status(400).json({ error: `Missing file at index ${i}` });
+        }
+        try {
+          const pdfDoc = await PDFDocument.load(file.buffer);
+          pdfDocuments[i] = pdfDoc;
+        } catch (parseError) {
+          return res.status(400).json({ error: "Invalid or corrupted PDF file" });
+        }
+      }
+
+      const mergedPdf = await PDFDocument.create();
+
+      for (const { fileIndex, pageNumber } of pageSelection) {
+        const sourcePdf = pdfDocuments[fileIndex];
+        if (!sourcePdf) {
+          return res.status(400).json({ error: `Invalid file index: ${fileIndex}` });
+        }
+
+        if (pageNumber < 1 || pageNumber > sourcePdf.getPageCount()) {
+          return res.status(400).json({ 
+            error: `Invalid page number ${pageNumber} for file ${fileIndex}` 
+          });
+        }
+
+        const [copiedPage] = await mergedPdf.copyPages(sourcePdf, [pageNumber - 1]);
+        mergedPdf.addPage(copiedPage);
+      }
+
+      const pdfBytes = await mergedPdf.save();
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=merged.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("Enhanced merge error:", error);
+      res.status(500).json({ error: "Failed to merge PDFs" });
+    }
+  });
+
   app.post("/api/split", uploadPdf.single("file"), async (req, res) => {
     try {
       const file = req.file;
