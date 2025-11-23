@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { FileText } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import SettingsDialog from "./SettingsDialog";
 
 export default function Header() {
   return (
@@ -27,6 +28,7 @@ export default function Header() {
               </span>
             </Link>
           </nav>
+          <SettingsDialog />
           <ThemeToggle />
         </div>
       </div>

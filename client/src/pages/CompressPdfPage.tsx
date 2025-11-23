@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, Download } from "lucide-react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
@@ -9,17 +9,26 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
+import { useSettings } from "@/contexts/SettingsContext";
 import type { CompressionLevel } from "@shared/schema";
 
 export default function CompressPdfPage() {
+  const { settings } = useSettings();
   const [files, setFiles] = useState<File[]>([]);
-  const [compressionLevel, setCompressionLevel] = useState<CompressionLevel>("medium");
+  const [compressionLevel, setCompressionLevel] = useState<CompressionLevel>(settings.defaultCompressionLevel);
+  const [hasManuallyChanged, setHasManuallyChanged] = useState(false);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
   const [progress, setProgress] = useState(0);
   const [resultUrl, setResultUrl] = useState<string | null>(null);
   const [originalSize, setOriginalSize] = useState<number>(0);
   const [compressedSize, setCompressedSize] = useState<number>(0);
   const { toast } = useToast();
+
+  useEffect(() => {
+    if (!hasManuallyChanged) {
+      setCompressionLevel(settings.defaultCompressionLevel);
+    }
+  }, [settings.defaultCompressionLevel, hasManuallyChanged]);
 
   const handleCompress = async () => {
     if (files.length === 0) {
@@ -120,7 +129,13 @@ export default function CompressPdfPage() {
             {files.length > 0 && status === "idle" && (
               <div className="rounded-lg border bg-card p-6 space-y-4">
                 <h3 className="font-semibold mb-4">Compression Level</h3>
-                <RadioGroup value={compressionLevel} onValueChange={(value) => setCompressionLevel(value as CompressionLevel)}>
+                <RadioGroup 
+                  value={compressionLevel} 
+                  onValueChange={(value) => {
+                    setCompressionLevel(value as CompressionLevel);
+                    setHasManuallyChanged(true);
+                  }}
+                >
                   <div className="flex items-center space-x-2 p-3 rounded-md hover-elevate cursor-pointer">
                     <RadioGroupItem value="low" id="low" data-testid="radio-low" />
                     <Label htmlFor="low" className="cursor-pointer flex-1">
