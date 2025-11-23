@@ -13,6 +13,8 @@ export default function PdfToJpgPage() {
   const [files, setFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);
+  const [isZipFile, setIsZipFile] = useState(true);
+  const [filename, setFilename] = useState("images.zip");
   const { toast } = useToast();
   const { progress, runWithProgress } = useConversionProgress();
 
@@ -32,7 +34,7 @@ export default function PdfToJpgPage() {
     formData.append("file", files[0]);
 
     try {
-      const blob = await runWithProgress(async () => {
+      const { blob, contentType, responseFilename } = await runWithProgress(async () => {
         const response = await fetch("/api/pdf-to-jpg", {
           method: "POST",
           body: formData,
@@ -42,11 +44,20 @@ export default function PdfToJpgPage() {
           throw new Error("Failed to convert PDF");
         }
 
-        return await response.blob();
+        const contentType = response.headers.get("Content-Type") || "";
+        const disposition = response.headers.get("Content-Disposition") || "";
+        const filenameMatch = disposition.match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/);
+        const responseFilename = filenameMatch ? filenameMatch[1].replace(/['"]/g, '') : "download";
+        
+        const blob = await response.blob();
+        
+        return { blob, contentType, responseFilename };
       });
 
       const url = URL.createObjectURL(blob);
       setResultUrl(url);
+      setIsZipFile(contentType.includes("zip"));
+      setFilename(responseFilename);
       setStatus("success");
 
       toast({
@@ -67,7 +78,7 @@ export default function PdfToJpgPage() {
     if (resultUrl) {
       const a = document.createElement("a");
       a.href = resultUrl;
-      a.download = "images.zip";
+      a.download = filename;
       a.click();
     }
   };
@@ -88,7 +99,7 @@ export default function PdfToJpgPage() {
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">PDF to JPG</h1>
             <p className="text-muted-foreground leading-relaxed">
-              Convert each page of your PDF into separate JPG images. All images will be downloaded as a ZIP file.
+              Convert each page of your PDF into separate JPG images. Single-page PDFs will download as a PNG image, multi-page PDFs as a ZIP file.
             </p>
           </div>
 
@@ -119,9 +130,13 @@ export default function PdfToJpgPage() {
 
             {status === "success" && resultUrl && (
               <div className="rounded-lg border bg-card p-6 space-y-4">
-                <h3 className="font-semibold">Your images are ready!</h3>
+                <h3 className="font-semibold">
+                  {isZipFile ? "Your images are ready!" : "Your image is ready!"}
+                </h3>
                 <p className="text-sm text-muted-foreground">
-                  All pages have been converted to JPG images and packaged in a ZIP file.
+                  {isZipFile 
+                    ? "All pages have been converted to JPG images and packaged in a ZIP file."
+                    : "Your PDF page has been converted to a PNG image."}
                 </p>
                 <Button 
                   onClick={handleDownload} 
@@ -130,7 +145,7 @@ export default function PdfToJpgPage() {
                   data-testid="button-download"
                 >
                   <Download className="w-4 h-4 mr-2" />
-                  Download ZIP File
+                  {isZipFile ? "Download ZIP File" : "Download Image"}
                 </Button>
               </div>
             )}
