@@ -86,6 +86,14 @@ export const PDF_TOOLS: PDFTool[] = [
     acceptedFormats: ".pdf"
   },
   {
+    id: "word-to-pdf",
+    title: "Word to PDF",
+    description: "Convert DOCX documents to PDF format",
+    icon: "file-text",
+    path: "/word-to-pdf",
+    acceptedFormats: ".docx"
+  },
+  {
     id: "protect",
     title: "Password Protect",
     description: "Encrypt your PDF with a password",

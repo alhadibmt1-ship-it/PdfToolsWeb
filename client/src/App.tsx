@@ -13,6 +13,7 @@ import CompressPdfPage from "@/pages/CompressPdfPage";
 import PdfToJpgPage from "@/pages/PdfToJpgPage";
 import JpgToPdfPage from "@/pages/JpgToPdfPage";
 import PdfToWordPage from "@/pages/PdfToWordPage";
+import WordToPdfPage from "@/pages/WordToPdfPage";
 import ProtectPdfPage from "@/pages/ProtectPdfPage";
 import UnlockPdfPage from "@/pages/UnlockPdfPage";
 import RotatePdfPage from "@/pages/RotatePdfPage";
@@ -29,6 +30,7 @@ function Router() {
       <Route path="/pdf-to-jpg" component={PdfToJpgPage} />
       <Route path="/jpg-to-pdf" component={JpgToPdfPage} />
       <Route path="/pdf-to-word" component={PdfToWordPage} />
+      <Route path="/word-to-pdf" component={WordToPdfPage} />
       <Route path="/protect" component={ProtectPdfPage} />
       <Route path="/unlock" component={UnlockPdfPage} />
       <Route path="/rotate" component={RotatePdfPage} />
