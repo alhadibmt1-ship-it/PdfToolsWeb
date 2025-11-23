@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import multer from "multer";
-import { PDFDocument, degrees, rgb } from "pdf-lib";
+import { PDFDocument, degrees, rgb } from "pdf-lib-with-encrypt";
 import sharp from "sharp";
 import archiver from "archiver";
 import { Document, Packer, Paragraph, TextRun } from "docx";
@@ -417,12 +417,65 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Invalid or corrupted PDF file" });
       }
 
-      const paragraphs = text.split("\n\n").filter(p => p.trim()).map(p => 
-        new Paragraph({
-          children: [new TextRun(p.trim())],
+      const lines = text.split('\n').map(l => l.trim()).filter(l => l);
+      const paragraphs: Paragraph[] = [];
+      let currentParagraph: string[] = [];
+
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        const nextLine = lines[i + 1] || '';
+        
+        const isShortLine = line.length < 60;
+        const isAllCaps = line === line.toUpperCase() && line.length > 3;
+        const isBullet = /^[\u2022\u2023\u25E6\u2043\u2219•·‣⁃-]\s/.test(line) || /^[\d]+\.\s/.test(line);
+        const endsWithPeriod = /[.!?]$/.test(line);
+        const isProbablyHeader = isShortLine && !endsWithPeriod && !isBullet;
+        
+        if (isProbablyHeader && currentParagraph.length > 0) {
+          paragraphs.push(new Paragraph({
+            children: [new TextRun(currentParagraph.join(' '))],
+            spacing: { after: 200 }
+          }));
+          currentParagraph = [];
+        }
+        
+        if (isProbablyHeader || isAllCaps) {
+          paragraphs.push(new Paragraph({
+            children: [new TextRun({ text: line, bold: isAllCaps, size: isAllCaps ? 28 : 24 })],
+            spacing: { before: 240, after: 120 }
+          }));
+        } else if (isBullet) {
+          if (currentParagraph.length > 0) {
+            paragraphs.push(new Paragraph({
+              children: [new TextRun(currentParagraph.join(' '))],
+              spacing: { after: 200 }
+            }));
+            currentParagraph = [];
+          }
+          paragraphs.push(new Paragraph({
+            children: [new TextRun(line)],
+            spacing: { after: 100 },
+            indent: { left: 360 }
+          }));
+        } else {
+          currentParagraph.push(line);
+          
+          if (endsWithPeriod && (!nextLine || nextLine.length < 60)) {
+            paragraphs.push(new Paragraph({
+              children: [new TextRun(currentParagraph.join(' '))],
+              spacing: { after: 200 }
+            }));
+            currentParagraph = [];
+          }
+        }
+      }
+
+      if (currentParagraph.length > 0) {
+        paragraphs.push(new Paragraph({
+          children: [new TextRun(currentParagraph.join(' '))],
           spacing: { after: 200 }
-        })
-      );
+        }));
+      }
 
       const doc = new Document({
         sections: [{
@@ -565,9 +618,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       const pdfBytes = await pdfDoc.save({
-        userPassword: password,
-        ownerPassword: password,
-      });
+        encrypt: {
+          userPassword: password,
+          ownerPassword: password,
+          permissions: {
+            printing: 'highResolution',
+            modifying: true,
+            copying: true,
+            annotating: true,
+            fillingForms: true,
+            contentAccessibility: true,
+            documentAssembly: true
+          }
+        }
+      } as any);
 
       res.setHeader("Content-Type", "application/pdf");
       res.setHeader("Content-Disposition", "attachment; filename=protected.pdf");
@@ -598,12 +662,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
       let pdfDoc;
       try {
         pdfDoc = await PDFDocument.load(file.buffer, { 
-          password: password,
-          ignoreEncryption: false 
-        });
+          password: password
+        } as any);
       } catch (parseError) {
-        if (parseError instanceof Error && (parseError.message.includes("password") || parseError.message.includes("encrypted"))) {
-          return res.status(400).json({ error: "Invalid password" });
+        console.error("PDF unlock parsing error:", parseError);
+        if (parseError instanceof Error) {
+          if (parseError.message.toLowerCase().includes("password") || 
+              parseError.message.toLowerCase().includes("incorrect") ||
+              parseError.message.toLowerCase().includes("encrypted") ||
+              parseError.message.toLowerCase().includes("decrypt")) {
+            return res.status(400).json({ error: "Invalid password or encryption not supported" });
+          }
         }
         return res.status(400).json({ error: "Invalid or corrupted PDF file" });
       }

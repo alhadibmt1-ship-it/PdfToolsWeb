@@ -24,6 +24,18 @@ PDF Master Tools is a web-based PDF utility application that provides 12 differe
 - Registered Express error handler middleware after routes to properly catch upload and validation errors
 - All 12 API endpoints now follow secure validation pattern: MIME filter → magic bytes → zod params → wrapped parsing
 
+**November 23, 2025 - Password Protection & Conversion Quality Improvements**
+- Replaced pdf-lib with pdf-lib-with-encrypt fork to enable proper password encryption/decryption support
+- Fixed password protect endpoint to use correct encryption API with full permissions control
+- Fixed password unlock endpoint to properly decrypt password-protected PDFs
+- Verified PDF to JPG already creates ZIP files (confirmed implementation using archiver library)
+- Improved PDF to Word conversion with intelligent text formatting:
+  - Detects and formats headers (short lines, all-caps text) with bold styling and larger fonts
+  - Preserves bullet points and numbered lists with proper indentation
+  - Smart paragraph detection based on sentence endings and line characteristics
+  - Better spacing between paragraphs, headers, and list items
+- Optimized pdf-parse module loading with module-level caching to prevent repetitive dynamic imports
+
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
@@ -70,13 +82,13 @@ Preferred communication style: Simple, everyday language.
 - Production mode serves static files from dist/public
 
 **PDF Processing Libraries**
-- pdf-lib: Core PDF manipulation (merge, split, rotate, password protection)
+- pdf-lib-with-encrypt: Core PDF manipulation with encryption support (merge, split, rotate, password protection/unlocking)
 - sharp: Image processing and optimization
-- pdfjs-dist with canvas: PDF to image conversion
-- docx: PDF to Word conversion
+- pdf-img-convert: PDF to image conversion (replaced pdfjs-dist)
+- docx: PDF to Word conversion with intelligent formatting
 - mammoth: Word (DOCX) to PDF conversion via text extraction
-- pdf-parse: Text extraction
-- archiver: Creating ZIP files for batch downloads
+- pdf-parse: Text extraction with proper v2 API (PDFParse class)
+- archiver: Creating ZIP files for batch downloads (used in PDF to JPG)
 
 **File Upload Handling**
 - Multer middleware for multipart form data
