@@ -2,18 +2,27 @@
 
 ## Overview
 
-PDF Master Tools is a web-based PDF utility application that provides 11 different PDF manipulation tools. Users can merge, split, compress, convert (PDF↔JPG, PDF→Word), protect, unlock, rotate PDFs, delete pages, and extract text. The application is built with a React frontend using TypeScript and Vite, and an Express backend with Node.js. All PDF processing occurs on the server using libraries like pdf-lib, sharp, pdfjs-dist, and docx.
+PDF Master Tools is a web-based PDF utility application that provides 12 different PDF manipulation tools. Users can merge, split, compress, convert (PDF↔JPG, PDF↔Word), protect, unlock, rotate PDFs, delete pages, and extract text. The application features complete dark mode support, user settings for compression preferences, and uses localStorage for persistence without requiring a database. The application is built with a React frontend using TypeScript and Vite, and an Express backend with Node.js. All PDF processing occurs on the server using libraries like pdf-lib, sharp, pdfjs-dist, mammoth, and docx.
 
 ## Recent Changes
+
+**November 23, 2025 - Feature Expansion & Technical Improvements**
+- Added Dark Mode toggle with system preference fallback and localStorage persistence using ThemeProvider context
+- Created User Settings panel (SettingsDialog) for managing default compression level preferences
+- Added Word to PDF conversion tool (12th tool) using mammoth library for DOCX parsing with proper pagination
+- Refactored all 12 conversion pages to use centralized `useConversionProgress` hook for progress management
+- Fixed progress interval cleanup to prevent memory leaks - intervals now properly cleared on both success and error paths
+- Improved Word file validation to accept only DOCX files (matching mammoth library capability)
+- Added specific multer filter for Word uploads with precise MIME type validation
 
 **November 23, 2025 - Backend Security Hardening**
 - Added magic byte (file signature) validation for all PDF and image uploads to prevent MIME type spoofing
 - Implemented comprehensive error handling with try-catch blocks around all library parsing operations
 - All parsing failures now return controlled 400 errors instead of crashing with 500 errors
 - Added Zod schema validation for all request parameters (page ranges, rotation angles, compression levels, passwords)
-- Configured separate multer middleware for PDF uploads (uploadPdf) and image uploads (uploadImages)
+- Configured separate multer middleware for PDF, image, and Word file uploads
 - Registered Express error handler middleware after routes to properly catch upload and validation errors
-- All 11 API endpoints now follow secure validation pattern: MIME filter → magic bytes → zod params → wrapped parsing
+- All 12 API endpoints now follow secure validation pattern: MIME filter → magic bytes → zod params → wrapped parsing
 
 ## User Preferences
 
@@ -37,13 +46,18 @@ Preferred communication style: Simple, everyday language.
 - Design follows "Clean Modern Utility Design" approach (inspired by Dropbox/Google Drive)
 
 **Page Structure**
-- Homepage with grid of 11 PDF tools
+- Homepage with grid of 12 PDF tools
 - Individual tool pages for each PDF operation
 - Shared layout components (Header, Footer, FileUploadZone, ProcessingState)
 - Each tool page follows the same pattern: file upload → process → download result
+- Dark mode toggle in header with ThemeToggle component
+- Settings dialog accessible from header
 
 **State Management**
 - Local React state for file uploads and UI interactions
+- ThemeProvider context for dark mode state with localStorage persistence
+- SettingsContext for user preferences (compression levels) with localStorage persistence
+- useConversionProgress custom hook for centralized progress management across all conversion tools
 - No global state management (Redux/Zustand) - keeping it simple
 - React Query handles server data fetching and caching
 
@@ -60,6 +74,7 @@ Preferred communication style: Simple, everyday language.
 - sharp: Image processing and optimization
 - pdfjs-dist with canvas: PDF to image conversion
 - docx: PDF to Word conversion
+- mammoth: Word (DOCX) to PDF conversion via text extraction
 - pdf-parse: Text extraction
 - archiver: Creating ZIP files for batch downloads
 
@@ -76,6 +91,7 @@ Preferred communication style: Simple, everyday language.
 - POST /api/pdf-to-jpg - Convert PDF pages to images (returns ZIP)
 - POST /api/jpg-to-pdf - Convert images to single PDF
 - POST /api/pdf-to-word - Convert PDF to DOCX
+- POST /api/word-to-pdf - Convert DOCX to PDF (DOCX only, uses mammoth)
 - POST /api/protect - Add password protection
 - POST /api/unlock - Remove password protection
 - POST /api/rotate - Rotate all pages
@@ -90,6 +106,9 @@ Preferred communication style: Simple, everyday language.
 
 **Current Implementation**
 - In-memory storage (MemStorage class) for user data
+- localStorage for client-side persistence:
+  - Theme preference (light/dark mode)
+  - User settings (default compression level)
 - No persistent database currently in use
 - Database schema defined in shared/schema.ts for future PostgreSQL integration
 - Drizzle ORM configured but not actively used
@@ -112,7 +131,7 @@ Preferred communication style: Simple, everyday language.
 
 **Key NPM Packages**
 - PDF Processing: pdf-lib, pdfjs-dist, pdf-parse, canvas
-- Document Conversion: docx, sharp, archiver
+- Document Conversion: docx, mammoth, sharp, archiver
 - Frontend UI: @radix-ui/*, @tanstack/react-query
 - Backend: express, multer, drizzle-orm, @neondatabase/serverless
 - Validation: zod

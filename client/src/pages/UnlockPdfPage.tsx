@@ -9,15 +9,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { useConversionProgress } from "@/hooks/useConversionProgress";
 
 export default function UnlockPdfPage() {
   const [files, setFiles] = useState<File[]>([]);
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
-  const [progress, setProgress] = useState(0);
   const [resultUrl, setResultUrl] = useState<string | null>(null);
   const { toast } = useToast();
+  const { progress, runWithProgress } = useConversionProgress();
 
   const handleUnlock = async () => {
     if (files.length === 0) {
@@ -39,30 +40,25 @@ export default function UnlockPdfPage() {
     }
 
     setStatus("processing");
-    setProgress(0);
 
     const formData = new FormData();
     formData.append("file", files[0]);
     formData.append("password", password);
 
     try {
-      const progressInterval = setInterval(() => {
-        setProgress((prev) => Math.min(prev + 10, 90));
-      }, 200);
+      const blob = await runWithProgress(async () => {
+        const response = await fetch("/api/unlock", {
+          method: "POST",
+          body: formData,
+        });
 
-      const response = await fetch("/api/unlock", {
-        method: "POST",
-        body: formData,
+        if (!response.ok) {
+          throw new Error("Failed to unlock PDF");
+        }
+
+        return await response.blob();
       });
 
-      clearInterval(progressInterval);
-      setProgress(100);
-
-      if (!response.ok) {
-        throw new Error("Failed to unlock PDF");
-      }
-
-      const blob = await response.blob();
       const url = URL.createObjectURL(blob);
       setResultUrl(url);
       setStatus("success");

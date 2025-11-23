@@ -8,13 +8,14 @@ import ProcessingState from "@/components/ProcessingState";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useConversionProgress } from "@/hooks/useConversionProgress";
 
 export default function ExtractTextPage() {
   const [files, setFiles] = useState<File[]>([]);
   const [extractedText, setExtractedText] = useState("");
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
-  const [progress, setProgress] = useState(0);
   const { toast } = useToast();
+  const { progress, runWithProgress } = useConversionProgress();
 
   const handleExtract = async () => {
     if (files.length === 0) {
@@ -27,29 +28,24 @@ export default function ExtractTextPage() {
     }
 
     setStatus("processing");
-    setProgress(0);
 
     const formData = new FormData();
     formData.append("file", files[0]);
 
     try {
-      const progressInterval = setInterval(() => {
-        setProgress((prev) => Math.min(prev + 10, 90));
-      }, 200);
+      const data = await runWithProgress(async () => {
+        const response = await fetch("/api/extract-text", {
+          method: "POST",
+          body: formData,
+        });
 
-      const response = await fetch("/api/extract-text", {
-        method: "POST",
-        body: formData,
+        if (!response.ok) {
+          throw new Error("Failed to extract text");
+        }
+
+        return await response.json();
       });
 
-      clearInterval(progressInterval);
-      setProgress(100);
-
-      if (!response.ok) {
-        throw new Error("Failed to extract text");
-      }
-
-      const data = await response.json();
       setExtractedText(data.text);
       setStatus("success");
 

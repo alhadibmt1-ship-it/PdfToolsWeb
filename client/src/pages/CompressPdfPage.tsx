@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
 import { useSettings } from "@/contexts/SettingsContext";
+import { useConversionProgress } from "@/hooks/useConversionProgress";
 import type { CompressionLevel } from "@shared/schema";
 
 export default function CompressPdfPage() {
@@ -18,11 +19,11 @@ export default function CompressPdfPage() {
   const [compressionLevel, setCompressionLevel] = useState<CompressionLevel>(settings.defaultCompressionLevel);
   const [hasManuallyChanged, setHasManuallyChanged] = useState(false);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
-  const [progress, setProgress] = useState(0);
   const [resultUrl, setResultUrl] = useState<string | null>(null);
   const [originalSize, setOriginalSize] = useState<number>(0);
   const [compressedSize, setCompressedSize] = useState<number>(0);
   const { toast } = useToast();
+  const { progress, runWithProgress } = useConversionProgress();
 
   useEffect(() => {
     if (!hasManuallyChanged) {
@@ -41,7 +42,6 @@ export default function CompressPdfPage() {
     }
 
     setStatus("processing");
-    setProgress(0);
     setOriginalSize(files[0].size);
 
     const formData = new FormData();
@@ -49,23 +49,19 @@ export default function CompressPdfPage() {
     formData.append("level", compressionLevel);
 
     try {
-      const progressInterval = setInterval(() => {
-        setProgress((prev) => Math.min(prev + 10, 90));
-      }, 200);
+      const blob = await runWithProgress(async () => {
+        const response = await fetch("/api/compress", {
+          method: "POST",
+          body: formData,
+        });
 
-      const response = await fetch("/api/compress", {
-        method: "POST",
-        body: formData,
+        if (!response.ok) {
+          throw new Error("Failed to compress PDF");
+        }
+
+        return await response.blob();
       });
 
-      clearInterval(progressInterval);
-      setProgress(100);
-
-      if (!response.ok) {
-        throw new Error("Failed to compress PDF");
-      }
-
-      const blob = await response.blob();
       setCompressedSize(blob.size);
       const url = URL.createObjectURL(blob);
       setResultUrl(url);

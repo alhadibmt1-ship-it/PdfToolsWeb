@@ -9,15 +9,16 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
+import { useConversionProgress } from "@/hooks/useConversionProgress";
 import type { RotationAngle } from "@shared/schema";
 
 export default function RotatePdfPage() {
   const [files, setFiles] = useState<File[]>([]);
   const [angle, setAngle] = useState<RotationAngle>("90");
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
-  const [progress, setProgress] = useState(0);
   const [resultUrl, setResultUrl] = useState<string | null>(null);
   const { toast } = useToast();
+  const { progress, runWithProgress } = useConversionProgress();
 
   const handleRotate = async () => {
     if (files.length === 0) {
@@ -30,30 +31,25 @@ export default function RotatePdfPage() {
     }
 
     setStatus("processing");
-    setProgress(0);
 
     const formData = new FormData();
     formData.append("file", files[0]);
     formData.append("angle", angle);
 
     try {
-      const progressInterval = setInterval(() => {
-        setProgress((prev) => Math.min(prev + 10, 90));
-      }, 200);
+      const blob = await runWithProgress(async () => {
+        const response = await fetch("/api/rotate", {
+          method: "POST",
+          body: formData,
+        });
 
-      const response = await fetch("/api/rotate", {
-        method: "POST",
-        body: formData,
+        if (!response.ok) {
+          throw new Error("Failed to rotate PDF");
+        }
+
+        return await response.blob();
       });
 
-      clearInterval(progressInterval);
-      setProgress(100);
-
-      if (!response.ok) {
-        throw new Error("Failed to rotate PDF");
-      }
-
-      const blob = await response.blob();
       const url = URL.createObjectURL(blob);
       setResultUrl(url);
       setStatus("success");
