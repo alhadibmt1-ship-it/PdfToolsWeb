@@ -1,0 +1,116 @@
+Build a complete PDF Tools Website with 10 PDF tools using HTML, CSS, JavaScript, and a Python Flask backend.
+The website should be fast, clean, mobile-responsive, and easy to use.
+Use open-source Python libraries like PyPDF2, pdf2image, Pillow, and reportlab.
+
+Website Name:
+
+PDF Master Tools
+
+Pages / Structure
+
+Home page showing 10 PDF tools with icons + short description
+
+Each tool should have its own page or modal
+
+Modern UI (white/blue theme, rounded cards, shadows, smooth hover effects)
+
+🔟 Required PDF Tools
+1. Merge PDF
+
+Upload multiple PDFs → merge → download result.
+
+2. Split PDF
+
+Upload PDF → choose page range → split and download.
+
+3. Compress PDF
+
+Reduce PDF size (low, medium, high compression).
+
+4. PDF to JPG
+
+Convert each page to JPG images → user downloads ZIP.
+
+5. JPG to PDF
+
+Upload multiple images → convert to one PDF.
+
+6. PDF Password Protect
+
+Upload PDF → set password → download encrypted file.
+
+7. PDF Unlock
+
+Upload locked PDF → remove password (if user knows the password).
+
+8. Rotate PDF
+
+Upload PDF → choose rotate 90° / 180° / 270° → download.
+
+9. Delete PDF Pages
+
+Upload PDF → select pages to remove → download clean file.
+
+10. Extract PDF Text
+
+Upload PDF → extract text → show on screen + download .txt file.
+
+🔧 Technical Requirements
+Backend (Flask):
+
+Each tool gets its own API route:
+/merge, /split, /compress, etc.
+
+Temporary file handling with tempfile.
+
+PyPDF2 for splitting, merging, rotating, deleting pages.
+
+Pillow + pdf2image for JPG/PDF conversions.
+
+reportlab for image-to-pdf creation.
+
+Return downloadable file to user.
+
+Frontend:
+
+Clean and modern UI with TailwindCSS or custom CSS.
+
+Grid-style homepage with 10 tool cards.
+
+File upload UI + progress bar.
+
+Success notification after processing.
+
+🎨 Design Requirements
+
+Minimalistic modern design
+
+Rounded cards, soft shadows, smooth fade animations
+
+Blue & white theme
+
+Responsive for mobile
+
+Attractive header/footer with title + copyright
+
+Optional Extra Features
+
+Drag & drop upload
+
+Dark mode
+
+Save last used settings in localStorage
+
+Output Requirements
+
+Generate the full project:
+
+main.py (Flask backend)
+
+templates/ (HTML files for each tool)
+
+static/ folder (CSS + JS + assets)
+
+Instructions on how to run locally
+
+All dependencies in requirements.txt
