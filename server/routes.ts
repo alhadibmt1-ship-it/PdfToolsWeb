@@ -1,13 +1,14 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import multer from "multer";
-import { PDFDocument, degrees } from "pdf-lib";
+import { PDFDocument, degrees, rgb } from "pdf-lib";
 import sharp from "sharp";
 import archiver from "archiver";
 import { Document, Packer, Paragraph, TextRun } from "docx";
 import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs";
 import { createCanvas } from "canvas";
 import { createRequire } from "module";
+import mammoth from "mammoth";
 import { 
   splitOptionsSchema, 
   rotationAngleSchema, 
@@ -54,6 +55,14 @@ const imageFileFilter = (req: any, file: Express.Multer.File, cb: multer.FileFil
   }
 };
 
+const wordFileFilter = (req: any, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
+  if (file.mimetype === "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
+    cb(null, true);
+  } else {
+    cb(new Error("Only DOCX files are allowed"));
+  }
+};
+
 const uploadPdf = multer({ 
   storage: multer.memoryStorage(),
   limits: { fileSize: 50 * 1024 * 1024 },
@@ -64,6 +73,12 @@ const uploadImages = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: 50 * 1024 * 1024 },
   fileFilter: imageFileFilter
+});
+
+const uploadWord = multer({ 
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 50 * 1024 * 1024 },
+  fileFilter: wordFileFilter
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -339,6 +354,101 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("PDF to Word error:", error);
       res.status(500).json({ error: "Failed to convert PDF to Word" });
+    }
+  });
+
+  app.post("/api/word-to-pdf", uploadWord.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "Word file is required" });
+      }
+
+      if (file.mimetype !== "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
+        return res.status(400).json({ error: "Only DOCX files are supported" });
+      }
+
+      let result;
+      try {
+        result = await mammoth.extractRawText({ buffer: file.buffer });
+      } catch (parseError) {
+        return res.status(400).json({ error: "Invalid or corrupted Word file" });
+      }
+
+      const text = result.value.trim();
+      if (!text) {
+        return res.status(400).json({ error: "No text could be extracted from the Word document" });
+      }
+
+      const pdfDoc = await PDFDocument.create();
+      const paragraphs = text.split("\n\n").filter(p => p.trim());
+      
+      const fontSize = 12;
+      const lineHeight = fontSize * 1.2;
+      const margin = 72;
+      const pageWidth = 595.28;
+      const pageHeight = 841.89;
+      const maxWidth = pageWidth - 2 * margin;
+      
+      let currentPage = pdfDoc.addPage([pageWidth, pageHeight]);
+      let yPosition = pageHeight - margin;
+
+      for (const paragraph of paragraphs) {
+        const lines = paragraph.split("\n").filter(l => l.trim());
+        
+        for (const line of lines) {
+          const words = line.trim().split(" ");
+          let currentLine = "";
+          
+          for (const word of words) {
+            const testLine = currentLine ? `${currentLine} ${word}` : word;
+            const textWidth = testLine.length * (fontSize * 0.5);
+            
+            if (textWidth > maxWidth && currentLine) {
+              if (yPosition < margin + lineHeight) {
+                currentPage = pdfDoc.addPage([pageWidth, pageHeight]);
+                yPosition = pageHeight - margin;
+              }
+              
+              currentPage.drawText(currentLine, {
+                x: margin,
+                y: yPosition,
+                size: fontSize,
+                color: rgb(0, 0, 0),
+              });
+              yPosition -= lineHeight;
+              currentLine = word;
+            } else {
+              currentLine = testLine;
+            }
+          }
+          
+          if (currentLine) {
+            if (yPosition < margin + lineHeight) {
+              currentPage = pdfDoc.addPage([pageWidth, pageHeight]);
+              yPosition = pageHeight - margin;
+            }
+            
+            currentPage.drawText(currentLine, {
+              x: margin,
+              y: yPosition,
+              size: fontSize,
+              color: rgb(0, 0, 0),
+            });
+            yPosition -= lineHeight;
+          }
+        }
+        
+        yPosition -= lineHeight * 0.5;
+      }
+
+      const pdfBytes = await pdfDoc.save();
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=converted.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("Word to PDF error:", error);
+      res.status(500).json({ error: "Failed to convert Word to PDF" });
     }
   });
 
