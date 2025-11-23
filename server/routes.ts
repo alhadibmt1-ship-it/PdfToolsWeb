@@ -5,8 +5,6 @@ import { PDFDocument, degrees, rgb } from "pdf-lib";
 import sharp from "sharp";
 import archiver from "archiver";
 import { Document, Packer, Paragraph, TextRun } from "docx";
-import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs";
-import { createCanvas } from "canvas";
 import { createRequire } from "module";
 import mammoth from "mammoth";
 import { 
@@ -20,7 +18,16 @@ import {
 import { z } from "zod";
 
 const require = createRequire(import.meta.url);
-const pdf = require("pdf-parse");
+const pdfConverter = require("pdf-img-convert");
+
+let pdfParseModule: any = null;
+async function getPdfParse() {
+  if (!pdfParseModule) {
+    const module = await import('pdf-parse');
+    pdfParseModule = module.PDFParse;
+  }
+  return pdfParseModule;
+}
 
 function isPdfFile(buffer: Buffer): boolean {
   if (buffer.length < 4) return false;
@@ -305,35 +312,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Invalid PDF file detected" });
       }
 
-      let pdfDocument;
+      let imageArrays;
       try {
-        const loadingTask = pdfjsLib.getDocument({ data: file.buffer });
-        pdfDocument = await loadingTask.promise;
+        imageArrays = await pdfConverter.convert(file.buffer, {
+          width: 2000,
+          height: 2000,
+          page_numbers: [],
+          base64: false,
+        });
       } catch (parseError) {
+        console.error("PDF parsing error in pdf-to-jpg:", parseError);
         return res.status(400).json({ error: "Invalid or corrupted PDF file" });
       }
-
-      const numPages = pdfDocument.numPages;
 
       const archive = archiver("zip", { zlib: { level: 9 } });
       res.setHeader("Content-Type", "application/zip");
       res.setHeader("Content-Disposition", "attachment; filename=images.zip");
       archive.pipe(res);
 
-      for (let pageNum = 1; pageNum <= numPages; pageNum++) {
-        const page = await pdfDocument.getPage(pageNum);
-        const viewport = page.getViewport({ scale: 2.0 });
-        
-        const canvas = createCanvas(viewport.width, viewport.height);
-        const context = canvas.getContext("2d");
-
-        await page.render({
-          canvasContext: context as any,
-          viewport: viewport,
-        }).promise;
-
-        const imageBuffer = canvas.toBuffer("image/jpeg", { quality: 0.95 });
-        archive.append(imageBuffer, { name: `page-${pageNum}.jpg` });
+      for (let i = 0; i < imageArrays.length; i++) {
+        const pageBuffer = Buffer.from(imageArrays[i]);
+        archive.append(pageBuffer, { name: `page-${i + 1}.png` });
       }
 
       await archive.finalize();
@@ -406,14 +405,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Invalid PDF file detected" });
       }
 
-      let data;
+      let text = "";
       try {
-        data = await pdf(file.buffer);
+        const PDFParse = await getPdfParse();
+        const parser = new PDFParse({ data: file.buffer });
+        const result = await parser.getText();
+        text = result.text;
+        await parser.destroy();
       } catch (parseError) {
+        console.error("PDF parsing error in pdf-to-word:", parseError);
         return res.status(400).json({ error: "Invalid or corrupted PDF file" });
       }
-
-      const text = data.text;
 
       const paragraphs = text.split("\n\n").filter(p => p.trim()).map(p => 
         new Paragraph({
@@ -722,14 +724,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Invalid PDF file detected" });
       }
 
-      let data;
+      let text = "";
       try {
-        data = await pdf(file.buffer);
+        const PDFParse = await getPdfParse();
+        const parser = new PDFParse({ data: file.buffer });
+        const result = await parser.getText();
+        text = result.text;
+        await parser.destroy();
       } catch (parseError) {
+        console.error("Extract text parsing error:", parseError);
         return res.status(400).json({ error: "Invalid or corrupted PDF file" });
       }
 
-      res.json({ text: data.text });
+      res.json({ text });
     } catch (error) {
       console.error("Extract text error:", error);
       res.status(500).json({ error: "Failed to extract text from PDF" });
