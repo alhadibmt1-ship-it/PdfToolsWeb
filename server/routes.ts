@@ -11,8 +11,6 @@ import {
   splitOptionsSchema, 
   rotationAngleSchema, 
   deletePageOptionsSchema, 
-  passwordProtectSchema,
-  unlockPdfSchema,
   compressionLevelSchema
 } from "@shared/schema";
 import { z } from "zod";
@@ -425,8 +423,33 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       const rawLines = text.split('\n');
-      const linesWithIndent = rawLines.map(raw => ({
-        raw: raw,
+      
+      const commonAbbreviations = ['Dr', 'Mr', 'Mrs', 'Ms', 'Prof', 'Sr', 'Jr', 'etc', 'e.g', 'i.e', 'vs', 'Inc', 'Ltd', 'Corp', 'Co', 'Ave', 'St', 'Rd', 'Blvd'];
+      const abbreviationPattern = new RegExp(`\\b(${commonAbbreviations.join('|')})\\.\\s*$`, 'i');
+      
+      const mergedLines: string[] = [];
+      for (let i = 0; i < rawLines.length; i++) {
+        const currentLine = rawLines[i];
+        const currentTrimmed = currentLine.trim();
+        const endsWithHyphen = /[a-zA-Z]-\s*$/.test(currentTrimmed);
+        const nextLine = i < rawLines.length - 1 ? rawLines[i + 1] : '';
+        const nextTrimmed = nextLine.trim();
+        const shouldMerge = endsWithHyphen && nextTrimmed && /^[a-z]/.test(nextTrimmed) && !nextTrimmed.match(/^[•\u2022\u2023\u25E6]/);
+        
+        if (shouldMerge) {
+          const currentIndent = currentLine.length - currentLine.trimStart().length;
+          const dehyphenated = currentTrimmed.replace(/-\s*$/, '');
+          const mergedText = dehyphenated + nextTrimmed;
+          const mergedLine = ' '.repeat(currentIndent) + mergedText;
+          mergedLines.push(mergedLine);
+          i++;
+        } else {
+          mergedLines.push(currentLine);
+        }
+      }
+      
+      const linesWithIndent = mergedLines.map(raw => ({
+        raw,
         trimmed: raw.trim(),
         indent: raw.length - raw.trimStart().length,
         isBlank: raw.trim().length === 0
@@ -454,8 +477,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const isPageNumber = /^[\divxlc]+$|^Page\s+\d+/i.test(trimmed) && trimmed.length < 15;
         const isFooterHeader = trimmed.length < 40 && (/^\d{1,2}\/\d{1,2}\/\d{2,4}|©|\(c\)|copyright/i.test(trimmed));
         const isAllCaps = trimmed === trimmed.toUpperCase() && trimmed.length > 5 && /[A-Z]/.test(trimmed);
-        const isBullet = /^[\u2022\u2023\u25E6\u2043\u2219•·‣⁃➢➣▪▫-]\s|^[a-z]\)|\d+[\.)]\s/i.test(trimmed);
-        const endsWithPeriod = /[.!?:;]$/.test(trimmed);
+        const isBullet = /^[\u2022\u2023\u25E6\u2043\u2219\u25AA\u25AB\u25CF\u25CB\u25A0\u25A1\u2605\u2606\u27A2\u2794\u25B8\u25B9\u25BA\u25BB•·‣⁃➢➣➤►▸▹●○■□★☆➢➤▪▫◦‧⦿⦾-]\s|^[a-z]\)|\d+[\.)]\s/i.test(trimmed);
+        const endsWithSentence = /[.!?:;]$/.test(trimmed);
+        const endsWithAbbreviation = abbreviationPattern.test(trimmed);
+        const endsWithPeriod = endsWithSentence && !endsWithAbbreviation;
         const isShortLine = trimmed.length < 70;
         const isProbablyTitle = isShortLine && !endsWithPeriod && !isBullet && trimmed.length > 3;
 

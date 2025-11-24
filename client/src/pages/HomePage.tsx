@@ -6,12 +6,11 @@ import {
   Image, 
   FileImage, 
   FileText, 
-  Lock, 
-  Unlock, 
   RotateCw, 
   Trash2, 
   Type,
-  ArrowRight
+  ArrowRight,
+  Lock
 } from "lucide-react";
 import { PDF_TOOLS } from "@shared/schema";
 import Header from "@/components/Header";
@@ -25,8 +24,6 @@ const iconMap: Record<string, any> = {
   image: Image,
   "file-image": FileImage,
   "file-text": FileText,
-  lock: Lock,
-  unlock: Unlock,
   "rotate-cw": RotateCw,
   trash: Trash2,
   "file-type": Type,
