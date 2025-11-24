@@ -28,11 +28,27 @@ export interface PDFTool {
 
 export const PDF_TOOLS: PDFTool[] = [
   {
+    id: "pdf-to-word",
+    title: "PDF to Word",
+    description: "Convert PDF to editable DOCX document",
+    icon: "file-text",
+    path: "/pdf-to-word",
+    acceptedFormats: ".pdf"
+  },
+  {
     id: "merge",
     title: "Merge PDF",
     description: "Combine multiple PDF files into one document",
     icon: "merge",
     path: "/merge",
+    acceptedFormats: ".pdf"
+  },
+  {
+    id: "pdf-to-jpg",
+    title: "PDF to JPG",
+    description: "Convert PDF pages to JPG images",
+    icon: "image",
+    path: "/pdf-to-jpg",
     acceptedFormats: ".pdf"
   },
   {
@@ -52,28 +68,12 @@ export const PDF_TOOLS: PDFTool[] = [
     acceptedFormats: ".pdf"
   },
   {
-    id: "pdf-to-jpg",
-    title: "PDF to JPG",
-    description: "Convert PDF pages to JPG images",
-    icon: "image",
-    path: "/pdf-to-jpg",
-    acceptedFormats: ".pdf"
-  },
-  {
     id: "jpg-to-pdf",
     title: "JPG to PDF",
     description: "Convert images to a single PDF document",
     icon: "file-image",
     path: "/jpg-to-pdf",
     acceptedFormats: "image/*"
-  },
-  {
-    id: "pdf-to-word",
-    title: "PDF to Word",
-    description: "Convert PDF to editable DOCX document",
-    icon: "file-text",
-    path: "/pdf-to-word",
-    acceptedFormats: ".pdf"
   },
   {
     id: "word-to-pdf",
