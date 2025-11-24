@@ -423,14 +423,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const clientId = process.env.ADOBE_CLIENT_ID;
       const clientSecret = process.env.ADOBE_CLIENT_SECRET;
 
-      if (!clientId || !clientSecret) {
-        console.error("Adobe PDF Services credentials not configured");
-        return res.status(500).json({ 
-          error: "PDF to Word conversion service not configured. Please contact administrator." 
-        });
-      }
-
-      try {
+      if (clientId && clientSecret) {
+        try {
         const credentials = new ServicePrincipalCredentials({
           clientId,
           clientSecret
@@ -473,9 +467,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
         res.setHeader("Content-Disposition", "attachment; filename=converted.docx");
         res.send(docxBuffer);
         return;
-      } catch (adobeError: any) {
-        console.error("Adobe PDF Services error:", adobeError);
-        console.log("Falling back to text-based conversion...");
+        } catch (adobeError: any) {
+          console.error("Adobe PDF Services error:", adobeError);
+          console.log("Falling back to text-based conversion...");
+        }
+      } else {
+        console.log("Adobe PDF Services credentials not configured, using text-based conversion");
       }
 
       let text = "";
