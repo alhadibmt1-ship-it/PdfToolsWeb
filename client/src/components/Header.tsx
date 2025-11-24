@@ -12,7 +12,7 @@ export default function Header() {
             <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
               <FileText className="w-5 h-5 text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold">PDF Master Tools</span>
+            <span className="text-xl font-bold">PDF HUB 24</span>
           </div>
         </Link>
         <div className="flex items-center gap-2">

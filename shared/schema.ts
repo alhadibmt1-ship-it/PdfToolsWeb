@@ -94,22 +94,6 @@ export const PDF_TOOLS: PDFTool[] = [
     acceptedFormats: ".docx"
   },
   {
-    id: "protect",
-    title: "Password Protect",
-    description: "Encrypt your PDF with a password",
-    icon: "lock",
-    path: "/protect",
-    acceptedFormats: ".pdf"
-  },
-  {
-    id: "unlock",
-    title: "Unlock PDF",
-    description: "Remove password protection from PDF",
-    icon: "unlock",
-    path: "/unlock",
-    acceptedFormats: ".pdf"
-  },
-  {
     id: "rotate",
     title: "Rotate PDF",
     description: "Rotate pages in your PDF document",

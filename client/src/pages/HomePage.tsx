@@ -90,7 +90,7 @@ export default function HomePage() {
         <section className="py-16 bg-muted/30">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-              Why Choose PDF Master Tools?
+              Why Choose PDF HUB 24?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
               <div>
