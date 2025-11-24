@@ -14,8 +14,6 @@ import PdfToJpgPage from "@/pages/PdfToJpgPage";
 import JpgToPdfPage from "@/pages/JpgToPdfPage";
 import PdfToWordPage from "@/pages/PdfToWordPage";
 import WordToPdfPage from "@/pages/WordToPdfPage";
-import ProtectPdfPage from "@/pages/ProtectPdfPage";
-import UnlockPdfPage from "@/pages/UnlockPdfPage";
 import RotatePdfPage from "@/pages/RotatePdfPage";
 import DeletePagesPage from "@/pages/DeletePagesPage";
 import ExtractTextPage from "@/pages/ExtractTextPage";
@@ -31,8 +29,6 @@ function Router() {
       <Route path="/jpg-to-pdf" component={JpgToPdfPage} />
       <Route path="/pdf-to-word" component={PdfToWordPage} />
       <Route path="/word-to-pdf" component={WordToPdfPage} />
-      <Route path="/protect" component={ProtectPdfPage} />
-      <Route path="/unlock" component={UnlockPdfPage} />
       <Route path="/rotate" component={RotatePdfPage} />
       <Route path="/delete-pages" component={DeletePagesPage} />
       <Route path="/extract-text" component={ExtractTextPage} />

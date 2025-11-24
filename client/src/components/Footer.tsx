@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
-            <h3 className="font-semibold text-lg mb-3">PDF Master Tools</h3>
+            <h3 className="font-semibold text-lg mb-3">PDF HUB 24</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Professional PDF tools for all your document needs. Fast, secure, and completely free.
             </p>
@@ -36,7 +36,7 @@ export default function Footer() {
         
         <div className="border-t pt-6">
           <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} PDF Master Tools. All rights reserved.
+            © {new Date().getFullYear()} PDF HUB 24. All rights reserved.
           </p>
         </div>
       </div>
