@@ -17,16 +17,6 @@ export const deletePageOptionsSchema = z.object({
 });
 export type DeletePageOptions = z.infer<typeof deletePageOptionsSchema>;
 
-export const passwordProtectSchema = z.object({
-  password: z.string().min(1),
-});
-export type PasswordProtectOptions = z.infer<typeof passwordProtectSchema>;
-
-export const unlockPdfSchema = z.object({
-  password: z.string().min(1),
-});
-export type UnlockPdfOptions = z.infer<typeof unlockPdfSchema>;
-
 export interface PDFTool {
   id: string;
   title: string;
