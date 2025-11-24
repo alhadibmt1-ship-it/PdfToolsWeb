@@ -123,7 +123,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
       }
 
-      const pdfBytes = await mergedPdf.save();
+      const pdfBytes = await mergedPdf.save({ useObjectStreams: false });
       res.setHeader("Content-Type", "application/pdf");
       res.setHeader("Content-Disposition", "attachment; filename=merged.pdf");
       res.send(Buffer.from(pdfBytes));
@@ -209,7 +209,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         mergedPdf.addPage(copiedPage);
       }
 
-      const pdfBytes = await mergedPdf.save();
+      const pdfBytes = await mergedPdf.save({ useObjectStreams: false });
       res.setHeader("Content-Type", "application/pdf");
       res.setHeader("Content-Disposition", "attachment; filename=merged.pdf");
       res.send(Buffer.from(pdfBytes));
@@ -261,7 +261,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       );
       pages.forEach((page) => newPdf.addPage(page));
 
-      const pdfBytes = await newPdf.save();
+      const pdfBytes = await newPdf.save({ useObjectStreams: false });
       res.setHeader("Content-Type", "application/pdf");
       res.setHeader("Content-Disposition", `attachment; filename=split-${startPage}-${endPage}.pdf`);
       res.send(Buffer.from(pdfBytes));
@@ -297,6 +297,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       const compressionOptions = {
         objectsPerTick: level === "high" ? 200 : level === "low" ? 50 : 100,
+        useObjectStreams: false
       };
 
       const pdfBytes = await pdfDoc.save(compressionOptions);
@@ -399,7 +400,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
       }
 
-      const pdfBytes = await pdfDoc.save();
+      const pdfBytes = await pdfDoc.save({ useObjectStreams: false });
       res.setHeader("Content-Type", "application/pdf");
       res.setHeader("Content-Disposition", "attachment; filename=converted.pdf");
       res.send(Buffer.from(pdfBytes));
@@ -779,7 +780,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         yPosition -= lineHeight * 0.5;
       }
 
-      const pdfBytes = await pdfDoc.save();
+      const pdfBytes = await pdfDoc.save({ useObjectStreams: false });
       res.setHeader("Content-Type", "application/pdf");
       res.setHeader("Content-Disposition", "attachment; filename=converted.pdf");
       res.send(Buffer.from(pdfBytes));
@@ -819,7 +820,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         page.setRotation(degrees(angle));
       });
 
-      const pdfBytes = await pdfDoc.save();
+      const pdfBytes = await pdfDoc.save({ useObjectStreams: false });
       res.setHeader("Content-Type", "application/pdf");
       res.setHeader("Content-Disposition", "attachment; filename=rotated.pdf");
       res.send(Buffer.from(pdfBytes));
@@ -874,7 +875,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         pdfDoc.removePage(pageNum - 1);
       }
 
-      const pdfBytes = await pdfDoc.save();
+      const pdfBytes = await pdfDoc.save({ useObjectStreams: false });
       res.setHeader("Content-Type", "application/pdf");
       res.setHeader("Content-Disposition", "attachment; filename=modified.pdf");
       res.send(Buffer.from(pdfBytes));
