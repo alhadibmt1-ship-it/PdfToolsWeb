@@ -14,6 +14,16 @@ import {
   compressionLevelSchema
 } from "@shared/schema";
 import { z } from "zod";
+import { 
+  ServicePrincipalCredentials,
+  PDFServices,
+  MimeType,
+  ExportPDFParams,
+  ExportPDFTargetFormat,
+  ExportPDFJob,
+  ExportPDFResult
+} from "@adobe/pdfservices-node-sdk";
+import { Readable } from "stream";
 
 const require = createRequire(import.meta.url);
 const pdfConverter = require("pdf-img-convert");
@@ -408,6 +418,64 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       if (!isPdfFile(file.buffer)) {
         return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      const clientId = process.env.ADOBE_CLIENT_ID;
+      const clientSecret = process.env.ADOBE_CLIENT_SECRET;
+
+      if (!clientId || !clientSecret) {
+        console.error("Adobe PDF Services credentials not configured");
+        return res.status(500).json({ 
+          error: "PDF to Word conversion service not configured. Please contact administrator." 
+        });
+      }
+
+      try {
+        const credentials = new ServicePrincipalCredentials({
+          clientId,
+          clientSecret
+        });
+
+        const pdfServices = new PDFServices({ credentials });
+
+        const readStream = Readable.from(file.buffer);
+        const inputAsset = await pdfServices.upload({
+          readStream,
+          mimeType: MimeType.PDF
+        });
+
+        const params = new ExportPDFParams({
+          targetFormat: ExportPDFTargetFormat.DOCX
+        });
+
+        const job = new ExportPDFJob({ inputAsset, params });
+
+        const pollingURL = await pdfServices.submit({ job });
+        const pdfServicesResponse = await pdfServices.getJobResult({
+          pollingURL,
+          resultType: ExportPDFResult
+        });
+
+        if (!pdfServicesResponse.result) {
+          throw new Error("Adobe PDF Services returned no result");
+        }
+
+        const resultAsset = pdfServicesResponse.result.asset;
+        const streamAsset = await pdfServices.getContent({ asset: resultAsset });
+
+        const chunks: Buffer[] = [];
+        for await (const chunk of streamAsset.readStream) {
+          chunks.push(Buffer.from(chunk));
+        }
+        const docxBuffer = Buffer.concat(chunks);
+
+        res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+        res.setHeader("Content-Disposition", "attachment; filename=converted.docx");
+        res.send(docxBuffer);
+        return;
+      } catch (adobeError: any) {
+        console.error("Adobe PDF Services error:", adobeError);
+        console.log("Falling back to text-based conversion...");
       }
 
       let text = "";
