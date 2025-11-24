@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://your-domain.replit.app/sitemap.xml
+Sitemap: https://pdfhub24.com/sitemap.xml
