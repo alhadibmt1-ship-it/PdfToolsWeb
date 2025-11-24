@@ -8,8 +8,15 @@ import ProcessingState from "@/components/ProcessingState";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function JpgToPdfPage() {
+  useSEO({
+    title: "JPG to PDF Converter - Convert Images to PDF Online Free | PDF HUB 24",
+    description: "Convert JPG, PNG, and other images to PDF online for free. Combine multiple images into one PDF document. Fast, secure conversion. No registration required.",
+    keywords: "jpg to pdf, image to pdf, convert jpg to pdf, png to pdf, photo to pdf, pictures to pdf"
+  });
+
   const [files, setFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);

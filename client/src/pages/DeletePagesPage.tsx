@@ -10,8 +10,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function DeletePagesPage() {
+  useSEO({
+    title: "Delete PDF Pages Online Free - Remove Pages from PDF | PDF HUB 24",
+    description: "Delete unwanted pages from PDF files online for free. Remove specific pages from your PDF documents. Fast, secure, and easy to use. No registration required.",
+    keywords: "delete pdf pages, remove pdf pages, delete pages from pdf, remove pages from pdf online free"
+  });
+
   const [files, setFiles] = useState<File[]>([]);
   const [pagesToDelete, setPagesToDelete] = useState("");
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");

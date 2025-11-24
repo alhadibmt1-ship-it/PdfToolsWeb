@@ -9,8 +9,15 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function ExtractTextPage() {
+  useSEO({
+    title: "Extract Text from PDF Online Free - PDF Text Extractor | PDF HUB 24",
+    description: "Extract text from PDF files online for free. Copy text content from your PDF documents. Fast, accurate text extraction. No registration required.",
+    keywords: "extract text from pdf, pdf to text, get text from pdf, pdf text extractor, copy text from pdf"
+  });
+
   const [files, setFiles] = useState<File[]>([]);
   const [extractedText, setExtractedText] = useState("");
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");

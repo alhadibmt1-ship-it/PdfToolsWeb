@@ -8,8 +8,15 @@ import ProcessingState from "@/components/ProcessingState";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function PdfToWordPage() {
+  useSEO({
+    title: "PDF to Word Converter - Free Online PDF to DOCX | PDF HUB 24",
+    description: "Convert PDF to Word (DOCX) online for free. Preserve formatting, colors, and layouts. Fast, secure PDF to Word conversion with no registration required.",
+    keywords: "pdf to word, pdf to docx, convert pdf to word, pdf converter, pdf to word free, online pdf converter"
+  });
+
   const [files, setFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);

@@ -10,8 +10,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function SplitPdfPage() {
+  useSEO({
+    title: "Split PDF Online Free - Extract Pages from PDF | PDF HUB 24",
+    description: "Split PDF files online for free. Extract specific pages or page ranges from your PDF documents. Fast, secure, and easy to use. No registration required.",
+    keywords: "split pdf, extract pdf pages, divide pdf, split pdf online free, pdf splitter, separate pdf pages"
+  });
+
   const [files, setFiles] = useState<File[]>([]);
   const [startPage, setStartPage] = useState<number>(1);
   const [endPage, setEndPage] = useState<number>(1);

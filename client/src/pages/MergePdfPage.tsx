@@ -11,8 +11,15 @@ import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { usePdfThumbnails, type PdfPage } from "@/hooks/usePdfThumbnails";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function MergePdfPage() {
+  useSEO({
+    title: "Merge PDF Files Online Free - Combine Multiple PDFs | PDF HUB 24",
+    description: "Merge multiple PDF files into one document online for free. Combine PDFs in any order, fast and secure. No registration required.",
+    keywords: "merge pdf, combine pdf, join pdf files, merge pdf online free, pdf merger, combine pdf files"
+  });
+
   const [files, setFiles] = useState<File[]>([]);
   const [selectedPages, setSelectedPages] = useState<PdfPage[]>([]);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
