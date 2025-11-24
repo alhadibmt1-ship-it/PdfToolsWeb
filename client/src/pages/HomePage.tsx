@@ -16,6 +16,7 @@ import { PDF_TOOLS } from "@shared/schema";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
+import { useSEO } from "@/hooks/useSEO";
 
 const iconMap: Record<string, any> = {
   merge: Combine,
@@ -30,6 +31,12 @@ const iconMap: Record<string, any> = {
 };
 
 export default function HomePage() {
+  useSEO({
+    title: "PDF HUB 24 - Free Online PDF Tools | Convert, Merge, Split & More",
+    description: "Free online PDF tools for converting PDF to Word, merging PDFs, PDF to JPG conversion, splitting, compressing, and more. Fast, secure, and easy to use - no registration required.",
+    keywords: "pdf to word, merge pdf, pdf to jpg, split pdf, compress pdf, jpg to pdf, word to pdf, rotate pdf, delete pdf pages, extract text from pdf, free pdf tools"
+  });
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />

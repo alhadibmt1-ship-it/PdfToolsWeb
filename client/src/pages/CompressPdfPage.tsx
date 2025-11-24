@@ -12,8 +12,15 @@ import { useToast } from "@/hooks/use-toast";
 import { useSettings } from "@/contexts/SettingsContext";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import type { CompressionLevel } from "@shared/schema";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function CompressPdfPage() {
+  useSEO({
+    title: "Compress PDF Online Free - Reduce PDF File Size | PDF HUB 24",
+    description: "Compress PDF files online for free. Reduce PDF file size without losing quality. Choose compression level. Fast and secure PDF compression. No registration required.",
+    keywords: "compress pdf, reduce pdf size, compress pdf online free, pdf compressor, shrink pdf, optimize pdf"
+  });
+
   const { settings } = useSettings();
   const [files, setFiles] = useState<File[]>([]);
   const [compressionLevel, setCompressionLevel] = useState<CompressionLevel>(settings.defaultCompressionLevel);

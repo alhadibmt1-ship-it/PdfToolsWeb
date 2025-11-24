@@ -11,8 +11,15 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import type { RotationAngle } from "@shared/schema";
+import { useSEO } from "@/hooks/useSEO";
 
 export default function RotatePdfPage() {
+  useSEO({
+    title: "Rotate PDF Online Free - Rotate PDF Pages 90, 180, 270 Degrees | PDF HUB 24",
+    description: "Rotate PDF pages online for free. Turn your PDF pages 90, 180, or 270 degrees. Fast, secure PDF rotation. No registration required.",
+    keywords: "rotate pdf, rotate pdf pages, turn pdf, rotate pdf online free, flip pdf, pdf rotation"
+  });
+
   const [files, setFiles] = useState<File[]>([]);
   const [angle, setAngle] = useState<RotationAngle>("90");
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
