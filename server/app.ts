@@ -1,5 +1,6 @@
 import { type Server } from "node:http";
 
+import compression from "compression";
 import express, {
   type Express,
   type Request,
@@ -21,6 +22,17 @@ export function log(message: string, source = "express") {
 }
 
 export const app = express();
+
+app.use(compression({
+  level: 6,
+  threshold: 1024,
+  filter: (req, res) => {
+    if (req.headers['x-no-compression']) {
+      return false;
+    }
+    return compression.filter(req, res);
+  }
+}));
 
 declare module 'http' {
   interface IncomingMessage {

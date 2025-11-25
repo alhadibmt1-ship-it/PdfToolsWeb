@@ -6,14 +6,18 @@
     <title>PDF HUB 24 - Free Online PDF Tools</title>
     <meta name="description" content="Free online PDF tools for merging, splitting, compressing, converting, and more. Fast, secure, and easy to use." />
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <!-- Critical CSS for instant first paint -->
+    <!-- Critical CSS for instant first paint and hero section -->
     <style>
-      *,*::before,*::after{box-sizing:border-box;margin:0}
-      html{-webkit-text-size-adjust:100%;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      html{-webkit-text-size-adjust:100%;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;scroll-behavior:smooth}
       body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,sans-serif;line-height:1.5;min-height:100vh;background:#fff;color:#0a0a0a}
       @media(prefers-color-scheme:dark){body{background:#0a0a0a;color:#fafafa}}
       #root{min-height:100vh;display:flex;flex-direction:column}
       .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+      header{position:sticky;top:0;z-index:50;background:inherit;border-bottom:1px solid rgba(0,0,0,0.1)}
+      main{flex:1}
+      h1{font-weight:700;letter-spacing:-0.02em}
+      .container{width:100%;max-width:1280px;margin:0 auto;padding:0 1.5rem}
     </style>
     <!-- Preconnect to font origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
