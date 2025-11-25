@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
 import SortablePdfPages from "@/components/SortablePdfPages";
+import ToolSEOContent from "@/components/ToolSEOContent";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
@@ -243,6 +244,51 @@ export default function MergePdfPage() {
               </div>
             )}
           </div>
+
+          <ToolSEOContent
+            toolName="Merge PDF Files"
+            toolDescription="Combine multiple PDF documents into a single file with our free online PDF merger. Whether you're consolidating reports, combining chapters of a book, or merging business documents, our tool makes it easy. Preview pages before merging, drag and drop to reorder, and remove unwanted pages - all within your browser."
+            howToSteps={[
+              "Upload multiple PDF files by clicking the upload area or dragging and dropping files.",
+              "Preview all pages from your documents and arrange them in your desired order.",
+              "Remove any pages you don't want to include by clicking the X button on each page.",
+              "Click the Merge button to combine all selected pages into one PDF.",
+              "Download your merged PDF file - it's ready to use immediately."
+            ]}
+            benefits={[
+              "Merge unlimited PDF files into one document",
+              "Preview and reorder pages before combining",
+              "Remove unwanted pages with a single click",
+              "Maintain original quality and formatting",
+              "Combine PDFs from different sources easily",
+              "No watermarks on your merged documents",
+              "Secure processing with automatic file deletion",
+              "Works on any device with a web browser"
+            ]}
+            faqs={[
+              {
+                question: "How many PDF files can I merge at once?",
+                answer: "You can merge up to 10 PDF files at once with our tool. For larger batches, simply merge in groups and then combine the resulting files."
+              },
+              {
+                question: "Will merging PDFs reduce quality?",
+                answer: "No, our PDF merger preserves the original quality of all your documents. Text, images, and formatting remain exactly as they were in the original files."
+              },
+              {
+                question: "Can I rearrange pages from different PDFs?",
+                answer: "Yes! After uploading your files, you can drag and drop individual pages to arrange them in any order before merging. You can also remove specific pages you don't need."
+              },
+              {
+                question: "Is there a file size limit?",
+                answer: "Our tool handles most standard PDF files without issues. For very large files or documents with many high-resolution images, processing may take a bit longer."
+              },
+              {
+                question: "Are my documents kept private?",
+                answer: "Yes, all uploaded files are processed securely and automatically deleted after processing. We never store, view, or share your documents."
+              }
+            ]}
+            keywords={["combine pdf files", "join pdfs together", "merge multiple pdfs"]}
+          />
         </div>
       </main>
 

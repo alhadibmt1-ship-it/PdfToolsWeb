@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
+import ToolSEOContent from "@/components/ToolSEOContent";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -170,6 +171,50 @@ export default function RotatePdfPage() {
               </div>
             )}
           </div>
+
+          <ToolSEOContent
+            toolName="Rotate PDF"
+            toolDescription="Fix the orientation of your PDF documents with our free online PDF rotator. Whether your scanned document came out sideways, your photos are upside down, or you need to change a landscape document to portrait, our tool makes it easy. Rotate all pages by 90°, 180°, or 270° with a single click."
+            howToSteps={[
+              "Upload your PDF file by clicking the upload area or dragging and dropping.",
+              "Select your desired rotation angle: 90° (right), 180° (upside down), or 270° (left).",
+              "Click the Rotate PDF button to process your document.",
+              "Download your newly oriented PDF file."
+            ]}
+            benefits={[
+              "Fix wrongly-oriented scanned documents instantly",
+              "Rotate all pages in the document at once",
+              "Choose from three rotation options (90°, 180°, 270°)",
+              "Perfect for landscape to portrait conversion",
+              "Maintain original document quality",
+              "Works with any PDF regardless of size",
+              "Fast processing even for large documents",
+              "No watermarks on your rotated PDF"
+            ]}
+            faqs={[
+              {
+                question: "Does rotation affect all pages?",
+                answer: "Yes, the rotation is applied to all pages in your PDF document. If you need to rotate only specific pages, use our Split PDF tool first to extract those pages, rotate them, then merge back."
+              },
+              {
+                question: "What's the difference between 90° and 270°?",
+                answer: "90° rotates clockwise (to the right), 270° rotates counter-clockwise (to the left). Both result in a quarter turn, just in opposite directions. 180° turns the page completely upside down."
+              },
+              {
+                question: "Will rotating affect my document quality?",
+                answer: "No, rotation is a lossless operation. Text, images, and all content remain at their original quality. Only the orientation changes."
+              },
+              {
+                question: "Can I rotate a PDF back to its original orientation?",
+                answer: "Absolutely! If you rotated by 90° and want to undo it, simply rotate by 270° (or vice versa). To undo a 180° rotation, rotate by 180° again."
+              },
+              {
+                question: "Why do scanned PDFs often need rotation?",
+                answer: "Scanners sometimes capture documents in the wrong orientation, especially when batch scanning mixed documents. Our tool quickly fixes these orientation issues."
+              }
+            ]}
+            keywords={["rotate pdf pages", "fix pdf orientation", "turn pdf sideways"]}
+          />
         </div>
       </main>
 

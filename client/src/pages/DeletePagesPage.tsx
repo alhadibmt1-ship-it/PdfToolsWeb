@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
+import ToolSEOContent from "@/components/ToolSEOContent";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -181,6 +182,50 @@ export default function DeletePagesPage() {
               </div>
             )}
           </div>
+
+          <ToolSEOContent
+            toolName="Delete PDF Pages"
+            toolDescription="Remove unwanted pages from your PDF documents with our free online tool. Whether you need to delete blank pages, remove confidential information, or simply clean up a document before sharing, our page deletion tool makes it easy. Specify exactly which pages to remove and download your streamlined PDF instantly."
+            howToSteps={[
+              "Upload your PDF file by clicking the upload area or dragging it in.",
+              "Enter the page numbers you want to delete (separated by commas, e.g., 1,3,5).",
+              "Click the Delete Pages button to process your document.",
+              "Download your PDF with the specified pages removed."
+            ]}
+            benefits={[
+              "Remove any pages from your PDF instantly",
+              "Delete multiple pages in a single operation",
+              "Perfect for removing blank or unwanted pages",
+              "Great for cleaning up documents before sharing",
+              "Original document quality is preserved",
+              "Works with any size PDF document",
+              "Fast processing regardless of page count",
+              "Secure - your files are never stored"
+            ]}
+            faqs={[
+              {
+                question: "How do I specify which pages to delete?",
+                answer: "Enter page numbers separated by commas. For example, to delete pages 1, 3, and 5, enter: 1,3,5. Page numbers start at 1 (the first page is page 1)."
+              },
+              {
+                question: "Can I delete a range of pages?",
+                answer: "Currently, you enter individual page numbers separated by commas. To delete pages 5 through 10, enter: 5,6,7,8,9,10."
+              },
+              {
+                question: "Will deleting pages affect my original file?",
+                answer: "No, your original file remains unchanged. We create a new PDF with the specified pages removed. You can always use your original if needed."
+              },
+              {
+                question: "What happens if I enter an invalid page number?",
+                answer: "If you enter a page number that doesn't exist (like page 100 in a 50-page document), you'll receive an error message. Double-check your page numbers before processing."
+              },
+              {
+                question: "Can I undo page deletion?",
+                answer: "The tool creates a new PDF without the deleted pages. To 'undo', simply use your original PDF file. We recommend keeping a copy of your original document before making changes."
+              }
+            ]}
+            keywords={["remove pdf pages", "delete pages from pdf", "clean up pdf document"]}
+          />
         </div>
       </main>
 
