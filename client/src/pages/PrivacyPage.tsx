@@ -2,6 +2,7 @@ import { ChevronLeft } from "lucide-react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
 import { useSEO } from "@/hooks/useSEO";
 
 export default function PrivacyPage() {
@@ -16,11 +17,11 @@ export default function PrivacyPage() {
       <Header />
       
       <main className="flex-1 container mx-auto px-4 py-8 max-w-4xl">
-        <Link href="/" data-testid="link-back-home">
-          <button className="flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6" data-testid="button-back">
-            <ChevronLeft className="w-5 h-5" />
+        <Link href="/">
+          <Button variant="ghost" className="mb-6" data-testid="button-privacy-back">
+            <ChevronLeft className="w-5 h-5 mr-2" />
             Back to Home
-          </button>
+          </Button>
         </Link>
 
         <div className="prose prose-slate dark:prose-invert max-w-none">
@@ -123,12 +124,14 @@ export default function PrivacyPage() {
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">Contact Us</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              If you have questions about this Privacy Policy, please visit our{" "}
-              <Link href="/contact" className="text-primary hover:underline" data-testid="link-contact">
-                Contact page
-              </Link>.
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              If you have questions about this Privacy Policy, please get in touch.
             </p>
+            <Link href="/contact">
+              <Button variant="default" data-testid="button-privacy-contact">
+                Contact Us
+              </Button>
+            </Link>
           </section>
         </div>
       </main>
