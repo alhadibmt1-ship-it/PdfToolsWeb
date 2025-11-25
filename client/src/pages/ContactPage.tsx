@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { useSEO } from "@/hooks/useSEO";
 
 export default function ContactPage() {
@@ -17,11 +18,11 @@ export default function ContactPage() {
       <Header />
       
       <main className="flex-1 container mx-auto px-4 py-8 max-w-4xl">
-        <Link href="/" data-testid="link-back-home">
-          <button className="flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6" data-testid="button-back">
-            <ChevronLeft className="w-5 h-5" />
+        <Link href="/">
+          <Button variant="ghost" className="mb-6" data-testid="button-contact-back">
+            <ChevronLeft className="w-5 h-5 mr-2" />
             Back to Home
-          </button>
+          </Button>
         </Link>
 
         <div className="max-w-none">
@@ -82,12 +83,12 @@ export default function ContactPage() {
                 <p className="text-muted-foreground mb-4">
                   Send us an email and we'll get back to you as soon as possible
                 </p>
-                <a 
-                  href="mailto:support@pdfhub24.com" 
-                  className="text-xl font-semibold text-primary hover:underline"
-                  data-testid="link-email"
-                >
-                  support@pdfhub24.com
+                <p className="text-xl font-semibold mb-4">support@pdfhub24.com</p>
+                <a href="mailto:support@pdfhub24.com">
+                  <Button variant="default" data-testid="button-contact-email-main">
+                    <Mail className="w-4 h-4 mr-2" />
+                    Send Email
+                  </Button>
                 </a>
               </div>
             </CardContent>
@@ -154,13 +155,11 @@ export default function ContactPage() {
             <p className="text-muted-foreground mb-6">
               We're always here to help. Don't hesitate to reach out!
             </p>
-            <a 
-              href="mailto:support@pdfhub24.com"
-              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
-              data-testid="button-contact-email"
-            >
-              <Mail className="w-5 h-5" />
-              Contact Support
+            <a href="mailto:support@pdfhub24.com">
+              <Button variant="default" size="lg" data-testid="button-contact-support">
+                <Mail className="w-5 h-5 mr-2" />
+                Contact Support
+              </Button>
             </a>
           </section>
         </div>
