@@ -27,10 +27,29 @@ export default function Footer() {
           </div>
           
           <div>
-            <h3 className="font-semibold text-lg mb-3">About</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              All PDF processing happens in your browser. Your files are never uploaded to our servers, ensuring complete privacy and security.
-            </p>
+            <h3 className="font-semibold text-lg mb-3">Company</h3>
+            <div className="flex flex-col gap-2">
+              <Link href="/about" data-testid="link-footer-about">
+                <span className="text-sm text-muted-foreground hover:text-foreground cursor-pointer transition-colors">
+                  About Us
+                </span>
+              </Link>
+              <Link href="/contact" data-testid="link-footer-contact">
+                <span className="text-sm text-muted-foreground hover:text-foreground cursor-pointer transition-colors">
+                  Contact
+                </span>
+              </Link>
+              <Link href="/privacy" data-testid="link-footer-privacy">
+                <span className="text-sm text-muted-foreground hover:text-foreground cursor-pointer transition-colors">
+                  Privacy Policy
+                </span>
+              </Link>
+              <Link href="/terms" data-testid="link-footer-terms">
+                <span className="text-sm text-muted-foreground hover:text-foreground cursor-pointer transition-colors">
+                  Terms of Service
+                </span>
+              </Link>
+            </div>
           </div>
         </div>
         
