@@ -1,7 +1,24 @@
-# PDF Master Tools
+# PDF HUB 24
 
 ## Overview
-PDF Master Tools is a web-based application offering 12 PDF manipulation tools, including merging, splitting, compressing, converting (PDF↔JPG, PDF↔Word), protecting, unlocking, rotating, deleting pages, and extracting text. It features full dark mode support, user settings for compression, and uses localStorage for persistence. The project's ambition is to provide a comprehensive, user-friendly, and secure online PDF utility, aiming for high market potential by offering a robust alternative to existing solutions with a strong focus on user experience and performance.
+PDF HUB 24 is a comprehensive web-based PDF manipulation platform offering 15 PDF tools:
+1. **PDF to Word** - Convert PDF to editable DOCX
+2. **Merge PDF** - Combine multiple PDFs into one
+3. **PDF to JPG** - Convert PDF pages to images
+4. **Split PDF** - Extract specific pages
+5. **Compress PDF** - Reduce file size
+6. **JPG to PDF** - Convert images to PDF
+7. **Word to PDF** - Convert DOCX to PDF
+8. **Rotate PDF** - Rotate pages 90°, 180°, 270°
+9. **Delete Pages** - Remove unwanted pages
+10. **Extract Text** - Extract text content
+11. **Protect PDF** - Add password protection
+12. **Unlock PDF** - Remove password protection
+13. **Add Page Numbers** - Add page numbers to documents
+14. **Add Watermark** - Add text watermark to pages
+15. **Reorder Pages** - Drag-and-drop page reordering
+
+Features full dark mode support, user settings, localStorage persistence, and professional-grade PDF processing. Deployed at pdfhub24.com with complete SEO optimization and PDF24-inspired UX patterns.
 
 ## User Preferences
 Preferred communication style: Simple, everyday language.

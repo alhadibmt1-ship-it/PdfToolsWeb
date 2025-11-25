@@ -11,6 +11,10 @@ import {
   Type,
   ArrowRight,
   Lock,
+  Unlock,
+  Hash,
+  Droplet,
+  Move,
   Globe,
   Zap,
   Shield,
@@ -35,6 +39,11 @@ const iconMap: Record<string, any> = {
   "rotate-cw": RotateCw,
   trash: Trash2,
   "file-type": Type,
+  lock: Lock,
+  unlock: Unlock,
+  hash: Hash,
+  droplet: Droplet,
+  move: Move,
 };
 
 export default function HomePage() {

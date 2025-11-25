@@ -9,6 +9,11 @@ import {
   RotateCw, 
   Trash2, 
   Type,
+  Lock,
+  Unlock,
+  Hash,
+  Droplet,
+  Move,
   ArrowRight
 } from "lucide-react";
 import { PDF_TOOLS } from "@shared/schema";
@@ -24,6 +29,11 @@ const iconMap: Record<string, any> = {
   "rotate-cw": RotateCw,
   trash: Trash2,
   "file-type": Type,
+  lock: Lock,
+  unlock: Unlock,
+  hash: Hash,
+  droplet: Droplet,
+  move: Move,
 };
 
 interface RelatedToolsProps {

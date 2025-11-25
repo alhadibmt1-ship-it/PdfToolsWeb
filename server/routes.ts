@@ -11,7 +11,12 @@ import {
   splitOptionsSchema, 
   rotationAngleSchema, 
   deletePageOptionsSchema, 
-  compressionLevelSchema
+  compressionLevelSchema,
+  protectPdfOptionsSchema,
+  unlockPdfOptionsSchema,
+  pageNumberOptionsSchema,
+  watermarkOptionsSchema,
+  reorderPagesOptionsSchema
 } from "@shared/schema";
 import { z } from "zod";
 import CloudConvert from "cloudconvert";
@@ -917,6 +922,351 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Extract text error:", error);
       res.status(500).json({ error: "Failed to extract text from PDF" });
+    }
+  });
+
+  app.post("/api/protect-pdf", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "PDF file is required" });
+      }
+
+      if (!isPdfFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      const validated = protectPdfOptionsSchema.safeParse({
+        userPassword: req.body.userPassword,
+        ownerPassword: req.body.ownerPassword || req.body.userPassword,
+      });
+      
+      if (!validated.success) {
+        return res.status(400).json({ error: "Password is required" });
+      }
+
+      const { userPassword, ownerPassword } = validated.data;
+
+      let pdfDoc;
+      try {
+        pdfDoc = await PDFDocument.load(file.buffer);
+      } catch (parseError) {
+        return res.status(400).json({ error: "Invalid or corrupted PDF file" });
+      }
+
+      const pdfBytes = await pdfDoc.save({
+        useObjectStreams: false,
+        userPassword: userPassword,
+        ownerPassword: ownerPassword || userPassword,
+        permissions: {
+          printing: 'lowResolution',
+          modifying: false,
+          copying: false,
+          annotating: false,
+          fillingForms: false,
+          contentAccessibility: true,
+          documentAssembly: false,
+        },
+      } as any);
+
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=protected.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("Protect PDF error:", error);
+      res.status(500).json({ error: "Failed to protect PDF" });
+    }
+  });
+
+  app.post("/api/unlock-pdf", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "PDF file is required" });
+      }
+
+      if (!isPdfFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      const validated = unlockPdfOptionsSchema.safeParse({
+        password: req.body.password,
+      });
+      
+      if (!validated.success) {
+        return res.status(400).json({ error: "Password is required" });
+      }
+
+      const { password } = validated.data;
+
+      let pdfDoc;
+      try {
+        pdfDoc = await PDFDocument.load(file.buffer, { password });
+      } catch (parseError: any) {
+        if (parseError.message?.includes('password') || parseError.message?.includes('encrypted')) {
+          return res.status(400).json({ error: "Incorrect password or unable to decrypt PDF" });
+        }
+        return res.status(400).json({ error: "Invalid or corrupted PDF file" });
+      }
+
+      const pdfBytes = await pdfDoc.save({ useObjectStreams: false });
+
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=unlocked.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("Unlock PDF error:", error);
+      res.status(500).json({ error: "Failed to unlock PDF" });
+    }
+  });
+
+  app.post("/api/add-page-numbers", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "PDF file is required" });
+      }
+
+      if (!isPdfFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      const startNumParsed = parseInt(req.body.startNumber);
+      const fontSizeParsed = parseInt(req.body.fontSize);
+      
+      const validated = pageNumberOptionsSchema.safeParse({
+        position: req.body.position || "bottom-center",
+        startNumber: isNaN(startNumParsed) ? 1 : startNumParsed,
+        fontSize: isNaN(fontSizeParsed) ? 12 : fontSizeParsed,
+      });
+      
+      if (!validated.success) {
+        return res.status(400).json({ error: "Invalid options provided" });
+      }
+
+      const { position, startNumber, fontSize } = validated.data;
+
+      let pdfDoc;
+      try {
+        pdfDoc = await PDFDocument.load(file.buffer);
+      } catch (parseError) {
+        return res.status(400).json({ error: "Invalid or corrupted PDF file" });
+      }
+
+      const pages = pdfDoc.getPages();
+      const font = await pdfDoc.embedFont('Helvetica' as any);
+
+      pages.forEach((page, index) => {
+        const { width, height } = page.getSize();
+        const pageNumber = `${startNumber + index}`;
+        const textWidth = font.widthOfTextAtSize(pageNumber, fontSize);
+        
+        let x: number, y: number;
+        const margin = 40;
+        
+        switch (position) {
+          case "top-left":
+            x = margin;
+            y = height - margin;
+            break;
+          case "top-center":
+            x = (width - textWidth) / 2;
+            y = height - margin;
+            break;
+          case "top-right":
+            x = width - textWidth - margin;
+            y = height - margin;
+            break;
+          case "bottom-left":
+            x = margin;
+            y = margin;
+            break;
+          case "bottom-center":
+            x = (width - textWidth) / 2;
+            y = margin;
+            break;
+          case "bottom-right":
+            x = width - textWidth - margin;
+            y = margin;
+            break;
+          default:
+            x = (width - textWidth) / 2;
+            y = margin;
+        }
+
+        page.drawText(pageNumber, {
+          x,
+          y,
+          size: fontSize,
+          font,
+          color: rgb(0, 0, 0),
+        });
+      });
+
+      const pdfBytes = await pdfDoc.save({ useObjectStreams: false });
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=numbered.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("Add page numbers error:", error);
+      res.status(500).json({ error: "Failed to add page numbers" });
+    }
+  });
+
+  app.post("/api/add-watermark", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "PDF file is required" });
+      }
+
+      if (!isPdfFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      const opacityParsed = parseFloat(req.body.opacity);
+      const fontSizeParsed = parseInt(req.body.fontSize);
+      const rotationParsed = parseInt(req.body.rotation);
+      
+      const validated = watermarkOptionsSchema.safeParse({
+        text: req.body.text,
+        opacity: isNaN(opacityParsed) ? 0.3 : opacityParsed,
+        fontSize: isNaN(fontSizeParsed) ? 48 : fontSizeParsed,
+        rotation: isNaN(rotationParsed) ? -45 : rotationParsed,
+      });
+      
+      if (!validated.success) {
+        return res.status(400).json({ error: "Watermark text is required" });
+      }
+
+      const { text, opacity, fontSize, rotation } = validated.data;
+
+      let pdfDoc;
+      try {
+        pdfDoc = await PDFDocument.load(file.buffer);
+      } catch (parseError) {
+        return res.status(400).json({ error: "Invalid or corrupted PDF file" });
+      }
+
+      const pages = pdfDoc.getPages();
+      const font = await pdfDoc.embedFont('Helvetica' as any);
+
+      pages.forEach((page) => {
+        const { width, height } = page.getSize();
+        const textWidth = font.widthOfTextAtSize(text, fontSize);
+        
+        page.drawText(text, {
+          x: (width - textWidth) / 2,
+          y: height / 2,
+          size: fontSize,
+          font,
+          color: rgb(0.7, 0.7, 0.7),
+          opacity: opacity,
+          rotate: degrees(rotation),
+        });
+      });
+
+      const pdfBytes = await pdfDoc.save({ useObjectStreams: false });
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=watermarked.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("Add watermark error:", error);
+      res.status(500).json({ error: "Failed to add watermark" });
+    }
+  });
+
+  app.post("/api/pdf-info", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "PDF file is required" });
+      }
+
+      if (!isPdfFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      let pdfDoc;
+      try {
+        pdfDoc = await PDFDocument.load(file.buffer);
+      } catch (parseError) {
+        return res.status(400).json({ error: "Invalid or corrupted PDF file" });
+      }
+
+      const pageCount = pdfDoc.getPageCount();
+      res.json({ pageCount });
+    } catch (error) {
+      console.error("PDF info error:", error);
+      res.status(500).json({ error: "Failed to get PDF info" });
+    }
+  });
+
+  app.post("/api/reorder-pages", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "PDF file is required" });
+      }
+
+      if (!isPdfFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      let pageOrder;
+      try {
+        pageOrder = JSON.parse(req.body.pageOrder);
+      } catch (e) {
+        return res.status(400).json({ error: "Invalid page order format. Expected JSON array." });
+      }
+
+      const validated = reorderPagesOptionsSchema.safeParse({ pageOrder });
+      
+      if (!validated.success) {
+        return res.status(400).json({ error: "Page order must be an array of positive integers" });
+      }
+
+      const { pageOrder: order } = validated.data;
+
+      let sourcePdf;
+      try {
+        sourcePdf = await PDFDocument.load(file.buffer);
+      } catch (parseError) {
+        return res.status(400).json({ error: "Invalid or corrupted PDF file" });
+      }
+
+      const totalPages = sourcePdf.getPageCount();
+      
+      const validOrder = order.filter(p => p >= 1 && p <= totalPages);
+      if (validOrder.length === 0) {
+        return res.status(400).json({ error: "No valid page numbers provided" });
+      }
+
+      if (validOrder.length !== totalPages) {
+        return res.status(400).json({ 
+          error: `Page order must include all ${totalPages} pages. Received ${validOrder.length} valid page references.` 
+        });
+      }
+
+      const uniquePages = new Set(validOrder);
+      if (uniquePages.size !== validOrder.length) {
+        return res.status(400).json({ error: "Duplicate page numbers are not allowed in reordering" });
+      }
+
+      const newPdf = await PDFDocument.create();
+      
+      for (const pageNum of validOrder) {
+        const [copiedPage] = await newPdf.copyPages(sourcePdf, [pageNum - 1]);
+        newPdf.addPage(copiedPage);
+      }
+
+      const pdfBytes = await newPdf.save({ useObjectStreams: false });
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=reordered.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("Reorder pages error:", error);
+      res.status(500).json({ error: "Failed to reorder pages" });
     }
   });
 
