@@ -17,6 +17,10 @@ import WordToPdfPage from "@/pages/WordToPdfPage";
 import RotatePdfPage from "@/pages/RotatePdfPage";
 import DeletePagesPage from "@/pages/DeletePagesPage";
 import ExtractTextPage from "@/pages/ExtractTextPage";
+import AboutPage from "@/pages/AboutPage";
+import PrivacyPage from "@/pages/PrivacyPage";
+import TermsPage from "@/pages/TermsPage";
+import ContactPage from "@/pages/ContactPage";
 
 function Router() {
   return (
@@ -32,6 +36,10 @@ function Router() {
       <Route path="/rotate" component={RotatePdfPage} />
       <Route path="/delete-pages" component={DeletePagesPage} />
       <Route path="/extract-text" component={ExtractTextPage} />
+      <Route path="/about" component={AboutPage} />
+      <Route path="/privacy" component={PrivacyPage} />
+      <Route path="/terms" component={TermsPage} />
+      <Route path="/contact" component={ContactPage} />
       <Route component={NotFound} />
     </Switch>
   );
