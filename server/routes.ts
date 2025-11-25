@@ -14,16 +14,10 @@ import {
   compressionLevelSchema
 } from "@shared/schema";
 import { z } from "zod";
-import { 
-  ServicePrincipalCredentials,
-  PDFServices,
-  MimeType,
-  ExportPDFParams,
-  ExportPDFTargetFormat,
-  ExportPDFJob,
-  ExportPDFResult
-} from "@adobe/pdfservices-node-sdk";
+import CloudConvert from "cloudconvert";
 import { Readable } from "stream";
+import https from "https";
+import http from "http";
 
 const require = createRequire(import.meta.url);
 const pdfConverter = require("pdf-img-convert");
@@ -421,59 +415,70 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Invalid PDF file detected" });
       }
 
-      const clientId = process.env.ADOBE_CLIENT_ID;
-      const clientSecret = process.env.ADOBE_CLIENT_SECRET;
+      const cloudConvertApiKey = process.env.CLOUDCONVERT_API_KEY;
 
-      if (clientId && clientSecret) {
+      if (cloudConvertApiKey) {
         try {
-        const credentials = new ServicePrincipalCredentials({
-          clientId,
-          clientSecret
-        });
+          const cloudConvert = new CloudConvert(cloudConvertApiKey);
 
-        const pdfServices = new PDFServices({ credentials });
+          const job = await cloudConvert.jobs.create({
+            tasks: {
+              'upload-pdf': {
+                operation: 'import/upload'
+              },
+              'convert-to-docx': {
+                operation: 'convert',
+                input: 'upload-pdf',
+                input_format: 'pdf',
+                output_format: 'docx',
+                engine: 'pdftron-pdf2word'
+              },
+              'export-result': {
+                operation: 'export/url',
+                input: 'convert-to-docx'
+              }
+            }
+          });
 
-        const readStream = Readable.from(file.buffer);
-        const inputAsset = await pdfServices.upload({
-          readStream,
-          mimeType: MimeType.PDF
-        });
+          const uploadTask = job.tasks.find((t: any) => t.name === 'upload-pdf');
+          if (!uploadTask) {
+            throw new Error("Upload task not found");
+          }
 
-        const params = new ExportPDFParams({
-          targetFormat: ExportPDFTargetFormat.DOCX
-        });
+          await cloudConvert.tasks.upload(uploadTask, file.buffer, file.originalname || 'document.pdf');
 
-        const job = new ExportPDFJob({ inputAsset, params });
+          const completedJob = await cloudConvert.jobs.wait(job.id);
 
-        const pollingURL = await pdfServices.submit({ job });
-        const pdfServicesResponse = await pdfServices.getJobResult({
-          pollingURL,
-          resultType: ExportPDFResult
-        });
+          const exportTask = completedJob.tasks.find((t: any) => t.name === 'export-result' && t.status === 'finished');
+          if (!exportTask || !exportTask.result || !exportTask.result.files || !exportTask.result.files[0]) {
+            throw new Error("CloudConvert conversion failed - no output file");
+          }
 
-        if (!pdfServicesResponse.result) {
-          throw new Error("Adobe PDF Services returned no result");
-        }
+          const outputUrl = exportTask.result.files[0].url as string;
+          if (!outputUrl) {
+            throw new Error("CloudConvert conversion failed - no download URL");
+          }
 
-        const resultAsset = pdfServicesResponse.result.asset;
-        const streamAsset = await pdfServices.getContent({ asset: resultAsset });
+          const docxBuffer = await new Promise<Buffer>((resolve, reject) => {
+            const protocol = outputUrl.startsWith('https') ? https : http;
+            protocol.get(outputUrl, (response) => {
+              const chunks: Buffer[] = [];
+              response.on('data', (chunk) => chunks.push(Buffer.from(chunk)));
+              response.on('end', () => resolve(Buffer.concat(chunks)));
+              response.on('error', reject);
+            }).on('error', reject);
+          });
 
-        const chunks: Buffer[] = [];
-        for await (const chunk of streamAsset.readStream) {
-          chunks.push(Buffer.from(chunk));
-        }
-        const docxBuffer = Buffer.concat(chunks);
-
-        res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
-        res.setHeader("Content-Disposition", "attachment; filename=converted.docx");
-        res.send(docxBuffer);
-        return;
-        } catch (adobeError: any) {
-          console.error("Adobe PDF Services error:", adobeError);
+          res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+          res.setHeader("Content-Disposition", "attachment; filename=converted.docx");
+          res.send(docxBuffer);
+          return;
+        } catch (cloudConvertError: any) {
+          console.error("CloudConvert error:", cloudConvertError);
           console.log("Falling back to text-based conversion...");
         }
       } else {
-        console.log("Adobe PDF Services credentials not configured, using text-based conversion");
+        console.log("CloudConvert API key not configured, using text-based conversion");
       }
 
       let text = "";
