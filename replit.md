@@ -16,7 +16,12 @@ PDF Master Tools is a web-based PDF utility application that provides 12 differe
   - Reduced initial JavaScript bundle from 943KB to 384KB (59% reduction)
   - Each page loads on demand as separate chunk
   - Added Suspense with loading spinner for lazy-loaded routes
-- Previous performance score: 57, targeting significant improvement
+- **Render-Blocking Resource Optimization:**
+  - Google Fonts now load asynchronously (media="print" with onload swap)
+  - Added inline critical CSS for instant first paint (body, fonts, layout)
+  - Deferred Google Analytics to load after page interactive
+  - Preload hints for font stylesheet
+- Performance score improved: 57 → 66+ (targeting higher with latest changes)
 
 **November 25, 2025 - Color Scheme, CloudConvert Integration & SEO Content Enhancement**
 - **Vibrant Color Scheme Update:**
