@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
 import ToolSEOContent from "@/components/ToolSEOContent";
+import TrustBadges from "@/components/TrustBadges";
+import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
@@ -106,9 +108,10 @@ export default function PdfToJpgPage() {
 
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">PDF to JPG</h1>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed mb-4">
               Convert each page of your PDF into separate JPG images. Single-page PDFs will download as a PNG image, multi-page PDFs as a ZIP file.
             </p>
+            <TrustBadges />
           </div>
 
           <div className="space-y-6">
@@ -202,6 +205,8 @@ export default function PdfToJpgPage() {
             ]}
             keywords={["convert pdf to images", "extract images from pdf", "pdf page to jpg"]}
           />
+          
+          <RelatedTools currentToolId="pdf-to-jpg" />
         </div>
       </main>
 

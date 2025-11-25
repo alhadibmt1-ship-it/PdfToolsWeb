@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
 import ToolSEOContent from "@/components/ToolSEOContent";
+import TrustBadges from "@/components/TrustBadges";
+import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
@@ -95,9 +97,10 @@ export default function PdfToWordPage() {
 
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">PDF to Word</h1>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed mb-4">
               Convert your PDF document to an editable Word (DOCX) file. Perfect for making edits to PDF content.
             </p>
+            <TrustBadges />
           </div>
 
           <div className="space-y-6">
@@ -184,6 +187,8 @@ export default function PdfToWordPage() {
             ]}
             keywords={["convert pdf to word", "edit pdf text", "pdf to docx conversion"]}
           />
+          
+          <RelatedTools currentToolId="pdf-to-word" />
         </div>
       </main>
 
