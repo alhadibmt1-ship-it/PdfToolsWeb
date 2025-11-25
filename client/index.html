@@ -6,9 +6,14 @@
     <title>PDF HUB 24 - Free Online PDF Tools</title>
     <meta name="description" content="Free online PDF tools for merging, splitting, compressing, converting, and more. Fast, secure, and easy to use." />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <!-- Preconnect to font origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Preload the font file for faster loading -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <!-- Non-render-blocking font loading -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NPMZN8ZRPF"></script>
     <script>
