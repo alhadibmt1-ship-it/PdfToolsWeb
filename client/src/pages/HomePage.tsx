@@ -10,12 +10,19 @@ import {
   Trash2, 
   Type,
   ArrowRight,
-  Lock
+  Lock,
+  Globe,
+  Zap,
+  Shield,
+  Infinity,
+  Clock,
+  CheckCircle
 } from "lucide-react";
 import { PDF_TOOLS } from "@shared/schema";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { useSEO } from "@/hooks/useSEO";
 
 const iconMap: Record<string, any> = {
@@ -42,14 +49,33 @@ export default function HomePage() {
       <Header />
       
       <main className="flex-1">
-        <section className="py-16 md:py-20 bg-gradient-to-b from-accent/30 to-background">
+        <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 via-accent/20 to-background">
           <div className="max-w-7xl mx-auto px-6 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
-              Professional PDF Tools
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              All PDF Tools You Need
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Fast, secure, and free online PDF tools for all your document needs
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
+              Free and easy to use online PDF tools. Convert, merge, split, compress, and edit PDF files with no registration required.
             </p>
+            
+            <div className="flex flex-wrap justify-center gap-3 mb-8">
+              <Badge variant="secondary" className="px-4 py-2 text-sm font-medium gap-2">
+                <CheckCircle className="w-4 h-4 text-green-500" />
+                100% Free
+              </Badge>
+              <Badge variant="secondary" className="px-4 py-2 text-sm font-medium gap-2">
+                <Globe className="w-4 h-4 text-primary" />
+                Online
+              </Badge>
+              <Badge variant="secondary" className="px-4 py-2 text-sm font-medium gap-2">
+                <Infinity className="w-4 h-4 text-primary" />
+                No Limits
+              </Badge>
+              <Badge variant="secondary" className="px-4 py-2 text-sm font-medium gap-2">
+                <Shield className="w-4 h-4 text-primary" />
+                Secure
+              </Badge>
+            </div>
           </div>
         </section>
 
@@ -92,36 +118,97 @@ export default function HomePage() {
         </section>
 
         <section className="py-16 bg-muted/30">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-4">
+          <div className="max-w-6xl mx-auto px-6">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-center">
               Why Choose PDF HUB 24?
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-              <div>
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
-                  <Lock className="w-6 h-6 text-primary" />
+            <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
+              Trusted by thousands of users worldwide for reliable PDF processing
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <Card className="p-6 text-center">
+                <div className="w-14 h-14 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="w-7 h-7 text-green-500" />
                 </div>
-                <h3 className="font-semibold mb-2">100% Secure</h3>
+                <h3 className="font-semibold mb-2">100% Free</h3>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>No hidden costs</li>
+                  <li>No premium versions</li>
+                  <li>All features included</li>
+                </ul>
+              </Card>
+              
+              <Card className="p-6 text-center">
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <Zap className="w-7 h-7 text-primary" />
+                </div>
+                <h3 className="font-semibold mb-2">Easy to Use</h3>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>No installation required</li>
+                  <li>Works on any device</li>
+                  <li>Simple drag and drop</li>
+                </ul>
+              </Card>
+              
+              <Card className="p-6 text-center">
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <Infinity className="w-7 h-7 text-primary" />
+                </div>
+                <h3 className="font-semibold mb-2">No Restrictions</h3>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>No registration required</li>
+                  <li>No subscription traps</li>
+                  <li>Use as often as you like</li>
+                </ul>
+              </Card>
+              
+              <Card className="p-6 text-center">
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <Shield className="w-7 h-7 text-primary" />
+                </div>
+                <h3 className="font-semibold mb-2">Secure Processing</h3>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>SSL encrypted transfer</li>
+                  <li>Files auto-deleted</li>
+                  <li>Privacy guaranteed</li>
+                </ul>
+              </Card>
+            </div>
+          </div>
+        </section>
+        
+        <section className="py-16">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-6">
+              How It Works
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="relative">
+                <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                  1
+                </div>
+                <h3 className="font-semibold mb-2">Select Your Tool</h3>
                 <p className="text-sm text-muted-foreground">
-                  All files are processed locally in your browser
+                  Choose from our collection of free PDF tools above
                 </p>
               </div>
-              <div>
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
-                  <RotateCw className="w-6 h-6 text-primary" />
+              <div className="relative">
+                <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                  2
                 </div>
-                <h3 className="font-semibold mb-2">Lightning Fast</h3>
+                <h3 className="font-semibold mb-2">Upload Your Files</h3>
                 <p className="text-sm text-muted-foreground">
-                  Quick processing with no upload wait times
+                  Drag and drop or click to upload your PDF files
                 </p>
               </div>
-              <div>
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
-                  <FileText className="w-6 h-6 text-primary" />
+              <div className="relative">
+                <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+                  3
                 </div>
-                <h3 className="font-semibold mb-2">Always Free</h3>
+                <h3 className="font-semibold mb-2">Download Result</h3>
                 <p className="text-sm text-muted-foreground">
-                  No subscriptions, no hidden fees, ever
+                  Get your processed file instantly - no waiting
                 </p>
               </div>
             </div>
