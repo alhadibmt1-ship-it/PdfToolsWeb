@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
 import ToolSEOContent from "@/components/ToolSEOContent";
+import TrustBadges from "@/components/TrustBadges";
+import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -119,9 +121,10 @@ export default function DeletePagesPage() {
 
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">Delete PDF Pages</h1>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed mb-4">
               Remove unwanted pages from your PDF document. Enter page numbers separated by commas.
             </p>
+            <TrustBadges />
           </div>
 
           <div className="space-y-6">
@@ -226,6 +229,8 @@ export default function DeletePagesPage() {
             ]}
             keywords={["remove pdf pages", "delete pages from pdf", "clean up pdf document"]}
           />
+          
+          <RelatedTools currentToolId="delete-pages" />
         </div>
       </main>
 

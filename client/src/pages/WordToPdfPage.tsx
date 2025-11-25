@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
 import ToolSEOContent from "@/components/ToolSEOContent";
+import TrustBadges from "@/components/TrustBadges";
+import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
@@ -95,9 +97,10 @@ export default function WordToPdfPage() {
 
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">Word to PDF</h1>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed mb-4">
               Convert your Word documents (DOCX) to PDF format. Perfect for sharing and preserving formatting.
             </p>
+            <TrustBadges />
           </div>
 
           <div className="space-y-6">
@@ -187,6 +190,8 @@ export default function WordToPdfPage() {
             ]}
             keywords={["convert word to pdf", "docx to pdf online", "word document to pdf"]}
           />
+          
+          <RelatedTools currentToolId="word-to-pdf" />
         </div>
       </main>
 

@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
 import ToolSEOContent from "@/components/ToolSEOContent";
+import TrustBadges from "@/components/TrustBadges";
+import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
@@ -97,9 +99,10 @@ export default function JpgToPdfPage() {
 
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">JPG to PDF</h1>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed mb-4">
               Convert multiple images into a single PDF document. Images will appear in the order you upload them.
             </p>
+            <TrustBadges />
           </div>
 
           <div className="space-y-6">
@@ -187,6 +190,8 @@ export default function JpgToPdfPage() {
             ]}
             keywords={["convert images to pdf", "photo to pdf", "combine images into pdf"]}
           />
+          
+          <RelatedTools currentToolId="jpg-to-pdf" />
         </div>
       </main>
 

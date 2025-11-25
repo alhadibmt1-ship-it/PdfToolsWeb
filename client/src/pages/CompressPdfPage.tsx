@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
 import ToolSEOContent from "@/components/ToolSEOContent";
+import TrustBadges from "@/components/TrustBadges";
+import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -117,9 +119,10 @@ export default function CompressPdfPage() {
 
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">Compress PDF</h1>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed mb-4">
               Reduce your PDF file size while maintaining quality. Choose your compression level based on your needs.
             </p>
+            <TrustBadges />
           </div>
 
           <div className="space-y-6">
@@ -244,6 +247,8 @@ export default function CompressPdfPage() {
             ]}
             keywords={["reduce pdf size", "shrink pdf file", "optimize pdf for email"]}
           />
+          
+          <RelatedTools currentToolId="compress" />
         </div>
       </main>
 

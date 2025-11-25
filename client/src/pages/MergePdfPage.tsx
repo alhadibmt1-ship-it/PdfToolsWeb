@@ -7,6 +7,8 @@ import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
 import SortablePdfPages from "@/components/SortablePdfPages";
 import ToolSEOContent from "@/components/ToolSEOContent";
+import TrustBadges from "@/components/TrustBadges";
+import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
@@ -135,9 +137,10 @@ export default function MergePdfPage() {
 
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">Merge PDF Files</h1>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed mb-4">
               Combine multiple PDF documents into a single file. Preview pages, reorder them by dragging, and remove unwanted pages.
             </p>
+            <TrustBadges />
           </div>
 
           <div className="space-y-6">
@@ -289,6 +292,8 @@ export default function MergePdfPage() {
             ]}
             keywords={["combine pdf files", "join pdfs together", "merge multiple pdfs"]}
           />
+          
+          <RelatedTools currentToolId="merge" />
         </div>
       </main>
 

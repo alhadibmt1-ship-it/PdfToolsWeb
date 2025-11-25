@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
 import ToolSEOContent from "@/components/ToolSEOContent";
+import TrustBadges from "@/components/TrustBadges";
+import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -110,9 +112,10 @@ export default function SplitPdfPage() {
 
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">Split PDF</h1>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed mb-4">
               Extract specific pages from your PDF document by specifying a page range.
             </p>
+            <TrustBadges />
           </div>
 
           <div className="space-y-6">
@@ -226,6 +229,8 @@ export default function SplitPdfPage() {
             ]}
             keywords={["extract pdf pages", "separate pdf pages", "split pdf into parts"]}
           />
+          
+          <RelatedTools currentToolId="split" />
         </div>
       </main>
 

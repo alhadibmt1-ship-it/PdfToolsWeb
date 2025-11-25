@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
 import ToolSEOContent from "@/components/ToolSEOContent";
+import TrustBadges from "@/components/TrustBadges";
+import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
@@ -104,9 +106,10 @@ export default function ExtractTextPage() {
 
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">Extract Text from PDF</h1>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed mb-4">
               Extract all text content from your PDF document. The text will be displayed here and can be downloaded as a .txt file.
             </p>
+            <TrustBadges />
           </div>
 
           <div className="space-y-6">
@@ -215,6 +218,8 @@ export default function ExtractTextPage() {
             ]}
             keywords={["get text from pdf", "copy pdf text", "pdf to plain text"]}
           />
+          
+          <RelatedTools currentToolId="extract-text" />
         </div>
       </main>
 
