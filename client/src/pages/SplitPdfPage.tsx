@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
+import ToolSEOContent from "@/components/ToolSEOContent";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -181,6 +182,50 @@ export default function SplitPdfPage() {
               </div>
             )}
           </div>
+
+          <ToolSEOContent
+            toolName="Split PDF"
+            toolDescription="Extract specific pages from your PDF documents with our free online PDF splitter. Whether you need to separate a single chapter, extract a section of a report, or create smaller files from a large document, our tool makes it easy. Simply specify the page range you want and download the extracted pages as a new PDF."
+            howToSteps={[
+              "Upload your PDF file by clicking the upload area or dragging and dropping.",
+              "Enter the start page and end page numbers for the range you want to extract.",
+              "Click the Split PDF button to process your document.",
+              "Download your new PDF containing only the selected pages."
+            ]}
+            benefits={[
+              "Extract any page range from your PDF instantly",
+              "Create smaller, focused documents from large files",
+              "Perfect for sharing specific sections of a document",
+              "Maintain original quality and formatting",
+              "Split documents for easier emailing or printing",
+              "Works with any PDF regardless of size",
+              "No watermarks or limitations",
+              "Secure processing with automatic file deletion"
+            ]}
+            faqs={[
+              {
+                question: "How do I split a PDF into individual pages?",
+                answer: "To extract single pages, set both the start and end page to the same number. For example, to extract page 5 only, enter 5 for both start and end page."
+              },
+              {
+                question: "Can I split a PDF into multiple parts?",
+                answer: "Yes! Simply use the tool multiple times with different page ranges. For example, first extract pages 1-10, then 11-20, and so on to create multiple smaller PDFs."
+              },
+              {
+                question: "Will splitting affect my original PDF?",
+                answer: "No, your original file remains unchanged. The tool creates a new PDF with only the selected pages while your original document stays intact."
+              },
+              {
+                question: "What if I don't know how many pages my PDF has?",
+                answer: "Our tool will let you know if the page numbers you enter are out of range. You can also check your PDF's page count in any PDF viewer before splitting."
+              },
+              {
+                question: "Is there a limit to how many pages I can extract?",
+                answer: "No, you can extract any number of pages from your document. Whether it's a single page or hundreds, our tool handles it efficiently."
+              }
+            ]}
+            keywords={["extract pdf pages", "separate pdf pages", "split pdf into parts"]}
+          />
         </div>
       </main>
 

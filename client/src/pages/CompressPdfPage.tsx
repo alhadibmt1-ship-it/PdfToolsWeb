@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
+import ToolSEOContent from "@/components/ToolSEOContent";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -199,6 +200,50 @@ export default function CompressPdfPage() {
               </div>
             )}
           </div>
+
+          <ToolSEOContent
+            toolName="Compress PDF"
+            toolDescription="Reduce your PDF file size without sacrificing quality using our free online PDF compressor. Whether you need to email a document, upload it to a website, or simply save storage space, our tool offers three compression levels to meet your needs. Compress PDFs instantly - no software installation required."
+            howToSteps={[
+              "Upload your PDF file by clicking the upload area or dragging and dropping.",
+              "Choose your compression level: Low for best quality, Medium for balanced results, or High for maximum size reduction.",
+              "Click the Compress PDF button to start processing.",
+              "Download your compressed file and see exactly how much space you saved."
+            ]}
+            benefits={[
+              "Reduce PDF size by up to 90% with high compression",
+              "Three compression levels to balance quality and size",
+              "Perfect for email attachments and web uploads",
+              "Maintains text readability even at high compression",
+              "See exact file size savings before downloading",
+              "Process multiple files one after another",
+              "Works with all types of PDF documents",
+              "Save your preferred compression level in settings"
+            ]}
+            faqs={[
+              {
+                question: "Which compression level should I choose?",
+                answer: "For documents you'll print, choose Low compression for best quality. For web uploads or emails, Medium provides a good balance. For maximum size reduction when quality is less critical, choose High compression."
+              },
+              {
+                question: "How much can I reduce my PDF file size?",
+                answer: "Compression results vary depending on the PDF content. PDFs with many images can often be reduced by 50-90%. Text-heavy documents with few images may see smaller reductions since text is already compact."
+              },
+              {
+                question: "Will compression affect my text quality?",
+                answer: "No, text always remains crisp and readable. Compression primarily affects images within the PDF. Even at high compression, text stays clear and fully legible."
+              },
+              {
+                question: "Can I compress password-protected PDFs?",
+                answer: "You'll need to remove the password protection first using our Unlock PDF tool, then compress the file. You can re-add password protection afterward using our Protect PDF tool."
+              },
+              {
+                question: "Is there a file size limit for compression?",
+                answer: "Our tool handles most standard PDF files. Very large files (over 100MB) may take longer to process but will still be compressed successfully."
+              }
+            ]}
+            keywords={["reduce pdf size", "shrink pdf file", "optimize pdf for email"]}
+          />
         </div>
       </main>
 

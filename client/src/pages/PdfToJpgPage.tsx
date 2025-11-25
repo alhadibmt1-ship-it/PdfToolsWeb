@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
+import ToolSEOContent from "@/components/ToolSEOContent";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
@@ -157,6 +158,50 @@ export default function PdfToJpgPage() {
               </div>
             )}
           </div>
+
+          <ToolSEOContent
+            toolName="PDF to JPG Converter"
+            toolDescription="Convert your PDF documents into high-quality JPG images with our free online converter. Each page becomes a separate image file, perfect for presentations, social media, or archiving. Single-page PDFs convert to PNG images for maximum quality, while multi-page documents are packaged in a convenient ZIP file."
+            howToSteps={[
+              "Upload your PDF file by clicking the upload area or dragging and dropping.",
+              "Wait while our server converts each page to a high-resolution image.",
+              "Download your image (single page) or ZIP file (multiple pages).",
+              "Extract the ZIP file to access all your page images."
+            ]}
+            benefits={[
+              "High-resolution image output (2000x2000px) for quality preservation",
+              "Each page converts to a separate image file",
+              "Single-page PDFs download as direct PNG images",
+              "Multi-page PDFs packaged in organized ZIP files",
+              "Perfect for presentations and social media sharing",
+              "Ideal for archiving and document management",
+              "Works with any PDF document type",
+              "Fast conversion even for large documents"
+            ]}
+            faqs={[
+              {
+                question: "What image format will I receive?",
+                answer: "Single-page PDFs convert to PNG format for maximum quality. Multi-page PDFs produce JPG images for each page, packaged together in a ZIP file for easy download."
+              },
+              {
+                question: "What resolution are the output images?",
+                answer: "We convert PDFs to high-resolution images (up to 2000x2000 pixels) to ensure your images look sharp and professional whether viewed on screen or printed."
+              },
+              {
+                question: "Can I convert specific pages only?",
+                answer: "Currently, all pages are converted. If you need specific pages only, use our Split PDF tool first to extract those pages, then convert the resulting PDF to images."
+              },
+              {
+                question: "Why is my download a ZIP file?",
+                answer: "For multi-page PDFs, we package all images in a ZIP file for convenient download. Simply extract the ZIP file to access all your page images individually."
+              },
+              {
+                question: "How long does conversion take?",
+                answer: "Most PDFs convert in seconds. Larger documents with many pages may take a bit longer, but our progress bar keeps you informed throughout the process."
+              }
+            ]}
+            keywords={["convert pdf to images", "extract images from pdf", "pdf page to jpg"]}
+          />
         </div>
       </main>
 

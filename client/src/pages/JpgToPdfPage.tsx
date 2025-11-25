@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
+import ToolSEOContent from "@/components/ToolSEOContent";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
@@ -142,6 +143,50 @@ export default function JpgToPdfPage() {
               </div>
             )}
           </div>
+
+          <ToolSEOContent
+            toolName="JPG to PDF Converter"
+            toolDescription="Convert your JPG, PNG, and other image files into professional PDF documents with our free online converter. Perfect for creating photo albums, portfolios, scanned document archives, or combining multiple images into one easy-to-share file. Each image becomes a page in your PDF, maintaining the original upload order."
+            howToSteps={[
+              "Select one or more image files (JPG, PNG, or other formats) by clicking upload or dragging files.",
+              "Arrange your images in the desired order - they'll appear as pages in this sequence.",
+              "Click the Convert button to create your PDF document.",
+              "Download your finished PDF with all images as pages."
+            ]}
+            benefits={[
+              "Convert multiple images to a single PDF document",
+              "Supports JPG, PNG, and other common image formats",
+              "Images appear in the order you upload them",
+              "Each image becomes a full page in the PDF",
+              "Perfect for photo albums and portfolios",
+              "Ideal for archiving scanned documents",
+              "Easy sharing - one file instead of many",
+              "High-quality output preserves image detail"
+            ]}
+            faqs={[
+              {
+                question: "What image formats are supported?",
+                answer: "We support all common image formats including JPG/JPEG, PNG, GIF, BMP, and WebP. Simply upload your images and our tool handles the rest."
+              },
+              {
+                question: "How many images can I convert at once?",
+                answer: "You can upload and convert up to 10 images at a time. Each image will become a separate page in your PDF document."
+              },
+              {
+                question: "Will my images lose quality?",
+                answer: "No, your images are embedded in the PDF at their original quality. We don't compress or reduce the resolution of your photos."
+              },
+              {
+                question: "Can I change the order of pages?",
+                answer: "Images appear in the PDF in the order you upload them. To change the order, remove and re-upload images in your preferred sequence."
+              },
+              {
+                question: "What size will the PDF pages be?",
+                answer: "Each page is sized to fit your image. The PDF automatically adjusts page dimensions to match each image's aspect ratio."
+              }
+            ]}
+            keywords={["convert images to pdf", "photo to pdf", "combine images into pdf"]}
+          />
         </div>
       </main>
 

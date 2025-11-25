@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
+import ToolSEOContent from "@/components/ToolSEOContent";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
@@ -170,6 +171,50 @@ export default function ExtractTextPage() {
               </div>
             )}
           </div>
+
+          <ToolSEOContent
+            toolName="Extract Text from PDF"
+            toolDescription="Pull all text content from your PDF documents with our free online text extractor. Whether you need to copy content for editing, search through document text, or extract data for analysis, our tool quickly extracts readable text from any PDF. Copy directly to clipboard or download as a text file."
+            howToSteps={[
+              "Upload your PDF file by clicking the upload area or dragging and dropping.",
+              "Click the Extract Text button to process your document.",
+              "View the extracted text in the text area that appears.",
+              "Copy the text to your clipboard or download as a .txt file."
+            ]}
+            benefits={[
+              "Extract all readable text from any PDF",
+              "Copy text directly to your clipboard with one click",
+              "Download extracted text as a .txt file",
+              "See character count for extracted content",
+              "Works with multi-page documents",
+              "Preserves paragraph structure where possible",
+              "Fast extraction even for large documents",
+              "No registration or signup required"
+            ]}
+            faqs={[
+              {
+                question: "Can I extract text from scanned PDFs?",
+                answer: "Our tool extracts text that is stored as text in the PDF. For scanned documents (which are essentially images), text extraction may be limited. For best results, use PDFs with selectable text."
+              },
+              {
+                question: "Will formatting be preserved?",
+                answer: "The tool extracts plain text content. Formatting like bold, italics, and fonts is not preserved, as the output is plain text. However, paragraph breaks and basic structure are maintained."
+              },
+              {
+                question: "What if my PDF has images with text?",
+                answer: "Text within images cannot be extracted by this tool. Only text that is stored as actual text characters in the PDF can be extracted."
+              },
+              {
+                question: "How do I use the extracted text?",
+                answer: "Click 'Copy' to copy all text to your clipboard, then paste it anywhere (Word, email, notes). Alternatively, click 'Download' to save as a .txt file you can open in any text editor."
+              },
+              {
+                question: "Is there a page limit for text extraction?",
+                answer: "No, you can extract text from PDFs of any length. The tool processes all pages and combines the text into a single output."
+              }
+            ]}
+            keywords={["get text from pdf", "copy pdf text", "pdf to plain text"]}
+          />
         </div>
       </main>
 
