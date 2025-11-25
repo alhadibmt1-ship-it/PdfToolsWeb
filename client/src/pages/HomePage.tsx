@@ -20,7 +20,11 @@ import {
   Shield,
   Infinity,
   Clock,
-  CheckCircle
+  CheckCircle,
+  Table,
+  FileSpreadsheet,
+  Download,
+  Upload
 } from "lucide-react";
 import { PDF_TOOLS } from "@shared/schema";
 import Header from "@/components/Header";
@@ -46,12 +50,90 @@ const iconMap: Record<string, any> = {
   move: Move,
 };
 
+function ConversionIcon({ iconType }: { iconType: string }) {
+  const formatStyles: Record<string, { bgColor: string; textColor: string; label: string }> = {
+    pdf: { bgColor: "bg-red-500", textColor: "text-white", label: "PDF" },
+    word: { bgColor: "bg-blue-500", textColor: "text-white", label: "DOC" },
+    jpg: { bgColor: "bg-orange-500", textColor: "text-white", label: "JPG" },
+    png: { bgColor: "bg-purple-500", textColor: "text-white", label: "PNG" },
+    excel: { bgColor: "bg-green-600", textColor: "text-white", label: "XLS" },
+  };
+
+  if (iconType.includes("-to-")) {
+    const [from, to] = iconType.split("-to-");
+    const fromStyle = formatStyles[from];
+    const toStyle = formatStyles[to];
+
+    if (fromStyle && toStyle) {
+      return (
+        <div className="flex items-center gap-2">
+          <div className={`w-10 h-10 rounded-lg ${fromStyle.bgColor} ${fromStyle.textColor} flex items-center justify-center text-xs font-bold`}>
+            {fromStyle.label}
+          </div>
+          <ArrowRight className="w-4 h-4 text-muted-foreground" />
+          <div className={`w-10 h-10 rounded-lg ${toStyle.bgColor} ${toStyle.textColor} flex items-center justify-center text-xs font-bold`}>
+            {toStyle.label}
+          </div>
+        </div>
+      );
+    }
+  }
+
+  const Icon = iconMap[iconType];
+  if (Icon) {
+    return (
+      <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center">
+        <Icon className="w-7 h-7 text-primary" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center">
+      <FileText className="w-7 h-7 text-primary" />
+    </div>
+  );
+}
+
 export default function HomePage() {
   useSEO({
     title: "PDF HUB 24 - Free Online PDF Tools | Convert, Merge, Split & More",
-    description: "Free online PDF tools for converting PDF to Word, merging PDFs, PDF to JPG conversion, splitting, compressing, and more. Fast, secure, and easy to use - no registration required.",
-    keywords: "pdf to word, merge pdf, pdf to jpg, split pdf, compress pdf, jpg to pdf, word to pdf, rotate pdf, delete pdf pages, extract text from pdf, free pdf tools"
+    description: "Free online PDF tools for converting PDF to Word, Excel, JPG, PNG and more. Merge PDFs, split, compress, and edit PDF files. Fast, secure, and easy to use - no registration required.",
+    keywords: "pdf to word, pdf to excel, merge pdf, pdf to jpg, pdf to png, split pdf, compress pdf, jpg to pdf, png to pdf, excel to pdf, word to pdf, free pdf tools"
   });
+
+  const fromPdfTools = PDF_TOOLS.filter(tool => tool.category === "from-pdf");
+  const toPdfTools = PDF_TOOLS.filter(tool => tool.category === "to-pdf");
+  const editPdfTools = PDF_TOOLS.filter(tool => tool.category === "edit-pdf");
+
+  const renderToolGrid = (tools: typeof PDF_TOOLS) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {tools.map((tool) => (
+        <Link key={tool.id} href={tool.path} data-testid={`link-tool-${tool.id}`}>
+          <Card className="p-6 h-full hover-elevate active-elevate-2 cursor-pointer transition-all hover:scale-[1.02] group">
+            <div className="flex flex-col h-full">
+              <div className="mb-4">
+                <ConversionIcon iconType={tool.icon} />
+              </div>
+              
+              <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
+                {tool.title}
+              </h3>
+              
+              <p className="text-sm text-muted-foreground mb-4 flex-1 leading-relaxed">
+                {tool.description}
+              </p>
+              
+              <div className="flex items-center text-sm font-medium text-primary group-hover:gap-2 transition-all">
+                Use Tool
+                <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+          </Card>
+        </Link>
+      ))}
+    </div>
+  );
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -88,41 +170,54 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="tools" className="py-12 md:py-16">
+        <section id="from-pdf" className="py-12 md:py-16">
           <div className="max-w-7xl mx-auto px-6">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-8 text-center">
-              Choose Your Tool
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {PDF_TOOLS.map((tool) => {
-                const Icon = iconMap[tool.icon];
-                return (
-                  <Link key={tool.id} href={tool.path} data-testid={`link-tool-${tool.id}`}>
-                    <Card className="p-6 h-full hover-elevate active-elevate-2 cursor-pointer transition-all hover:scale-[1.02] group">
-                      <div className="flex flex-col h-full">
-                        <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                          <Icon className="w-7 h-7 text-primary" />
-                        </div>
-                        
-                        <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
-                          {tool.title}
-                        </h3>
-                        
-                        <p className="text-sm text-muted-foreground mb-4 flex-1 leading-relaxed">
-                          {tool.description}
-                        </p>
-                        
-                        <div className="flex items-center text-sm font-medium text-primary group-hover:gap-2 transition-all">
-                          Use Tool
-                          <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                        </div>
-                      </div>
-                    </Card>
-                  </Link>
-                );
-              })}
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center">
+                <Download className="w-5 h-5 text-red-500" />
+              </div>
+              <div>
+                <h2 className="text-2xl md:text-3xl font-semibold">
+                  Convert from PDF
+                </h2>
+                <p className="text-muted-foreground text-sm">Transform your PDF files into other formats</p>
+              </div>
             </div>
+            {renderToolGrid(fromPdfTools)}
+          </div>
+        </section>
+
+        <section id="to-pdf" className="py-12 md:py-16 bg-muted/30">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
+                <Upload className="w-5 h-5 text-green-500" />
+              </div>
+              <div>
+                <h2 className="text-2xl md:text-3xl font-semibold">
+                  Convert to PDF
+                </h2>
+                <p className="text-muted-foreground text-sm">Create PDF documents from other file formats</p>
+              </div>
+            </div>
+            {renderToolGrid(toPdfTools)}
+          </div>
+        </section>
+
+        <section id="edit-pdf" className="py-12 md:py-16">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <FileText className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h2 className="text-2xl md:text-3xl font-semibold">
+                  Edit PDF
+                </h2>
+                <p className="text-muted-foreground text-sm">Modify and organize your PDF documents</p>
+              </div>
+            </div>
+            {renderToolGrid(editPdfTools)}
           </div>
         </section>
 
