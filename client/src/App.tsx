@@ -15,6 +15,10 @@ const PdfToJpgPage = lazy(() => import("@/pages/PdfToJpgPage"));
 const JpgToPdfPage = lazy(() => import("@/pages/JpgToPdfPage"));
 const PdfToWordPage = lazy(() => import("@/pages/PdfToWordPage"));
 const WordToPdfPage = lazy(() => import("@/pages/WordToPdfPage"));
+const PdfToPngPage = lazy(() => import("@/pages/PdfToPngPage"));
+const PngToPdfPage = lazy(() => import("@/pages/PngToPdfPage"));
+const PdfToExcelPage = lazy(() => import("@/pages/PdfToExcelPage"));
+const ExcelToPdfPage = lazy(() => import("@/pages/ExcelToPdfPage"));
 const RotatePdfPage = lazy(() => import("@/pages/RotatePdfPage"));
 const DeletePagesPage = lazy(() => import("@/pages/DeletePagesPage"));
 const ExtractTextPage = lazy(() => import("@/pages/ExtractTextPage"));
@@ -49,6 +53,10 @@ function Router() {
         <Route path="/jpg-to-pdf" component={JpgToPdfPage} />
         <Route path="/pdf-to-word" component={PdfToWordPage} />
         <Route path="/word-to-pdf" component={WordToPdfPage} />
+        <Route path="/pdf-to-png" component={PdfToPngPage} />
+        <Route path="/png-to-pdf" component={PngToPdfPage} />
+        <Route path="/pdf-to-excel" component={PdfToExcelPage} />
+        <Route path="/excel-to-pdf" component={ExcelToPdfPage} />
         <Route path="/rotate" component={RotatePdfPage} />
         <Route path="/delete-pages" component={DeletePagesPage} />
         <Route path="/extract-text" component={ExtractTextPage} />

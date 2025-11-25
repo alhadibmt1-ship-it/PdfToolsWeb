@@ -1,12 +1,13 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import multer from "multer";
-import { PDFDocument, degrees, rgb } from "pdf-lib-with-encrypt";
+import { PDFDocument, degrees, rgb, StandardFonts } from "pdf-lib-with-encrypt";
 import sharp from "sharp";
 import archiver from "archiver";
 import { Document, Packer, Paragraph, TextRun } from "docx";
 import { createRequire } from "module";
 import mammoth from "mammoth";
+import * as XLSX from "xlsx";
 import { 
   splitOptionsSchema, 
   rotationAngleSchema, 
@@ -77,6 +78,26 @@ const wordFileFilter = (req: any, file: Express.Multer.File, cb: multer.FileFilt
   }
 };
 
+const excelFileFilter = (req: any, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
+  const validTypes = [
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "application/vnd.ms-excel"
+  ];
+  if (validTypes.includes(file.mimetype)) {
+    cb(null, true);
+  } else {
+    cb(new Error("Only Excel files (XLS/XLSX) are allowed"));
+  }
+};
+
+const pngFileFilter = (req: any, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
+  if (file.mimetype === "image/png") {
+    cb(null, true);
+  } else {
+    cb(new Error("Only PNG files are allowed"));
+  }
+};
+
 const uploadPdf = multer({ 
   storage: multer.memoryStorage(),
   limits: { fileSize: 50 * 1024 * 1024 },
@@ -93,6 +114,18 @@ const uploadWord = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: 50 * 1024 * 1024 },
   fileFilter: wordFileFilter
+});
+
+const uploadExcel = multer({ 
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 50 * 1024 * 1024 },
+  fileFilter: excelFileFilter
+});
+
+const uploadPng = multer({ 
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 50 * 1024 * 1024 },
+  fileFilter: pngFileFilter
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -1267,6 +1300,220 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Reorder pages error:", error);
       res.status(500).json({ error: "Failed to reorder pages" });
+    }
+  });
+
+  // PDF to PNG - Convert PDF pages to PNG images
+  app.post("/api/pdf-to-png", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "No PDF file provided" });
+      }
+
+      if (!isPdfFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      const outputImages = await pdfConverter.convert(file.buffer, {
+        width: 2048,
+        height: 2048,
+        page_numbers: null,
+        base64: false
+      });
+
+      if (outputImages.length === 1) {
+        const pngBuffer = await sharp(Buffer.from(outputImages[0]))
+          .png({ quality: 100 })
+          .toBuffer();
+
+        res.setHeader("Content-Type", "image/png");
+        res.setHeader("Content-Disposition", "attachment; filename=page.png");
+        res.send(pngBuffer);
+      } else {
+        res.setHeader("Content-Type", "application/zip");
+        res.setHeader("Content-Disposition", "attachment; filename=images.zip");
+
+        const archive = archiver("zip", { zlib: { level: 6 } });
+        archive.pipe(res);
+
+        for (let i = 0; i < outputImages.length; i++) {
+          const pngBuffer = await sharp(Buffer.from(outputImages[i]))
+            .png({ quality: 100 })
+            .toBuffer();
+          archive.append(pngBuffer, { name: `page-${i + 1}.png` });
+        }
+
+        await archive.finalize();
+      }
+    } catch (error) {
+      console.error("PDF to PNG error:", error);
+      res.status(500).json({ error: "Failed to convert PDF to PNG" });
+    }
+  });
+
+  // PNG to PDF - Convert PNG images to PDF
+  app.post("/api/png-to-pdf", uploadPng.array("files", 20), async (req, res) => {
+    try {
+      const files = req.files as Express.Multer.File[];
+      if (!files || files.length === 0) {
+        return res.status(400).json({ error: "No PNG files provided" });
+      }
+
+      const pdfDoc = await PDFDocument.create();
+
+      for (const file of files) {
+        const pngImage = await pdfDoc.embedPng(file.buffer);
+        const { width, height } = pngImage.scale(1);
+        const page = pdfDoc.addPage([width, height]);
+        page.drawImage(pngImage, {
+          x: 0,
+          y: 0,
+          width,
+          height,
+        });
+      }
+
+      const pdfBytes = await pdfDoc.save({ useObjectStreams: false });
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=converted.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("PNG to PDF error:", error);
+      res.status(500).json({ error: "Failed to convert PNG to PDF" });
+    }
+  });
+
+  // PDF to Excel - Extract tables from PDF to Excel format
+  app.post("/api/pdf-to-excel", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "No PDF file provided" });
+      }
+
+      if (!isPdfFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      const pdfParse = await getPdfParse();
+      let textContent = "";
+      
+      try {
+        const data = await pdfParse(file.buffer);
+        textContent = data.text || "";
+      } catch (parseError) {
+        return res.status(400).json({ error: "Failed to parse PDF content" });
+      }
+
+      const lines = textContent.split("\n").filter(line => line.trim());
+      const rows: string[][] = [];
+      
+      for (const line of lines) {
+        const cells = line.split(/\t|  +/).map(cell => cell.trim()).filter(cell => cell);
+        if (cells.length > 0) {
+          rows.push(cells);
+        }
+      }
+
+      if (rows.length === 0) {
+        rows.push(["No tabular data found in PDF"]);
+      }
+
+      const worksheet = XLSX.utils.aoa_to_sheet(rows);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+      
+      const excelBuffer = XLSX.write(workbook, { type: "buffer", bookType: "xlsx" });
+      
+      res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+      res.setHeader("Content-Disposition", "attachment; filename=converted.xlsx");
+      res.send(Buffer.from(excelBuffer));
+    } catch (error) {
+      console.error("PDF to Excel error:", error);
+      res.status(500).json({ error: "Failed to convert PDF to Excel" });
+    }
+  });
+
+  // Excel to PDF - Convert Excel spreadsheet to PDF
+  app.post("/api/excel-to-pdf", uploadExcel.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "No Excel file provided" });
+      }
+
+      const workbook = XLSX.read(file.buffer, { type: "buffer" });
+      const sheetName = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[sheetName];
+      
+      const data: string[][] = XLSX.utils.sheet_to_json(worksheet, { header: 1 }) as string[][];
+
+      const pdfDoc = await PDFDocument.create();
+      const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+      const boldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+      
+      const pageWidth = 842;
+      const pageHeight = 595;
+      const margin = 50;
+      const cellPadding = 5;
+      const fontSize = 9;
+      const headerFontSize = 10;
+      const lineHeight = 20;
+      
+      let currentY = pageHeight - margin;
+      let page = pdfDoc.addPage([pageWidth, pageHeight]);
+
+      const maxCols = Math.max(...data.map(row => row.length), 1);
+      const colWidth = (pageWidth - 2 * margin) / maxCols;
+
+      for (let rowIndex = 0; rowIndex < data.length; rowIndex++) {
+        const row = data[rowIndex];
+        
+        if (currentY < margin + lineHeight) {
+          page = pdfDoc.addPage([pageWidth, pageHeight]);
+          currentY = pageHeight - margin;
+        }
+
+        const isHeader = rowIndex === 0;
+        const currentFont = isHeader ? boldFont : font;
+        const currentFontSize = isHeader ? headerFontSize : fontSize;
+
+        for (let colIndex = 0; colIndex < maxCols; colIndex++) {
+          const cellValue = row[colIndex] !== undefined ? String(row[colIndex]) : "";
+          const x = margin + colIndex * colWidth + cellPadding;
+          
+          const maxChars = Math.floor((colWidth - 2 * cellPadding) / (currentFontSize * 0.5));
+          const truncatedValue = cellValue.length > maxChars 
+            ? cellValue.substring(0, maxChars - 2) + ".." 
+            : cellValue;
+
+          page.drawText(truncatedValue, {
+            x,
+            y: currentY,
+            size: currentFontSize,
+            font: currentFont,
+            color: rgb(0, 0, 0),
+          });
+
+          page.drawLine({
+            start: { x: margin + colIndex * colWidth, y: currentY - 5 },
+            end: { x: margin + (colIndex + 1) * colWidth, y: currentY - 5 },
+            thickness: 0.5,
+            color: rgb(0.8, 0.8, 0.8),
+          });
+        }
+
+        currentY -= lineHeight;
+      }
+
+      const pdfBytes = await pdfDoc.save({ useObjectStreams: false });
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=converted.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("Excel to PDF error:", error);
+      res.status(500).json({ error: "Failed to convert Excel to PDF" });
     }
   });
 
