@@ -6,6 +6,18 @@ PDF Master Tools is a web-based PDF utility application that provides 12 differe
 
 ## Recent Changes
 
+**November 25, 2025 - Performance Optimization (PageSpeed Insights)**
+- **Logo Image Optimization:**
+  - Created optimized WebP versions: logo-64.webp (1KB), logo-128.webp (2.2KB)
+  - Reduced from original 342KB PNG to 1KB WebP (99.7% reduction)
+  - Added responsive srcset for 1x/2x displays with PNG fallback
+- **Code Splitting Implementation:**
+  - Implemented React.lazy() for all tool pages and trust pages
+  - Reduced initial JavaScript bundle from 943KB to 384KB (59% reduction)
+  - Each page loads on demand as separate chunk
+  - Added Suspense with loading spinner for lazy-loaded routes
+- Previous performance score: 57, targeting significant improvement
+
 **November 25, 2025 - Color Scheme, CloudConvert Integration & SEO Content Enhancement**
 - **Vibrant Color Scheme Update:**
   - Light mode: Primary blue at 220° hue, 95% saturation, 50% lightness
@@ -17,6 +29,7 @@ PDF Master Tools is a web-based PDF utility application that provides 12 differe
   - Fallback to text-based conversion if API unavailable
   - CloudConvert pricing: 10 free/day, $8 for 500 credits (never expire)
 - Added professional AI-generated logo icon (pdf_hub_24_logo_icon.png) to the Header component
+- Optimized logo: logo-64.webp (1KB), logo-128.webp (2.2KB) with PNG fallback
 - Created reusable ToolSEOContent component for comprehensive SEO text on all tool pages
 - Added 200+ words of educational content to each of the 10 PDF tool pages:
   - "About Our {Tool}" section with detailed description
