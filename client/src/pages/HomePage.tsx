@@ -15,7 +15,6 @@ import {
   Hash,
   Droplet,
   Move,
-  Globe,
   Zap,
   Shield,
   Infinity,
@@ -32,6 +31,7 @@ import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useSEO } from "@/hooks/useSEO";
+import siteLogo from "@assets/generated_images/pdf_hub_24_logo_icon.png";
 
 const iconMap: Record<string, any> = {
   merge: Combine,
@@ -155,7 +155,7 @@ export default function HomePage() {
                 100% Free
               </Badge>
               <Badge variant="secondary" className="px-4 py-2 text-sm font-medium gap-2">
-                <Globe className="w-4 h-4 text-primary" />
+                <img src={siteLogo} alt="PDF HUB 24" className="w-4 h-4" />
                 Online
               </Badge>
               <Badge variant="secondary" className="px-4 py-2 text-sm font-medium gap-2">

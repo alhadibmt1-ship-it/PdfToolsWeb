@@ -1,5 +1,6 @@
-import { CheckCircle, Globe, Infinity, Shield } from "lucide-react";
+import { CheckCircle, Infinity, Shield } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import siteLogo from "@assets/generated_images/pdf_hub_24_logo_icon.png";
 
 interface TrustBadgesProps {
   variant?: "inline" | "expanded";
@@ -14,7 +15,7 @@ export default function TrustBadges({ variant = "inline" }: TrustBadgesProps) {
           <span>100% Free</span>
         </div>
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Globe className="w-5 h-5 text-primary shrink-0" />
+          <img src={siteLogo} alt="PDF HUB 24" className="w-5 h-5 shrink-0" />
           <span>Online</span>
         </div>
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -36,7 +37,7 @@ export default function TrustBadges({ variant = "inline" }: TrustBadgesProps) {
         Free
       </Badge>
       <Badge variant="secondary" className="text-xs gap-1.5">
-        <Globe className="w-3 h-3 text-primary" />
+        <img src={siteLogo} alt="PDF HUB 24" className="w-3 h-3" />
         Online
       </Badge>
       <Badge variant="secondary" className="text-xs gap-1.5">
