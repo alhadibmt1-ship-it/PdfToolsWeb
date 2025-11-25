@@ -6,9 +6,17 @@ PDF Master Tools is a web-based PDF utility application that provides 12 differe
 
 ## Recent Changes
 
-**November 25, 2025 - Logo, Color Scheme & SEO Content Enhancement**
+**November 25, 2025 - Color Scheme, CloudConvert Integration & SEO Content Enhancement**
+- **Vibrant Color Scheme Update:**
+  - Light mode: Primary blue at 220° hue, 95% saturation, 50% lightness
+  - Dark mode: Primary blue at 220° hue, 100% saturation, 60% lightness
+  - More eye-catching, modern appearance across both themes
+- **CloudConvert API Integration for PDF to Word:**
+  - Replaced Adobe PDF Services with CloudConvert API (more flexible pricing)
+  - Uses pdftron-pdf2word engine for high-quality conversions
+  - Fallback to text-based conversion if API unavailable
+  - CloudConvert pricing: 10 free/day, $8 for 500 credits (never expire)
 - Added professional AI-generated logo icon (pdf_hub_24_logo_icon.png) to the Header component
-- Enhanced color scheme with more vibrant blues (hue 220, saturation 95% for primary color)
 - Created reusable ToolSEOContent component for comprehensive SEO text on all tool pages
 - Added 200+ words of educational content to each of the 10 PDF tool pages:
   - "About Our {Tool}" section with detailed description
@@ -17,7 +25,6 @@ PDF Master Tools is a web-based PDF utility application that provides 12 differe
   - "Key Benefits" bulleted list
   - "Frequently Asked Questions" section with 5 FAQs per tool
   - "Ready to Get Started?" call-to-action section
-- Improved keyword handling in SEO content for better sentence structure
 - Logo location: attached_assets/generated_images/pdf_hub_24_logo_icon.png
 
 **November 25, 2025 - Trust Pages & SEO Enhancement**
