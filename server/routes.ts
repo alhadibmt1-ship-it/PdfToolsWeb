@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import multer from "multer";
 import { PDFDocument, degrees, rgb, StandardFonts } from "pdf-lib-with-encrypt";
+import { PDFDocument as PDFDocumentStandard, degrees as degreesStd, rgb as rgbStd, StandardFonts as StandardFontsStd } from "pdf-lib";
 import sharp from "sharp";
 import archiver from "archiver";
 import { Document, Packer, Paragraph, TextRun } from "docx";
@@ -26,7 +27,6 @@ import https from "https";
 import http from "http";
 
 const require = createRequire(import.meta.url);
-const pdfConverter = require("pdf-img-convert");
 
 let pdfParseModule: any = null;
 async function getPdfParse() {
@@ -459,22 +459,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
       }
 
-      const pdfDoc = await PDFDocument.create();
+      const pdfDoc = await PDFDocumentStandard.create();
 
       for (const file of files) {
         try {
-          let image;
-          const isJpg = file.mimetype === "image/jpeg" || file.mimetype === "image/jpg";
-          const isPng = file.mimetype === "image/png";
-
-          if (isJpg) {
-            image = await pdfDoc.embedJpg(file.buffer);
-          } else if (isPng) {
-            image = await pdfDoc.embedPng(file.buffer);
-          } else {
-            const convertedBuffer = await sharp(file.buffer).jpeg().toBuffer();
-            image = await pdfDoc.embedJpg(convertedBuffer);
-          }
+          // Convert all images to PNG for reliable embedding
+          const pngBuffer = await sharp(file.buffer).png().toBuffer();
+          const image = await pdfDoc.embedPng(pngBuffer);
 
           const page = pdfDoc.addPage([image.width, image.height]);
           page.drawImage(image, {
@@ -483,7 +474,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
             width: image.width,
             height: image.height,
           });
-        } catch (imageError) {
+        } catch (imageError: any) {
+          console.error("Image embedding error:", imageError?.message || imageError);
           return res.status(400).json({ error: "Invalid or corrupted image file" });
         }
       }
@@ -817,7 +809,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "No text could be extracted from the Word document" });
       }
 
-      const pdfDoc = await PDFDocument.create();
+      const pdfDoc = await PDFDocumentStandard.create();
       const paragraphs = text.split("\n\n").filter(p => p.trim());
       
       const fontSize = 12;
@@ -851,7 +843,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
                 x: margin,
                 y: yPosition,
                 size: fontSize,
-                color: rgb(0, 0, 0),
+                color: rgbStd(0, 0, 0),
               });
               yPosition -= lineHeight;
               currentLine = word;
@@ -870,7 +862,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
               x: margin,
               y: yPosition,
               size: fontSize,
-              color: rgb(0, 0, 0),
+              color: rgbStd(0, 0, 0),
             });
             yPosition -= lineHeight;
           }
@@ -1137,13 +1129,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       let pdfDoc;
       try {
-        pdfDoc = await PDFDocument.load(file.buffer);
+        pdfDoc = await PDFDocumentStandard.load(file.buffer);
       } catch (parseError) {
         return res.status(400).json({ error: "Invalid or corrupted PDF file" });
       }
 
       const pages = pdfDoc.getPages();
-      const font = await pdfDoc.embedFont('Helvetica' as any);
+      const font = await pdfDoc.embedFont(StandardFontsStd.Helvetica);
 
       pages.forEach((page, index) => {
         const { width, height } = page.getSize();
@@ -1188,7 +1180,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           y,
           size: fontSize,
           font,
-          color: rgb(0, 0, 0),
+          color: rgbStd(0, 0, 0),
         });
       });
 
@@ -1232,13 +1224,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       let pdfDoc;
       try {
-        pdfDoc = await PDFDocument.load(file.buffer);
+        pdfDoc = await PDFDocumentStandard.load(file.buffer);
       } catch (parseError) {
         return res.status(400).json({ error: "Invalid or corrupted PDF file" });
       }
 
       const pages = pdfDoc.getPages();
-      const font = await pdfDoc.embedFont('Helvetica' as any);
+      const font = await pdfDoc.embedFont(StandardFontsStd.Helvetica);
 
       pages.forEach((page) => {
         const { width, height } = page.getSize();
@@ -1249,9 +1241,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
           y: height / 2,
           size: fontSize,
           font,
-          color: rgb(0.7, 0.7, 0.7),
+          color: rgbStd(0.7, 0.7, 0.7),
           opacity: opacity,
-          rotate: degrees(rotation),
+          rotate: degreesStd(rotation),
         });
       });
 
@@ -1359,7 +1351,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // PDF to PNG - Convert PDF pages to PNG images
+  // PDF to PNG - Convert PDF pages to PNG images using CloudConvert
   app.post("/api/pdf-to-png", uploadPdf.single("file"), async (req, res) => {
     try {
       const file = req.file;
@@ -1371,36 +1363,70 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Invalid PDF file detected" });
       }
 
-      const outputImages = await pdfConverter.convert(file.buffer, {
-        width: 2048,
-        height: 2048,
-        page_numbers: null,
-        base64: false
-      });
+      const cloudConvertApiKey = process.env.CLOUDCONVERT_API_KEY;
+      if (!cloudConvertApiKey) {
+        return res.status(500).json({ error: "PDF to PNG conversion not configured" });
+      }
 
-      if (outputImages.length === 1) {
-        const pngBuffer = await sharp(Buffer.from(outputImages[0]))
-          .png({ quality: 100 })
-          .toBuffer();
+      try {
+        const cloudConvert = new CloudConvert(cloudConvertApiKey);
 
-        res.setHeader("Content-Type", "image/png");
-        res.setHeader("Content-Disposition", "attachment; filename=page.png");
-        res.send(pngBuffer);
-      } else {
-        res.setHeader("Content-Type", "application/zip");
-        res.setHeader("Content-Disposition", "attachment; filename=images.zip");
+        const job = await cloudConvert.jobs.create({
+          tasks: {
+            'upload-pdf': {
+              operation: 'import/upload'
+            },
+            'convert-to-png': {
+              operation: 'convert',
+              input: 'upload-pdf',
+              output_format: 'png',
+              pixel_density: 150
+            },
+            'export-result': {
+              operation: 'export/url',
+              input: 'convert-to-png'
+            }
+          }
+        });
 
-        const archive = archiver("zip", { zlib: { level: 6 } });
-        archive.pipe(res);
-
-        for (let i = 0; i < outputImages.length; i++) {
-          const pngBuffer = await sharp(Buffer.from(outputImages[i]))
-            .png({ quality: 100 })
-            .toBuffer();
-          archive.append(pngBuffer, { name: `page-${i + 1}.png` });
+        const uploadTask = job.tasks.find((t: any) => t.name === 'upload-pdf');
+        if (!uploadTask) {
+          throw new Error("Upload task not found");
         }
 
-        await archive.finalize();
+        await cloudConvert.tasks.upload(uploadTask, file.buffer, file.originalname || 'document.pdf');
+
+        const completedJob = await cloudConvert.jobs.wait(job.id);
+
+        const exportTask = completedJob.tasks.find((t: any) => t.name === 'export-result' && t.status === 'finished');
+        if (!exportTask || !exportTask.result || !exportTask.result.files || exportTask.result.files.length === 0) {
+          throw new Error("CloudConvert conversion failed - no output files");
+        }
+
+        const outputFiles = exportTask.result.files;
+
+        if (outputFiles.length === 1) {
+          const pngBuffer = await downloadFile(outputFiles[0].url);
+          res.setHeader("Content-Type", "image/png");
+          res.setHeader("Content-Disposition", "attachment; filename=page.png");
+          res.send(pngBuffer);
+        } else {
+          res.setHeader("Content-Type", "application/zip");
+          res.setHeader("Content-Disposition", "attachment; filename=images.zip");
+
+          const archive = archiver("zip", { zlib: { level: 6 } });
+          archive.pipe(res);
+
+          for (let i = 0; i < outputFiles.length; i++) {
+            const pngBuffer = await downloadFile(outputFiles[i].url);
+            archive.append(pngBuffer, { name: `page-${i + 1}.png` });
+          }
+
+          await archive.finalize();
+        }
+      } catch (cloudError: any) {
+        console.error("CloudConvert error:", cloudError);
+        return res.status(500).json({ error: "Conversion failed. Please try again." });
       }
     } catch (error) {
       console.error("PDF to PNG error:", error);
@@ -1416,7 +1442,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "No PNG files provided" });
       }
 
-      const pdfDoc = await PDFDocument.create();
+      const pdfDoc = await PDFDocumentStandard.create();
 
       for (const file of files) {
         const pngImage = await pdfDoc.embedPng(file.buffer);
@@ -1505,9 +1531,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       const data: string[][] = XLSX.utils.sheet_to_json(worksheet, { header: 1 }) as string[][];
 
-      const pdfDoc = await PDFDocument.create();
-      const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
-      const boldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+      const pdfDoc = await PDFDocumentStandard.create();
+      const font = await pdfDoc.embedFont(StandardFontsStd.Helvetica);
+      const boldFont = await pdfDoc.embedFont(StandardFontsStd.HelveticaBold);
       
       const pageWidth = 842;
       const pageHeight = 595;
@@ -1549,14 +1575,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
             y: currentY,
             size: currentFontSize,
             font: currentFont,
-            color: rgb(0, 0, 0),
+            color: rgbStd(0, 0, 0),
           });
 
           page.drawLine({
             start: { x: margin + colIndex * colWidth, y: currentY - 5 },
             end: { x: margin + (colIndex + 1) * colWidth, y: currentY - 5 },
             thickness: 0.5,
-            color: rgb(0.8, 0.8, 0.8),
+            color: rgbStd(0.8, 0.8, 0.8),
           });
         }
 
