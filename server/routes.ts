@@ -366,20 +366,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Invalid or corrupted PDF file" });
       }
 
+      if (!imageArrays || imageArrays.length === 0) {
+        return res.status(400).json({ error: "Could not extract images from PDF. The file may be empty or corrupted." });
+      }
+
       if (imageArrays.length === 1) {
-        const imageBuffer = Buffer.from(imageArrays[0]);
-        res.setHeader("Content-Type", "image/png");
-        res.setHeader("Content-Disposition", "attachment; filename=page-1.png");
-        res.send(imageBuffer);
+        const pngBuffer = Buffer.from(imageArrays[0]);
+        const jpgBuffer = await sharp(pngBuffer)
+          .jpeg({ quality: 90 })
+          .toBuffer();
+        res.setHeader("Content-Type", "image/jpeg");
+        res.setHeader("Content-Disposition", "attachment; filename=page-1.jpg");
+        res.send(jpgBuffer);
       } else {
         const archive = archiver("zip", { zlib: { level: 9 } });
         res.setHeader("Content-Type", "application/zip");
-        res.setHeader("Content-Disposition", `attachment; filename=images-${imageArrays.length}-pages.zip`);
+        res.setHeader("Content-Disposition", `attachment; filename=pdf-images-${imageArrays.length}-pages.zip`);
         archive.pipe(res);
 
         for (let i = 0; i < imageArrays.length; i++) {
-          const pageBuffer = Buffer.from(imageArrays[i]);
-          archive.append(pageBuffer, { name: `page-${i + 1}.png` });
+          const pngBuffer = Buffer.from(imageArrays[i]);
+          const jpgBuffer = await sharp(pngBuffer)
+            .jpeg({ quality: 90 })
+            .toBuffer();
+          archive.append(jpgBuffer, { name: `page-${i + 1}.jpg` });
         }
 
         await archive.finalize();
