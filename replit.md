@@ -39,7 +39,13 @@ Preferred communication style: Simple, everyday language.
 The frontend uses React 18 with TypeScript, Vite for bundling, and Wouter for routing. UI components are built with Radix UI primitives and shadcn/ui, styled using Tailwind CSS, following a "Clean Modern Utility Design" aesthetic. The application supports dark mode, user settings, and a consistent layout across all tool and trust pages. State management relies on local React state, `localStorage` for theme and settings persistence, and TanStack Query for server state. Code splitting is implemented using `React.lazy()` for performance.
 
 ### Backend Architecture
-The backend is built with Express.js and TypeScript. PDF processing is handled server-side using libraries like `pdf-lib-with-encrypt` (for core PDF manipulation and encryption), `sharp` (image processing), `pdf-img-convert` (PDF to image), `docx` (PDF to Word), `mammoth` (Word to PDF), `pdf-parse` (text extraction), and `archiver` (ZIP creation). File uploads are managed by Multer with in-memory storage, including magic byte and MIME type validation. All API endpoints (`/api/merge`, `/api/split`, `/api/compress`, etc.) are secured with Zod schema validation for request parameters and comprehensive error handling.
+The backend is built with Express.js and TypeScript. PDF processing uses a dual-library approach due to dependency conflicts:
+- **pdf-lib-with-encrypt**: Used ONLY for encryption operations (Protect PDF, Unlock PDF) - requires pako 1.x
+- **pdf-lib (standard)**: Used for all non-encryption operations (Add Page Numbers, Add Watermark, JPG to PDF, PNG to PDF, Word to PDF, Excel to PDF) - compatible with pako 2.x
+- **CloudConvert API**: Used for high-quality conversions (PDF to Word, PDF to JPG, PDF to PNG)
+- **Other libraries**: `sharp` (image processing), `docx` (PDF to Word generation), `mammoth` (Word text extraction), `pdf-parse` (text extraction), `archiver` (ZIP creation)
+
+File uploads are managed by Multer with in-memory storage, including magic byte and MIME type validation. All API endpoints are secured with Zod schema validation for request parameters and comprehensive error handling.
 
 ### Data Storage
 The application currently uses `localStorage` for client-side persistence of theme preferences and user settings. There is no active persistent database, though Drizzle ORM and NeonDB are configured for future PostgreSQL integration, with schema definitions in `shared/schema.ts`. In-memory storage is used for transient user data during sessions.
@@ -59,11 +65,11 @@ Key technical implementations include:
 
 ### Third-party Services
 - **Google Fonts CDN**: For typography (Inter font family).
-- **CloudConvert API**: Integrated for high-quality PDF to Word conversions, with a fallback mechanism.
+- **CloudConvert API**: Used for PDF to Word, PDF to JPG, and PDF to PNG conversions with high-quality output.
 
 ### Key NPM Packages
-- **PDF Processing**: `pdf-lib-with-encrypt`, `pdf-img-convert`, `pdf-parse`, `docx`, `mammoth`, `sharp`, `archiver`.
+- **PDF Processing**: `pdf-lib` (standard), `pdf-lib-with-encrypt` (encryption only), `pdf-parse`, `docx`, `mammoth`, `sharp`, `archiver`, `xlsx`.
 - **Frontend UI**: `@radix-ui/`, `@tanstack/react-query`, `wouter`.
-- **Backend**: `express`, `multer`, `zod`.
+- **Backend**: `express`, `multer`, `zod`, `cloudconvert`.
 - **Database (Future)**: `drizzle-orm`, `@neondatabase/serverless`, `connect-pg-simple`.
 - **Development Tools**: `typescript`, `vite`, `tsx`.
