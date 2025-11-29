@@ -109,7 +109,7 @@ export default function PdfToJpgPage() {
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">PDF to JPG</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Convert each page of your PDF into separate JPG images. Single-page PDFs will download as a PNG image, multi-page PDFs as a ZIP file.
+              Convert each page of your PDF into high-quality JPG images. Single-page PDFs download directly as a JPG file, multi-page PDFs as a ZIP file containing all pages.
             </p>
             <TrustBadges />
           </div>
@@ -147,7 +147,7 @@ export default function PdfToJpgPage() {
                 <p className="text-sm text-muted-foreground">
                   {isZipFile 
                     ? "All pages have been converted to JPG images and packaged in a ZIP file."
-                    : "Your PDF page has been converted to a PNG image."}
+                    : "Your PDF page has been converted to a high-quality JPG image."}
                 </p>
                 <Button 
                   onClick={handleDownload} 
@@ -156,7 +156,7 @@ export default function PdfToJpgPage() {
                   data-testid="button-download"
                 >
                   <Download className="w-4 h-4 mr-2" />
-                  {isZipFile ? "Download ZIP File" : "Download Image"}
+                  {isZipFile ? "Download ZIP File" : "Download JPG Image"}
                 </Button>
               </div>
             )}
@@ -164,17 +164,17 @@ export default function PdfToJpgPage() {
 
           <ToolSEOContent
             toolName="PDF to JPG Converter"
-            toolDescription="Convert your PDF documents into high-quality JPG images with our free online converter. Each page becomes a separate image file, perfect for presentations, social media, or archiving. Single-page PDFs convert to PNG images for maximum quality, while multi-page documents are packaged in a convenient ZIP file."
+            toolDescription="Convert your PDF documents into high-quality JPG images with our free online converter. Each page becomes a separate image file, perfect for presentations, social media, or archiving. Single-page PDFs download directly as JPG files, while multi-page documents are packaged in a convenient ZIP file."
             howToSteps={[
               "Upload your PDF file by clicking the upload area or dragging and dropping.",
-              "Wait while our server converts each page to a high-resolution image.",
-              "Download your image (single page) or ZIP file (multiple pages).",
-              "Extract the ZIP file to access all your page images."
+              "Wait while our server converts each page to a high-resolution JPG image.",
+              "Download your JPG image (single page) or ZIP file (multiple pages).",
+              "For multi-page PDFs, extract the ZIP file to access all your page images."
             ]}
             benefits={[
-              "High-resolution image output (2000x2000px) for quality preservation",
-              "Each page converts to a separate image file",
-              "Single-page PDFs download as direct PNG images",
+              "High-resolution JPG output (2000x2000px) for quality preservation",
+              "Each page converts to a separate JPG image file",
+              "Single-page PDFs download directly as JPG images",
               "Multi-page PDFs packaged in organized ZIP files",
               "Perfect for presentations and social media sharing",
               "Ideal for archiving and document management",
@@ -184,7 +184,7 @@ export default function PdfToJpgPage() {
             faqs={[
               {
                 question: "What image format will I receive?",
-                answer: "Single-page PDFs convert to PNG format for maximum quality. Multi-page PDFs produce JPG images for each page, packaged together in a ZIP file for easy download."
+                answer: "All pages convert to high-quality JPG format with 90% quality setting. Single-page PDFs download as a direct JPG file, while multi-page PDFs come as a ZIP file containing all JPG images."
               },
               {
                 question: "What resolution are the output images?",
@@ -196,7 +196,7 @@ export default function PdfToJpgPage() {
               },
               {
                 question: "Why is my download a ZIP file?",
-                answer: "For multi-page PDFs, we package all images in a ZIP file for convenient download. Simply extract the ZIP file to access all your page images individually."
+                answer: "For multi-page PDFs, we package all JPG images in a ZIP file for convenient download. Simply extract the ZIP file to access all your page images individually."
               },
               {
                 question: "How long does conversion take?",
