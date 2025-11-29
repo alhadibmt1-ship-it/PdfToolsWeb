@@ -356,12 +356,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       let imageBuffers: Buffer[] = [];
       
       try {
-        const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
         const { createCanvas } = await import('canvas');
+        const pdfjs = require('pdfjs-dist/legacy/build/pdf.js');
         
-        const loadingTask = pdfjs.getDocument({ data: new Uint8Array(file.buffer) });
-        const pdfDocument = await loadingTask.promise;
-        const numPages = pdfDocument.numPages;
+        const pdf = await pdfjs.getDocument({
+          data: new Uint8Array(file.buffer)
+        }).promise;
+        
+        const numPages = pdf.numPages;
 
         if (numPages === 0) {
           return res.status(400).json({ error: "PDF has no pages to convert" });
@@ -370,18 +372,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const scale = 2.0;
 
         for (let pageNum = 1; pageNum <= numPages; pageNum++) {
-          const page = await pdfDocument.getPage(pageNum);
+          const page = await pdf.getPage(pageNum);
           const viewport = page.getViewport({ scale });
 
           const canvas = createCanvas(viewport.width, viewport.height);
           const context = canvas.getContext('2d');
 
-          const renderContext = {
-            canvasContext: context as any,
-            viewport: viewport,
-          };
-
-          await (page.render(renderContext as any)).promise;
+          await page.render({
+            canvasContext: context,
+            viewport: viewport
+          }).promise;
 
           const pngBuffer = canvas.toBuffer('image/png');
           const jpgBuffer = await sharp(pngBuffer)
@@ -392,28 +392,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
       } catch (parseError) {
         console.error("PDF parsing error in pdf-to-jpg:", parseError);
-        
-        try {
-          const imageArrays = await pdfConverter.convert(file.buffer, {
-            width: 2000,
-            height: 2000,
-            page_numbers: [],
-            base64: false,
-          });
-          
-          if (imageArrays && imageArrays.length > 0) {
-            for (const imgArray of imageArrays) {
-              const pngBuffer = Buffer.from(imgArray);
-              const jpgBuffer = await sharp(pngBuffer)
-                .jpeg({ quality: 90 })
-                .toBuffer();
-              imageBuffers.push(jpgBuffer);
-            }
-          }
-        } catch (fallbackError) {
-          console.error("Fallback conversion also failed:", fallbackError);
-          return res.status(400).json({ error: "Could not convert this PDF. Please try a different file." });
-        }
+        return res.status(400).json({ error: "Could not convert this PDF. The file may contain unsupported features." });
       }
 
       if (imageBuffers.length === 0) {
