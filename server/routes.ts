@@ -353,73 +353,94 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Invalid PDF file detected" });
       }
 
-      let imageBuffers: Buffer[] = [];
-      
+      const apiKey = process.env.CLOUDCONVERT_API_KEY;
+      if (!apiKey) {
+        return res.status(500).json({ error: "Conversion service not configured" });
+      }
+
       try {
-        const { createCanvas } = await import('canvas');
-        const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
+        const cloudConvert = new CloudConvert(apiKey);
         
-        const pdf = await pdfjs.getDocument({
-          data: new Uint8Array(file.buffer)
-        }).promise;
-        
-        const numPages = pdf.numPages;
+        const job = await cloudConvert.jobs.create({
+          tasks: {
+            'upload-pdf': {
+              operation: 'import/upload'
+            },
+            'convert-to-jpg': {
+              operation: 'convert',
+              input: 'upload-pdf',
+              output_format: 'jpg',
+              pixel_density: 150,
+              quality: 90
+            },
+            'export-result': {
+              operation: 'export/url',
+              input: 'convert-to-jpg'
+            }
+          }
+        });
 
-        if (numPages === 0) {
-          return res.status(400).json({ error: "PDF has no pages to convert" });
+        const uploadTask = job.tasks.find((task: any) => task.name === 'upload-pdf');
+        if (!uploadTask) {
+          throw new Error("Upload task not found");
         }
 
-        const scale = 2.0;
+        await cloudConvert.tasks.upload(uploadTask, Readable.from(file.buffer), file.originalname);
 
-        for (let pageNum = 1; pageNum <= numPages; pageNum++) {
-          const page = await pdf.getPage(pageNum);
-          const viewport = page.getViewport({ scale });
+        const completedJob = await cloudConvert.jobs.wait(job.id);
+        
+        const exportTask = completedJob.tasks.find((task: any) => task.name === 'export-result');
+        if (!exportTask || !exportTask.result || !exportTask.result.files) {
+          throw new Error("Export task failed");
+        }
 
-          const canvas = createCanvas(viewport.width, viewport.height);
-          const context = canvas.getContext('2d');
-
-          await page.render({
-            canvasContext: context,
-            viewport: viewport
-          }).promise;
-
-          const pngBuffer = canvas.toBuffer('image/png');
-          const jpgBuffer = await sharp(pngBuffer)
-            .jpeg({ quality: 90 })
-            .toBuffer();
+        const files = exportTask.result.files;
+        
+        if (files.length === 1) {
+          const imageUrl = files[0].url;
+          const imageBuffer = await downloadFile(imageUrl);
           
-          imageBuffers.push(jpgBuffer);
+          res.setHeader("Content-Type", "image/jpeg");
+          res.setHeader("Content-Disposition", "attachment; filename=page-1.jpg");
+          res.send(imageBuffer);
+        } else {
+          const archive = archiver("zip", { zlib: { level: 9 } });
+          res.setHeader("Content-Type", "application/zip");
+          res.setHeader("Content-Disposition", `attachment; filename=pdf-images-${files.length}-pages.zip`);
+          archive.pipe(res);
+
+          for (let i = 0; i < files.length; i++) {
+            const imageBuffer = await downloadFile(files[i].url);
+            archive.append(imageBuffer, { name: `page-${i + 1}.jpg` });
+          }
+
+          await archive.finalize();
         }
-      } catch (parseError) {
-        console.error("PDF parsing error in pdf-to-jpg:", parseError);
-        return res.status(400).json({ error: "Could not convert this PDF. The file may contain unsupported features." });
-      }
-
-      if (imageBuffers.length === 0) {
-        return res.status(400).json({ error: "Could not extract images from PDF. The file may be empty or corrupted." });
-      }
-
-      if (imageBuffers.length === 1) {
-        res.setHeader("Content-Type", "image/jpeg");
-        res.setHeader("Content-Disposition", "attachment; filename=page-1.jpg");
-        res.send(imageBuffers[0]);
-      } else {
-        const archive = archiver("zip", { zlib: { level: 9 } });
-        res.setHeader("Content-Type", "application/zip");
-        res.setHeader("Content-Disposition", `attachment; filename=pdf-images-${imageBuffers.length}-pages.zip`);
-        archive.pipe(res);
-
-        for (let i = 0; i < imageBuffers.length; i++) {
-          archive.append(imageBuffers[i], { name: `page-${i + 1}.jpg` });
-        }
-
-        await archive.finalize();
+      } catch (cloudError: any) {
+        console.error("CloudConvert error:", cloudError);
+        return res.status(500).json({ error: "Conversion failed. Please try again." });
       }
     } catch (error) {
       console.error("PDF to JPG error:", error);
       res.status(500).json({ error: "Failed to convert PDF to JPG" });
     }
   });
+
+  async function downloadFile(url: string): Promise<Buffer> {
+    return new Promise((resolve, reject) => {
+      const protocol = url.startsWith('https') ? https : http;
+      protocol.get(url, (response) => {
+        if (response.statusCode === 301 || response.statusCode === 302) {
+          downloadFile(response.headers.location!).then(resolve).catch(reject);
+          return;
+        }
+        const chunks: Buffer[] = [];
+        response.on('data', (chunk) => chunks.push(chunk));
+        response.on('end', () => resolve(Buffer.concat(chunks)));
+        response.on('error', reject);
+      }).on('error', reject);
+    });
+  }
 
   app.post("/api/jpg-to-pdf", uploadImages.array("files", 10), async (req, res) => {
     try {
