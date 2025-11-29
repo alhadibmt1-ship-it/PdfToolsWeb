@@ -357,7 +357,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       try {
         const { createCanvas } = await import('canvas');
-        const pdfjs = require('pdfjs-dist/legacy/build/pdf.js');
+        const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
         
         const pdf = await pdfjs.getDocument({
           data: new Uint8Array(file.buffer)
