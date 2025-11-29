@@ -23,7 +23,20 @@ import {
   Table,
   FileSpreadsheet,
   Download,
-  Upload
+  Upload,
+  Crop,
+  Maximize2,
+  PenTool,
+  Layers,
+  Contrast,
+  Wrench,
+  FileCode,
+  Images,
+  ScanText,
+  Eye,
+  GitCompare,
+  ImageDown,
+  Settings
 } from "lucide-react";
 import { PDF_TOOLS } from "@shared/schema";
 import Header from "@/components/Header";
@@ -48,6 +61,18 @@ const iconMap: Record<string, any> = {
   hash: Hash,
   droplet: Droplet,
   move: Move,
+  crop: Crop,
+  resize: Maximize2,
+  signature: PenTool,
+  layers: Layers,
+  grayscale: Contrast,
+  repair: Wrench,
+  "html-to-pdf": FileCode,
+  images: Images,
+  ocr: ScanText,
+  viewer: Eye,
+  compare: GitCompare,
+  "image-compress": ImageDown,
 };
 
 function ConversionIcon({ iconType }: { iconType: string }) {
@@ -57,6 +82,8 @@ function ConversionIcon({ iconType }: { iconType: string }) {
     jpg: { bgColor: "bg-orange-500", textColor: "text-white", label: "JPG" },
     png: { bgColor: "bg-purple-500", textColor: "text-white", label: "PNG" },
     excel: { bgColor: "bg-green-600", textColor: "text-white", label: "XLS" },
+    html: { bgColor: "bg-orange-600", textColor: "text-white", label: "HTML" },
+    webp: { bgColor: "bg-cyan-500", textColor: "text-white", label: "WEBP" },
   };
 
   if (iconType.includes("-to-")) {
@@ -105,6 +132,7 @@ export default function HomePage() {
   const fromPdfTools = PDF_TOOLS.filter(tool => tool.category === "from-pdf");
   const toPdfTools = PDF_TOOLS.filter(tool => tool.category === "to-pdf");
   const editPdfTools = PDF_TOOLS.filter(tool => tool.category === "edit-pdf");
+  const utilityTools = PDF_TOOLS.filter(tool => tool.category === "utility");
 
   const renderToolGrid = (tools: typeof PDF_TOOLS) => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -221,7 +249,24 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="py-16 bg-muted/30">
+        <section id="utility" className="py-12 md:py-16 bg-muted/30">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center">
+                <Settings className="w-5 h-5 text-purple-500" />
+              </div>
+              <div>
+                <h2 className="text-2xl md:text-3xl font-semibold">
+                  Utility Tools
+                </h2>
+                <p className="text-muted-foreground text-sm">Additional helpful tools for PDF and image tasks</p>
+              </div>
+            </div>
+            {renderToolGrid(utilityTools)}
+          </div>
+        </section>
+
+        <section className="py-16 bg-background">
           <div className="max-w-6xl mx-auto px-6">
             <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-center">
               Why Choose PDF HUB 24?

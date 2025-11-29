@@ -1,0 +1,230 @@
+import { useState } from "react";
+import { ChevronLeft, Download, Images } from "lucide-react";
+import { Link } from "wouter";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import FileUploadZone from "@/components/FileUploadZone";
+import ProcessingState from "@/components/ProcessingState";
+import ToolSEOContent from "@/components/ToolSEOContent";
+import TrustBadges from "@/components/TrustBadges";
+import RelatedTools from "@/components/RelatedTools";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+import { useConversionProgress } from "@/hooks/useConversionProgress";
+import { useSEO } from "@/hooks/useSEO";
+
+export default function ExtractImagesPage() {
+  useSEO({
+    title: "Extract Images from PDF - Get All Images from PDF Free | PDF HUB 24",
+    description: "Extract all images from PDF files online for free. Download embedded images from PDF documents as separate image files. Fast, secure extraction.",
+    keywords: "extract images from pdf, get images from pdf, pdf image extractor, download pdf images, pdf to images"
+  });
+
+  const [files, setFiles] = useState<File[]>([]);
+  const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
+  const [resultUrl, setResultUrl] = useState<string | null>(null);
+  const [imageCount, setImageCount] = useState<number>(0);
+  const { toast } = useToast();
+  const { progress, runWithProgress } = useConversionProgress();
+
+  const handleExtract = async () => {
+    if (files.length === 0) {
+      toast({
+        title: "Error",
+        description: "Please select a PDF file",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setStatus("processing");
+
+    const formData = new FormData();
+    formData.append("file", files[0]);
+
+    try {
+      const response = await runWithProgress(async () => {
+        const res = await fetch("/api/extract-images", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (!res.ok) {
+          const error = await res.json();
+          throw new Error(error.error || "Failed to extract images");
+        }
+
+        return res;
+      });
+
+      const countHeader = response.headers.get("X-Image-Count");
+      setImageCount(countHeader ? parseInt(countHeader) : 0);
+
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      setResultUrl(url);
+      setStatus("success");
+
+      toast({
+        title: "Success!",
+        description: "Images extracted successfully",
+      });
+    } catch (error: any) {
+      setStatus("error");
+      toast({
+        title: "Error",
+        description: error.message || "Failed to extract images. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleDownload = () => {
+    if (resultUrl) {
+      const a = document.createElement("a");
+      a.href = resultUrl;
+      a.download = "extracted-images.zip";
+      a.click();
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      
+      <main className="flex-1 py-8">
+        <div className="max-w-4xl mx-auto px-6">
+          <Link href="/" data-testid="link-back">
+            <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
+              <ChevronLeft className="w-4 h-4" />
+              Back to Tools
+            </div>
+          </Link>
+
+          <div className="mb-8">
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">Extract Images from PDF</h1>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              Extract all embedded images from your PDF document. Get your images as separate files in a ZIP archive.
+            </p>
+            <TrustBadges />
+          </div>
+
+          <div className="space-y-6">
+            <FileUploadZone
+              onFilesSelected={setFiles}
+              acceptedFormats=".pdf"
+              multiple={false}
+              disabled={status === "processing"}
+            />
+
+            {files.length > 0 && status === "idle" && (
+              <div className="rounded-lg border bg-card p-6 space-y-4">
+                <div className="flex items-center gap-2">
+                  <Images className="w-5 h-5 text-primary" />
+                  <h3 className="font-semibold">Ready to Extract Images</h3>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  All images embedded in your PDF will be extracted and downloaded as a ZIP file.
+                </p>
+                <Button 
+                  onClick={handleExtract} 
+                  className="w-full"
+                  size="lg"
+                  data-testid="button-extract"
+                >
+                  Extract Images
+                </Button>
+              </div>
+            )}
+
+            <ProcessingState
+              status={status}
+              progress={progress}
+              message={status === "processing" ? "Extracting images from PDF..." : undefined}
+            />
+
+            {status === "success" && resultUrl && (
+              <div className="rounded-lg border bg-card p-6 space-y-4">
+                <h3 className="font-semibold">Images extracted successfully!</h3>
+                {imageCount > 0 && (
+                  <p className="text-sm text-muted-foreground">
+                    Found {imageCount} image{imageCount > 1 ? 's' : ''} in your PDF.
+                  </p>
+                )}
+                <Button 
+                  onClick={handleDownload} 
+                  className="w-full"
+                  size="lg"
+                  data-testid="button-download"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Download Images (ZIP)
+                </Button>
+                <Button 
+                  variant="outline"
+                  onClick={() => {
+                    setFiles([]);
+                    setStatus("idle");
+                    setResultUrl(null);
+                  }}
+                  className="w-full"
+                  data-testid="button-new"
+                >
+                  Extract from Another PDF
+                </Button>
+              </div>
+            )}
+          </div>
+
+          <ToolSEOContent
+            toolName="Extract Images from PDF"
+            toolDescription="Extract all embedded images from your PDF documents with our free online tool. Whether you need to save photos, diagrams, or graphics from a PDF, our extractor pulls out every image and packages them in a convenient ZIP download."
+            howToSteps={[
+              "Upload your PDF file by clicking the upload area or dragging and dropping.",
+              "Click the Extract Images button to start processing.",
+              "Wait while we scan your PDF for all embedded images.",
+              "Download the ZIP file containing all extracted images."
+            ]}
+            benefits={[
+              "Extract all images from any PDF",
+              "Images saved in original quality",
+              "Download as convenient ZIP file",
+              "Works with photos, diagrams, and graphics",
+              "Preserves original image formats",
+              "No software installation required",
+              "Fast processing for large PDFs",
+              "Completely free with no limits"
+            ]}
+            faqs={[
+              {
+                question: "What image formats are extracted?",
+                answer: "Images are extracted in their original format when possible (JPEG, PNG). Some embedded formats may be converted to PNG for compatibility."
+              },
+              {
+                question: "Will the image quality be preserved?",
+                answer: "Yes, images are extracted at their original quality and resolution. There's no compression or quality loss during extraction."
+              },
+              {
+                question: "What if my PDF has no images?",
+                answer: "If no extractable images are found, you'll receive a message. Note that text rendered as part of the PDF is not extractable as images."
+              },
+              {
+                question: "Can I extract images from scanned PDFs?",
+                answer: "Scanned PDFs typically contain the entire page as one image. You would get the full page scans, not individual elements within them."
+              },
+              {
+                question: "Is it free to use?",
+                answer: "Yes, fully free. No registration, no limits, no hidden costs."
+              }
+            ]}
+            keywords={["extract pdf images", "get images from pdf", "pdf image extractor", "save pdf images"]}
+          />
+          
+          <RelatedTools currentToolId="extract-images" />
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
