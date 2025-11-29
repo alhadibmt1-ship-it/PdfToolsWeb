@@ -27,6 +27,21 @@ const UnlockPdfPage = lazy(() => import("@/pages/UnlockPdfPage"));
 const AddPageNumbersPage = lazy(() => import("@/pages/AddPageNumbersPage"));
 const AddWatermarkPage = lazy(() => import("@/pages/AddWatermarkPage"));
 const ReorderPagesPage = lazy(() => import("@/pages/ReorderPagesPage"));
+
+const HtmlToPdfPage = lazy(() => import("@/pages/HtmlToPdfPage"));
+const ImageCompressorPage = lazy(() => import("@/pages/ImageCompressorPage"));
+const WebpToPdfPage = lazy(() => import("@/pages/WebpToPdfPage"));
+const CropPdfPage = lazy(() => import("@/pages/CropPdfPage"));
+const PdfViewerPage = lazy(() => import("@/pages/PdfViewerPage"));
+const ExtractImagesPage = lazy(() => import("@/pages/ExtractImagesPage"));
+const ResizePdfPage = lazy(() => import("@/pages/ResizePdfPage"));
+const GrayscalePdfPage = lazy(() => import("@/pages/GrayscalePdfPage"));
+const FlattenPdfPage = lazy(() => import("@/pages/FlattenPdfPage"));
+const RepairPdfPage = lazy(() => import("@/pages/RepairPdfPage"));
+const SignPdfPage = lazy(() => import("@/pages/SignPdfPage"));
+const OcrPdfPage = lazy(() => import("@/pages/OcrPdfPage"));
+const ComparePdfPage = lazy(() => import("@/pages/ComparePdfPage"));
+
 const AboutPage = lazy(() => import("@/pages/AboutPage"));
 const PrivacyPage = lazy(() => import("@/pages/PrivacyPage"));
 const TermsPage = lazy(() => import("@/pages/TermsPage"));
@@ -65,6 +80,21 @@ function Router() {
         <Route path="/add-page-numbers" component={AddPageNumbersPage} />
         <Route path="/add-watermark" component={AddWatermarkPage} />
         <Route path="/reorder-pages" component={ReorderPagesPage} />
+        
+        <Route path="/html-to-pdf" component={HtmlToPdfPage} />
+        <Route path="/image-compressor" component={ImageCompressorPage} />
+        <Route path="/webp-to-pdf" component={WebpToPdfPage} />
+        <Route path="/crop-pdf" component={CropPdfPage} />
+        <Route path="/pdf-viewer" component={PdfViewerPage} />
+        <Route path="/extract-images" component={ExtractImagesPage} />
+        <Route path="/resize-pdf" component={ResizePdfPage} />
+        <Route path="/grayscale-pdf" component={GrayscalePdfPage} />
+        <Route path="/flatten-pdf" component={FlattenPdfPage} />
+        <Route path="/repair-pdf" component={RepairPdfPage} />
+        <Route path="/sign-pdf" component={SignPdfPage} />
+        <Route path="/ocr-pdf" component={OcrPdfPage} />
+        <Route path="/compare-pdf" component={ComparePdfPage} />
+        
         <Route path="/about" component={AboutPage} />
         <Route path="/privacy" component={PrivacyPage} />
         <Route path="/terms" component={TermsPage} />

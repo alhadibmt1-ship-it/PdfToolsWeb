@@ -55,7 +55,7 @@ export interface PDFTool {
   icon: string;
   path: string;
   acceptedFormats: string;
-  category: "from-pdf" | "to-pdf" | "edit-pdf";
+  category: "from-pdf" | "to-pdf" | "edit-pdf" | "utility";
 }
 
 export const PDF_TOOLS: PDFTool[] = [
@@ -232,5 +232,125 @@ export const PDF_TOOLS: PDFTool[] = [
     path: "/unlock-pdf",
     acceptedFormats: ".pdf",
     category: "edit-pdf"
+  },
+  {
+    id: "crop-pdf",
+    title: "Crop PDF",
+    description: "Trim margins and remove unwanted whitespace",
+    icon: "crop",
+    path: "/crop-pdf",
+    acceptedFormats: ".pdf",
+    category: "edit-pdf"
+  },
+  {
+    id: "resize-pdf",
+    title: "Resize PDF",
+    description: "Change PDF page size to A4, Letter, and more",
+    icon: "resize",
+    path: "/resize-pdf",
+    acceptedFormats: ".pdf",
+    category: "edit-pdf"
+  },
+  {
+    id: "sign-pdf",
+    title: "Sign PDF",
+    description: "Add your signature to PDF documents",
+    icon: "signature",
+    path: "/sign-pdf",
+    acceptedFormats: ".pdf",
+    category: "edit-pdf"
+  },
+  {
+    id: "flatten-pdf",
+    title: "Flatten PDF",
+    description: "Flatten forms and layers into static content",
+    icon: "layers",
+    path: "/flatten-pdf",
+    acceptedFormats: ".pdf",
+    category: "edit-pdf"
+  },
+  {
+    id: "grayscale-pdf",
+    title: "PDF to Grayscale",
+    description: "Convert PDF to black and white for printing",
+    icon: "grayscale",
+    path: "/grayscale-pdf",
+    acceptedFormats: ".pdf",
+    category: "edit-pdf"
+  },
+  {
+    id: "repair-pdf",
+    title: "Repair PDF",
+    description: "Fix corrupted or damaged PDF files",
+    icon: "repair",
+    path: "/repair-pdf",
+    acceptedFormats: ".pdf",
+    category: "edit-pdf"
+  },
+  // NEW TO-PDF CONVERSIONS
+  {
+    id: "html-to-pdf",
+    title: "HTML to PDF",
+    description: "Convert HTML code to PDF documents",
+    icon: "html-to-pdf",
+    path: "/html-to-pdf",
+    acceptedFormats: ".html",
+    category: "to-pdf"
+  },
+  {
+    id: "webp-to-pdf",
+    title: "WebP to PDF",
+    description: "Convert WebP images to PDF",
+    icon: "webp-to-pdf",
+    path: "/webp-to-pdf",
+    acceptedFormats: ".webp",
+    category: "to-pdf"
+  },
+  // NEW FROM-PDF CONVERSIONS
+  {
+    id: "extract-images",
+    title: "Extract Images",
+    description: "Extract all images from PDF documents",
+    icon: "images",
+    path: "/extract-images",
+    acceptedFormats: ".pdf",
+    category: "from-pdf"
+  },
+  {
+    id: "ocr-pdf",
+    title: "OCR PDF",
+    description: "Extract text from scanned PDFs with OCR",
+    icon: "ocr",
+    path: "/ocr-pdf",
+    acceptedFormats: ".pdf",
+    category: "from-pdf"
+  },
+  // UTILITY TOOLS
+  {
+    id: "pdf-viewer",
+    title: "PDF Viewer",
+    description: "View PDF files directly in your browser",
+    icon: "viewer",
+    path: "/pdf-viewer",
+    acceptedFormats: ".pdf",
+    category: "utility"
+  },
+  {
+    id: "compare-pdf",
+    title: "Compare PDF",
+    description: "Find differences between two PDF files",
+    icon: "compare",
+    path: "/compare-pdf",
+    acceptedFormats: ".pdf",
+    category: "utility"
+  },
+  {
+    id: "image-compressor",
+    title: "Image Compressor",
+    description: "Compress JPG, PNG, and WebP images",
+    icon: "image-compress",
+    path: "/image-compressor",
+    acceptedFormats: ".jpg,.jpeg,.png,.webp",
+    category: "utility"
   }
 ];

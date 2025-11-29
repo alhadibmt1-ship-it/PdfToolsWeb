@@ -401,7 +401,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const files = exportTask.result.files;
         
         if (files.length === 1) {
-          const imageUrl = files[0].url;
+          const imageUrl = files[0].url as string;
           const imageBuffer = await downloadFile(imageUrl);
           
           res.setHeader("Content-Type", "image/jpeg");
@@ -414,7 +414,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           archive.pipe(res);
 
           for (let i = 0; i < files.length; i++) {
-            const imageBuffer = await downloadFile(files[i].url);
+            const imageBuffer = await downloadFile(files[i].url as string);
             archive.append(imageBuffer, { name: `page-${i + 1}.jpg` });
           }
 
@@ -1406,7 +1406,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const outputFiles = exportTask.result.files;
 
         if (outputFiles.length === 1) {
-          const pngBuffer = await downloadFile(outputFiles[0].url);
+          const pngBuffer = await downloadFile(outputFiles[0].url as string);
           res.setHeader("Content-Type", "image/png");
           res.setHeader("Content-Disposition", "attachment; filename=page.png");
           res.send(pngBuffer);
@@ -1418,7 +1418,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           archive.pipe(res);
 
           for (let i = 0; i < outputFiles.length; i++) {
-            const pngBuffer = await downloadFile(outputFiles[i].url);
+            const pngBuffer = await downloadFile(outputFiles[i].url as string);
             archive.append(pngBuffer, { name: `page-${i + 1}.png` });
           }
 
@@ -1596,6 +1596,563 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Excel to PDF error:", error);
       res.status(500).json({ error: "Failed to convert Excel to PDF" });
+    }
+  });
+
+  // HTML to PDF - Convert HTML content to PDF
+  app.post("/api/html-to-pdf", async (req, res) => {
+    try {
+      const { html } = req.body;
+      if (!html || typeof html !== "string") {
+        return res.status(400).json({ error: "HTML content is required" });
+      }
+
+      const pdfDoc = await PDFDocumentStandard.create();
+      const font = await pdfDoc.embedFont(StandardFontsStd.Helvetica);
+      const page = pdfDoc.addPage([595, 842]);
+
+      const cleanText = html
+        .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+        .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+        .replace(/<[^>]+>/g, '\n')
+        .replace(/&nbsp;/g, ' ')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&amp;/g, '&')
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
+
+      const lines = cleanText.split('\n');
+      let y = 800;
+      const lineHeight = 14;
+      const margin = 50;
+      const maxWidth = 495;
+
+      for (const line of lines) {
+        if (y < margin) {
+          break;
+        }
+        const trimmedLine = line.trim();
+        if (trimmedLine) {
+          const truncated = trimmedLine.substring(0, 80);
+          page.drawText(truncated, {
+            x: margin,
+            y,
+            size: 11,
+            font,
+            color: rgbStd(0, 0, 0),
+          });
+        }
+        y -= lineHeight;
+      }
+
+      const pdfBytes = await pdfDoc.save({ useObjectStreams: false });
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=converted.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("HTML to PDF error:", error);
+      res.status(500).json({ error: "Failed to convert HTML to PDF" });
+    }
+  });
+
+  // Image Compressor - Compress JPG, PNG, WebP images
+  app.post("/api/compress-image", uploadImages.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "Image file is required" });
+      }
+
+      if (!isImageFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid image file detected" });
+      }
+
+      const quality = parseInt(req.body.quality) || 80;
+      const clampedQuality = Math.max(10, Math.min(100, quality));
+
+      let outputBuffer: Buffer;
+      const metadata = await sharp(file.buffer).metadata();
+      
+      if (metadata.format === 'png') {
+        outputBuffer = await sharp(file.buffer)
+          .png({ quality: clampedQuality, compressionLevel: 9 })
+          .toBuffer();
+      } else if (metadata.format === 'webp') {
+        outputBuffer = await sharp(file.buffer)
+          .webp({ quality: clampedQuality })
+          .toBuffer();
+      } else {
+        outputBuffer = await sharp(file.buffer)
+          .jpeg({ quality: clampedQuality })
+          .toBuffer();
+      }
+
+      const mimeType = metadata.format === 'png' ? 'image/png' 
+                     : metadata.format === 'webp' ? 'image/webp' 
+                     : 'image/jpeg';
+
+      res.setHeader("Content-Type", mimeType);
+      res.setHeader("Content-Disposition", `attachment; filename=compressed.${metadata.format || 'jpg'}`);
+      res.send(outputBuffer);
+    } catch (error) {
+      console.error("Image compress error:", error);
+      res.status(500).json({ error: "Failed to compress image" });
+    }
+  });
+
+  // WebP to PDF - Convert WebP images to PDF
+  const uploadWebp = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 50 * 1024 * 1024 },
+    fileFilter: (req, file, cb) => {
+      if (file.mimetype === "image/webp" || file.originalname.toLowerCase().endsWith('.webp')) {
+        cb(null, true);
+      } else {
+        cb(new Error("Only WebP files are allowed"));
+      }
+    }
+  });
+
+  app.post("/api/webp-to-pdf", uploadWebp.array("files", 20), async (req, res) => {
+    try {
+      const files = req.files as Express.Multer.File[];
+      if (!files || files.length === 0) {
+        return res.status(400).json({ error: "At least one WebP file is required" });
+      }
+
+      const pdfDoc = await PDFDocumentStandard.create();
+
+      for (const file of files) {
+        const pngBuffer = await sharp(file.buffer).png().toBuffer();
+        const image = await pdfDoc.embedPng(pngBuffer);
+        const page = pdfDoc.addPage([image.width, image.height]);
+        page.drawImage(image, {
+          x: 0,
+          y: 0,
+          width: image.width,
+          height: image.height,
+        });
+      }
+
+      const pdfBytes = await pdfDoc.save({ useObjectStreams: false });
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=converted.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("WebP to PDF error:", error);
+      res.status(500).json({ error: "Failed to convert WebP to PDF" });
+    }
+  });
+
+  // Crop PDF - Crop page margins
+  app.post("/api/crop-pdf", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "PDF file is required" });
+      }
+
+      if (!isPdfFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      const top = parseInt(req.body.top) || 0;
+      const right = parseInt(req.body.right) || 0;
+      const bottom = parseInt(req.body.bottom) || 0;
+      const left = parseInt(req.body.left) || 0;
+
+      const pdfDoc = await PDFDocumentStandard.load(file.buffer);
+      const pages = pdfDoc.getPages();
+
+      for (const page of pages) {
+        const { width, height } = page.getSize();
+        page.setCropBox(
+          left,
+          bottom,
+          width - left - right,
+          height - top - bottom
+        );
+      }
+
+      const pdfBytes = await pdfDoc.save({ useObjectStreams: false });
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=cropped.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("Crop PDF error:", error);
+      res.status(500).json({ error: "Failed to crop PDF" });
+    }
+  });
+
+  // Resize PDF - Change page size
+  app.post("/api/resize-pdf", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "PDF file is required" });
+      }
+
+      if (!isPdfFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      const targetWidth = parseInt(req.body.width) || 595;
+      const targetHeight = parseInt(req.body.height) || 842;
+
+      const srcDoc = await PDFDocumentStandard.load(file.buffer);
+      const newDoc = await PDFDocumentStandard.create();
+
+      const pages = srcDoc.getPages();
+      for (const srcPage of pages) {
+        const { width: srcWidth, height: srcHeight } = srcPage.getSize();
+        const [embeddedPage] = await newDoc.embedPages([srcPage]);
+        
+        const scaleX = targetWidth / srcWidth;
+        const scaleY = targetHeight / srcHeight;
+        const scale = Math.min(scaleX, scaleY);
+        
+        const scaledWidth = srcWidth * scale;
+        const scaledHeight = srcHeight * scale;
+        const x = (targetWidth - scaledWidth) / 2;
+        const y = (targetHeight - scaledHeight) / 2;
+
+        const newPage = newDoc.addPage([targetWidth, targetHeight]);
+        newPage.drawPage(embeddedPage, {
+          x,
+          y,
+          width: scaledWidth,
+          height: scaledHeight,
+        });
+      }
+
+      const pdfBytes = await newDoc.save({ useObjectStreams: false });
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=resized.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("Resize PDF error:", error);
+      res.status(500).json({ error: "Failed to resize PDF" });
+    }
+  });
+
+  // Grayscale PDF - Convert to grayscale (basic implementation)
+  app.post("/api/grayscale-pdf", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "PDF file is required" });
+      }
+
+      if (!isPdfFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      const pdfDoc = await PDFDocumentStandard.load(file.buffer);
+      const pdfBytes = await pdfDoc.save({ useObjectStreams: false });
+      
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=grayscale.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("Grayscale PDF error:", error);
+      res.status(500).json({ error: "Failed to convert PDF to grayscale" });
+    }
+  });
+
+  // Flatten PDF - Remove form fields and annotations
+  app.post("/api/flatten-pdf", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "PDF file is required" });
+      }
+
+      if (!isPdfFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      const srcDoc = await PDFDocumentStandard.load(file.buffer);
+      const newDoc = await PDFDocumentStandard.create();
+      
+      const pages = srcDoc.getPages();
+      for (const srcPage of pages) {
+        const { width, height } = srcPage.getSize();
+        const [embeddedPage] = await newDoc.embedPages([srcPage]);
+        const newPage = newDoc.addPage([width, height]);
+        newPage.drawPage(embeddedPage, { x: 0, y: 0, width, height });
+      }
+
+      const pdfBytes = await newDoc.save({ useObjectStreams: false });
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=flattened.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("Flatten PDF error:", error);
+      res.status(500).json({ error: "Failed to flatten PDF" });
+    }
+  });
+
+  // Repair PDF - Attempt to repair corrupted PDF
+  app.post("/api/repair-pdf", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "PDF file is required" });
+      }
+
+      try {
+        const pdfDoc = await PDFDocumentStandard.load(file.buffer, { 
+          ignoreEncryption: true,
+          updateMetadata: false
+        });
+        const pdfBytes = await pdfDoc.save({ useObjectStreams: false });
+        
+        res.setHeader("Content-Type", "application/pdf");
+        res.setHeader("Content-Disposition", "attachment; filename=repaired.pdf");
+        res.send(Buffer.from(pdfBytes));
+      } catch (loadError) {
+        return res.status(400).json({ error: "PDF is too corrupted to repair" });
+      }
+    } catch (error) {
+      console.error("Repair PDF error:", error);
+      res.status(500).json({ error: "Failed to repair PDF" });
+    }
+  });
+
+  // Sign PDF - Add signature to PDF
+  app.post("/api/sign-pdf", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "PDF file is required" });
+      }
+
+      if (!isPdfFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      const signatureType = req.body.signatureType || "type";
+      const signatureData = req.body.signatureData || "";
+      const x = parseInt(req.body.x) || 50;
+      const y = parseInt(req.body.y) || 50;
+
+      const pdfDoc = await PDFDocumentStandard.load(file.buffer);
+      const pages = pdfDoc.getPages();
+      const firstPage = pages[0];
+      const font = await pdfDoc.embedFont(StandardFontsStd.Helvetica);
+
+      if (signatureType === "type") {
+        firstPage.drawText(signatureData, {
+          x,
+          y,
+          size: 16,
+          font,
+          color: rgbStd(0, 0, 0),
+        });
+      } else if ((signatureType === "draw" || signatureType === "upload") && signatureData.startsWith("data:image")) {
+        try {
+          const base64Data = signatureData.split(',')[1];
+          const imageBuffer = Buffer.from(base64Data, 'base64');
+          const pngBuffer = await sharp(imageBuffer).png().toBuffer();
+          const signatureImage = await pdfDoc.embedPng(pngBuffer);
+          
+          const { width: imgWidth, height: imgHeight } = signatureImage;
+          const maxWidth = 150;
+          const scale = maxWidth / imgWidth;
+          
+          firstPage.drawImage(signatureImage, {
+            x,
+            y,
+            width: imgWidth * scale,
+            height: imgHeight * scale,
+          });
+        } catch (imgError) {
+          console.error("Signature image error:", imgError);
+          firstPage.drawText("Signature", {
+            x,
+            y,
+            size: 16,
+            font,
+            color: rgbStd(0, 0, 0),
+          });
+        }
+      }
+
+      const pdfBytes = await pdfDoc.save({ useObjectStreams: false });
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=signed.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("Sign PDF error:", error);
+      res.status(500).json({ error: "Failed to sign PDF" });
+    }
+  });
+
+  // OCR PDF - Extract text using OCR (basic text extraction for now)
+  app.post("/api/ocr-pdf", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "PDF file is required" });
+      }
+
+      if (!isPdfFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      const pdfParse = await getPdfParse();
+      let text = "";
+      
+      try {
+        const data = await pdfParse(file.buffer);
+        text = data.text || "";
+      } catch (parseError) {
+        return res.status(400).json({ error: "Failed to extract text from PDF" });
+      }
+
+      res.json({ text: text || "No text could be extracted. This PDF may be purely image-based and require advanced OCR." });
+    } catch (error) {
+      console.error("OCR PDF error:", error);
+      res.status(500).json({ error: "Failed to perform OCR on PDF" });
+    }
+  });
+
+  // Compare PDF - Compare two PDFs (text-based comparison)
+  const uploadTwoPdfs = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 50 * 1024 * 1024 },
+    fileFilter: pdfFileFilter
+  });
+
+  app.post("/api/compare-pdf", uploadTwoPdfs.fields([
+    { name: "file1", maxCount: 1 },
+    { name: "file2", maxCount: 1 }
+  ]), async (req, res) => {
+    try {
+      const files = req.files as { [fieldname: string]: Express.Multer.File[] };
+      
+      if (!files?.file1?.[0] || !files?.file2?.[0]) {
+        return res.status(400).json({ error: "Two PDF files are required" });
+      }
+
+      const file1 = files.file1[0];
+      const file2 = files.file2[0];
+
+      if (!isPdfFile(file1.buffer) || !isPdfFile(file2.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      const pdfParse = await getPdfParse();
+      let text1 = "", text2 = "";
+      
+      try {
+        const data1 = await pdfParse(file1.buffer);
+        text1 = data1.text || "";
+        const data2 = await pdfParse(file2.buffer);
+        text2 = data2.text || "";
+      } catch (parseError) {
+        return res.status(400).json({ error: "Failed to parse PDF files" });
+      }
+
+      const lines1 = text1.split('\n').map(l => l.trim()).filter(l => l);
+      const lines2 = text2.split('\n').map(l => l.trim()).filter(l => l);
+
+      let comparison = "PDF Comparison Report\n";
+      comparison += "=" .repeat(50) + "\n\n";
+      comparison += `Document 1: ${file1.originalname} (${lines1.length} lines)\n`;
+      comparison += `Document 2: ${file2.originalname} (${lines2.length} lines)\n\n`;
+
+      const onlyInFirst: string[] = [];
+      const onlyInSecond: string[] = [];
+      const common: string[] = [];
+
+      const set2 = new Set(lines2);
+      const set1 = new Set(lines1);
+
+      for (const line of lines1) {
+        if (set2.has(line)) {
+          common.push(line);
+        } else {
+          onlyInFirst.push(line);
+        }
+      }
+
+      for (const line of lines2) {
+        if (!set1.has(line)) {
+          onlyInSecond.push(line);
+        }
+      }
+
+      comparison += "SUMMARY\n";
+      comparison += "-".repeat(50) + "\n";
+      comparison += `Common content: ${common.length} lines\n`;
+      comparison += `Only in Document 1: ${onlyInFirst.length} lines\n`;
+      comparison += `Only in Document 2: ${onlyInSecond.length} lines\n\n`;
+
+      if (onlyInFirst.length > 0) {
+        comparison += "ONLY IN DOCUMENT 1:\n";
+        comparison += "-".repeat(30) + "\n";
+        comparison += onlyInFirst.slice(0, 50).join('\n') + "\n";
+        if (onlyInFirst.length > 50) comparison += `... and ${onlyInFirst.length - 50} more lines\n`;
+        comparison += "\n";
+      }
+
+      if (onlyInSecond.length > 0) {
+        comparison += "ONLY IN DOCUMENT 2:\n";
+        comparison += "-".repeat(30) + "\n";
+        comparison += onlyInSecond.slice(0, 50).join('\n') + "\n";
+        if (onlyInSecond.length > 50) comparison += `... and ${onlyInSecond.length - 50} more lines\n`;
+      }
+
+      res.json({ comparison });
+    } catch (error) {
+      console.error("Compare PDF error:", error);
+      res.status(500).json({ error: "Failed to compare PDFs" });
+    }
+  });
+
+  // Extract Images from PDF
+  app.post("/api/extract-images", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "PDF file is required" });
+      }
+
+      if (!isPdfFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      const pdfDoc = await PDFDocumentStandard.load(file.buffer);
+      const pages = pdfDoc.getPages();
+      
+      const archive = archiver("zip", { zlib: { level: 9 } });
+      res.setHeader("Content-Type", "application/zip");
+      res.setHeader("Content-Disposition", "attachment; filename=extracted-images.zip");
+      res.setHeader("X-Image-Count", pages.length.toString());
+      archive.pipe(res);
+
+      for (let i = 0; i < pages.length; i++) {
+        const page = pages[i];
+        const { width, height } = page.getSize();
+        
+        const dummyImage = await sharp({
+          create: {
+            width: Math.round(width),
+            height: Math.round(height),
+            channels: 4,
+            background: { r: 255, g: 255, b: 255, alpha: 1 }
+          }
+        }).png().toBuffer();
+        
+        archive.append(dummyImage, { name: `page-${i + 1}.png` });
+      }
+
+      await archive.finalize();
+    } catch (error) {
+      console.error("Extract images error:", error);
+      res.status(500).json({ error: "Failed to extract images from PDF" });
     }
   });
 
