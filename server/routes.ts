@@ -385,7 +385,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
           throw new Error("Upload task not found");
         }
 
-        await cloudConvert.tasks.upload(uploadTask, Readable.from(file.buffer), file.originalname);
+        const inputFile = new Readable();
+        inputFile.push(file.buffer);
+        inputFile.push(null);
+        
+        await cloudConvert.tasks.upload(uploadTask, inputFile, file.originalname, file.buffer.length);
 
         const completedJob = await cloudConvert.jobs.wait(job.id);
         
