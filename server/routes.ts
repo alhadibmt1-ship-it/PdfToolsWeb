@@ -353,43 +353,85 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Invalid PDF file detected" });
       }
 
-      let imageArrays;
+      let imageBuffers: Buffer[] = [];
+      
       try {
-        imageArrays = await pdfConverter.convert(file.buffer, {
-          width: 2000,
-          height: 2000,
-          page_numbers: [],
-          base64: false,
-        });
-      } catch (parseError) {
-        console.error("PDF parsing error in pdf-to-jpg:", parseError);
-        return res.status(400).json({ error: "Invalid or corrupted PDF file" });
-      }
+        const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
+        const { createCanvas } = await import('canvas');
+        
+        const loadingTask = pdfjs.getDocument({ data: new Uint8Array(file.buffer) });
+        const pdfDocument = await loadingTask.promise;
+        const numPages = pdfDocument.numPages;
 
-      if (!imageArrays || imageArrays.length === 0) {
-        return res.status(400).json({ error: "Could not extract images from PDF. The file may be empty or corrupted." });
-      }
+        if (numPages === 0) {
+          return res.status(400).json({ error: "PDF has no pages to convert" });
+        }
 
-      if (imageArrays.length === 1) {
-        const pngBuffer = Buffer.from(imageArrays[0]);
-        const jpgBuffer = await sharp(pngBuffer)
-          .jpeg({ quality: 90 })
-          .toBuffer();
-        res.setHeader("Content-Type", "image/jpeg");
-        res.setHeader("Content-Disposition", "attachment; filename=page-1.jpg");
-        res.send(jpgBuffer);
-      } else {
-        const archive = archiver("zip", { zlib: { level: 9 } });
-        res.setHeader("Content-Type", "application/zip");
-        res.setHeader("Content-Disposition", `attachment; filename=pdf-images-${imageArrays.length}-pages.zip`);
-        archive.pipe(res);
+        const scale = 2.0;
 
-        for (let i = 0; i < imageArrays.length; i++) {
-          const pngBuffer = Buffer.from(imageArrays[i]);
+        for (let pageNum = 1; pageNum <= numPages; pageNum++) {
+          const page = await pdfDocument.getPage(pageNum);
+          const viewport = page.getViewport({ scale });
+
+          const canvas = createCanvas(viewport.width, viewport.height);
+          const context = canvas.getContext('2d');
+
+          const renderContext = {
+            canvasContext: context as any,
+            viewport: viewport,
+          };
+
+          await (page.render(renderContext as any)).promise;
+
+          const pngBuffer = canvas.toBuffer('image/png');
           const jpgBuffer = await sharp(pngBuffer)
             .jpeg({ quality: 90 })
             .toBuffer();
-          archive.append(jpgBuffer, { name: `page-${i + 1}.jpg` });
+          
+          imageBuffers.push(jpgBuffer);
+        }
+      } catch (parseError) {
+        console.error("PDF parsing error in pdf-to-jpg:", parseError);
+        
+        try {
+          const imageArrays = await pdfConverter.convert(file.buffer, {
+            width: 2000,
+            height: 2000,
+            page_numbers: [],
+            base64: false,
+          });
+          
+          if (imageArrays && imageArrays.length > 0) {
+            for (const imgArray of imageArrays) {
+              const pngBuffer = Buffer.from(imgArray);
+              const jpgBuffer = await sharp(pngBuffer)
+                .jpeg({ quality: 90 })
+                .toBuffer();
+              imageBuffers.push(jpgBuffer);
+            }
+          }
+        } catch (fallbackError) {
+          console.error("Fallback conversion also failed:", fallbackError);
+          return res.status(400).json({ error: "Could not convert this PDF. Please try a different file." });
+        }
+      }
+
+      if (imageBuffers.length === 0) {
+        return res.status(400).json({ error: "Could not extract images from PDF. The file may be empty or corrupted." });
+      }
+
+      if (imageBuffers.length === 1) {
+        res.setHeader("Content-Type", "image/jpeg");
+        res.setHeader("Content-Disposition", "attachment; filename=page-1.jpg");
+        res.send(imageBuffers[0]);
+      } else {
+        const archive = archiver("zip", { zlib: { level: 9 } });
+        res.setHeader("Content-Type", "application/zip");
+        res.setHeader("Content-Disposition", `attachment; filename=pdf-images-${imageBuffers.length}-pages.zip`);
+        archive.pipe(res);
+
+        for (let i = 0; i < imageBuffers.length; i++) {
+          archive.append(imageBuffers[i], { name: `page-${i + 1}.jpg` });
         }
 
         await archive.finalize();
