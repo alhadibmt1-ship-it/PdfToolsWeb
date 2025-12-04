@@ -1,32 +1,47 @@
 # PDF HUB 24
 
 ## Overview
-PDF HUB 24 is a comprehensive web-based PDF manipulation platform offering 19 PDF tools organized in 3 categories:
+PDF HUB 24 is a comprehensive web-based PDF manipulation platform offering 32 PDF tools organized in 4 categories:
 
-### Convert from PDF (5 tools)
+### Convert from PDF (7 tools)
 1. **PDF to Word** - Convert PDF to editable DOCX
 2. **PDF to JPG** - Convert PDF pages to JPG images
 3. **PDF to PNG** - Convert PDF pages to PNG images
 4. **PDF to Excel** - Convert PDF tables to XLS spreadsheet
 5. **Extract Text** - Extract text content from PDF
+6. **Extract Images** - Extract all images from PDF documents
+7. **OCR PDF** - Extract text from scanned PDFs with OCR
 
-### Convert to PDF (4 tools)
-6. **Word to PDF** - Convert DOCX to PDF
-7. **JPG to PDF** - Convert JPG images to PDF
-8. **PNG to PDF** - Convert PNG images to PDF
-9. **Excel to PDF** - Convert XLS/XLSX spreadsheet to PDF
+### Convert to PDF (6 tools)
+8. **Word to PDF** - Convert DOCX to PDF
+9. **JPG to PDF** - Convert JPG images to PDF
+10. **PNG to PDF** - Convert PNG images to PDF
+11. **Excel to PDF** - Convert XLS/XLSX spreadsheet to PDF
+12. **HTML to PDF** - Convert HTML code to PDF documents
+13. **WebP to PDF** - Convert WebP images to PDF
 
-### Edit PDF (10 tools)
-10. **Merge PDF** - Combine multiple PDFs into one
-11. **Split PDF** - Extract specific pages
-12. **Compress PDF** - Reduce file size
-13. **Rotate PDF** - Rotate pages 90°, 180°, 270°
-14. **Delete Pages** - Remove unwanted pages
-15. **Protect PDF** - Add password protection
-16. **Unlock PDF** - Remove password protection
-17. **Add Page Numbers** - Add page numbers to documents
-18. **Add Watermark** - Add text watermark to pages
-19. **Reorder Pages** - Drag-and-drop page reordering
+### Edit PDF (16 tools)
+14. **Merge PDF** - Combine multiple PDFs into one
+15. **Split PDF** - Extract specific pages
+16. **Compress PDF** - Reduce file size
+17. **Rotate PDF** - Rotate pages 90°, 180°, 270°
+18. **Delete Pages** - Remove unwanted pages
+19. **Protect PDF** - Add password protection
+20. **Unlock PDF** - Remove password protection
+21. **Add Page Numbers** - Add page numbers to documents
+22. **Add Watermark** - Add text watermark to pages
+23. **Reorder Pages** - Drag-and-drop page reordering
+24. **Crop PDF** - Trim margins and remove unwanted whitespace
+25. **Resize PDF** - Change PDF page size to A4, Letter, and more
+26. **Sign PDF** - Add your signature to PDF documents
+27. **Flatten PDF** - Flatten forms and layers into static content
+28. **PDF to Grayscale** - Convert PDF to black and white for printing
+29. **Repair PDF** - Fix corrupted or damaged PDF files
+
+### Utility Tools (3 tools)
+30. **PDF Viewer** - View PDF files directly in your browser
+31. **Compare PDF** - Find differences between two PDF files
+32. **Image Compressor** - Compress JPG, PNG, and WebP images
 
 Features full dark mode support, user settings, localStorage persistence, and professional-grade PDF processing. Homepage displays tools organized by category with visual conversion icons showing source→target formats (colored labels with arrows). Deployed at pdfhub24.com with complete SEO optimization and PDF24-inspired UX patterns.
 
