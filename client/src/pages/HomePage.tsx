@@ -179,7 +179,7 @@ export default function HomePage() {
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
               All PDF Tools You Need
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
+            <p className="text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto leading-relaxed mb-8">
               Free and easy to use online PDF tools. Convert, merge, split, compress, and edit PDF files with no registration required.
             </p>
             
