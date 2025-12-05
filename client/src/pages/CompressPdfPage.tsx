@@ -8,6 +8,7 @@ import ProcessingState from "@/components/ProcessingState";
 import ToolSEOContent from "@/components/ToolSEOContent";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
+import TutorialVideo from "@/components/TutorialVideo";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -117,13 +118,24 @@ export default function CompressPdfPage() {
             </div>
           </Link>
 
-          <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">Compress PDF</h1>
-            <p className="text-muted-foreground leading-relaxed mb-4">
+          <div className="mb-6 sm:mb-8">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">Compress PDF</h1>
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4">
               Reduce your PDF file size while maintaining quality. Choose your compression level based on your needs.
             </p>
             <TrustBadges />
           </div>
+
+          <TutorialVideo 
+            toolName="Compress PDF" 
+            toolId="compress"
+            steps={[
+              "Upload your PDF file using the area below",
+              "Select your preferred compression level",
+              "Click 'Compress PDF' to process",
+              "Download your smaller PDF file"
+            ]}
+          />
 
           <div className="space-y-6">
             <FileUploadZone
