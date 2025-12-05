@@ -227,47 +227,89 @@ export default function AddWatermarkPage() {
           </div>
 
           <ToolSEOContent
-            toolName="Add Watermark"
-            toolDescription="Add a professional text watermark to your PDF documents. Perfect for marking documents as confidential, draft, or with your company name. Customize the text, opacity, size, and rotation to get exactly the look you want."
+            toolName="Add Watermark to PDF"
+            toolDescription="Add professional text watermarks to your PDF documents with our free online tool. Whether you need to mark documents as CONFIDENTIAL, DRAFT, SAMPLE, or add your company name for branding, PDF HUB 24 gives you full control. Customize the watermark text, opacity level, font size, and rotation angle to achieve exactly the look you need. Watermarks are applied to every page automatically, providing consistent protection and branding throughout your document."
             howToSteps={[
-              "Upload your PDF file.",
-              "Enter your watermark text (e.g., CONFIDENTIAL, DRAFT, your company name).",
-              "Adjust opacity, font size, and rotation as needed.",
-              "Click Add Watermark and download your result."
+              "Upload your PDF file by clicking the upload area or dragging and dropping.",
+              "Enter your desired watermark text (e.g., CONFIDENTIAL, DRAFT, your company name).",
+              "Adjust opacity, font size, and rotation angle to customize the appearance.",
+              "Click 'Add Watermark' and download your protected or branded PDF."
             ]}
             benefits={[
-              "Customizable watermark text",
-              "Adjustable opacity for subtle or bold watermarks",
-              "Control font size and rotation angle",
-              "Applied to all pages automatically",
-              "Perfect for branding documents",
-              "Mark documents as confidential or draft",
-              "Free and easy to use",
-              "No registration required"
+              "Fully customizable watermark text for any purpose",
+              "Adjustable opacity from subtle (10%) to bold (100%)",
+              "Control font size from 12pt to 72pt",
+              "Rotation angle from -90° to +90° for diagonal placement",
+              "Watermark applied to all pages automatically",
+              "Perfect for branding documents with company name",
+              "Mark documents as confidential, draft, or sample",
+              "Deter unauthorized copying and distribution",
+              "No watermarks from our tool added to your PDF"
             ]}
             faqs={[
               {
-                question: "What's a good opacity setting?",
-                answer: "For subtle watermarks that don't interfere with reading, use 20-30% opacity. For more prominent watermarks, use 50% or higher. Preview with different settings to find what works best."
+                question: "What opacity setting should I use for my watermark?",
+                answer: "For subtle watermarks that allow easy reading of the underlying content, use 20-30% opacity. For more visible branding or security watermarks, use 40-60%. For very prominent watermarks meant to prevent unauthorized use, use 70% or higher. Test different settings to find the right balance."
               },
               {
-                question: "Can I add an image watermark?",
-                answer: "Currently we support text watermarks only. Image watermarks may be added in the future."
+                question: "Can I add an image or logo as a watermark?",
+                answer: "Currently, our tool supports text-only watermarks for maximum compatibility and professional appearance. Image/logo watermarks may be added in future updates. For now, you can use your company name or abbreviation as a text watermark."
               },
               {
-                question: "Will the watermark affect text readability?",
-                answer: "With low opacity settings (20-40%), watermarks appear in the background and don't significantly affect readability. The watermark is centered and slightly rotated to avoid covering important content."
+                question: "Will the watermark make my document hard to read?",
+                answer: "With appropriate opacity settings (20-40%), watermarks appear in the background without significantly affecting readability. The diagonal rotation (default -45°) helps watermarks cross content areas without blocking specific text. Adjust the settings to find the right balance for your document."
               },
               {
                 question: "Can I remove a watermark after adding it?",
-                answer: "Watermarks become part of the PDF content. To remove them, you'd need the original document without the watermark."
+                answer: "Watermarks become permanently embedded in the PDF content. To remove a watermark, you would need to use your original un-watermarked document. Always keep a backup of your original file before adding watermarks."
               },
               {
-                question: "Can I add multiple watermarks?",
-                answer: "Currently, one watermark text is added per processing. For multiple watermarks, process the file multiple times or combine text in a single watermark."
+                question: "Can I add multiple different watermarks to one document?",
+                answer: "Currently, one watermark text is applied per processing. For multiple watermarks, you can process the file multiple times with different text, or combine your messages into a single watermark (e.g., 'CONFIDENTIAL - DRAFT'). Each processing adds a new layer."
               }
             ]}
-            keywords={["pdf stamp", "document watermark", "brand pdf"]}
+            keywords={["add watermark to pdf", "pdf stamp tool", "document watermark", "brand pdf online", "protect pdf with watermark"]}
+            relatedLinks={[
+              { text: "Add page numbers for professional documents", href: "/add-page-numbers" },
+              { text: "Protect PDF with password encryption", href: "/protect" },
+              { text: "Compress PDF after adding watermark", href: "/compress" },
+              { text: "Merge multiple PDFs before watermarking", href: "/merge" }
+            ]}
+            extraSections={[
+              {
+                title: "Common Watermark Use Cases",
+                content: "Watermarks serve various important purposes for document management:",
+                items: [
+                  "Marking documents as CONFIDENTIAL for internal use only",
+                  "Labeling documents as DRAFT during review processes",
+                  "Adding SAMPLE to prevent misuse of demo documents",
+                  "Branding PDFs with company name or logo text",
+                  "Adding DO NOT COPY to deter unauthorized reproduction",
+                  "Including APPROVED or REVIEWED status indicators"
+                ]
+              },
+              {
+                title: "Tips for Effective Watermarks",
+                content: "Create professional watermarks with these best practices:",
+                items: [
+                  "Use ALL CAPS for visibility and professional appearance",
+                  "Keep text short and impactful (1-3 words work best)",
+                  "Use 30-40% opacity for balance between visibility and readability",
+                  "Diagonal rotation (-45°) covers content without blocking it",
+                  "Larger font sizes (48-60pt) ensure watermark visibility",
+                  "Test on a sample page before processing large documents"
+                ]
+              }
+            ]}
+            exampleTable={{
+              title: "Watermark Configuration Examples",
+              rows: [
+                { label: "Subtle branding", before: "Company name, 20% opacity", after: "Professional, readable" },
+                { label: "Confidential marking", before: "CONFIDENTIAL, 40% opacity", after: "Visible but not blocking" },
+                { label: "Draft indicator", before: "DRAFT, 50% opacity, red", after: "Clear status indicator" },
+                { label: "Copy protection", before: "DO NOT COPY, 60% opacity", after: "Strong visual deterrent" }
+              ]
+            }}
           />
           
           <RelatedTools currentToolId="add-watermark" />
