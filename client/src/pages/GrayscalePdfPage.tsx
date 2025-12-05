@@ -167,6 +167,7 @@ export default function GrayscalePdfPage() {
 
           <ToolSEOContent
             toolName="PDF to Grayscale Converter"
+            toolId="grayscale-pdf"
             toolDescription="Convert your color PDF documents to professional grayscale (black and white) with our free online tool. Transform colorful PDFs into print-friendly versions that save ink and toner costs while maintaining excellent text clarity and image quality. Perfect for office printing, document archiving, reducing visual distractions in study materials, or preparing documents that need to look professional without color."
             howToSteps={[
               "Upload your color PDF file by clicking the upload area or dragging and dropping your document.",

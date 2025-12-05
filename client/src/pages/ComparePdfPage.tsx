@@ -188,6 +188,7 @@ export default function ComparePdfPage() {
 
           <ToolSEOContent
             toolName="Compare PDF"
+            toolId="compare-pdf"
             toolDescription="Compare two PDF documents side by side and instantly identify the differences between them with our free online tool. Perfect for reviewing document revisions, verifying contract changes, tracking edits in legal agreements, or ensuring document integrity. Our tool extracts and analyzes text content from both files, delivering a detailed comparison report that highlights what's been added, removed, or modified. No software installation required — just upload, compare, and download your results."
             howToSteps={[
               "Upload the first PDF document (the original version) using the left upload zone.",

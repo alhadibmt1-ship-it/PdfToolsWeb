@@ -162,6 +162,7 @@ export default function PdfToExcelPage() {
 
           <ToolSEOContent
             toolName="PDF to Excel Converter"
+            toolId="pdf-to-excel"
             toolDescription="Our PDF to Excel converter extracts tabular data from your PDF documents and converts it into fully editable XLSX spreadsheets. This tool is perfect for extracting financial data, invoices, reports, bank statements, and any structured information from PDFs. The data structure is preserved, making it easy to analyze, sort, and manipulate your data in Excel or Google Sheets."
             howToSteps={[
               "Upload your PDF file containing tables, invoices, or structured data.",

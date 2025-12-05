@@ -166,6 +166,7 @@ export default function WebpToPdfPage() {
 
           <ToolSEOContent
             toolName="WebP to PDF Converter"
+            toolId="webp-to-pdf"
             toolDescription="Convert your WebP images to universally compatible PDF documents with our free online converter. WebP is Google's modern image format offering superior compression and quality, but not all devices support it natively. Our tool transforms WebP images into PDF files that open anywhere, preserving the original quality and allowing you to combine multiple images into a single document."
             howToSteps={[
               "Upload your WebP image(s) by clicking the upload area or dragging and dropping files.",

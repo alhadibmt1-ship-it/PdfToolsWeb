@@ -165,6 +165,7 @@ export default function PngToPdfPage() {
 
           <ToolSEOContent
             toolName="PNG to PDF Converter"
+            toolId="png-to-pdf"
             toolDescription="Convert your PNG images to professional PDF documents with our free online converter. PNG format is known for its lossless compression and transparency support, and our tool preserves these qualities when creating your PDF. Combine multiple PNG files into a single multi-page document, perfect for graphics, screenshots, diagrams, and high-quality images."
             howToSteps={[
               "Select one or more PNG images by clicking the upload area or dragging and dropping.",

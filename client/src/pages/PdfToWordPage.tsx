@@ -146,6 +146,7 @@ export default function PdfToWordPage() {
 
           <ToolSEOContent
             toolName="PDF to Word Converter"
+            toolId="pdf-to-word"
             toolDescription="Our PDF to Word converter transforms your PDF documents into fully editable Microsoft Word (DOCX) files with exceptional accuracy. Whether you need to edit text, update formatting, or repurpose content from a PDF, our tool preserves the original layout, fonts, tables, and images as much as possible. This free online converter works directly in your browser — no software installation, registration, or hidden fees required."
             howToSteps={[
               "Upload your PDF file by clicking the upload area or dragging and dropping your document.",

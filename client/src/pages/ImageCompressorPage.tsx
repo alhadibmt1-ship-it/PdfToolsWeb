@@ -209,6 +209,7 @@ export default function ImageCompressorPage() {
 
           <ToolSEOContent
             toolName="Image Compressor"
+            toolId="image-compressor"
             toolDescription="Reduce your image file sizes by up to 90% without sacrificing visible quality using our free online image compressor. Whether you need to optimize images for websites, email attachments, social media, or save storage space on your device, our tool offers precise quality control from 10% to 100%. Supports JPG, PNG, and WebP formats — the most popular image types for web and digital photography. See exactly how much space you saved before downloading."
             howToSteps={[
               "Upload your image by clicking the upload area or drag and drop your JPG, PNG, or WebP file.",

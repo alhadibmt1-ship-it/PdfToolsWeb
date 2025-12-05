@@ -278,6 +278,7 @@ export default function ReorderPagesPage() {
 
           <ToolSEOContent
             toolName="Reorder PDF Pages"
+            toolId="reorder-pages"
             toolDescription="Rearrange pages in your PDF documents effortlessly with our intuitive drag-and-drop interface. Whether you need to move pages to different positions, reverse the entire document order, or create a completely custom page sequence, PDF HUB 24 makes it simple. Our visual reordering tool shows each page clearly so you can organize reports, presentations, manuscripts, and any multi-page documents exactly how you want them."
             howToSteps={[
               "Upload your PDF file by clicking the upload area or dragging and dropping.",

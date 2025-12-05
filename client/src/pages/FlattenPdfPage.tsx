@@ -167,6 +167,7 @@ export default function FlattenPdfPage() {
 
           <ToolSEOContent
             toolName="Flatten PDF"
+            toolId="flatten-pdf"
             toolDescription="Flatten your PDF documents to permanently merge interactive form fields, annotations, comments, and layers into static page content. Our free online tool converts fillable PDFs into non-editable documents while preserving all visible content exactly as it appears. Essential for archiving completed forms, securing documents before sharing, ensuring consistent display across all PDF viewers, and preparing documents for professional printing."
             howToSteps={[
               "Upload your PDF file by clicking the upload area or dragging and dropping your document.",

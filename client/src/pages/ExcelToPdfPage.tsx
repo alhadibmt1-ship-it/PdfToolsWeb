@@ -162,6 +162,7 @@ export default function ExcelToPdfPage() {
 
           <ToolSEOContent
             toolName="Excel to PDF Converter"
+            toolId="excel-to-pdf"
             toolDescription="Convert your Microsoft Excel spreadsheets (XLSX, XLS) to professional PDF documents with our free online converter. Our tool preserves your table structure, formatting, cell borders, and data layout to create clean, print-ready PDF files. Perfect for sharing financial reports, invoices, data tables, and business documents in a universally readable format."
             howToSteps={[
               "Upload your Excel file (XLSX or XLS format) by clicking or dragging.",

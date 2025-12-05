@@ -178,6 +178,7 @@ export default function ExtractImagesPage() {
 
           <ToolSEOContent
             toolName="Extract Images from PDF"
+            toolId="extract-images"
             toolDescription="Extract all embedded images from your PDF documents with our free online tool. Whether you need to save photos, diagrams, logos, or graphics from a PDF, our extractor pulls out every image at its original quality and packages them in a convenient ZIP download. Perfect for designers, marketers, and anyone who needs to reuse images from PDF files."
             howToSteps={[
               "Upload your PDF file by clicking the upload area or dragging and dropping your document.",

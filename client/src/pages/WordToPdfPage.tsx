@@ -149,6 +149,7 @@ export default function WordToPdfPage() {
 
           <ToolSEOContent
             toolName="Word to PDF Converter"
+            toolId="word-to-pdf"
             toolDescription="Convert your Microsoft Word documents (DOCX) to universally compatible PDF format with our free online converter. Our tool preserves all formatting including fonts, images, tables, headers, footers, and page layouts exactly as they appear in your original Word document. Perfect for sharing professional documents, creating print-ready files, or ensuring your documents look identical on any device or operating system."
             howToSteps={[
               "Upload your Word document (.docx file) by clicking the upload area or dragging and dropping.",

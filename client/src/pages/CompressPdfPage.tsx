@@ -8,7 +8,6 @@ import ProcessingState from "@/components/ProcessingState";
 import ToolSEOContent from "@/components/ToolSEOContent";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
-import TutorialVideo from "@/components/TutorialVideo";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -126,17 +125,6 @@ export default function CompressPdfPage() {
             <TrustBadges />
           </div>
 
-          <TutorialVideo 
-            toolName="Compress PDF" 
-            toolId="compress"
-            steps={[
-              "Upload your PDF file using the area below",
-              "Select your preferred compression level",
-              "Click 'Compress PDF' to process",
-              "Download your smaller PDF file"
-            ]}
-          />
-
           <div className="space-y-6">
             <FileUploadZone
               onFilesSelected={setFiles}
@@ -218,6 +206,7 @@ export default function CompressPdfPage() {
 
           <ToolSEOContent
             toolName="Compress PDF"
+            toolId="compress"
             toolDescription="Reduce your PDF file size instantly while maintaining high quality. Our free online PDF compressor helps you shrink documents for email, WhatsApp, websites, and cloud storage — all with one click. Choose from low, medium, or high compression based on your needs. No signup, no installation, no fees. Large PDF files can slow down uploads, email attachments, and website performance. PDF HUB 24 makes it easy to minimize your PDF size without losing clarity."
             howToSteps={[
               "Upload your PDF file (drag & drop or click to browse).",

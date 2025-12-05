@@ -119,6 +119,7 @@ export default function PdfViewerPage() {
 
           <ToolSEOContent
             toolName="PDF Viewer"
+            toolId="pdf-viewer"
             toolDescription="View any PDF document directly in your web browser without installing software or creating an account. Our free online PDF viewer lets you open, read, and navigate through PDF files instantly with zoom controls and smooth scrolling. Perfect for quickly checking documents, contracts, reports, and ebooks on any device — desktop, tablet, or mobile. PDF HUB 24 keeps your files completely private since they never leave your device."
             howToSteps={[
               "Upload your PDF file by clicking the upload area or simply drag and drop your document.",

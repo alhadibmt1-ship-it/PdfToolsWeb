@@ -170,6 +170,7 @@ export default function RepairPdfPage() {
 
           <ToolSEOContent
             toolName="Repair PDF"
+            toolId="repair-pdf"
             toolDescription="Fix corrupted, damaged, or broken PDF files with our free online PDF repair tool. If your PDF won't open, displays blank pages, shows error messages, or has missing content, our advanced repair engine analyzes the document structure and attempts to rebuild and recover your valuable content. We fix common issues like damaged headers, corrupted cross-reference tables, broken stream objects, and incomplete file downloads."
             howToSteps={[
               "Upload your damaged or corrupted PDF file by clicking the upload area or dragging and dropping.",
