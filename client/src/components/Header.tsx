@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import ThemeToggle from "./ThemeToggle";
 import SettingsDialog from "./SettingsDialog";
-import siteLogo from "@assets/generated_images/pdf_hub_24_logo_icon.png";
+import siteLogo from "@assets/generated_images/logo-64.webp";
 
 export default function Header() {
   return (

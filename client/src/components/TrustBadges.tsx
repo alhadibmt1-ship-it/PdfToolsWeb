@@ -1,6 +1,6 @@
 import { CheckCircle, Infinity, Shield } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import siteLogo from "@assets/generated_images/pdf_hub_24_logo_icon.png";
+import siteLogo from "@assets/generated_images/logo-64.webp";
 
 interface TrustBadgesProps {
   variant?: "inline" | "expanded";
