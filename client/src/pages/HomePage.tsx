@@ -36,7 +36,13 @@ import {
   Eye,
   GitCompare,
   ImageDown,
-  Settings
+  Settings,
+  Users,
+  Briefcase,
+  GraduationCap,
+  Building2,
+  HelpCircle,
+  Smartphone
 } from "lucide-react";
 import { PDF_TOOLS } from "@shared/schema";
 import Header from "@/components/Header";
@@ -361,6 +367,270 @@ export default function HomePage() {
                 </p>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Comprehensive SEO Content */}
+        <section className="py-16 bg-muted/30">
+          <div className="max-w-4xl mx-auto px-6">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-center">
+              All PDF Tools You Need - Free, Fast & Secure
+            </h2>
+            <p className="text-muted-foreground leading-relaxed text-center mb-8">
+              PDF HUB 24 offers a complete set of online PDF tools to convert, edit, optimize, and manage your documents. 
+              Whether you need to compress files, convert formats, merge PDFs, extract pages, or protect your documents — 
+              everything is available in one place, free of cost, and with no registration required.
+            </p>
+            <p className="text-muted-foreground leading-relaxed text-center">
+              Our tools are designed for students, professionals, office users, freelancers, and anyone who works with PDF files daily.
+            </p>
+          </div>
+        </section>
+
+        <section className="py-16">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="grid md:grid-cols-3 gap-8">
+              <div>
+                <div className="flex items-center gap-2 mb-4">
+                  <Download className="w-6 h-6 text-red-500" />
+                  <h3 className="text-xl font-semibold">Convert From PDF</h3>
+                </div>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Turn your PDF into the format you need:
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li><Link href="/pdf-to-word" className="hover:text-primary">PDF to Word</Link> - Edit documents easily</li>
+                  <li><Link href="/pdf-to-jpg" className="hover:text-primary">PDF to JPG</Link> - Convert pages to images</li>
+                  <li><Link href="/pdf-to-png" className="hover:text-primary">PDF to PNG</Link> - High-quality image output</li>
+                  <li><Link href="/pdf-to-excel" className="hover:text-primary">PDF to Excel</Link> - Extract tables and data</li>
+                  <li><Link href="/extract-text" className="hover:text-primary">Extract Text</Link> - Copy and reuse content instantly</li>
+                </ul>
+                <p className="text-sm text-muted-foreground mt-4">
+                  Perfect for editing, printing, uploading, or repurposing your documents.
+                </p>
+              </div>
+
+              <div>
+                <div className="flex items-center gap-2 mb-4">
+                  <Upload className="w-6 h-6 text-green-500" />
+                  <h3 className="text-xl font-semibold">Convert to PDF</h3>
+                </div>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Create clean, secure, and universally compatible PDF files:
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li><Link href="/word-to-pdf" className="hover:text-primary">Word to PDF</Link></li>
+                  <li><Link href="/jpg-to-pdf" className="hover:text-primary">JPG to PDF</Link></li>
+                  <li><Link href="/png-to-pdf" className="hover:text-primary">PNG to PDF</Link></li>
+                  <li><Link href="/excel-to-pdf" className="hover:text-primary">Excel to PDF</Link></li>
+                  <li><Link href="/html-to-pdf" className="hover:text-primary">HTML to PDF</Link></li>
+                </ul>
+                <p className="text-sm text-muted-foreground mt-4">
+                  Great for emailing documents, applying signatures, or preserving formatting.
+                </p>
+              </div>
+
+              <div>
+                <div className="flex items-center gap-2 mb-4">
+                  <FileText className="w-6 h-6 text-primary" />
+                  <h3 className="text-xl font-semibold">Edit PDF</h3>
+                </div>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Make changes to your PDF without downloading any software:
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li><Link href="/compress" className="hover:text-primary">Compress PDF</Link> - Reduce file size</li>
+                  <li><Link href="/merge" className="hover:text-primary">Merge PDF</Link> - Combine multiple documents</li>
+                  <li><Link href="/split" className="hover:text-primary">Split PDF</Link> - Separate pages easily</li>
+                  <li><Link href="/rotate" className="hover:text-primary">Rotate PDF</Link> - Fix upside-down pages</li>
+                  <li><Link href="/protect" className="hover:text-primary">Protect PDF</Link> - Add password for security</li>
+                </ul>
+                <p className="text-sm text-muted-foreground mt-4">
+                  All editing tools work online and complete within seconds.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-muted/30">
+          <div className="max-w-6xl mx-auto px-6">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-8 text-center">
+              Who Is This Website For?
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <Card className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center">
+                    <GraduationCap className="w-5 h-5 text-blue-500" />
+                  </div>
+                  <h3 className="font-semibold">Students</h3>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  Compress assignments, convert images to PDF, extract text, merge notes.
+                </p>
+              </Card>
+
+              <Card className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center">
+                    <Building2 className="w-5 h-5 text-green-500" />
+                  </div>
+                  <h3 className="font-semibold">Office Users</h3>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  Create PDFs from Word/Excel, protect documents, optimize for emailing.
+                </p>
+              </Card>
+
+              <Card className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center">
+                    <Briefcase className="w-5 h-5 text-purple-500" />
+                  </div>
+                  <h3 className="font-semibold">Professionals</h3>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  Prepare contracts, proposals, business files, secure PDFs.
+                </p>
+              </Card>
+
+              <Card className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center">
+                    <Users className="w-5 h-5 text-orange-500" />
+                  </div>
+                  <h3 className="font-semibold">Freelancers</h3>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  Convert client files, reduce file size, extract images or text.
+                </p>
+              </Card>
+
+              <Card className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center">
+                    <Upload className="w-5 h-5 text-red-500" />
+                  </div>
+                  <h3 className="font-semibold">Government Upload Users</h3>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  Resize PDFs to meet upload size limits for official submissions.
+                </p>
+              </Card>
+
+              <Card className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center">
+                    <Smartphone className="w-5 h-5 text-cyan-500" />
+                  </div>
+                  <h3 className="font-semibold">Mobile Users</h3>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  Works perfectly on Android and iPhone - process PDFs on the go.
+                </p>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16">
+          <div className="max-w-4xl mx-auto px-6">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-8 text-center">
+              What Makes PDF HUB 24 Better?
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <span className="text-muted-foreground">32+ PDF tools in one platform</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <span className="text-muted-foreground">Simple and clean interface</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <span className="text-muted-foreground">Cloud-powered conversion</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <span className="text-muted-foreground">Fast processing for all file sizes</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <span className="text-muted-foreground">Accurate conversion with minimal errors</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <span className="text-muted-foreground">Supports scanned PDFs with OCR</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <span className="text-muted-foreground">Works on all devices - mobile, tablet, desktop</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <span className="text-muted-foreground">No registration or signup required</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-muted/30">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="flex items-center justify-center gap-2 mb-8">
+              <HelpCircle className="w-6 h-6" />
+              <h2 className="text-2xl md:text-3xl font-semibold">
+                Frequently Asked Questions
+              </h2>
+            </div>
+            <div className="space-y-4">
+              <Card className="p-6">
+                <h3 className="font-semibold mb-2">Is PDF HUB 24 free to use?</h3>
+                <p className="text-muted-foreground text-sm">
+                  Yes, all tools are completely free with no hidden fees or signups. You can use every feature without any limitations.
+                </p>
+              </Card>
+              <Card className="p-6">
+                <h3 className="font-semibold mb-2">How long are my files stored?</h3>
+                <p className="text-muted-foreground text-sm">
+                  All files are deleted automatically after processing for maximum privacy. We never store or share your documents.
+                </p>
+              </Card>
+              <Card className="p-6">
+                <h3 className="font-semibold mb-2">Can I use this website on mobile?</h3>
+                <p className="text-muted-foreground text-sm">
+                  Absolutely — PDF HUB 24 works perfectly on Android and iPhone. Access all tools from any device, anywhere.
+                </p>
+              </Card>
+              <Card className="p-6">
+                <h3 className="font-semibold mb-2">Is there a limit to file size?</h3>
+                <p className="text-muted-foreground text-sm">
+                  Most PDFs can be processed normally. Very large files may take longer but still work. There are no artificial file size limits.
+                </p>
+              </Card>
+              <Card className="p-6">
+                <h3 className="font-semibold mb-2">Do you support all PDF operations?</h3>
+                <p className="text-muted-foreground text-sm">
+                  Yes, our platform includes 32+ tools for conversion, editing, compression, merging, splitting, security, and more.
+                </p>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-primary/5">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-4">
+              Ready to Get Started?
+            </h2>
+            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+              Choose any tool above and start processing your PDF files instantly. 
+              No registration, no downloads, no limits - just fast, reliable PDF tools.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Trusted by thousands of users worldwide for all their PDF needs.
+            </p>
           </div>
         </section>
       </main>
