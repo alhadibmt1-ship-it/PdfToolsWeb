@@ -408,4 +408,69 @@
       transparent 100%
     );
   }
+  
+  /* Mobile-specific optimizations */
+  @media (max-width: 640px) {
+    /* Reduce motion on mobile for performance */
+    .premium-card:hover {
+      transform: none;
+    }
+    
+    /* Improve touch targets */
+    .premium-card {
+      min-height: 44px;
+    }
+    
+    /* Touch-friendly active states */
+    .premium-card:active {
+      transform: scale(0.98);
+      opacity: 0.9;
+    }
+    
+    /* Better scrolling performance */
+    .overscroll-contain {
+      overscroll-behavior: contain;
+    }
+    
+    /* Reduce shadow complexity on mobile */
+    .premium-card {
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.03);
+    }
+  }
+  
+  /* Touch device optimizations */
+  @media (hover: none) and (pointer: coarse) {
+    /* Remove hover effects on touch devices */
+    .premium-card:hover {
+      transform: none;
+      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.04), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+    }
+    
+    /* Add active state for touch feedback */
+    .premium-card:active {
+      background: hsl(var(--accent) / 0.5);
+      transform: scale(0.98);
+    }
+    
+    /* Improve tap targets */
+    button, a, [role="button"] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+  
+  /* Line clamp utility */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }
