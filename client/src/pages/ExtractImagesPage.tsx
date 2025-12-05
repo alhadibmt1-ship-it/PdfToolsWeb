@@ -178,46 +178,87 @@ export default function ExtractImagesPage() {
 
           <ToolSEOContent
             toolName="Extract Images from PDF"
-            toolDescription="Extract all embedded images from your PDF documents with our free online tool. Whether you need to save photos, diagrams, or graphics from a PDF, our extractor pulls out every image and packages them in a convenient ZIP download."
+            toolDescription="Extract all embedded images from your PDF documents with our free online tool. Whether you need to save photos, diagrams, logos, or graphics from a PDF, our extractor pulls out every image at its original quality and packages them in a convenient ZIP download. Perfect for designers, marketers, and anyone who needs to reuse images from PDF files."
             howToSteps={[
-              "Upload your PDF file by clicking the upload area or dragging and dropping.",
-              "Click the Extract Images button to start processing.",
-              "Wait while we scan your PDF for all embedded images.",
-              "Download the ZIP file containing all extracted images."
+              "Upload your PDF file by clicking the upload area or dragging and dropping your document.",
+              "Click the 'Extract Images' button to start processing your PDF.",
+              "Wait while we scan your PDF for all embedded images — the count is shown when complete.",
+              "Download the ZIP file containing all extracted images in their original quality."
             ]}
             benefits={[
-              "Extract all images from any PDF",
-              "Images saved in original quality",
-              "Download as convenient ZIP file",
-              "Works with photos, diagrams, and graphics",
-              "Preserves original image formats",
+              "Extract all images from any PDF instantly",
+              "Images saved in original quality without compression",
+              "Download all images as a convenient ZIP file",
+              "Works with photos, diagrams, logos, and graphics",
+              "Preserves original image formats (JPEG, PNG)",
               "No software installation required",
-              "Fast processing for large PDFs",
-              "Completely free with no limits"
+              "Fast processing even for large PDFs",
+              "See the number of images found before downloading",
+              "Completely free with no limits or registration"
             ]}
             faqs={[
               {
                 question: "What image formats are extracted?",
-                answer: "Images are extracted in their original format when possible (JPEG, PNG). Some embedded formats may be converted to PNG for compatibility."
+                answer: "Images are extracted in their original format when possible — typically JPEG for photographs and PNG for graphics. Some embedded formats may be converted to PNG for broader compatibility. The quality remains identical to the original embedded images."
               },
               {
                 question: "Will the image quality be preserved?",
-                answer: "Yes, images are extracted at their original quality and resolution. There's no compression or quality loss during extraction."
+                answer: "Yes, images are extracted at their original quality and resolution. There's no compression, resizing, or quality loss during extraction. What you get is exactly what was embedded in the PDF."
               },
               {
                 question: "What if my PDF has no images?",
-                answer: "If no extractable images are found, you'll receive a message. Note that text rendered as part of the PDF is not extractable as images."
+                answer: "If no extractable images are found, you'll receive a notification. Note that text, vector graphics, and decorative elements rendered as part of the PDF structure are not extractable as separate images — only embedded raster images can be extracted."
               },
               {
                 question: "Can I extract images from scanned PDFs?",
-                answer: "Scanned PDFs typically contain the entire page as one image. You would get the full page scans, not individual elements within them."
+                answer: "Scanned PDFs typically contain the entire page as one image. When you extract images from a scanned PDF, you'll get the full page scans as individual images, not separate elements within them. Each scanned page becomes one image file."
               },
               {
                 question: "Is it free to use?",
-                answer: "Yes, fully free. No registration, no limits, no hidden costs."
+                answer: "Yes, completely free with no registration required. There are no limits on file size, number of images, or how many PDFs you can process. No hidden costs or subscriptions."
               }
             ]}
-            keywords={["extract pdf images", "get images from pdf", "pdf image extractor", "save pdf images"]}
+            keywords={["extract images from pdf", "pdf image extractor", "get images from pdf", "save pdf images", "download pdf photos"]}
+            relatedLinks={[
+              { text: "Convert pages to images using PDF to JPG", href: "/pdf-to-jpg" },
+              { text: "Convert pages to PNG using PDF to PNG", href: "/pdf-to-png" },
+              { text: "Extract text content using Extract Text", href: "/extract-text" },
+              { text: "Split PDF into separate pages using Split PDF", href: "/split" }
+            ]}
+            extraSections={[
+              {
+                title: "Extract Images vs Convert to Images",
+                content: "Understanding the difference helps you choose the right tool for your needs.",
+                items: [
+                  "Extract Images: Gets embedded photos, graphics, and logos from within the PDF",
+                  "PDF to JPG/PNG: Converts entire PDF pages into image files",
+                  "Use Extract Images when you need specific graphics from a PDF",
+                  "Use PDF to JPG when you want each page as a complete image",
+                  "Both tools preserve original quality"
+                ]
+              },
+              {
+                title: "Common Use Cases",
+                content: "Our image extractor is popular with professionals and creatives:",
+                items: [
+                  "Designers extracting logos and graphics for projects",
+                  "Marketers recovering images from brochures and catalogs",
+                  "Researchers saving diagrams and charts from papers",
+                  "Content creators repurposing images for new materials",
+                  "Archivists preserving embedded photos from documents",
+                  "Anyone needing to reuse images from PDF files"
+                ]
+              }
+            ]}
+            exampleTable={{
+              title: "Image Extraction Examples",
+              rows: [
+                { label: "Product Catalog (50 images)", before: "PDF with product photos", after: "ZIP with 50 images" },
+                { label: "Annual Report (20 charts)", before: "Corporate PDF", after: "ZIP with 20 chart images" },
+                { label: "Photo Album PDF", before: "Photo collection", after: "All photos as separate files" },
+                { label: "Presentation PDF (15 graphics)", before: "Slide deck", after: "ZIP with 15 graphics" }
+              ]
+            }}
           />
           
           <RelatedTools currentToolId="extract-images" />
