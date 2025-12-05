@@ -50,7 +50,7 @@ import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useSEO } from "@/hooks/useSEO";
-import siteLogo from "@assets/generated_images/pdf_hub_24_logo_icon.png";
+import siteLogo from "@assets/generated_images/logo-64.webp";
 
 const iconMap: Record<string, any> = {
   merge: Combine,
