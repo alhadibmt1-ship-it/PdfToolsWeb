@@ -185,46 +185,88 @@ export default function ResizePdfPage() {
 
           <ToolSEOContent
             toolName="Resize PDF"
-            toolDescription="Change the page size of your PDF documents with our free online PDF resizing tool. Convert PDFs between different standard paper sizes including A4, Letter, Legal, A3, A5, and Tabloid. Perfect for printing preparation or document standardization."
+            toolDescription="Change the page dimensions of your PDF documents to any standard paper size with our free online PDF resizing tool. Convert PDFs between A4, Letter, Legal, A3, A5, and Tabloid sizes with automatic content scaling to fit the new dimensions. Perfect for preparing documents for specific printers, standardizing page sizes across multiple documents, or converting international document formats for local printing requirements."
             howToSteps={[
-              "Upload your PDF file by clicking the upload area or dragging and dropping.",
-              "Select your desired target page size from the dropdown.",
-              "Click the Resize PDF button to process all pages.",
-              "Download your resized PDF document."
+              "Upload your PDF file by clicking the upload area or dragging and dropping your document.",
+              "Select your desired target page size from the dropdown menu (A4, Letter, Legal, A3, A5, or Tabloid).",
+              "Click the 'Resize PDF' button to scale and reformat all pages to the new dimensions.",
+              "Download your resized PDF document ready for printing or sharing."
             ]}
             benefits={[
-              "Convert between standard paper sizes",
-              "Supports A4, Letter, Legal, A3, A5, Tabloid",
-              "Maintains content proportions",
-              "All pages resized uniformly",
-              "Perfect for print preparation",
-              "Standardize document sizes",
+              "Convert between all standard international paper sizes",
+              "Supports A4, A3, A5, Letter, Legal, and Tabloid formats",
+              "Content scales proportionally without distortion",
+              "All pages resized uniformly for consistency",
+              "Perfect for print preparation and standardization",
+              "Convert US Letter to A4 for international use",
+              "Prepare large format prints with A3 or Tabloid",
               "No software installation required",
-              "Free with no registration"
+              "Completely free with no registration needed"
             ]}
             faqs={[
               {
-                question: "Will my content be distorted?",
-                answer: "No, the content is scaled proportionally to fit the new page size while maintaining the original aspect ratio. Some additional margins may appear if the proportions differ."
+                question: "Will my content be distorted when resizing?",
+                answer: "No, the content is scaled proportionally to fit the new page size while maintaining the original aspect ratio. Since different paper sizes have slightly different proportions (e.g., Letter vs A4), small margins may appear on some edges to preserve the correct proportions of your content."
               },
               {
-                question: "What page sizes are available?",
-                answer: "We support common paper sizes: A4, A3, A5, Letter, Legal, and Tabloid. These cover most printing and document needs."
+                question: "What page sizes are available for resizing?",
+                answer: "We support the most common standard paper sizes: A4 (210x297mm - international standard), A3 (297x420mm - large format), A5 (148x210mm - half of A4), Letter (8.5x11in - US standard), Legal (8.5x14in - US legal), and Tabloid (11x17in - large US format). These sizes cover virtually all printing and document needs worldwide."
               },
               {
-                question: "Does resizing affect all pages?",
-                answer: "Yes, all pages in your PDF are resized to the selected paper size uniformly."
+                question: "Does resizing affect all pages in my document?",
+                answer: "Yes, all pages in your PDF are resized uniformly to the selected paper size. This ensures consistency throughout your entire document, which is essential for professional printing and document management."
               },
               {
-                question: "Can I resize a PDF for printing?",
-                answer: "Absolutely! This tool is perfect for converting documents to your printer's paper size, like converting Letter to A4 or vice versa."
+                question: "Can I resize a PDF for a specific printer?",
+                answer: "Absolutely! This tool is perfect for preparing documents to match your printer's paper size. For example, if you receive a US Letter document but use A4 paper, you can resize it for perfect printing without manual scaling adjustments."
               },
               {
-                question: "Is it free to use?",
-                answer: "Yes, fully free. No registration, no limits, no hidden costs."
+                question: "What's the difference between resizing and cropping a PDF?",
+                answer: "Resizing changes the entire page dimensions and scales the content to fit the new size, while cropping removes portions of the page from the edges without scaling the remaining content. Use resize for changing paper sizes, and crop for removing margins or borders."
               }
             ]}
-            keywords={["resize pdf", "change pdf size", "pdf to a4", "pdf page size"]}
+            keywords={["resize pdf online", "change pdf page size", "convert pdf to a4", "pdf letter to a4", "resize pdf free"]}
+            relatedLinks={[
+              { text: "Remove margins using Crop PDF", href: "/crop-pdf" },
+              { text: "Reduce file size using Compress PDF", href: "/compress" },
+              { text: "Rotate pages if needed using Rotate PDF", href: "/rotate" },
+              { text: "Prepare for printing using PDF to JPG", href: "/pdf-to-jpg" }
+            ]}
+            extraSections={[
+              {
+                title: "When to Resize PDF Documents",
+                content: "PDF resizing is essential for various professional and personal document management scenarios:",
+                items: [
+                  "Convert US documents (Letter) to international format (A4)",
+                  "Prepare documents for specific printer paper trays",
+                  "Standardize page sizes across merged documents",
+                  "Create large format prints from standard documents",
+                  "Reduce to A5 for compact printing or booklets",
+                  "Prepare legal documents on proper Legal paper size"
+                ]
+              },
+              {
+                title: "Paper Size Reference Guide",
+                content: "Understanding paper sizes helps you choose the right format for your needs:",
+                items: [
+                  "A4 (210×297mm / 8.27×11.69in) - Standard international size",
+                  "Letter (8.5×11in / 216×279mm) - Standard US size",
+                  "Legal (8.5×14in / 216×356mm) - US legal documents",
+                  "A3 (297×420mm / 11.69×16.54in) - Large posters, drawings",
+                  "A5 (148×210mm / 5.83×8.27in) - Booklets, small prints",
+                  "Tabloid (11×17in / 279×432mm) - US large format"
+                ]
+              }
+            ]}
+            exampleTable={{
+              title: "Common PDF Resize Scenarios",
+              rows: [
+                { label: "US to International", before: "Letter (8.5×11in)", after: "A4 (210×297mm)" },
+                { label: "International to US", before: "A4 (210×297mm)", after: "Letter (8.5×11in)" },
+                { label: "Large Format Print", before: "A4 standard", after: "A3 poster size" },
+                { label: "Compact Booklet", before: "A4 full size", after: "A5 half size" }
+              ]
+            }}
           />
           
           <RelatedTools currentToolId="resize-pdf" />
