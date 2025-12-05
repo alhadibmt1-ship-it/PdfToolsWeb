@@ -9,7 +9,6 @@ import SortablePdfPages from "@/components/SortablePdfPages";
 import ToolSEOContent from "@/components/ToolSEOContent";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
-import TutorialVideo from "@/components/TutorialVideo";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
@@ -144,17 +143,6 @@ export default function MergePdfPage() {
             <TrustBadges />
           </div>
 
-          <TutorialVideo 
-            toolName="Merge PDF" 
-            toolId="merge"
-            steps={[
-              "Upload multiple PDF files below",
-              "Drag and drop to reorder pages",
-              "Click 'Merge PDFs' to combine",
-              "Download your merged document"
-            ]}
-          />
-
           <div className="space-y-6">
             <FileUploadZone
               onFilesSelected={handleFilesSelected}
@@ -262,6 +250,7 @@ export default function MergePdfPage() {
 
           <ToolSEOContent
             toolName="Merge PDF Files"
+            toolId="merge"
             toolDescription="Combine multiple PDF documents into a single unified file with our free online PDF merger tool. Whether you're consolidating reports, combining chapters of an eBook, assembling legal documents, or merging scanned pages, PDF HUB 24 makes it effortless. Our advanced merge tool lets you preview every page, drag and drop to reorder, and remove unwanted content before creating your final document."
             howToSteps={[
               "Upload multiple PDF files by clicking the upload area or dragging and dropping (up to 10 files at once).",

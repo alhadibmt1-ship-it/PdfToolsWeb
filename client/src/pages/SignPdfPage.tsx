@@ -333,6 +333,7 @@ export default function SignPdfPage() {
 
           <ToolSEOContent
             toolName="Sign PDF"
+            toolId="sign-pdf"
             toolDescription="Add your electronic signature to PDF documents instantly with our free online signing tool. Choose from three convenient methods: type your name in a signature-style font, draw your signature with your mouse or touchscreen, or upload an image of your handwritten signature. Sign contracts, agreements, forms, and any PDF documents without printing, scanning, or faxing — saving time, paper, and money."
             howToSteps={[
               "Upload the PDF document you need to sign by clicking the upload area or dragging and dropping.",

@@ -188,6 +188,7 @@ export default function SplitPdfPage() {
 
           <ToolSEOContent
             toolName="Split PDF"
+            toolId="split"
             toolDescription="Extract specific pages or page ranges from your PDF documents with our free online PDF splitter tool. Whether you need to separate chapters from an eBook, extract specific sections from a lengthy report, or break down a large document into smaller manageable files, PDF HUB 24 makes it simple and fast. Specify exactly which pages you want, and download a clean new PDF in seconds."
             howToSteps={[
               "Upload your PDF file by clicking the upload area or dragging and dropping the document.",

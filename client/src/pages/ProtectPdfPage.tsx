@@ -215,6 +215,7 @@ export default function ProtectPdfPage() {
 
           <ToolSEOContent
             toolName="Protect PDF"
+            toolId="protect-pdf"
             toolDescription="Secure your sensitive PDF documents with password protection using industry-standard AES encryption. Our free online tool encrypts your PDF files so only authorized users with the correct password can open, view, print, or copy the contents. Perfect for confidential business documents, financial records, legal contracts, personal identification files, and any private information you need to share securely via email or cloud storage."
             howToSteps={[
               "Upload your PDF file by clicking the upload area or dragging and dropping your document.",

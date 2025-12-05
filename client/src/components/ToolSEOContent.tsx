@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle2, Shield, Zap, Clock, HelpCircle } from "lucide-react";
+import { CheckCircle2, Shield, Zap, Clock, HelpCircle, Play } from "lucide-react";
 import { Link } from "wouter";
 
 interface FAQ {
@@ -26,6 +26,7 @@ interface ExampleRow {
 
 interface ToolSEOContentProps {
   toolName: string;
+  toolId?: string;
   toolDescription: string;
   howToSteps: string[];
   benefits: string[];
@@ -39,8 +40,44 @@ interface ToolSEOContentProps {
   };
 }
 
+const toolVideoData: Record<string, { duration: string }> = {
+  "merge": { duration: "0:45" },
+  "split": { duration: "0:38" },
+  "compress": { duration: "0:42" },
+  "pdf-to-word": { duration: "0:55" },
+  "pdf-to-jpg": { duration: "0:40" },
+  "pdf-to-png": { duration: "0:40" },
+  "pdf-to-excel": { duration: "0:50" },
+  "word-to-pdf": { duration: "0:35" },
+  "jpg-to-pdf": { duration: "0:48" },
+  "png-to-pdf": { duration: "0:45" },
+  "excel-to-pdf": { duration: "0:42" },
+  "html-to-pdf": { duration: "0:55" },
+  "webp-to-pdf": { duration: "0:38" },
+  "rotate": { duration: "0:32" },
+  "delete-pages": { duration: "0:45" },
+  "protect-pdf": { duration: "0:50" },
+  "unlock-pdf": { duration: "0:35" },
+  "add-page-numbers": { duration: "0:48" },
+  "add-watermark": { duration: "0:52" },
+  "reorder-pages": { duration: "0:58" },
+  "crop-pdf": { duration: "0:45" },
+  "resize-pdf": { duration: "0:40" },
+  "sign-pdf": { duration: "1:05" },
+  "flatten-pdf": { duration: "0:35" },
+  "grayscale-pdf": { duration: "0:30" },
+  "repair-pdf": { duration: "0:42" },
+  "extract-text": { duration: "0:38" },
+  "extract-images": { duration: "0:45" },
+  "ocr-pdf": { duration: "1:15" },
+  "pdf-viewer": { duration: "0:28" },
+  "compare-pdf": { duration: "0:55" },
+  "image-compressor": { duration: "0:40" },
+};
+
 export default function ToolSEOContent({
   toolName,
+  toolId,
   toolDescription,
   howToSteps,
   benefits,
@@ -55,6 +92,8 @@ export default function ToolSEOContent({
     : keywords.length > 0 
       ? keywords.join(" or ") 
       : "";
+  
+  const videoInfo = toolId ? toolVideoData[toolId] : null;
 
   return (
     <div className="mt-16 space-y-12">
@@ -88,7 +127,7 @@ export default function ToolSEOContent({
 
       <section>
         <h2 className="text-2xl font-bold mb-6">How to Use This Tool</h2>
-        <div className="grid gap-4">
+        <div className="grid gap-4 mb-8">
           {howToSteps.map((step, index) => (
             <div key={index} className="flex gap-4 items-start">
               <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm">
@@ -100,6 +139,58 @@ export default function ToolSEOContent({
             </div>
           ))}
         </div>
+        
+        {videoInfo && (
+          <Card className="p-4 sm:p-6 bg-gradient-to-br from-primary/5 to-accent/5 border-primary/10">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+              <div className="relative w-full sm:w-64 md:w-72 lg:w-80 flex-shrink-0">
+                <div className="aspect-video rounded-lg bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center relative overflow-hidden group cursor-pointer">
+                  <div className="absolute inset-0 opacity-10">
+                    <div className="absolute top-4 left-4 w-8 h-10 border-2 border-white rounded" />
+                    <div className="absolute bottom-4 right-4 w-6 h-8 border-2 border-white rounded" />
+                    <div className="absolute top-1/2 left-1/3 w-5 h-6 border-2 border-white rounded transform -translate-y-1/2" />
+                  </div>
+                  
+                  <div className="relative z-10 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-primary/90 flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all shadow-lg shadow-primary/30">
+                    <Play className="w-6 h-6 sm:w-7 sm:h-7 text-primary-foreground ml-1" fill="currentColor" />
+                  </div>
+                  
+                  <div className="absolute bottom-2 right-2 px-2 py-1 rounded bg-black/70 text-white text-xs font-medium flex items-center gap-1">
+                    <Clock className="w-3 h-3" />
+                    {videoInfo.duration}
+                  </div>
+                  
+                  <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="text-white text-sm font-medium px-3 py-1.5 rounded-full bg-primary/80">
+                      Video Coming Soon
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="flex-1 min-w-0">
+                <h3 className="font-semibold text-base sm:text-lg mb-3 flex items-center gap-2">
+                  <Play className="w-4 h-4 text-primary" />
+                  Watch: How to {toolName}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                  Follow along with our step-by-step video tutorial to learn how to use the {toolName.toLowerCase()} tool effectively. 
+                  Perfect for first-time users who prefer visual learning.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
+                    <CheckCircle2 className="w-3 h-3" />
+                    No account needed
+                  </span>
+                  <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
+                    <Zap className="w-3 h-3" />
+                    Quick & easy
+                  </span>
+                </div>
+              </div>
+            </div>
+          </Card>
+        )}
       </section>
 
       <section>

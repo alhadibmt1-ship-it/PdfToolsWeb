@@ -208,6 +208,7 @@ export default function CropPdfPage() {
 
           <ToolSEOContent
             toolName="Crop PDF"
+            toolId="crop-pdf"
             toolDescription="Trim unwanted margins, white space, and borders from your PDF documents with our free online PDF cropping tool. Precisely remove excess space from all four edges of every page in your document with custom measurements. Perfect for removing printer margins from scanned documents, focusing on specific content areas, preparing PDFs for presentations, or optimizing documents for digital viewing on screens and mobile devices."
             howToSteps={[
               "Upload your PDF file by clicking the upload area or dragging and dropping your document.",

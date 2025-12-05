@@ -164,6 +164,7 @@ export default function PdfToJpgPage() {
 
           <ToolSEOContent
             toolName="PDF to JPG Converter"
+            toolId="pdf-to-jpg"
             toolDescription="Convert your PDF documents into high-quality JPG images with our free online converter. Each page becomes a separate image file at high resolution (up to 2000x2000 pixels), perfect for presentations, social media, websites, or archiving. Single-page PDFs download directly as JPG files, while multi-page documents are packaged in a convenient ZIP file for easy access."
             howToSteps={[
               "Upload your PDF file by clicking the upload area or dragging and dropping your document.",

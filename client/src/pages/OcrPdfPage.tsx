@@ -189,6 +189,7 @@ export default function OcrPdfPage() {
 
           <ToolSEOContent
             toolName="OCR PDF"
+            toolId="ocr-pdf"
             toolDescription="Extract text from scanned PDF documents and image-based PDFs using optical character recognition (OCR). Our free online tool recognizes text in scanned documents, photos of documents, receipts, and PDFs where text is embedded as images. Unlike regular text extraction, OCR can read text from images, making previously unsearchable documents fully accessible and editable."
             howToSteps={[
               "Upload your scanned PDF or image-based PDF file by clicking the upload area or dragging and dropping.",

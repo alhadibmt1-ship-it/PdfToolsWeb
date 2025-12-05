@@ -177,6 +177,7 @@ export default function ExtractTextPage() {
 
           <ToolSEOContent
             toolName="Extract Text from PDF"
+            toolId="extract-text"
             toolDescription="Pull all text content from your PDF documents with our free online text extractor. Whether you need to copy content for editing, search through document text, or extract data for analysis, our tool quickly extracts readable text from any PDF. Copy directly to clipboard with one click or download as a plain text file — perfect for repurposing content, research, and data processing."
             howToSteps={[
               "Upload your PDF file by clicking the upload area or dragging and dropping your document.",

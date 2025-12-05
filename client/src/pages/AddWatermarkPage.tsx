@@ -228,6 +228,7 @@ export default function AddWatermarkPage() {
 
           <ToolSEOContent
             toolName="Add Watermark to PDF"
+            toolId="add-watermark"
             toolDescription="Add professional text watermarks to your PDF documents with our free online tool. Whether you need to mark documents as CONFIDENTIAL, DRAFT, SAMPLE, or add your company name for branding, PDF HUB 24 gives you full control. Customize the watermark text, opacity level, font size, and rotation angle to achieve exactly the look you need. Watermarks are applied to every page automatically, providing consistent protection and branding throughout your document."
             howToSteps={[
               "Upload your PDF file by clicking the upload area or dragging and dropping.",

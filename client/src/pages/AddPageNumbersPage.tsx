@@ -205,6 +205,7 @@ export default function AddPageNumbersPage() {
 
           <ToolSEOContent
             toolName="Add Page Numbers to PDF"
+            toolId="add-page-numbers"
             toolDescription="Add professional page numbers to your PDF documents with our free online tool. Choose from six position options (top or bottom, left, center, or right), set a custom starting number, and adjust the font size to match your document style. Perfect for reports, manuscripts, legal documents, academic papers, and any multi-page PDFs that need clear page identification for printing or navigation."
             howToSteps={[
               "Upload your PDF file by clicking the upload area or dragging and dropping.",

@@ -188,6 +188,7 @@ export default function DeletePagesPage() {
 
           <ToolSEOContent
             toolName="Delete PDF Pages"
+            toolId="delete-pages"
             toolDescription="Remove unwanted pages from your PDF documents quickly and easily with our free online page deletion tool. Whether you need to eliminate blank pages, remove sensitive information before sharing, delete outdated sections, or clean up scanned documents, PDF HUB 24 makes it simple. Just specify the page numbers you want to remove and download your streamlined PDF in seconds - your original file stays completely intact."
             howToSteps={[
               "Upload your PDF file by clicking the upload area or dragging and dropping.",

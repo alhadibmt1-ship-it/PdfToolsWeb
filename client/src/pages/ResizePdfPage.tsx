@@ -185,6 +185,7 @@ export default function ResizePdfPage() {
 
           <ToolSEOContent
             toolName="Resize PDF"
+            toolId="resize-pdf"
             toolDescription="Change the page dimensions of your PDF documents to any standard paper size with our free online PDF resizing tool. Convert PDFs between A4, Letter, Legal, A3, A5, and Tabloid sizes with automatic content scaling to fit the new dimensions. Perfect for preparing documents for specific printers, standardizing page sizes across multiple documents, or converting international document formats for local printing requirements."
             howToSteps={[
               "Upload your PDF file by clicking the upload area or dragging and dropping your document.",

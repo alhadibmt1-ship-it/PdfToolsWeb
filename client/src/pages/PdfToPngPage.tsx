@@ -175,6 +175,7 @@ export default function PdfToPngPage() {
 
           <ToolSEOContent
             toolName="PDF to PNG Converter"
+            toolId="pdf-to-png"
             toolDescription="Our PDF to PNG converter transforms your PDF documents into high-quality PNG images with lossless compression. PNG format supports transparent backgrounds and maintains crisp edges, making it ideal for graphics, logos, diagrams, and images that require pixel-perfect quality. Each page becomes a separate PNG file at high resolution (up to 2048px), perfect for professional use."
             howToSteps={[
               "Upload your PDF file by clicking the upload area or dragging and dropping your document.",

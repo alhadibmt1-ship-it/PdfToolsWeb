@@ -177,6 +177,7 @@ export default function RotatePdfPage() {
 
           <ToolSEOContent
             toolName="Rotate PDF"
+            toolId="rotate"
             toolDescription="Fix the orientation of your PDF documents instantly with our free online PDF rotation tool. Whether your scanned document came out sideways, your mobile photos are upside down, or you need to convert between landscape and portrait layouts, PDF HUB 24 makes it effortless. Choose from 90°, 180°, or 270° rotation angles and apply the change to all pages with a single click - no quality loss, no watermarks."
             howToSteps={[
               "Upload your PDF file by clicking the upload area or dragging and dropping.",
