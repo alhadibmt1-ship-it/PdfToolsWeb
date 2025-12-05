@@ -149,46 +149,88 @@ export default function JpgToPdfPage() {
 
           <ToolSEOContent
             toolName="JPG to PDF Converter"
-            toolDescription="Convert your JPG, PNG, and other image files into professional PDF documents with our free online converter. Perfect for creating photo albums, portfolios, scanned document archives, or combining multiple images into one easy-to-share file. Each image becomes a page in your PDF, maintaining the original upload order."
+            toolDescription="Convert your JPG and JPEG images into professional PDF documents with our free online converter. Our tool allows you to combine multiple photos into a single PDF file, making it perfect for creating photo albums, portfolios, scanned document archives, or presentations. Each image becomes a full page in your PDF, preserving the original quality and appearing in your upload order."
             howToSteps={[
-              "Select one or more image files (JPG, PNG, or other formats) by clicking upload or dragging files.",
-              "Arrange your images in the desired order - they'll appear as pages in this sequence.",
-              "Click the Convert button to create your PDF document.",
-              "Download your finished PDF with all images as pages."
+              "Select one or more JPG/JPEG images by clicking the upload area or dragging and dropping files.",
+              "Review your selected images - they will appear as pages in the order uploaded.",
+              "Click 'Convert to PDF' to create your multi-page PDF document.",
+              "Download your finished PDF containing all images as separate pages."
             ]}
             benefits={[
-              "Convert multiple images to a single PDF document",
-              "Supports JPG, PNG, and other common image formats",
-              "Images appear in the order you upload them",
-              "Each image becomes a full page in the PDF",
-              "Perfect for photo albums and portfolios",
-              "Ideal for archiving scanned documents",
-              "Easy sharing - one file instead of many",
-              "High-quality output preserves image detail"
+              "Convert multiple JPG images to a single PDF document",
+              "Supports JPG, JPEG, and other common image formats",
+              "Images appear in the exact order you upload them",
+              "Each image becomes a full-size page in the PDF",
+              "Perfect for creating photo albums and portfolios",
+              "Ideal for archiving scanned documents and receipts",
+              "Easy sharing - send one PDF instead of many images",
+              "High-quality output preserves all image detail",
+              "No software installation or account required"
             ]}
             faqs={[
               {
                 question: "What image formats are supported?",
-                answer: "We support all common image formats including JPG/JPEG, PNG, GIF, BMP, and WebP. Simply upload your images and our tool handles the rest."
+                answer: "Our JPG to PDF converter primarily supports JPG and JPEG images, but also accepts PNG, GIF, BMP, and WebP formats. Simply upload your images and our tool automatically handles the conversion process."
               },
               {
                 question: "How many images can I convert at once?",
-                answer: "You can upload and convert up to 10 images at a time. Each image will become a separate page in your PDF document."
+                answer: "You can upload and convert up to 10 images at a time. Each image becomes a separate page in your PDF document. For larger batches, you can convert multiple times and merge the resulting PDFs."
               },
               {
-                question: "Will my images lose quality?",
-                answer: "No, your images are embedded in the PDF at their original quality. We don't compress or reduce the resolution of your photos."
+                question: "Will my images lose quality during conversion?",
+                answer: "No, your images are embedded in the PDF at their original resolution and quality. We do not compress or reduce the quality of your photos during the conversion process."
               },
               {
-                question: "Can I change the order of pages?",
-                answer: "Images appear in the PDF in the order you upload them. To change the order, remove and re-upload images in your preferred sequence."
+                question: "Can I change the order of pages in the PDF?",
+                answer: "Images appear in the PDF in the order you upload them. To change the order, you can remove and re-upload images in your preferred sequence, or use our Reorder Pages tool after conversion."
               },
               {
                 question: "What size will the PDF pages be?",
-                answer: "Each page is sized to fit your image. The PDF automatically adjusts page dimensions to match each image's aspect ratio."
+                answer: "Each page is automatically sized to fit your image dimensions. The PDF adjusts page dimensions to match each image's aspect ratio, ensuring your photos display perfectly without cropping or distortion."
               }
             ]}
-            keywords={["convert images to pdf", "photo to pdf", "combine images into pdf"]}
+            keywords={["jpg to pdf", "convert images to pdf", "photo to pdf", "combine jpg into pdf", "jpeg to pdf converter"]}
+            relatedLinks={[
+              { text: "Convert PNG images using PNG to PDF", href: "/png-to-pdf" },
+              { text: "Convert WebP images using WebP to PDF", href: "/webp-to-pdf" },
+              { text: "Extract images from PDF using Extract Images", href: "/extract-images" },
+              { text: "Combine multiple PDFs using Merge PDF", href: "/merge" }
+            ]}
+            extraSections={[
+              {
+                title: "Why Convert JPG Images to PDF?",
+                content: "Converting JPG images to PDF offers many advantages for organization and sharing:",
+                items: [
+                  "Combine multiple photos into a single shareable file",
+                  "Create professional photo albums and portfolios",
+                  "Archive scanned documents, receipts, and records",
+                  "Easier email attachments - one file instead of many",
+                  "Universal format that opens on any device",
+                  "Preserve image quality for printing"
+                ]
+              },
+              {
+                title: "Common Use Cases for JPG to PDF",
+                content: "Our JPG to PDF converter is popular for various everyday tasks:",
+                items: [
+                  "Creating digital photo books and memories",
+                  "Compiling product images for catalogs",
+                  "Archiving scanned receipts and invoices",
+                  "Building photography portfolios",
+                  "Submitting multi-page documents and forms",
+                  "Sharing vacation photos with family"
+                ]
+              }
+            ]}
+            exampleTable={{
+              title: "JPG to PDF Conversion Examples",
+              rows: [
+                { label: "Single Photo (4000x3000)", before: "2.5 MB JPG", after: "2.6 MB PDF" },
+                { label: "5 Product Images", before: "8 MB total", after: "8.2 MB PDF" },
+                { label: "10 Scanned Receipts", before: "15 MB total", after: "14 MB PDF" },
+                { label: "Photo Album (10 pages)", before: "25 MB total", after: "24 MB PDF" }
+              ]
+            }}
           />
           
           <RelatedTools currentToolId="jpg-to-pdf" />
