@@ -1,9 +1,27 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle2, Shield, Zap, Clock, HelpCircle } from "lucide-react";
+import { Link } from "wouter";
 
 interface FAQ {
   question: string;
   answer: string;
+}
+
+interface RelatedLink {
+  text: string;
+  href: string;
+}
+
+interface ExtraSection {
+  title: string;
+  content: string;
+  items?: string[];
+}
+
+interface ExampleRow {
+  label: string;
+  before: string;
+  after: string;
 }
 
 interface ToolSEOContentProps {
@@ -13,6 +31,12 @@ interface ToolSEOContentProps {
   benefits: string[];
   faqs: FAQ[];
   keywords?: string[];
+  relatedLinks?: RelatedLink[];
+  extraSections?: ExtraSection[];
+  exampleTable?: {
+    title: string;
+    rows: ExampleRow[];
+  };
 }
 
 export default function ToolSEOContent({
@@ -21,7 +45,10 @@ export default function ToolSEOContent({
   howToSteps,
   benefits,
   faqs,
-  keywords = []
+  keywords = [],
+  relatedLinks = [],
+  extraSections = [],
+  exampleTable
 }: ToolSEOContentProps) {
   const keywordText = keywords.length >= 3 
     ? keywords.slice(0, 3).join(", ") 
@@ -32,15 +59,30 @@ export default function ToolSEOContent({
   return (
     <div className="mt-16 space-y-12">
       <section>
-        <h2 className="text-2xl font-bold mb-4">About Our {toolName}</h2>
+        <h2 className="text-2xl font-bold mb-4">About Our {toolName} Tool</h2>
         <p className="text-muted-foreground leading-relaxed text-lg">
           {toolDescription}
         </p>
         {keywordText && (
           <p className="text-muted-foreground leading-relaxed mt-4">
-            Our {toolName.toLowerCase()} is perfect for professionals, students, and anyone who needs to work with PDF documents. 
-            Whether you need to {keywordText}, our free online tool makes it simple and fast.
+            Professionals, students, and business users trust our {toolName.toLowerCase()} tool for all their PDF needs. 
+            Whether you need to {keywordText}, our free online tool makes it simple, fast, and secure.
           </p>
+        )}
+        {relatedLinks.length > 0 && (
+          <div className="mt-4">
+            <p className="text-muted-foreground mb-2">Before using this tool, you can also:</p>
+            <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+              {relatedLinks.map((link, index) => (
+                <li key={index}>
+                  <Link href={link.href} className="text-primary hover:underline">
+                    {link.text}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="text-sm text-muted-foreground mt-2">All tools are part of the PDF HUB 24 ecosystem.</p>
+          </div>
         )}
       </section>
 
@@ -113,6 +155,46 @@ export default function ToolSEOContent({
           ))}
         </ul>
       </section>
+
+      {extraSections.map((section, index) => (
+        <section key={index}>
+          <h2 className="text-2xl font-bold mb-4">{section.title}</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">{section.content}</p>
+          {section.items && section.items.length > 0 && (
+            <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+              {section.items.map((item, itemIndex) => (
+                <li key={itemIndex}>{item}</li>
+              ))}
+            </ul>
+          )}
+        </section>
+      ))}
+
+      {exampleTable && (
+        <section>
+          <h2 className="text-2xl font-bold mb-4">{exampleTable.title}</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="border-b">
+                  <th className="text-left p-3 font-semibold">File Type</th>
+                  <th className="text-left p-3 font-semibold">Before</th>
+                  <th className="text-left p-3 font-semibold">After</th>
+                </tr>
+              </thead>
+              <tbody>
+                {exampleTable.rows.map((row, index) => (
+                  <tr key={index} className="border-b">
+                    <td className="p-3 text-muted-foreground">{row.label}</td>
+                    <td className="p-3 text-muted-foreground">{row.before}</td>
+                    <td className="p-3 text-green-600 font-medium">{row.after}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
 
       <section>
         <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
