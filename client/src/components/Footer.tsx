@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { PDF_TOOLS } from "@shared/schema";
 import { ChevronDown, Shield, Lock, Zap, Globe } from "lucide-react";
@@ -9,6 +9,16 @@ export default function Footer() {
   const [isToPdfOpen, setIsToPdfOpen] = useState(false);
   const [isEditPdfOpen, setIsEditPdfOpen] = useState(false);
   const [isCompanyOpen, setIsCompanyOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    setIsDesktop(mediaQuery.matches);
+    
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
 
   const fromPdfTools = PDF_TOOLS.filter(tool => tool.category === "from-pdf");
   const toPdfTools = PDF_TOOLS.filter(tool => tool.category === "to-pdf");
@@ -22,7 +32,7 @@ export default function Footer() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
-                <Shield className="w-5 h-5 text-green-500" />
+                <Shield className="w-5 h-5 text-green-500" aria-hidden="true" />
               </div>
               <div>
                 <div className="font-semibold text-sm">Secure & Private</div>
@@ -31,7 +41,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Lock className="w-5 h-5 text-primary" />
+                <Lock className="w-5 h-5 text-primary" aria-hidden="true" />
               </div>
               <div>
                 <div className="font-semibold text-sm">Auto-Delete</div>
@@ -40,7 +50,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
-                <Zap className="w-5 h-5 text-orange-500" />
+                <Zap className="w-5 h-5 text-orange-500" aria-hidden="true" />
               </div>
               <div>
                 <div className="font-semibold text-sm">Fast Processing</div>
@@ -49,7 +59,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                <Globe className="w-5 h-5 text-purple-500" />
+                <Globe className="w-5 h-5 text-purple-500" aria-hidden="true" />
               </div>
               <div>
                 <div className="font-semibold text-sm">Works Everywhere</div>
@@ -99,10 +109,11 @@ export default function Footer() {
           {/* Convert from PDF - Collapsible on mobile */}
           <div>
             <button 
+              id="footer-from-pdf-button"
               className="w-full flex items-center justify-between md:cursor-default"
-              onClick={() => setIsFromPdfOpen(!isFromPdfOpen)}
-              data-testid="button-footer-from-pdf-toggle"
-              aria-expanded={isFromPdfOpen}
+              onClick={() => !isDesktop && setIsFromPdfOpen(!isFromPdfOpen)}
+              data-testid="toggle-from-pdf"
+              aria-expanded={isDesktop || isFromPdfOpen}
               aria-controls="footer-from-pdf-content"
             >
               <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground">Convert from PDF</h3>
@@ -110,6 +121,9 @@ export default function Footer() {
             </button>
             <div 
               id="footer-from-pdf-content"
+              role="region"
+              aria-labelledby="footer-from-pdf-button"
+              aria-hidden={!isDesktop && !isFromPdfOpen}
               className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isFromPdfOpen ? 'max-h-[500px] mt-3' : 'max-h-0 md:max-h-none md:mt-4'}`}
             >
               <div className="flex flex-col gap-2">
@@ -127,10 +141,11 @@ export default function Footer() {
           {/* Convert to PDF - Collapsible on mobile */}
           <div>
             <button 
+              id="footer-to-pdf-button"
               className="w-full flex items-center justify-between md:cursor-default"
-              onClick={() => setIsToPdfOpen(!isToPdfOpen)}
-              data-testid="button-footer-to-pdf-toggle"
-              aria-expanded={isToPdfOpen}
+              onClick={() => !isDesktop && setIsToPdfOpen(!isToPdfOpen)}
+              data-testid="toggle-to-pdf"
+              aria-expanded={isDesktop || isToPdfOpen}
               aria-controls="footer-to-pdf-content"
             >
               <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground">Convert to PDF</h3>
@@ -138,6 +153,9 @@ export default function Footer() {
             </button>
             <div 
               id="footer-to-pdf-content"
+              role="region"
+              aria-labelledby="footer-to-pdf-button"
+              aria-hidden={!isDesktop && !isToPdfOpen}
               className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isToPdfOpen ? 'max-h-[500px] mt-3' : 'max-h-0 md:max-h-none md:mt-4'}`}
             >
               <div className="flex flex-col gap-2">
@@ -157,10 +175,11 @@ export default function Footer() {
             {/* Edit PDF Links */}
             <div>
               <button 
+                id="footer-edit-pdf-button"
                 className="w-full flex items-center justify-between md:cursor-default"
-                onClick={() => setIsEditPdfOpen(!isEditPdfOpen)}
-                data-testid="button-footer-edit-pdf-toggle"
-                aria-expanded={isEditPdfOpen}
+                onClick={() => !isDesktop && setIsEditPdfOpen(!isEditPdfOpen)}
+                data-testid="toggle-edit-pdf"
+                aria-expanded={isDesktop || isEditPdfOpen}
                 aria-controls="footer-edit-pdf-content"
               >
                 <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground">Edit PDF</h3>
@@ -168,6 +187,9 @@ export default function Footer() {
               </button>
               <div 
                 id="footer-edit-pdf-content"
+                role="region"
+                aria-labelledby="footer-edit-pdf-button"
+                aria-hidden={!isDesktop && !isEditPdfOpen}
                 className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isEditPdfOpen ? 'max-h-[300px] mt-3' : 'max-h-0 md:max-h-none md:mt-4'}`}
               >
                 <div className="flex flex-col gap-2">
@@ -185,10 +207,11 @@ export default function Footer() {
             {/* Company Links */}
             <div>
               <button 
+                id="footer-company-button"
                 className="w-full flex items-center justify-between md:cursor-default"
-                onClick={() => setIsCompanyOpen(!isCompanyOpen)}
-                data-testid="button-footer-company-toggle"
-                aria-expanded={isCompanyOpen}
+                onClick={() => !isDesktop && setIsCompanyOpen(!isCompanyOpen)}
+                data-testid="toggle-company"
+                aria-expanded={isDesktop || isCompanyOpen}
                 aria-controls="footer-company-content"
               >
                 <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground">Company</h3>
@@ -196,6 +219,9 @@ export default function Footer() {
               </button>
               <div 
                 id="footer-company-content"
+                role="region"
+                aria-labelledby="footer-company-button"
+                aria-hidden={!isDesktop && !isCompanyOpen}
                 className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isCompanyOpen ? 'max-h-[200px] mt-3' : 'max-h-0 md:max-h-none md:mt-4'}`}
               >
                 <div className="flex flex-col gap-2">

@@ -148,7 +148,7 @@ function FAQItem({ question, answer, isOpen, onClick, id }: { question: string; 
         onClick={onClick}
         aria-expanded={isOpen}
         aria-controls={contentId}
-        data-testid={`button-faq-${id}`}
+        data-testid={`toggle-faq-${id}`}
       >
         <h3 className="font-semibold text-sm sm:text-base">{question}</h3>
         {isOpen ? (
@@ -157,16 +157,15 @@ function FAQItem({ question, answer, isOpen, onClick, id }: { question: string; 
           <ChevronDown className="w-5 h-5 text-muted-foreground flex-shrink-0" aria-hidden="true" />
         )}
       </button>
-      {isOpen && (
-        <div 
-          id={contentId}
-          role="region"
-          aria-labelledby={buttonId}
-          className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0"
-        >
-          <p className="text-muted-foreground text-sm leading-relaxed" data-testid={`text-faq-answer-${id}`}>{answer}</p>
-        </div>
-      )}
+      <div 
+        id={contentId}
+        role="region"
+        aria-labelledby={buttonId}
+        aria-hidden={!isOpen}
+        className={`px-5 sm:px-6 pb-5 sm:pb-6 pt-0 ${isOpen ? '' : 'hidden'}`}
+      >
+        <p className="text-muted-foreground text-sm leading-relaxed" data-testid={`text-faq-answer-${id}`}>{answer}</p>
+      </div>
     </div>
   );
 }
