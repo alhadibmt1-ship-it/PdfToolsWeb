@@ -42,15 +42,23 @@ import {
   GraduationCap,
   Building2,
   HelpCircle,
-  Smartphone
+  Smartphone,
+  ChevronDown,
+  ChevronUp,
+  Star,
+  Globe,
+  Cloud,
+  Sparkles,
+  MousePointerClick,
+  FileCheck
 } from "lucide-react";
 import { PDF_TOOLS } from "@shared/schema";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { useSEO } from "@/hooks/useSEO";
-import siteLogo from "@assets/generated_images/logo-64.webp";
+import { useState } from "react";
 
 const iconMap: Record<string, any> = {
   merge: Combine,
@@ -100,11 +108,11 @@ function ConversionIcon({ iconType }: { iconType: string }) {
     if (fromStyle && toStyle) {
       return (
         <div className="flex items-center gap-1.5 sm:gap-2">
-          <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-md sm:rounded-lg ${fromStyle.bgColor} ${fromStyle.textColor} flex items-center justify-center text-[10px] sm:text-xs font-bold`}>
+          <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-lg ${fromStyle.bgColor} ${fromStyle.textColor} flex items-center justify-center text-[10px] sm:text-xs font-bold shadow-sm`}>
             {fromStyle.label}
           </div>
-          <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 text-muted-foreground" />
-          <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-md sm:rounded-lg ${toStyle.bgColor} ${toStyle.textColor} flex items-center justify-center text-[10px] sm:text-xs font-bold`}>
+          <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground" />
+          <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-lg ${toStyle.bgColor} ${toStyle.textColor} flex items-center justify-center text-[10px] sm:text-xs font-bold shadow-sm`}>
             {toStyle.label}
           </div>
         </div>
@@ -115,20 +123,57 @@ function ConversionIcon({ iconType }: { iconType: string }) {
   const Icon = iconMap[iconType];
   if (Icon) {
     return (
-      <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg bg-primary/10 flex items-center justify-center">
-        <Icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-primary" />
+      <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center border border-primary/10">
+        <Icon className="w-5 h-5 sm:w-7 sm:h-7 text-primary" />
       </div>
     );
   }
 
   return (
-    <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg bg-primary/10 flex items-center justify-center">
-      <FileText className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-primary" />
+    <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center border border-primary/10">
+      <FileText className="w-5 h-5 sm:w-7 sm:h-7 text-primary" />
+    </div>
+  );
+}
+
+function FAQItem({ question, answer, isOpen, onClick, id }: { question: string; answer: string; isOpen: boolean; onClick: () => void; id: string }) {
+  const contentId = `faq-content-${id}`;
+  const buttonId = `faq-button-${id}`;
+  
+  return (
+    <div className="premium-card overflow-visible">
+      <button
+        id={buttonId}
+        className="w-full p-5 sm:p-6 flex items-center justify-between gap-4 text-left cursor-pointer"
+        onClick={onClick}
+        aria-expanded={isOpen}
+        aria-controls={contentId}
+        data-testid={`button-faq-${id}`}
+      >
+        <h3 className="font-semibold text-sm sm:text-base">{question}</h3>
+        {isOpen ? (
+          <ChevronUp className="w-5 h-5 text-primary flex-shrink-0" aria-hidden="true" />
+        ) : (
+          <ChevronDown className="w-5 h-5 text-muted-foreground flex-shrink-0" aria-hidden="true" />
+        )}
+      </button>
+      {isOpen && (
+        <div 
+          id={contentId}
+          role="region"
+          aria-labelledby={buttonId}
+          className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0"
+        >
+          <p className="text-muted-foreground text-sm leading-relaxed" data-testid={`text-faq-answer-${id}`}>{answer}</p>
+        </div>
+      )}
     </div>
   );
 }
 
 export default function HomePage() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  
   useSEO({
     title: "PDF HUB 24 - Free Online PDF Tools | Convert, Merge, Split & More",
     description: "Free online PDF tools for converting PDF to Word, Excel, JPG, PNG and more. Merge PDFs, split, compress, and edit PDF files. Fast, secure, and easy to use - no registration required.",
@@ -140,12 +185,35 @@ export default function HomePage() {
   const editPdfTools = PDF_TOOLS.filter(tool => tool.category === "edit-pdf");
   const utilityTools = PDF_TOOLS.filter(tool => tool.category === "utility");
 
+  const faqs = [
+    {
+      question: "Is PDF HUB 24 free to use?",
+      answer: "Yes, all 32+ tools are completely free with no hidden fees or signups. You can use every feature without any limitations, as many times as you need."
+    },
+    {
+      question: "How secure are my files?",
+      answer: "Your security is our priority. All file transfers are encrypted with SSL/TLS. Files are automatically deleted after processing and are never stored or shared. We don't have access to your documents."
+    },
+    {
+      question: "Can I use this on mobile devices?",
+      answer: "Absolutely! PDF HUB 24 is fully responsive and works perfectly on Android, iPhone, iPad, and any tablet. Access all tools from any device, anywhere."
+    },
+    {
+      question: "Is there a file size limit?",
+      answer: "Most PDFs can be processed without issues. Very large files may take longer but still work. There are no artificial file size limits for most operations."
+    },
+    {
+      question: "Do I need to install any software?",
+      answer: "No installation required! PDF HUB 24 works entirely in your browser. Simply visit the website, choose your tool, upload your file, and download the result."
+    }
+  ];
+
   const renderToolGrid = (tools: typeof PDF_TOOLS) => (
     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
       {tools.map((tool, index) => (
         <Link key={tool.id} href={tool.path} data-testid={`link-tool-${tool.id}`}>
           <div 
-            className="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[140px] sm:min-h-[160px]"
+            className="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] sm:min-h-[170px]"
             style={{ animationDelay: `${index * 50}ms` }}
           >
             <div className="flex flex-col h-full">
@@ -178,54 +246,107 @@ export default function HomePage() {
       <Header />
       
       <main className="flex-1">
-        <section className="hero-gradient py-12 sm:py-16 md:py-24 lg:py-28 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.08)_0%,transparent_50%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--primary)/0.05)_0%,transparent_40%)]" />
+        {/* Hero Section */}
+        <section className="hero-gradient py-16 sm:py-20 md:py-28 lg:py-32 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,hsl(217_91%_60%/0.1)_0%,transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,hsl(192_91%_50%/0.08)_0%,transparent_40%)]" />
           
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center relative z-10">
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 border border-primary/20 mb-5 sm:mb-8">
-              <span className="section-label text-[10px] sm:text-xs">Professional PDF Tools</span>
-            </div>
-            
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-[1.15] tracking-tight px-2">
-              All PDF Tools You Need
-            </h1>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-10 px-2">
-              Free and easy to use online PDF tools. Convert, merge, split, compress, and edit PDF files with no registration required.
-            </p>
-            
-            <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 max-w-md sm:max-w-none mx-auto stagger-children">
-              <div className="glass-badge px-3 sm:px-5 py-2 sm:py-2.5 rounded-full flex items-center justify-center gap-1.5 sm:gap-2.5">
-                <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500 flex-shrink-0" />
-                <span className="text-xs sm:text-sm font-medium whitespace-nowrap">100% Free</span>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+            <div className="text-center max-w-4xl mx-auto">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6 sm:mb-8">
+                <Sparkles className="w-4 h-4 text-primary" />
+                <span className="text-xs sm:text-sm font-medium text-primary">32+ Free PDF Tools</span>
               </div>
-              <div className="glass-badge px-3 sm:px-5 py-2 sm:py-2.5 rounded-full flex items-center justify-center gap-1.5 sm:gap-2.5">
-                <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
-                <span className="text-xs sm:text-sm font-medium whitespace-nowrap">24/7</span>
+              
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 sm:mb-6 leading-[1.1] tracking-tight">
+                Transform Your PDFs
+                <span className="block gradient-text mt-1">With Just a Click</span>
+              </h1>
+              
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10">
+                Convert, merge, split, compress, and edit PDF files instantly. 
+                Free forever, no registration required, secure and fast.
+              </p>
+              
+              {/* Feature Highlights */}
+              <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-3 sm:gap-4 max-w-xl sm:max-w-none mx-auto mb-10 sm:mb-12">
+                <div className="glass-badge px-4 py-2.5 rounded-full flex items-center justify-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                  <span className="text-sm font-medium">100% Free</span>
+                </div>
+                <div className="glass-badge px-4 py-2.5 rounded-full flex items-center justify-center gap-2">
+                  <Shield className="w-4 h-4 text-primary flex-shrink-0" />
+                  <span className="text-sm font-medium">Secure</span>
+                </div>
+                <div className="glass-badge px-4 py-2.5 rounded-full flex items-center justify-center gap-2">
+                  <Zap className="w-4 h-4 text-orange-500 flex-shrink-0" />
+                  <span className="text-sm font-medium">Fast</span>
+                </div>
+                <div className="glass-badge px-4 py-2.5 rounded-full flex items-center justify-center gap-2">
+                  <Infinity className="w-4 h-4 text-primary flex-shrink-0" />
+                  <span className="text-sm font-medium">No Limits</span>
+                </div>
               </div>
-              <div className="glass-badge px-3 sm:px-5 py-2 sm:py-2.5 rounded-full flex items-center justify-center gap-1.5 sm:gap-2.5">
-                <Infinity className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
-                <span className="text-xs sm:text-sm font-medium whitespace-nowrap">No Limits</span>
-              </div>
-              <div className="glass-badge px-3 sm:px-5 py-2 sm:py-2.5 rounded-full flex items-center justify-center gap-1.5 sm:gap-2.5">
-                <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
-                <span className="text-xs sm:text-sm font-medium whitespace-nowrap">Secure</span>
+              
+              {/* Quick Action Buttons */}
+              <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+                <Link href="/merge">
+                  <Button size="lg" className="gap-2" data-testid="button-merge-hero">
+                    <Combine className="w-4 h-4" />
+                    Merge PDF
+                  </Button>
+                </Link>
+                <Link href="/compress">
+                  <Button size="lg" variant="outline" className="gap-2" data-testid="button-compress-hero">
+                    <FileDown className="w-4 h-4" />
+                    Compress PDF
+                  </Button>
+                </Link>
+                <Link href="/pdf-to-word">
+                  <Button size="lg" variant="outline" className="gap-2" data-testid="button-convert-hero">
+                    <FileText className="w-4 h-4" />
+                    PDF to Word
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="from-pdf" className="py-10 sm:py-14 md:py-20">
+        {/* Trust Stats Bar */}
+        <section className="py-8 sm:py-10 border-b bg-card/50">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+              <div className="text-center">
+                <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">32+</div>
+                <div className="text-sm text-muted-foreground">PDF Tools</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">100%</div>
+                <div className="text-sm text-muted-foreground">Free Forever</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">24/7</div>
+                <div className="text-sm text-muted-foreground">Available</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">SSL</div>
+                <div className="text-sm text-muted-foreground">Encrypted</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Convert from PDF Section */}
+        <section id="from-pdf" className="py-12 sm:py-16 md:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-10">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-red-500/20 to-red-500/5 flex items-center justify-center border border-red-500/10 flex-shrink-0">
-                <Download className="w-5 h-5 sm:w-6 sm:h-6 text-red-500" />
+            <div className="flex items-center gap-4 mb-8 sm:mb-10">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center shadow-lg shadow-red-500/20">
+                <Download className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
               </div>
               <div>
-                <span className="section-label block mb-0.5 sm:mb-1 text-[10px] sm:text-xs">Export & Convert</span>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">
-                  Convert from PDF
-                </h2>
+                <span className="section-label block mb-1">Export & Convert</span>
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Convert from PDF</h2>
               </div>
             </div>
             {renderToolGrid(fromPdfTools)}
@@ -234,17 +355,16 @@ export default function HomePage() {
         
         <div className="premium-divider max-w-5xl mx-auto" />
 
-        <section id="to-pdf" className="py-10 sm:py-14 md:py-20">
+        {/* Convert to PDF Section */}
+        <section id="to-pdf" className="py-12 sm:py-16 md:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-10">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-500/20 to-green-500/5 flex items-center justify-center border border-green-500/10 flex-shrink-0">
-                <Upload className="w-5 h-5 sm:w-6 sm:h-6 text-green-500" />
+            <div className="flex items-center gap-4 mb-8 sm:mb-10">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center shadow-lg shadow-green-500/20">
+                <Upload className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
               </div>
               <div>
-                <span className="section-label block mb-0.5 sm:mb-1 text-[10px] sm:text-xs">Import & Create</span>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">
-                  Convert to PDF
-                </h2>
+                <span className="section-label block mb-1">Import & Create</span>
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Convert to PDF</h2>
               </div>
             </div>
             {renderToolGrid(toPdfTools)}
@@ -253,17 +373,16 @@ export default function HomePage() {
         
         <div className="premium-divider max-w-5xl mx-auto" />
 
-        <section id="edit-pdf" className="py-10 sm:py-14 md:py-20">
+        {/* Edit PDF Section */}
+        <section id="edit-pdf" className="py-12 sm:py-16 md:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-10">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center border border-primary/10 flex-shrink-0">
-                <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+            <div className="flex items-center gap-4 mb-8 sm:mb-10">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center shadow-lg shadow-primary/20">
+                <FileText className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
               </div>
               <div>
-                <span className="section-label block mb-0.5 sm:mb-1 text-[10px] sm:text-xs">Modify & Organize</span>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">
-                  Edit PDF
-                </h2>
+                <span className="section-label block mb-1">Modify & Organize</span>
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Edit PDF</h2>
               </div>
             </div>
             {renderToolGrid(editPdfTools)}
@@ -272,272 +391,221 @@ export default function HomePage() {
         
         <div className="premium-divider max-w-5xl mx-auto" />
 
-        <section id="utility" className="py-10 sm:py-14 md:py-20">
+        {/* Utility Tools Section */}
+        <section id="utility" className="py-12 sm:py-16 md:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-10">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-500/5 flex items-center justify-center border border-purple-500/10 flex-shrink-0">
-                <Settings className="w-5 h-5 sm:w-6 sm:h-6 text-purple-500" />
+            <div className="flex items-center gap-4 mb-8 sm:mb-10">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/20">
+                <Settings className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
               </div>
               <div>
-                <span className="section-label block mb-0.5 sm:mb-1 text-[10px] sm:text-xs">Extra Tools</span>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">
-                  Utility Tools
-                </h2>
+                <span className="section-label block mb-1">Extra Tools</span>
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Utility Tools</h2>
               </div>
             </div>
             {renderToolGrid(utilityTools)}
           </div>
         </section>
 
-        <section className="py-12 sm:py-16 md:py-24 lg:py-28 bg-gradient-to-b from-muted/30 to-background">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="text-center mb-8 sm:mb-12 md:mb-14">
-              <span className="section-label block mb-2 sm:mb-3 text-[10px] sm:text-xs">Why Us</span>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight mb-3 sm:mb-4">
-                Why Choose PDF HUB 24?
+        {/* How It Works Section */}
+        <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-muted/30 to-background">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-12 sm:mb-16">
+              <span className="section-label block mb-3">Simple Process</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                How It Works
               </h2>
-              <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
-                Trusted by thousands of users worldwide
+              <p className="text-muted-foreground max-w-xl mx-auto">
+                Three simple steps to transform your PDF files
               </p>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-              <div className="premium-card p-4 sm:p-5 md:p-6 text-center">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-green-500/20 to-green-500/5 flex items-center justify-center mx-auto mb-3 sm:mb-4 md:mb-5 border border-green-500/10">
-                  <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-green-500" />
-                </div>
-                <h3 className="font-semibold text-sm sm:text-base mb-2 sm:mb-3">100% Free</h3>
-                <ul className="text-xs sm:text-sm text-muted-foreground space-y-1 hidden sm:block">
-                  <li>No hidden costs</li>
-                  <li>No premium versions</li>
-                </ul>
-              </div>
-              
-              <div className="premium-card p-4 sm:p-5 md:p-6 text-center">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mx-auto mb-3 sm:mb-4 md:mb-5 border border-primary/10">
-                  <Zap className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-primary" />
-                </div>
-                <h3 className="font-semibold text-sm sm:text-base mb-2 sm:mb-3">Easy to Use</h3>
-                <ul className="text-xs sm:text-sm text-muted-foreground space-y-1 hidden sm:block">
-                  <li>Works on any device</li>
-                  <li>Simple drag & drop</li>
-                </ul>
-              </div>
-              
-              <div className="premium-card p-4 sm:p-5 md:p-6 text-center">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mx-auto mb-3 sm:mb-4 md:mb-5 border border-primary/10">
-                  <Infinity className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-primary" />
-                </div>
-                <h3 className="font-semibold text-sm sm:text-base mb-2 sm:mb-3">No Limits</h3>
-                <ul className="text-xs sm:text-sm text-muted-foreground space-y-1 hidden sm:block">
-                  <li>No registration</li>
-                  <li>Use as often as you like</li>
-                </ul>
-              </div>
-              
-              <div className="premium-card p-4 sm:p-5 md:p-6 text-center">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mx-auto mb-3 sm:mb-4 md:mb-5 border border-primary/10">
-                  <Shield className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-primary" />
-                </div>
-                <h3 className="font-semibold text-sm sm:text-base mb-2 sm:mb-3">Secure</h3>
-                <ul className="text-xs sm:text-sm text-muted-foreground space-y-1 hidden sm:block">
-                  <li>SSL encrypted</li>
-                  <li>Auto-deleted files</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-        
-        <section className="py-12 sm:py-16 md:py-24 lg:py-28">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-            <span className="section-label block mb-2 sm:mb-3 text-[10px] sm:text-xs">Simple Process</span>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight mb-8 sm:mb-10 md:mb-12">
-              How It Works
-            </h2>
-            <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-10">
-              <div className="relative">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground flex items-center justify-center mx-auto mb-3 sm:mb-4 md:mb-5 text-base sm:text-lg md:text-xl font-bold shadow-lg shadow-primary/20">
+            <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+              <div className="text-center relative">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-primary to-blue-600 text-white flex items-center justify-center mx-auto mb-5 text-2xl sm:text-3xl font-bold shadow-xl shadow-primary/25">
                   1
                 </div>
-                <h3 className="font-semibold text-xs sm:text-sm md:text-base mb-1 sm:mb-2">Select Tool</h3>
-                <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground leading-relaxed hidden sm:block">
-                  Choose from free PDF tools
+                <h3 className="font-semibold text-lg mb-2">Choose Your Tool</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Select from 32+ free PDF tools including converters, editors, and utilities
                 </p>
+                <div className="hidden md:block absolute top-10 right-0 w-[calc(50%-2rem)] h-0.5 bg-gradient-to-r from-primary/30 to-transparent translate-x-full" />
               </div>
-              <div className="relative">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground flex items-center justify-center mx-auto mb-3 sm:mb-4 md:mb-5 text-base sm:text-lg md:text-xl font-bold shadow-lg shadow-primary/20">
+              
+              <div className="text-center relative">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-primary to-blue-600 text-white flex items-center justify-center mx-auto mb-5 text-2xl sm:text-3xl font-bold shadow-xl shadow-primary/25">
                   2
                 </div>
-                <h3 className="font-semibold text-xs sm:text-sm md:text-base mb-1 sm:mb-2">Upload Files</h3>
-                <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground leading-relaxed hidden sm:block">
-                  Drag and drop your PDFs
+                <h3 className="font-semibold text-lg mb-2">Upload Your File</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Drag and drop or click to upload your PDF or document files securely
                 </p>
+                <div className="hidden md:block absolute top-10 right-0 w-[calc(50%-2rem)] h-0.5 bg-gradient-to-r from-primary/30 to-transparent translate-x-full" />
               </div>
-              <div className="relative">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground flex items-center justify-center mx-auto mb-3 sm:mb-4 md:mb-5 text-base sm:text-lg md:text-xl font-bold shadow-lg shadow-primary/20">
+              
+              <div className="text-center">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-primary to-blue-600 text-white flex items-center justify-center mx-auto mb-5 text-2xl sm:text-3xl font-bold shadow-xl shadow-primary/25">
                   3
                 </div>
-                <h3 className="font-semibold text-xs sm:text-sm md:text-base mb-1 sm:mb-2">Download</h3>
-                <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground leading-relaxed hidden sm:block">
-                  Get your file instantly
+                <h3 className="font-semibold text-lg mb-2">Download Result</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Get your processed file instantly - fast, free, and with no watermarks
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Comprehensive SEO Content */}
-        <section className="py-16 bg-muted/30">
-          <div className="max-w-4xl mx-auto px-6">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-center">
-              All PDF Tools You Need - Free, Fast & Secure
-            </h2>
-            <p className="text-muted-foreground leading-relaxed text-center mb-8">
-              PDF HUB 24 offers a complete set of online PDF tools to convert, edit, optimize, and manage your documents. 
-              Whether you need to compress files, convert formats, merge PDFs, extract pages, or protect your documents — 
-              everything is available in one place, free of cost, and with no registration required.
-            </p>
-            <p className="text-muted-foreground leading-relaxed text-center">
-              Our tools are designed for students, professionals, office users, freelancers, and anyone who works with PDF files daily.
-            </p>
-          </div>
-        </section>
-
-        <section className="py-16">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="grid md:grid-cols-3 gap-8">
-              <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <Download className="w-6 h-6 text-red-500" />
-                  <h3 className="text-xl font-semibold">Convert From PDF</h3>
+        {/* Why Choose Us Section */}
+        <section className="py-16 sm:py-20 md:py-24">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-12 sm:mb-16">
+              <span className="section-label block mb-3">Why Choose Us</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                Why PDF HUB 24?
+              </h2>
+              <p className="text-muted-foreground max-w-xl mx-auto">
+                Trusted by users worldwide for fast, secure, and reliable PDF processing
+              </p>
+            </div>
+            
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+              <div className="premium-card p-6 sm:p-8">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500/20 to-green-500/5 flex items-center justify-center mb-5 border border-green-500/10">
+                  <CheckCircle className="w-6 h-6 text-green-500" />
                 </div>
-                <p className="text-muted-foreground text-sm mb-4">
-                  Turn your PDF into the format you need:
-                </p>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li><Link href="/pdf-to-word" className="hover:text-primary">PDF to Word</Link> - Edit documents easily</li>
-                  <li><Link href="/pdf-to-jpg" className="hover:text-primary">PDF to JPG</Link> - Convert pages to images</li>
-                  <li><Link href="/pdf-to-png" className="hover:text-primary">PDF to PNG</Link> - High-quality image output</li>
-                  <li><Link href="/pdf-to-excel" className="hover:text-primary">PDF to Excel</Link> - Extract tables and data</li>
-                  <li><Link href="/extract-text" className="hover:text-primary">Extract Text</Link> - Copy and reuse content instantly</li>
-                </ul>
-                <p className="text-sm text-muted-foreground mt-4">
-                  Perfect for editing, printing, uploading, or repurposing your documents.
+                <h3 className="font-semibold text-lg mb-2">100% Free Forever</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  All tools are completely free with no hidden costs, subscriptions, or premium tiers. Use as much as you need.
                 </p>
               </div>
-
-              <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <Upload className="w-6 h-6 text-green-500" />
-                  <h3 className="text-xl font-semibold">Convert to PDF</h3>
+              
+              <div className="premium-card p-6 sm:p-8">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-5 border border-primary/10">
+                  <Shield className="w-6 h-6 text-primary" />
                 </div>
-                <p className="text-muted-foreground text-sm mb-4">
-                  Create clean, secure, and universally compatible PDF files:
-                </p>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li><Link href="/word-to-pdf" className="hover:text-primary">Word to PDF</Link></li>
-                  <li><Link href="/jpg-to-pdf" className="hover:text-primary">JPG to PDF</Link></li>
-                  <li><Link href="/png-to-pdf" className="hover:text-primary">PNG to PDF</Link></li>
-                  <li><Link href="/excel-to-pdf" className="hover:text-primary">Excel to PDF</Link></li>
-                  <li><Link href="/html-to-pdf" className="hover:text-primary">HTML to PDF</Link></li>
-                </ul>
-                <p className="text-sm text-muted-foreground mt-4">
-                  Great for emailing documents, applying signatures, or preserving formatting.
+                <h3 className="font-semibold text-lg mb-2">Bank-Level Security</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  SSL encryption for all transfers. Files are automatically deleted after processing. Your data stays private.
                 </p>
               </div>
-
-              <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <FileText className="w-6 h-6 text-primary" />
-                  <h3 className="text-xl font-semibold">Edit PDF</h3>
+              
+              <div className="premium-card p-6 sm:p-8">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500/20 to-orange-500/5 flex items-center justify-center mb-5 border border-orange-500/10">
+                  <Zap className="w-6 h-6 text-orange-500" />
                 </div>
-                <p className="text-muted-foreground text-sm mb-4">
-                  Make changes to your PDF without downloading any software:
+                <h3 className="font-semibold text-lg mb-2">Lightning Fast</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Powered by cloud technology for instant processing. Most files are ready in seconds, not minutes.
                 </p>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li><Link href="/compress" className="hover:text-primary">Compress PDF</Link> - Reduce file size</li>
-                  <li><Link href="/merge" className="hover:text-primary">Merge PDF</Link> - Combine multiple documents</li>
-                  <li><Link href="/split" className="hover:text-primary">Split PDF</Link> - Separate pages easily</li>
-                  <li><Link href="/rotate" className="hover:text-primary">Rotate PDF</Link> - Fix upside-down pages</li>
-                  <li><Link href="/protect" className="hover:text-primary">Protect PDF</Link> - Add password for security</li>
-                </ul>
-                <p className="text-sm text-muted-foreground mt-4">
-                  All editing tools work online and complete within seconds.
+              </div>
+              
+              <div className="premium-card p-6 sm:p-8">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-500/5 flex items-center justify-center mb-5 border border-purple-500/10">
+                  <Globe className="w-6 h-6 text-purple-500" />
+                </div>
+                <h3 className="font-semibold text-lg mb-2">Works Everywhere</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Access from any device - desktop, tablet, or mobile. No software installation needed, just your browser.
+                </p>
+              </div>
+              
+              <div className="premium-card p-6 sm:p-8">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 flex items-center justify-center mb-5 border border-cyan-500/10">
+                  <Star className="w-6 h-6 text-cyan-500" />
+                </div>
+                <h3 className="font-semibold text-lg mb-2">High Quality Output</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Professional-grade conversions that preserve formatting, fonts, and images. No quality loss guaranteed.
+                </p>
+              </div>
+              
+              <div className="premium-card p-6 sm:p-8">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500/20 to-red-500/5 flex items-center justify-center mb-5 border border-red-500/10">
+                  <Infinity className="w-6 h-6 text-red-500" />
+                </div>
+                <h3 className="font-semibold text-lg mb-2">No Limits</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  No file count restrictions, no daily limits, no registration required. Just upload and convert endlessly.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="py-16 bg-muted/30">
-          <div className="max-w-6xl mx-auto px-6">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-8 text-center">
-              Who Is This Website For?
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <Card className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+        {/* Who Is This For Section */}
+        <section className="py-16 sm:py-20 bg-muted/30">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-12 sm:mb-14">
+              <span className="section-label block mb-3">For Everyone</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                Who Uses PDF HUB 24?
+              </h2>
+            </div>
+            
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+              <Card className="p-5 sm:p-6">
+                <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center">
                     <GraduationCap className="w-5 h-5 text-blue-500" />
                   </div>
                   <h3 className="font-semibold">Students</h3>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Compress assignments, convert images to PDF, extract text, merge notes.
+                  Compress assignments, merge notes, convert images to PDF for submissions.
                 </p>
               </Card>
 
-              <Card className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+              <Card className="p-5 sm:p-6">
+                <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center">
                     <Building2 className="w-5 h-5 text-green-500" />
                   </div>
-                  <h3 className="font-semibold">Office Users</h3>
+                  <h3 className="font-semibold">Office Workers</h3>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Create PDFs from Word/Excel, protect documents, optimize for emailing.
+                  Create PDFs from Word/Excel, protect documents, optimize for email.
                 </p>
               </Card>
 
-              <Card className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+              <Card className="p-5 sm:p-6">
+                <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center">
                     <Briefcase className="w-5 h-5 text-purple-500" />
                   </div>
                   <h3 className="font-semibold">Professionals</h3>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Prepare contracts, proposals, business files, secure PDFs.
+                  Prepare contracts, proposals, and secure business documents.
                 </p>
               </Card>
 
-              <Card className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+              <Card className="p-5 sm:p-6">
+                <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center">
                     <Users className="w-5 h-5 text-orange-500" />
                   </div>
                   <h3 className="font-semibold">Freelancers</h3>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Convert client files, reduce file size, extract images or text.
+                  Convert client files, reduce file sizes, extract content quickly.
                 </p>
               </Card>
 
-              <Card className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+              <Card className="p-5 sm:p-6">
+                <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center">
                     <Upload className="w-5 h-5 text-red-500" />
                   </div>
-                  <h3 className="font-semibold">Government Upload Users</h3>
+                  <h3 className="font-semibold">Government Users</h3>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Resize PDFs to meet upload size limits for official submissions.
+                  Resize PDFs to meet official upload size requirements.
                 </p>
               </Card>
 
-              <Card className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+              <Card className="p-5 sm:p-6">
+                <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center">
                     <Smartphone className="w-5 h-5 text-cyan-500" />
                   </div>
@@ -551,102 +619,64 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="py-16">
-          <div className="max-w-4xl mx-auto px-6">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-8 text-center">
-              What Makes PDF HUB 24 Better?
-            </h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                <span className="text-muted-foreground">32+ PDF tools in one platform</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                <span className="text-muted-foreground">Simple and clean interface</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                <span className="text-muted-foreground">Cloud-powered conversion</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                <span className="text-muted-foreground">Fast processing for all file sizes</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                <span className="text-muted-foreground">Accurate conversion with minimal errors</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                <span className="text-muted-foreground">Supports scanned PDFs with OCR</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                <span className="text-muted-foreground">Works on all devices - mobile, tablet, desktop</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                <span className="text-muted-foreground">No registration or signup required</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-16 bg-muted/30">
-          <div className="max-w-4xl mx-auto px-6">
-            <div className="flex items-center justify-center gap-2 mb-8">
-              <HelpCircle className="w-6 h-6" />
-              <h2 className="text-2xl md:text-3xl font-semibold">
+        {/* FAQ Section */}
+        <section className="py-16 sm:py-20 md:py-24">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-10 sm:mb-12">
+              <span className="section-label block mb-3">FAQ</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-4">
                 Frequently Asked Questions
               </h2>
             </div>
-            <div className="space-y-4">
-              <Card className="p-6">
-                <h3 className="font-semibold mb-2">Is PDF HUB 24 free to use?</h3>
-                <p className="text-muted-foreground text-sm">
-                  Yes, all tools are completely free with no hidden fees or signups. You can use every feature without any limitations.
-                </p>
-              </Card>
-              <Card className="p-6">
-                <h3 className="font-semibold mb-2">How long are my files stored?</h3>
-                <p className="text-muted-foreground text-sm">
-                  All files are deleted automatically after processing for maximum privacy. We never store or share your documents.
-                </p>
-              </Card>
-              <Card className="p-6">
-                <h3 className="font-semibold mb-2">Can I use this website on mobile?</h3>
-                <p className="text-muted-foreground text-sm">
-                  Absolutely — PDF HUB 24 works perfectly on Android and iPhone. Access all tools from any device, anywhere.
-                </p>
-              </Card>
-              <Card className="p-6">
-                <h3 className="font-semibold mb-2">Is there a limit to file size?</h3>
-                <p className="text-muted-foreground text-sm">
-                  Most PDFs can be processed normally. Very large files may take longer but still work. There are no artificial file size limits.
-                </p>
-              </Card>
-              <Card className="p-6">
-                <h3 className="font-semibold mb-2">Do you support all PDF operations?</h3>
-                <p className="text-muted-foreground text-sm">
-                  Yes, our platform includes 32+ tools for conversion, editing, compression, merging, splitting, security, and more.
-                </p>
-              </Card>
+            
+            <div className="space-y-3 sm:space-y-4">
+              {faqs.map((faq, index) => (
+                <FAQItem
+                  key={index}
+                  id={String(index)}
+                  question={faq.question}
+                  answer={faq.answer}
+                  isOpen={openFaq === index}
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                />
+              ))}
             </div>
           </div>
         </section>
 
-        <section className="py-16 bg-primary/5">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-              Ready to Get Started?
+        {/* CTA Section */}
+        <section className="py-16 sm:py-20 bg-gradient-to-br from-primary/5 via-primary/10 to-cyan-500/5">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+              <FileCheck className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium text-primary">Start Now - It's Free</span>
+            </div>
+            
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-4">
+              Ready to Transform Your PDFs?
             </h2>
-            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Choose any tool above and start processing your PDF files instantly. 
-              No registration, no downloads, no limits - just fast, reliable PDF tools.
+            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto text-base sm:text-lg">
+              Choose any tool above and start processing your files instantly. 
+              No registration, no downloads, no limits.
             </p>
-            <p className="text-sm text-muted-foreground">
-              Trusted by thousands of users worldwide for all their PDF needs.
+            
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+              <Link href="/merge">
+                <Button size="lg" className="gap-2" data-testid="button-merge-cta">
+                  <Combine className="w-4 h-4" />
+                  Merge PDFs
+                </Button>
+              </Link>
+              <Link href="/pdf-to-word">
+                <Button size="lg" variant="outline" className="gap-2" data-testid="button-convert-cta">
+                  <FileText className="w-4 h-4" />
+                  Convert PDF to Word
+                </Button>
+              </Link>
+            </div>
+            
+            <p className="text-sm text-muted-foreground mt-8">
+              Trusted by users worldwide for all their PDF needs
             </p>
           </div>
         </section>
