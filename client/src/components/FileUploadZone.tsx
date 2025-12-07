@@ -1,5 +1,5 @@
-import { useCallback, useState } from "react";
-import { Upload, X } from "lucide-react";
+import { useCallback, useState, useId } from "react";
+import { Upload, X, FileText, Image, File, Shield, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -10,6 +10,21 @@ interface FileUploadZoneProps {
   maxFiles?: number;
   disabled?: boolean;
   className?: string;
+  toolName?: string;
+}
+
+function getFileIcon(format: string) {
+  if (format.includes("pdf")) return FileText;
+  if (format.includes("image") || format.includes("jpg") || format.includes("png") || format.includes("webp")) return Image;
+  return File;
+}
+
+function getFormatDisplay(acceptedFormats: string): string {
+  if (acceptedFormats === "image/*") return "JPG, PNG, WebP";
+  if (acceptedFormats.includes(".pdf")) return "PDF";
+  if (acceptedFormats.includes(".doc")) return "DOCX, DOC";
+  if (acceptedFormats.includes(".xls")) return "XLSX, XLS";
+  return acceptedFormats.toUpperCase().replace(/\./g, "").replace(/,/g, ", ");
 }
 
 export default function FileUploadZone({
@@ -18,10 +33,13 @@ export default function FileUploadZone({
   multiple = false,
   maxFiles = 10,
   disabled = false,
-  className
+  className,
+  toolName
 }: FileUploadZoneProps) {
   const [isDragging, setIsDragging] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const inputId = useId();
+  const uniqueInputId = `file-upload-${inputId}`;
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -66,68 +84,159 @@ export default function FileUploadZone({
     onFilesSelected(newFiles);
   }, [selectedFiles, onFilesSelected]);
 
+  const handleButtonClick = useCallback(() => {
+    const input = document.getElementById(uniqueInputId) as HTMLInputElement;
+    if (input) {
+      input.click();
+    }
+  }, [uniqueInputId]);
+
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleButtonClick();
+    }
+  }, [handleButtonClick]);
+
+  const FileIcon = getFileIcon(acceptedFormats);
+  const formatDisplay = getFormatDisplay(acceptedFormats);
+  const uploadLabel = toolName 
+    ? `Upload file for ${toolName}` 
+    : multiple 
+      ? `Select up to ${maxFiles} files` 
+      : "Select a file";
+
   return (
     <div className={cn("space-y-4", className)}>
       <div
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
+        onClick={handleButtonClick}
+        onKeyDown={handleKeyDown}
+        role="button"
+        tabIndex={disabled ? -1 : 0}
+        aria-label={uploadLabel}
+        aria-disabled={disabled}
         className={cn(
-          "relative min-h-64 rounded-2xl border-2 border-dashed transition-all duration-200",
-          isDragging && !disabled && "border-primary bg-accent/50 scale-[1.02]",
-          !isDragging && !disabled && "border-border hover:border-primary/50",
+          "relative rounded-2xl border-2 border-dashed transition-all duration-300 overflow-hidden cursor-pointer",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+          isDragging && !disabled && "border-primary bg-primary/5 scale-[1.01]",
+          !isDragging && !disabled && "border-border hover:border-primary/60 hover:bg-accent/30",
           disabled && "opacity-50 cursor-not-allowed"
         )}
+        data-testid="upload-zone"
       >
+        <div className={cn(
+          "absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-cyan-500/5 transition-opacity",
+          isDragging ? "opacity-100" : "opacity-0"
+        )} />
+        
         <input
           type="file"
           accept={acceptedFormats}
           multiple={multiple}
           onChange={handleFileSelect}
           disabled={disabled}
-          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed"
+          className="sr-only"
           data-testid="input-file"
-          id="file-upload"
+          id={uniqueInputId}
+          aria-label={uploadLabel}
         />
         
-        <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center pointer-events-none">
+        <div className="relative flex flex-col items-center justify-center p-8 sm:p-12 text-center pointer-events-none">
           <div className={cn(
-            "w-16 h-16 rounded-full flex items-center justify-center mb-4 transition-all",
-            isDragging ? "bg-primary/20" : "bg-muted"
+            "w-20 h-20 sm:w-24 sm:h-24 rounded-2xl flex items-center justify-center mb-5 transition-all duration-300",
+            isDragging 
+              ? "bg-gradient-to-br from-primary to-cyan-500 shadow-lg shadow-primary/25" 
+              : "bg-gradient-to-br from-primary/10 to-cyan-500/10"
           )}>
-            <Upload className={cn(
-              "w-8 h-8 transition-colors",
-              isDragging ? "text-primary" : "text-muted-foreground"
-            )} />
+            {isDragging ? (
+              <Upload className="w-10 h-10 sm:w-12 sm:h-12 text-white animate-bounce" aria-hidden="true" />
+            ) : (
+              <FileIcon className="w-10 h-10 sm:w-12 sm:h-12 text-primary" aria-hidden="true" />
+            )}
           </div>
           
-          <h3 className="text-lg font-semibold mb-2">
-            {isDragging ? "Drop files here" : "Drag & drop or click to upload"}
+          <h3 className="text-xl sm:text-2xl font-bold mb-2 tracking-tight">
+            {isDragging ? "Drop your files here!" : "Upload Your Files"}
           </h3>
           
-          <p className="text-sm text-muted-foreground mb-2">
-            {multiple 
-              ? `Upload up to ${maxFiles} files`
-              : "Upload a single file"
+          <p className="text-muted-foreground mb-4 max-w-md">
+            {isDragging 
+              ? "Release to upload" 
+              : multiple 
+                ? `Drag & drop up to ${maxFiles} files here, or click to browse`
+                : "Drag & drop your file here, or click to browse"
             }
           </p>
           
-          <p className="text-xs text-muted-foreground">
-            Supported formats: {acceptedFormats === "image/*" ? "JPG, PNG, etc." : acceptedFormats.toUpperCase().replace(".", "")}
-          </p>
+          <div className="pointer-events-auto mb-4">
+            <Button 
+              type="button"
+              size="lg" 
+              className="gap-2 shadow-md"
+              disabled={disabled}
+              data-testid="button-select-files"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleButtonClick();
+              }}
+              aria-controls={uniqueInputId}
+            >
+              <Upload className="w-4 h-4" aria-hidden="true" />
+              Select {multiple ? "Files" : "File"}
+            </Button>
+          </div>
+          
+          <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50">
+              <FileIcon className="w-3.5 h-3.5" aria-hidden="true" />
+              {formatDisplay}
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50">
+              <Shield className="w-3.5 h-3.5 text-green-500" aria-hidden="true" />
+              Secure Upload
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50">
+              <Zap className="w-3.5 h-3.5 text-orange-500" aria-hidden="true" />
+              Fast Processing
+            </span>
+          </div>
         </div>
       </div>
 
       {selectedFiles.length > 0 && (
-        <div className="space-y-2">
-          <h4 className="text-sm font-medium">Selected Files:</h4>
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <h4 className="text-sm font-semibold">
+              {selectedFiles.length === 1 ? "Selected File" : `Selected Files (${selectedFiles.length})`}
+            </h4>
+            {selectedFiles.length > 1 && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => {
+                  setSelectedFiles([]);
+                  onFilesSelected([]);
+                }}
+                className="text-xs h-7"
+                data-testid="button-clear-all"
+              >
+                Clear All
+              </Button>
+            )}
+          </div>
           <div className="space-y-2">
             {selectedFiles.map((file, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between p-3 rounded-md bg-muted hover-elevate"
+                className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 border border-border/50 hover-elevate transition-all"
                 data-testid={`file-item-${index}`}
               >
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <FileIcon className="w-5 h-5 text-primary" aria-hidden="true" />
+                </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium truncate">{file.name}</p>
                   <p className="text-xs text-muted-foreground">
@@ -138,10 +247,11 @@ export default function FileUploadZone({
                   variant="ghost"
                   size="icon"
                   onClick={() => removeFile(index)}
-                  className="ml-2"
+                  className="flex-shrink-0"
                   data-testid={`button-remove-file-${index}`}
+                  aria-label={`Remove ${file.name}`}
                 >
-                  <X className="w-4 h-4" />
+                  <X className="w-4 h-4" aria-hidden="true" />
                 </Button>
               </div>
             ))}

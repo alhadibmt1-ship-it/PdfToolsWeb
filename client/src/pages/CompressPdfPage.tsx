@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ChevronLeft, Download } from "lucide-react";
+import { ChevronLeft, Download, Sparkles } from "lucide-react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -8,9 +8,11 @@ import ProcessingState from "@/components/ProcessingState";
 import ToolSEOContent from "@/components/ToolSEOContent";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
+import StepIndicator from "@/components/StepIndicator";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { useSettings } from "@/contexts/SettingsContext";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
@@ -40,6 +42,12 @@ export default function CompressPdfPage() {
       setCompressionLevel(settings.defaultCompressionLevel);
     }
   }, [settings.defaultCompressionLevel, hasManuallyChanged]);
+
+  const currentStep = status === "idle" && files.length === 0 ? 1 
+    : status === "idle" && files.length > 0 ? 2 
+    : status === "processing" ? 2 
+    : status === "success" ? 3 
+    : 2;
 
   const handleCompress = async () => {
     if (files.length === 0) {
@@ -100,107 +108,199 @@ export default function CompressPdfPage() {
     }
   };
 
+  const handleReset = () => {
+    setFiles([]);
+    setStatus("idle");
+    setResultUrl(null);
+    setOriginalSize(0);
+    setCompressedSize(0);
+  };
+
   const savings = originalSize > 0 && compressedSize > 0 
     ? Math.round(((originalSize - compressedSize) / originalSize) * 100)
     : 0;
+
+  const formatBytes = (bytes: number) => {
+    if (bytes < 1024) return `${bytes} B`;
+    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+    return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       
-      <main className="flex-1 py-8">
-        <div className="max-w-4xl mx-auto px-6">
+      <main className="flex-1 py-6 sm:py-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <Link href="/" data-testid="link-back">
-            <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
-              <ChevronLeft className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-4 sm:mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
+              <ChevronLeft className="w-4 h-4" aria-hidden="true" />
               Back to Tools
             </div>
           </Link>
 
-          <div className="mb-6 sm:mb-8">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">Compress PDF</h1>
-            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4">
+          <div className="text-center mb-6 sm:mb-8">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 tracking-tight">
+              Compress PDF
+            </h1>
+            <p className="text-muted-foreground max-w-2xl mx-auto mb-5">
               Reduce your PDF file size while maintaining quality. Choose your compression level based on your needs.
             </p>
-            <TrustBadges />
+            <TrustBadges variant="prominent" className="max-w-2xl mx-auto" />
           </div>
 
+          <StepIndicator currentStep={currentStep} className="mb-8" />
+
           <div className="space-y-6">
-            <FileUploadZone
-              onFilesSelected={setFiles}
-              acceptedFormats=".pdf"
-              multiple={false}
-              disabled={status === "processing"}
-            />
+            {status !== "success" && (
+              <FileUploadZone
+                onFilesSelected={setFiles}
+                acceptedFormats=".pdf"
+                multiple={false}
+                disabled={status === "processing"}
+                toolName="Compress PDF"
+              />
+            )}
 
             {files.length > 0 && status === "idle" && (
-              <div className="rounded-lg border bg-card p-6 space-y-4">
-                <h3 className="font-semibold mb-4">Compression Level</h3>
+              <Card className="p-5 sm:p-6 space-y-5">
+                <div>
+                  <h3 className="font-semibold text-lg mb-1">Choose Compression Level</h3>
+                  <p className="text-sm text-muted-foreground">Select the level that best fits your needs</p>
+                </div>
+                
                 <RadioGroup 
                   value={compressionLevel} 
                   onValueChange={(value) => {
                     setCompressionLevel(value as CompressionLevel);
                     setHasManuallyChanged(true);
                   }}
+                  className="space-y-2"
                 >
-                  <div className="flex items-center space-x-2 p-3 rounded-md hover-elevate cursor-pointer">
-                    <RadioGroupItem value="low" id="low" data-testid="radio-low" />
-                    <Label htmlFor="low" className="cursor-pointer flex-1">
+                  <label 
+                    htmlFor="low" 
+                    className="flex items-start gap-3 p-4 rounded-xl border border-border/50 hover:border-primary/50 hover:bg-accent/30 cursor-pointer transition-all"
+                  >
+                    <RadioGroupItem value="low" id="low" data-testid="radio-low" className="mt-0.5" />
+                    <div className="flex-1">
                       <div className="font-medium">Low Compression</div>
-                      <div className="text-sm text-muted-foreground">Best quality, larger file size</div>
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2 p-3 rounded-md hover-elevate cursor-pointer">
-                    <RadioGroupItem value="medium" id="medium" data-testid="radio-medium" />
-                    <Label htmlFor="medium" className="cursor-pointer flex-1">
-                      <div className="font-medium">Medium Compression (Recommended)</div>
-                      <div className="text-sm text-muted-foreground">Balanced quality and size</div>
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2 p-3 rounded-md hover-elevate cursor-pointer">
-                    <RadioGroupItem value="high" id="high" data-testid="radio-high" />
-                    <Label htmlFor="high" className="cursor-pointer flex-1">
+                      <div className="text-sm text-muted-foreground">Best quality, slightly smaller file size</div>
+                    </div>
+                    <span className="text-xs px-2 py-1 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 font-medium">
+                      Quality
+                    </span>
+                  </label>
+                  
+                  <label 
+                    htmlFor="medium" 
+                    className="flex items-start gap-3 p-4 rounded-xl border-2 border-primary/50 bg-primary/5 cursor-pointer transition-all"
+                  >
+                    <RadioGroupItem value="medium" id="medium" data-testid="radio-medium" className="mt-0.5" />
+                    <div className="flex-1">
+                      <div className="font-medium flex items-center gap-2">
+                        Medium Compression
+                        <span className="text-xs px-2 py-0.5 rounded-full bg-primary text-primary-foreground">
+                          Recommended
+                        </span>
+                      </div>
+                      <div className="text-sm text-muted-foreground">Balanced quality and file size</div>
+                    </div>
+                  </label>
+                  
+                  <label 
+                    htmlFor="high" 
+                    className="flex items-start gap-3 p-4 rounded-xl border border-border/50 hover:border-primary/50 hover:bg-accent/30 cursor-pointer transition-all"
+                  >
+                    <RadioGroupItem value="high" id="high" data-testid="radio-high" className="mt-0.5" />
+                    <div className="flex-1">
                       <div className="font-medium">High Compression</div>
-                      <div className="text-sm text-muted-foreground">Smallest file size, reduced quality</div>
-                    </Label>
-                  </div>
+                      <div className="text-sm text-muted-foreground">Smallest file size, reduced image quality</div>
+                    </div>
+                    <span className="text-xs px-2 py-1 rounded-full bg-orange-500/10 text-orange-600 dark:text-orange-400 font-medium">
+                      Smallest
+                    </span>
+                  </label>
                 </RadioGroup>
+                
                 <Button 
                   onClick={handleCompress} 
-                  className="w-full"
+                  className="w-full gap-2"
                   size="lg"
                   data-testid="button-compress"
                 >
+                  <Sparkles className="w-4 h-4" aria-hidden="true" />
                   Compress PDF
                 </Button>
-              </div>
+              </Card>
             )}
 
-            <ProcessingState
-              status={status}
-              progress={progress}
-              message={status === "processing" ? "Compressing your PDF..." : undefined}
-            />
+            {status === "processing" && (
+              <ProcessingState
+                status={status}
+                progress={progress}
+                message="Compressing your PDF..."
+              />
+            )}
 
             {status === "success" && resultUrl && (
-              <div className="rounded-lg border bg-card p-6 space-y-4">
-                <h3 className="font-semibold">Your compressed PDF is ready!</h3>
-                {savings > 0 && (
-                  <div className="flex items-center justify-between p-3 bg-muted rounded-md">
-                    <span className="text-sm text-muted-foreground">Size reduction:</span>
-                    <span className="text-lg font-semibold text-green-600">{savings}%</span>
+              <Card className="p-5 sm:p-6 border-green-500/30 bg-gradient-to-br from-green-500/5 to-transparent">
+                <div className="text-center space-y-5">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-500/10">
+                    <Download className="w-8 h-8 text-green-500" aria-hidden="true" />
                   </div>
-                )}
-                <Button 
-                  onClick={handleDownload} 
-                  className="w-full"
-                  size="lg"
-                  data-testid="button-download"
-                >
-                  <Download className="w-4 h-4 mr-2" />
-                  Download Compressed PDF
-                </Button>
-              </div>
+                  
+                  <div>
+                    <h3 className="text-xl font-bold text-green-600 dark:text-green-400 mb-2">
+                      Compression Complete!
+                    </h3>
+                    <p className="text-muted-foreground">Your PDF has been optimized and is ready for download</p>
+                  </div>
+
+                  {savings > 0 && (
+                    <div className="grid grid-cols-3 gap-4 max-w-md mx-auto">
+                      <div className="text-center p-3 rounded-lg bg-muted/50">
+                        <div className="text-xs text-muted-foreground mb-1">Original</div>
+                        <div className="font-semibold">{formatBytes(originalSize)}</div>
+                      </div>
+                      <div className="text-center p-3 rounded-lg bg-green-500/10">
+                        <div className="text-xs text-green-600 dark:text-green-400 mb-1">Saved</div>
+                        <div className="font-bold text-green-600 dark:text-green-400 text-lg">{savings}%</div>
+                      </div>
+                      <div className="text-center p-3 rounded-lg bg-muted/50">
+                        <div className="text-xs text-muted-foreground mb-1">New Size</div>
+                        <div className="font-semibold">{formatBytes(compressedSize)}</div>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <Button 
+                      onClick={handleDownload} 
+                      size="lg"
+                      className="gap-2"
+                      data-testid="button-download"
+                    >
+                      <Download className="w-4 h-4" aria-hidden="true" />
+                      Download Compressed PDF
+                    </Button>
+                    <Button 
+                      onClick={handleReset}
+                      variant="outline"
+                      size="lg"
+                      data-testid="button-compress-another"
+                    >
+                      Compress Another File
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            )}
+
+            {status === "error" && (
+              <ProcessingState
+                status={status}
+                message="Failed to compress PDF. Please try again with a different file."
+              />
             )}
           </div>
 
