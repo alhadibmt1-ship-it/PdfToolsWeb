@@ -1,0 +1,480 @@
+PageSpeed Insights logo
+PageSpeed Insights
+Report from Dec 7, 2025, 11:38:29 AM
+https://pdfhub24.com/
+Enter a valid URL
+
+
+smartphone
+Mobile
+
+computer
+Desktop
+
+Discover what your real users are experiencing
+No Data
+
+Diagnose performance issues
+77
+Performance
+88
+Accessibility
+100
+Best Practices
+100
+SEO
+77
+FCP
++6
+LCP
++10
+TBT
++29
+CLS
++25
+SI
++7
+Performance
+Values are estimated and may vary. The performance score is calculated directly from these metrics.See calculator.
+0–49
+50–89
+90–100
+Final Screenshot
+
+Metrics
+Expand view
+First Contentful Paint
+2.7 s
+Largest Contentful Paint
+4.3 s
+Total Blocking Time
+130 ms
+Cumulative Layout Shift
+0
+Speed Index
+4.6 s
+Captured at Dec 7, 2025, 11:38 AM GMT+4
+Emulated Moto G Power with Lighthouse 13.0.1
+Single page session
+Initial page load
+Slow 4G throttling
+Using HeadlessChromium 137.0.7151.119 with lr
+View Treemap
+Screenshot
+Screenshot
+Screenshot
+Screenshot
+Screenshot
+Screenshot
+Screenshot
+Screenshot
+Show audits relevant to:
+
+All
+
+FCP
+
+LCP
+
+TBT
+Insights
+Render blocking requests Est savings of 150 ms
+Requests are blocking the page's initial render, which may delay LCP. Deferring or inlining can move these network requests out of the critical path.LCPFCPUnscored
+URL
+Transfer Size
+Duration
+pdfhub24.com 1st party
+17.4 KiB	330 ms
+/assets/index-B10gvLH7.css(pdfhub24.com)
+17.4 KiB
+330 ms
+Forced reflow
+A forced reflow occurs when JavaScript queries geometric properties (such as offsetWidth) after styles have been invalidated by a change to the DOM state. This can result in poor performance. Learn more about forced reflows and possible mitigations.Unscored
+Top function call
+Total reflow time
+/gtag/js?id=G-NPMZN8ZRPF:812:135(www.googletagmanager.com)
+84 ms
+Source
+Total reflow time
+/assets/index-FnMt_fsY.js:324:58172(pdfhub24.com)
+73 ms
+/gtag/js?id=G-NPMZN8ZRPF:809:14(www.googletagmanager.com)
+84 ms
+Network dependency tree
+Avoid chaining critical requests by reducing the length of chains, reducing the download size of resources, or deferring the download of unnecessary resources to improve page load.LCPUnscored
+Maximum critical path latency: 672 ms
+Initial Navigation
+https://pdfhub24.com - 199 ms, 1.67 KiB
+/assets/index-FnMt_fsY.js(pdfhub24.com) - 672 ms, 126.32 KiB
+/assets/index-B10gvLH7.css(pdfhub24.com) - 397 ms, 17.41 KiB
+Preconnected origins
+preconnect hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to.
+no origins were preconnected
+Preconnect candidates
+Add preconnect hints to your most important origins, but try to use no more than 4.
+No additional origins are good candidates for preconnecting
+LCP breakdown
+Optimize DOM size
+3rd parties
+These insights are also available in the Chrome DevTools Performance Panel - record a trace to view more detailed information.
+Diagnostics
+Reduce unused JavaScript Est savings of 114 KiB
+Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity. Learn how to reduce unused JavaScript.LCPFCPUnscored
+URL
+Transfer Size
+Est Savings
+pdfhub24.com 1st party
+125.8 KiB	58.8 KiB
+/assets/index-FnMt_fsY.js(pdfhub24.com)
+125.8 KiB
+58.8 KiB
+Google Tag Manager tag-manager 
+140.3 KiB	55.4 KiB
+/gtag/js?id=G-NPMZN8ZRPF(www.googletagmanager.com)
+140.3 KiB
+55.4 KiB
+Reduce unused CSS Est savings of 13 KiB
+Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity. Learn how to reduce unused CSS.LCPFCPUnscored
+URL
+Transfer Size
+Est Savings
+pdfhub24.com 1st party
+16.9 KiB	13.0 KiB
+/assets/index-B10gvLH7.css(pdfhub24.com)
+16.9 KiB
+13.0 KiB
+Avoid long main-thread tasks 3 long tasks found
+More information about the performance of your application. These numbers don't directly affect the Performance score.
+Passed audits (18)
+Show
+88
+Accessibility
+These checks highlight opportunities to improve the accessibility of your web app. Automatic detection can only detect a subset of issues and does not guarantee the accessibility of your web app, so manual testing is also encouraged.
+ARIA
+[aria-hidden="true"] elements contain focusable descendents
+Focusable descendents within an [aria-hidden="true"] element prevent those interactive elements from being available to users of assistive technologies like screen readers. Learn how aria-hidden affects focusable elements.
+Failing Elements
+PDF to Word PDF to JPG PDF to PNG PDF to Excel Extract Text Extract Images OCR …
+<div id="footer-from-pdf-content" role="region" aria-labelledby="footer-from-pdf-button" aria-hidden="true" class="overflow-hidden transition-all duration-300 md:overflow-visible max-h-0 md…">
+PDF to Word
+<a data-testid="link-footer-pdf-to-word" href="/pdf-to-word">
+PDF to JPG
+<a data-testid="link-footer-pdf-to-jpg" href="/pdf-to-jpg">
+PDF to PNG
+<a data-testid="link-footer-pdf-to-png" href="/pdf-to-png">
+Word to PDF JPG to PDF PNG to PDF Excel to PDF HTML to PDF WebP to PDF
+<div id="footer-to-pdf-content" role="region" aria-labelledby="footer-to-pdf-button" aria-hidden="true" class="overflow-hidden transition-all duration-300 md:overflow-visible max-h-0 md…">
+Word to PDF
+<a data-testid="link-footer-word-to-pdf" href="/word-to-pdf">
+JPG to PDF
+<a data-testid="link-footer-jpg-to-pdf" href="/jpg-to-pdf">
+PNG to PDF
+<a data-testid="link-footer-png-to-pdf" href="/png-to-pdf">
+Merge PDF Split PDF Compress PDF Rotate PDF Delete Pages Reorder Pages Add Page…
+<div id="footer-edit-pdf-content" role="region" aria-labelledby="footer-edit-pdf-button" aria-hidden="true" class="overflow-hidden transition-all duration-300 md:overflow-visible max-h-0 md…">
+Merge PDF
+<a data-testid="link-footer-merge" href="/merge">
+Split PDF
+<a data-testid="link-footer-split" href="/split">
+Compress PDF
+<a data-testid="link-footer-compress" href="/compress">
+About Us Contact Privacy Policy Terms of Service
+<div id="footer-company-content" role="region" aria-labelledby="footer-company-button" aria-hidden="true" class="overflow-hidden transition-all duration-300 md:overflow-visible max-h-0 md…">
+About Us
+<a data-testid="link-footer-about" href="/about">
+Contact
+<a data-testid="link-footer-contact" href="/contact">
+Privacy Policy
+<a data-testid="link-footer-privacy" href="/privacy">
+These are opportunities to improve the usage of ARIA in your application which may enhance the experience for users of assistive technology, like a screen reader.
+Contrast
+Background and foreground colors do not have a sufficient contrast ratio.
+Low-contrast text is difficult or impossible for many users to read. Learn how to provide sufficient color contrast.
+Failing Elements
+32+ Free PDF Tools
+<p class="text-xs text-muted-foreground text-center">
+32+ Free PDF Tools
+<div class="p-4 border-t bg-muted/30">
+Merge PDF
+<button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-med…" data-testid="button-merge-hero">
+EXPORT & CONVERT
+<span class="section-label block mb-1">
+body
+<body>
+PDF
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-red-500 text-white flex items-center…">
+DOC
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-blue-500 text-white flex items-cente…">
+Open
+<span class="sm:hidden">
+PDF DOC PDF to Word Convert PDF to editable DOCX document Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 0ms;">
+PDF
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-red-500 text-white flex items-center…">
+JPG
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-orange-500 text-white flex items-cen…">
+Open
+<span class="sm:hidden">
+PDF JPG PDF to JPG Convert PDF pages to JPG images Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 50ms;">
+PDF
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-red-500 text-white flex items-center…">
+PNG
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-purple-500 text-white flex items-cen…">
+Open
+<span class="sm:hidden">
+PDF PNG PDF to PNG Convert PDF pages to PNG images Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 100ms;">
+PDF
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-red-500 text-white flex items-center…">
+XLS
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-green-600 text-white flex items-cent…">
+Open
+<span class="sm:hidden">
+PDF XLS PDF to Excel Convert PDF tables to Excel spreadsheet Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 150ms;">
+Open
+<span class="sm:hidden">
+Extract Text Extract text content from PDF files Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 200ms;">
+Open
+<span class="sm:hidden">
+Extract Images Extract all images from PDF documents Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 250ms;">
+Open
+<span class="sm:hidden">
+OCR PDF Extract text from scanned PDFs with OCR Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 300ms;">
+IMPORT & CREATE
+<span class="section-label block mb-1">
+body
+<body>
+DOC
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-blue-500 text-white flex items-cente…">
+PDF
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-red-500 text-white flex items-center…">
+Open
+<span class="sm:hidden">
+DOC PDF Word to PDF Convert DOCX documents to PDF format Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 0ms;">
+JPG
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-orange-500 text-white flex items-cen…">
+PDF
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-red-500 text-white flex items-center…">
+Open
+<span class="sm:hidden">
+JPG PDF JPG to PDF Convert images to a single PDF document Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 50ms;">
+PNG
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-purple-500 text-white flex items-cen…">
+PDF
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-red-500 text-white flex items-center…">
+Open
+<span class="sm:hidden">
+PNG PDF PNG to PDF Convert PNG images to PDF document Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 100ms;">
+XLS
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-green-600 text-white flex items-cent…">
+PDF
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-red-500 text-white flex items-center…">
+Open
+<span class="sm:hidden">
+XLS PDF Excel to PDF Convert Excel spreadsheets to PDF Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 150ms;">
+HTML
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-orange-600 text-white flex items-cen…">
+PDF
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-red-500 text-white flex items-center…">
+Open
+<span class="sm:hidden">
+HTML PDF HTML to PDF Convert HTML code to PDF documents Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 200ms;">
+WEBP
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-cyan-500 text-white flex items-cente…">
+PDF
+<div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-red-500 text-white flex items-center…">
+Open
+<span class="sm:hidden">
+WEBP PDF WebP to PDF Convert WebP images to PDF Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 250ms;">
+MODIFY & ORGANIZE
+<span class="section-label block mb-1">
+body
+<body>
+Open
+<span class="sm:hidden">
+Merge PDF Combine multiple PDF files into one document Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 0ms;">
+Open
+<span class="sm:hidden">
+Split PDF Extract specific pages from your PDF file Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 50ms;">
+Open
+<span class="sm:hidden">
+Compress PDF Reduce PDF file size without losing quality Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 100ms;">
+Open
+<span class="sm:hidden">
+Rotate PDF Rotate pages in your PDF document Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 150ms;">
+Open
+<span class="sm:hidden">
+Delete Pages Remove unwanted pages from PDF Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 200ms;">
+Open
+<span class="sm:hidden">
+Reorder Pages Rearrange page order in your PDF Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 250ms;">
+Open
+<span class="sm:hidden">
+Add Page Numbers Add page numbers to your PDF document Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 300ms;">
+Open
+<span class="sm:hidden">
+Add Watermark Add text watermark to PDF pages Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 350ms;">
+Open
+<span class="sm:hidden">
+Protect PDF Add password protection to your PDF files Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 400ms;">
+Open
+<span class="sm:hidden">
+Unlock PDF Remove password from protected PDF files Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 450ms;">
+Open
+<span class="sm:hidden">
+Crop PDF Trim margins and remove unwanted whitespace Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 500ms;">
+Open
+<span class="sm:hidden">
+Resize PDF Change PDF page size to A4, Letter, and more Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 550ms;">
+Open
+<span class="sm:hidden">
+Sign PDF Add your signature to PDF documents Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 600ms;">
+Open
+<span class="sm:hidden">
+Flatten PDF Flatten forms and layers into static content Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 650ms;">
+Open
+<span class="sm:hidden">
+PDF to Grayscale Convert PDF to black and white for printing Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 700ms;">
+Open
+<span class="sm:hidden">
+Repair PDF Fix corrupted or damaged PDF files Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 750ms;">
+EXTRA TOOLS
+<span class="section-label block mb-1">
+body
+<body>
+Open
+<span class="sm:hidden">
+PDF Viewer View PDF files directly in your browser Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 0ms;">
+Open
+<span class="sm:hidden">
+Compare PDF Find differences between two PDF files Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 50ms;">
+Open
+<span class="sm:hidden">
+Image Compressor Compress JPG, PNG, and WebP images Open
+<div class="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] s…" style="animation-delay: 100ms;">
+WHY CHOOSE US
+<span class="section-label block mb-3">
+body
+<body>
+Trusted by users worldwide for fast, secure, and reliable PDF processing
+<p class="text-muted-foreground max-w-xl mx-auto">
+body
+<body>
+FOR EVERYONE
+<span class="section-label block mb-3">
+FOR EVERYONE Who Uses PDF HUB 24? Students Compress assignments, merge notes, …
+<section class="py-16 sm:py-20 bg-muted/30">
+body
+<body>
+FAQ
+<span class="section-label block mb-3">
+body
+<body>
+Merge PDFs
+<button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-med…" data-testid="button-merge-cta">
+These are opportunities to improve the legibility of your content.
+Best practices
+Touch targets do not have sufficient size or spacing.
+Touch targets with sufficient size and spacing help users who may have difficulty targeting small controls to activate the targets. Learn more about touch targets.
+Failing Elements
+Merge PDF
+<a href="/merge">
+Merge PDF
+<button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-med…" data-testid="button-merge-hero">
+Compress PDF
+<a href="/compress">
+Compress PDF
+<button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-med…" data-testid="button-compress-hero">
+PDF to Word
+<a href="/pdf-to-word">
+PDF to Word
+<button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-med…" data-testid="button-convert-hero">
+Merge PDFs
+<a href="/merge">
+Merge PDFs
+<button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-med…" data-testid="button-merge-cta">
+Convert PDF to Word
+<a href="/pdf-to-word">
+Convert PDF to Word
+<button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-med…" data-testid="button-convert-cta">
+These items highlight common accessibility best practices.
+Names and labels
+Image elements do not have [alt] attributes that are redundant text.
+These are opportunities to improve the semantics of the controls in your application. This may enhance the experience for users of assistive technology, like a screen reader.
+Additional items to manually check (10)
+Show
+These items address areas which an automated testing tool cannot cover. Learn more in our guide on conducting an accessibility review.
+Passed audits (20)
+Show
+Not applicable (36)
+Show
+100
+Best Practices
+Trust and Safety
+Ensure CSP is effective against XSS attacks
+Use a strong HSTS policy
+Ensure proper origin isolation with COOP
+Mitigate clickjacking with XFO or CSP
+Mitigate DOM-based XSS with Trusted Types
+Passed audits (13)
+Show
+Not applicable (2)
+Show
+100
+SEO
+These checks ensure that your page is following basic search engine optimization advice. There are many additional factors Lighthouse does not score here that may affect your search ranking, including performance on Core Web Vitals. Learn more about Google Search Essentials.
+Additional items to manually check (1)
+Hide
+Structured data is valid
+Run these additional validators on your site to check additional SEO best practices.
+Passed audits (10)
+Show
+More on PageSpeed Insights
+What's new
+Documentation
+Learn about Web Performance
+Ask questions on Stack Overflow
+Mailing list
+Related Content
+Updates
+Web Fundamentals
+Case Studies
+Podcasts
+Connect
+Twitter
+Youtube
+Google Developers Logo
+Chrome
+Firebase
+All products
+Terms and Privacy Policy
+For details, see the Google Developers Site Policies.

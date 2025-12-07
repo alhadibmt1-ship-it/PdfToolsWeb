@@ -4,6 +4,27 @@ import { PDF_TOOLS } from "@shared/schema";
 import { ChevronDown, Shield, Lock, Zap, Globe } from "lucide-react";
 import siteLogo from "@assets/generated_images/logo-64.webp";
 
+interface FooterLinkProps {
+  href: string;
+  testId: string;
+  children: React.ReactNode;
+  isVisible: boolean;
+}
+
+function FooterLink({ href, testId, children, isVisible }: FooterLinkProps) {
+  return (
+    <a 
+      href={href}
+      data-testid={testId} 
+      tabIndex={isVisible ? 0 : -1}
+      className="text-sm text-muted-foreground hover:text-primary cursor-pointer transition-colors block py-0.5"
+      aria-hidden={!isVisible}
+    >
+      {children}
+    </a>
+  );
+}
+
 export default function Footer() {
   const [isFromPdfOpen, setIsFromPdfOpen] = useState(false);
   const [isToPdfOpen, setIsToPdfOpen] = useState(false);
@@ -24,6 +45,11 @@ export default function Footer() {
   const toPdfTools = PDF_TOOLS.filter(tool => tool.category === "to-pdf");
   const editPdfTools = PDF_TOOLS.filter(tool => tool.category === "edit-pdf").slice(0, 8);
 
+  const isFromPdfVisible = isDesktop || isFromPdfOpen;
+  const isToPdfVisible = isDesktop || isToPdfOpen;
+  const isEditPdfVisible = isDesktop || isEditPdfOpen;
+  const isCompanyVisible = isDesktop || isCompanyOpen;
+
   return (
     <footer className="border-t border-border/50 bg-gradient-to-b from-background to-muted/30 mt-12 sm:mt-16 md:mt-20">
       {/* Trust Indicators Bar */}
@@ -32,7 +58,7 @@ export default function Footer() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
-                <Shield className="w-5 h-5 text-green-500" aria-hidden="true" />
+                <Shield className="w-5 h-5 text-green-600 dark:text-green-400" aria-hidden="true" />
               </div>
               <div>
                 <div className="font-semibold text-sm">Secure & Private</div>
@@ -50,7 +76,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
-                <Zap className="w-5 h-5 text-orange-500" aria-hidden="true" />
+                <Zap className="w-5 h-5 text-orange-600 dark:text-orange-400" aria-hidden="true" />
               </div>
               <div>
                 <div className="font-semibold text-sm">Fast Processing</div>
@@ -59,7 +85,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                <Globe className="w-5 h-5 text-purple-500" aria-hidden="true" />
+                <Globe className="w-5 h-5 text-purple-600 dark:text-purple-400" aria-hidden="true" />
               </div>
               <div>
                 <div className="font-semibold text-sm">Works Everywhere</div>
@@ -113,7 +139,7 @@ export default function Footer() {
               className="w-full flex items-center justify-between md:cursor-default"
               onClick={() => !isDesktop && setIsFromPdfOpen(!isFromPdfOpen)}
               data-testid="toggle-from-pdf"
-              aria-expanded={isDesktop || isFromPdfOpen}
+              aria-expanded={isFromPdfVisible}
               aria-controls="footer-from-pdf-content"
             >
               <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground">Convert from PDF</h3>
@@ -123,16 +149,19 @@ export default function Footer() {
               id="footer-from-pdf-content"
               role="region"
               aria-labelledby="footer-from-pdf-button"
-              aria-hidden={!isDesktop && !isFromPdfOpen}
-              className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isFromPdfOpen ? 'max-h-[500px] mt-3' : 'max-h-0 md:max-h-none md:mt-4'}`}
+              hidden={!isFromPdfVisible}
+              className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isFromPdfVisible ? 'max-h-[500px] mt-3 md:mt-4' : 'max-h-0'}`}
             >
               <div className="flex flex-col gap-2">
                 {fromPdfTools.map((tool) => (
-                  <Link key={tool.id} href={tool.path} data-testid={`link-footer-${tool.id}`}>
-                    <span className="text-sm text-muted-foreground hover:text-primary cursor-pointer transition-colors block py-0.5">
-                      {tool.title}
-                    </span>
-                  </Link>
+                  <FooterLink 
+                    key={tool.id} 
+                    href={tool.path} 
+                    testId={`link-footer-${tool.id}`}
+                    isVisible={isFromPdfVisible}
+                  >
+                    {tool.title}
+                  </FooterLink>
                 ))}
               </div>
             </div>
@@ -145,7 +174,7 @@ export default function Footer() {
               className="w-full flex items-center justify-between md:cursor-default"
               onClick={() => !isDesktop && setIsToPdfOpen(!isToPdfOpen)}
               data-testid="toggle-to-pdf"
-              aria-expanded={isDesktop || isToPdfOpen}
+              aria-expanded={isToPdfVisible}
               aria-controls="footer-to-pdf-content"
             >
               <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground">Convert to PDF</h3>
@@ -155,16 +184,19 @@ export default function Footer() {
               id="footer-to-pdf-content"
               role="region"
               aria-labelledby="footer-to-pdf-button"
-              aria-hidden={!isDesktop && !isToPdfOpen}
-              className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isToPdfOpen ? 'max-h-[500px] mt-3' : 'max-h-0 md:max-h-none md:mt-4'}`}
+              hidden={!isToPdfVisible}
+              className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isToPdfVisible ? 'max-h-[500px] mt-3 md:mt-4' : 'max-h-0'}`}
             >
               <div className="flex flex-col gap-2">
                 {toPdfTools.map((tool) => (
-                  <Link key={tool.id} href={tool.path} data-testid={`link-footer-${tool.id}`}>
-                    <span className="text-sm text-muted-foreground hover:text-primary cursor-pointer transition-colors block py-0.5">
-                      {tool.title}
-                    </span>
-                  </Link>
+                  <FooterLink 
+                    key={tool.id} 
+                    href={tool.path} 
+                    testId={`link-footer-${tool.id}`}
+                    isVisible={isToPdfVisible}
+                  >
+                    {tool.title}
+                  </FooterLink>
                 ))}
               </div>
             </div>
@@ -179,7 +211,7 @@ export default function Footer() {
                 className="w-full flex items-center justify-between md:cursor-default"
                 onClick={() => !isDesktop && setIsEditPdfOpen(!isEditPdfOpen)}
                 data-testid="toggle-edit-pdf"
-                aria-expanded={isDesktop || isEditPdfOpen}
+                aria-expanded={isEditPdfVisible}
                 aria-controls="footer-edit-pdf-content"
               >
                 <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground">Edit PDF</h3>
@@ -189,16 +221,19 @@ export default function Footer() {
                 id="footer-edit-pdf-content"
                 role="region"
                 aria-labelledby="footer-edit-pdf-button"
-                aria-hidden={!isDesktop && !isEditPdfOpen}
-                className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isEditPdfOpen ? 'max-h-[300px] mt-3' : 'max-h-0 md:max-h-none md:mt-4'}`}
+                hidden={!isEditPdfVisible}
+                className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isEditPdfVisible ? 'max-h-[300px] mt-3 md:mt-4' : 'max-h-0'}`}
               >
                 <div className="flex flex-col gap-2">
                   {editPdfTools.map((tool) => (
-                    <Link key={tool.id} href={tool.path} data-testid={`link-footer-${tool.id}`}>
-                      <span className="text-sm text-muted-foreground hover:text-primary cursor-pointer transition-colors block py-0.5">
-                        {tool.title}
-                      </span>
-                    </Link>
+                    <FooterLink 
+                      key={tool.id} 
+                      href={tool.path} 
+                      testId={`link-footer-${tool.id}`}
+                      isVisible={isEditPdfVisible}
+                    >
+                      {tool.title}
+                    </FooterLink>
                   ))}
                 </div>
               </div>
@@ -211,7 +246,7 @@ export default function Footer() {
                 className="w-full flex items-center justify-between md:cursor-default"
                 onClick={() => !isDesktop && setIsCompanyOpen(!isCompanyOpen)}
                 data-testid="toggle-company"
-                aria-expanded={isDesktop || isCompanyOpen}
+                aria-expanded={isCompanyVisible}
                 aria-controls="footer-company-content"
               >
                 <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground">Company</h3>
@@ -221,30 +256,22 @@ export default function Footer() {
                 id="footer-company-content"
                 role="region"
                 aria-labelledby="footer-company-button"
-                aria-hidden={!isDesktop && !isCompanyOpen}
-                className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isCompanyOpen ? 'max-h-[200px] mt-3' : 'max-h-0 md:max-h-none md:mt-4'}`}
+                hidden={!isCompanyVisible}
+                className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isCompanyVisible ? 'max-h-[200px] mt-3 md:mt-4' : 'max-h-0'}`}
               >
                 <div className="flex flex-col gap-2">
-                  <Link href="/about" data-testid="link-footer-about">
-                    <span className="text-sm text-muted-foreground hover:text-primary cursor-pointer transition-colors block py-0.5">
-                      About Us
-                    </span>
-                  </Link>
-                  <Link href="/contact" data-testid="link-footer-contact">
-                    <span className="text-sm text-muted-foreground hover:text-primary cursor-pointer transition-colors block py-0.5">
-                      Contact
-                    </span>
-                  </Link>
-                  <Link href="/privacy" data-testid="link-footer-privacy">
-                    <span className="text-sm text-muted-foreground hover:text-primary cursor-pointer transition-colors block py-0.5">
-                      Privacy Policy
-                    </span>
-                  </Link>
-                  <Link href="/terms" data-testid="link-footer-terms">
-                    <span className="text-sm text-muted-foreground hover:text-primary cursor-pointer transition-colors block py-0.5">
-                      Terms of Service
-                    </span>
-                  </Link>
+                  <FooterLink href="/about" testId="link-footer-about" isVisible={isCompanyVisible}>
+                    About Us
+                  </FooterLink>
+                  <FooterLink href="/contact" testId="link-footer-contact" isVisible={isCompanyVisible}>
+                    Contact
+                  </FooterLink>
+                  <FooterLink href="/privacy" testId="link-footer-privacy" isVisible={isCompanyVisible}>
+                    Privacy Policy
+                  </FooterLink>
+                  <FooterLink href="/terms" testId="link-footer-terms" isVisible={isCompanyVisible}>
+                    Terms of Service
+                  </FooterLink>
                 </div>
               </div>
             </div>

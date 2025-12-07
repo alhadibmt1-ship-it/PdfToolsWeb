@@ -91,13 +91,13 @@ const iconMap: Record<string, any> = {
 
 function ConversionIcon({ iconType }: { iconType: string }) {
   const formatStyles: Record<string, { bgColor: string; textColor: string; label: string }> = {
-    pdf: { bgColor: "bg-red-500", textColor: "text-white", label: "PDF" },
-    word: { bgColor: "bg-blue-500", textColor: "text-white", label: "DOC" },
-    jpg: { bgColor: "bg-orange-500", textColor: "text-white", label: "JPG" },
-    png: { bgColor: "bg-purple-500", textColor: "text-white", label: "PNG" },
-    excel: { bgColor: "bg-green-600", textColor: "text-white", label: "XLS" },
-    html: { bgColor: "bg-orange-600", textColor: "text-white", label: "HTML" },
-    webp: { bgColor: "bg-cyan-500", textColor: "text-white", label: "WEBP" },
+    pdf: { bgColor: "bg-red-600", textColor: "text-white", label: "PDF" },
+    word: { bgColor: "bg-blue-600", textColor: "text-white", label: "DOC" },
+    jpg: { bgColor: "bg-orange-600", textColor: "text-white", label: "JPG" },
+    png: { bgColor: "bg-purple-600", textColor: "text-white", label: "PNG" },
+    excel: { bgColor: "bg-green-700", textColor: "text-white", label: "XLS" },
+    html: { bgColor: "bg-orange-700", textColor: "text-white", label: "HTML" },
+    webp: { bgColor: "bg-cyan-700", textColor: "text-white", label: "WEBP" },
   };
 
   if (iconType.includes("-to-")) {
@@ -228,7 +228,7 @@ export default function HomePage() {
                 {tool.description}
               </p>
               
-              <div className="flex items-center text-xs sm:text-sm font-medium text-primary opacity-80 group-hover:opacity-100 transition-all mt-auto">
+              <div className="flex items-center text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-all mt-auto">
                 <span className="hidden sm:inline">Use Tool</span>
                 <span className="sm:hidden">Open</span>
                 <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-1 group-hover:translate-x-1 transition-transform" />
@@ -252,9 +252,9 @@ export default function HomePage() {
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
             <div className="text-center max-w-4xl mx-auto">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6 sm:mb-8">
-                <Sparkles className="w-4 h-4 text-primary" />
-                <span className="text-xs sm:text-sm font-medium text-primary">32+ Free PDF Tools</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/15 border border-primary/30 mb-6 sm:mb-8">
+                <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                <span className="text-xs sm:text-sm font-semibold text-blue-700 dark:text-blue-300">32+ Free PDF Tools</span>
               </div>
               
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 sm:mb-6 leading-[1.1] tracking-tight">
