@@ -2,61 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-/* LIGHT MODE - Premium Professional Theme */
+/* LIGHT MODE - Modern Vibrant Theme */
 :root {
   --button-outline: rgba(0,0,0, .10);
   --badge-outline: rgba(0,0,0, .05);
   --opaque-button-border-intensity: -8;
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
-  --background: 220 30% 98%;
+  --background: 210 40% 98%;
   --foreground: 222 47% 11%;
-  --border: 220 13% 91%;
+  --border: 214 32% 91%;
   --card: 0 0% 100%;
   --card-foreground: 222 47% 11%;
-  --card-border: 220 13% 91%;
+  --card-border: 214 32% 91%;
   
-  /* Premium accent colors */
+  /* Modern vibrant accent colors */
   --navy: 222 47% 11%;
-  --teal: 173 80% 40%;
+  --teal: 175 84% 40%;
+  --cyan: 192 91% 50%;
   --warm-gray: 220 14% 96%;
+  
+  /* Gradient colors for hero */
+  --gradient-start: 217 91% 60%;
+  --gradient-end: 192 91% 50%;
   
   /* Premium shadows */
   --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05);
-  --card-shadow-hover: 0 10px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.04);
-  --premium-shadow: 0 20px 40px -15px rgb(20 35 90 / 0.15);
+  --card-shadow-hover: 0 20px 40px -12px rgb(59 130 246 / 0.15), 0 8px 16px -8px rgb(0 0 0 / 0.05);
+  --premium-shadow: 0 25px 50px -12px rgb(59 130 246 / 0.2);
   --sidebar: 220 35% 95%;
   --sidebar-foreground: 220 50% 10%;
   --sidebar-border: 220 25% 88%;
-  --sidebar-primary: 220 95% 50%;
+  --sidebar-primary: 217 91% 60%;
   --sidebar-primary-foreground: 0 0% 100%;
   --sidebar-accent: 220 35% 92%;
   --sidebar-accent-foreground: 220 50% 10%;
-  --sidebar-ring: 220 95% 50%;
+  --sidebar-ring: 217 91% 60%;
   --popover: 0 0% 100%;
   --popover-foreground: 220 50% 10%;
   --popover-border: 220 25% 88%;
-  --primary: 220 95% 50%;
+  --primary: 217 91% 60%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 220 35% 95%;
-  --secondary-foreground: 220 50% 10%;
-  --muted: 220 25% 94%;
-  --muted-foreground: 220 15% 38%;
-  --accent: 220 35% 92%;
-  --accent-foreground: 220 50% 10%;
-  --destructive: 0 85% 55%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222 47% 11%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222 47% 11%;
+  --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
-  --input: 220 25% 88%;
-  --ring: 220 95% 50%;
-  --chart-1: 220 95% 50%;
-  --chart-2: 150 80% 40%;
+  --input: 214 32% 91%;
+  --ring: 217 91% 60%;
+  --chart-1: 217 91% 60%;
+  --chart-2: 160 84% 39%;
   --chart-3: 280 85% 55%;
   --chart-4: 35 100% 50%;
   --chart-5: 350 85% 55%;
   --font-sans: Inter, system-ui, -apple-system, sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: Menlo, monospace;
-  --radius: .5rem;
+  --radius: .625rem;
   --shadow-2xs: 0px 2px 0px 0px hsl(220 13% 13% / 0.00);
   --shadow-xs: 0px 2px 0px 0px hsl(220 13% 13% / 0.00);
   --shadow-sm: 0px 2px 0px 0px hsl(220 13% 13% / 0.00), 0px 1px 2px -1px hsl(220 13% 13% / 0.00);
@@ -103,47 +108,52 @@
   --opaque-button-border-intensity: 9;
   --elevate-1: rgba(255,255,255, .04);
   --elevate-2: rgba(255,255,255, .09);
-  --background: 224 71% 4%;
-  --foreground: 213 31% 91%;
-  --border: 216 34% 17%;
-  --card: 224 71% 6%;
-  --card-foreground: 213 31% 91%;
-  --card-border: 216 34% 14%;
+  --background: 222 47% 6%;
+  --foreground: 210 40% 98%;
+  --border: 217 33% 17%;
+  --card: 222 47% 8%;
+  --card-foreground: 210 40% 98%;
+  --card-border: 217 33% 14%;
   
-  /* Premium accent colors - dark mode */
-  --navy: 213 31% 91%;
-  --teal: 173 80% 50%;
-  --warm-gray: 224 71% 8%;
+  /* Modern vibrant accent colors - dark mode */
+  --navy: 210 40% 98%;
+  --teal: 175 84% 50%;
+  --cyan: 192 91% 60%;
+  --warm-gray: 222 47% 10%;
+  
+  /* Gradient colors for hero - dark mode */
+  --gradient-start: 217 91% 65%;
+  --gradient-end: 192 91% 55%;
   
   /* Premium shadows - dark mode */
   --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
-  --card-shadow-hover: 0 10px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.3);
-  --premium-shadow: 0 20px 40px -15px rgb(0 0 0 / 0.5);
-  --sidebar: 225 50% 7%;
-  --sidebar-foreground: 220 30% 98%;
-  --sidebar-border: 225 40% 13%;
-  --sidebar-primary: 220 100% 60%;
+  --card-shadow-hover: 0 20px 40px -12px rgb(59 130 246 / 0.3), 0 8px 16px -8px rgb(0 0 0 / 0.3);
+  --premium-shadow: 0 25px 50px -12px rgb(59 130 246 / 0.35);
+  --sidebar: 222 47% 8%;
+  --sidebar-foreground: 210 40% 98%;
+  --sidebar-border: 217 33% 15%;
+  --sidebar-primary: 217 91% 65%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 225 40% 13%;
-  --sidebar-accent-foreground: 220 30% 98%;
-  --sidebar-ring: 220 100% 60%;
-  --popover: 225 50% 10%;
-  --popover-foreground: 220 30% 98%;
-  --popover-border: 225 40% 15%;
-  --primary: 220 100% 60%;
+  --sidebar-accent: 217 33% 15%;
+  --sidebar-accent-foreground: 210 40% 98%;
+  --sidebar-ring: 217 91% 65%;
+  --popover: 222 47% 10%;
+  --popover-foreground: 210 40% 98%;
+  --popover-border: 217 33% 17%;
+  --primary: 217 91% 65%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 225 40% 15%;
-  --secondary-foreground: 220 30% 98%;
-  --muted: 225 35% 13%;
-  --muted-foreground: 220 20% 70%;
-  --accent: 225 40% 15%;
-  --accent-foreground: 220 30% 98%;
-  --destructive: 0 85% 55%;
+  --secondary: 217 33% 17%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217 33% 14%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 217 33% 17%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
-  --input: 225 40% 22%;
-  --ring: 220 100% 60%;
-  --chart-1: 220 100% 70%;
-  --chart-2: 150 80% 60%;
+  --input: 217 33% 20%;
+  --ring: 217 91% 65%;
+  --chart-1: 217 91% 70%;
+  --chart-2: 160 84% 50%;
   --chart-3: 280 85% 70%;
   --chart-4: 35 100% 65%;
   --chart-5: 350 85% 65%;
@@ -310,59 +320,87 @@
   .premium-card {
     background: hsl(var(--card));
     border: 1px solid hsl(var(--border));
-    border-radius: 0.875rem;
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.04), 0 1px 2px -1px rgb(0 0 0 / 0.04);
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px 0 rgb(0 0 0 / 0.04);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .premium-card:hover {
-    box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.03);
-    border-color: hsl(var(--primary) / 0.25);
-    transform: translateY(-2px);
+    box-shadow: 0 20px 40px -12px rgb(59 130 246 / 0.12), 0 8px 16px -8px rgb(0 0 0 / 0.05);
+    border-color: hsl(var(--primary) / 0.3);
+    transform: translateY(-4px);
   }
   
   .dark .premium-card {
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.2), 0 1px 2px -1px rgb(0 0 0 / 0.2);
+    box-shadow: 0 2px 8px 0 rgb(0 0 0 / 0.25);
   }
   
   .dark .premium-card:hover {
-    box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.2);
+    box-shadow: 0 20px 40px -12px rgb(59 130 246 / 0.25), 0 8px 16px -8px rgb(0 0 0 / 0.3);
   }
   
   /* Glass effect for badges and chips */
   .glass-badge {
-    background: hsl(var(--background) / 0.8);
-    backdrop-filter: blur(8px);
+    background: hsl(var(--card) / 0.9);
+    backdrop-filter: blur(12px);
     border: 1px solid hsl(var(--border));
+    box-shadow: 0 2px 8px 0 rgb(0 0 0 / 0.04);
   }
   
   /* Premium section headers */
   .section-label {
     font-size: 0.75rem;
     font-weight: 600;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: hsl(var(--primary));
   }
   
-  /* Hero gradient with noise texture */
+  /* Hero gradient - Modern vibrant */
   .hero-gradient {
     background: 
-      linear-gradient(180deg, 
-        hsl(var(--primary) / 0.03) 0%, 
-        hsl(var(--primary) / 0.08) 30%,
-        hsl(var(--accent) / 0.1) 60%,
+      linear-gradient(135deg, 
+        hsl(217 91% 60% / 0.08) 0%,
+        hsl(192 91% 50% / 0.05) 50%,
         hsl(var(--background)) 100%
       );
   }
   
   .dark .hero-gradient {
     background: 
-      linear-gradient(180deg, 
-        hsl(var(--primary) / 0.08) 0%, 
-        hsl(var(--primary) / 0.05) 40%,
+      linear-gradient(135deg, 
+        hsl(217 91% 65% / 0.12) 0%,
+        hsl(192 91% 55% / 0.06) 50%,
         hsl(var(--background)) 100%
       );
+  }
+  
+  /* Gradient text for headings */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(192 91% 50%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Feature badge with gradient border */
+  .gradient-border {
+    position: relative;
+    background: hsl(var(--card));
+    border-radius: 1rem;
+  }
+  
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, hsl(217 91% 60% / 0.3) 0%, hsl(192 91% 50% / 0.3) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
   }
   
   /* Scroll reveal animation */
