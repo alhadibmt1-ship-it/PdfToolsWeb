@@ -44,6 +44,14 @@ const SignPdfPage = lazy(() => import("@/pages/SignPdfPage"));
 const OcrPdfPage = lazy(() => import("@/pages/OcrPdfPage"));
 const ComparePdfPage = lazy(() => import("@/pages/ComparePdfPage"));
 
+const PdfToPptPage = lazy(() => import("@/pages/PdfToPptPage"));
+const PptToPdfPage = lazy(() => import("@/pages/PptToPdfPage"));
+const TiffToPdfPage = lazy(() => import("@/pages/TiffToPdfPage"));
+const GifToPdfPage = lazy(() => import("@/pages/GifToPdfPage"));
+const EditPdfPage = lazy(() => import("@/pages/EditPdfPage"));
+const AnnotatePdfPage = lazy(() => import("@/pages/AnnotatePdfPage"));
+const RedactPdfPage = lazy(() => import("@/pages/RedactPdfPage"));
+
 const AboutPage = lazy(() => import("@/pages/AboutPage"));
 const PrivacyPage = lazy(() => import("@/pages/PrivacyPage"));
 const TermsPage = lazy(() => import("@/pages/TermsPage"));
@@ -97,6 +105,14 @@ function Router() {
         <Route path="/sign-pdf" component={SignPdfPage} />
         <Route path="/ocr-pdf" component={OcrPdfPage} />
         <Route path="/compare-pdf" component={ComparePdfPage} />
+        
+        <Route path="/pdf-to-ppt" component={PdfToPptPage} />
+        <Route path="/ppt-to-pdf" component={PptToPdfPage} />
+        <Route path="/tiff-to-pdf" component={TiffToPdfPage} />
+        <Route path="/gif-to-pdf" component={GifToPdfPage} />
+        <Route path="/edit-pdf" component={EditPdfPage} />
+        <Route path="/annotate-pdf" component={AnnotatePdfPage} />
+        <Route path="/redact-pdf" component={RedactPdfPage} />
         
         <Route path="/about" component={AboutPage} />
         <Route path="/privacy" component={PrivacyPage} />

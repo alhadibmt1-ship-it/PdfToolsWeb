@@ -1,47 +1,54 @@
 # PDF HUB 24
 
 ## Overview
-PDF HUB 24 is a comprehensive web-based PDF manipulation platform offering 32 PDF tools organized in 4 categories:
+PDF HUB 24 is a comprehensive web-based PDF manipulation platform offering 39 PDF tools organized in 4 categories:
 
-### Convert from PDF (7 tools)
+### Convert from PDF (8 tools)
 1. **PDF to Word** - Convert PDF to editable DOCX
 2. **PDF to JPG** - Convert PDF pages to JPG images
 3. **PDF to PNG** - Convert PDF pages to PNG images
 4. **PDF to Excel** - Convert PDF tables to XLS spreadsheet
-5. **Extract Text** - Extract text content from PDF
-6. **Extract Images** - Extract all images from PDF documents
-7. **OCR PDF** - Extract text from scanned PDFs with OCR
+5. **PDF to PowerPoint** - Convert PDF to editable PPT slides
+6. **Extract Text** - Extract text content from PDF
+7. **Extract Images** - Extract all images from PDF documents
+8. **OCR PDF** - Extract text from scanned PDFs with OCR
 
-### Convert to PDF (6 tools)
-8. **Word to PDF** - Convert DOCX to PDF
-9. **JPG to PDF** - Convert JPG images to PDF
-10. **PNG to PDF** - Convert PNG images to PDF
-11. **Excel to PDF** - Convert XLS/XLSX spreadsheet to PDF
-12. **HTML to PDF** - Convert HTML code to PDF documents
-13. **WebP to PDF** - Convert WebP images to PDF
+### Convert to PDF (9 tools)
+9. **Word to PDF** - Convert DOCX to PDF
+10. **JPG to PDF** - Convert JPG images to PDF
+11. **PNG to PDF** - Convert PNG images to PDF
+12. **Excel to PDF** - Convert XLS/XLSX spreadsheet to PDF
+13. **PowerPoint to PDF** - Convert PPT/PPTX slides to PDF
+14. **TIFF to PDF** - Convert TIFF images to PDF
+15. **GIF to PDF** - Convert GIF images to PDF
+16. **HTML to PDF** - Convert HTML code to PDF documents
+17. **WebP to PDF** - Convert WebP images to PDF
 
-### Edit PDF (16 tools)
-14. **Merge PDF** - Combine multiple PDFs into one
-15. **Split PDF** - Extract specific pages
-16. **Compress PDF** - Reduce file size
-17. **Rotate PDF** - Rotate pages 90°, 180°, 270°
-18. **Delete Pages** - Remove unwanted pages
-19. **Protect PDF** - Add password protection
-20. **Unlock PDF** - Remove password protection
-21. **Add Page Numbers** - Add page numbers to documents
-22. **Add Watermark** - Add text watermark to pages
-23. **Reorder Pages** - Drag-and-drop page reordering
-24. **Crop PDF** - Trim margins and remove unwanted whitespace
-25. **Resize PDF** - Change PDF page size to A4, Letter, and more
-26. **Sign PDF** - Add your signature to PDF documents
-27. **Flatten PDF** - Flatten forms and layers into static content
-28. **PDF to Grayscale** - Convert PDF to black and white for printing
-29. **Repair PDF** - Fix corrupted or damaged PDF files
+### Edit PDF (19 tools)
+18. **Merge PDF** - Combine multiple PDFs into one
+19. **Split PDF** - Extract specific pages
+20. **Compress PDF** - Reduce file size
+21. **Rotate PDF** - Rotate pages 90°, 180°, 270°
+22. **Delete Pages** - Remove unwanted pages
+23. **Protect PDF** - Add password protection
+24. **Unlock PDF** - Remove password protection
+25. **Add Page Numbers** - Add page numbers to documents
+26. **Add Watermark** - Add text watermark to pages
+27. **Reorder Pages** - Drag-and-drop page reordering
+28. **Crop PDF** - Trim margins and remove unwanted whitespace
+29. **Resize PDF** - Change PDF page size to A4, Letter, and more
+30. **Sign PDF** - Add your signature to PDF documents
+31. **Flatten PDF** - Flatten forms and layers into static content
+32. **PDF to Grayscale** - Convert PDF to black and white for printing
+33. **Repair PDF** - Fix corrupted or damaged PDF files
+34. **Edit PDF** - Add text, images, and shapes to PDF
+35. **Annotate PDF** - Highlight, underline, and mark up PDFs
+36. **Redact PDF** - Permanently black out sensitive information
 
 ### Utility Tools (3 tools)
-30. **PDF Viewer** - View PDF files directly in your browser
-31. **Compare PDF** - Find differences between two PDF files
-32. **Image Compressor** - Compress JPG, PNG, and WebP images
+37. **PDF Viewer** - View PDF files directly in your browser
+38. **Compare PDF** - Find differences between two PDF files
+39. **Image Compressor** - Compress JPG, PNG, and WebP images
 
 Features full dark mode support, user settings, localStorage persistence, and professional-grade PDF processing. Homepage displays tools organized by category with visual conversion icons showing source→target formats (colored labels with arrows). Deployed at pdfhub24.com with complete SEO optimization and PDF24-inspired UX patterns.
 
@@ -56,9 +63,9 @@ The frontend uses React 18 with TypeScript, Vite for bundling, and Wouter for ro
 ### Backend Architecture
 The backend is built with Express.js and TypeScript. PDF processing uses a dual-library approach due to dependency conflicts:
 - **pdf-lib-with-encrypt**: Used ONLY for encryption operations (Protect PDF, Unlock PDF) - requires pako 1.x
-- **pdf-lib (standard)**: Used for all non-encryption operations (Add Page Numbers, Add Watermark, JPG to PDF, PNG to PDF, Word to PDF, Excel to PDF) - compatible with pako 2.x
-- **CloudConvert API**: Used for high-quality conversions (PDF to Word, PDF to JPG, PDF to PNG)
-- **Other libraries**: `sharp` (image processing), `docx` (PDF to Word generation), `mammoth` (Word text extraction), `pdf-parse` (text extraction), `archiver` (ZIP creation)
+- **pdf-lib (standard)**: Used for all non-encryption operations (Add Page Numbers, Add Watermark, JPG to PDF, PNG to PDF, Word to PDF, Excel to PDF, Edit PDF, Annotate PDF, Redact PDF, TIFF to PDF, GIF to PDF) - compatible with pako 2.x
+- **CloudConvert API**: Used for high-quality conversions (PDF to Word, PDF to JPG, PDF to PNG, PDF to PowerPoint, PowerPoint to PDF)
+- **Other libraries**: `sharp` (image processing including TIFF/GIF conversion), `docx` (PDF to Word generation), `mammoth` (Word text extraction), `pdf-parse` (text extraction), `archiver` (ZIP creation)
 
 File uploads are managed by Multer with in-memory storage, including magic byte and MIME type validation. All API endpoints are secured with Zod schema validation for request parameters and comprehensive error handling.
 
@@ -75,12 +82,13 @@ Key technical implementations include:
 - **SEO**: Dynamic meta tags via `useSEO` hook, `sitemap.xml`, and `robots.txt` for Google Search Console integration.
 - **Conversion Quality**: Advanced PDF to Word conversion with intelligent formatting (headers, tables, lists, quotes, code blocks), and improved PDF to JPG conversion with high-resolution output and ZIP archiving for multi-page PDFs.
 - **User Settings**: Dark mode toggle and a settings panel for managing default compression levels with `localStorage` persistence.
+- **Interactive Editing**: Edit PDF, Annotate PDF, and Redact PDF tools feature interactive canvas-based editing with real-time preview, undo functionality, and ProcessingState feedback.
 
 ## External Dependencies
 
 ### Third-party Services
 - **Google Fonts CDN**: For typography (Inter font family).
-- **CloudConvert API**: Used for PDF to Word, PDF to JPG, and PDF to PNG conversions with high-quality output.
+- **CloudConvert API**: Used for PDF to Word, PDF to JPG, PDF to PNG, PDF to PowerPoint, and PowerPoint to PDF conversions with high-quality output.
 
 ### Key NPM Packages
 - **PDF Processing**: `pdf-lib` (standard), `pdf-lib-with-encrypt` (encryption only), `pdf-parse`, `docx`, `mammoth`, `sharp`, `archiver`, `xlsx`.
@@ -88,3 +96,9 @@ Key technical implementations include:
 - **Backend**: `express`, `multer`, `zod`, `cloudconvert`.
 - **Database (Future)**: `drizzle-orm`, `@neondatabase/serverless`, `connect-pg-simple`.
 - **Development Tools**: `typescript`, `vite`, `tsx`.
+
+## Recent Changes (December 2025)
+- Added 7 new PDF tools: PDF to PowerPoint, PowerPoint to PDF, TIFF to PDF, GIF to PDF, Edit PDF, Annotate PDF, Redact PDF
+- Updated sitemap.xml with all new tool URLs
+- Updated FAQ to reflect 39+ tools
+- All new tools follow established patterns (FileUploadZone, ProcessingState, TrustBadges, RelatedTools, ToolSEOContent)

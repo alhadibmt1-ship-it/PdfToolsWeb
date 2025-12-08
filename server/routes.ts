@@ -2156,6 +2156,444 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // PDF to PowerPoint using CloudConvert
+  app.post("/api/pdf-to-ppt", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "PDF file is required" });
+      }
+
+      if (!isPdfFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      const cloudConvertApiKey = process.env.CLOUDCONVERT_API_KEY;
+      if (!cloudConvertApiKey) {
+        return res.status(500).json({ error: "CloudConvert API key not configured" });
+      }
+
+      const cloudConvert = new CloudConvert(cloudConvertApiKey);
+
+      const job = await cloudConvert.jobs.create({
+        tasks: {
+          'upload-pdf': {
+            operation: 'import/upload'
+          },
+          'convert-to-pptx': {
+            operation: 'convert',
+            input: 'upload-pdf',
+            input_format: 'pdf',
+            output_format: 'pptx'
+          },
+          'export-result': {
+            operation: 'export/url',
+            input: 'convert-to-pptx'
+          }
+        }
+      });
+
+      const uploadTask = job.tasks.find(t => t.name === 'upload-pdf');
+      if (!uploadTask || !uploadTask.result?.form?.url) {
+        throw new Error("Failed to get upload URL");
+      }
+
+      const formData = new FormData();
+      const formFields = uploadTask.result.form.parameters || {};
+      for (const [key, value] of Object.entries(formFields)) {
+        formData.append(key, value as string);
+      }
+      formData.append('file', new Blob([file.buffer]), file.originalname);
+
+      await fetch(uploadTask.result.form.url, {
+        method: 'POST',
+        body: formData as any
+      });
+
+      const completedJob = await cloudConvert.jobs.wait(job.id);
+      const exportTask = completedJob.tasks.find(t => t.name === 'export-result');
+      
+      if (!exportTask?.result?.files?.[0]?.url) {
+        throw new Error("Failed to get download URL");
+      }
+
+      const downloadUrl = exportTask.result.files[0].url;
+      const pptxResponse = await fetch(downloadUrl);
+      const pptxBuffer = Buffer.from(await pptxResponse.arrayBuffer());
+
+      res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.presentationml.presentation");
+      res.setHeader("Content-Disposition", "attachment; filename=converted.pptx");
+      res.send(pptxBuffer);
+    } catch (error) {
+      console.error("PDF to PPT error:", error);
+      res.status(500).json({ error: "Failed to convert PDF to PowerPoint" });
+    }
+  });
+
+  // PowerPoint to PDF using CloudConvert
+  const uploadPpt = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 50 * 1024 * 1024 },
+    fileFilter: (req, file, cb) => {
+      const validTypes = [
+        "application/vnd.ms-powerpoint",
+        "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+      ];
+      if (validTypes.includes(file.mimetype)) {
+        cb(null, true);
+      } else {
+        cb(new Error("Only PowerPoint files (PPT/PPTX) are allowed"));
+      }
+    }
+  });
+
+  app.post("/api/ppt-to-pdf", uploadPpt.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "PowerPoint file is required" });
+      }
+
+      const cloudConvertApiKey = process.env.CLOUDCONVERT_API_KEY;
+      if (!cloudConvertApiKey) {
+        return res.status(500).json({ error: "CloudConvert API key not configured" });
+      }
+
+      const cloudConvert = new CloudConvert(cloudConvertApiKey);
+      const inputFormat = file.mimetype.includes("openxmlformats") ? "pptx" : "ppt";
+
+      const job = await cloudConvert.jobs.create({
+        tasks: {
+          'upload-ppt': {
+            operation: 'import/upload'
+          },
+          'convert-to-pdf': {
+            operation: 'convert',
+            input: 'upload-ppt',
+            input_format: inputFormat,
+            output_format: 'pdf'
+          },
+          'export-result': {
+            operation: 'export/url',
+            input: 'convert-to-pdf'
+          }
+        }
+      });
+
+      const uploadTask = job.tasks.find(t => t.name === 'upload-ppt');
+      if (!uploadTask || !uploadTask.result?.form?.url) {
+        throw new Error("Failed to get upload URL");
+      }
+
+      const formData = new FormData();
+      const formFields = uploadTask.result.form.parameters || {};
+      for (const [key, value] of Object.entries(formFields)) {
+        formData.append(key, value as string);
+      }
+      formData.append('file', new Blob([file.buffer]), file.originalname);
+
+      await fetch(uploadTask.result.form.url, {
+        method: 'POST',
+        body: formData as any
+      });
+
+      const completedJob = await cloudConvert.jobs.wait(job.id);
+      const exportTask = completedJob.tasks.find(t => t.name === 'export-result');
+      
+      if (!exportTask?.result?.files?.[0]?.url) {
+        throw new Error("Failed to get download URL");
+      }
+
+      const downloadUrl = exportTask.result.files[0].url;
+      const pdfResponse = await fetch(downloadUrl);
+      const pdfBuffer = Buffer.from(await pdfResponse.arrayBuffer());
+
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=converted.pdf");
+      res.send(pdfBuffer);
+    } catch (error) {
+      console.error("PPT to PDF error:", error);
+      res.status(500).json({ error: "Failed to convert PowerPoint to PDF" });
+    }
+  });
+
+  // TIFF to PDF
+  const uploadTiff = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 50 * 1024 * 1024 },
+    fileFilter: (req, file, cb) => {
+      if (file.mimetype === "image/tiff" || file.originalname.match(/\.(tiff?|tif)$/i)) {
+        cb(null, true);
+      } else {
+        cb(new Error("Only TIFF files are allowed"));
+      }
+    }
+  });
+
+  app.post("/api/tiff-to-pdf", uploadTiff.array("files", 50), async (req, res) => {
+    try {
+      const files = req.files as Express.Multer.File[];
+      if (!files || files.length === 0) {
+        return res.status(400).json({ error: "At least one TIFF file is required" });
+      }
+
+      const pdfDoc = await PDFDocumentStandard.create();
+
+      for (const file of files) {
+        const pngBuffer = await sharp(file.buffer).png().toBuffer();
+        const metadata = await sharp(file.buffer).metadata();
+        
+        const image = await pdfDoc.embedPng(pngBuffer);
+        const page = pdfDoc.addPage([metadata.width || 612, metadata.height || 792]);
+        page.drawImage(image, {
+          x: 0,
+          y: 0,
+          width: metadata.width || 612,
+          height: metadata.height || 792
+        });
+      }
+
+      const pdfBytes = await pdfDoc.save();
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=converted.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("TIFF to PDF error:", error);
+      res.status(500).json({ error: "Failed to convert TIFF to PDF" });
+    }
+  });
+
+  // GIF to PDF
+  const uploadGif = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 50 * 1024 * 1024 },
+    fileFilter: (req, file, cb) => {
+      if (file.mimetype === "image/gif") {
+        cb(null, true);
+      } else {
+        cb(new Error("Only GIF files are allowed"));
+      }
+    }
+  });
+
+  app.post("/api/gif-to-pdf", uploadGif.array("files", 50), async (req, res) => {
+    try {
+      const files = req.files as Express.Multer.File[];
+      if (!files || files.length === 0) {
+        return res.status(400).json({ error: "At least one GIF file is required" });
+      }
+
+      const pdfDoc = await PDFDocumentStandard.create();
+
+      for (const file of files) {
+        const pngBuffer = await sharp(file.buffer, { pages: 0 }).png().toBuffer();
+        const metadata = await sharp(file.buffer).metadata();
+        
+        const image = await pdfDoc.embedPng(pngBuffer);
+        const page = pdfDoc.addPage([metadata.width || 612, metadata.height || 792]);
+        page.drawImage(image, {
+          x: 0,
+          y: 0,
+          width: metadata.width || 612,
+          height: metadata.height || 792
+        });
+      }
+
+      const pdfBytes = await pdfDoc.save();
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=converted.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("GIF to PDF error:", error);
+      res.status(500).json({ error: "Failed to convert GIF to PDF" });
+    }
+  });
+
+  // Edit PDF - Add annotations
+  app.post("/api/edit-pdf", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "PDF file is required" });
+      }
+
+      if (!isPdfFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      const annotations = JSON.parse(req.body.annotations || "[]");
+      const pdfDoc = await PDFDocumentStandard.load(file.buffer);
+      const pages = pdfDoc.getPages();
+      const firstPage = pages[0];
+      const font = await pdfDoc.embedFont(StandardFontsStd.Helvetica);
+
+      for (const annotation of annotations) {
+        if (annotation.type === "text") {
+          const hexColor = annotation.color || "#000000";
+          const r = parseInt(hexColor.slice(1, 3), 16) / 255;
+          const g = parseInt(hexColor.slice(3, 5), 16) / 255;
+          const b = parseInt(hexColor.slice(5, 7), 16) / 255;
+
+          firstPage.drawText(annotation.text, {
+            x: annotation.x,
+            y: firstPage.getHeight() - annotation.y,
+            size: annotation.fontSize || 16,
+            font,
+            color: rgbStd(r, g, b)
+          });
+        } else if (annotation.type === "rectangle") {
+          const hexColor = annotation.color || "#000000";
+          const r = parseInt(hexColor.slice(1, 3), 16) / 255;
+          const g = parseInt(hexColor.slice(3, 5), 16) / 255;
+          const b = parseInt(hexColor.slice(5, 7), 16) / 255;
+
+          firstPage.drawRectangle({
+            x: annotation.x,
+            y: firstPage.getHeight() - annotation.y - annotation.height,
+            width: annotation.width,
+            height: annotation.height,
+            borderColor: rgbStd(r, g, b),
+            borderWidth: annotation.strokeWidth || 2
+          });
+        } else if (annotation.type === "circle") {
+          const hexColor = annotation.color || "#000000";
+          const r = parseInt(hexColor.slice(1, 3), 16) / 255;
+          const g = parseInt(hexColor.slice(3, 5), 16) / 255;
+          const b = parseInt(hexColor.slice(5, 7), 16) / 255;
+
+          firstPage.drawEllipse({
+            x: annotation.x + annotation.width / 2,
+            y: firstPage.getHeight() - annotation.y - annotation.height / 2,
+            xScale: annotation.width / 2,
+            yScale: annotation.height / 2,
+            borderColor: rgbStd(r, g, b),
+            borderWidth: annotation.strokeWidth || 2
+          });
+        } else if (annotation.type === "line") {
+          const hexColor = annotation.color || "#000000";
+          const r = parseInt(hexColor.slice(1, 3), 16) / 255;
+          const g = parseInt(hexColor.slice(3, 5), 16) / 255;
+          const b = parseInt(hexColor.slice(5, 7), 16) / 255;
+
+          firstPage.drawLine({
+            start: { x: annotation.x, y: firstPage.getHeight() - annotation.y },
+            end: { x: annotation.x + annotation.width, y: firstPage.getHeight() - annotation.y },
+            thickness: annotation.strokeWidth || 2,
+            color: rgbStd(r, g, b)
+          });
+        }
+      }
+
+      const pdfBytes = await pdfDoc.save();
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=edited.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("Edit PDF error:", error);
+      res.status(500).json({ error: "Failed to edit PDF" });
+    }
+  });
+
+  // Annotate PDF
+  app.post("/api/annotate-pdf", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "PDF file is required" });
+      }
+
+      if (!isPdfFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      const annotations = JSON.parse(req.body.annotations || "[]");
+      const pdfDoc = await PDFDocumentStandard.load(file.buffer);
+      const pages = pdfDoc.getPages();
+      const firstPage = pages[0];
+
+      for (const annotation of annotations) {
+        const hexColor = annotation.color || "#FFFF00";
+        const r = parseInt(hexColor.slice(1, 3), 16) / 255;
+        const g = parseInt(hexColor.slice(3, 5), 16) / 255;
+        const b = parseInt(hexColor.slice(5, 7), 16) / 255;
+
+        if (annotation.type === "highlight") {
+          firstPage.drawRectangle({
+            x: annotation.x,
+            y: firstPage.getHeight() - annotation.y - annotation.height,
+            width: annotation.width,
+            height: annotation.height,
+            color: rgbStd(r, g, b),
+            opacity: 0.4
+          });
+        } else if (annotation.type === "underline") {
+          firstPage.drawRectangle({
+            x: annotation.x,
+            y: firstPage.getHeight() - annotation.y - annotation.height,
+            width: annotation.width,
+            height: annotation.height,
+            color: rgbStd(r, g, b)
+          });
+        } else if (annotation.type === "note") {
+          firstPage.drawRectangle({
+            x: annotation.x,
+            y: firstPage.getHeight() - annotation.y - 24,
+            width: 24,
+            height: 24,
+            color: rgbStd(1, 0.92, 0.23),
+            borderColor: rgbStd(0.8, 0.7, 0),
+            borderWidth: 1
+          });
+        }
+      }
+
+      const pdfBytes = await pdfDoc.save();
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=annotated.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("Annotate PDF error:", error);
+      res.status(500).json({ error: "Failed to annotate PDF" });
+    }
+  });
+
+  // Redact PDF
+  app.post("/api/redact-pdf", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "PDF file is required" });
+      }
+
+      if (!isPdfFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid PDF file detected" });
+      }
+
+      const redactions = JSON.parse(req.body.redactions || "[]");
+      const pdfDoc = await PDFDocumentStandard.load(file.buffer);
+      const pages = pdfDoc.getPages();
+      const firstPage = pages[0];
+
+      for (const redaction of redactions) {
+        firstPage.drawRectangle({
+          x: redaction.x,
+          y: firstPage.getHeight() - redaction.y - redaction.height,
+          width: redaction.width,
+          height: redaction.height,
+          color: rgbStd(0, 0, 0)
+        });
+      }
+
+      const pdfBytes = await pdfDoc.save();
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=redacted.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("Redact PDF error:", error);
+      res.status(500).json({ error: "Failed to redact PDF" });
+    }
+  });
+
   app.use((err: any, req: any, res: any, next: any) => {
     if (err instanceof multer.MulterError) {
       return res.status(400).json({ error: `Upload error: ${err.message}` });

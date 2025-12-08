@@ -37,6 +37,10 @@ import {
   GitCompare,
   ImageDown,
   Settings,
+  Presentation,
+  FileEdit,
+  Highlighter,
+  EyeOff,
   Users,
   Briefcase,
   GraduationCap,
@@ -89,6 +93,9 @@ const iconMap: Record<string, any> = {
   viewer: Eye,
   compare: GitCompare,
   "image-compress": ImageDown,
+  "edit-pdf": FileEdit,
+  annotate: Highlighter,
+  redact: EyeOff,
 };
 
 function ConversionIcon({ iconType }: { iconType: string }) {
@@ -100,6 +107,9 @@ function ConversionIcon({ iconType }: { iconType: string }) {
     excel: { bgColor: "bg-green-700", textColor: "text-white", label: "XLS" },
     html: { bgColor: "bg-orange-700", textColor: "text-white", label: "HTML" },
     webp: { bgColor: "bg-cyan-700", textColor: "text-white", label: "WEBP" },
+    ppt: { bgColor: "bg-orange-500", textColor: "text-white", label: "PPT" },
+    tiff: { bgColor: "bg-indigo-600", textColor: "text-white", label: "TIFF" },
+    gif: { bgColor: "bg-pink-600", textColor: "text-white", label: "GIF" },
   };
 
   if (iconType.includes("-to-")) {
@@ -189,7 +199,7 @@ export default function HomePage() {
   const faqs = [
     {
       question: "Is PDF HUB 24 free to use?",
-      answer: "Yes, all 32+ tools are completely free with no hidden fees or signups. You can use every feature without any limitations, as many times as you need."
+      answer: "Yes, all 39+ tools are completely free with no hidden fees or signups. You can use every feature without any limitations, as many times as you need."
     },
     {
       question: "How secure are my files?",
