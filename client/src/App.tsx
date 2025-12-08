@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { SettingsProvider } from "@/contexts/SettingsContext";
+import { RecentToolsProvider } from "@/contexts/RecentToolsContext";
 import ScrollToTop from "@/components/ScrollToTop";
 import HomePage from "@/pages/HomePage";
 
@@ -112,10 +113,12 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <SettingsProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Router />
-          </TooltipProvider>
+          <RecentToolsProvider>
+            <TooltipProvider>
+              <Toaster />
+              <Router />
+            </TooltipProvider>
+          </RecentToolsProvider>
         </SettingsProvider>
       </ThemeProvider>
     </QueryClientProvider>

@@ -59,6 +59,8 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useSEO } from "@/hooks/useSEO";
 import { useState } from "react";
+import RecentToolsSection from "@/components/RecentToolsSection";
+import SocialProofSection from "@/components/SocialProofSection";
 
 const iconMap: Record<string, any> = {
   merge: Combine,
@@ -207,14 +209,24 @@ export default function HomePage() {
     }
   ];
 
+  const popularTools = ["compress", "merge", "pdf-to-word", "pdf-to-jpg", "split"];
+
   const renderToolGrid = (tools: typeof PDF_TOOLS) => (
     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
       {tools.map((tool, index) => (
         <Link key={tool.id} href={tool.path} data-testid={`link-tool-${tool.id}`}>
           <div 
-            className="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] sm:min-h-[170px]"
+            className="premium-card p-4 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[150px] sm:min-h-[170px] relative overflow-visible"
             style={{ animationDelay: `${index * 50}ms` }}
           >
+            {popularTools.includes(tool.id) && (
+              <div className="absolute -top-2 -right-2 z-10">
+                <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white text-[10px] font-bold shadow-lg">
+                  <Star className="w-2.5 h-2.5 fill-current" />
+                  Popular
+                </div>
+              </div>
+            )}
             <div className="flex flex-col h-full">
               <div className="mb-3 sm:mb-4">
                 <ConversionIcon iconType={tool.icon} />
@@ -311,6 +323,9 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* Recently Used Tools */}
+        <RecentToolsSection />
 
         {/* Trust Stats Bar */}
         <section className="py-8 sm:py-10 border-b bg-card/50">
@@ -642,6 +657,9 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* Social Proof */}
+        <SocialProofSection />
 
         {/* CTA Section */}
         <section className="py-16 sm:py-20 bg-gradient-to-br from-primary/5 via-primary/10 to-cyan-500/5">
