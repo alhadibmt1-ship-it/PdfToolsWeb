@@ -9,12 +9,14 @@ import ToolSEOContent from "@/components/ToolSEOContent";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import StepIndicator from "@/components/StepIndicator";
+import SuccessCelebration from "@/components/SuccessCelebration";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { useSettings } from "@/contexts/SettingsContext";
+import { useRecentTools } from "@/contexts/RecentToolsContext";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import type { CompressionLevel } from "@shared/schema";
 import { useSEO } from "@/hooks/useSEO";
@@ -27,6 +29,7 @@ export default function CompressPdfPage() {
   });
 
   const { settings } = useSettings();
+  const { addRecentTool } = useRecentTools();
   const [files, setFiles] = useState<File[]>([]);
   const [compressionLevel, setCompressionLevel] = useState<CompressionLevel>(settings.defaultCompressionLevel);
   const [hasManuallyChanged, setHasManuallyChanged] = useState(false);
@@ -34,8 +37,13 @@ export default function CompressPdfPage() {
   const [resultUrl, setResultUrl] = useState<string | null>(null);
   const [originalSize, setOriginalSize] = useState<number>(0);
   const [compressedSize, setCompressedSize] = useState<number>(0);
+  const [showCelebration, setShowCelebration] = useState(false);
   const { toast } = useToast();
   const { progress, runWithProgress } = useConversionProgress();
+
+  useEffect(() => {
+    addRecentTool("compress");
+  }, [addRecentTool]);
 
   useEffect(() => {
     if (!hasManuallyChanged) {
@@ -84,11 +92,7 @@ export default function CompressPdfPage() {
       const url = URL.createObjectURL(blob);
       setResultUrl(url);
       setStatus("success");
-
-      toast({
-        title: "Success!",
-        description: "PDF compressed successfully",
-      });
+      setShowCelebration(true);
     } catch (error) {
       setStatus("error");
       toast({
@@ -395,6 +399,16 @@ export default function CompressPdfPage() {
       </main>
 
       <Footer />
+
+      <SuccessCelebration
+        isVisible={showCelebration}
+        toolName="Compress PDF"
+        fileName={files[0]?.name}
+        originalSize={originalSize}
+        newSize={compressedSize}
+        onDownload={handleDownload}
+        onClose={() => setShowCelebration(false)}
+      />
     </div>
   );
 }

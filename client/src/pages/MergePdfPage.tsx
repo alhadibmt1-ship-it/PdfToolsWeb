@@ -10,9 +10,11 @@ import ToolSEOContent from "@/components/ToolSEOContent";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import StepIndicator from "@/components/StepIndicator";
+import SuccessCelebration from "@/components/SuccessCelebration";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { useRecentTools } from "@/contexts/RecentToolsContext";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { usePdfThumbnails, type PdfPage } from "@/hooks/usePdfThumbnails";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -25,13 +27,19 @@ export default function MergePdfPage() {
     keywords: "merge pdf, combine pdf, join pdf files, merge pdf online free, pdf merger, combine pdf files"
   });
 
+  const { addRecentTool } = useRecentTools();
   const [files, setFiles] = useState<File[]>([]);
   const [selectedPages, setSelectedPages] = useState<PdfPage[]>([]);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);
+  const [showCelebration, setShowCelebration] = useState(false);
   const { toast } = useToast();
   const { progress, runWithProgress } = useConversionProgress();
   const { pages, loading: thumbnailsLoading, error: thumbnailsError } = usePdfThumbnails(files);
+
+  useEffect(() => {
+    addRecentTool("merge");
+  }, [addRecentTool]);
 
   const handleFilesSelected = (newFiles: File[]) => {
     setFiles(newFiles);
@@ -100,11 +108,7 @@ export default function MergePdfPage() {
       const url = URL.createObjectURL(blob);
       setResultUrl(url);
       setStatus("success");
-
-      toast({
-        title: "Success!",
-        description: "PDFs merged successfully",
-      });
+      setShowCelebration(true);
     } catch (error) {
       setStatus("error");
       toast({
@@ -364,6 +368,13 @@ export default function MergePdfPage() {
       </main>
 
       <Footer />
+
+      <SuccessCelebration
+        isVisible={showCelebration}
+        toolName="Merge PDF"
+        onDownload={handleDownload}
+        onClose={() => setShowCelebration(false)}
+      />
     </div>
   );
 }
