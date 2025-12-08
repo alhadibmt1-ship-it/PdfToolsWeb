@@ -97,6 +97,15 @@ export const PDF_TOOLS: PDFTool[] = [
     category: "from-pdf"
   },
   {
+    id: "pdf-to-ppt",
+    title: "PDF to PowerPoint",
+    description: "Convert PDF to editable PPT slides",
+    icon: "pdf-to-ppt",
+    path: "/pdf-to-ppt",
+    acceptedFormats: ".pdf",
+    category: "from-pdf"
+  },
+  {
     id: "extract-text",
     title: "Extract Text",
     description: "Extract text content from PDF files",
@@ -140,6 +149,33 @@ export const PDF_TOOLS: PDFTool[] = [
     icon: "excel-to-pdf",
     path: "/excel-to-pdf",
     acceptedFormats: ".xlsx,.xls",
+    category: "to-pdf"
+  },
+  {
+    id: "ppt-to-pdf",
+    title: "PowerPoint to PDF",
+    description: "Convert PPT/PPTX slides to PDF",
+    icon: "ppt-to-pdf",
+    path: "/ppt-to-pdf",
+    acceptedFormats: ".ppt,.pptx",
+    category: "to-pdf"
+  },
+  {
+    id: "tiff-to-pdf",
+    title: "TIFF to PDF",
+    description: "Convert TIFF images to PDF document",
+    icon: "tiff-to-pdf",
+    path: "/tiff-to-pdf",
+    acceptedFormats: ".tiff,.tif",
+    category: "to-pdf"
+  },
+  {
+    id: "gif-to-pdf",
+    title: "GIF to PDF",
+    description: "Convert GIF images to PDF document",
+    icon: "gif-to-pdf",
+    path: "/gif-to-pdf",
+    acceptedFormats: ".gif",
     category: "to-pdf"
   },
   // EDIT PDF - Modify existing PDFs
@@ -284,6 +320,33 @@ export const PDF_TOOLS: PDFTool[] = [
     description: "Fix corrupted or damaged PDF files",
     icon: "repair",
     path: "/repair-pdf",
+    acceptedFormats: ".pdf",
+    category: "edit-pdf"
+  },
+  {
+    id: "edit-pdf",
+    title: "Edit PDF",
+    description: "Add text, images, and shapes to PDF",
+    icon: "edit-pdf",
+    path: "/edit-pdf",
+    acceptedFormats: ".pdf",
+    category: "edit-pdf"
+  },
+  {
+    id: "annotate-pdf",
+    title: "Annotate PDF",
+    description: "Highlight, underline, and mark up PDFs",
+    icon: "annotate",
+    path: "/annotate-pdf",
+    acceptedFormats: ".pdf",
+    category: "edit-pdf"
+  },
+  {
+    id: "redact-pdf",
+    title: "Redact PDF",
+    description: "Permanently black out sensitive information",
+    icon: "redact",
+    path: "/redact-pdf",
     acceptedFormats: ".pdf",
     category: "edit-pdf"
   },
