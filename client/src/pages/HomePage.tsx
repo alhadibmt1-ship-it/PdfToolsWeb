@@ -276,7 +276,7 @@ export default function HomePage() {
             <div className="text-center max-w-4xl mx-auto">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/15 border border-primary/30 mb-6 sm:mb-8">
                 <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                <span className="text-xs sm:text-sm font-semibold text-blue-700 dark:text-blue-300">32+ Free PDF Tools</span>
+                <span className="text-xs sm:text-sm font-semibold text-blue-700 dark:text-blue-300">39+ Free PDF Tools</span>
               </div>
               
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 sm:mb-6 leading-[1.1] tracking-tight">
@@ -342,7 +342,7 @@ export default function HomePage() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">32+</div>
+                <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">39+</div>
                 <div className="text-sm text-muted-foreground">PDF Tools</div>
               </div>
               <div className="text-center">
@@ -451,7 +451,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="font-semibold text-lg mb-2">Choose Your Tool</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Select from 32+ free PDF tools including converters, editors, and utilities
+                  Select from 39+ free PDF tools including converters, editors, and utilities
                 </p>
                 <div className="hidden md:block absolute top-10 right-0 w-[calc(50%-2rem)] h-0.5 bg-gradient-to-r from-primary/30 to-transparent translate-x-full" />
               </div>
