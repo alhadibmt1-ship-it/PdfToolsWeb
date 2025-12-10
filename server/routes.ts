@@ -2658,6 +2658,229 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Resize Image - Resize images by pixels or percentage
+  app.post("/api/resize-image", uploadImages.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "Image file is required" });
+      }
+
+      if (!isImageFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid image file detected" });
+      }
+
+      const mode = req.body.mode || "pixels";
+      const metadata = await sharp(file.buffer).metadata();
+      
+      let resizedBuffer: Buffer;
+
+      if (mode === "percentage") {
+        const percentage = parseInt(req.body.percentage) || 50;
+        const clampedPercent = Math.max(1, Math.min(500, percentage));
+        const newWidth = Math.round((metadata.width || 100) * clampedPercent / 100);
+        
+        resizedBuffer = await sharp(file.buffer)
+          .resize(newWidth)
+          .toBuffer();
+      } else {
+        const width = parseInt(req.body.width) || 800;
+        const height = parseInt(req.body.height) || 600;
+        const maintainAspectRatio = req.body.maintainAspectRatio === "true";
+        
+        resizedBuffer = await sharp(file.buffer)
+          .resize(width, height, { fit: maintainAspectRatio ? "inside" : "fill" })
+          .toBuffer();
+      }
+
+      const mimeType = metadata.format === 'png' ? 'image/png' 
+                     : metadata.format === 'webp' ? 'image/webp'
+                     : metadata.format === 'gif' ? 'image/gif'
+                     : 'image/jpeg';
+
+      res.setHeader("Content-Type", mimeType);
+      res.setHeader("Content-Disposition", `attachment; filename=resized.${metadata.format || 'jpg'}`);
+      res.send(resizedBuffer);
+    } catch (error) {
+      console.error("Resize image error:", error);
+      res.status(500).json({ error: "Failed to resize image" });
+    }
+  });
+
+  // Crop Image - Crop images to specific dimensions
+  app.post("/api/crop-image", uploadImages.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "Image file is required" });
+      }
+
+      if (!isImageFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid image file detected" });
+      }
+
+      const x = parseInt(req.body.x) || 0;
+      const y = parseInt(req.body.y) || 0;
+      const width = parseInt(req.body.width) || 400;
+      const height = parseInt(req.body.height) || 300;
+
+      const metadata = await sharp(file.buffer).metadata();
+      
+      const croppedBuffer = await sharp(file.buffer)
+        .extract({ left: x, top: y, width, height })
+        .toBuffer();
+
+      const mimeType = metadata.format === 'png' ? 'image/png' 
+                     : metadata.format === 'webp' ? 'image/webp'
+                     : metadata.format === 'gif' ? 'image/gif'
+                     : 'image/jpeg';
+
+      res.setHeader("Content-Type", mimeType);
+      res.setHeader("Content-Disposition", `attachment; filename=cropped.${metadata.format || 'jpg'}`);
+      res.send(croppedBuffer);
+    } catch (error) {
+      console.error("Crop image error:", error);
+      res.status(500).json({ error: "Failed to crop image" });
+    }
+  });
+
+  // Rotate Image - Rotate and flip images
+  app.post("/api/rotate-image", uploadImages.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "Image file is required" });
+      }
+
+      if (!isImageFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid image file detected" });
+      }
+
+      const rotation = parseInt(req.body.rotation) || 0;
+      const flipH = req.body.flipH === "true";
+      const flipV = req.body.flipV === "true";
+
+      const metadata = await sharp(file.buffer).metadata();
+      
+      let sharpInstance = sharp(file.buffer);
+
+      if (rotation !== 0) {
+        sharpInstance = sharpInstance.rotate(rotation);
+      }
+
+      if (flipH) {
+        sharpInstance = sharpInstance.flop();
+      }
+
+      if (flipV) {
+        sharpInstance = sharpInstance.flip();
+      }
+
+      const processedBuffer = await sharpInstance.toBuffer();
+
+      const mimeType = metadata.format === 'png' ? 'image/png' 
+                     : metadata.format === 'webp' ? 'image/webp'
+                     : metadata.format === 'gif' ? 'image/gif'
+                     : 'image/jpeg';
+
+      res.setHeader("Content-Type", mimeType);
+      res.setHeader("Content-Disposition", `attachment; filename=rotated.${metadata.format || 'jpg'}`);
+      res.send(processedBuffer);
+    } catch (error) {
+      console.error("Rotate image error:", error);
+      res.status(500).json({ error: "Failed to rotate image" });
+    }
+  });
+
+  // Convert Image - Convert between image formats
+  app.post("/api/convert-image", uploadImages.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.status(400).json({ error: "Image file is required" });
+      }
+
+      if (!isImageFile(file.buffer)) {
+        return res.status(400).json({ error: "Invalid image file detected" });
+      }
+
+      const format = req.body.format || "png";
+      const quality = parseInt(req.body.quality) || 90;
+      const clampedQuality = Math.max(10, Math.min(100, quality));
+
+      let convertedBuffer: Buffer;
+      let mimeType: string;
+      let extension: string;
+
+      switch (format) {
+        case "jpg":
+        case "jpeg":
+          convertedBuffer = await sharp(file.buffer)
+            .flatten({ background: { r: 255, g: 255, b: 255 } })
+            .jpeg({ quality: clampedQuality })
+            .toBuffer();
+          mimeType = "image/jpeg";
+          extension = "jpg";
+          break;
+        case "png":
+          convertedBuffer = await sharp(file.buffer)
+            .png({ quality: clampedQuality })
+            .toBuffer();
+          mimeType = "image/png";
+          extension = "png";
+          break;
+        case "webp":
+          convertedBuffer = await sharp(file.buffer)
+            .webp({ quality: clampedQuality })
+            .toBuffer();
+          mimeType = "image/webp";
+          extension = "webp";
+          break;
+        case "gif":
+          convertedBuffer = await sharp(file.buffer)
+            .gif()
+            .toBuffer();
+          mimeType = "image/gif";
+          extension = "gif";
+          break;
+        case "tiff":
+          convertedBuffer = await sharp(file.buffer)
+            .tiff({ quality: clampedQuality })
+            .toBuffer();
+          mimeType = "image/tiff";
+          extension = "tiff";
+          break;
+        case "bmp":
+          convertedBuffer = await sharp(file.buffer)
+            .raw()
+            .toBuffer();
+          convertedBuffer = await sharp(convertedBuffer, {
+            raw: {
+              width: (await sharp(file.buffer).metadata()).width!,
+              height: (await sharp(file.buffer).metadata()).height!,
+              channels: 3
+            }
+          }).png().toBuffer();
+          mimeType = "image/png";
+          extension = "png";
+          break;
+        default:
+          convertedBuffer = await sharp(file.buffer)
+            .png({ quality: clampedQuality })
+            .toBuffer();
+          mimeType = "image/png";
+          extension = "png";
+      }
+
+      res.setHeader("Content-Type", mimeType);
+      res.setHeader("Content-Disposition", `attachment; filename=converted.${extension}`);
+      res.send(convertedBuffer);
+    } catch (error) {
+      console.error("Convert image error:", error);
+      res.status(500).json({ error: "Failed to convert image" });
+    }
+  });
+
   app.use((err: any, req: any, res: any, next: any) => {
     if (err instanceof multer.MulterError) {
       return res.status(400).json({ error: `Upload error: ${err.message}` });

@@ -415,5 +415,41 @@ export const PDF_TOOLS: PDFTool[] = [
     path: "/image-compressor",
     acceptedFormats: ".jpg,.jpeg,.png,.webp",
     category: "utility"
+  },
+  {
+    id: "resize-image",
+    title: "Resize Image",
+    description: "Resize images to any dimension or percentage",
+    icon: "resize-image",
+    path: "/resize-image",
+    acceptedFormats: ".jpg,.jpeg,.png,.webp,.gif",
+    category: "utility"
+  },
+  {
+    id: "crop-image",
+    title: "Crop Image",
+    description: "Crop images to remove unwanted areas",
+    icon: "crop-image",
+    path: "/crop-image",
+    acceptedFormats: ".jpg,.jpeg,.png,.webp,.gif",
+    category: "utility"
+  },
+  {
+    id: "rotate-image",
+    title: "Rotate & Flip Image",
+    description: "Rotate or flip images in any direction",
+    icon: "rotate-image",
+    path: "/rotate-image",
+    acceptedFormats: ".jpg,.jpeg,.png,.webp,.gif",
+    category: "utility"
+  },
+  {
+    id: "convert-image",
+    title: "Convert Image",
+    description: "Convert images between JPG, PNG, WebP formats",
+    icon: "convert-image",
+    path: "/convert-image",
+    acceptedFormats: ".jpg,.jpeg,.png,.webp,.gif,.bmp,.tiff,.tif",
+    category: "utility"
   }
 ];

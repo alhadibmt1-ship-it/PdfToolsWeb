@@ -1,7 +1,7 @@
 # PDF HUB 24
 
 ## Overview
-PDF HUB 24 is a comprehensive web-based PDF manipulation platform offering 39 PDF tools organized in 4 categories:
+PDF HUB 24 is a comprehensive web-based PDF and image manipulation platform offering 43 tools organized in 4 categories:
 
 ### Convert from PDF (8 tools)
 1. **PDF to Word** - Convert PDF to editable DOCX
@@ -27,7 +27,7 @@ PDF HUB 24 is a comprehensive web-based PDF manipulation platform offering 39 PD
 ### Edit PDF (19 tools)
 18. **Merge PDF** - Combine multiple PDFs into one
 19. **Split PDF** - Extract specific pages
-20. **Compress PDF** - Reduce file size
+20. **Compress PDF** - Reduce file size (CloudConvert optimization)
 21. **Rotate PDF** - Rotate pages 90°, 180°, 270°
 22. **Delete Pages** - Remove unwanted pages
 23. **Protect PDF** - Add password protection
@@ -45,10 +45,14 @@ PDF HUB 24 is a comprehensive web-based PDF manipulation platform offering 39 PD
 35. **Annotate PDF** - Highlight, underline, and mark up PDFs
 36. **Redact PDF** - Permanently black out sensitive information
 
-### Utility Tools (3 tools)
+### Utility & Image Tools (7 tools)
 37. **PDF Viewer** - View PDF files directly in your browser
 38. **Compare PDF** - Find differences between two PDF files
 39. **Image Compressor** - Compress JPG, PNG, and WebP images
+40. **Resize Image** - Resize images by pixels or percentage
+41. **Crop Image** - Crop images to remove unwanted areas
+42. **Rotate & Flip Image** - Rotate or flip images in any direction
+43. **Convert Image** - Convert between JPG, PNG, WebP, GIF, TIFF, BMP
 
 Features full dark mode support, user settings, localStorage persistence, and professional-grade PDF processing. Homepage displays tools organized by category with visual conversion icons showing source→target formats (colored labels with arrows). Deployed at pdfhub24.com with complete SEO optimization and PDF24-inspired UX patterns.
 
@@ -99,6 +103,9 @@ Key technical implementations include:
 
 ## Recent Changes (December 2025)
 - Added 7 new PDF tools: PDF to PowerPoint, PowerPoint to PDF, TIFF to PDF, GIF to PDF, Edit PDF, Annotate PDF, Redact PDF
-- Updated sitemap.xml with all new tool URLs
-- Updated FAQ to reflect 39+ tools
+- Added 4 new image tools: Resize Image, Crop Image, Rotate & Flip Image, Convert Image
+- Updated PDF compression to use CloudConvert optimize API for real compression
+- Added Facebook and YouTube social links to footer
+- Updated sitemap.xml with all 43 tool URLs
+- Updated homepage and footer to reflect 43+ tools
 - All new tools follow established patterns (FileUploadZone, ProcessingState, TrustBadges, RelatedTools, ToolSEOContent)

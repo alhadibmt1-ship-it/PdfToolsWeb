@@ -188,7 +188,7 @@
     <lastmod>2025-12-10</lastmod>
     <priority>0.8</priority>
   </url>
-  <!-- Utility Tools (3 tools) -->
+  <!-- Utility Tools (7 tools) -->
   <url>
     <loc>https://pdfhub24.com/pdf-viewer</loc>
     <lastmod>2025-12-10</lastmod>
@@ -201,6 +201,26 @@
   </url>
   <url>
     <loc>https://pdfhub24.com/image-compressor</loc>
+    <lastmod>2025-12-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/resize-image</loc>
+    <lastmod>2025-12-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/crop-image</loc>
+    <lastmod>2025-12-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/rotate-image</loc>
+    <lastmod>2025-12-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/convert-image</loc>
     <lastmod>2025-12-10</lastmod>
     <priority>0.7</priority>
   </url>
