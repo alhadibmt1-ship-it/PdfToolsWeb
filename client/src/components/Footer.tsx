@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { PDF_TOOLS } from "@shared/schema";
 import { ChevronDown, Shield, Lock, Zap, Globe } from "lucide-react";
+import { SiFacebook, SiYoutube } from "react-icons/si";
 import siteLogo from "@assets/generated_images/logo-64.webp";
 
 interface FooterLinkProps {
@@ -116,7 +117,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-4">
               <div className="text-center">
-                <div className="text-xl font-bold text-primary">32+</div>
+                <div className="text-xl font-bold text-primary">39+</div>
                 <div className="text-xs text-muted-foreground">Tools</div>
               </div>
               <div className="w-px h-8 bg-border" />
@@ -280,9 +281,33 @@ export default function Footer() {
         
         <div className="premium-divider mb-6" />
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} PDF HUB 24. All rights reserved.
-          </p>
+          <div className="flex items-center gap-4">
+            <p className="text-sm text-muted-foreground">
+              © {new Date().getFullYear()} PDF HUB 24. All rights reserved.
+            </p>
+            <div className="flex items-center gap-3">
+              <a 
+                href="https://www.facebook.com/profile.php?id=61584792122187" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                data-testid="link-social-facebook"
+                className="text-muted-foreground hover:text-[#1877F2] transition-colors"
+                aria-label="Follow us on Facebook"
+              >
+                <SiFacebook className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://youtube.com/@pdfhub24?si=U08xguLjmmBVsbom" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                data-testid="link-social-youtube"
+                className="text-muted-foreground hover:text-[#FF0000] transition-colors"
+                aria-label="Subscribe to our YouTube channel"
+              >
+                <SiYoutube className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <Link href="/privacy">
               <span className="hover:text-primary cursor-pointer transition-colors">Privacy</span>
