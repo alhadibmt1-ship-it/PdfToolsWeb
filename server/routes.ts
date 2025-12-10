@@ -349,7 +349,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
             throw new Error('Upload task not found');
           }
 
-          await cloudConvert.tasks.upload(uploadTask, Readable.from(file.buffer), file.originalname);
+          await cloudConvert.tasks.upload(uploadTask, file.buffer, file.originalname, file.buffer.length);
 
           const completedJob = await cloudConvert.jobs.wait(job.id);
           const exportTask = completedJob.tasks?.find((task: any) => task.name === 'export-pdf');
@@ -385,7 +385,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       let pdfDoc;
       try {
-        pdfDoc = await PDFDocument.load(file.buffer);
+        pdfDoc = await PDFDocumentStandard.load(file.buffer);
       } catch (parseError) {
         return res.status(400).json({ error: "Invalid or corrupted PDF file" });
       }
