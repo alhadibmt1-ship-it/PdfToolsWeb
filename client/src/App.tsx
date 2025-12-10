@@ -52,6 +52,11 @@ const EditPdfPage = lazy(() => import("@/pages/EditPdfPage"));
 const AnnotatePdfPage = lazy(() => import("@/pages/AnnotatePdfPage"));
 const RedactPdfPage = lazy(() => import("@/pages/RedactPdfPage"));
 
+const ResizeImagePage = lazy(() => import("@/pages/ResizeImagePage"));
+const CropImagePage = lazy(() => import("@/pages/CropImagePage"));
+const RotateImagePage = lazy(() => import("@/pages/RotateImagePage"));
+const ConvertImagePage = lazy(() => import("@/pages/ConvertImagePage"));
+
 const AboutPage = lazy(() => import("@/pages/AboutPage"));
 const PrivacyPage = lazy(() => import("@/pages/PrivacyPage"));
 const TermsPage = lazy(() => import("@/pages/TermsPage"));
@@ -113,6 +118,11 @@ function Router() {
         <Route path="/edit-pdf" component={EditPdfPage} />
         <Route path="/annotate-pdf" component={AnnotatePdfPage} />
         <Route path="/redact-pdf" component={RedactPdfPage} />
+        
+        <Route path="/resize-image" component={ResizeImagePage} />
+        <Route path="/crop-image" component={CropImagePage} />
+        <Route path="/rotate-image" component={RotateImagePage} />
+        <Route path="/convert-image" component={ConvertImagePage} />
         
         <Route path="/about" component={AboutPage} />
         <Route path="/privacy" component={PrivacyPage} />

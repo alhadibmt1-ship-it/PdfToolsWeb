@@ -117,7 +117,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-4">
               <div className="text-center">
-                <div className="text-xl font-bold text-primary">39+</div>
+                <div className="text-xl font-bold text-primary">43+</div>
                 <div className="text-xs text-muted-foreground">Tools</div>
               </div>
               <div className="w-px h-8 bg-border" />
