@@ -326,13 +326,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
         try {
           const cloudConvert = new CloudConvert(apiKey);
           
-          const qualitySettings: Record<string, number> = {
-            low: 50,
-            medium: 75,
-            high: 90
-          };
-          const imageQuality = qualitySettings[level] || 75;
-          
           const job = await cloudConvert.jobs.create({
             tasks: {
               'upload-pdf': {
