@@ -320,6 +320,76 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       const level = validated.data;
+      const apiKey = process.env.CLOUDCONVERT_API_KEY;
+      
+      if (apiKey) {
+        try {
+          const cloudConvert = new CloudConvert(apiKey);
+          
+          const qualitySettings: Record<string, number> = {
+            low: 50,
+            medium: 75,
+            high: 90
+          };
+          const imageQuality = qualitySettings[level] || 75;
+          
+          const job = await cloudConvert.jobs.create({
+            tasks: {
+              'upload-pdf': {
+                operation: 'import/upload'
+              },
+              'optimize-pdf': {
+                operation: 'optimize',
+                input: 'upload-pdf',
+                input_format: 'pdf',
+                profile: level === 'high' ? 'web' : level === 'low' ? 'print' : 'archive'
+              },
+              'export-pdf': {
+                operation: 'export/url',
+                input: 'optimize-pdf'
+              }
+            }
+          });
+
+          const uploadTask = job.tasks?.find((task: any) => task.name === 'upload-pdf');
+          if (!uploadTask) {
+            throw new Error('Upload task not found');
+          }
+
+          await cloudConvert.tasks.upload(uploadTask, Readable.from(file.buffer), file.originalname);
+
+          const completedJob = await cloudConvert.jobs.wait(job.id);
+          const exportTask = completedJob.tasks?.find((task: any) => task.name === 'export-pdf');
+          
+          if (!exportTask || !exportTask.result?.files?.[0]?.url) {
+            throw new Error('No output file from compression');
+          }
+
+          const downloadUrl = exportTask.result.files[0].url;
+          
+          const downloadFile = (url: string): Promise<Buffer> => {
+            return new Promise((resolve, reject) => {
+              const protocol = url.startsWith('https') ? https : http;
+              protocol.get(url, (response) => {
+                const chunks: Buffer[] = [];
+                response.on('data', (chunk: Buffer) => chunks.push(chunk));
+                response.on('end', () => resolve(Buffer.concat(chunks)));
+                response.on('error', reject);
+              }).on('error', reject);
+            });
+          };
+
+          const compressedBuffer = await downloadFile(downloadUrl);
+          
+          res.setHeader("Content-Type", "application/pdf");
+          res.setHeader("Content-Disposition", "attachment; filename=compressed.pdf");
+          res.send(compressedBuffer);
+          return;
+        } catch (cloudError) {
+          console.error("CloudConvert compression failed, falling back to basic:", cloudError);
+        }
+      }
+
       let pdfDoc;
       try {
         pdfDoc = await PDFDocument.load(file.buffer);
@@ -329,7 +399,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       const compressionOptions = {
         objectsPerTick: level === "high" ? 200 : level === "low" ? 50 : 100,
-        useObjectStreams: false
+        useObjectStreams: true,
+        addDefaultPage: false
       };
 
       const pdfBytes = await pdfDoc.save(compressionOptions);
