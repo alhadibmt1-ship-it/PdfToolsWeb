@@ -60,23 +60,40 @@ export default function FileUploadZone({
     if (disabled) return;
 
     const files = Array.from(e.dataTransfer.files);
-    const validFiles = multiple ? files.slice(0, maxFiles) : files.slice(0, 1);
     
-    if (validFiles.length > 0) {
-      setSelectedFiles(validFiles);
-      onFilesSelected(validFiles);
+    if (multiple) {
+      // Append new files to existing ones, up to maxFiles
+      const combinedFiles = [...selectedFiles, ...files].slice(0, maxFiles);
+      setSelectedFiles(combinedFiles);
+      onFilesSelected(combinedFiles);
+    } else {
+      const validFiles = files.slice(0, 1);
+      if (validFiles.length > 0) {
+        setSelectedFiles(validFiles);
+        onFilesSelected(validFiles);
+      }
     }
-  }, [disabled, multiple, maxFiles, onFilesSelected]);
+  }, [disabled, multiple, maxFiles, selectedFiles, onFilesSelected]);
 
   const handleFileSelect = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
-    const validFiles = multiple ? files.slice(0, maxFiles) : files.slice(0, 1);
     
-    if (validFiles.length > 0) {
-      setSelectedFiles(validFiles);
-      onFilesSelected(validFiles);
+    if (multiple) {
+      // Append new files to existing ones, up to maxFiles
+      const combinedFiles = [...selectedFiles, ...files].slice(0, maxFiles);
+      setSelectedFiles(combinedFiles);
+      onFilesSelected(combinedFiles);
+    } else {
+      const validFiles = files.slice(0, 1);
+      if (validFiles.length > 0) {
+        setSelectedFiles(validFiles);
+        onFilesSelected(validFiles);
+      }
     }
-  }, [multiple, maxFiles, onFilesSelected]);
+    
+    // Reset input value so same file can be selected again
+    e.target.value = '';
+  }, [multiple, maxFiles, selectedFiles, onFilesSelected]);
 
   const removeFile = useCallback((index: number) => {
     const newFiles = selectedFiles.filter((_, i) => i !== index);
@@ -208,24 +225,42 @@ export default function FileUploadZone({
 
       {selectedFiles.length > 0 && (
         <div className="space-y-3">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between flex-wrap gap-2">
             <h4 className="text-sm font-semibold">
-              {selectedFiles.length === 1 ? "Selected File" : `Selected Files (${selectedFiles.length})`}
+              {multiple 
+                ? `Selected Files (${selectedFiles.length}/${maxFiles})`
+                : "Selected File"
+              }
             </h4>
-            {selectedFiles.length > 1 && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => {
-                  setSelectedFiles([]);
-                  onFilesSelected([]);
-                }}
-                className="text-xs h-7"
-                data-testid="button-clear-all"
-              >
-                Clear All
-              </Button>
-            )}
+            <div className="flex items-center gap-2">
+              {multiple && selectedFiles.length < maxFiles && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleButtonClick}
+                  disabled={disabled}
+                  className="text-xs h-7 gap-1"
+                  data-testid="button-add-more-files"
+                >
+                  <Upload className="w-3 h-3" aria-hidden="true" />
+                  Add More
+                </Button>
+              )}
+              {selectedFiles.length > 1 && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    setSelectedFiles([]);
+                    onFilesSelected([]);
+                  }}
+                  className="text-xs h-7"
+                  data-testid="button-clear-all"
+                >
+                  Clear All
+                </Button>
+              )}
+            </div>
           </div>
           <div className="space-y-2">
             {selectedFiles.map((file, index) => (
