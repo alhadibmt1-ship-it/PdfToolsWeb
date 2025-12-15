@@ -11,6 +11,7 @@ interface ProcessingStateProps {
   onDownload?: () => void;
   downloadLabel?: string;
   resultInfo?: string;
+  fileCount?: number;
 }
 
 export default function ProcessingState({ 
@@ -20,7 +21,8 @@ export default function ProcessingState({
   className,
   onDownload,
   downloadLabel = "Download",
-  resultInfo
+  resultInfo,
+  fileCount
 }: ProcessingStateProps) {
   if (status === "idle") return null;
 
@@ -47,7 +49,9 @@ export default function ProcessingState({
               </div>
               
               <div className="w-full max-w-sm space-y-3 text-center">
-                <h3 className="text-lg font-semibold">Processing Your File</h3>
+                <h3 className="text-lg font-semibold">
+                  {fileCount && fileCount > 1 ? `Processing ${fileCount} Files` : "Processing Your File"}
+                </h3>
                 <Progress value={progress} className="h-2.5" data-testid="progress-bar" />
                 <div className="flex items-center justify-between text-sm text-muted-foreground">
                   <span>{message || "Please wait..."}</span>

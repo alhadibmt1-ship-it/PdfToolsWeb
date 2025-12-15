@@ -229,6 +229,7 @@ export default function MergePdfPage() {
               status={status}
               progress={progress}
               message={status === "processing" ? "Merging your PDFs..." : undefined}
+              fileCount={files.length}
             />
 
             {status === "success" && resultUrl && (
