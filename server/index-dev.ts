@@ -8,6 +8,7 @@ import { createServer as createViteServer, createLogger } from "vite";
 
 import viteConfig from "../vite.config";
 import runApp from "./app";
+import { injectSEO } from "./seo-config";
 
 export async function setupVite(app: Express, server: Server) {
   const viteLogger = createLogger();
@@ -49,6 +50,11 @@ export async function setupVite(app: Express, server: Server) {
         `src="/src/main.tsx"`,
         `src="/src/main.tsx?v=${nanoid()}"`,
       );
+      
+      // Inject SEO meta tags based on the URL path for search engines
+      const urlPath = url.split('?')[0];
+      template = injectSEO(template, urlPath);
+      
       const page = await vite.transformIndexHtml(url, template);
       res.status(200).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
