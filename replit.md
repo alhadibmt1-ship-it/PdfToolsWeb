@@ -101,11 +101,25 @@ Key technical implementations include:
 - **Database (Future)**: `drizzle-orm`, `@neondatabase/serverless`, `connect-pg-simple`.
 - **Development Tools**: `typescript`, `vite`, `tsx`.
 
+## Blog Section
+The site includes a blog content hub for SEO and informational traffic:
+- **Blog List Page** (/blog): Grid of article cards with categories, read time, and tags
+- **Blog Post Pages** (/blog/:slug): Full articles with SEO optimization
+- **5 Initial Articles**:
+  1. How to Compress PDF for Email
+  2. Convert PDF to Word Without Losing Formatting
+  3. How to Merge PDF Files
+  4. Password Protect PDF Guide
+  5. PDF Tools for Students
+- **Internal Linking**: Each article includes primary CTA button to relevant tool + related tools section
+- **SEO**: Article schema markup, unique meta tags per article, sitemap entries
+
 ## Recent Changes (December 2025)
+- Added blog section with 5 SEO-optimized articles and internal linking to tools
 - Added 7 new PDF tools: PDF to PowerPoint, PowerPoint to PDF, TIFF to PDF, GIF to PDF, Edit PDF, Annotate PDF, Redact PDF
 - Added 4 new image tools: Resize Image, Crop Image, Rotate & Flip Image, Convert Image
 - Updated PDF compression to use CloudConvert optimize API for real compression
 - Added Facebook and YouTube social links to footer
-- Updated sitemap.xml with all 43 tool URLs
+- Updated sitemap.xml with all 43 tool URLs + blog URLs
 - Updated homepage and footer to reflect 43+ tools
 - All new tools follow established patterns (FileUploadZone, ProcessingState, TrustBadges, RelatedTools, ToolSEOContent)
