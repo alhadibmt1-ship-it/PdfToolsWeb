@@ -34,6 +34,11 @@ export default function Header() {
                 All Tools
               </span>
             </Link>
+            <Link href="/blog" data-testid="link-nav-blog">
+              <span className="px-4 py-2 text-sm font-medium rounded-lg hover-elevate active-elevate-2 cursor-pointer transition-all">
+                Blog
+              </span>
+            </Link>
           </nav>
           
           {/* Desktop settings and theme */}
