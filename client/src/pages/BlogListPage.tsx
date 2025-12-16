@@ -1,9 +1,10 @@
 import { Link } from "wouter";
-import { Calendar, Clock, ArrowRight, Tag } from "lucide-react";
+import { Calendar, Clock, ArrowRight, ArrowLeft, Tag } from "lucide-react";
 import { blogPosts } from "@/data/blogData";
 import { useSEO } from "@/hooks/useSEO";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 export default function BlogListPage() {
   useSEO({
@@ -16,6 +17,15 @@ export default function BlogListPage() {
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
+          <div className="mb-6">
+            <Link href="/#tools">
+              <Button variant="ghost" size="sm" data-testid="button-back-tools">
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Back to Tools
+              </Button>
+            </Link>
+          </div>
+          
           <header className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4" data-testid="text-blog-title">
               PDF Tips & Tutorials

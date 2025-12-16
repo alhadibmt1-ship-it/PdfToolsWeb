@@ -201,12 +201,20 @@ export default function BlogPostPage() {
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto">
-          <Link href="/blog">
-            <Button variant="ghost" size="sm" className="mb-6" data-testid="button-back-blog">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Blog
-            </Button>
-          </Link>
+          <div className="flex items-center gap-2 mb-6">
+            <Link href="/#tools">
+              <Button variant="ghost" size="sm" data-testid="button-back-tools">
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Back to Tools
+              </Button>
+            </Link>
+            <span className="text-muted-foreground">|</span>
+            <Link href="/blog">
+              <Button variant="ghost" size="sm" data-testid="button-back-blog">
+                Back to Blog
+              </Button>
+            </Link>
+          </div>
 
           <article>
             <header className="mb-8">
