@@ -298,4 +298,42 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  
+  <!-- Blog -->
+  <url>
+    <loc>https://pdfhub24.com/blog</loc>
+    <lastmod>2025-12-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/blog/how-to-compress-pdf-for-email</loc>
+    <lastmod>2025-12-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/blog/convert-pdf-to-word-without-losing-formatting</loc>
+    <lastmod>2025-12-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/blog/merge-pdf-files-guide</loc>
+    <lastmod>2025-12-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/blog/protect-pdf-with-password</loc>
+    <lastmod>2025-12-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/blog/pdf-tools-for-students</loc>
+    <lastmod>2025-12-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

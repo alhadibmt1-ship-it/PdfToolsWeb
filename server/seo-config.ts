@@ -672,6 +672,88 @@ export const seoConfig: Record<string, PageSEO> = {
       "name": "Contact PDF HUB 24",
       "url": `${BASE_URL}/contact`
     }
+  },
+  "/blog": {
+    title: "PDF Tips & Tutorials Blog | PDF HUB 24",
+    description: "Learn how to work with PDF files effectively. Tutorials, guides, and tips for compressing, converting, merging, and editing PDFs.",
+    keywords: "PDF tips, PDF tutorials, how to PDF, PDF guide, PDF help",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "PDF HUB 24 Blog",
+      "url": `${BASE_URL}/blog`,
+      "description": "Tips, tutorials, and guides for working with PDF files"
+    }
+  },
+  "/blog/how-to-compress-pdf-for-email": {
+    title: "How to Compress PDF for Email - Reduce Size Under 25MB | PDF HUB 24",
+    description: "Learn how to compress PDF files for email attachments. Step-by-step guide to reduce PDF size under 25MB, 10MB, or even 1MB while maintaining quality.",
+    keywords: "compress PDF for email, reduce PDF size, PDF email attachment, shrink PDF",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Compress PDF for Email: Reduce File Size Under 25MB",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2025-12-16",
+      "url": `${BASE_URL}/blog/how-to-compress-pdf-for-email`
+    }
+  },
+  "/blog/convert-pdf-to-word-without-losing-formatting": {
+    title: "Convert PDF to Word Without Losing Formatting | PDF HUB 24",
+    description: "Learn how to convert PDF to editable Word documents while preserving formatting, tables, and images. Free online converter with step-by-step instructions.",
+    keywords: "PDF to Word formatting, convert PDF Word, preserve PDF formatting, PDF to DOCX",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Convert PDF to Word Without Losing Formatting",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2025-12-16",
+      "url": `${BASE_URL}/blog/convert-pdf-to-word-without-losing-formatting`
+    }
+  },
+  "/blog/merge-pdf-files-guide": {
+    title: "How to Merge PDF Files - Combine Multiple PDFs | PDF HUB 24",
+    description: "Learn how to merge multiple PDF files into one document. Step-by-step guide for combining PDFs online for free. Reorder pages and create professional documents.",
+    keywords: "merge PDF files, combine PDF, join PDF, PDF merger guide",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Merge PDF Files: Complete Guide to Combining Documents",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2025-12-16",
+      "url": `${BASE_URL}/blog/merge-pdf-files-guide`
+    }
+  },
+  "/blog/protect-pdf-with-password": {
+    title: "How to Password Protect PDF - Secure Your Documents | PDF HUB 24",
+    description: "Learn how to add password protection to PDF files. Step-by-step guide to encrypting PDFs, setting permissions, and keeping sensitive documents secure.",
+    keywords: "password protect PDF, encrypt PDF, secure PDF, PDF password",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Password Protect a PDF: Security Best Practices",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2025-12-16",
+      "url": `${BASE_URL}/blog/protect-pdf-with-password`
+    }
+  },
+  "/blog/pdf-tools-for-students": {
+    title: "PDF Tools for Students - Free Academic Document Tools | PDF HUB 24",
+    description: "Discover the essential PDF tools every student needs for academic success. Free tools for research papers, assignments, presentations, and study materials.",
+    keywords: "PDF tools students, academic PDF, student PDF guide, free PDF tools school",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Essential PDF Tools Every Student Needs: Complete Guide",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2025-12-16",
+      "url": `${BASE_URL}/blog/pdf-tools-for-students`
+    }
   }
 };
 

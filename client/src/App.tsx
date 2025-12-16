@@ -61,6 +61,8 @@ const AboutPage = lazy(() => import("@/pages/AboutPage"));
 const PrivacyPage = lazy(() => import("@/pages/PrivacyPage"));
 const TermsPage = lazy(() => import("@/pages/TermsPage"));
 const ContactPage = lazy(() => import("@/pages/ContactPage"));
+const BlogListPage = lazy(() => import("@/pages/BlogListPage"));
+const BlogPostPage = lazy(() => import("@/pages/BlogPostPage"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 function PageLoader() {
@@ -128,6 +130,8 @@ function Router() {
         <Route path="/privacy" component={PrivacyPage} />
         <Route path="/terms" component={TermsPage} />
         <Route path="/contact" component={ContactPage} />
+        <Route path="/blog" component={BlogListPage} />
+        <Route path="/blog/:slug" component={BlogPostPage} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>
