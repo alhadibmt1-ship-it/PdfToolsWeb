@@ -77,6 +77,13 @@ export default function MobileMenu() {
                 </div>
               </Link>
 
+              {/* Blog link */}
+              <Link href="/blog" onClick={closeMenu}>
+                <div className="flex items-center gap-3 px-4 py-3 rounded-lg hover-elevate active-elevate-2 cursor-pointer" data-testid="mobile-link-blog">
+                  <span className="font-medium">Blog</span>
+                </div>
+              </Link>
+
               {/* Categories with expandable tools */}
               {categories.map((category) => {
                 const CategoryIcon = category.icon;
@@ -129,7 +136,7 @@ export default function MobileMenu() {
           {/* Footer */}
           <div className="p-4 border-t bg-muted/30">
             <p className="text-xs text-muted-foreground text-center">
-              32+ Free PDF Tools
+              43+ Free PDF Tools
             </p>
           </div>
         </div>
