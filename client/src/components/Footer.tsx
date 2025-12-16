@@ -264,6 +264,9 @@ export default function Footer() {
                   <FooterLink href="/about" testId="link-footer-about" isVisible={isCompanyVisible}>
                     About Us
                   </FooterLink>
+                  <FooterLink href="/blog" testId="link-footer-blog" isVisible={isCompanyVisible}>
+                    Blog
+                  </FooterLink>
                   <FooterLink href="/contact" testId="link-footer-contact" isVisible={isCompanyVisible}>
                     Contact
                   </FooterLink>
