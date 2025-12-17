@@ -47,12 +47,12 @@ export default function MobileMenu() {
 
       {/* Slide-out menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-[85vw] max-w-[320px] bg-background z-50 transform transition-transform duration-300 ease-out shadow-2xl ${
+        className={`fixed top-0 right-0 h-full w-[85vw] max-w-[320px] bg-white dark:bg-gray-900 z-50 transform transition-transform duration-300 ease-out shadow-2xl border-l ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         data-testid="mobile-menu-panel"
       >
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full bg-white dark:bg-gray-900">
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b">
             <span className="font-bold text-lg">Menu</span>
