@@ -14,10 +14,62 @@ import {
   Hash,
   Droplet,
   Move,
-  ArrowRight
+  ArrowRight,
+  BookOpen
 } from "lucide-react";
 import { PDF_TOOLS } from "@shared/schema";
 import { Card } from "@/components/ui/card";
+
+const relatedArticles: Record<string, { title: string; slug: string }[]> = {
+  "compress": [
+    { title: "How to Compress PDF for Email", slug: "how-to-compress-pdf-for-email" }
+  ],
+  "pdf-to-word": [
+    { title: "Convert PDF to Word Without Losing Formatting", slug: "convert-pdf-to-word-without-losing-formatting" }
+  ],
+  "merge": [
+    { title: "How to Merge PDF Files: Complete Guide", slug: "how-to-merge-pdf-files" }
+  ],
+  "protect-pdf": [
+    { title: "Password Protect PDF: Complete Security Guide", slug: "password-protect-pdf-complete-guide" }
+  ],
+  "split": [
+    { title: "How to Compress PDF for Email", slug: "how-to-compress-pdf-for-email" }
+  ],
+  "unlock-pdf": [
+    { title: "Password Protect PDF: Complete Security Guide", slug: "password-protect-pdf-complete-guide" }
+  ],
+  "add-watermark": [
+    { title: "Password Protect PDF: Complete Security Guide", slug: "password-protect-pdf-complete-guide" }
+  ],
+  "annotate-pdf": [
+    { title: "Essential PDF Tools for Students", slug: "pdf-tools-for-students" }
+  ],
+  "edit-pdf": [
+    { title: "Essential PDF Tools for Students", slug: "pdf-tools-for-students" }
+  ],
+  "grayscale-pdf": [
+    { title: "How to Compress PDF for Email", slug: "how-to-compress-pdf-for-email" }
+  ],
+  "delete-pages": [
+    { title: "How to Merge PDF Files: Complete Guide", slug: "how-to-merge-pdf-files" }
+  ],
+  "reorder-pages": [
+    { title: "How to Merge PDF Files: Complete Guide", slug: "how-to-merge-pdf-files" }
+  ],
+  "word-to-pdf": [
+    { title: "Convert PDF to Word Without Losing Formatting", slug: "convert-pdf-to-word-without-losing-formatting" }
+  ],
+  "excel-to-pdf": [
+    { title: "Essential PDF Tools for Students", slug: "pdf-tools-for-students" }
+  ],
+  "jpg-to-pdf": [
+    { title: "Essential PDF Tools for Students", slug: "pdf-tools-for-students" }
+  ],
+  "png-to-pdf": [
+    { title: "Essential PDF Tools for Students", slug: "pdf-tools-for-students" }
+  ]
+};
 
 const iconMap: Record<string, any> = {
   merge: Combine,
@@ -99,8 +151,33 @@ export default function RelatedTools({ currentToolId, maxTools = 4 }: RelatedToo
     })
     .slice(0, maxTools);
 
+  const articles = relatedArticles[currentToolId] || [];
+
   return (
     <section className="mt-12 pt-8 border-t">
+      {articles.length > 0 && (
+        <div className="mb-10">
+          <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+            <BookOpen className="w-5 h-5 text-primary" />
+            Related Articles
+          </h2>
+          <div className="space-y-3">
+            {articles.map((article) => (
+              <Link key={article.slug} href={`/blog/${article.slug}`} data-testid={`link-article-${article.slug}`}>
+                <Card className="p-4 hover-elevate cursor-pointer transition-all group">
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="text-sm font-medium group-hover:text-primary transition-colors">
+                      {article.title}
+                    </span>
+                    <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
+                  </div>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
       <h2 className="text-xl font-semibold mb-6">More PDF Tools</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {relatedTools.map((tool) => (

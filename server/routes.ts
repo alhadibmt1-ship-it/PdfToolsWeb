@@ -2881,6 +2881,49 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  app.get("/rss.xml", (req, res) => {
+    const baseUrl = "https://pdfhub24.com";
+    const now = new Date().toUTCString();
+    
+    const blogPosts = [
+      { slug: "how-to-compress-pdf-for-email", title: "How to Compress PDF for Email: Reduce File Size Under 25MB", description: "Email providers limit attachment sizes. Learn how to compress your PDF files to send them via email without losing quality.", date: "2025-12-16" },
+      { slug: "convert-pdf-to-word-without-losing-formatting", title: "How to Convert PDF to Word Without Losing Formatting", description: "Converting PDFs to Word documents while preserving layout, fonts, and images is easier than you think.", date: "2025-12-16" },
+      { slug: "how-to-merge-pdf-files", title: "How to Merge PDF Files: Complete Guide for 2025", description: "Need to combine multiple PDFs into one document? Here's everything you need to know about merging PDF files.", date: "2025-12-16" },
+      { slug: "password-protect-pdf-complete-guide", title: "How to Password Protect a PDF: Complete Security Guide", description: "Keep your sensitive documents secure. Learn how to add password protection to PDF files in minutes.", date: "2025-12-16" },
+      { slug: "pdf-tools-for-students", title: "Essential PDF Tools for Students: Complete Guide", description: "From combining research papers to annotating lecture notes, discover the PDF tools every student needs.", date: "2025-12-16" }
+    ];
+
+    const rssItems = blogPosts.map(post => `
+    <item>
+      <title><![CDATA[${post.title}]]></title>
+      <link>${baseUrl}/blog/${post.slug}</link>
+      <guid isPermaLink="true">${baseUrl}/blog/${post.slug}</guid>
+      <description><![CDATA[${post.description}]]></description>
+      <pubDate>${new Date(post.date).toUTCString()}</pubDate>
+      <category>PDF Tutorials</category>
+    </item>`).join('');
+
+    const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PDF HUB 24 - PDF Tips & Tutorials</title>
+    <link>${baseUrl}/blog</link>
+    <description>Learn how to work with PDF files effectively. Tutorials, guides, and tips for compressing, converting, merging, and editing PDFs.</description>
+    <language>en-us</language>
+    <lastBuildDate>${now}</lastBuildDate>
+    <atom:link href="${baseUrl}/rss.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>${baseUrl}/og-image.png</url>
+      <title>PDF HUB 24</title>
+      <link>${baseUrl}</link>
+    </image>${rssItems}
+  </channel>
+</rss>`;
+
+    res.set('Content-Type', 'application/rss+xml; charset=utf-8');
+    res.send(rss);
+  });
+
   app.use((err: any, req: any, res: any, next: any) => {
     if (err instanceof multer.MulterError) {
       return res.status(400).json({ error: `Upload error: ${err.message}` });
