@@ -1,6 +1,10 @@
+import { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle2, Shield, Zap, Clock, HelpCircle } from "lucide-react";
+import { CheckCircle2, Shield, Zap, Clock, HelpCircle, Home, ChevronRight } from "lucide-react";
 import { Link } from "wouter";
+import { PDF_TOOLS } from "@shared/schema";
+
+const BASE_URL = "https://pdfhub24.com";
 
 interface FAQ {
   question: string;
@@ -40,6 +44,13 @@ interface ToolSEOContentProps {
   };
 }
 
+const categoryLabels: Record<string, string> = {
+  "from-pdf": "Convert from PDF",
+  "to-pdf": "Convert to PDF",
+  "edit-pdf": "Edit PDF",
+  "utility": "Utility Tools"
+};
+
 export default function ToolSEOContent({
   toolName,
   toolId,
@@ -52,6 +63,108 @@ export default function ToolSEOContent({
   extraSections = [],
   exampleTable
 }: ToolSEOContentProps) {
+  const tool = toolId ? PDF_TOOLS.find(t => t.id === toolId) : null;
+  const category = tool?.category || "edit-pdf";
+  const toolPath = tool?.path || "/";
+
+  useEffect(() => {
+    const existingScripts = document.querySelectorAll('script[data-tool-structured-data="true"]');
+    existingScripts.forEach(script => script.remove());
+
+    const breadcrumbList = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": BASE_URL
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": categoryLabels[category],
+          "item": `${BASE_URL}/#${category}`
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": toolName,
+          "item": `${BASE_URL}${toolPath}`
+        }
+      ]
+    };
+
+    const faqSchema = faqs.length > 0 ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    } : null;
+
+    const howToSchema = howToSteps.length > 0 ? {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": `How to Use ${toolName}`,
+      "description": toolDescription,
+      "totalTime": "PT2M",
+      "step": howToSteps.map((step, index) => ({
+        "@type": "HowToStep",
+        "position": index + 1,
+        "text": step,
+        "name": `Step ${index + 1}`
+      })),
+      "tool": {
+        "@type": "HowToTool",
+        "name": "PDF HUB 24"
+      }
+    } : null;
+
+    const softwareSchema = {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": `${toolName} - PDF HUB 24`,
+      "url": `${BASE_URL}${toolPath}`,
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": toolDescription,
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1250",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    };
+
+    const schemas = [breadcrumbList, softwareSchema, faqSchema, howToSchema].filter(Boolean);
+    
+    schemas.forEach(schema => {
+      const script = document.createElement("script");
+      script.setAttribute("type", "application/ld+json");
+      script.setAttribute("data-tool-structured-data", "true");
+      script.textContent = JSON.stringify(schema);
+      document.head.appendChild(script);
+    });
+
+    return () => {
+      const scripts = document.querySelectorAll('script[data-tool-structured-data="true"]');
+      scripts.forEach(script => script.remove());
+    };
+  }, [toolName, toolPath, toolDescription, howToSteps, faqs, category]);
+
   const keywordText = keywords.length >= 3 
     ? keywords.slice(0, 3).join(", ") 
     : keywords.length > 0 

@@ -643,8 +643,70 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Blog Articles Section */}
+        <section className="py-16 sm:py-20">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-12 sm:mb-14">
+              <span className="section-label block mb-3">Learn</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                PDF Tips & Tutorials
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Learn how to work with PDF files effectively with our helpful guides
+              </p>
+            </div>
+            
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+              <Link href="/blog/how-to-compress-pdf-for-email">
+                <Card className="p-5 sm:p-6 h-full hover-elevate cursor-pointer">
+                  <h3 className="font-semibold mb-2 text-foreground">How to Compress PDF for Email</h3>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    Reduce PDF file size under 25MB for email attachments without losing quality.
+                  </p>
+                  <span className="text-sm text-primary flex items-center gap-1">
+                    Read guide <ArrowRight className="w-3 h-3" />
+                  </span>
+                </Card>
+              </Link>
+              
+              <Link href="/blog/convert-pdf-to-word-without-losing-formatting">
+                <Card className="p-5 sm:p-6 h-full hover-elevate cursor-pointer">
+                  <h3 className="font-semibold mb-2 text-foreground">Convert PDF to Word Without Losing Formatting</h3>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    Keep layout, fonts, and images intact when converting PDF to DOCX.
+                  </p>
+                  <span className="text-sm text-primary flex items-center gap-1">
+                    Read guide <ArrowRight className="w-3 h-3" />
+                  </span>
+                </Card>
+              </Link>
+              
+              <Link href="/blog/how-to-merge-pdf-files">
+                <Card className="p-5 sm:p-6 h-full hover-elevate cursor-pointer">
+                  <h3 className="font-semibold mb-2 text-foreground">How to Merge PDF Files</h3>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    Combine multiple PDFs into one document in seconds - complete guide.
+                  </p>
+                  <span className="text-sm text-primary flex items-center gap-1">
+                    Read guide <ArrowRight className="w-3 h-3" />
+                  </span>
+                </Card>
+              </Link>
+            </div>
+            
+            <div className="text-center mt-8">
+              <Link href="/blog">
+                <Button variant="outline" className="gap-2" data-testid="button-view-all-articles">
+                  View All Articles
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ Section */}
-        <section className="py-16 sm:py-20 md:py-24">
+        <section className="py-16 sm:py-20 md:py-24 bg-muted/30">
           <div className="max-w-3xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-10 sm:mb-12">
               <span className="section-label block mb-3">FAQ</span>
