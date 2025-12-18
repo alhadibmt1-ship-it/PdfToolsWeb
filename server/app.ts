@@ -34,6 +34,17 @@ app.use(compression({
   }
 }));
 
+// Normalize trailing slashes - redirect /path/ to /path (301 for SEO)
+app.use((req, res, next) => {
+  if (req.path !== '/' && req.path.endsWith('/')) {
+    const query = req.url.slice(req.path.length);
+    const safePath = req.path.slice(0, -1).replace(/\/+/g, '/');
+    res.redirect(301, safePath + query);
+  } else {
+    next();
+  }
+});
+
 declare module 'http' {
   interface IncomingMessage {
     rawBody: unknown
