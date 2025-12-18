@@ -161,30 +161,30 @@ export default function FileUploadZone({
           aria-label={uploadLabel}
         />
         
-        <div className="relative flex flex-col items-center justify-center p-8 sm:p-12 text-center pointer-events-none">
+        <div className="relative flex flex-col items-center justify-center p-6 sm:p-12 text-center pointer-events-none">
           <div className={cn(
-            "w-20 h-20 sm:w-24 sm:h-24 rounded-2xl flex items-center justify-center mb-5 transition-all duration-300",
+            "w-16 h-16 sm:w-24 sm:h-24 rounded-2xl flex items-center justify-center mb-4 sm:mb-5 transition-all duration-300",
             isDragging 
               ? "bg-gradient-to-br from-primary to-cyan-500 shadow-lg shadow-primary/25" 
               : "bg-gradient-to-br from-primary/10 to-cyan-500/10"
           )}>
             {isDragging ? (
-              <Upload className="w-10 h-10 sm:w-12 sm:h-12 text-white animate-bounce" aria-hidden="true" />
+              <Upload className="w-8 h-8 sm:w-12 sm:h-12 text-white animate-bounce" aria-hidden="true" />
             ) : (
-              <FileIcon className="w-10 h-10 sm:w-12 sm:h-12 text-primary" aria-hidden="true" />
+              <FileIcon className="w-8 h-8 sm:w-12 sm:h-12 text-primary" aria-hidden="true" />
             )}
           </div>
           
-          <h3 className="text-xl sm:text-2xl font-bold mb-2 tracking-tight">
+          <h3 className="text-lg sm:text-2xl font-bold mb-1.5 sm:mb-2 tracking-tight">
             {isDragging ? "Drop your files here!" : "Upload Your Files"}
           </h3>
           
-          <p className="text-muted-foreground mb-4 max-w-md">
+          <p className="text-sm sm:text-base text-muted-foreground mb-4 max-w-md">
             {isDragging 
               ? "Release to upload" 
               : multiple 
-                ? `Drag & drop up to ${maxFiles} files here, or click to browse`
-                : "Drag & drop your file here, or click to browse"
+                ? `Tap to select up to ${maxFiles} files`
+                : "Tap to select your file"
             }
           </p>
           
@@ -192,7 +192,7 @@ export default function FileUploadZone({
             <Button 
               type="button"
               size="lg" 
-              className="gap-2 shadow-md"
+              className="gap-2 shadow-md min-h-[48px] px-6 sm:px-8 text-base touch-manipulation"
               disabled={disabled}
               data-testid="button-select-files"
               onClick={(e) => {
@@ -201,23 +201,23 @@ export default function FileUploadZone({
               }}
               aria-controls={uniqueInputId}
             >
-              <Upload className="w-4 h-4" aria-hidden="true" />
+              <Upload className="w-5 h-5" aria-hidden="true" />
               Select {multiple ? "Files" : "File"}
             </Button>
           </div>
           
-          <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50">
-              <FileIcon className="w-3.5 h-3.5" aria-hidden="true" />
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs text-muted-foreground">
+            <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-muted/50">
+              <FileIcon className="w-3 h-3 sm:w-3.5 sm:h-3.5" aria-hidden="true" />
               {formatDisplay}
             </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50">
-              <Shield className="w-3.5 h-3.5 text-green-500" aria-hidden="true" />
-              Secure Upload
+            <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-muted/50">
+              <Shield className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-500" aria-hidden="true" />
+              Secure
             </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50">
-              <Zap className="w-3.5 h-3.5 text-orange-500" aria-hidden="true" />
-              Fast Processing
+            <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-muted/50">
+              <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-orange-500" aria-hidden="true" />
+              Fast
             </span>
           </div>
         </div>

@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import { SettingsProvider } from "@/contexts/SettingsContext";
 import { RecentToolsProvider } from "@/contexts/RecentToolsContext";
 import ScrollToTop from "@/components/ScrollToTop";
+import MobileQuickActions from "@/components/MobileQuickActions";
 import HomePage from "@/pages/HomePage";
 
 const MergePdfPage = lazy(() => import("@/pages/MergePdfPage"));
@@ -145,8 +146,11 @@ function App() {
         <SettingsProvider>
           <RecentToolsProvider>
             <TooltipProvider>
-              <Toaster />
-              <Router />
+              <div className="pb-16 md:pb-0">
+                <Toaster />
+                <Router />
+                <MobileQuickActions />
+              </div>
             </TooltipProvider>
           </RecentToolsProvider>
         </SettingsProvider>
