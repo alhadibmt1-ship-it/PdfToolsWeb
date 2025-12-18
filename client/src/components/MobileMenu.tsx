@@ -47,12 +47,12 @@ export default function MobileMenu() {
 
       {/* Slide-out menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-[85vw] max-w-[320px] bg-white dark:bg-gray-900 z-50 transform transition-transform duration-300 ease-out shadow-2xl border-l ${
+        className={`fixed top-0 right-0 h-full w-[85vw] max-w-[320px] bg-white dark:bg-gray-900 z-[60] transform transition-transform duration-300 ease-out shadow-2xl border-l ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         data-testid="mobile-menu-panel"
       >
-        <div className="flex flex-col h-full bg-white dark:bg-gray-900">
+        <div className="flex flex-col h-full bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b">
             <span className="font-bold text-lg">Menu</span>
@@ -72,15 +72,15 @@ export default function MobileMenu() {
             <div className="p-2">
               {/* Home link */}
               <Link href="/" onClick={closeMenu}>
-                <div className="flex items-center gap-3 px-4 py-3 rounded-lg hover-elevate active-elevate-2 cursor-pointer" data-testid="mobile-link-home">
-                  <span className="font-medium">Home</span>
+                <div className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer" data-testid="mobile-link-home">
+                  <span className="font-medium text-gray-900 dark:text-gray-100">Home</span>
                 </div>
               </Link>
 
               {/* Blog link */}
               <Link href="/blog" onClick={closeMenu}>
-                <div className="flex items-center gap-3 px-4 py-3 rounded-lg hover-elevate active-elevate-2 cursor-pointer" data-testid="mobile-link-blog">
-                  <span className="font-medium">Blog</span>
+                <div className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer" data-testid="mobile-link-blog">
+                  <span className="font-medium text-gray-900 dark:text-gray-100">Blog</span>
                 </div>
               </Link>
 
@@ -94,12 +94,12 @@ export default function MobileMenu() {
                   <div key={category.id} className="mt-1">
                     <button
                       onClick={() => toggleCategory(category.id)}
-                      className="w-full flex items-center justify-between gap-3 px-4 py-3 rounded-lg hover-elevate active-elevate-2 cursor-pointer"
+                      className="w-full flex items-center justify-between gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
                       data-testid={`mobile-category-${category.id}`}
                     >
                       <div className="flex items-center gap-3">
                         <CategoryIcon className={`w-5 h-5 ${category.color}`} />
-                        <span className="font-medium">{category.label}</span>
+                        <span className="font-medium text-gray-900 dark:text-gray-100">{category.label}</span>
                       </div>
                       <ChevronRight
                         className={`w-4 h-4 text-muted-foreground transition-transform duration-200 ${
@@ -118,7 +118,7 @@ export default function MobileMenu() {
                         {tools.map((tool) => (
                           <Link key={tool.id} href={tool.path} onClick={closeMenu}>
                             <div
-                              className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 cursor-pointer transition-colors"
+                              className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer transition-colors"
                               data-testid={`mobile-link-${tool.id}`}
                             >
                               {tool.title}
