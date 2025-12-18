@@ -515,4 +515,33 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+  
+  /* Safe area for mobile bottom nav */
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  
+  /* Mobile-optimized spacing */
+  @media (max-width: 640px) {
+    .mobile-compact {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    /* Add bottom padding for fixed nav */
+    .has-bottom-nav {
+      padding-bottom: 4.5rem;
+    }
+  }
+  
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Prevent pull-to-refresh on tool pages */
+  .no-overscroll {
+    overscroll-behavior: contain;
+  }
 }
