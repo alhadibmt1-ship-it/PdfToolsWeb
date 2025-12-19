@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { Menu, X, Download, Upload, FileText, Settings, ChevronRight } from "lucide-react";
+import { Menu, X, Download, Upload, FileText, Settings, ChevronDown, Home, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { PDF_TOOLS } from "@shared/schema";
 
 const categories = [
@@ -12,125 +14,101 @@ const categories = [
 ];
 
 export default function MobileMenu() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
 
-  const toggleCategory = (categoryId: string) => {
-    setExpandedCategory(expandedCategory === categoryId ? null : categoryId);
-  };
-
   const closeMenu = () => {
-    setIsOpen(false);
+    setOpen(false);
     setExpandedCategory(null);
   };
 
   return (
-    <div className="md:hidden">
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={() => setIsOpen(true)}
-        data-testid="button-mobile-menu"
-        aria-label="Open menu"
-      >
-        <Menu className="w-5 h-5" />
-      </Button>
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger asChild>
+        <Button
+          variant="ghost"
+          size="icon"
+          data-testid="button-mobile-menu"
+          aria-label="Open menu"
+          className="md:hidden"
+        >
+          <Menu className="w-5 h-5" />
+        </Button>
+      </SheetTrigger>
+      <SheetContent side="right" className="w-[85vw] max-w-[320px] p-0">
+        <SheetHeader className="p-4 border-b">
+          <SheetTitle>Menu</SheetTitle>
+        </SheetHeader>
+        
+        <div className="flex flex-col h-[calc(100%-60px)]">
+          <div className="flex-1 overflow-y-auto p-2">
+            {/* Home link */}
+            <Link href="/" onClick={closeMenu}>
+              <div 
+                className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent cursor-pointer"
+                data-testid="mobile-link-home"
+              >
+                <Home className="w-5 h-5 text-blue-500" />
+                <span className="font-medium">Home</span>
+              </div>
+            </Link>
 
-      {/* Backdrop */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm"
-          onClick={closeMenu}
-          data-testid="mobile-menu-backdrop"
-        />
-      )}
+            {/* Blog link */}
+            <Link href="/blog" onClick={closeMenu}>
+              <div 
+                className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent cursor-pointer"
+                data-testid="mobile-link-blog"
+              >
+                <BookOpen className="w-5 h-5 text-amber-500" />
+                <span className="font-medium">Blog</span>
+              </div>
+            </Link>
 
-      {/* Slide-out menu */}
-      <div
-        className={`fixed top-0 right-0 h-full w-[85vw] max-w-[320px] bg-white dark:bg-gray-900 z-[60] transform transition-transform duration-300 ease-out shadow-2xl border-l ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-        data-testid="mobile-menu-panel"
-      >
-        <div className="flex flex-col h-full bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-          {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b">
-            <span className="font-bold text-lg">Menu</span>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={closeMenu}
-              data-testid="button-close-mobile-menu"
-              aria-label="Close menu"
-            >
-              <X className="w-5 h-5" />
-            </Button>
-          </div>
+            {/* Categories with expandable tools */}
+            {categories.map((category) => {
+              const CategoryIcon = category.icon;
+              const tools = PDF_TOOLS.filter((t) => t.category === category.id);
+              const isExpanded = expandedCategory === category.id;
 
-          {/* Navigation */}
-          <div className="flex-1 overflow-y-auto overscroll-contain bg-white dark:bg-gray-900">
-            <div className="p-2">
-              {/* Home link */}
-              <Link href="/" onClick={closeMenu}>
-                <div className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer" data-testid="mobile-link-home">
-                  <span className="font-medium text-black dark:text-white">Home</span>
-                </div>
-              </Link>
-
-              {/* Blog link */}
-              <Link href="/blog" onClick={closeMenu}>
-                <div className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer" data-testid="mobile-link-blog">
-                  <span className="font-medium text-black dark:text-white">Blog</span>
-                </div>
-              </Link>
-
-              {/* Categories with expandable tools */}
-              {categories.map((category) => {
-                const CategoryIcon = category.icon;
-                const tools = PDF_TOOLS.filter((t) => t.category === category.id);
-                const isExpanded = expandedCategory === category.id;
-
-                return (
-                  <div key={category.id} className="mt-1">
+              return (
+                <Collapsible
+                  key={category.id}
+                  open={isExpanded}
+                  onOpenChange={() => setExpandedCategory(isExpanded ? null : category.id)}
+                >
+                  <CollapsibleTrigger asChild>
                     <button
-                      onClick={() => toggleCategory(category.id)}
-                      className="w-full flex items-center justify-between gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
+                      className="w-full flex items-center justify-between gap-3 px-4 py-3 rounded-lg hover:bg-accent cursor-pointer"
                       data-testid={`mobile-category-${category.id}`}
                     >
                       <div className="flex items-center gap-3">
                         <CategoryIcon className={`w-5 h-5 ${category.color}`} />
-                        <span className="font-medium text-black dark:text-white">{category.label}</span>
+                        <span className="font-medium">{category.label}</span>
                       </div>
-                      <ChevronRight
+                      <ChevronDown
                         className={`w-4 h-4 text-muted-foreground transition-transform duration-200 ${
-                          isExpanded ? "rotate-90" : ""
+                          isExpanded ? "rotate-180" : ""
                         }`}
                       />
                     </button>
-
-                    {/* Expandable tool list */}
-                    <div
-                      className={`overflow-hidden transition-all duration-300 ease-out ${
-                        isExpanded ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
-                      }`}
-                    >
-                      <div className="pl-4 py-1">
-                        {tools.map((tool) => (
-                          <Link key={tool.id} href={tool.path} onClick={closeMenu}>
-                            <div
-                              className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer transition-colors"
-                              data-testid={`mobile-link-${tool.id}`}
-                            >
-                              {tool.title}
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <div className="pl-4 py-1">
+                      {tools.map((tool) => (
+                        <Link key={tool.id} href={tool.path} onClick={closeMenu}>
+                          <div
+                            className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-accent cursor-pointer transition-colors"
+                            data-testid={`mobile-link-${tool.id}`}
+                          >
+                            {tool.title}
+                          </div>
+                        </Link>
+                      ))}
                     </div>
-                  </div>
-                );
-              })}
-            </div>
+                  </CollapsibleContent>
+                </Collapsible>
+              );
+            })}
           </div>
 
           {/* Footer */}
@@ -140,7 +118,7 @@ export default function MobileMenu() {
             </p>
           </div>
         </div>
-      </div>
-    </div>
+      </SheetContent>
+    </Sheet>
   );
 }
