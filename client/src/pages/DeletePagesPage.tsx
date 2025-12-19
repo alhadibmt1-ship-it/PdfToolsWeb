@@ -33,7 +33,7 @@ const DELETE_STEPS = [
 
 export default function DeletePagesPage() {
   useSEO({
-    title: "Delete Pages from PDF Free Online - PDF Page Remover | PDF HUB 24",
+    title: "Delete PDF Pages Free - PDF Page Remover | PDF HUB 24",
     description: "Delete pages from PDF free. Remove unwanted pages instantly with our PDF page remover. Clean up PDFs fast. No signup.",
     keywords: "delete pages from pdf free, delete pdf pages, remove pages from pdf, pdf page remover, remove pdf pages, delete pdf pages online, pdf delete pages"
   });

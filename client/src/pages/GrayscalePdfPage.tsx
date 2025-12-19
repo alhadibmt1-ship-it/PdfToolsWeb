@@ -15,7 +15,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function GrayscalePdfPage() {
   useSEO({
-    title: "PDF to Grayscale Free Online - Black and White PDF | PDF HUB 24",
+    title: "PDF to Grayscale Free - Black and White | PDF HUB 24",
     description: "Convert PDF to grayscale free online. Change color PDF to black and white for printing. Best free PDF to B&W converter - save ink. No signup required.",
     keywords: "pdf to grayscale free, black and white pdf, convert pdf grayscale free, pdf to bw, grayscale pdf converter free"
   });

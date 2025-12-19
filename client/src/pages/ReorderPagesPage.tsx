@@ -47,7 +47,7 @@ function SortableItem({ id, pageNumber }: PageItem) {
 export default function ReorderPagesPage() {
   useSEO({
     title: "Reorder PDF Pages Free Online - Rearrange PDF | PDF HUB 24",
-    description: "Reorder PDF pages free online. Drag and drop to rearrange PDF pages in any order. Best free PDF page organizer - sort, move pages instantly. No signup needed.",
+    description: "Reorder PDF pages free. Drag and drop to rearrange pages in any order. Best free PDF organizer. No signup.",
     keywords: "reorder pdf pages free, rearrange pdf, organize pdf pages, sort pdf pages free, move pdf pages, change pdf page order"
   });
 

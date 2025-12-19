@@ -17,7 +17,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function ConvertImagePage() {
   useSEO({
-    title: "Convert Image Free Online - JPG PNG WebP Converter | PDF HUB 24",
+    title: "Convert Image Free - JPG PNG WebP | PDF HUB 24",
     description: "Convert image format free online. Change JPG to PNG, PNG to WebP, WebP to JPG and more. Best free image converter - fast, high quality. No signup required.",
     keywords: "convert image free, image converter online, jpg to png free, png to jpg, webp to jpg, change image format free"
   });
