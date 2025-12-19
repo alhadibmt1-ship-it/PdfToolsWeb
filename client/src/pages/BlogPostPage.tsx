@@ -6,6 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import NotFound from "./not-found";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 function MarkdownContent({ content }: { content: string }) {
   const lines = content.trim().split('\n');
@@ -198,8 +200,9 @@ export default function BlogPostPage() {
   const otherPosts = blogPosts.filter(p => p.slug !== post.slug).slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen flex flex-col bg-background">
+      <Header />
+      <main className="flex-1 container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center gap-2 mb-6">
             <Link href="/#tools">
@@ -296,7 +299,8 @@ export default function BlogPostPage() {
             </section>
           )}
         </div>
-      </div>
+      </main>
+      <Footer />
     </div>
   );
 }
