@@ -8,7 +8,6 @@ import ProcessingState from "@/components/ProcessingState";
 import ToolSEOContent from "@/components/ToolSEOContent";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
-import ToolVideo from "@/components/ToolVideo";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
@@ -103,8 +102,6 @@ export default function PdfToWordPage() {
             </p>
             <TrustBadges />
           </div>
-
-          <ToolVideo videoId="w5ET_had5r8" title="PDF to Word" />
 
           <div className="space-y-6">
             <FileUploadZone
