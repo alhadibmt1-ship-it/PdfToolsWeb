@@ -1,7 +1,16 @@
 import { motion } from "framer-motion";
-import { Users, FileCheck, Clock, Star, TrendingUp, Globe, Quote } from "lucide-react";
+import { Users, FileCheck, Clock, Star, TrendingUp, Globe, Quote, Shield, Lock, Zap, GraduationCap, Briefcase, Home, Palette, BookOpen, User } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
+
+const trustedByItems = [
+  { name: "Freelancers", Icon: User },
+  { name: "Students", Icon: GraduationCap },
+  { name: "Teachers", Icon: BookOpen },
+  { name: "Small Business", Icon: Briefcase },
+  { name: "Remote Workers", Icon: Home },
+  { name: "Designers", Icon: Palette }
+];
 
 interface StatItemProps {
   icon: React.ReactNode;
@@ -115,6 +124,63 @@ export default function SocialProofSection() {
   return (
     <section className="py-16 sm:py-20">
       <div className="container mx-auto px-4">
+        {/* Privacy & Security Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <div className="grid sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            <div className="flex items-center gap-3 p-4 rounded-xl bg-green-500/10 border border-green-500/20">
+              <Shield className="w-8 h-8 text-green-500 flex-shrink-0" />
+              <div>
+                <p className="font-semibold text-sm">100% Private</p>
+                <p className="text-xs text-muted-foreground">Files deleted after processing</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 p-4 rounded-xl bg-blue-500/10 border border-blue-500/20">
+              <Lock className="w-8 h-8 text-blue-500 flex-shrink-0" />
+              <div>
+                <p className="font-semibold text-sm">SSL Encrypted</p>
+                <p className="text-xs text-muted-foreground">Secure file transfers</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 p-4 rounded-xl bg-orange-500/10 border border-orange-500/20">
+              <Zap className="w-8 h-8 text-orange-500 flex-shrink-0" />
+              <div>
+                <p className="font-semibold text-sm">Lightning Fast</p>
+                <p className="text-xs text-muted-foreground">Average 3 second processing</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Trusted By Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-10"
+        >
+          <p className="text-sm text-muted-foreground mb-4">Trusted by professionals worldwide</p>
+          <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
+            {trustedByItems.map((item, index) => (
+              <motion.div
+                key={item.name}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="flex items-center gap-2 text-muted-foreground"
+              >
+                <item.Icon className="w-5 h-5" />
+                <span className="text-sm font-medium">{item.name}</span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
         {/* Stats Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -124,10 +190,10 @@ export default function SocialProofSection() {
         >
           <span className="section-label block mb-3">Trusted Worldwide</span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">
-            Trusted by Thousands Worldwide
+            Join Thousands of Happy Users
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Join millions of users who trust PDF HUB 24 for their document needs
+            PDF HUB 24 helps students, teachers, freelancers, and businesses work smarter every day
           </p>
         </motion.div>
 
