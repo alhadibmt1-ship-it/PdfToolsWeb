@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { Users, FileCheck, Clock, Star, TrendingUp, Globe } from "lucide-react";
+import { Users, FileCheck, Clock, Star, TrendingUp, Globe, Quote } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Card } from "@/components/ui/card";
 
 interface StatItemProps {
   icon: React.ReactNode;
@@ -50,6 +51,33 @@ function StatItem({ icon, value, label, delay }: StatItemProps) {
   );
 }
 
+const testimonials = [
+  {
+    quote: "PDF HUB 24 has transformed how I handle student assignments. I can merge multiple PDFs and compress large files in seconds. The best part? It's completely free!",
+    name: "Sarah M.",
+    role: "High School Teacher",
+    rating: 5
+  },
+  {
+    quote: "As a freelance designer, I constantly need to convert files between formats. This tool saves me hours every week. The quality of conversions is impressive.",
+    name: "David L.",
+    role: "Graphic Designer",
+    rating: 5
+  },
+  {
+    quote: "Our HR department uses PDF HUB 24 daily for processing employee documents. It's reliable, fast, and the security features give us peace of mind.",
+    name: "Jennifer K.",
+    role: "HR Manager",
+    rating: 5
+  },
+  {
+    quote: "I was skeptical about free tools, but PDF HUB 24 exceeded my expectations. The PDF to Word conversion keeps all my formatting intact.",
+    name: "Michael R.",
+    role: "Real Estate Agent",
+    rating: 5
+  }
+];
+
 export default function SocialProofSection() {
   const stats = [
     {
@@ -85,15 +113,17 @@ export default function SocialProofSection() {
   ];
 
   return (
-    <section className="py-12 sm:py-16 bg-muted/30">
+    <section className="py-16 sm:py-20">
       <div className="container mx-auto px-4">
+        {/* Stats Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-10"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold mb-3">
+          <span className="section-label block mb-3">Trusted Worldwide</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">
             Trusted by Thousands Worldwide
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -101,7 +131,7 @@ export default function SocialProofSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 mb-16">
           {stats.map((stat, index) => (
             <StatItem
               key={stat.label}
@@ -113,12 +143,52 @@ export default function SocialProofSection() {
           ))}
         </div>
 
+        {/* Testimonials Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-10"
+        >
+          <h3 className="text-xl sm:text-2xl font-bold mb-3">
+            What Our Users Say
+          </h3>
+        </motion.div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card className="h-full p-5 sm:p-6">
+                <Quote className="w-8 h-8 text-primary/20 mb-3" />
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  "{testimonial.quote}"
+                </p>
+                <div className="flex items-center gap-1 mb-3">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                  ))}
+                </div>
+                <div>
+                  <p className="font-semibold text-sm">{testimonial.name}</p>
+                  <p className="text-xs text-muted-foreground">{testimonial.role}</p>
+                </div>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}
-          className="mt-10 text-center"
+          className="text-center"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
