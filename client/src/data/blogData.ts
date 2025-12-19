@@ -17,8 +17,8 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "how-to-compress-pdf-for-email",
     title: "How to Compress PDF for Email: Reduce File Size Under 25MB",
-    metaTitle: "Compress PDF for Email Free - Reduce Size Under 25MB | PDF HUB 24",
-    metaDescription: "Compress PDF for email free. Step-by-step guide to reduce PDF size under 25MB, 10MB, or 1MB. Best free PDF compressor - maintain quality while shrinking files.",
+    metaTitle: "Compress PDF for Email Free - Under 25MB | PDF HUB 24",
+    metaDescription: "Compress PDF for email free. Reduce PDF size under 25MB, 10MB, or 1MB. Best free PDF compressor - maintain quality. No signup.",
     excerpt: "Email providers limit attachment sizes. Learn how to compress your PDF files to send them via email without losing quality.",
     author: "PDF HUB 24 Team",
     publishDate: "2025-12-16",
@@ -86,7 +86,7 @@ Yes! Our [Compress PDF](/compress) tool is completely free with no registration 
   {
     slug: "convert-pdf-to-word-without-losing-formatting",
     title: "How to Convert PDF to Word Without Losing Formatting",
-    metaTitle: "PDF to Word Free - Convert Without Losing Formatting | PDF HUB 24",
+    metaTitle: "PDF to Word Free - Keep Formatting | PDF HUB 24",
     metaDescription: "Convert PDF to Word free online without losing formatting. Preserve tables, images, fonts perfectly. Best free PDF to DOCX converter - step-by-step guide.",
     excerpt: "Converting PDF to Word can result in messy formatting. Learn the best practices to preserve your document's layout perfectly.",
     author: "PDF HUB 24 Team",
@@ -174,8 +174,8 @@ Absolutely! Our [PDF to Word](/pdf-to-word) converter is free with no file size 
   {
     slug: "merge-pdf-files-guide",
     title: "How to Merge PDF Files: Complete Guide to Combining Documents",
-    metaTitle: "Merge PDF Files Free - Combine Multiple PDFs Online | PDF HUB 24",
-    metaDescription: "Merge PDF files free online. Complete guide to combine multiple PDFs into one document. Best free PDF merger - reorder pages, no watermarks. Step-by-step instructions.",
+    metaTitle: "Merge PDF Files Free - Combine PDFs | PDF HUB 24",
+    metaDescription: "Merge PDF files free. Combine multiple PDFs into one document. Best free PDF merger - reorder pages, no watermarks. No signup.",
     excerpt: "Need to combine multiple PDFs into one? Learn how to merge PDF files quickly and easily with our comprehensive guide.",
     author: "PDF HUB 24 Team",
     publishDate: "2025-12-16",
@@ -268,8 +268,8 @@ You'll need to [Unlock PDF](/unlock-pdf) first, then merge the unprotected versi
   {
     slug: "protect-pdf-with-password",
     title: "How to Password Protect a PDF: Security Best Practices",
-    metaTitle: "Password Protect PDF Free - Encrypt Documents Securely | PDF HUB 24",
-    metaDescription: "Password protect PDF free online. Complete guide to encrypt PDFs and secure sensitive documents. Best free PDF encryption - AES-256 security, no signup needed.",
+    metaTitle: "Password Protect PDF Free - Encrypt PDF | PDF HUB 24",
+    metaDescription: "Password protect PDF free. Encrypt PDFs and secure sensitive documents. Best free PDF encryption - AES-256 security. No signup.",
     excerpt: "Protect your sensitive PDF documents with password encryption. Learn best practices for PDF security and access control.",
     author: "PDF HUB 24 Team",
     publishDate: "2025-12-16",
@@ -385,8 +385,8 @@ We don't store passwords. If you forget it, the document cannot be recovered. Al
   {
     slug: "pdf-tools-for-students",
     title: "Essential PDF Tools Every Student Needs: Complete Guide",
-    metaTitle: "Free PDF Tools for Students - Academic Document Guide | PDF HUB 24",
-    metaDescription: "Free PDF tools for students. Essential guide for research papers, assignments, presentations. Best free academic PDF tools - merge, compress, convert. No signup.",
+    metaTitle: "Free PDF Tools for Students - Guide | PDF HUB 24",
+    metaDescription: "Free PDF tools for students. Essential guide for research papers, assignments. Best academic PDF tools - merge, compress, convert. No signup.",
     excerpt: "From research papers to group projects, discover how PDF tools can streamline your academic workflow and boost productivity.",
     author: "PDF HUB 24 Team",
     publishDate: "2025-12-16",
@@ -587,8 +587,8 @@ Yes! Use our [Merge PDF](/merge) tool to recombine files.
   {
     slug: "add-page-numbers-to-pdf",
     title: "How to Add Page Numbers to PDF Documents",
-    metaTitle: "Add Page Numbers to PDF Free - Customize Position | PDF HUB 24",
-    metaDescription: "Add page numbers to PDF free online. Customize position, style, starting number. Best free PDF numbering tool - professional formatting for reports and ebooks.",
+    metaTitle: "Add Page Numbers to PDF Free | PDF HUB 24",
+    metaDescription: "Add page numbers to PDF free. Customize position, style, starting number. Best free PDF numbering tool for reports. No signup.",
     excerpt: "Make your PDFs more professional with page numbers. Learn how to add and customize page numbering in any PDF document.",
     author: "PDF HUB 24 Team",
     publishDate: "2025-12-17",
@@ -652,7 +652,7 @@ Use our [Edit PDF](/edit-pdf) tool to cover or remove existing numbers before ad
   {
     slug: "convert-images-to-pdf",
     title: "How to Convert Images to PDF: JPG, PNG, and More",
-    metaTitle: "Convert Images to PDF Free - JPG PNG WebP to PDF | PDF HUB 24",
+    metaTitle: "Convert Images to PDF Free - JPG PNG | PDF HUB 24",
     metaDescription: "Convert images to PDF free. JPG, PNG, WebP, TIFF, GIF to PDF instantly. Best free image to PDF converter - combine multiple images, no registration needed.",
     excerpt: "Turn your photos and images into professional PDF documents. Support for all major image formats with quality preservation.",
     author: "PDF HUB 24 Team",
