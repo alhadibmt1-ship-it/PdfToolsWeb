@@ -11,6 +11,7 @@ import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import StepIndicator from "@/components/StepIndicator";
 import SuccessCelebration from "@/components/SuccessCelebration";
+import ToolVideo from "@/components/ToolVideo";
 import { ToolBreadcrumbs } from "@/components/Breadcrumbs";
 import { ToolStructuredData } from "@/components/StructuredData";
 import { Button } from "@/components/ui/button";
@@ -180,6 +181,8 @@ export default function MergePdfPage() {
             </p>
             <TrustBadges variant="prominent" className="max-w-2xl mx-auto" />
           </div>
+
+          <ToolVideo videoId="q4WgfnaNSJQ" title="Merge PDF" />
 
           <StepIndicator currentStep={currentStep} className="mb-8" />
 
