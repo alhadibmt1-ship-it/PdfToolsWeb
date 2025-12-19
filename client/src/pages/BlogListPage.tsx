@@ -11,8 +11,8 @@ const BASE_URL = "https://pdfhub24.com";
 
 export default function BlogListPage() {
   useSEO({
-    title: "PDF Tips & Tutorials Blog | PDF HUB 24",
-    description: "Learn how to work with PDF files effectively. Tutorials, guides, and tips for compressing, converting, merging, and editing PDFs.",
+    title: "PDF Tips & Tutorials Free - Learn PDF Tricks | PDF HUB 24",
+    description: "Free PDF guides and tutorials. Learn how to compress, merge, convert, edit PDFs. Step-by-step instructions for all PDF tasks. Best free PDF tips blog.",
     canonicalPath: "/blog"
   });
 
