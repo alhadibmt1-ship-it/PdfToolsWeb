@@ -66,8 +66,10 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useSEO } from "@/hooks/useSEO";
 import { useState } from "react";
+import { useLocation } from "wouter";
 import RecentToolsSection from "@/components/RecentToolsSection";
 import SocialProofSection from "@/components/SocialProofSection";
+import { useUploadContext } from "@/contexts/UploadContext";
 
 const iconMap: Record<string, any> = {
   merge: Combine,
@@ -249,14 +251,16 @@ function FeaturedToolCard({ tool, featured }: { tool: typeof PDF_TOOLS[0]; featu
 export default function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("all");
-  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [localFile, setLocalFile] = useState<File | null>(null);
   const [showToolSelector, setShowToolSelector] = useState(false);
+  const [, navigate] = useLocation();
+  const { setUploadedFile } = useUploadContext();
 
   const handleFileDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
     if (file) {
-      setUploadedFile(file);
+      setLocalFile(file);
       setShowToolSelector(true);
     }
   };
@@ -264,19 +268,22 @@ export default function HomePage() {
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      setUploadedFile(file);
+      setLocalFile(file);
       setShowToolSelector(true);
     }
   };
 
   const handleToolSelect = (toolPath: string) => {
+    if (localFile) {
+      setUploadedFile(localFile, toolPath);
+    }
     setShowToolSelector(false);
-    window.location.href = toolPath;
+    navigate(toolPath);
   };
 
   const closeToolSelector = () => {
     setShowToolSelector(false);
-    setUploadedFile(null);
+    setLocalFile(null);
   };
   
   useSEO({
@@ -388,8 +395,8 @@ export default function HomePage() {
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                         </button>
                       </div>
-                      {uploadedFile && (
-                        <p className="text-sm text-muted-foreground">File: <span className="font-medium text-foreground">{uploadedFile.name}</span></p>
+                      {localFile && (
+                        <p className="text-sm text-muted-foreground">File: <span className="font-medium text-foreground">{localFile.name}</span></p>
                       )}
                     </div>
                     <div className="p-4 overflow-y-auto max-h-[60vh]">
