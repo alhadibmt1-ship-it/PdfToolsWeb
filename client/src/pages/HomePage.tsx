@@ -249,6 +249,35 @@ function FeaturedToolCard({ tool, featured }: { tool: typeof PDF_TOOLS[0]; featu
 export default function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("all");
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [showToolSelector, setShowToolSelector] = useState(false);
+
+  const handleFileDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    if (file) {
+      setUploadedFile(file);
+      setShowToolSelector(true);
+    }
+  };
+
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setUploadedFile(file);
+      setShowToolSelector(true);
+    }
+  };
+
+  const handleToolSelect = (toolPath: string) => {
+    setShowToolSelector(false);
+    window.location.href = toolPath;
+  };
+
+  const closeToolSelector = () => {
+    setShowToolSelector(false);
+    setUploadedFile(null);
+  };
   
   useSEO({
     title: "PDF HUB 24 - Free Online PDF Tools | Convert, Merge, Split & More",
@@ -318,22 +347,77 @@ export default function HomePage() {
                 Trusted by millions of users worldwide.
               </p>
               
-              {/* Quick Upload Zone - Like PDFfiller */}
+              {/* Quick Upload Zone - Customer Chooses Tool */}
               <div className="max-w-xl mx-auto mb-8">
-                <Link href="/merge">
-                  <div className="group border-2 border-dashed border-primary/30 hover:border-primary/60 rounded-2xl p-6 sm:p-8 bg-card/50 backdrop-blur-sm cursor-pointer transition-all hover:shadow-lg hover:shadow-primary/5" data-testid="hero-upload-zone">
-                    <div className="flex flex-col items-center gap-3">
-                      <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <Upload className="w-7 h-7 text-primary" />
+                <div 
+                  className="group border-2 border-dashed border-primary/30 hover:border-primary/60 rounded-2xl p-6 sm:p-8 bg-card/50 backdrop-blur-sm cursor-pointer transition-all hover:shadow-lg hover:shadow-primary/5 relative" 
+                  data-testid="hero-upload-zone"
+                  onDragOver={(e) => e.preventDefault()}
+                  onDrop={handleFileDrop}
+                  onClick={() => document.getElementById('hero-file-input')?.click()}
+                >
+                  <input 
+                    type="file" 
+                    id="hero-file-input" 
+                    className="hidden" 
+                    accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png,.gif,.tiff,.webp,.html"
+                    onChange={handleFileSelect}
+                    data-testid="input-hero-file"
+                  />
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Upload className="w-7 h-7 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-lg">Drop your file here or click to upload</p>
+                      <p className="text-sm text-muted-foreground mt-1">Then choose what you want to do with it</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Tool Selector Modal */}
+              {showToolSelector && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm" onClick={closeToolSelector}>
+                  <div className="bg-card border rounded-2xl shadow-2xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
+                    <div className="p-6 border-b">
+                      <div className="flex items-center justify-between mb-2">
+                        <h3 className="text-xl font-bold">What would you like to do?</h3>
+                        <button onClick={closeToolSelector} className="p-2 hover:bg-muted rounded-lg" data-testid="button-close-tool-selector">
+                          <span className="sr-only">Close</span>
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
                       </div>
-                      <div>
-                        <p className="font-semibold text-lg">Drop your PDF here or click to start</p>
-                        <p className="text-sm text-muted-foreground mt-1">Supports PDF, Word, Excel, Images up to 100MB</p>
+                      {uploadedFile && (
+                        <p className="text-sm text-muted-foreground">File: <span className="font-medium text-foreground">{uploadedFile.name}</span></p>
+                      )}
+                    </div>
+                    <div className="p-4 overflow-y-auto max-h-[60vh]">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        {PDF_TOOLS.slice(0, 18).map((tool) => (
+                          <button
+                            key={tool.id}
+                            onClick={() => handleToolSelect(tool.path)}
+                            className="flex flex-col items-center gap-2 p-4 rounded-xl border hover:border-primary/50 hover:bg-primary/5 transition-all text-center"
+                            data-testid={`button-select-tool-${tool.id}`}
+                          >
+                            <ConversionIcon iconType={tool.icon} />
+                            <span className="text-sm font-medium">{tool.title}</span>
+                          </button>
+                        ))}
+                      </div>
+                      <div className="mt-4 pt-4 border-t text-center">
+                        <Link href="/all-tools" onClick={closeToolSelector}>
+                          <Button variant="outline" className="gap-2" data-testid="button-view-all-tools">
+                            <LayoutGrid className="w-4 h-4" />
+                            View All 43+ Tools
+                          </Button>
+                        </Link>
                       </div>
                     </div>
                   </div>
-                </Link>
-              </div>
+                </div>
+              )}
               
               {/* Quick Action Buttons */}
               <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8">
