@@ -31,7 +31,7 @@ interface Annotation {
 export default function AnnotatePdfPage() {
   useSEO({
     title: "Annotate PDF Free Online - Highlight & Markup PDF | PDF HUB 24",
-    description: "Annotate PDF free online. Highlight, underline, add notes and comments to PDFs. Best free PDF annotation tool - markup documents instantly. No signup required.",
+    description: "Annotate PDF free. Highlight, underline, add notes to PDFs. Best free PDF annotation tool. No signup.",
     keywords: "annotate pdf free, highlight pdf, underline pdf free, pdf notes, pdf markup free, add comments to pdf"
   });
 

@@ -16,7 +16,7 @@ import { useSEO } from "@/hooks/useSEO";
 export default function PdfToWordPage() {
   useSEO({
     title: "PDF to Word Free Online - Convert PDF to DOCX | PDF HUB 24",
-    description: "Convert PDF to Word free online. Transform PDF to editable DOCX without losing formatting. Best free PDF to Word converter - keeps tables, images, fonts intact. No signup.",
+    description: "Convert PDF to Word free. Transform PDF to editable DOCX without losing formatting. Keeps tables and images. No signup.",
     keywords: "pdf to word free, convert pdf to word, pdf to docx, pdf to word converter free, pdf to editable word, change pdf to word"
   });
 

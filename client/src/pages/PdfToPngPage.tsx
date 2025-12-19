@@ -16,7 +16,7 @@ import { useSEO } from "@/hooks/useSEO";
 export default function PdfToPngPage() {
   useSEO({
     title: "PDF to PNG Free Online - Convert PDF to Image | PDF HUB 24",
-    description: "Convert PDF to PNG free online. Transform PDF pages to high-quality PNG images with transparency. Best free PDF to PNG converter - extract all pages as pictures. No signup.",
+    description: "Convert PDF to PNG free. Transform PDF pages to PNG images with transparency. Extract all pages. No signup.",
     keywords: "pdf to png free, convert pdf to png, pdf to image free, save pdf as png, pdf to png converter free, extract pdf pages as images"
   });
 

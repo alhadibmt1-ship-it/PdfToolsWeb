@@ -17,7 +17,7 @@ import { useSEO } from "@/hooks/useSEO";
 export default function ExtractTextPage() {
   useSEO({
     title: "Extract Text from PDF Free Online - PDF to Text | PDF HUB 24",
-    description: "Extract text from PDF free online. Copy text content from any PDF document instantly. Best free PDF text extractor - get all text, easy to copy. No signup needed.",
+    description: "Extract text from PDF free. Copy text from any PDF document instantly. Best free PDF text extractor. No signup.",
     keywords: "extract text from pdf free, pdf to text, copy text from pdf, pdf text extractor free, get text from pdf online"
   });
 

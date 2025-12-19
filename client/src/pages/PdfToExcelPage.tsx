@@ -16,7 +16,7 @@ import { useSEO } from "@/hooks/useSEO";
 export default function PdfToExcelPage() {
   useSEO({
     title: "PDF to Excel Free Online - Convert PDF to XLSX | PDF HUB 24",
-    description: "Convert PDF to Excel free online. Extract tables from PDF to editable XLSX spreadsheet. Best free PDF to Excel converter - accurate table extraction. No signup needed.",
+    description: "Convert PDF to Excel free. Extract tables from PDF to editable XLSX. Accurate table extraction. No signup.",
     keywords: "pdf to excel free, convert pdf to xlsx, extract table from pdf, pdf to spreadsheet free, pdf to excel converter free, pdf table to excel"
   });
 

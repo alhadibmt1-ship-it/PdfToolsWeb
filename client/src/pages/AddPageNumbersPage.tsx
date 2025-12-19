@@ -21,7 +21,7 @@ type Position = "top-left" | "top-center" | "top-right" | "bottom-left" | "botto
 export default function AddPageNumbersPage() {
   useSEO({
     title: "Add Page Numbers to PDF Free Online | PDF HUB 24",
-    description: "Add page numbers to PDF free online. Insert page numbers at any position - top, bottom, corners. Best free PDF page numbering tool - customize font size. No signup.",
+    description: "Add page numbers to PDF free. Insert numbers at any position - top, bottom, corners. Customize font and size. No signup.",
     keywords: "add page numbers to pdf free, pdf page numbers, number pdf pages free, insert page numbers pdf, pdf pagination free"
   });
 
