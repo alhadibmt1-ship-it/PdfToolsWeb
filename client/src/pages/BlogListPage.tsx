@@ -6,6 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const BASE_URL = "https://pdfhub24.com";
 
@@ -47,8 +49,9 @@ export default function BlogListPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-12">
+    <div className="min-h-screen flex flex-col bg-background">
+      <Header />
+      <main className="flex-1 container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
           <div className="mb-6">
             <Link href="/#tools">
@@ -130,7 +133,8 @@ export default function BlogListPage() {
             </p>
           </div>
         </div>
-      </div>
+      </main>
+      <Footer />
     </div>
   );
 }
