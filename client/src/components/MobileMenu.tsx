@@ -68,7 +68,7 @@ export default function MobileMenu() {
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 overflow-y-auto overscroll-contain bg-white dark:bg-gray-900">
+          <div className="flex-1 overflow-y-auto overscroll-contain bg-white dark:bg-gray-900">
             <div className="p-2">
               {/* Home link */}
               <Link href="/" onClick={closeMenu}>
@@ -131,7 +131,7 @@ export default function MobileMenu() {
                 );
               })}
             </div>
-          </nav>
+          </div>
 
           {/* Footer */}
           <div className="p-4 border-t bg-muted/30">
