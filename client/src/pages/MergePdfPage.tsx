@@ -39,7 +39,7 @@ const MERGE_STEPS = [
 export default function MergePdfPage() {
   useSEO({
     title: "Merge PDF Free Online - Combine PDF Files into One | PDF HUB 24",
-    description: "Merge PDF files free online. Combine multiple PDFs into one document instantly. Drag and drop to reorder pages. Best free PDF merger - no signup, no watermarks.",
+    description: "Merge PDF files free. Combine multiple PDFs into one document. Drag and drop to reorder. Best free PDF merger.",
     keywords: "merge pdf free, combine pdf files, join pdf, merge pdf online, pdf merger free, combine multiple pdfs, merge pdfs into one"
   });
 

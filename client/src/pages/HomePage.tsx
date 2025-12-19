@@ -288,7 +288,7 @@ export default function HomePage() {
   
   useSEO({
     title: "PDF HUB 24 - 43+ Free Online PDF Tools | Convert, Edit, Compress",
-    description: "100% free online PDF tools. Convert PDF to Word, JPG, Excel. Merge, split, compress, edit PDFs instantly. Best free PDF converter - no signup, no watermarks. Trusted by millions.",
+    description: "100% free PDF tools. Convert PDF to Word, JPG, Excel. Merge, split, compress PDFs instantly. Best free PDF converter - no signup, no watermarks.",
     keywords: "free pdf tools, pdf converter free, pdf to word free, merge pdf free, compress pdf free, pdf editor free, convert pdf online, pdf to jpg, split pdf",
     structuredData: {
       "@context": "https://schema.org",

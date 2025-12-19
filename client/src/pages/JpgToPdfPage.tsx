@@ -16,7 +16,7 @@ import { useSEO } from "@/hooks/useSEO";
 export default function JpgToPdfPage() {
   useSEO({
     title: "JPG to PDF Free Online - Convert Images to PDF | PDF HUB 24",
-    description: "Convert JPG to PDF free online. Combine multiple images into one PDF document. Best free image to PDF converter - photos, pictures to PDF instantly. No signup needed.",
+    description: "Convert JPG to PDF free. Combine multiple images into one PDF. Best free image to PDF converter. No signup.",
     keywords: "jpg to pdf free, convert image to pdf, photo to pdf, picture to pdf free, jpg to pdf converter free, combine images to pdf"
   });
 

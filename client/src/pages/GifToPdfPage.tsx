@@ -18,7 +18,7 @@ import SuccessCelebration from "@/components/SuccessCelebration";
 export default function GifToPdfPage() {
   useSEO({
     title: "GIF to PDF Free Online - Convert GIF to PDF | PDF HUB 24",
-    description: "Convert GIF to PDF free online. Transform GIF images to PDF documents instantly. Best free GIF to PDF converter - combines multiple GIFs into one PDF. No signup.",
+    description: "Convert GIF to PDF free. Transform GIF images to PDF documents instantly. Combine multiple GIFs. No signup.",
     keywords: "gif to pdf free, convert gif to pdf, gif to pdf converter free, image to pdf, animated gif to pdf"
   });
 

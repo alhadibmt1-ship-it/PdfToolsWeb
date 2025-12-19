@@ -18,7 +18,7 @@ import { useSEO } from "@/hooks/useSEO";
 export default function CropPdfPage() {
   useSEO({
     title: "Crop PDF Free Online - Trim PDF Margins | PDF HUB 24",
-    description: "Crop PDF free online. Remove white margins, trim PDF pages to size. Best free PDF cropper - cut unwanted borders, resize pages instantly. No signup required.",
+    description: "Crop PDF free. Remove white margins, trim PDF pages. Best free PDF cropper - cut unwanted borders. No signup.",
     keywords: "crop pdf free, trim pdf, remove pdf margins, pdf cropper free, cut pdf borders, resize pdf pages free"
   });
 

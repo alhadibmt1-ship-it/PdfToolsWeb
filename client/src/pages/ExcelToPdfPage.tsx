@@ -16,7 +16,7 @@ import { useSEO } from "@/hooks/useSEO";
 export default function ExcelToPdfPage() {
   useSEO({
     title: "Excel to PDF Free Online - Convert XLSX to PDF | PDF HUB 24",
-    description: "Convert Excel to PDF free online. Transform XLSX/XLS spreadsheets to PDF instantly. Best free Excel to PDF converter - preserves tables, formatting, formulas. No signup.",
+    description: "Convert Excel to PDF free. Transform XLSX/XLS to PDF instantly. Preserves tables and formatting. No signup needed.",
     keywords: "excel to pdf free, convert xlsx to pdf, spreadsheet to pdf free, xls to pdf, excel to pdf converter free, save excel as pdf"
   });
 

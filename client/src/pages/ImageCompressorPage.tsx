@@ -18,7 +18,7 @@ import { useSEO } from "@/hooks/useSEO";
 export default function ImageCompressorPage() {
   useSEO({
     title: "Compress Image Free Online - JPG PNG WebP Compressor | PDF HUB 24",
-    description: "Compress images free online. Reduce JPG, PNG, WebP file size up to 80% without quality loss. Best free image compressor - fast, adjustable quality. No signup.",
+    description: "Compress images free. Reduce JPG, PNG, WebP file size up to 80%. Best free image compressor. No signup.",
     keywords: "compress image free, image compressor online, reduce image size, jpg compressor free, png compressor, compress photo online"
   });
 
