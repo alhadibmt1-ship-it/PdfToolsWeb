@@ -15,9 +15,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function ExtractImagesPage() {
   useSEO({
-    title: "Extract Images from PDF - Get All Images from PDF Free | PDF HUB 24",
-    description: "Extract all images from PDF files online for free. Download embedded images from PDF documents as separate image files. Fast, secure extraction.",
-    keywords: "extract images from pdf, get images from pdf, pdf image extractor, download pdf images, pdf to images"
+    title: "Extract Images from PDF Free Online - PDF Image Extractor | PDF HUB 24",
+    description: "Extract images from PDF free online. Download all embedded pictures from PDF documents instantly. Best free PDF image extractor - save as separate files. No signup.",
+    keywords: "extract images from pdf free, get images from pdf, pdf image extractor free, download pdf images, extract pictures from pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

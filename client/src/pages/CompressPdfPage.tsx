@@ -23,9 +23,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function CompressPdfPage() {
   useSEO({
-    title: "Compress PDF Online Free - Reduce PDF File Size | PDF HUB 24",
-    description: "Compress PDF files online for free. Reduce PDF file size without losing quality. Choose compression level. Fast and secure PDF compression. No registration required.",
-    keywords: "compress pdf, reduce pdf size, compress pdf online free, pdf compressor, shrink pdf, optimize pdf"
+    title: "Compress PDF Free Online - Reduce PDF Size Up to 90% | PDF HUB 24",
+    description: "Compress PDF files free online. Reduce PDF file size by up to 90% without losing quality. Best free PDF compressor - shrink PDF for email, upload faster. No signup needed.",
+    keywords: "compress pdf free, reduce pdf size, compress pdf online, pdf compressor free, shrink pdf, make pdf smaller, compress pdf for email"
   });
 
   const { settings } = useSettings();

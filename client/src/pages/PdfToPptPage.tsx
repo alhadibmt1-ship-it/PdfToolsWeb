@@ -17,9 +17,9 @@ import SuccessCelebration from "@/components/SuccessCelebration";
 
 export default function PdfToPptPage() {
   useSEO({
-    title: "PDF to PowerPoint Converter - Free Online PDF to PPT | PDF HUB 24",
-    description: "Convert PDF to PowerPoint (PPTX) online for free. Transform PDF documents into editable presentation slides. Fast, secure PDF to PPT conversion.",
-    keywords: "pdf to powerpoint, pdf to ppt, convert pdf to pptx, pdf converter, pdf to slides, online pdf converter"
+    title: "PDF to PowerPoint Free Online - Convert PDF to PPT | PDF HUB 24",
+    description: "Convert PDF to PowerPoint free online. Transform PDF to editable PPT slides instantly. Best free PDF to PPTX converter - preserves formatting. No signup required.",
+    keywords: "pdf to powerpoint free, convert pdf to ppt, pdf to pptx free, pdf to slides, pdf to presentation free, pdf to ppt converter free"
   });
 
   const [files, setFiles] = useState<File[]>([]);

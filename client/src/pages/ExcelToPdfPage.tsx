@@ -15,9 +15,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function ExcelToPdfPage() {
   useSEO({
-    title: "Excel to PDF Converter - Convert XLSX to PDF Online Free | PDF HUB 24",
-    description: "Convert Excel spreadsheets to PDF documents online for free. Transform XLSX and XLS files into professional PDF format. Preserve formatting. No registration required.",
-    keywords: "excel to pdf, convert xlsx to pdf, spreadsheet to pdf, xls to pdf, excel converter, pdf creator"
+    title: "Excel to PDF Free Online - Convert XLSX to PDF | PDF HUB 24",
+    description: "Convert Excel to PDF free online. Transform XLSX/XLS spreadsheets to PDF instantly. Best free Excel to PDF converter - preserves tables, formatting, formulas. No signup.",
+    keywords: "excel to pdf free, convert xlsx to pdf, spreadsheet to pdf free, xls to pdf, excel to pdf converter free, save excel as pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

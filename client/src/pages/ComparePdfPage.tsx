@@ -15,9 +15,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function ComparePdfPage() {
   useSEO({
-    title: "Compare PDF Files - Find Differences Between PDFs Free | PDF HUB 24",
-    description: "Compare two PDF documents online for free. Find differences between PDF files side by side. Fast, secure PDF comparison tool.",
-    keywords: "compare pdf, pdf comparison, diff pdf, find differences pdf, compare documents, pdf diff tool"
+    title: "Compare PDF Free Online - Find Differences in PDFs | PDF HUB 24",
+    description: "Compare PDF free online. Find differences between two PDF documents instantly. Best free PDF comparison tool - side by side diff. No signup required.",
+    keywords: "compare pdf free, pdf comparison online, diff pdf, find differences between pdfs, compare two pdfs, pdf diff tool free"
   });
 
   const [files1, setFiles1] = useState<File[]>([]);

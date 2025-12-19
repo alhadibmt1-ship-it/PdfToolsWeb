@@ -15,9 +15,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function WebpToPdfPage() {
   useSEO({
-    title: "WebP to PDF Converter - Convert WebP Images to PDF Free | PDF HUB 24",
-    description: "Convert WebP images to PDF documents online for free. Transform single or multiple WebP files into a professional PDF. Fast, secure, no registration required.",
-    keywords: "webp to pdf, convert webp to pdf, webp to pdf converter, webp image to pdf"
+    title: "WebP to PDF Free Online - Convert WebP to PDF | PDF HUB 24",
+    description: "Convert WebP to PDF free online. Transform WebP images to PDF documents instantly. Best free WebP to PDF converter - combine multiple images. No signup required.",
+    keywords: "webp to pdf free, convert webp to pdf, webp to pdf converter free, webp image to pdf, webp to pdf online"
   });
 
   const [files, setFiles] = useState<File[]>([]);

@@ -18,9 +18,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function ResizeImagePage() {
   useSEO({
-    title: "Resize Image Online Free - Change Image Dimensions | PDF HUB 24",
-    description: "Resize images online for free. Change image dimensions by pixels or percentage. Supports JPG, PNG, WebP, GIF. Fast, secure image resizing with quality preservation.",
-    keywords: "resize image, image resizer, change image size, reduce image dimensions, enlarge image, scale image"
+    title: "Resize Image Free Online - Change Image Size | PDF HUB 24",
+    description: "Resize image free online. Change image dimensions by pixels or percentage. Best free image resizer - JPG, PNG, WebP supported. Preserve quality. No signup.",
+    keywords: "resize image free, image resizer online, change image size, reduce image dimensions, scale image free, enlarge photo online"
   });
 
   const [files, setFiles] = useState<File[]>([]);

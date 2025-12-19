@@ -17,9 +17,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function UnlockPdfPage() {
   useSEO({
-    title: "Unlock PDF Online Free - Remove Password from PDF | PDF HUB 24",
-    description: "Remove password protection from PDF files for free. Unlock encrypted PDF documents when you know the password. Easy and secure PDF unlocker.",
-    keywords: "unlock pdf, remove pdf password, pdf unlocker, decrypt pdf, remove pdf protection"
+    title: "Unlock PDF Free Online - Remove Password from PDF | PDF HUB 24",
+    description: "Unlock PDF free online. Remove password from PDF files instantly when you know the password. Best free PDF unlocker - decrypt protected PDFs easily. No signup.",
+    keywords: "unlock pdf free, remove pdf password, pdf unlocker free, decrypt pdf, remove password from pdf, unlock protected pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

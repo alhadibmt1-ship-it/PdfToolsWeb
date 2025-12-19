@@ -15,9 +15,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function PdfToWordPage() {
   useSEO({
-    title: "PDF to Word Converter - Free Online PDF to DOCX | PDF HUB 24",
-    description: "Convert PDF to Word (DOCX) online for free. Preserve formatting, colors, and layouts. Fast, secure PDF to Word conversion with no registration required.",
-    keywords: "pdf to word, pdf to docx, convert pdf to word, pdf converter, pdf to word free, online pdf converter"
+    title: "PDF to Word Free Online - Convert PDF to DOCX | PDF HUB 24",
+    description: "Convert PDF to Word free online. Transform PDF to editable DOCX without losing formatting. Best free PDF to Word converter - keeps tables, images, fonts intact. No signup.",
+    keywords: "pdf to word free, convert pdf to word, pdf to docx, pdf to word converter free, pdf to editable word, change pdf to word"
   });
 
   const [files, setFiles] = useState<File[]>([]);

@@ -30,9 +30,9 @@ interface Annotation {
 
 export default function AnnotatePdfPage() {
   useSEO({
-    title: "Annotate PDF Online - Free PDF Annotation Tool | PDF HUB 24",
-    description: "Annotate PDF files online for free. Highlight, underline, and add notes to your PDF documents. Professional PDF annotation without software.",
-    keywords: "annotate pdf, highlight pdf, underline pdf, pdf notes, pdf markup, pdf comments"
+    title: "Annotate PDF Free Online - Highlight & Markup PDF | PDF HUB 24",
+    description: "Annotate PDF free online. Highlight, underline, add notes and comments to PDFs. Best free PDF annotation tool - markup documents instantly. No signup required.",
+    keywords: "annotate pdf free, highlight pdf, underline pdf free, pdf notes, pdf markup free, add comments to pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

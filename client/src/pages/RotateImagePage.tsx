@@ -15,9 +15,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function RotateImagePage() {
   useSEO({
-    title: "Rotate & Flip Image Online Free | PDF HUB 24",
-    description: "Rotate and flip images online for free. Rotate 90°, 180°, 270° or flip horizontally/vertically. Supports JPG, PNG, WebP, GIF. Fast, secure image rotation.",
-    keywords: "rotate image, flip image, image rotator, rotate photo, flip photo horizontally, flip photo vertically"
+    title: "Rotate Image Free Online - Flip Photo | PDF HUB 24",
+    description: "Rotate image free online. Flip photos horizontally or vertically, rotate 90, 180, 270 degrees. Best free image rotator - JPG, PNG, WebP supported. No signup.",
+    keywords: "rotate image free, flip image online, image rotator free, rotate photo, flip photo horizontally, turn image 90 degrees"
   });
 
   const [files, setFiles] = useState<File[]>([]);

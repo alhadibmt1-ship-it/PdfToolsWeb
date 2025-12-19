@@ -20,9 +20,9 @@ type Position = "top-left" | "top-center" | "top-right" | "bottom-left" | "botto
 
 export default function AddPageNumbersPage() {
   useSEO({
-    title: "Add Page Numbers to PDF Online Free | PDF HUB 24",
-    description: "Add page numbers to your PDF documents for free. Choose position, starting number, and font size. Easy online PDF page numbering tool.",
-    keywords: "add page numbers pdf, pdf page numbers, number pdf pages, page numbering pdf"
+    title: "Add Page Numbers to PDF Free Online | PDF HUB 24",
+    description: "Add page numbers to PDF free online. Insert page numbers at any position - top, bottom, corners. Best free PDF page numbering tool - customize font size. No signup.",
+    keywords: "add page numbers to pdf free, pdf page numbers, number pdf pages free, insert page numbers pdf, pdf pagination free"
   });
 
   const [files, setFiles] = useState<File[]>([]);

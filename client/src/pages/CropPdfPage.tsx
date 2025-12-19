@@ -17,9 +17,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function CropPdfPage() {
   useSEO({
-    title: "Crop PDF Online Free - Trim PDF Page Margins | PDF HUB 24",
-    description: "Crop PDF pages online for free. Remove unwanted margins, white space, or trim PDF to specific dimensions. Fast, secure PDF cropping tool.",
-    keywords: "crop pdf, trim pdf, remove pdf margins, pdf cropper, resize pdf pages, cut pdf"
+    title: "Crop PDF Free Online - Trim PDF Margins | PDF HUB 24",
+    description: "Crop PDF free online. Remove white margins, trim PDF pages to size. Best free PDF cropper - cut unwanted borders, resize pages instantly. No signup required.",
+    keywords: "crop pdf free, trim pdf, remove pdf margins, pdf cropper free, cut pdf borders, resize pdf pages free"
   });
 
   const [files, setFiles] = useState<File[]>([]);

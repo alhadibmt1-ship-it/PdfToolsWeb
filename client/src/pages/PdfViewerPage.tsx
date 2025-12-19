@@ -12,9 +12,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function PdfViewerPage() {
   useSEO({
-    title: "PDF Viewer Online Free - View PDF Files in Browser | PDF HUB 24",
-    description: "View PDF files online for free. Open and read PDF documents directly in your browser. No download or software installation required. Fast and secure.",
-    keywords: "pdf viewer, view pdf online, open pdf, read pdf, pdf reader online, free pdf viewer"
+    title: "PDF Viewer Free Online - View PDF in Browser | PDF HUB 24",
+    description: "View PDF free online. Open and read PDF documents directly in your browser. Best free PDF viewer - no download needed, zoom, navigate pages. No signup required.",
+    keywords: "pdf viewer free, view pdf online, open pdf free, read pdf online, pdf reader free, view pdf in browser"
   });
 
   const [files, setFiles] = useState<File[]>([]);
