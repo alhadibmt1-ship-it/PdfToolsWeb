@@ -282,6 +282,38 @@ export default function Footer() {
           </div>
         </div>
         
+        <div className="mb-6 text-center">
+          <p className="text-xs text-muted-foreground mb-2">PDF Resources</p>
+          <div className="flex flex-wrap justify-center gap-4 text-xs text-muted-foreground">
+            <a 
+              href="https://en.wikipedia.org/wiki/PDF" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors"
+              data-testid="link-resource-wikipedia"
+            >
+              PDF on Wikipedia
+            </a>
+            <a 
+              href="https://www.iso.org/standard/75839.html" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors"
+              data-testid="link-resource-iso"
+            >
+              ISO PDF Standard
+            </a>
+            <a 
+              href="https://www.adobe.com/acrobat/about-adobe-pdf.html" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors"
+              data-testid="link-resource-adobe"
+            >
+              Adobe PDF Guide
+            </a>
+          </div>
+        </div>
         <div className="premium-divider mb-6" />
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4">
