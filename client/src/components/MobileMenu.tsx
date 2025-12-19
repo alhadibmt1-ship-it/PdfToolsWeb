@@ -68,19 +68,19 @@ export default function MobileMenu() {
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 overflow-y-auto overscroll-contain">
+          <nav className="flex-1 overflow-y-auto overscroll-contain bg-white dark:bg-gray-900">
             <div className="p-2">
               {/* Home link */}
               <Link href="/" onClick={closeMenu}>
                 <div className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer" data-testid="mobile-link-home">
-                  <span className="font-medium text-gray-900 dark:text-gray-100">Home</span>
+                  <span className="font-medium text-black dark:text-white">Home</span>
                 </div>
               </Link>
 
               {/* Blog link */}
               <Link href="/blog" onClick={closeMenu}>
                 <div className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer" data-testid="mobile-link-blog">
-                  <span className="font-medium text-gray-900 dark:text-gray-100">Blog</span>
+                  <span className="font-medium text-black dark:text-white">Blog</span>
                 </div>
               </Link>
 
@@ -99,7 +99,7 @@ export default function MobileMenu() {
                     >
                       <div className="flex items-center gap-3">
                         <CategoryIcon className={`w-5 h-5 ${category.color}`} />
-                        <span className="font-medium text-gray-900 dark:text-gray-100">{category.label}</span>
+                        <span className="font-medium text-black dark:text-white">{category.label}</span>
                       </div>
                       <ChevronRight
                         className={`w-4 h-4 text-muted-foreground transition-transform duration-200 ${
@@ -118,7 +118,7 @@ export default function MobileMenu() {
                         {tools.map((tool) => (
                           <Link key={tool.id} href={tool.path} onClick={closeMenu}>
                             <div
-                              className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer transition-colors"
+                              className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer transition-colors"
                               data-testid={`mobile-link-${tool.id}`}
                             >
                               {tool.title}
