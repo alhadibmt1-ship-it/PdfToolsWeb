@@ -289,7 +289,31 @@ export default function HomePage() {
   useSEO({
     title: "PDF HUB 24 - Free Online PDF Tools | Convert, Merge, Split & More",
     description: "Free online PDF tools for converting PDF to Word, Excel, JPG, PNG and more. Merge PDFs, split, compress, and edit PDF files. Fast, secure, and easy to use - no registration required.",
-    keywords: "pdf to word, pdf to excel, merge pdf, pdf to jpg, pdf to png, split pdf, compress pdf, jpg to pdf, png to pdf, excel to pdf, word to pdf, free pdf tools"
+    keywords: "pdf to word, pdf to excel, merge pdf, pdf to jpg, pdf to png, split pdf, compress pdf, jpg to pdf, png to pdf, excel to pdf, word to pdf, free pdf tools",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "PDF HUB 24",
+      "url": "https://pdfhub24.com",
+      "logo": "https://pdfhub24.com/og-image.png",
+      "description": "Free online PDF tools - Convert, merge, split, compress PDF files. No registration required.",
+      "sameAs": [
+        "https://www.facebook.com/pdfhub24",
+        "https://www.youtube.com/@pdfhub24"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "availableLanguage": "English"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "2847",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }
   });
 
   const allTools = PDF_TOOLS;

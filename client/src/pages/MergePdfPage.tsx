@@ -11,6 +11,8 @@ import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import StepIndicator from "@/components/StepIndicator";
 import SuccessCelebration from "@/components/SuccessCelebration";
+import { ToolBreadcrumbs } from "@/components/Breadcrumbs";
+import { ToolStructuredData } from "@/components/StructuredData";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
@@ -19,6 +21,20 @@ import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { usePdfThumbnails, type PdfPage } from "@/hooks/usePdfThumbnails";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useSEO } from "@/hooks/useSEO";
+
+const MERGE_FAQS = [
+  { question: "How do I merge multiple PDF files into one?", answer: "Upload your PDF files, arrange them in your preferred order using drag-and-drop, then click Merge. Your combined PDF will be ready to download instantly." },
+  { question: "Is it free to merge PDFs?", answer: "Yes, our PDF merger is completely free with no registration required. There are no file limits or watermarks." },
+  { question: "Can I reorder pages before merging?", answer: "Absolutely! Our visual page preview lets you drag and drop pages to arrange them exactly how you want before merging." },
+  { question: "What file formats can I merge?", answer: "Our merge tool works with PDF files. If you have other formats, first convert them to PDF using our conversion tools." }
+];
+
+const MERGE_STEPS = [
+  "Upload two or more PDF files you want to combine",
+  "Drag and drop to reorder pages as needed",
+  "Click the Merge button to combine your PDFs",
+  "Download your merged PDF document"
+];
 
 export default function MergePdfPage() {
   useSEO({
@@ -137,9 +153,19 @@ export default function MergePdfPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
+      <ToolStructuredData
+        toolName="Merge PDF"
+        toolPath="/merge"
+        description="Combine multiple PDF files into one document online for free. Drag and drop to reorder pages before merging."
+        howToSteps={MERGE_STEPS}
+        faqs={MERGE_FAQS}
+        category="edit-pdf"
+      />
       
       <main className="flex-1 py-6 sm:py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <ToolBreadcrumbs toolName="Merge PDF" category="edit-pdf" />
+          
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-4 sm:mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" aria-hidden="true" />

@@ -521,6 +521,359 @@ Use our [OCR PDF](/ocr-pdf) tool to convert scanned pages into searchable, edita
       { name: "Compress PDF", path: "/compress", description: "Reduce size for upload limits" },
       { name: "PDF to Word", path: "/pdf-to-word", description: "Edit PDF content in Word" }
     ]
+  },
+  {
+    slug: "how-to-split-pdf-pages",
+    title: "How to Split PDF Pages: Extract and Separate PDF Documents",
+    metaTitle: "How to Split PDF Pages - Extract PDF Sections Free | PDF HUB 24",
+    metaDescription: "Learn how to split PDF files into separate pages or sections. Free online tool to extract specific pages from large PDFs without installing software.",
+    excerpt: "Need to extract specific pages from a PDF? Learn how to split large documents into smaller, manageable files instantly.",
+    author: "PDF HUB 24 Team",
+    publishDate: "2025-12-17",
+    readTime: "4 min read",
+    category: "Tutorials",
+    tags: ["split pdf", "extract pages", "separate pdf"],
+    content: `
+## Why Split PDF Files?
+
+Large PDF documents can be cumbersome to work with. Splitting them helps you:
+- Share only relevant sections with colleagues
+- Reduce file sizes for email attachments
+- Organize chapters or sections separately
+- Remove unnecessary pages from documents
+
+## Step-by-Step Guide to Split PDFs
+
+### Step 1: Upload Your PDF
+
+Visit our [Split PDF](/split) tool and upload your document. You can drag and drop or click to browse.
+
+### Step 2: Select Pages to Extract
+
+Choose which pages you want to keep:
+- Enter specific page numbers (e.g., 1, 3, 5-10)
+- Select all odd or even pages
+- Choose a range (e.g., pages 5-15)
+
+### Step 3: Download Split Files
+
+Click Split and download your extracted pages. It's that simple!
+
+## Common Use Cases
+
+1. **Extract a chapter** from a textbook or manual
+2. **Remove cover pages** from scanned documents
+3. **Separate signed pages** from contracts
+4. **Create handouts** from presentation slides
+5. **Archive specific sections** for reference
+
+## Frequently Asked Questions
+
+### Can I split a password-protected PDF?
+You'll need to unlock it first using our [Unlock PDF](/unlock-pdf) tool.
+
+### Will splitting affect document quality?
+No, splitting preserves the original quality of your pages.
+
+### Can I merge split files back together?
+Yes! Use our [Merge PDF](/merge) tool to recombine files.
+`,
+    relatedTools: [
+      { name: "Split PDF", path: "/split", description: "Extract specific pages" },
+      { name: "Delete Pages", path: "/delete-pages", description: "Remove unwanted pages" },
+      { name: "Merge PDF", path: "/merge", description: "Combine PDFs back together" }
+    ]
+  },
+  {
+    slug: "add-page-numbers-to-pdf",
+    title: "How to Add Page Numbers to PDF Documents",
+    metaTitle: "Add Page Numbers to PDF Free - Customize Position & Style | PDF HUB 24",
+    metaDescription: "Add page numbers to your PDF documents for free. Choose position, style, and starting number. Professional formatting for reports, manuals, and ebooks.",
+    excerpt: "Make your PDFs more professional with page numbers. Learn how to add and customize page numbering in any PDF document.",
+    author: "PDF HUB 24 Team",
+    publishDate: "2025-12-17",
+    readTime: "3 min read",
+    category: "Tutorials",
+    tags: ["page numbers", "formatting", "professional pdf"],
+    content: `
+## Why Add Page Numbers to PDFs?
+
+Page numbers are essential for:
+- **Professional appearance** - Makes documents look polished
+- **Easy navigation** - Readers can reference specific pages
+- **Table of contents** - Page numbers match your TOC
+- **Printing** - Keep pages organized after printing
+
+## How to Add Page Numbers
+
+### Step 1: Upload Your PDF
+
+Go to our [Add Page Numbers](/add-page-numbers) tool and upload your document.
+
+### Step 2: Customize Settings
+
+Choose your preferences:
+- **Position**: Top or bottom, left, center, or right
+- **Starting number**: Begin from any number
+- **Format**: Arabic (1, 2, 3) or Roman (i, ii, iii)
+- **Font size**: Adjust for readability
+
+### Step 3: Apply and Download
+
+Click Add Numbers and download your paginated PDF.
+
+## Best Practices
+
+1. **Match existing formatting** - Use fonts that complement your document
+2. **Consider margins** - Ensure numbers don't overlap content
+3. **Skip cover pages** - Start numbering from page 2 if needed
+4. **Use roman numerals** for introductions, Arabic for main content
+
+## Professional Tips
+
+- For reports: Center numbers at the bottom
+- For books: Alternate left/right positioning
+- For manuals: Include section numbers (e.g., 3-1, 3-2)
+
+## Frequently Asked Questions
+
+### Can I add numbers to specific pages only?
+Currently, page numbers are added to all pages. Use [Split PDF](/split) to separate sections, then add numbers to specific parts.
+
+### Can I remove existing page numbers first?
+Use our [Edit PDF](/edit-pdf) tool to cover or remove existing numbers before adding new ones.
+`,
+    relatedTools: [
+      { name: "Add Page Numbers", path: "/add-page-numbers", description: "Number your PDF pages" },
+      { name: "Add Watermark", path: "/add-watermark", description: "Brand your documents" },
+      { name: "Edit PDF", path: "/edit-pdf", description: "Modify PDF content" }
+    ]
+  },
+  {
+    slug: "convert-images-to-pdf",
+    title: "How to Convert Images to PDF: JPG, PNG, and More",
+    metaTitle: "Convert Images to PDF Free - JPG, PNG, WebP to PDF | PDF HUB 24",
+    metaDescription: "Convert JPG, PNG, WebP, TIFF, and GIF images to PDF format. Combine multiple images into one PDF document. Free online converter, no registration.",
+    excerpt: "Turn your photos and images into professional PDF documents. Support for all major image formats with quality preservation.",
+    author: "PDF HUB 24 Team",
+    publishDate: "2025-12-17",
+    readTime: "4 min read",
+    category: "Tutorials",
+    tags: ["jpg to pdf", "png to pdf", "image conversion"],
+    content: `
+## Convert Any Image to PDF
+
+PDF is the universal format for sharing documents. Converting images to PDF ensures:
+- Consistent viewing across devices
+- Professional presentation
+- Easy printing and archiving
+- Multiple images in one file
+
+## Supported Image Formats
+
+Our conversion tools support:
+- **JPG/JPEG** - Most common photo format
+- **PNG** - Images with transparency
+- **WebP** - Modern web format
+- **TIFF** - High-quality professional images
+- **GIF** - Including animated GIFs
+
+## How to Convert Images
+
+### Single Image Conversion
+
+1. Go to the appropriate tool ([JPG to PDF](/jpg-to-pdf), [PNG to PDF](/png-to-pdf), etc.)
+2. Upload your image
+3. Adjust settings if needed (page size, orientation)
+4. Download your PDF
+
+### Multiple Images to One PDF
+
+1. Upload all images at once
+2. Arrange order by dragging
+3. Convert to create a multi-page PDF
+4. Each image becomes one PDF page
+
+## Quality Settings
+
+- **High quality**: Best for printing and archiving
+- **Medium quality**: Balanced file size and clarity
+- **Web optimized**: Smaller files for online sharing
+
+## Common Use Cases
+
+1. **Photo albums** - Combine vacation photos into one PDF
+2. **Scan collections** - Unite scanned documents
+3. **Presentations** - Convert design mockups
+4. **Portfolios** - Showcase creative work
+5. **Receipts** - Archive expense documentation
+
+## Frequently Asked Questions
+
+### Will my images lose quality?
+Our converters preserve image quality. Choose high quality settings for best results.
+
+### Can I convert multiple images at once?
+Yes! Upload multiple files and they'll be combined into a single PDF.
+
+### What page size should I use?
+A4 or Letter are standard. Use "Fit to image" to match your image dimensions.
+`,
+    relatedTools: [
+      { name: "JPG to PDF", path: "/jpg-to-pdf", description: "Convert JPG images" },
+      { name: "PNG to PDF", path: "/png-to-pdf", description: "Convert PNG images" },
+      { name: "Merge PDF", path: "/merge", description: "Combine PDF pages" }
+    ]
+  },
+  {
+    slug: "ocr-scanned-pdf-to-text",
+    title: "OCR PDF: Convert Scanned Documents to Searchable Text",
+    metaTitle: "OCR PDF Free - Convert Scanned PDFs to Searchable Text | PDF HUB 24",
+    metaDescription: "Use OCR to convert scanned PDF documents into searchable, editable text. Extract text from images and scanned pages with our free online tool.",
+    excerpt: "Transform scanned documents and image PDFs into searchable, editable text using optical character recognition (OCR).",
+    author: "PDF HUB 24 Team",
+    publishDate: "2025-12-18",
+    readTime: "5 min read",
+    category: "Guides",
+    tags: ["ocr", "scanned pdf", "text extraction"],
+    content: `
+## What Is OCR?
+
+Optical Character Recognition (OCR) is technology that:
+- Recognizes text within images
+- Converts scanned documents to editable text
+- Makes PDFs searchable
+- Enables copy/paste from image-based documents
+
+## When Do You Need OCR?
+
+Use OCR when your PDF:
+- Was created from a scanner
+- Contains photos of text
+- Shows text but you can't select it
+- Was exported as an image
+
+## How to OCR a PDF
+
+### Step 1: Upload Your Scanned PDF
+
+Go to our [OCR PDF](/ocr-pdf) tool and upload your document.
+
+### Step 2: Process with OCR
+
+The tool analyzes each page and recognizes text characters.
+
+### Step 3: Download Searchable PDF
+
+Your PDF now has a text layer, making it searchable and selectable.
+
+## Tips for Better OCR Results
+
+1. **High resolution scans** - 300 DPI or higher works best
+2. **Clear text** - Avoid blurry or low-contrast documents
+3. **Straight alignment** - Rotate crooked scans first
+4. **Clean backgrounds** - Reduce visual noise if possible
+
+## What OCR Enables
+
+After OCR processing, you can:
+- **Search** for words within the document
+- **Select and copy** text passages
+- **Convert to Word** for editing
+- **Extract text** as plain text file
+
+## Limitations
+
+OCR works best with:
+- Printed text (not handwritten)
+- Standard fonts
+- Clear, high-quality images
+- Languages using Latin alphabets
+
+## Frequently Asked Questions
+
+### Can OCR read handwritten text?
+OCR works best with printed text. Handwriting recognition is limited and less accurate.
+
+### What languages are supported?
+Our OCR supports English and other major languages using Latin characters.
+
+### Will OCR preserve my document layout?
+OCR adds a text layer while preserving the original appearance. Use [PDF to Word](/pdf-to-word) after OCR to edit with formatting.
+`,
+    relatedTools: [
+      { name: "OCR PDF", path: "/ocr-pdf", description: "Convert scanned PDFs" },
+      { name: "Extract Text", path: "/extract-text", description: "Get text from PDFs" },
+      { name: "PDF to Word", path: "/pdf-to-word", description: "Edit extracted text" }
+    ]
+  },
+  {
+    slug: "rotate-pdf-pages",
+    title: "How to Rotate PDF Pages: Fix Orientation Issues",
+    metaTitle: "Rotate PDF Pages Free - Fix Upside Down PDFs | PDF HUB 24",
+    metaDescription: "Rotate PDF pages 90, 180, or 270 degrees to fix orientation. Rotate all pages or specific pages in your PDF document. Free online tool.",
+    excerpt: "Fix sideways or upside-down PDFs in seconds. Rotate individual pages or the entire document to the correct orientation.",
+    author: "PDF HUB 24 Team",
+    publishDate: "2025-12-18",
+    readTime: "3 min read",
+    category: "Tutorials",
+    tags: ["rotate pdf", "fix orientation", "page rotation"],
+    content: `
+## Why Rotate PDFs?
+
+PDF pages sometimes end up in the wrong orientation:
+- Scanned documents rotated incorrectly
+- Landscape pages in portrait documents
+- Mixed orientations from different sources
+- Mobile uploads with wrong rotation
+
+## How to Rotate PDF Pages
+
+### Step 1: Upload Your PDF
+
+Visit our [Rotate PDF](/rotate) tool and upload your document.
+
+### Step 2: Select Rotation
+
+Choose your rotation angle:
+- **90° clockwise** - Rotate right
+- **90° counter-clockwise** - Rotate left
+- **180°** - Flip upside down
+
+### Step 3: Apply to Pages
+
+Decide which pages to rotate:
+- All pages at once
+- Specific page numbers
+- Odd or even pages only
+
+### Step 4: Download
+
+Click Rotate and download your corrected PDF.
+
+## Common Scenarios
+
+1. **Scanned documents** - Fix scanner orientation mistakes
+2. **Mixed orientations** - Standardize all pages
+3. **Landscape charts** - Rotate tables and graphs
+4. **Phone scans** - Correct mobile camera orientation
+
+## Frequently Asked Questions
+
+### Can I rotate just one page?
+Yes! Select specific page numbers to rotate only those pages.
+
+### Will rotation affect quality?
+No, rotation preserves original quality. It only changes page orientation metadata.
+
+### Can I undo a rotation?
+Simply rotate again in the opposite direction (e.g., rotate 90° right, then 90° left).
+`,
+    relatedTools: [
+      { name: "Rotate PDF", path: "/rotate", description: "Fix page orientation" },
+      { name: "Crop PDF", path: "/crop-pdf", description: "Remove unwanted margins" },
+      { name: "Resize PDF", path: "/resize-pdf", description: "Change page dimensions" }
+    ]
   }
 ];
 

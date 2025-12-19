@@ -114,21 +114,22 @@ export function ToolStructuredData({
       }
     };
 
-    const existingScripts = document.querySelectorAll('script[data-structured-data="true"]');
+    const toolId = toolPath.replace(/\//g, '-');
+    const existingScripts = document.querySelectorAll(`script[data-tool-schema="${toolId}"]`);
     existingScripts.forEach(script => script.remove());
 
     const schemas = [breadcrumbList, softwareSchema, faqSchema, howToSchema].filter(Boolean);
     
-    schemas.forEach((schema, index) => {
+    schemas.forEach((schema) => {
       const script = document.createElement("script");
       script.setAttribute("type", "application/ld+json");
-      script.setAttribute("data-structured-data", "true");
+      script.setAttribute("data-tool-schema", toolId);
       script.textContent = JSON.stringify(schema);
       document.head.appendChild(script);
     });
 
     return () => {
-      const scripts = document.querySelectorAll('script[data-structured-data="true"]');
+      const scripts = document.querySelectorAll(`script[data-tool-schema="${toolId}"]`);
       scripts.forEach(script => script.remove());
     };
   }, [toolName, toolPath, description, howToSteps, faqs, category]);
@@ -207,19 +208,20 @@ export function ArticleStructuredData({
       ]
     };
 
-    const existingScripts = document.querySelectorAll('script[data-article-structured-data="true"]');
+    const articleId = slug;
+    const existingScripts = document.querySelectorAll(`script[data-article-schema="${articleId}"]`);
     existingScripts.forEach(script => script.remove());
 
     [articleSchema, breadcrumbList].forEach(schema => {
       const script = document.createElement("script");
       script.setAttribute("type", "application/ld+json");
-      script.setAttribute("data-article-structured-data", "true");
+      script.setAttribute("data-article-schema", articleId);
       script.textContent = JSON.stringify(schema);
       document.head.appendChild(script);
     });
 
     return () => {
-      const scripts = document.querySelectorAll('script[data-article-structured-data="true"]');
+      const scripts = document.querySelectorAll(`script[data-article-schema="${articleId}"]`);
       scripts.forEach(script => script.remove());
     };
   }, [title, description, slug, datePublished, dateModified, category]);

@@ -5,6 +5,9 @@ import { useSEO } from "@/hooks/useSEO";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
+
+const BASE_URL = "https://pdfhub24.com";
 
 export default function BlogListPage() {
   useSEO({
@@ -12,6 +15,36 @@ export default function BlogListPage() {
     description: "Learn how to work with PDF files effectively. Tutorials, guides, and tips for compressing, converting, merging, and editing PDFs.",
     canonicalPath: "/blog"
   });
+
+  useEffect(() => {
+    const itemListSchema = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "PDF Tips & Tutorials",
+      "description": "Learn how to work with PDF files effectively",
+      "numberOfItems": blogPosts.length,
+      "itemListElement": blogPosts.map((post, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "url": `${BASE_URL}/blog/${post.slug}`,
+        "name": post.title
+      }))
+    };
+
+    const existingScript = document.querySelector('script[data-blog-list-schema="true"]');
+    if (existingScript) existingScript.remove();
+
+    const script = document.createElement("script");
+    script.setAttribute("type", "application/ld+json");
+    script.setAttribute("data-blog-list-schema", "true");
+    script.textContent = JSON.stringify(itemListSchema);
+    document.head.appendChild(script);
+
+    return () => {
+      const s = document.querySelector('script[data-blog-list-schema="true"]');
+      if (s) s.remove();
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
