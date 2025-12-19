@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { PDF_TOOLS } from "@shared/schema";
+import { blogPosts } from "@/data/blogData";
 import { ChevronDown, Shield, Lock, Zap, Globe } from "lucide-react";
 import { SiFacebook, SiYoutube } from "react-icons/si";
 import siteLogo from "@assets/generated_images/logo-64.webp";
@@ -44,7 +45,8 @@ export default function Footer() {
 
   const fromPdfTools = PDF_TOOLS.filter(tool => tool.category === "from-pdf");
   const toPdfTools = PDF_TOOLS.filter(tool => tool.category === "to-pdf");
-  const editPdfTools = PDF_TOOLS.filter(tool => tool.category === "edit-pdf").slice(0, 8);
+  const editPdfTools = PDF_TOOLS.filter(tool => tool.category === "edit-pdf");
+  const utilityTools = PDF_TOOLS.filter(tool => tool.category === "utility");
 
   const isFromPdfVisible = isDesktop || isFromPdfOpen;
   const isToPdfVisible = isDesktop || isToPdfOpen;
@@ -223,7 +225,7 @@ export default function Footer() {
                 role="region"
                 aria-labelledby="footer-edit-pdf-button"
                 hidden={!isEditPdfVisible}
-                className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isEditPdfVisible ? 'max-h-[300px] mt-3 md:mt-4' : 'max-h-0'}`}
+                className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isEditPdfVisible ? 'max-h-[600px] mt-3 md:mt-4' : 'max-h-0'}`}
               >
                 <div className="flex flex-col gap-2">
                   {editPdfTools.map((tool) => (
@@ -279,6 +281,40 @@ export default function Footer() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Utility & Image Tools - Horizontal row */}
+        <div className="mb-8 pt-6 border-t border-border/50">
+          <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground mb-4">Utility & Image Tools</h3>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            {utilityTools.map((tool) => (
+              <FooterLink 
+                key={tool.id} 
+                href={tool.path} 
+                testId={`link-footer-${tool.id}`}
+                isVisible={true}
+              >
+                {tool.title}
+              </FooterLink>
+            ))}
+          </div>
+        </div>
+
+        {/* Blog Articles - Horizontal row */}
+        <div className="mb-8 pt-6 border-t border-border/50">
+          <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground mb-4">Popular Articles</h3>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            {blogPosts.map((post) => (
+              <FooterLink 
+                key={post.slug} 
+                href={`/blog/${post.slug}`} 
+                testId={`link-footer-blog-${post.slug}`}
+                isVisible={true}
+              >
+                {post.title}
+              </FooterLink>
+            ))}
           </div>
         </div>
         
