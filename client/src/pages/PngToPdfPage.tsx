@@ -16,7 +16,7 @@ import { useSEO } from "@/hooks/useSEO";
 export default function PngToPdfPage() {
   useSEO({
     title: "PNG to PDF Free Online - Convert PNG to PDF | PDF HUB 24",
-    description: "Convert PNG to PDF free online. Transform PNG images to PDF with transparency preserved. Best free PNG to PDF converter - combine multiple files instantly. No signup.",
+    description: "Convert PNG to PDF free. Transform PNG images with transparency to PDF. Combine multiple files. No signup.",
     keywords: "png to pdf free, convert png to pdf, image to pdf free, png to pdf converter free, combine png files, transparent image to pdf"
   });
 

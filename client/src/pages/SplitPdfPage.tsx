@@ -18,7 +18,7 @@ import { useSEO } from "@/hooks/useSEO";
 export default function SplitPdfPage() {
   useSEO({
     title: "Split PDF Free Online - Extract Pages from PDF | PDF HUB 24",
-    description: "Split PDF files free online. Extract specific pages or separate PDF into multiple files. Best free PDF splitter - remove pages, divide PDF instantly. No signup required.",
+    description: "Split PDF free. Extract specific pages or separate PDF into multiple files. Best free PDF splitter. No signup.",
     keywords: "split pdf free, extract pages from pdf, divide pdf, pdf splitter free, separate pdf pages, split pdf online, extract pdf pages"
   });
 

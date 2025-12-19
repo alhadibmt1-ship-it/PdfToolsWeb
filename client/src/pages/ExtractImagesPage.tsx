@@ -15,7 +15,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function ExtractImagesPage() {
   useSEO({
-    title: "Extract Images from PDF Free Online - PDF Image Extractor | PDF HUB 24",
+    title: "Extract Images from PDF Free | PDF HUB 24",
     description: "Extract images from PDF free. Download all pictures from PDF documents. Best free PDF image extractor. No signup.",
     keywords: "extract images from pdf free, get images from pdf, pdf image extractor free, download pdf images, extract pictures from pdf"
   });

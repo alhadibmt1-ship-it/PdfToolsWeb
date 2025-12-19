@@ -17,7 +17,7 @@ import SuccessCelebration from "@/components/SuccessCelebration";
 
 export default function PdfToPptPage() {
   useSEO({
-    title: "PDF to PowerPoint Free Online - Convert PDF to PPT | PDF HUB 24",
+    title: "PDF to PowerPoint Free - Convert to PPT | PDF HUB 24",
     description: "Convert PDF to PowerPoint free. Transform PDF to editable PPT slides. Preserves formatting. No signup.",
     keywords: "pdf to powerpoint free, convert pdf to ppt, pdf to pptx free, pdf to slides, pdf to presentation free, pdf to ppt converter free"
   });

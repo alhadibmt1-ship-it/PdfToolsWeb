@@ -17,8 +17,8 @@ import SuccessCelebration from "@/components/SuccessCelebration";
 
 export default function PptToPdfPage() {
   useSEO({
-    title: "PowerPoint to PDF Free Online - Convert PPT to PDF | PDF HUB 24",
-    description: "Convert PowerPoint to PDF free online. Transform PPT/PPTX presentations to PDF instantly. Best free PPT to PDF converter - preserves slides perfectly. No signup.",
+    title: "PowerPoint to PDF Free - PPT to PDF | PDF HUB 24",
+    description: "Convert PowerPoint to PDF free. Transform PPT/PPTX presentations to PDF instantly. Preserves slides. No signup.",
     keywords: "powerpoint to pdf free, ppt to pdf, pptx to pdf free, convert slides to pdf, presentation to pdf free"
   });
 

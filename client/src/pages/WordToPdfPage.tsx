@@ -16,7 +16,7 @@ import { useSEO } from "@/hooks/useSEO";
 export default function WordToPdfPage() {
   useSEO({
     title: "Word to PDF Free Online - Convert DOCX to PDF | PDF HUB 24",
-    description: "Convert Word to PDF free online. Transform DOC/DOCX to PDF instantly with perfect formatting. Best free Word to PDF converter - preserves fonts, images, tables. No signup.",
+    description: "Convert Word to PDF free. Transform DOC/DOCX to PDF with perfect formatting. Preserves fonts and images. No signup.",
     keywords: "word to pdf free, convert word to pdf, docx to pdf, doc to pdf free, word to pdf converter free, change word to pdf"
   });
 

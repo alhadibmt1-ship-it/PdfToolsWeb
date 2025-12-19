@@ -16,7 +16,7 @@ import { useSEO } from "@/hooks/useSEO";
 export default function RotateImagePage() {
   useSEO({
     title: "Rotate Image Free Online - Flip Photo | PDF HUB 24",
-    description: "Rotate image free online. Flip photos horizontally or vertically, rotate 90, 180, 270 degrees. Best free image rotator - JPG, PNG, WebP supported. No signup.",
+    description: "Rotate image free. Flip photos, rotate 90, 180, 270 degrees. Best free image rotator for JPG, PNG, WebP. No signup.",
     keywords: "rotate image free, flip image online, image rotator free, rotate photo, flip photo horizontally, turn image 90 degrees"
   });
 

@@ -15,7 +15,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function FlattenPdfPage() {
   useSEO({
-    title: "Flatten PDF Free Online - Remove PDF Form Fields | PDF HUB 24",
+    title: "Flatten PDF Free - Remove Form Fields | PDF HUB 24",
     description: "Flatten PDF free. Remove form fields, flatten layers into static PDF. Secure documents for sharing. No signup.",
     keywords: "flatten pdf free, flatten pdf form, remove pdf form fields free, pdf flatten online, lock pdf form fields"
   });
