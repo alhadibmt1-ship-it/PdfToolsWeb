@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { SettingsProvider } from "@/contexts/SettingsContext";
 import { RecentToolsProvider } from "@/contexts/RecentToolsContext";
+import { UploadProvider } from "@/contexts/UploadContext";
 import ScrollToTop from "@/components/ScrollToTop";
 import MobileQuickActions from "@/components/MobileQuickActions";
 import HomePage from "@/pages/HomePage";
@@ -145,13 +146,15 @@ function App() {
       <ThemeProvider>
         <SettingsProvider>
           <RecentToolsProvider>
-            <TooltipProvider>
-              <div className="pb-16 md:pb-0">
-                <Toaster />
-                <Router />
-                <MobileQuickActions />
-              </div>
-            </TooltipProvider>
+            <UploadProvider>
+              <TooltipProvider>
+                <div className="pb-16 md:pb-0">
+                  <Toaster />
+                  <Router />
+                  <MobileQuickActions />
+                </div>
+              </TooltipProvider>
+            </UploadProvider>
           </RecentToolsProvider>
         </SettingsProvider>
       </ThemeProvider>

@@ -1,7 +1,8 @@
-import { useCallback, useState, useId } from "react";
+import { useCallback, useState, useId, useEffect } from "react";
 import { Upload, X, FileText, Image, File, Shield, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useUploadContext } from "@/contexts/UploadContext";
 
 interface FileUploadZoneProps {
   onFilesSelected: (files: File[]) => void;
@@ -40,6 +41,19 @@ export default function FileUploadZone({
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const inputId = useId();
   const uniqueInputId = `file-upload-${inputId}`;
+  const { uploadedFile, clearUploadedFile } = useUploadContext();
+  const [hasConsumedContext, setHasConsumedContext] = useState(false);
+
+  useEffect(() => {
+    if (uploadedFile && selectedFiles.length === 0 && !hasConsumedContext) {
+      setSelectedFiles([uploadedFile]);
+      onFilesSelected([uploadedFile]);
+      setHasConsumedContext(true);
+      setTimeout(() => {
+        clearUploadedFile();
+      }, 100);
+    }
+  }, [uploadedFile, selectedFiles.length, onFilesSelected, clearUploadedFile, hasConsumedContext]);
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
