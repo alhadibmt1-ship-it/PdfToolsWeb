@@ -17,9 +17,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function ProtectPdfPage() {
   useSEO({
-    title: "Protect PDF Online Free - Password Protect PDF Files | PDF HUB 24",
-    description: "Add password protection to your PDF files for free. Encrypt PDF documents with a password to prevent unauthorized access. Secure and easy to use.",
-    keywords: "protect pdf, password protect pdf, encrypt pdf, secure pdf, lock pdf, pdf security"
+    title: "Password Protect PDF Free Online - Lock PDF with Password | PDF HUB 24",
+    description: "Password protect PDF free online. Add password to PDF files instantly. Best free PDF encryptor - lock PDF documents securely. Prevent unauthorized access. No signup.",
+    keywords: "password protect pdf free, lock pdf, encrypt pdf free, add password to pdf, secure pdf, pdf password protection free"
   });
 
   const [files, setFiles] = useState<File[]>([]);

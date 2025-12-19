@@ -15,9 +15,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function FlattenPdfPage() {
   useSEO({
-    title: "Flatten PDF Online Free - Flatten PDF Forms and Layers | PDF HUB 24",
-    description: "Flatten PDF files online for free. Remove interactive form fields and flatten layers into a static PDF. Secure your documents for sharing.",
-    keywords: "flatten pdf, flatten pdf form, remove pdf form fields, pdf flatten, flatten pdf layers"
+    title: "Flatten PDF Free Online - Remove PDF Form Fields | PDF HUB 24",
+    description: "Flatten PDF free online. Remove form fields, flatten layers into static PDF. Best free PDF flattener - secure documents for sharing, prevent edits. No signup.",
+    keywords: "flatten pdf free, flatten pdf form, remove pdf form fields free, pdf flatten online, lock pdf form fields"
   });
 
   const [files, setFiles] = useState<File[]>([]);

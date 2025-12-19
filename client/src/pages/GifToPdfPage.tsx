@@ -17,9 +17,9 @@ import SuccessCelebration from "@/components/SuccessCelebration";
 
 export default function GifToPdfPage() {
   useSEO({
-    title: "GIF to PDF Converter - Free Online GIF to PDF | PDF HUB 24",
-    description: "Convert GIF images to PDF online for free. Transform GIF files into PDF documents. Fast, secure conversion with high quality output.",
-    keywords: "gif to pdf, convert gif to pdf, image to pdf, gif converter, animated gif to pdf"
+    title: "GIF to PDF Free Online - Convert GIF to PDF | PDF HUB 24",
+    description: "Convert GIF to PDF free online. Transform GIF images to PDF documents instantly. Best free GIF to PDF converter - combines multiple GIFs into one PDF. No signup.",
+    keywords: "gif to pdf free, convert gif to pdf, gif to pdf converter free, image to pdf, animated gif to pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

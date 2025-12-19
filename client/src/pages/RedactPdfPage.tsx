@@ -27,9 +27,9 @@ interface RedactionArea {
 
 export default function RedactPdfPage() {
   useSEO({
-    title: "Redact PDF Online - Free PDF Redaction Tool | PDF HUB 24",
-    description: "Redact PDF files online for free. Permanently black out sensitive information in your PDF documents. Secure PDF redaction without software.",
-    keywords: "redact pdf, black out pdf, censor pdf, remove sensitive info, pdf privacy, secure pdf"
+    title: "Redact PDF Free Online - Black Out Sensitive Info | PDF HUB 24",
+    description: "Redact PDF free online. Permanently black out sensitive information in PDFs. Best free PDF redaction tool - censor text, remove private data. No signup required.",
+    keywords: "redact pdf free, black out pdf, censor pdf free, remove sensitive info pdf, pdf privacy tool, hide text in pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

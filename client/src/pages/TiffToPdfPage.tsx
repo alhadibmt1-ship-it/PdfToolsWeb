@@ -17,9 +17,9 @@ import SuccessCelebration from "@/components/SuccessCelebration";
 
 export default function TiffToPdfPage() {
   useSEO({
-    title: "TIFF to PDF Converter - Free Online TIFF to PDF | PDF HUB 24",
-    description: "Convert TIFF images to PDF online for free. Transform TIFF/TIF files into PDF documents. Fast, secure conversion with high quality output.",
-    keywords: "tiff to pdf, tif to pdf, convert tiff to pdf, image to pdf, tiff converter"
+    title: "TIFF to PDF Free Online - Convert TIFF to PDF | PDF HUB 24",
+    description: "Convert TIFF to PDF free online. Transform TIFF/TIF images to PDF documents instantly. Best free TIFF to PDF converter - high quality output. No signup required.",
+    keywords: "tiff to pdf free, convert tiff to pdf, tif to pdf free, tiff to pdf converter free, image to pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

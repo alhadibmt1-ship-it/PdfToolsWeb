@@ -17,9 +17,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function SplitPdfPage() {
   useSEO({
-    title: "Split PDF Online Free - Extract Pages from PDF | PDF HUB 24",
-    description: "Split PDF files online for free. Extract specific pages or page ranges from your PDF documents. Fast, secure, and easy to use. No registration required.",
-    keywords: "split pdf, extract pdf pages, divide pdf, split pdf online free, pdf splitter, separate pdf pages"
+    title: "Split PDF Free Online - Extract Pages from PDF | PDF HUB 24",
+    description: "Split PDF files free online. Extract specific pages or separate PDF into multiple files. Best free PDF splitter - remove pages, divide PDF instantly. No signup required.",
+    keywords: "split pdf free, extract pages from pdf, divide pdf, pdf splitter free, separate pdf pages, split pdf online, extract pdf pages"
   });
 
   const [files, setFiles] = useState<File[]>([]);

@@ -15,9 +15,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function HtmlToPdfPage() {
   useSEO({
-    title: "HTML to PDF Converter - Convert HTML to PDF Online Free | PDF HUB 24",
-    description: "Convert HTML code to PDF documents online for free. Transform web pages and HTML content into professional PDF files. Fast, secure, no registration required.",
-    keywords: "html to pdf, convert html to pdf, html to pdf converter, web page to pdf, html pdf generator"
+    title: "HTML to PDF Free Online - Convert HTML to PDF | PDF HUB 24",
+    description: "Convert HTML to PDF free online. Transform HTML code to PDF documents instantly. Best free HTML to PDF converter - webpage to PDF. No signup required.",
+    keywords: "html to pdf free, convert html to pdf, html to pdf converter free, webpage to pdf, html to pdf online"
   });
 
   const [htmlContent, setHtmlContent] = useState("");

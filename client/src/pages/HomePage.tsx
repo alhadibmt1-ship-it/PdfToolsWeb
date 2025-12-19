@@ -287,9 +287,9 @@ export default function HomePage() {
   };
   
   useSEO({
-    title: "PDF HUB 24 - Free Online PDF Tools | Convert, Merge, Split & More",
-    description: "Free online PDF tools for converting PDF to Word, Excel, JPG, PNG and more. Merge PDFs, split, compress, and edit PDF files. Fast, secure, and easy to use - no registration required.",
-    keywords: "pdf to word, pdf to excel, merge pdf, pdf to jpg, pdf to png, split pdf, compress pdf, jpg to pdf, png to pdf, excel to pdf, word to pdf, free pdf tools",
+    title: "PDF HUB 24 - 43+ Free Online PDF Tools | Convert, Edit, Compress",
+    description: "100% free online PDF tools. Convert PDF to Word, JPG, Excel. Merge, split, compress, edit PDFs instantly. Best free PDF converter - no signup, no watermarks. Trusted by millions.",
+    keywords: "free pdf tools, pdf converter free, pdf to word free, merge pdf free, compress pdf free, pdf editor free, convert pdf online, pdf to jpg, split pdf",
     structuredData: {
       "@context": "https://schema.org",
       "@type": "Organization",

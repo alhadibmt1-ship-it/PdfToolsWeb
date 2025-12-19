@@ -15,9 +15,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function RepairPdfPage() {
   useSEO({
-    title: "Repair PDF Online Free - Fix Corrupted PDF Files | PDF HUB 24",
-    description: "Repair corrupted or damaged PDF files online for free. Fix PDF documents that won't open or display correctly. Fast, secure PDF repair tool.",
-    keywords: "repair pdf, fix pdf, corrupted pdf, damaged pdf, pdf repair tool, fix broken pdf"
+    title: "Repair PDF Free Online - Fix Corrupted PDF Files | PDF HUB 24",
+    description: "Repair PDF free online. Fix corrupted or damaged PDF files that won't open. Best free PDF repair tool - recover broken documents instantly. No signup needed.",
+    keywords: "repair pdf free, fix corrupted pdf, damaged pdf repair, pdf repair online free, fix broken pdf, recover pdf file"
   });
 
   const [files, setFiles] = useState<File[]>([]);

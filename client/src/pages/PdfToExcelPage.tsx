@@ -15,9 +15,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function PdfToExcelPage() {
   useSEO({
-    title: "PDF to Excel Converter - Convert PDF to XLSX Online Free | PDF HUB 24",
-    description: "Convert PDF tables to Excel spreadsheets online for free. Extract data from PDF documents into editable XLSX format. Fast, accurate conversion. No registration required.",
-    keywords: "pdf to excel, convert pdf to xlsx, pdf to spreadsheet, extract tables from pdf, pdf table converter, pdf data extraction"
+    title: "PDF to Excel Free Online - Convert PDF to XLSX | PDF HUB 24",
+    description: "Convert PDF to Excel free online. Extract tables from PDF to editable XLSX spreadsheet. Best free PDF to Excel converter - accurate table extraction. No signup needed.",
+    keywords: "pdf to excel free, convert pdf to xlsx, extract table from pdf, pdf to spreadsheet free, pdf to excel converter free, pdf table to excel"
   });
 
   const [files, setFiles] = useState<File[]>([]);

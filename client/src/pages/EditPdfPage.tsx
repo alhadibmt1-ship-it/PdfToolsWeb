@@ -42,9 +42,9 @@ type Annotation = TextAnnotation | ShapeAnnotation;
 
 export default function EditPdfPage() {
   useSEO({
-    title: "Edit PDF Online - Free PDF Editor | PDF HUB 24",
-    description: "Edit PDF files online for free. Add text, images, shapes, and annotations to your PDF documents. No software installation required.",
-    keywords: "edit pdf, pdf editor, add text to pdf, modify pdf, annotate pdf, free pdf editor"
+    title: "Edit PDF Free Online - Free PDF Editor | PDF HUB 24",
+    description: "Edit PDF free online. Add text, images, shapes to PDF documents. Best free PDF editor - modify PDFs instantly, no software needed. No signup required.",
+    keywords: "edit pdf free, pdf editor free, add text to pdf, modify pdf online, free pdf editor online, edit pdf online free"
   });
 
   const [files, setFiles] = useState<File[]>([]);

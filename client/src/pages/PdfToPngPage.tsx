@@ -15,9 +15,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function PdfToPngPage() {
   useSEO({
-    title: "PDF to PNG Converter - Convert PDF to PNG Images Online Free | PDF HUB 24",
-    description: "Convert PDF pages to high-quality PNG images online for free. Transparent background support. Extract all pages or convert single page PDFs. No registration required.",
-    keywords: "pdf to png, convert pdf to png, pdf to image, extract images from pdf, pdf converter, png converter"
+    title: "PDF to PNG Free Online - Convert PDF to Image | PDF HUB 24",
+    description: "Convert PDF to PNG free online. Transform PDF pages to high-quality PNG images with transparency. Best free PDF to PNG converter - extract all pages as pictures. No signup.",
+    keywords: "pdf to png free, convert pdf to png, pdf to image free, save pdf as png, pdf to png converter free, extract pdf pages as images"
   });
 
   const [files, setFiles] = useState<File[]>([]);

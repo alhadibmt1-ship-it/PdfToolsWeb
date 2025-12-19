@@ -17,9 +17,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function ImageCompressorPage() {
   useSEO({
-    title: "Image Compressor - Compress JPG, PNG, WebP Online Free | PDF HUB 24",
-    description: "Compress images online for free. Reduce JPG, PNG, and WebP file sizes without losing quality. Fast, secure image compression with adjustable quality settings.",
-    keywords: "image compressor, compress image, reduce image size, jpg compressor, png compressor, webp compressor"
+    title: "Compress Image Free Online - JPG PNG WebP Compressor | PDF HUB 24",
+    description: "Compress images free online. Reduce JPG, PNG, WebP file size up to 80% without quality loss. Best free image compressor - fast, adjustable quality. No signup.",
+    keywords: "compress image free, image compressor online, reduce image size, jpg compressor free, png compressor, compress photo online"
   });
 
   const [files, setFiles] = useState<File[]>([]);

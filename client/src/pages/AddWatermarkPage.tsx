@@ -18,9 +18,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function AddWatermarkPage() {
   useSEO({
-    title: "Add Watermark to PDF Online Free | PDF HUB 24",
-    description: "Add text watermark to your PDF documents for free. Customize opacity, size, and rotation. Perfect for branding and document protection.",
-    keywords: "add watermark pdf, pdf watermark, watermark pdf online, stamp pdf"
+    title: "Add Watermark to PDF Free Online - Stamp PDF | PDF HUB 24",
+    description: "Add watermark to PDF free online. Insert text stamp on PDF pages - customize opacity, size, position. Best free PDF watermark tool for branding. No signup required.",
+    keywords: "add watermark to pdf free, pdf watermark, stamp pdf, watermark pdf online free, insert text on pdf, brand pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

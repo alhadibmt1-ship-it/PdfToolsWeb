@@ -15,9 +15,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function PngToPdfPage() {
   useSEO({
-    title: "PNG to PDF Converter - Convert PNG Images to PDF Online Free | PDF HUB 24",
-    description: "Convert PNG images to PDF documents online for free. Combine multiple PNG files into one PDF. Preserve transparency and quality. No registration required.",
-    keywords: "png to pdf, convert png to pdf, image to pdf, png converter, combine png files, create pdf from images"
+    title: "PNG to PDF Free Online - Convert PNG to PDF | PDF HUB 24",
+    description: "Convert PNG to PDF free online. Transform PNG images to PDF with transparency preserved. Best free PNG to PDF converter - combine multiple files instantly. No signup.",
+    keywords: "png to pdf free, convert png to pdf, image to pdf free, png to pdf converter free, combine png files, transparent image to pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

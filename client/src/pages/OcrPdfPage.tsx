@@ -15,9 +15,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function OcrPdfPage() {
   useSEO({
-    title: "OCR PDF - Extract Text from Scanned PDF Free | PDF HUB 24",
-    description: "Extract text from scanned PDF documents using OCR online for free. Convert image-based PDFs to searchable text. Fast, accurate OCR processing.",
-    keywords: "ocr pdf, pdf ocr, extract text scanned pdf, pdf text recognition, scan to text, image to text pdf"
+    title: "OCR PDF Free Online - Extract Text from Scanned PDF | PDF HUB 24",
+    description: "OCR PDF free online. Extract text from scanned PDF documents instantly. Best free PDF OCR tool - convert image-based PDFs to searchable text. No signup.",
+    keywords: "ocr pdf free, pdf ocr online, extract text from scanned pdf, pdf text recognition free, scan to text pdf, image pdf to text"
   });
 
   const [files, setFiles] = useState<File[]>([]);

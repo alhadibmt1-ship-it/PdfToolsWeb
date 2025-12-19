@@ -18,9 +18,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function SignPdfPage() {
   useSEO({
-    title: "Sign PDF Online Free - Add Signature to PDF | PDF HUB 24",
-    description: "Add your signature to PDF documents online for free. Draw, type, or upload your signature. Sign PDFs instantly without printing.",
-    keywords: "sign pdf, add signature to pdf, pdf signature, electronic signature, esign pdf, sign document online"
+    title: "Sign PDF Free Online - Add Signature to PDF | PDF HUB 24",
+    description: "Sign PDF free online. Add your signature to PDF documents instantly - draw, type, or upload. Best free eSign tool - no printing needed. No signup required.",
+    keywords: "sign pdf free, add signature to pdf, pdf signature free, esign pdf online, electronic signature free, sign document online free"
   });
 
   const [files, setFiles] = useState<File[]>([]);
