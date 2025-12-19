@@ -8,6 +8,8 @@ import ProcessingState from "@/components/ProcessingState";
 import ToolSEOContent from "@/components/ToolSEOContent";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
+import { ToolBreadcrumbs } from "@/components/Breadcrumbs";
+import { ToolStructuredData } from "@/components/StructuredData";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,11 +17,25 @@ import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
 
+const DELETE_FAQS = [
+  { question: "How do I delete pages from PDF for free?", answer: "Upload your PDF file, enter the page numbers you want to remove (separated by commas), click Delete Pages, and download your modified PDF. It's 100% free with no registration required." },
+  { question: "Can I remove multiple pages from PDF at once?", answer: "Yes! Enter all page numbers separated by commas (e.g., 1,3,5,7) to delete multiple pages in a single operation. Fast and efficient." },
+  { question: "Is this PDF page remover safe to use?", answer: "Absolutely. Your files are processed securely and deleted after download. We never store or access your documents. Your privacy is guaranteed." },
+  { question: "Will removing pages affect my original PDF?", answer: "No, your original file is never modified. We create a new PDF with the pages removed, keeping your source document safe." }
+];
+
+const DELETE_STEPS = [
+  "Upload your PDF file by clicking the upload area or drag and drop",
+  "Enter page numbers to delete, separated by commas (e.g., 1,3,5)",
+  "Click the Delete Pages button to remove unwanted pages",
+  "Download your cleaned PDF instantly - free, no watermarks"
+];
+
 export default function DeletePagesPage() {
   useSEO({
-    title: "Delete PDF Pages Online Free - Remove Pages from PDF | PDF HUB 24",
-    description: "Delete unwanted pages from PDF files online for free. Remove specific pages from your PDF documents. Fast, secure, and easy to use. No registration required.",
-    keywords: "delete pdf pages, remove pdf pages, delete pages from pdf, remove pages from pdf online free"
+    title: "Delete Pages from PDF Free Online - PDF Page Remover | PDF HUB 24",
+    description: "Delete pages from PDF free online. Remove PDF pages instantly with our free PDF page remover. Delete unwanted pages, remove blank pages, clean up PDFs. No signup required.",
+    keywords: "delete pages from pdf free, delete pdf pages, remove pages from pdf, pdf page remover, remove pdf pages, delete pdf pages online, pdf delete pages"
   });
 
   const [files, setFiles] = useState<File[]>([]);
@@ -109,9 +125,19 @@ export default function DeletePagesPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
+      <ToolStructuredData
+        toolName="Delete Pages from PDF"
+        toolPath="/delete-pages"
+        description="Delete pages from PDF free online. Remove unwanted PDF pages instantly with our free PDF page remover tool. No registration required."
+        howToSteps={DELETE_STEPS}
+        faqs={DELETE_FAQS}
+        category="edit-pdf"
+      />
       
       <main className="flex-1 py-8">
         <div className="max-w-4xl mx-auto px-6">
+          <ToolBreadcrumbs toolName="Delete PDF Pages" category="edit-pdf" />
+          
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
@@ -120,9 +146,9 @@ export default function DeletePagesPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">Delete PDF Pages</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">Delete Pages from PDF Free</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Remove unwanted pages from your PDF document. Enter page numbers separated by commas.
+              Remove unwanted pages from your PDF instantly. Free PDF page remover - no signup, no watermarks.
             </p>
             <TrustBadges />
           </div>
