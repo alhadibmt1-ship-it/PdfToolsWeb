@@ -56,7 +56,8 @@ import {
   MousePointerClick,
   FileCheck,
   LayoutGrid,
-  Filter
+  Filter,
+  Headphones
 } from "lucide-react";
 import { PDF_TOOLS } from "@shared/schema";
 import Header from "@/components/Header";
@@ -595,11 +596,11 @@ export default function HomePage() {
               
               <div className="premium-card p-6 sm:p-8">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-5 border border-primary/10">
-                  <Shield className="w-6 h-6 text-primary" />
+                  <Lock className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">Bank-Level Security</h3>
+                <h3 className="font-semibold text-lg mb-2">256-Bit TLS Encryption</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  SSL encryption for all transfers. Files are automatically deleted after processing. Your data stays private.
+                  Bank-level encryption for all file transfers. Your documents are protected with the same security used by major financial institutions.
                 </p>
               </div>
               
@@ -625,22 +626,60 @@ export default function HomePage() {
               
               <div className="premium-card p-6 sm:p-8">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 flex items-center justify-center mb-5 border border-cyan-500/10">
-                  <Star className="w-6 h-6 text-cyan-500" />
+                  <Trash2 className="w-6 h-6 text-cyan-500" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">High Quality Output</h3>
+                <h3 className="font-semibold text-lg mb-2">Auto-Delete Files</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Professional-grade conversions that preserve formatting, fonts, and images. No quality loss guaranteed.
+                  Your files are automatically deleted after processing. We never store or access your documents.
                 </p>
               </div>
               
               <div className="premium-card p-6 sm:p-8">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500/20 to-red-500/5 flex items-center justify-center mb-5 border border-red-500/10">
-                  <Infinity className="w-6 h-6 text-red-500" />
+                  <Headphones className="w-6 h-6 text-red-500" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">No Limits</h3>
+                <h3 className="font-semibold text-lg mb-2">24/7 Availability</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  No file count restrictions, no daily limits, no registration required. Just upload and convert endlessly.
+                  Our tools are available around the clock. Process your documents anytime, anywhere in the world.
                 </p>
+              </div>
+            </div>
+            
+            {/* Security Certifications */}
+            <div className="mt-12 pt-10 border-t">
+              <div className="text-center mb-8">
+                <h3 className="text-lg font-semibold mb-2">Security & Compliance</h3>
+                <p className="text-sm text-muted-foreground">Your safety is our priority</p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-6 sm:gap-10">
+                <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-muted/50">
+                  <Shield className="w-8 h-8 text-green-500" />
+                  <div>
+                    <div className="font-semibold text-sm">SSL Secured</div>
+                    <div className="text-xs text-muted-foreground">HTTPS Encrypted</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-muted/50">
+                  <Lock className="w-8 h-8 text-primary" />
+                  <div>
+                    <div className="font-semibold text-sm">256-Bit TLS</div>
+                    <div className="text-xs text-muted-foreground">Bank-Level Security</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-muted/50">
+                  <FileCheck className="w-8 h-8 text-purple-500" />
+                  <div>
+                    <div className="font-semibold text-sm">Privacy First</div>
+                    <div className="text-xs text-muted-foreground">GDPR Compliant</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-muted/50">
+                  <Trash2 className="w-8 h-8 text-orange-500" />
+                  <div>
+                    <div className="font-semibold text-sm">Auto-Delete</div>
+                    <div className="text-xs text-muted-foreground">Files Removed After Use</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
