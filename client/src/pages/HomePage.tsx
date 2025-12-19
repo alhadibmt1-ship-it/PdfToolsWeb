@@ -54,7 +54,9 @@ import {
   Cloud,
   Sparkles,
   MousePointerClick,
-  FileCheck
+  FileCheck,
+  LayoutGrid,
+  Filter
 } from "lucide-react";
 import { PDF_TOOLS } from "@shared/schema";
 import Header from "@/components/Header";
@@ -98,7 +100,24 @@ const iconMap: Record<string, any> = {
   redact: EyeOff,
 };
 
-function ConversionIcon({ iconType }: { iconType: string }) {
+type CategoryFilter = "all" | "from-pdf" | "to-pdf" | "edit-pdf" | "utility";
+
+const categoryInfo: Record<CategoryFilter, { label: string; color: string; gradient: string }> = {
+  "all": { label: "All Tools", color: "text-primary", gradient: "from-primary to-blue-600" },
+  "from-pdf": { label: "Convert from PDF", color: "text-red-500", gradient: "from-red-500 to-red-600" },
+  "to-pdf": { label: "Convert to PDF", color: "text-green-500", gradient: "from-green-500 to-green-600" },
+  "edit-pdf": { label: "Edit PDF", color: "text-blue-500", gradient: "from-blue-500 to-blue-600" },
+  "utility": { label: "Utility Tools", color: "text-purple-500", gradient: "from-purple-500 to-purple-600" }
+};
+
+const featuredTools = [
+  { id: "compress", tagline: "Reduce file size instantly", highlight: "Up to 90% smaller" },
+  { id: "merge", tagline: "Combine multiple PDFs", highlight: "Drag & drop ordering" },
+  { id: "pdf-to-word", tagline: "Perfect conversion quality", highlight: "Keeps formatting" },
+  { id: "split", tagline: "Extract pages you need", highlight: "Quick & precise" }
+];
+
+function ConversionIcon({ iconType, size = "default" }: { iconType: string; size?: "default" | "large" }) {
   const formatStyles: Record<string, { bgColor: string; textColor: string; label: string }> = {
     pdf: { bgColor: "bg-red-600", textColor: "text-white", label: "PDF" },
     word: { bgColor: "bg-blue-600", textColor: "text-white", label: "DOC" },
@@ -112,6 +131,10 @@ function ConversionIcon({ iconType }: { iconType: string }) {
     gif: { bgColor: "bg-pink-600", textColor: "text-white", label: "GIF" },
   };
 
+  const sizeClasses = size === "large" 
+    ? { box: "w-12 h-12 sm:w-14 sm:h-14", text: "text-xs sm:text-sm", arrow: "w-5 h-5", icon: "w-7 h-7 sm:w-8 sm:h-8" }
+    : { box: "w-9 h-9 sm:w-11 sm:h-11", text: "text-[10px] sm:text-xs", arrow: "w-3.5 h-3.5 sm:w-4 sm:h-4", icon: "w-5 h-5 sm:w-7 sm:h-7" };
+
   if (iconType.includes("-to-")) {
     const [from, to] = iconType.split("-to-");
     const fromStyle = formatStyles[from];
@@ -120,11 +143,11 @@ function ConversionIcon({ iconType }: { iconType: string }) {
     if (fromStyle && toStyle) {
       return (
         <div className="flex items-center gap-1.5 sm:gap-2">
-          <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-lg ${fromStyle.bgColor} ${fromStyle.textColor} flex items-center justify-center text-[10px] sm:text-xs font-bold shadow-sm`}>
+          <div className={`${sizeClasses.box} rounded-lg ${fromStyle.bgColor} ${fromStyle.textColor} flex items-center justify-center ${sizeClasses.text} font-bold shadow-sm`}>
             {fromStyle.label}
           </div>
-          <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground" />
-          <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-lg ${toStyle.bgColor} ${toStyle.textColor} flex items-center justify-center text-[10px] sm:text-xs font-bold shadow-sm`}>
+          <ArrowRight className={`${sizeClasses.arrow} text-muted-foreground`} />
+          <div className={`${sizeClasses.box} rounded-lg ${toStyle.bgColor} ${toStyle.textColor} flex items-center justify-center ${sizeClasses.text} font-bold shadow-sm`}>
             {toStyle.label}
           </div>
         </div>
@@ -135,15 +158,15 @@ function ConversionIcon({ iconType }: { iconType: string }) {
   const Icon = iconMap[iconType];
   if (Icon) {
     return (
-      <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center border border-primary/10">
-        <Icon className="w-5 h-5 sm:w-7 sm:h-7 text-primary" />
+      <div className={`${size === "large" ? "w-14 h-14 sm:w-16 sm:h-16" : "w-11 h-11 sm:w-14 sm:h-14"} rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center border border-primary/10`}>
+        <Icon className={`${sizeClasses.icon} text-primary`} />
       </div>
     );
   }
 
   return (
-    <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center border border-primary/10">
-      <FileText className="w-5 h-5 sm:w-7 sm:h-7 text-primary" />
+    <div className={`${size === "large" ? "w-14 h-14 sm:w-16 sm:h-16" : "w-11 h-11 sm:w-14 sm:h-14"} rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center border border-primary/10`}>
+      <FileText className={`${sizeClasses.icon} text-primary`} />
     </div>
   );
 }
@@ -182,8 +205,49 @@ function FAQItem({ question, answer, isOpen, onClick, id }: { question: string; 
   );
 }
 
+function FeaturedToolCard({ tool, featured }: { tool: typeof PDF_TOOLS[0]; featured: typeof featuredTools[0] }) {
+  return (
+    <Link href={tool.path} data-testid={`link-featured-${tool.id}`}>
+      <div className="group relative h-full overflow-hidden rounded-2xl bg-gradient-to-br from-card via-card to-muted/30 border border-border/50 p-6 sm:p-8 cursor-pointer transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity" />
+        
+        <div className="relative z-10">
+          <div className="flex items-start justify-between mb-4">
+            <ConversionIcon iconType={tool.icon} size="large" />
+            <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30">
+              <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
+              <span className="text-xs font-semibold text-amber-600 dark:text-amber-400">Featured</span>
+            </div>
+          </div>
+          
+          <h3 className="text-xl sm:text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+            {tool.title}
+          </h3>
+          
+          <p className="text-muted-foreground mb-4 text-sm sm:text-base leading-relaxed">
+            {featured.tagline}
+          </p>
+          
+          <div className="flex items-center gap-2 mb-5">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20">
+              <CheckCircle className="w-3.5 h-3.5 text-green-500" />
+              <span className="text-xs font-medium text-green-600 dark:text-green-400">{featured.highlight}</span>
+            </div>
+          </div>
+          
+          <div className="flex items-center text-sm font-semibold text-primary group-hover:gap-2 transition-all">
+            <span>Use {tool.title}</span>
+            <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
 export default function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [activeCategory, setActiveCategory] = useState<CategoryFilter>("all");
   
   useSEO({
     title: "PDF HUB 24 - Free Online PDF Tools | Convert, Merge, Split & More",
@@ -191,10 +255,15 @@ export default function HomePage() {
     keywords: "pdf to word, pdf to excel, merge pdf, pdf to jpg, pdf to png, split pdf, compress pdf, jpg to pdf, png to pdf, excel to pdf, word to pdf, free pdf tools"
   });
 
-  const fromPdfTools = PDF_TOOLS.filter(tool => tool.category === "from-pdf");
-  const toPdfTools = PDF_TOOLS.filter(tool => tool.category === "to-pdf");
-  const editPdfTools = PDF_TOOLS.filter(tool => tool.category === "edit-pdf");
-  const utilityTools = PDF_TOOLS.filter(tool => tool.category === "utility");
+  const allTools = PDF_TOOLS;
+  const filteredTools = activeCategory === "all" 
+    ? allTools 
+    : allTools.filter(tool => tool.category === activeCategory);
+  
+  const featuredToolsData = featuredTools.map(ft => ({
+    tool: PDF_TOOLS.find(t => t.id === ft.id)!,
+    featured: ft
+  })).filter(ft => ft.tool);
 
   const faqs = [
     {
@@ -219,48 +288,7 @@ export default function HomePage() {
     }
   ];
 
-  const popularTools = ["compress", "merge", "pdf-to-word", "pdf-to-jpg", "split"];
-
-  const renderToolGrid = (tools: typeof PDF_TOOLS) => (
-    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-4 md:gap-5">
-      {tools.map((tool, index) => (
-        <Link key={tool.id} href={tool.path} data-testid={`link-tool-${tool.id}`}>
-          <div 
-            className="premium-card p-3.5 sm:p-5 md:p-6 h-full cursor-pointer group min-h-[130px] sm:min-h-[170px] relative overflow-visible active:scale-[0.98] touch-manipulation"
-            style={{ animationDelay: `${index * 50}ms` }}
-          >
-            {popularTools.includes(tool.id) && (
-              <div className="absolute -top-1.5 -right-1.5 sm:-top-2 sm:-right-2 z-10">
-                <div className="flex items-center gap-0.5 sm:gap-1 px-1.5 sm:px-2 py-0.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white text-[9px] sm:text-[10px] font-bold shadow-lg">
-                  <Star className="w-2 h-2 sm:w-2.5 sm:h-2.5 fill-current" />
-                  Popular
-                </div>
-              </div>
-            )}
-            <div className="flex flex-col h-full">
-              <div className="mb-2.5 sm:mb-4">
-                <ConversionIcon iconType={tool.icon} />
-              </div>
-              
-              <h3 className="text-[13px] sm:text-base font-semibold mb-1 sm:mb-2 group-hover:text-primary transition-colors leading-snug line-clamp-2">
-                {tool.title}
-              </h3>
-              
-              <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-4 flex-1 leading-relaxed line-clamp-2 hidden sm:block">
-                {tool.description}
-              </p>
-              
-              <div className="flex items-center text-[11px] sm:text-sm font-semibold text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-all mt-auto">
-                <span className="hidden sm:inline">Use Tool</span>
-                <span className="sm:hidden">Open</span>
-                <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </div>
-          </div>
-        </Link>
-      ))}
-    </div>
-  );
+  const categories: CategoryFilter[] = ["all", "from-pdf", "to-pdf", "edit-pdf", "utility"];
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -280,8 +308,8 @@ export default function HomePage() {
               </div>
               
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 sm:mb-6 leading-[1.1] tracking-tight">
-                Transform Your PDFs
-                <span className="block gradient-text mt-1">With Just a Click</span>
+                Everything You Need
+                <span className="block gradient-text mt-1">For PDF Documents</span>
               </h1>
               
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10">
@@ -334,100 +362,118 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Featured Tools Section - Adobe Style */}
+        <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-muted/30 to-background">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-10 sm:mb-14">
+              <span className="section-label block mb-3">Most Popular</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
+                Featured Tools
+              </h2>
+            </div>
+            
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              {featuredToolsData.map(({ tool, featured }) => (
+                <FeaturedToolCard key={tool.id} tool={tool} featured={featured} />
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Recently Used Tools */}
         <RecentToolsSection />
 
-        {/* Trust Stats Bar */}
-        <section className="py-8 sm:py-10 border-b bg-card/50">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">43+</div>
-                <div className="text-sm text-muted-foreground">PDF Tools</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">100%</div>
-                <div className="text-sm text-muted-foreground">Free Forever</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">24/7</div>
-                <div className="text-sm text-muted-foreground">Available</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">SSL</div>
-                <div className="text-sm text-muted-foreground">Encrypted</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Convert from PDF Section */}
-        <section id="from-pdf" className="py-12 sm:py-16 md:py-20">
+        {/* All Tools Section with Category Tabs */}
+        <section className="py-12 sm:py-16 md:py-20" id="all-tools">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="flex items-center gap-4 mb-8 sm:mb-10">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center shadow-lg shadow-red-500/20">
-                <Download className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+            {/* Section Header */}
+            <div className="text-center mb-8 sm:mb-10">
+              <span className="section-label block mb-3">Complete Toolkit</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                All PDF Tools
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Choose from 43+ professional tools for all your PDF needs
+              </p>
+            </div>
+            
+            {/* Category Filter Tabs */}
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-4 sm:px-5 py-2.5 rounded-full text-sm font-medium transition-all touch-manipulation ${
+                    activeCategory === cat
+                      ? `bg-gradient-to-r ${categoryInfo[cat].gradient} text-white shadow-lg`
+                      : "bg-muted hover:bg-muted/80 text-foreground"
+                  }`}
+                  data-testid={`button-filter-${cat}`}
+                >
+                  {categoryInfo[cat].label}
+                  {cat !== "all" && (
+                    <span className={`ml-1.5 ${activeCategory === cat ? "opacity-80" : "text-muted-foreground"}`}>
+                      ({allTools.filter(t => t.category === cat).length})
+                    </span>
+                  )}
+                </button>
+              ))}
+            </div>
+            
+            {/* Tools Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
+              {filteredTools.map((tool, index) => (
+                <Link key={tool.id} href={tool.path} data-testid={`link-tool-${tool.id}`}>
+                  <div 
+                    className="group relative h-full overflow-hidden rounded-xl bg-card border border-border/50 p-4 sm:p-5 cursor-pointer transition-all duration-200 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 active:scale-[0.98] touch-manipulation"
+                    style={{ animationDelay: `${index * 30}ms` }}
+                  >
+                    <div className="flex flex-col h-full">
+                      <div className="mb-3 sm:mb-4">
+                        <ConversionIcon iconType={tool.icon} />
+                      </div>
+                      
+                      <h3 className="text-xs sm:text-sm font-semibold group-hover:text-primary transition-colors leading-tight line-clamp-2 mb-1">
+                        {tool.title}
+                      </h3>
+                      
+                      <p className="text-[10px] sm:text-xs text-muted-foreground line-clamp-2 flex-1 hidden sm:block">
+                        {tool.description}
+                      </p>
+                      
+                      <div className="flex items-center justify-center text-[10px] sm:text-xs font-medium text-primary mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className="hidden sm:inline">Use Tool</span>
+                        <ArrowRight className="w-3 h-3 sm:ml-1" />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            
+            {/* Category Stats */}
+            <div className="mt-10 sm:mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+              <div className="text-center p-4 rounded-xl bg-red-500/5 border border-red-500/10">
+                <Download className="w-6 h-6 text-red-500 mx-auto mb-2" />
+                <div className="text-lg font-bold text-red-600 dark:text-red-400">8 Tools</div>
+                <div className="text-xs text-muted-foreground">Convert from PDF</div>
               </div>
-              <div>
-                <span className="section-label block mb-1">Export & Convert</span>
-                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Convert from PDF</h2>
+              <div className="text-center p-4 rounded-xl bg-green-500/5 border border-green-500/10">
+                <Upload className="w-6 h-6 text-green-500 mx-auto mb-2" />
+                <div className="text-lg font-bold text-green-600 dark:text-green-400">9 Tools</div>
+                <div className="text-xs text-muted-foreground">Convert to PDF</div>
+              </div>
+              <div className="text-center p-4 rounded-xl bg-blue-500/5 border border-blue-500/10">
+                <FileText className="w-6 h-6 text-blue-500 mx-auto mb-2" />
+                <div className="text-lg font-bold text-blue-600 dark:text-blue-400">19 Tools</div>
+                <div className="text-xs text-muted-foreground">Edit PDF</div>
+              </div>
+              <div className="text-center p-4 rounded-xl bg-purple-500/5 border border-purple-500/10">
+                <Settings className="w-6 h-6 text-purple-500 mx-auto mb-2" />
+                <div className="text-lg font-bold text-purple-600 dark:text-purple-400">7 Tools</div>
+                <div className="text-xs text-muted-foreground">Utility Tools</div>
               </div>
             </div>
-            {renderToolGrid(fromPdfTools)}
-          </div>
-        </section>
-        
-        <div className="premium-divider max-w-5xl mx-auto" />
-
-        {/* Convert to PDF Section */}
-        <section id="to-pdf" className="py-12 sm:py-16 md:py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="flex items-center gap-4 mb-8 sm:mb-10">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center shadow-lg shadow-green-500/20">
-                <Upload className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-              </div>
-              <div>
-                <span className="section-label block mb-1">Import & Create</span>
-                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Convert to PDF</h2>
-              </div>
-            </div>
-            {renderToolGrid(toPdfTools)}
-          </div>
-        </section>
-        
-        <div className="premium-divider max-w-5xl mx-auto" />
-
-        {/* Edit PDF Section */}
-        <section id="edit-pdf" className="py-12 sm:py-16 md:py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="flex items-center gap-4 mb-8 sm:mb-10">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center shadow-lg shadow-primary/20">
-                <FileText className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-              </div>
-              <div>
-                <span className="section-label block mb-1">Modify & Organize</span>
-                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Edit PDF</h2>
-              </div>
-            </div>
-            {renderToolGrid(editPdfTools)}
-          </div>
-        </section>
-        
-        <div className="premium-divider max-w-5xl mx-auto" />
-
-        {/* Utility Tools Section */}
-        <section id="utility" className="py-12 sm:py-16 md:py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="flex items-center gap-4 mb-8 sm:mb-10">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/20">
-                <Settings className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-              </div>
-              <div>
-                <span className="section-label block mb-1">Extra Tools</span>
-                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Utility Tools</h2>
-              </div>
-            </div>
-            {renderToolGrid(utilityTools)}
           </div>
         </section>
 
