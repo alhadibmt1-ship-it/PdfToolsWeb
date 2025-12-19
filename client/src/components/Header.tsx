@@ -48,8 +48,10 @@ export default function Header() {
           </div>
           
           {/* Mobile: theme toggle and hamburger menu */}
-          <div className="flex md:hidden items-center gap-0.5">
-            <ThemeToggle />
+          <div className="flex items-center gap-0.5">
+            <div className="md:hidden">
+              <ThemeToggle />
+            </div>
             <MobileMenu />
           </div>
         </div>
