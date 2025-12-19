@@ -125,5 +125,6 @@ The site includes a blog content hub for SEO and informational traffic:
 - Updated homepage and footer to reflect 43+ tools
 - All new tools follow established patterns (FileUploadZone, ProcessingState, TrustBadges, RelatedTools, ToolSEOContent)
 - Added ToolStructuredData component with FAQPage, HowTo, BreadcrumbList, SoftwareApplication schemas
-- Added Organization schema with aggregateRating on HomePage
+- Added Organization schema on HomePage (no aggregateRating per Google guidelines)
 - Added competitor-inspired trust elements (privacy badges, Trusted by Professionals section)
+- **Ahrefs SEO Fixes (Dec 2025)**: Removed fabricated aggregateRating from all structured data, added external links to Wikipedia/ISO/Adobe on all tool pages, fixed meta description lengths under 155 chars, fixed title lengths under 60 chars
