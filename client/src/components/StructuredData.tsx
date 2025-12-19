@@ -50,12 +50,6 @@ export function ToolStructuredData({
         {
           "@type": "ListItem",
           "position": 2,
-          "name": categoryLabels[category] || "PDF Tools",
-          "item": `${BASE_URL}/#${category}`
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
           "name": toolName,
           "item": `${BASE_URL}${toolPath}`
         }
@@ -85,11 +79,7 @@ export function ToolStructuredData({
         "position": index + 1,
         "text": step,
         "name": `Step ${index + 1}`
-      })),
-      "tool": {
-        "@type": "HowToTool",
-        "name": "PDF HUB 24"
-      }
+      }))
     } : null;
 
     const softwareSchema = {
@@ -104,14 +94,7 @@ export function ToolStructuredData({
         "price": "0",
         "priceCurrency": "USD"
       },
-      "description": description,
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "1250",
-        "bestRating": "5",
-        "worstRating": "1"
-      }
+      "description": description
     };
 
     const toolId = toolPath.replace(/\//g, '-');

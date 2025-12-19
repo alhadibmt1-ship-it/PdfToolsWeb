@@ -120,11 +120,7 @@ export default function ToolSEOContent({
         "position": index + 1,
         "text": step,
         "name": `Step ${index + 1}`
-      })),
-      "tool": {
-        "@type": "HowToTool",
-        "name": "PDF HUB 24"
-      }
+      }))
     } : null;
 
     const softwareSchema = {
@@ -139,14 +135,7 @@ export default function ToolSEOContent({
         "price": "0",
         "priceCurrency": "USD"
       },
-      "description": toolDescription,
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "1250",
-        "bestRating": "5",
-        "worstRating": "1"
-      }
+      "description": toolDescription
     };
 
     const schemas = [breadcrumbList, softwareSchema, faqSchema, howToSchema].filter(Boolean);
@@ -326,6 +315,49 @@ export default function ToolSEOContent({
             </Card>
           ))}
         </div>
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-bold mb-4">Learn More About PDF</h2>
+        <p className="text-muted-foreground mb-4">
+          PDF (Portable Document Format) is an open standard maintained by the International Organization for Standardization (ISO). 
+          Learn more about PDF technology from these authoritative sources:
+        </p>
+        <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+          <li>
+            <a 
+              href="https://en.wikipedia.org/wiki/PDF" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-primary hover:underline"
+            >
+              PDF on Wikipedia
+            </a>
+            {" "}- Comprehensive overview of the PDF format and its history
+          </li>
+          <li>
+            <a 
+              href="https://www.iso.org/standard/75839.html" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-primary hover:underline"
+            >
+              ISO 32000-2:2020
+            </a>
+            {" "}- Official PDF 2.0 specification from ISO
+          </li>
+          <li>
+            <a 
+              href="https://www.adobe.com/acrobat/about-adobe-pdf.html" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-primary hover:underline"
+            >
+              Adobe PDF Overview
+            </a>
+            {" "}- Learn about PDF from its original creators
+          </li>
+        </ul>
       </section>
 
       <section className="bg-card border rounded-lg p-8 text-center">
