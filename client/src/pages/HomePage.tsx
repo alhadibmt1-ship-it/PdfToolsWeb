@@ -296,67 +296,110 @@ export default function HomePage() {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="hero-gradient py-16 sm:py-20 md:py-28 lg:py-32 relative overflow-hidden">
+        <section className="hero-gradient py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,hsl(217_91%_60%/0.1)_0%,transparent_50%)]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,hsl(192_91%_50%/0.08)_0%,transparent_40%)]" />
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
             <div className="text-center max-w-4xl mx-auto">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/15 border border-primary/30 mb-6 sm:mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/15 border border-primary/30 mb-6">
                 <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                <span className="text-xs sm:text-sm font-semibold text-blue-700 dark:text-blue-300">43+ Free PDF Tools</span>
+                <span className="text-xs sm:text-sm font-semibold text-blue-700 dark:text-blue-300">43+ Free PDF Tools - No Registration Required</span>
               </div>
               
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 sm:mb-6 leading-[1.1] tracking-tight">
-                Everything You Need
-                <span className="block gradient-text mt-1">For PDF Documents</span>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 leading-[1.1] tracking-tight">
+                Professional PDF Tools
+                <span className="block gradient-text mt-1">100% Free Online</span>
               </h1>
               
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10">
-                Convert, merge, split, compress, and edit PDF files instantly. 
-                Free forever, no registration required, secure and fast.
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8">
+                Convert, merge, compress, and edit PDF files instantly. 
+                Trusted by millions of users worldwide.
               </p>
               
-              {/* Feature Highlights */}
-              <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-3 sm:gap-4 max-w-xl sm:max-w-none mx-auto mb-10 sm:mb-12">
-                <div className="glass-badge px-4 py-2.5 rounded-full flex items-center justify-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  <span className="text-sm font-medium">100% Free</span>
-                </div>
-                <div className="glass-badge px-4 py-2.5 rounded-full flex items-center justify-center gap-2">
-                  <Shield className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span className="text-sm font-medium">Secure</span>
-                </div>
-                <div className="glass-badge px-4 py-2.5 rounded-full flex items-center justify-center gap-2">
-                  <Zap className="w-4 h-4 text-orange-500 flex-shrink-0" />
-                  <span className="text-sm font-medium">Fast</span>
-                </div>
-                <div className="glass-badge px-4 py-2.5 rounded-full flex items-center justify-center gap-2">
-                  <Infinity className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span className="text-sm font-medium">No Limits</span>
-                </div>
+              {/* Quick Upload Zone - Like PDFfiller */}
+              <div className="max-w-xl mx-auto mb-8">
+                <Link href="/merge">
+                  <div className="group border-2 border-dashed border-primary/30 hover:border-primary/60 rounded-2xl p-6 sm:p-8 bg-card/50 backdrop-blur-sm cursor-pointer transition-all hover:shadow-lg hover:shadow-primary/5" data-testid="hero-upload-zone">
+                    <div className="flex flex-col items-center gap-3">
+                      <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Upload className="w-7 h-7 text-primary" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-lg">Drop your PDF here or click to start</p>
+                        <p className="text-sm text-muted-foreground mt-1">Supports PDF, Word, Excel, Images up to 100MB</p>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
               </div>
               
               {/* Quick Action Buttons */}
-              <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8">
                 <Link href="/merge">
-                  <Button size="lg" className="gap-2" data-testid="button-merge-hero">
+                  <Button size="default" className="gap-2" data-testid="button-merge-hero">
                     <Combine className="w-4 h-4" />
                     Merge PDF
                   </Button>
                 </Link>
                 <Link href="/compress">
-                  <Button size="lg" variant="outline" className="gap-2" data-testid="button-compress-hero">
+                  <Button size="default" variant="outline" className="gap-2" data-testid="button-compress-hero">
                     <FileDown className="w-4 h-4" />
                     Compress PDF
                   </Button>
                 </Link>
                 <Link href="/pdf-to-word">
-                  <Button size="lg" variant="outline" className="gap-2" data-testid="button-convert-hero">
+                  <Button size="default" variant="outline" className="gap-2" data-testid="button-convert-hero">
                     <FileText className="w-4 h-4" />
                     PDF to Word
                   </Button>
                 </Link>
+                <Link href="/split">
+                  <Button size="default" variant="outline" className="gap-2" data-testid="button-split-hero">
+                    <SplitSquareHorizontal className="w-4 h-4" />
+                    Split PDF
+                  </Button>
+                </Link>
+              </div>
+              
+              {/* Trust Badges */}
+              <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Shield className="w-4 h-4 text-green-500" />
+                  <span>SSL Encrypted</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Zap className="w-4 h-4 text-orange-500" />
+                  <span>Instant Processing</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-blue-500" />
+                  <span>No Watermarks</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        {/* Stats Bar - Like PDFForge */}
+        <section className="py-8 sm:py-10 bg-gradient-to-r from-primary/5 via-primary/10 to-cyan-500/5 border-y">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+              <div className="text-center">
+                <div className="text-3xl sm:text-4xl font-bold text-primary mb-1">1M+</div>
+                <div className="text-sm text-muted-foreground">Files Processed</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl sm:text-4xl font-bold text-primary mb-1">43+</div>
+                <div className="text-sm text-muted-foreground">PDF Tools</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl sm:text-4xl font-bold text-primary mb-1">99%</div>
+                <div className="text-sm text-muted-foreground">Satisfaction Rate</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl sm:text-4xl font-bold text-primary mb-1">24/7</div>
+                <div className="text-sm text-muted-foreground">Always Available</div>
               </div>
             </div>
           </div>
