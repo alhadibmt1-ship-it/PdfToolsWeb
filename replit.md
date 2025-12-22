@@ -129,7 +129,7 @@ The site includes a blog content hub for SEO and informational traffic:
 - Added competitor-inspired trust elements (privacy badges, Trusted by Professionals section)
 - **Ahrefs SEO Fixes (Dec 2025)**: Removed fabricated aggregateRating from all structured data, added external links to Wikipedia/ISO/Adobe on all tool pages, fixed meta description lengths under 155 chars, fixed title lengths under 60 chars
 - **Security & UX Improvements (Dec 2025)**:
-  - Added rate limiting: 30 req/min general API, 10 req/min for all 43+ processing routes
+  - Rate limiting code prepared but disabled (can enable later when traffic grows)
   - Security headers: HSTS (production-only), CSP (strict in production, relaxed for dev), X-Content-Type-Options, X-Frame-Options, X-XSS-Protection
   - User-friendly error messages without sensitive data leakage
   - Global tool search with Cmd+K / Ctrl+K keyboard shortcut (ToolSearch component)
