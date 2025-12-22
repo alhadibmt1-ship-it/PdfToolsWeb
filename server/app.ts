@@ -47,10 +47,35 @@ app.use((req, res, next) => {
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   // Permissions policy
   res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
-  // HTTP Strict Transport Security (HSTS) - enforce HTTPS
-  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-  // Content Security Policy - prevent XSS and data injection
-  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://www.google-analytics.com https://api.cloudconvert.com; frame-ancestors 'self'");
+  
+  // Production-only security headers
+  if (process.env.NODE_ENV === 'production') {
+    // HTTP Strict Transport Security (HSTS)
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+    // Stricter CSP for production (no unsafe-eval, inline styles via hashes would be ideal)
+    res.setHeader('Content-Security-Policy', 
+      "default-src 'self'; " +
+      "script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; " +
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+      "font-src 'self' https://fonts.gstatic.com; " +
+      "img-src 'self' data: blob: https:; " +
+      "connect-src 'self' https://www.google-analytics.com https://api.cloudconvert.com; " +
+      "frame-ancestors 'self'; " +
+      "base-uri 'self'; " +
+      "form-action 'self'"
+    );
+  } else {
+    // Relaxed CSP for development (Vite HMR needs unsafe-inline/eval)
+    res.setHeader('Content-Security-Policy', 
+      "default-src 'self'; " +
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; " +
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+      "font-src 'self' https://fonts.gstatic.com; " +
+      "img-src 'self' data: blob: https:; " +
+      "connect-src 'self' ws: wss: https://www.google-analytics.com https://api.cloudconvert.com; " +
+      "frame-ancestors 'self'"
+    );
+  }
   next();
 });
 
@@ -75,15 +100,28 @@ const processingLimiter = rateLimit({
 
 app.use(apiLimiter);
 
-// Apply stricter limits to heavy processing routes
-app.use('/api/merge', processingLimiter);
-app.use('/api/compress', processingLimiter);
-app.use('/api/pdf-to-word', processingLimiter);
-app.use('/api/pdf-to-jpg', processingLimiter);
-app.use('/api/pdf-to-png', processingLimiter);
-app.use('/api/word-to-pdf', processingLimiter);
-app.use('/api/excel-to-pdf', processingLimiter);
-app.use('/api/ppt-to-pdf', processingLimiter);
+// Apply stricter limits to all file processing routes (10/min for heavy operations)
+// Covers all 43+ tools plus utility endpoints
+const processingRoutes = [
+  // From PDF conversions (8 tools)
+  '/api/pdf-to-word', '/api/pdf-to-jpg', '/api/pdf-to-png', '/api/pdf-to-excel',
+  '/api/pdf-to-ppt', '/api/extract-text', '/api/extract-images', '/api/ocr-pdf',
+  // To PDF conversions (9 tools)
+  '/api/word-to-pdf', '/api/jpg-to-pdf', '/api/png-to-pdf', '/api/excel-to-pdf',
+  '/api/ppt-to-pdf', '/api/tiff-to-pdf', '/api/gif-to-pdf', '/api/html-to-pdf', '/api/webp-to-pdf',
+  // Edit PDF operations (19 tools)
+  '/api/merge', '/api/split', '/api/compress', '/api/rotate', '/api/delete-pages',
+  '/api/reorder-pages', '/api/add-page-numbers', '/api/add-watermark',
+  '/api/protect-pdf', '/api/unlock-pdf', '/api/crop-pdf', '/api/resize-pdf',
+  '/api/sign-pdf', '/api/flatten-pdf', '/api/grayscale-pdf', '/api/repair-pdf',
+  '/api/edit-pdf', '/api/annotate-pdf', '/api/redact-pdf',
+  // Utility tools (7 tools)
+  '/api/pdf-viewer', '/api/compare-pdf', '/api/preview-pdf',
+  '/api/compress-image', '/api/resize-image', '/api/crop-image', '/api/rotate-image', '/api/convert-image',
+  // Async conversion endpoints
+  '/api/conversion-status'
+];
+processingRoutes.forEach(route => app.use(route, processingLimiter));
 
 // Normalize trailing slashes - redirect /path/ to /path (301 for SEO)
 app.use((req, res, next) => {
