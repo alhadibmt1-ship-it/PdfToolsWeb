@@ -7,6 +7,7 @@ import express, {
   Response,
   NextFunction,
 } from "express";
+import rateLimit from "express-rate-limit";
 
 import { registerRoutes } from "./routes";
 
@@ -46,8 +47,43 @@ app.use((req, res, next) => {
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   // Permissions policy
   res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  // HTTP Strict Transport Security (HSTS) - enforce HTTPS
+  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  // Content Security Policy - prevent XSS and data injection
+  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://www.google-analytics.com https://api.cloudconvert.com; frame-ancestors 'self'");
   next();
 });
+
+// Rate limiting for API endpoints - prevent abuse
+const apiLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 30, // 30 requests per minute per IP
+  message: { error: 'Too many requests. Please wait a moment and try again.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+  skip: (req) => !req.path.startsWith('/api/'), // Only limit API routes
+});
+
+// Stricter rate limit for heavy processing endpoints
+const processingLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 10, // 10 conversions per minute per IP
+  message: { error: 'Processing limit reached. Please wait before converting more files.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+app.use(apiLimiter);
+
+// Apply stricter limits to heavy processing routes
+app.use('/api/merge', processingLimiter);
+app.use('/api/compress', processingLimiter);
+app.use('/api/pdf-to-word', processingLimiter);
+app.use('/api/pdf-to-jpg', processingLimiter);
+app.use('/api/pdf-to-png', processingLimiter);
+app.use('/api/word-to-pdf', processingLimiter);
+app.use('/api/excel-to-pdf', processingLimiter);
+app.use('/api/ppt-to-pdf', processingLimiter);
 
 // Normalize trailing slashes - redirect /path/ to /path (301 for SEO)
 app.use((req, res, next) => {
@@ -86,15 +122,8 @@ app.use((req, res, next) => {
   res.on("finish", () => {
     const duration = Date.now() - start;
     if (path.startsWith("/api")) {
-      let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
-      if (capturedJsonResponse) {
-        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
-      }
-
-      if (logLine.length > 80) {
-        logLine = logLine.slice(0, 79) + "…";
-      }
-
+      // Log without sensitive response data (passwords, tokens, etc.)
+      const logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
       log(logLine);
     }
   });
@@ -107,12 +136,43 @@ export default async function runApp(
 ) {
   const server = await registerRoutes(app);
 
+  // Improved error handler with user-friendly messages
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
+    
+    // User-friendly error messages based on error type
+    let userMessage = "Something went wrong. Please try again.";
+    
+    if (err.code === 'LIMIT_FILE_SIZE') {
+      userMessage = "File is too large. Maximum size is 50MB.";
+    } else if (err.message?.includes('Only PDF')) {
+      userMessage = "Please upload a valid PDF file.";
+    } else if (err.message?.includes('Only image')) {
+      userMessage = "Please upload a valid image file (JPG, PNG, GIF, or WebP).";
+    } else if (err.message?.includes('Only DOCX')) {
+      userMessage = "Please upload a valid Word document (.docx).";
+    } else if (err.message?.includes('Only Excel')) {
+      userMessage = "Please upload a valid Excel file (.xls or .xlsx).";
+    } else if (err.message?.includes('corrupted')) {
+      userMessage = "The file appears to be corrupted. Please try a different file.";
+    } else if (err.message?.includes('timeout') || err.code === 'ETIMEDOUT') {
+      userMessage = "The request took too long. Please try a smaller file.";
+    } else if (status === 429) {
+      userMessage = err.message || "Too many requests. Please wait a moment.";
+    } else if (status === 413) {
+      userMessage = "File is too large. Maximum size is 50MB.";
+    } else if (status >= 500) {
+      userMessage = "Server error. Please try again in a moment.";
+    } else if (err.message && !err.message.includes('password')) {
+      // Only show error message if it doesn't contain sensitive info
+      userMessage = err.message;
+    }
 
-    res.status(status).json({ message });
-    throw err;
+    // Log error without sensitive data
+    const logMessage = `Error ${status}: ${err.code || 'UNKNOWN'}`;
+    log(logMessage, 'error');
+
+    res.status(status).json({ error: userMessage });
   });
 
   // importantly run the final setup after setting up all the other routes so

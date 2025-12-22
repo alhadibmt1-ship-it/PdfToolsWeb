@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import ThemeToggle from "./ThemeToggle";
 import SettingsDialog from "./SettingsDialog";
 import MobileMenu from "./MobileMenu";
+import ToolSearch from "./ToolSearch";
 import siteLogo from "@assets/generated_images/logo-64.webp";
 
 export default function Header() {
@@ -41,8 +42,9 @@ export default function Header() {
             </Link>
           </nav>
           
-          {/* Desktop settings and theme */}
-          <div className="hidden md:flex items-center gap-1 pl-2 border-l border-border/50">
+          {/* Desktop search, settings and theme */}
+          <div className="hidden md:flex items-center gap-2 pl-2 border-l border-border/50">
+            <ToolSearch />
             <SettingsDialog />
             <ThemeToggle />
           </div>
