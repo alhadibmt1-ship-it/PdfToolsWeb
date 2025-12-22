@@ -223,7 +223,7 @@ export default function ToolSEOContent({
         <div className="grid md:grid-cols-2 gap-4">
           <Card>
             <CardContent className="p-6 flex gap-4">
-              <Zap className="w-8 h-8 text-primary flex-shrink-0" />
+              <Zap className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
               <div>
                 <h3 className="font-semibold mb-2">Lightning Fast</h3>
                 <p className="text-sm text-muted-foreground">Process your PDFs in seconds with our optimized servers. No waiting, no delays.</p>
@@ -232,7 +232,7 @@ export default function ToolSEOContent({
           </Card>
           <Card>
             <CardContent className="p-6 flex gap-4">
-              <Shield className="w-8 h-8 text-primary flex-shrink-0" />
+              <Shield className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
               <div>
                 <h3 className="font-semibold mb-2">100% Secure</h3>
                 <p className="text-sm text-muted-foreground">Your files are automatically deleted after processing. We never store or share your documents.</p>
@@ -241,7 +241,7 @@ export default function ToolSEOContent({
           </Card>
           <Card>
             <CardContent className="p-6 flex gap-4">
-              <CheckCircle2 className="w-8 h-8 text-primary flex-shrink-0" />
+              <CheckCircle2 className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
               <div>
                 <h3 className="font-semibold mb-2">No Registration Required</h3>
                 <p className="text-sm text-muted-foreground">Use all our tools instantly without creating an account. Completely free, no hidden fees.</p>
@@ -250,7 +250,7 @@ export default function ToolSEOContent({
           </Card>
           <Card>
             <CardContent className="p-6 flex gap-4">
-              <Clock className="w-8 h-8 text-primary flex-shrink-0" />
+              <Clock className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
               <div>
                 <h3 className="font-semibold mb-2">Available 24/7</h3>
                 <p className="text-sm text-muted-foreground">Access PDF HUB 24 anytime, from any device. Works on desktop, tablet, and mobile.</p>
@@ -265,7 +265,7 @@ export default function ToolSEOContent({
         <ul className="grid md:grid-cols-2 gap-3">
           {benefits.map((benefit, index) => (
             <li key={index} className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+              <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
               <span className="text-muted-foreground">{benefit}</span>
             </li>
           ))}
@@ -314,7 +314,7 @@ export default function ToolSEOContent({
 
       <section>
         <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-          <HelpCircle className="w-6 h-6" />
+          <HelpCircle className="w-6 h-6" aria-hidden="true" />
           Frequently Asked Questions
         </h2>
         <div className="space-y-4">

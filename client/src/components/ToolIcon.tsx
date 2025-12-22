@@ -94,7 +94,7 @@ export default function ToolIcon({ iconType, size = "md", className }: ToolIconP
           <div className={cn(sizes.container, "rounded", fromStyle.bgColor, fromStyle.textColor, "flex items-center justify-center font-bold", sizes.text)}>
             {fromStyle.label}
           </div>
-          <ArrowRight className={cn(sizes.arrow, "text-muted-foreground")} />
+          <ArrowRight className={cn(sizes.arrow, "text-muted-foreground")} aria-hidden="true" />
           <div className={cn(sizes.container, "rounded", toStyle.bgColor, toStyle.textColor, "flex items-center justify-center font-bold", sizes.text)}>
             {toStyle.label}
           </div>
@@ -107,14 +107,14 @@ export default function ToolIcon({ iconType, size = "md", className }: ToolIconP
   if (Icon) {
     return (
       <div className={cn(sizes.container, "rounded-lg bg-primary/10 flex items-center justify-center", className)}>
-        <Icon className={cn(sizes.icon, "text-primary")} />
+        <Icon className={cn(sizes.icon, "text-primary")} aria-hidden="true" />
       </div>
     );
   }
 
   return (
     <div className={cn(sizes.container, "rounded-lg bg-primary/10 flex items-center justify-center", className)}>
-      <FileText className={cn(sizes.icon, "text-primary")} />
+      <FileText className={cn(sizes.icon, "text-primary")} aria-hidden="true" />
     </div>
   );
 }
