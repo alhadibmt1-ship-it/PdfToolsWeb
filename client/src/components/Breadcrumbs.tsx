@@ -13,29 +13,56 @@ interface BreadcrumbsProps {
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
     <nav aria-label="Breadcrumb" className="mb-6">
-      <ol className="flex items-center flex-wrap gap-1 text-sm text-muted-foreground">
-        <li className="flex items-center">
-          <Link href="/" className="hover:text-primary transition-colors flex items-center gap-1" data-testid="breadcrumb-home">
-            <Home className="w-4 h-4" />
-            <span>Home</span>
+      <ol 
+        className="flex items-center flex-wrap gap-1 text-sm text-muted-foreground"
+        itemScope 
+        itemType="https://schema.org/BreadcrumbList"
+      >
+        <li 
+          className="flex items-center"
+          itemProp="itemListElement" 
+          itemScope 
+          itemType="https://schema.org/ListItem"
+        >
+          <Link 
+            href="/" 
+            className="hover:text-primary transition-colors flex items-center gap-1" 
+            data-testid="breadcrumb-home"
+            itemProp="item"
+          >
+            <Home className="w-4 h-4" aria-hidden="true" />
+            <span itemProp="name">Home</span>
           </Link>
+          <meta itemProp="position" content="1" />
         </li>
         {items.map((item, index) => (
-          <li key={index} className="flex items-center">
-            <ChevronRight className="w-4 h-4 mx-1 text-muted-foreground/50" />
+          <li 
+            key={index} 
+            className="flex items-center"
+            itemProp="itemListElement" 
+            itemScope 
+            itemType="https://schema.org/ListItem"
+          >
+            <ChevronRight className="w-4 h-4 mx-1 text-muted-foreground/50" aria-hidden="true" />
             {item.href ? (
               <Link 
                 href={item.href} 
                 className="hover:text-primary transition-colors"
                 data-testid={`breadcrumb-${index}`}
+                itemProp="item"
               >
-                {item.label}
+                <span itemProp="name">{item.label}</span>
               </Link>
             ) : (
-              <span className="text-foreground font-medium" data-testid={`breadcrumb-current-${index}`}>
+              <span 
+                className="text-foreground font-medium" 
+                data-testid={`breadcrumb-current-${index}`}
+                itemProp="name"
+              >
                 {item.label}
               </span>
             )}
+            <meta itemProp="position" content={String(index + 2)} />
           </li>
         ))}
       </ol>

@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle2, Shield, Zap, Clock, HelpCircle, Home, ChevronRight } from "lucide-react";
 import { Link } from "wouter";
 import { PDF_TOOLS } from "@shared/schema";
+import SocialShare from "./SocialShare";
 
 const BASE_URL = "https://pdfhub24.com";
 
@@ -162,6 +163,17 @@ export default function ToolSEOContent({
 
   return (
     <div className="mt-16 space-y-12">
+      {/* Social Share Section */}
+      <div className="flex items-center justify-between gap-4 pb-4 border-b">
+        <p className="text-sm text-muted-foreground">
+          Found this tool helpful? Share it with others!
+        </p>
+        <SocialShare 
+          title={`${toolName} - Free Online PDF Tool | PDF HUB 24`}
+          description={toolDescription}
+        />
+      </div>
+
       <section>
         <h2 className="text-2xl font-bold mb-4">About Our {toolName} Tool</h2>
         <p className="text-muted-foreground leading-relaxed text-lg">
