@@ -79,49 +79,18 @@ app.use((req, res, next) => {
   next();
 });
 
-// Rate limiting for API endpoints - prevent abuse
+// Rate limiting disabled for now - can be enabled later when traffic grows
+// To enable: uncomment the rate limiting code below
+/*
 const apiLimiter = rateLimit({
-  windowMs: 60 * 1000, // 1 minute
-  max: 30, // 30 requests per minute per IP
+  windowMs: 60 * 1000,
+  max: 100, // 100 requests per minute per IP
   message: { error: 'Too many requests. Please wait a moment and try again.' },
   standardHeaders: true,
   legacyHeaders: false,
-  skip: (req) => !req.path.startsWith('/api/'), // Only limit API routes
 });
-
-// Stricter rate limit for heavy processing endpoints
-const processingLimiter = rateLimit({
-  windowMs: 60 * 1000, // 1 minute
-  max: 10, // 10 conversions per minute per IP
-  message: { error: 'Processing limit reached. Please wait before converting more files.' },
-  standardHeaders: true,
-  legacyHeaders: false,
-});
-
 app.use(apiLimiter);
-
-// Apply stricter limits to all file processing routes (10/min for heavy operations)
-// Covers all 43+ tools plus utility endpoints
-const processingRoutes = [
-  // From PDF conversions (8 tools)
-  '/api/pdf-to-word', '/api/pdf-to-jpg', '/api/pdf-to-png', '/api/pdf-to-excel',
-  '/api/pdf-to-ppt', '/api/extract-text', '/api/extract-images', '/api/ocr-pdf',
-  // To PDF conversions (9 tools)
-  '/api/word-to-pdf', '/api/jpg-to-pdf', '/api/png-to-pdf', '/api/excel-to-pdf',
-  '/api/ppt-to-pdf', '/api/tiff-to-pdf', '/api/gif-to-pdf', '/api/html-to-pdf', '/api/webp-to-pdf',
-  // Edit PDF operations (19 tools)
-  '/api/merge', '/api/split', '/api/compress', '/api/rotate', '/api/delete-pages',
-  '/api/reorder-pages', '/api/add-page-numbers', '/api/add-watermark',
-  '/api/protect-pdf', '/api/unlock-pdf', '/api/crop-pdf', '/api/resize-pdf',
-  '/api/sign-pdf', '/api/flatten-pdf', '/api/grayscale-pdf', '/api/repair-pdf',
-  '/api/edit-pdf', '/api/annotate-pdf', '/api/redact-pdf',
-  // Utility tools (7 tools)
-  '/api/pdf-viewer', '/api/compare-pdf', '/api/preview-pdf',
-  '/api/compress-image', '/api/resize-image', '/api/crop-image', '/api/rotate-image', '/api/convert-image',
-  // Async conversion endpoints
-  '/api/conversion-status'
-];
-processingRoutes.forEach(route => app.use(route, processingLimiter));
+*/
 
 // Normalize trailing slashes - redirect /path/ to /path (301 for SEO)
 app.use((req, res, next) => {
