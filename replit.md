@@ -137,4 +137,5 @@ The site includes a blog content hub for SEO and informational traffic:
 - **Tool Fixes (Dec 2025)**:
   - **Grayscale PDF**: Now uses CloudConvert with Ghostscript engine for actual grayscale conversion (was stub before)
   - **OCR PDF**: Now uses CloudConvert Tesseract OCR for scanned documents with fallback to text extraction
-  - Both tools follow the same CloudConvert pattern as other working conversions
+  - **Extract Images**: Now uses CloudConvert to render PDF pages as high-quality PNG images (was returning dummy images before)
+  - All fixed tools follow the same CloudConvert pattern as other working conversions
