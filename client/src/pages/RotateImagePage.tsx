@@ -243,7 +243,7 @@ export default function RotateImagePage() {
           <ToolSEOContent
             toolName="Rotate & Flip Image"
             toolId="rotate-image"
-            toolDescription="Quickly rotate or flip any image with our free online tool. Rotate images 90°, 180°, or 270° to fix orientation. Flip images horizontally or vertically to create mirror effects. See changes in real-time before downloading."
+            toolDescription="Rotate or flip any image instantly with our free online rotation tool. Fix incorrectly oriented photos by rotating 90°, 180°, or 270° clockwise or counterclockwise. Create mirror effects by flipping images horizontally or vertically. Our real-time preview shows exactly how your final image will look before you download. Perfect for correcting smartphone photos taken in the wrong orientation, preparing scanned documents, creating artistic mirror effects, or aligning images for collages and compositions. Supports all popular formats including JPG, PNG, WebP, and GIF with zero quality loss during rotation."
             howToSteps={[
               "Upload your image by clicking the upload area or drag and drop your file.",
               "Use the rotation buttons to rotate left or right by 90 degrees.",
@@ -266,6 +266,18 @@ export default function RotateImagePage() {
               {
                 question: "Can I combine rotation and flip?",
                 answer: "Yes! You can rotate and flip in any combination. The preview shows exactly how your final image will look."
+              },
+              {
+                question: "Why are my phone photos sideways?",
+                answer: "Smartphones store orientation data in EXIF metadata. Some software ignores this data, showing photos sideways. Use our rotate tool to permanently fix the orientation by actually rotating the pixels."
+              },
+              {
+                question: "What's the difference between rotate and flip?",
+                answer: "Rotation turns the image around its center (like spinning a wheel). Flipping creates a mirror image - horizontal flip swaps left and right, vertical flip swaps top and bottom."
+              },
+              {
+                question: "Can I rotate by custom angles like 45 degrees?",
+                answer: "Our tool supports 90-degree increments (90°, 180°, 270°) which are the most common rotation needs. For custom angle rotation, you would need specialized image editing software."
               }
             ]}
             keywords={["rotate image online", "flip image", "image rotator free", "mirror image", "rotate photo 90 degrees"]}
@@ -273,6 +285,36 @@ export default function RotateImagePage() {
               { text: "Resize images to specific dimensions", href: "/resize-image" },
               { text: "Crop images to remove areas", href: "/crop-image" },
               { text: "Convert images to different formats", href: "/convert-image" }
+            ]}
+            extraSections={[
+              {
+                title: "When to Rotate or Flip Images",
+                content: "Image rotation and flipping are fundamental editing operations needed in numerous real-world scenarios. The most common need is fixing photos that appear sideways or upside down. This often happens with smartphone photos because the phone's orientation sensor sometimes records incorrect metadata, or when software fails to read the embedded orientation data correctly. Scanned documents frequently need rotation when pages are fed into the scanner at the wrong angle or orientation. Photographers use rotation to straighten horizons or experiment with different compositions. Flipping images is popular for creating mirror effects in artistic work, for adjusting selfies (which are mirrored by front-facing cameras), or for creating symmetrical designs. Video editors often flip footage when the subject should face a different direction for better visual flow. Our real-time preview lets you see exactly how rotations and flips will look before committing to the changes.",
+                items: [
+                  "Fixing photos taken in wrong orientation",
+                  "Correcting sideways smartphone photos",
+                  "Creating mirror effects for artistic purposes",
+                  "Flipping selfies to match your real appearance",
+                  "Preparing scanned documents that were fed incorrectly",
+                  "Aligning images for collages and compositions"
+                ]
+              },
+              {
+                title: "Rotation vs Flipping Explained",
+                content: "While rotation and flipping might seem similar, they produce fundamentally different results. Rotation pivots the image around its center point, like spinning a playing card on a table. A 90-degree clockwise rotation turns a landscape photo into portrait orientation (and vice versa). A 180-degree rotation turns the image completely upside down, useful for fixing photos taken with an inverted camera. In contrast, flipping creates a mirror image without rotating the angle. Horizontal flipping swaps the left and right sides, like looking at a reflection in a mirror. This is commonly used to correct selfies, which front-facing cameras capture as mirror images. Vertical flipping swaps top and bottom, creating an upside-down reflection effect useful for artistic purposes or creating water reflection effects. You can combine rotation and flipping operations to achieve any desired orientation for your image.",
+                items: [
+                  "Rotation turns the image clockwise or counterclockwise",
+                  "90° rotation turns landscape to portrait (or vice versa)",
+                  "180° rotation turns the image upside down",
+                  "Horizontal flip creates a mirror image (left-right swap)",
+                  "Vertical flip creates an upside-down mirror effect",
+                  "Combine rotation and flip for any orientation needed"
+                ]
+              },
+              {
+                title: "Fixing Common Orientation Problems",
+                content: "Many image orientation issues stem from how different devices and software handle EXIF orientation metadata. Modern smartphones embed orientation data in the image file rather than physically rotating the pixels. This saves processing time but causes problems when software ignores this metadata, displaying images sideways or upside down. The solution is to use our rotation tool to physically rotate the image pixels, which works universally regardless of how software handles metadata. For batch processing scanned documents, rotate each page as you scan to maintain consistency. When preparing images for web uploads, always rotate to the correct orientation beforehand since some platforms strip EXIF data during upload. If your rotated image looks correct in our preview but wrong elsewhere, the issue is likely EXIF metadata conflicts, and re-saving the rotated version from our tool will resolve it permanently."
+              }
             ]}
           />
           
