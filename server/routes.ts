@@ -2322,7 +2322,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Extract Images from PDF
+  // Extract Images from PDF - Render each page as a high-quality image using CloudConvert
   app.post("/api/extract-images", uploadPdf.single("file"), async (req, res) => {
     try {
       const file = req.file;
@@ -2334,32 +2334,92 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Invalid PDF file detected" });
       }
 
-      const pdfDoc = await PDFDocumentStandard.load(file.buffer);
-      const pages = pdfDoc.getPages();
+      const apiKey = process.env.CLOUDCONVERT_API_KEY;
       
-      const archive = archiver("zip", { zlib: { level: 9 } });
-      res.setHeader("Content-Type", "application/zip");
-      res.setHeader("Content-Disposition", "attachment; filename=extracted-images.zip");
-      res.setHeader("X-Image-Count", pages.length.toString());
-      archive.pipe(res);
+      if (apiKey) {
+        try {
+          const cloudConvert = new CloudConvert(apiKey);
+          
+          const job = await cloudConvert.jobs.create({
+            tasks: {
+              'upload-pdf': {
+                operation: 'import/upload'
+              },
+              'convert-to-png': {
+                operation: 'convert',
+                input: 'upload-pdf',
+                output_format: 'png',
+                pixel_density: 150,
+                all_pages: true
+              },
+              'export-result': {
+                operation: 'export/url',
+                input: 'convert-to-png'
+              }
+            }
+          });
 
-      for (let i = 0; i < pages.length; i++) {
-        const page = pages[i];
-        const { width, height } = page.getSize();
-        
-        const dummyImage = await sharp({
-          create: {
-            width: Math.round(width),
-            height: Math.round(height),
-            channels: 4,
-            background: { r: 255, g: 255, b: 255, alpha: 1 }
+          const uploadTask = job.tasks?.find((task: any) => task.name === 'upload-pdf');
+          if (!uploadTask) {
+            throw new Error('Upload task not found');
           }
-        }).png().toBuffer();
-        
-        archive.append(dummyImage, { name: `page-${i + 1}.png` });
+
+          await cloudConvert.tasks.upload(uploadTask, file.buffer, file.originalname, file.buffer.length);
+
+          const completedJob = await cloudConvert.jobs.wait(job.id);
+          const exportTask = completedJob.tasks?.find((task: any) => task.name === 'export-result');
+          
+          if (!exportTask || !exportTask.result?.files?.length) {
+            throw new Error('No output files from conversion');
+          }
+
+          const files = exportTask.result.files;
+          
+          const downloadFile = (url: string): Promise<Buffer> => {
+            return new Promise((resolve, reject) => {
+              const protocol = url.startsWith('https') ? https : http;
+              protocol.get(url, (response) => {
+                const chunks: Buffer[] = [];
+                response.on('data', (chunk: Buffer) => chunks.push(chunk));
+                response.on('end', () => resolve(Buffer.concat(chunks)));
+                response.on('error', reject);
+              }).on('error', reject);
+            });
+          };
+
+          // If single image, return directly
+          if (files.length === 1 && files[0].url) {
+            const imageBuffer = await downloadFile(files[0].url);
+            res.setHeader("Content-Type", "image/png");
+            res.setHeader("Content-Disposition", `attachment; filename=extracted-image.png`);
+            res.setHeader("X-Image-Count", "1");
+            res.send(imageBuffer);
+            return;
+          }
+
+          // Multiple images - create ZIP archive
+          const archive = archiver("zip", { zlib: { level: 9 } });
+          res.setHeader("Content-Type", "application/zip");
+          res.setHeader("Content-Disposition", "attachment; filename=extracted-images.zip");
+          res.setHeader("X-Image-Count", files.length.toString());
+          archive.pipe(res);
+
+          for (let i = 0; i < files.length; i++) {
+            const fileUrl = files[i].url;
+            if (!fileUrl) continue;
+            const imageBuffer = await downloadFile(fileUrl);
+            archive.append(imageBuffer, { name: `page-${i + 1}.png` });
+          }
+
+          await archive.finalize();
+          return;
+        } catch (cloudError) {
+          console.error("CloudConvert extract images failed:", cloudError);
+          return res.status(500).json({ error: "Image extraction service temporarily unavailable" });
+        }
       }
 
-      await archive.finalize();
+      return res.status(500).json({ error: "Image extraction service not configured" });
     } catch (error) {
       console.error("Extract images error:", error);
       res.status(500).json({ error: "Failed to extract images from PDF" });
