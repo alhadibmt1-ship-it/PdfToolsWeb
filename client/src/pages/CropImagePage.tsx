@@ -254,7 +254,7 @@ export default function CropImagePage() {
           <ToolSEOContent
             toolName="Crop Image"
             toolId="crop-image"
-            toolDescription="Remove unwanted areas from your images with our free online image cropper. Specify exact pixel coordinates for precise cropping — perfect for preparing images for social media, removing distractions, or focusing on specific subjects in your photos."
+            toolDescription="Remove unwanted areas from your images with our free online image cropper. Specify exact pixel coordinates for precise cropping, giving you complete control over the final result. Whether you need to prepare images for social media profile pictures, remove distracting backgrounds, focus on specific subjects in group photos, or create perfectly sized thumbnails, our cropping tool handles it all. The tool supports all popular image formats including JPG, PNG, WebP, and GIF. Simply enter your crop coordinates, preview the original image, and download your perfectly cropped result instantly."
             howToSteps={[
               "Upload your image by clicking the upload area or drag and drop your file.",
               "View your image and note the original dimensions.",
@@ -277,6 +277,18 @@ export default function CropImagePage() {
               {
                 question: "Will cropping reduce image quality?",
                 answer: "No, cropping does not compress or reduce quality. It simply removes the pixels outside your selected area, keeping the original quality of the remaining portion."
+              },
+              {
+                question: "How do I crop an image to a square for Instagram?",
+                answer: "To create a square crop, enter the same value for both width and height. For Instagram, 1080x1080 pixels is the ideal size. Position your crop area using the X and Y coordinates to center on your subject."
+              },
+              {
+                question: "Can I crop multiple images at once?",
+                answer: "Currently, our tool processes one image at a time for maximum precision. For batch cropping, process each image individually to ensure perfect results."
+              },
+              {
+                question: "What happens if my crop area is larger than the image?",
+                answer: "If you enter dimensions that exceed the original image size, you'll receive an error message. Make sure your crop area fits within the original image boundaries shown in the preview."
               }
             ]}
             keywords={["crop image online", "image cropper free", "trim image", "cut image borders", "photo crop tool"]}
@@ -284,6 +296,36 @@ export default function CropImagePage() {
               { text: "Resize images to specific dimensions", href: "/resize-image" },
               { text: "Rotate and flip images", href: "/rotate-image" },
               { text: "Compress images to reduce file size", href: "/image-compressor" }
+            ]}
+            extraSections={[
+              {
+                title: "Common Cropping Use Cases",
+                content: "Cropping is an essential image editing technique that allows you to remove unwanted portions while keeping the important parts intact. One of the most common uses is creating profile pictures for social media platforms, which typically require square images centered on a face. Photographers and content creators frequently crop photos to remove distracting elements from backgrounds, whether it's a passerby in a street photo or clutter in a product shot. E-commerce sellers rely heavily on cropping to create consistent product images with clean backgrounds and proper framing. Screenshots often need cropping to remove browser chrome, desktop clutter, or sensitive information visible in other windows. Professional photographers crop to improve composition, applying techniques like the rule of thirds after the fact to create more visually appealing images.",
+                items: [
+                  "Creating square profile pictures from rectangular photos",
+                  "Removing unwanted backgrounds or distractions",
+                  "Focusing on specific subjects in group photos",
+                  "Preparing product images for e-commerce listings",
+                  "Cutting borders or watermarks from screenshots",
+                  "Creating banner images from landscape photos"
+                ]
+              },
+              {
+                title: "Popular Crop Aspect Ratios",
+                content: "Understanding aspect ratios is crucial for effective cropping. The aspect ratio describes the proportional relationship between an image's width and height. Different platforms and use cases have standardized around specific aspect ratios. The 1:1 square format has become ubiquitous thanks to Instagram's original square-only format, and it remains ideal for profile pictures across platforms. The 4:3 aspect ratio is traditional for photography and presentations, while the wider 16:9 format dominates video content, YouTube thumbnails, and modern displays. Vertical 9:16 content has exploded with TikTok and Instagram Stories, requiring portrait-oriented crops. For printing photographs, 2:3 and 3:2 ratios align with standard photo paper sizes. Understanding these ratios helps you crop images that display perfectly without unexpected cropping by platforms.",
+                items: [
+                  "1:1 Square - Instagram posts, profile pictures",
+                  "4:3 Standard - Traditional photos, presentations",
+                  "16:9 Widescreen - YouTube thumbnails, headers",
+                  "9:16 Portrait - Instagram Stories, TikTok",
+                  "2:3 Photo - Standard photo prints",
+                  "3:2 Landscape - DSLR camera photos"
+                ]
+              },
+              {
+                title: "How to Calculate Crop Coordinates",
+                content: "Calculating the right crop coordinates ensures you get exactly the portion of the image you want. The coordinate system starts at the top-left corner of your image, which is position (0, 0). The X value increases as you move right, and the Y value increases as you move down. To center your crop on a specific subject, first find the subject's approximate center point in your image. Then subtract half your desired width from the X position to get your starting X coordinate, and subtract half your desired height from the Y position to get your starting Y coordinate. For example, if your subject is centered at position (500, 400) and you want a 200x200 pixel crop, you would use X=400, Y=300, Width=200, Height=200. Most image viewers show cursor coordinates when you hover over an image, making it easy to identify exact positions for precise cropping."
+              }
             ]}
           />
           

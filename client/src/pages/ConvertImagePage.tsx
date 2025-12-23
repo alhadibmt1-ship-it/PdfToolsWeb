@@ -219,7 +219,7 @@ export default function ConvertImagePage() {
           <ToolSEOContent
             toolName="Convert Image"
             toolId="convert-image"
-            toolDescription="Convert images between popular formats with our free online tool. Convert JPG to PNG for transparency support, PNG to WebP for smaller file sizes, or any combination of JPG, PNG, WebP, GIF, BMP, and TIFF. Adjustable quality settings give you full control over the output."
+            toolDescription="Convert images between popular formats instantly with our free online image converter. Transform JPG to PNG when you need transparency support, convert PNG to WebP for dramatically smaller file sizes ideal for web use, or switch between any combination of JPG, PNG, WebP, GIF, BMP, and TIFF formats. Our adjustable quality settings from 50% to 100% give you complete control over the balance between file size and image quality. Whether you're optimizing images for faster website loading, preparing graphics for different software compatibility, or converting photos for professional printing, PDF HUB 24 handles all your image format conversion needs quickly and easily."
             howToSteps={[
               "Upload your image by clicking the upload area or drag and drop your file.",
               "Select the output format you want to convert to.",
@@ -246,6 +246,14 @@ export default function ConvertImagePage() {
               {
                 question: "How do I convert PNG to JPG with a white background?",
                 answer: "When converting PNG to JPG, transparent areas automatically become white since JPG doesn't support transparency. This is the expected behavior."
+              },
+              {
+                question: "Why should I convert images to WebP format?",
+                answer: "WebP typically produces files 25-35% smaller than JPG or PNG with similar quality. This speeds up website loading times and reduces bandwidth usage. Most modern browsers support WebP."
+              },
+              {
+                question: "Can I convert animated GIFs to other formats?",
+                answer: "When converting animated GIFs, only the first frame is extracted to formats that don't support animation (JPG, PNG, WebP, TIFF, BMP). To preserve animation, keep the GIF format."
               }
             ]}
             keywords={["convert image online", "jpg to png", "png to jpg", "webp converter", "image format converter free"]}
@@ -253,6 +261,36 @@ export default function ConvertImagePage() {
               { text: "Compress images to reduce file size", href: "/image-compressor" },
               { text: "Resize images to specific dimensions", href: "/resize-image" },
               { text: "Convert images to PDF", href: "/jpg-to-pdf" }
+            ]}
+            extraSections={[
+              {
+                title: "Image Format Comparison Guide",
+                content: "Choosing the right image format is crucial for balancing quality, file size, and compatibility. JPG (or JPEG) remains the most widely used format for photographs due to its excellent compression that significantly reduces file sizes while maintaining acceptable visual quality. However, JPG uses lossy compression and doesn't support transparency. PNG is the go-to format for graphics, logos, screenshots, and any image requiring transparent backgrounds. It uses lossless compression, preserving every pixel, but produces larger files than JPG for photographs. WebP is a modern format developed by Google that offers superior compression compared to both JPG and PNG while supporting transparency. It's ideal for web use but may not work in older software. GIF is limited to 256 colors but uniquely supports simple animations. TIFF is preferred for professional print production due to its lossless quality and extensive color depth support, though files are substantially larger. BMP is an uncompressed format rarely used today except in legacy systems.",
+                items: [
+                  "JPG/JPEG: Best for photos, small file size, no transparency",
+                  "PNG: Best for graphics, logos, supports transparency",
+                  "WebP: Modern format, smallest size, good for web",
+                  "GIF: Simple animations, limited to 256 colors",
+                  "TIFF: High quality for print, very large files",
+                  "BMP: Uncompressed, rarely used today"
+                ]
+              },
+              {
+                title: "When to Convert Image Formats",
+                content: "Format conversion serves different purposes depending on your needs. Converting PNG to JPG is common when sharing photos, as it dramatically reduces file size (often by 80-90%) while maintaining visual quality for photographs. The reverse, JPG to PNG, is needed when you want to add a transparent background to an image or need lossless quality for further editing. Converting any format to WebP can reduce your website's image payload by 25-35%, significantly improving page load times and Core Web Vitals scores that affect search rankings. Professional print shops often require TIFF files for their high color fidelity and lossless quality. Converting animated GIFs to PNG extracts a single high-quality frame. Converting WebP back to JPG or PNG ensures compatibility with older software or systems that don't support the WebP format. Each conversion scenario requires understanding the tradeoffs between file size, quality, and format capabilities.",
+                items: [
+                  "PNG to JPG: Reduce file size for photos",
+                  "JPG to PNG: Add transparency support",
+                  "PNG/JPG to WebP: Optimize for faster websites",
+                  "Any to TIFF: Prepare for professional printing",
+                  "GIF to PNG: Get higher quality still images",
+                  "WebP to JPG/PNG: Compatibility with older software"
+                ]
+              },
+              {
+                title: "Quality Settings Explained",
+                content: "Our image converter offers adjustable quality settings from 50% to 100%, giving you control over the trade-off between file size and visual fidelity. The quality setting primarily affects lossy formats like JPG and WebP. At 100% quality, you get maximum visual quality with larger file sizes, ideal for professional work or archival purposes. At 90% quality, file sizes are noticeably smaller while visual differences are nearly imperceptible to most viewers, making this an excellent choice for web use. At 75% quality, compression artifacts may become visible in detailed areas but files are significantly smaller, suitable for thumbnails or previews. At 50% quality, compression is clearly visible but files are very small, appropriate only when file size is the primary concern. For PNG and TIFF outputs, quality settings have minimal effect since these are lossless formats. Start with 90% quality and reduce if file size is still too large for your needs."
+              }
             ]}
           />
           
