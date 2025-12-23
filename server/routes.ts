@@ -1900,7 +1900,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Grayscale PDF - Convert to grayscale (basic implementation)
+  // Grayscale PDF - Convert to grayscale using CloudConvert
   app.post("/api/grayscale-pdf", uploadPdf.single("file"), async (req, res) => {
     try {
       const file = req.file;
@@ -1912,12 +1912,73 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Invalid PDF file detected" });
       }
 
-      const pdfDoc = await PDFDocumentStandard.load(file.buffer);
-      const pdfBytes = await pdfDoc.save({ useObjectStreams: false });
+      const apiKey = process.env.CLOUDCONVERT_API_KEY;
       
-      res.setHeader("Content-Type", "application/pdf");
-      res.setHeader("Content-Disposition", "attachment; filename=grayscale.pdf");
-      res.send(Buffer.from(pdfBytes));
+      if (apiKey) {
+        try {
+          const cloudConvert = new CloudConvert(apiKey);
+          
+          const job = await cloudConvert.jobs.create({
+            tasks: {
+              'upload-pdf': {
+                operation: 'import/upload'
+              },
+              'convert-grayscale': {
+                operation: 'convert',
+                input: 'upload-pdf',
+                input_format: 'pdf',
+                output_format: 'pdf',
+                engine: 'ghostscript',
+                grayscale: true
+              },
+              'export-pdf': {
+                operation: 'export/url',
+                input: 'convert-grayscale'
+              }
+            }
+          });
+
+          const uploadTask = job.tasks?.find((task: any) => task.name === 'upload-pdf');
+          if (!uploadTask) {
+            throw new Error('Upload task not found');
+          }
+
+          await cloudConvert.tasks.upload(uploadTask, file.buffer, file.originalname, file.buffer.length);
+
+          const completedJob = await cloudConvert.jobs.wait(job.id);
+          const exportTask = completedJob.tasks?.find((task: any) => task.name === 'export-pdf');
+          
+          if (!exportTask || !exportTask.result?.files?.[0]?.url) {
+            throw new Error('No output file from grayscale conversion');
+          }
+
+          const downloadUrl = exportTask.result.files[0].url;
+          
+          const downloadFile = (url: string): Promise<Buffer> => {
+            return new Promise((resolve, reject) => {
+              const protocol = url.startsWith('https') ? https : http;
+              protocol.get(url, (response) => {
+                const chunks: Buffer[] = [];
+                response.on('data', (chunk: Buffer) => chunks.push(chunk));
+                response.on('end', () => resolve(Buffer.concat(chunks)));
+                response.on('error', reject);
+              }).on('error', reject);
+            });
+          };
+
+          const grayscaleBuffer = await downloadFile(downloadUrl);
+          
+          res.setHeader("Content-Type", "application/pdf");
+          res.setHeader("Content-Disposition", "attachment; filename=grayscale.pdf");
+          res.send(grayscaleBuffer);
+          return;
+        } catch (cloudError) {
+          console.error("CloudConvert grayscale failed:", cloudError);
+          return res.status(500).json({ error: "Grayscale conversion service temporarily unavailable" });
+        }
+      }
+
+      return res.status(500).json({ error: "Grayscale conversion service not configured" });
     } catch (error) {
       console.error("Grayscale PDF error:", error);
       res.status(500).json({ error: "Failed to convert PDF to grayscale" });
@@ -2053,7 +2114,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // OCR PDF - Extract text using OCR (basic text extraction for now)
+  // OCR PDF - Extract text using CloudConvert OCR
   app.post("/api/ocr-pdf", uploadPdf.single("file"), async (req, res) => {
     try {
       const file = req.file;
@@ -2065,17 +2126,102 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Invalid PDF file detected" });
       }
 
+      // First try basic text extraction
       const pdfParse = await getPdfParse();
-      let text = "";
+      let basicText = "";
       
       try {
         const data = await pdfParse(file.buffer);
-        text = data.text || "";
+        basicText = data.text?.trim() || "";
       } catch (parseError) {
-        return res.status(400).json({ error: "Failed to extract text from PDF" });
+        // Continue to OCR if basic extraction fails
       }
 
-      res.json({ text: text || "No text could be extracted. This PDF may be purely image-based and require advanced OCR." });
+      // If we got substantial text (more than just whitespace/formatting), return it
+      if (basicText.length > 50) {
+        return res.json({ text: basicText, method: "text-extraction" });
+      }
+
+      // Otherwise, use CloudConvert OCR for scanned documents
+      const apiKey = process.env.CLOUDCONVERT_API_KEY;
+      
+      if (apiKey) {
+        try {
+          const cloudConvert = new CloudConvert(apiKey);
+          
+          // Convert PDF to searchable PDF with OCR, then extract text
+          const job = await cloudConvert.jobs.create({
+            tasks: {
+              'upload-pdf': {
+                operation: 'import/upload'
+              },
+              'ocr-convert': {
+                operation: 'convert',
+                input: 'upload-pdf',
+                input_format: 'pdf',
+                output_format: 'txt',
+                engine: 'tesseract',
+                ocr: true,
+                ocr_language: 'eng'
+              },
+              'export-text': {
+                operation: 'export/url',
+                input: 'ocr-convert'
+              }
+            }
+          });
+
+          const uploadTask = job.tasks?.find((task: any) => task.name === 'upload-pdf');
+          if (!uploadTask) {
+            throw new Error('Upload task not found');
+          }
+
+          await cloudConvert.tasks.upload(uploadTask, file.buffer, file.originalname, file.buffer.length);
+
+          const completedJob = await cloudConvert.jobs.wait(job.id);
+          const exportTask = completedJob.tasks?.find((task: any) => task.name === 'export-text');
+          
+          if (!exportTask || !exportTask.result?.files?.[0]?.url) {
+            throw new Error('No output file from OCR');
+          }
+
+          const downloadUrl = exportTask.result.files[0].url;
+          
+          const downloadFile = (url: string): Promise<Buffer> => {
+            return new Promise((resolve, reject) => {
+              const protocol = url.startsWith('https') ? https : http;
+              protocol.get(url, (response) => {
+                const chunks: Buffer[] = [];
+                response.on('data', (chunk: Buffer) => chunks.push(chunk));
+                response.on('end', () => resolve(Buffer.concat(chunks)));
+                response.on('error', reject);
+              }).on('error', reject);
+            });
+          };
+
+          const textBuffer = await downloadFile(downloadUrl);
+          const ocrText = textBuffer.toString('utf-8').trim();
+          
+          return res.json({ 
+            text: ocrText || "No text could be extracted from this document.", 
+            method: "ocr" 
+          });
+        } catch (cloudError) {
+          console.error("CloudConvert OCR failed:", cloudError);
+          // Return basic text if available, otherwise error
+          if (basicText) {
+            return res.json({ text: basicText, method: "text-extraction" });
+          }
+          return res.status(500).json({ error: "OCR service temporarily unavailable" });
+        }
+      }
+
+      // Fallback to basic text if no CloudConvert
+      if (basicText) {
+        return res.json({ text: basicText, method: "text-extraction" });
+      }
+
+      return res.status(500).json({ error: "OCR service not configured" });
     } catch (error) {
       console.error("OCR PDF error:", error);
       res.status(500).json({ error: "Failed to perform OCR on PDF" });
