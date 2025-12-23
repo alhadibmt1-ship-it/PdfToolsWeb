@@ -79,18 +79,30 @@ app.use((req, res, next) => {
   next();
 });
 
-// Rate limiting disabled for now - can be enabled later when traffic grows
-// To enable: uncomment the rate limiting code below
-/*
+// Rate limiting for API endpoints
 const apiLimiter = rateLimit({
-  windowMs: 60 * 1000,
-  max: 100, // 100 requests per minute per IP
+  windowMs: 60 * 1000, // 1 minute
+  max: 60, // 60 requests per minute per IP
   message: { error: 'Too many requests. Please wait a moment and try again.' },
   standardHeaders: true,
   legacyHeaders: false,
+  skip: (req) => !req.path.startsWith('/api'), // Only limit API routes
 });
+
+// Stricter rate limiting for file upload endpoints
+const uploadLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 20, // 20 uploads per minute per IP
+  message: { error: 'Too many file uploads. Please wait a moment and try again.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
 app.use(apiLimiter);
-*/
+app.use('/api/*/upload', uploadLimiter);
+app.use('/api/*/convert', uploadLimiter);
+app.use('/api/*/compress', uploadLimiter);
+app.use('/api/*/merge', uploadLimiter);
 
 // Normalize trailing slashes - redirect /path/ to /path (301 for SEO)
 app.use((req, res, next) => {
