@@ -92,7 +92,7 @@ Key technical implementations include:
 
 ### Third-party Services
 - **Google Fonts CDN**: For typography (Inter font family).
-- **CloudConvert API**: Used for PDF to Word, PDF to JPG, PDF to PNG, PDF to PowerPoint, and PowerPoint to PDF conversions with high-quality output.
+- **CloudConvert API**: Used for PDF to Word, PDF to JPG, PDF to PNG, PDF to PowerPoint, PowerPoint to PDF, Grayscale PDF, and OCR PDF conversions with high-quality output.
 
 ### Key NPM Packages
 - **PDF Processing**: `pdf-lib` (standard), `pdf-lib-with-encrypt` (encryption only), `pdf-parse`, `docx`, `mammoth`, `sharp`, `archiver`, `xlsx`.
@@ -129,8 +129,12 @@ The site includes a blog content hub for SEO and informational traffic:
 - Added competitor-inspired trust elements (privacy badges, Trusted by Professionals section)
 - **Ahrefs SEO Fixes (Dec 2025)**: Removed fabricated aggregateRating from all structured data, added external links to Wikipedia/ISO/Adobe on all tool pages, fixed meta description lengths under 155 chars, fixed title lengths under 60 chars
 - **Security & UX Improvements (Dec 2025)**:
-  - Rate limiting code prepared but disabled (can enable later when traffic grows)
+  - Rate limiting enabled: 60 req/min general API, 20 uploads/min for file endpoints
   - Security headers: HSTS (production-only), CSP (strict in production, relaxed for dev), X-Content-Type-Options, X-Frame-Options, X-XSS-Protection
   - User-friendly error messages without sensitive data leakage
   - Global tool search with Cmd+K / Ctrl+K keyboard shortcut (ToolSearch component)
   - Improved logging without sensitive response data
+- **Tool Fixes (Dec 2025)**:
+  - **Grayscale PDF**: Now uses CloudConvert with Ghostscript engine for actual grayscale conversion (was stub before)
+  - **OCR PDF**: Now uses CloudConvert Tesseract OCR for scanned documents with fallback to text extraction
+  - Both tools follow the same CloudConvert pattern as other working conversions
