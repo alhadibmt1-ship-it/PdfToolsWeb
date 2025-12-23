@@ -61,6 +61,7 @@ export default function ToolSearch() {
         className="relative h-9 w-9 p-0 xl:h-9 xl:w-60 xl:justify-start xl:px-3 xl:py-2"
         onClick={() => setOpen(true)}
         data-testid="button-search-tools"
+        aria-label="Search tools"
       >
         <Search className="h-4 w-4 xl:mr-2" aria-hidden="true" />
         <span className="hidden xl:inline-flex text-muted-foreground">Search tools...</span>
