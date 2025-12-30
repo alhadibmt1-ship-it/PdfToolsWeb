@@ -69,39 +69,32 @@ export function ToolStructuredData({
       }))
     } : null;
 
-    const howToSchema = howToSteps.length > 0 ? {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": `How to Use ${toolName}`,
-      "description": description,
-      "step": howToSteps.map((step, index) => ({
-        "@type": "HowToStep",
-        "position": index + 1,
-        "text": step,
-        "name": `Step ${index + 1}`
-      }))
-    } : null;
-
     const softwareSchema = {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": `${toolName} - PDF HUB 24`,
+      "@type": "WebApplication",
+      "name": toolName,
       "url": `${BASE_URL}${toolPath}`,
       "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
       "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD"
       },
-      "description": description
+      "description": description,
+      "provider": {
+        "@type": "Organization",
+        "name": "PDF HUB 24",
+        "url": BASE_URL
+      }
     };
 
     const toolId = toolPath.replace(/\//g, '-');
     const existingScripts = document.querySelectorAll(`script[data-tool-schema="${toolId}"]`);
     existingScripts.forEach(script => script.remove());
 
-    const schemas = [breadcrumbList, softwareSchema, faqSchema, howToSchema].filter(Boolean);
+    const schemas = [breadcrumbList, softwareSchema, faqSchema].filter(Boolean);
     
     schemas.forEach((schema) => {
       const script = document.createElement("script");
