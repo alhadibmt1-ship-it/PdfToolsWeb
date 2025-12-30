@@ -17,7 +17,8 @@ export default function JpgToPdfPage() {
   useSEO({
     title: "JPG to PDF Free Online - Convert Images to PDF | PDF HUB 24",
     description: "Convert JPG to PDF free. Combine multiple images into one PDF. Best free image to PDF converter. No signup.",
-    keywords: "jpg to pdf free, convert image to pdf, photo to pdf, picture to pdf free, jpg to pdf converter free, combine images to pdf"
+    keywords: "jpg to pdf free, convert image to pdf, photo to pdf, picture to pdf free, jpg to pdf converter free, combine images to pdf",
+    canonicalPath: "/jpg-to-pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

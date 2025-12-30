@@ -17,7 +17,8 @@ export default function OcrPdfPage() {
   useSEO({
     title: "OCR PDF Free - Extract Scanned Text | PDF HUB 24",
     description: "OCR PDF free online. Extract text from scanned PDF documents instantly. Best free PDF OCR tool - convert image-based PDFs to searchable text. No signup.",
-    keywords: "ocr pdf free, pdf ocr online, extract text from scanned pdf, pdf text recognition free, scan to text pdf, image pdf to text"
+    keywords: "ocr pdf free, pdf ocr online, extract text from scanned pdf, pdf text recognition free, scan to text pdf, image pdf to text",
+    canonicalPath: "/ocr-pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

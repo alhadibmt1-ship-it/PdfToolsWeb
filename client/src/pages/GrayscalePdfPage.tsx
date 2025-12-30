@@ -16,8 +16,9 @@ import { useSEO } from "@/hooks/useSEO";
 export default function GrayscalePdfPage() {
   useSEO({
     title: "PDF to Grayscale Free - Black and White | PDF HUB 24",
-    description: "Convert PDF to grayscale free online. Change color PDF to black and white for printing. Best free PDF to B&W converter - save ink. No signup required.",
-    keywords: "pdf to grayscale free, black and white pdf, convert pdf grayscale free, pdf to bw, grayscale pdf converter free"
+    description: "Convert PDF to grayscale free. Change color PDF to black and white for printing. Best free PDF to B&W converter. No signup.",
+    keywords: "pdf to grayscale free, black and white pdf, convert pdf grayscale free, pdf to bw, grayscale pdf converter free",
+    canonicalPath: "/grayscale-pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

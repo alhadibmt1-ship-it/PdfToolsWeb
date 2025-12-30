@@ -9,7 +9,8 @@ export default function AboutPage() {
   useSEO({
     title: "About Us - PDF HUB 24 | Free Online PDF Tools",
     description: "Learn about PDF HUB 24, your trusted source for free online PDF tools. Convert, merge, split, and manipulate PDF files with ease.",
-    keywords: "about pdf hub 24, pdf tools, online pdf converter, pdf manipulation tools"
+    keywords: "about pdf hub 24, pdf tools, online pdf converter, pdf manipulation tools",
+    canonicalPath: "/about"
   });
 
   return (

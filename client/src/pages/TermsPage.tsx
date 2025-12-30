@@ -9,7 +9,8 @@ export default function TermsPage() {
   useSEO({
     title: "Terms of Service - PDF HUB 24",
     description: "Read PDF HUB 24's terms of service to understand the rules and guidelines for using our free online PDF tools.",
-    keywords: "terms of service, terms and conditions, pdf hub 24 terms"
+    keywords: "terms of service, terms and conditions, pdf hub 24 terms",
+    canonicalPath: "/terms"
   });
 
   return (

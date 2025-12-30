@@ -48,7 +48,8 @@ export default function ReorderPagesPage() {
   useSEO({
     title: "Reorder PDF Pages Free Online - Rearrange PDF | PDF HUB 24",
     description: "Reorder PDF pages free. Drag and drop to rearrange pages in any order. Best free PDF organizer. No signup.",
-    keywords: "reorder pdf pages free, rearrange pdf, organize pdf pages, sort pdf pages free, move pdf pages, change pdf page order"
+    keywords: "reorder pdf pages free, rearrange pdf, organize pdf pages, sort pdf pages free, move pdf pages, change pdf page order",
+    canonicalPath: "/reorder-pages"
   });
 
   const [files, setFiles] = useState<File[]>([]);

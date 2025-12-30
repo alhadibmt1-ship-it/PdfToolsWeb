@@ -20,7 +20,8 @@ export default function SignPdfPage() {
   useSEO({
     title: "Sign PDF Free Online - Add Signature to PDF | PDF HUB 24",
     description: "Sign PDF free online. Add your signature to PDF documents instantly - draw, type, or upload. Best free eSign tool - no printing needed. No signup required.",
-    keywords: "sign pdf free, add signature to pdf, pdf signature free, esign pdf online, electronic signature free, sign document online free"
+    keywords: "sign pdf free, add signature to pdf, pdf signature free, esign pdf online, electronic signature free, sign document online free",
+    canonicalPath: "/sign-pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

@@ -17,7 +17,8 @@ export default function PdfToJpgPage() {
   useSEO({
     title: "PDF to JPG Free Online - Convert PDF to Image | PDF HUB 24",
     description: "Convert PDF to JPG free. Transform PDF pages to high-quality images instantly. Extract all pages as pictures. No signup.",
-    keywords: "pdf to jpg free, convert pdf to image, pdf to jpeg, pdf to jpg converter free, save pdf as image, pdf to picture"
+    keywords: "pdf to jpg free, convert pdf to image, pdf to jpeg, pdf to jpg converter free, save pdf as image, pdf to picture",
+    canonicalPath: "/pdf-to-jpg"
   });
 
   const [files, setFiles] = useState<File[]>([]);

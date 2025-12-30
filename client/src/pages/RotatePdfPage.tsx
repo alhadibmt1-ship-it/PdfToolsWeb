@@ -20,7 +20,8 @@ export default function RotatePdfPage() {
   useSEO({
     title: "Rotate PDF Free - Turn Pages 90, 180 | PDF HUB 24",
     description: "Rotate PDF pages free. Turn PDF 90, 180, 270 degrees instantly. Fix upside-down scans. Best free PDF rotator. No signup.",
-    keywords: "rotate pdf free, rotate pdf pages, turn pdf, flip pdf, rotate pdf online, pdf rotator free, rotate scanned pdf"
+    keywords: "rotate pdf free, rotate pdf pages, turn pdf, flip pdf, rotate pdf online, pdf rotator free, rotate scanned pdf",
+    canonicalPath: "/rotate"
   });
 
   const [files, setFiles] = useState<File[]>([]);

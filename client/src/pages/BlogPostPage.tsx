@@ -189,7 +189,7 @@ export default function BlogPostPage() {
 
   useSEO({
     title: post?.metaTitle || "Blog | PDF HUB 24",
-    description: post?.metaDescription || "PDF tips and tutorials",
+    description: post?.metaDescription || "Free PDF tips, tutorials, and guides. Learn how to work with PDF files effectively using our free online tools.",
     canonicalPath: `/blog/${params.slug}`
   });
 

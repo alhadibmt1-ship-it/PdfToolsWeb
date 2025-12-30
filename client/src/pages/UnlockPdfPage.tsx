@@ -19,7 +19,8 @@ export default function UnlockPdfPage() {
   useSEO({
     title: "Unlock PDF Free - Remove Password | PDF HUB 24",
     description: "Unlock PDF free. Remove password from PDF when you know the password. Best free PDF unlocker. No signup.",
-    keywords: "unlock pdf free, remove pdf password, pdf unlocker free, decrypt pdf, remove password from pdf, unlock protected pdf"
+    keywords: "unlock pdf free, remove pdf password, pdf unlocker free, decrypt pdf, remove password from pdf, unlock protected pdf",
+    canonicalPath: "/unlock-pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

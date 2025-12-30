@@ -19,7 +19,8 @@ export default function GifToPdfPage() {
   useSEO({
     title: "GIF to PDF Free Online - Convert GIF to PDF | PDF HUB 24",
     description: "Convert GIF to PDF free. Transform GIF images to PDF documents instantly. Combine multiple GIFs. No signup.",
-    keywords: "gif to pdf free, convert gif to pdf, gif to pdf converter free, image to pdf, animated gif to pdf"
+    keywords: "gif to pdf free, convert gif to pdf, gif to pdf converter free, image to pdf, animated gif to pdf",
+    canonicalPath: "/gif-to-pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

@@ -19,7 +19,8 @@ export default function ImageCompressorPage() {
   useSEO({
     title: "Compress Image Free - JPG PNG WebP | PDF HUB 24",
     description: "Compress images free. Reduce JPG, PNG, WebP file size up to 80%. Best free image compressor. No signup.",
-    keywords: "compress image free, image compressor online, reduce image size, jpg compressor free, png compressor, compress photo online"
+    keywords: "compress image free, image compressor online, reduce image size, jpg compressor free, png compressor, compress photo online",
+    canonicalPath: "/image-compressor"
   });
 
   const [files, setFiles] = useState<File[]>([]);

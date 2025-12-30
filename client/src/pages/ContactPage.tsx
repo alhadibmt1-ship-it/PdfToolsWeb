@@ -10,7 +10,8 @@ export default function ContactPage() {
   useSEO({
     title: "Contact Us - PDF HUB 24 | Get in Touch",
     description: "Contact PDF HUB 24 for support, feedback, or questions about our free PDF tools. We're here to help!",
-    keywords: "contact pdf hub 24, support, help, feedback, customer service"
+    keywords: "contact pdf hub 24, support, help, feedback, customer service",
+    canonicalPath: "/contact"
   });
 
   return (

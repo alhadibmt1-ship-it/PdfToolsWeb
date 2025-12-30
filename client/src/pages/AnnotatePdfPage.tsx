@@ -32,7 +32,8 @@ export default function AnnotatePdfPage() {
   useSEO({
     title: "Annotate PDF Free - Highlight & Markup | PDF HUB 24",
     description: "Annotate PDF free. Highlight, underline, add notes to PDFs. Best free PDF annotation tool. No signup.",
-    keywords: "annotate pdf free, highlight pdf, underline pdf free, pdf notes, pdf markup free, add comments to pdf"
+    keywords: "annotate pdf free, highlight pdf, underline pdf free, pdf notes, pdf markup free, add comments to pdf",
+    canonicalPath: "/annotate-pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

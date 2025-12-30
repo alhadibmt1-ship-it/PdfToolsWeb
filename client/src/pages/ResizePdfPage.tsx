@@ -28,7 +28,8 @@ export default function ResizePdfPage() {
   useSEO({
     title: "Resize PDF Free - Change Page Size to A4 | PDF HUB 24",
     description: "Resize PDF free online. Change PDF page size to A4, Letter, Legal instantly. Best free PDF resizer - scale pages, adjust dimensions. No signup required.",
-    keywords: "resize pdf free, change pdf size, pdf to a4 size, resize pdf pages free, pdf page size changer, scale pdf"
+    keywords: "resize pdf free, change pdf size, pdf to a4 size, resize pdf pages free, pdf page size changer, scale pdf",
+    canonicalPath: "/resize-pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

@@ -19,7 +19,8 @@ export default function ProtectPdfPage() {
   useSEO({
     title: "Password Protect PDF Free - Lock PDF | PDF HUB 24",
     description: "Password protect PDF free. Add password to PDF files instantly. Best free PDF encryptor - lock PDF. No signup.",
-    keywords: "password protect pdf free, lock pdf, encrypt pdf free, add password to pdf, secure pdf, pdf password protection free"
+    keywords: "password protect pdf free, lock pdf, encrypt pdf free, add password to pdf, secure pdf, pdf password protection free",
+    canonicalPath: "/protect-pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

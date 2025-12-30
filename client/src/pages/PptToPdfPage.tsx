@@ -19,7 +19,8 @@ export default function PptToPdfPage() {
   useSEO({
     title: "PowerPoint to PDF Free - PPT to PDF | PDF HUB 24",
     description: "Convert PowerPoint to PDF free. Transform PPT/PPTX presentations to PDF instantly. Preserves slides. No signup.",
-    keywords: "powerpoint to pdf free, ppt to pdf, pptx to pdf free, convert slides to pdf, presentation to pdf free"
+    keywords: "powerpoint to pdf free, ppt to pdf, pptx to pdf free, convert slides to pdf, presentation to pdf free",
+    canonicalPath: "/ppt-to-pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

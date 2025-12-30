@@ -20,7 +20,8 @@ export default function ResizeImagePage() {
   useSEO({
     title: "Resize Image Free Online - Change Image Size | PDF HUB 24",
     description: "Resize image free online. Change image dimensions by pixels or percentage. Best free image resizer - JPG, PNG, WebP supported. Preserve quality. No signup.",
-    keywords: "resize image free, image resizer online, change image size, reduce image dimensions, scale image free, enlarge photo online"
+    keywords: "resize image free, image resizer online, change image size, reduce image dimensions, scale image free, enlarge photo online",
+    canonicalPath: "/resize-image"
   });
 
   const [files, setFiles] = useState<File[]>([]);
