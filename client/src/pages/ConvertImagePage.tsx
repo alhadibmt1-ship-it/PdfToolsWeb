@@ -18,8 +18,9 @@ import { useSEO } from "@/hooks/useSEO";
 export default function ConvertImagePage() {
   useSEO({
     title: "Convert Image Free - JPG PNG WebP | PDF HUB 24",
-    description: "Convert image format free online. Change JPG to PNG, PNG to WebP, WebP to JPG and more. Best free image converter - fast, high quality. No signup required.",
-    keywords: "convert image free, image converter online, jpg to png free, png to jpg, webp to jpg, change image format free"
+    description: "Convert image format free online. JPG to PNG, PNG to WebP, WebP to JPG. Best free image converter - fast, high quality. No signup.",
+    keywords: "convert image free, image converter online, jpg to png free, png to jpg, webp to jpg, change image format free",
+    canonicalPath: "/convert-image"
   });
 
   const [files, setFiles] = useState<File[]>([]);

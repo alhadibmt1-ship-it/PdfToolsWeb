@@ -18,8 +18,10 @@ export function useSEO({ title, description, keywords, canonicalPath, structured
   useEffect(() => {
     document.title = title;
     
-    const currentPath = canonicalPath || location;
-    const canonicalUrl = `${BASE_URL}${currentPath === "/" ? "" : currentPath}`;
+    // Normalize path: remove trailing slashes, use canonicalPath if provided
+    const rawPath = canonicalPath || location;
+    const normalizedPath = rawPath === "/" ? "" : rawPath.replace(/\/+$/, "");
+    const canonicalUrl = `${BASE_URL}${normalizedPath}`;
 
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
