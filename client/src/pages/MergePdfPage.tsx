@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
 import SortablePdfPages from "@/components/SortablePdfPages";
-import ToolSEOContent from "@/components/ToolSEOContent";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import StepIndicator from "@/components/StepIndicator";
@@ -304,92 +304,7 @@ export default function MergePdfPage() {
             )}
           </div>
 
-          <ToolSEOContent
-            toolName="Merge PDF Files"
-            toolId="merge"
-            toolDescription="Combine multiple PDF documents into a single unified file with our free online PDF merger tool. Whether you're consolidating reports, combining chapters of an eBook, assembling legal documents, or merging scanned pages, PDF HUB 24 makes it effortless. Our advanced merge tool lets you preview every page, drag and drop to reorder, and remove unwanted content before creating your final document."
-            howToSteps={[
-              "Upload multiple PDF files by clicking the upload area or dragging and dropping (up to 10 files at once).",
-              "Preview all pages and drag to reorder them in your desired sequence, or remove pages you don't need.",
-              "Click the 'Merge' button to combine all selected pages into a single PDF document.",
-              "Download your merged PDF instantly - ready for sharing, printing, or archiving."
-            ]}
-            benefits={[
-              "Merge up to 10 PDF files into one document",
-              "Visual page preview with drag-and-drop reordering",
-              "Remove unwanted pages with a single click",
-              "Maintain original quality, formatting, and hyperlinks",
-              "Combine PDFs from different sources seamlessly",
-              "No watermarks added to your merged documents",
-              "Secure processing with automatic file deletion",
-              "Works on desktop, tablet, and mobile browsers",
-              "Fast processing even for large multi-page documents"
-            ]}
-            faqs={[
-              {
-                question: "How many PDF files can I merge at once?",
-                answer: "You can merge up to 10 PDF files in a single operation. For larger projects, simply merge in batches of 10, then combine the resulting files. There's no limit to how many times you can use the tool."
-              },
-              {
-                question: "Will merging PDFs reduce the quality of my documents?",
-                answer: "No, our PDF merger preserves 100% of the original quality. Text remains sharp and searchable, images retain their resolution, and all formatting, fonts, and hyperlinks are maintained exactly as they appear in the source files."
-              },
-              {
-                question: "Can I rearrange pages from different PDF files?",
-                answer: "Absolutely! After uploading your files, you'll see thumbnails of every page from all documents. Simply drag and drop individual pages to arrange them in any order you want. You can interleave pages from different PDFs or group them however you prefer."
-              },
-              {
-                question: "Is there a file size limit for merging?",
-                answer: "Our tool handles most standard PDF files without issues. Files with many high-resolution images or complex graphics may take slightly longer to process. For best performance, we recommend keeping individual files under 50MB each."
-              },
-              {
-                question: "Are my documents secure when using this tool?",
-                answer: "Yes, security is our priority. All uploaded files are processed using encrypted connections, and documents are automatically deleted from our servers immediately after processing. We never store, view, or share your documents with anyone."
-              }
-            ]}
-            keywords={["combine pdf files", "join pdfs together", "merge multiple pdfs", "pdf combiner online", "unite pdf documents"]}
-            relatedLinks={[
-              { text: "Split PDF into separate files", href: "/split" },
-              { text: "Reorder pages within a PDF", href: "/reorder-pages" },
-              { text: "Delete unwanted pages from PDF", href: "/delete-pages" },
-              { text: "Compress merged PDF to reduce size", href: "/compress" }
-            ]}
-            extraSections={[
-              {
-                title: "Common Uses for Merging PDFs",
-                content: "Combining PDF files is essential for many professional and personal tasks. Here are the most popular use cases:",
-                items: [
-                  "Consolidating multiple invoices or receipts into one file",
-                  "Combining chapters or sections of a book or report",
-                  "Assembling legal documents with exhibits and attachments",
-                  "Merging scanned pages into a complete document",
-                  "Creating portfolios from multiple design files",
-                  "Compiling research papers and references"
-                ]
-              },
-              {
-                title: "Why Choose Our PDF Merger?",
-                content: "PDF HUB 24's merge tool stands out from other online services for these reasons:",
-                items: [
-                  "Visual page preview helps you verify content before merging",
-                  "Drag-and-drop reordering gives you full control",
-                  "No account registration or signup required",
-                  "Works directly in your browser - no software installation",
-                  "Completely free with no hidden fees or limits",
-                  "Mobile-friendly for on-the-go document management"
-                ]
-              }
-            ]}
-            exampleTable={{
-              title: "PDF Merge Use Case Examples",
-              rows: [
-                { label: "Contract + Appendices", before: "5 separate files", after: "1 complete contract" },
-                { label: "Monthly Reports (12 files)", before: "12 PDFs", after: "1 annual report" },
-                { label: "Resume + Cover Letter + Portfolio", before: "3 documents", after: "1 job application" },
-                { label: "Scanned Book Pages", before: "50 scanned pages", after: "1 complete book" }
-              ]
-            }}
-          />
+          <EnhancedToolSEOContent toolId="merge" />
           
           <RelatedTools currentToolId="merge" />
         </div>

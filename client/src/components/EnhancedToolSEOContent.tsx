@@ -1,0 +1,532 @@
+import { useEffect } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { CheckCircle2, Shield, Zap, Clock, HelpCircle, AlertTriangle, ArrowRight, Lock, FileText, Lightbulb } from "lucide-react";
+import { Link } from "wouter";
+import { PDF_TOOLS } from "@shared/schema";
+import SocialShare from "./SocialShare";
+import { getToolSEOData, ToolSEOData } from "@/data/toolSEOData";
+
+const BASE_URL = "https://pdfhub24.com";
+
+interface EnhancedToolSEOContentProps {
+  toolId: string;
+  fallbackToolName?: string;
+  fallbackDescription?: string;
+  fallbackHowToSteps?: string[];
+  fallbackBenefits?: string[];
+  fallbackFaqs?: { question: string; answer: string }[];
+}
+
+export default function EnhancedToolSEOContent({
+  toolId,
+  fallbackToolName,
+  fallbackDescription,
+  fallbackHowToSteps = [],
+  fallbackBenefits = [],
+  fallbackFaqs = []
+}: EnhancedToolSEOContentProps) {
+  const tool = PDF_TOOLS.find(t => t.id === toolId);
+  const seoData = getToolSEOData(toolId);
+  
+  const toolName = tool?.title || fallbackToolName || "PDF Tool";
+  const toolPath = tool?.path || "/";
+  const category = tool?.category || "edit-pdf";
+
+  const categoryLabels: Record<string, string> = {
+    "from-pdf": "Convert from PDF",
+    "to-pdf": "Convert to PDF",
+    "edit-pdf": "Edit PDF",
+    "utility": "Utility Tools"
+  };
+
+  useEffect(() => {
+    const existingScripts = document.querySelectorAll('script[data-enhanced-seo="true"]');
+    existingScripts.forEach(script => script.remove());
+
+    const breadcrumbList = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": BASE_URL
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": categoryLabels[category],
+          "item": `${BASE_URL}/#${category}`
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": toolName,
+          "item": `${BASE_URL}${toolPath}`
+        }
+      ]
+    };
+
+    const faqs = seoData?.faqs || fallbackFaqs;
+    const faqSchema = faqs.length > 0 ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    } : null;
+
+    const softwareSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": `${toolName} - PDF HUB 24`,
+      "url": `${BASE_URL}${toolPath}`,
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": seoData?.metaDescription || fallbackDescription || "",
+      "provider": {
+        "@type": "Organization",
+        "name": "PDF HUB 24",
+        "url": BASE_URL
+      }
+    };
+
+    const schemas = [breadcrumbList, softwareSchema, faqSchema].filter(Boolean);
+    
+    schemas.forEach(schema => {
+      const script = document.createElement("script");
+      script.setAttribute("type", "application/ld+json");
+      script.setAttribute("data-enhanced-seo", "true");
+      script.textContent = JSON.stringify(schema);
+      document.head.appendChild(script);
+    });
+
+    return () => {
+      const scripts = document.querySelectorAll('script[data-enhanced-seo="true"]');
+      scripts.forEach(script => script.remove());
+    };
+  }, [toolName, toolPath, category, seoData, fallbackFaqs, fallbackDescription]);
+
+  if (!seoData) {
+    return (
+      <div className="mt-16 space-y-12">
+        <BasicSEOContent
+          toolName={toolName}
+          description={fallbackDescription || ""}
+          howToSteps={fallbackHowToSteps}
+          benefits={fallbackBenefits}
+          faqs={fallbackFaqs}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-16 space-y-12" data-testid="enhanced-seo-content">
+      <div className="flex items-center justify-between gap-4 pb-4 border-b">
+        <p className="text-sm text-muted-foreground">
+          Found this tool helpful? Share it with others!
+        </p>
+        <SocialShare 
+          title={`${toolName} - Free Online PDF Tool | PDF HUB 24`}
+          description={seoData.metaDescription}
+        />
+      </div>
+
+      <section>
+        <h2 className="text-2xl font-bold mb-4">About {toolName}</h2>
+        <p className="text-lg text-muted-foreground leading-relaxed">
+          {seoData.heroContent}
+        </p>
+        {seoData.secondaryKeywords.length > 0 && (
+          <p className="text-muted-foreground leading-relaxed mt-4">
+            People searching for <strong>{seoData.secondaryKeywords.slice(0, 2).join("</strong>, <strong>")}</strong>, and related terms trust PDF HUB 24 for fast, reliable results. Our tool handles everything from simple documents to complex files with embedded images and forms.
+          </p>
+        )}
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-bold mb-4">{seoData.useCases.title}</h2>
+        <p className="text-muted-foreground leading-relaxed mb-4">{seoData.useCases.description}</p>
+        <ul className="grid md:grid-cols-2 gap-3">
+          {seoData.useCases.items.map((item, index) => (
+            <li key={index} className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
+              <span className="text-muted-foreground">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-bold mb-6">{seoData.tutorial.title}</h2>
+        <div className="grid gap-6">
+          {seoData.tutorial.steps.map((step, index) => (
+            <div key={index} className="flex gap-4 items-start">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
+                {index + 1}
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-lg mb-1">{step.step}</h3>
+                <p className="text-muted-foreground">{step.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-bold mb-6">Why Choose PDF HUB 24?</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <Card>
+            <CardContent className="p-6 flex gap-4">
+              <Zap className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
+              <div>
+                <h3 className="font-semibold mb-2">Lightning Fast Processing</h3>
+                <p className="text-sm text-muted-foreground">Process your PDFs in seconds with our optimized cloud servers. No waiting, no delays, no software downloads.</p>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-6 flex gap-4">
+              <Shield className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
+              <div>
+                <h3 className="font-semibold mb-2">Bank-Level Security</h3>
+                <p className="text-sm text-muted-foreground">256-bit SSL encryption protects your files. Documents auto-delete after processing. We never access your content.</p>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-6 flex gap-4">
+              <CheckCircle2 className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
+              <div>
+                <h3 className="font-semibold mb-2">100% Free Forever</h3>
+                <p className="text-sm text-muted-foreground">All 43+ tools are completely free. No registration, no hidden fees, no watermarks, no file limits.</p>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-6 flex gap-4">
+              <Clock className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
+              <div>
+                <h3 className="font-semibold mb-2">Available 24/7 Worldwide</h3>
+                <p className="text-sm text-muted-foreground">Access PDF HUB 24 anytime, from any device. Works perfectly on desktop, tablet, and mobile browsers.</p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+          <AlertTriangle className="w-6 h-6 text-amber-500" aria-hidden="true" />
+          {seoData.troubleshooting.title}
+        </h2>
+        <div className="space-y-4">
+          {seoData.troubleshooting.issues.map((issue, index) => (
+            <Card key={index}>
+              <CardContent className="p-6">
+                <h3 className="font-semibold mb-2 flex items-center gap-2">
+                  <Lightbulb className="w-4 h-4 text-amber-500" aria-hidden="true" />
+                  {issue.problem}
+                </h3>
+                <p className="text-muted-foreground">{issue.solution}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {seoData.comparison && (
+        <section>
+          <h2 className="text-2xl font-bold mb-4">{seoData.comparison.title}</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">{seoData.comparison.content}</p>
+          <ul className="space-y-2">
+            {seoData.comparison.features.map((feature, index) => (
+              <li key={index} className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <span className="text-muted-foreground">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <section className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
+        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+          <Lock className="w-6 h-6 text-green-600 dark:text-green-400" aria-hidden="true" />
+          {seoData.securitySection.title}
+        </h2>
+        <p className="text-muted-foreground leading-relaxed mb-4">{seoData.securitySection.content}</p>
+        <ul className="grid md:grid-cols-2 gap-3">
+          {seoData.securitySection.points.map((point, index) => (
+            <li key={index} className="flex items-start gap-3">
+              <Shield className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
+              <span className="text-muted-foreground">{point}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {seoData.internalLinks.length > 0 && (
+        <section>
+          <h2 className="text-2xl font-bold mb-4">Related PDF Tools You Might Need</h2>
+          <p className="text-muted-foreground mb-4">Complete your PDF workflow with these complementary tools:</p>
+          <div className="grid md:grid-cols-2 gap-4">
+            {seoData.internalLinks.map((link, index) => (
+              <Link key={index} href={link.href}>
+                <Card className="hover-elevate cursor-pointer h-full">
+                  <CardContent className="p-4 flex items-center gap-4">
+                    <FileText className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
+                    <div className="flex-1">
+                      <h3 className="font-semibold flex items-center gap-1">
+                        {link.text}
+                        <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                      </h3>
+                      <p className="text-sm text-muted-foreground">{link.context}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {seoData.relatedWorkflows.length > 0 && (
+        <section>
+          <h2 className="text-2xl font-bold mb-4">Common PDF Workflows</h2>
+          <div className="space-y-4">
+            {seoData.relatedWorkflows.map((workflow, index) => (
+              <Card key={index}>
+                <CardContent className="p-6">
+                  <h3 className="font-semibold mb-2">{workflow.title}</h3>
+                  <p className="text-muted-foreground mb-3">{workflow.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {workflow.tools.map((toolIdRef, toolIndex) => {
+                      const refTool = PDF_TOOLS.find(t => t.id === toolIdRef);
+                      return refTool ? (
+                        <Link key={toolIndex} href={refTool.path}>
+                          <span className="inline-flex items-center gap-1 px-3 py-1 bg-primary/10 text-primary rounded-full text-sm hover:bg-primary/20 transition-colors cursor-pointer">
+                            {refTool.title}
+                            {toolIndex < workflow.tools.length - 1 && <ArrowRight className="w-3 h-3" aria-hidden="true" />}
+                          </span>
+                        </Link>
+                      ) : null;
+                    })}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section>
+        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+          <HelpCircle className="w-6 h-6" aria-hidden="true" />
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          {seoData.faqs.map((faq, index) => (
+            <Card key={index}>
+              <CardContent className="p-6">
+                <h3 className="font-semibold mb-2">{faq.question}</h3>
+                <p className="text-muted-foreground">{faq.answer}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-bold mb-4">Learn More About PDF Technology</h2>
+        <p className="text-muted-foreground mb-4">
+          PDF (Portable Document Format) is an open standard maintained by the International Organization for Standardization (ISO). 
+          Learn more about PDF technology from these authoritative sources:
+        </p>
+        <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+          <li>
+            <a href="https://en.wikipedia.org/wiki/PDF" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+              PDF on Wikipedia
+            </a>
+            {" "}- Comprehensive overview of the PDF format and its history
+          </li>
+          <li>
+            <a href="https://www.iso.org/standard/75839.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+              ISO 32000-2:2020
+            </a>
+            {" "}- Official PDF 2.0 specification from ISO
+          </li>
+          <li>
+            <a href="https://www.adobe.com/acrobat/about-adobe-pdf.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+              Adobe PDF Overview
+            </a>
+            {" "}- Learn about PDF from its original creators
+          </li>
+        </ul>
+      </section>
+
+      <section className="bg-card border rounded-lg p-8 text-center">
+        <h2 className="text-2xl font-bold mb-4">Ready to {toolName}?</h2>
+        <p className="text-muted-foreground mb-2 max-w-2xl mx-auto">
+          Upload your file above and experience the fastest, most reliable {toolName.toLowerCase()} tool online. 
+          No registration, no downloads, no limits — just fast, secure results.
+        </p>
+        <p className="text-sm text-muted-foreground">
+          Trusted by thousands of users worldwide for all their PDF needs.
+        </p>
+      </section>
+    </div>
+  );
+}
+
+function BasicSEOContent({
+  toolName,
+  description,
+  howToSteps,
+  benefits,
+  faqs
+}: {
+  toolName: string;
+  description: string;
+  howToSteps: string[];
+  benefits: string[];
+  faqs: { question: string; answer: string }[];
+}) {
+  return (
+    <>
+      <section>
+        <h2 className="text-2xl font-bold mb-4">About {toolName}</h2>
+        <p className="text-lg text-muted-foreground leading-relaxed">{description}</p>
+      </section>
+
+      {howToSteps.length > 0 && (
+        <section>
+          <h2 className="text-2xl font-bold mb-6">How to Use This Tool</h2>
+          <div className="grid gap-4">
+            {howToSteps.map((step, index) => (
+              <div key={index} className="flex gap-4 items-start">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm">
+                  {index + 1}
+                </div>
+                <p className="text-foreground pt-1">{step}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section>
+        <h2 className="text-2xl font-bold mb-6">Why Choose PDF HUB 24?</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <Card>
+            <CardContent className="p-6 flex gap-4">
+              <Zap className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
+              <div>
+                <h3 className="font-semibold mb-2">Lightning Fast</h3>
+                <p className="text-sm text-muted-foreground">Process your PDFs in seconds with our optimized servers.</p>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-6 flex gap-4">
+              <Shield className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
+              <div>
+                <h3 className="font-semibold mb-2">100% Secure</h3>
+                <p className="text-sm text-muted-foreground">Your files are automatically deleted after processing.</p>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-6 flex gap-4">
+              <CheckCircle2 className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
+              <div>
+                <h3 className="font-semibold mb-2">No Registration</h3>
+                <p className="text-sm text-muted-foreground">Use all tools instantly without creating an account.</p>
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-6 flex gap-4">
+              <Clock className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
+              <div>
+                <h3 className="font-semibold mb-2">Available 24/7</h3>
+                <p className="text-sm text-muted-foreground">Access PDF HUB 24 anytime, from any device.</p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {benefits.length > 0 && (
+        <section>
+          <h2 className="text-2xl font-bold mb-6">Key Benefits</h2>
+          <ul className="grid md:grid-cols-2 gap-3">
+            {benefits.map((benefit, index) => (
+              <li key={index} className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <span className="text-muted-foreground">{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {faqs.length > 0 && (
+        <section>
+          <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+            <HelpCircle className="w-6 h-6" aria-hidden="true" />
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <Card key={index}>
+                <CardContent className="p-6">
+                  <h3 className="font-semibold mb-2">{faq.question}</h3>
+                  <p className="text-muted-foreground">{faq.answer}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section>
+        <h2 className="text-2xl font-bold mb-4">Learn More About PDF</h2>
+        <p className="text-muted-foreground mb-4">
+          PDF (Portable Document Format) is an open standard maintained by ISO.
+        </p>
+        <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+          <li>
+            <a href="https://en.wikipedia.org/wiki/PDF" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+              PDF on Wikipedia
+            </a>
+          </li>
+          <li>
+            <a href="https://www.iso.org/standard/75839.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+              ISO 32000-2:2020
+            </a>
+          </li>
+          <li>
+            <a href="https://www.adobe.com/acrobat/about-adobe-pdf.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+              Adobe PDF Overview
+            </a>
+          </li>
+        </ul>
+      </section>
+    </>
+  );
+}
