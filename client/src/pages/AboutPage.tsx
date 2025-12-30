@@ -40,13 +40,15 @@ export default function AboutPage() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">What We Offer</h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-              Our comprehensive suite of 10 PDF tools empowers you to:
+              Our comprehensive suite of 43+ free PDF tools empowers you to:
             </p>
             <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-              <li><strong>Convert PDFs</strong> - Transform PDFs to Word, JPG, or vice versa with premium quality</li>
-              <li><strong>Merge & Split</strong> - Combine multiple PDFs or extract specific pages effortlessly</li>
-              <li><strong>Compress</strong> - Reduce PDF file sizes while maintaining quality</li>
-              <li><strong>Manipulate</strong> - Rotate pages, delete unwanted content, and extract text</li>
+              <li><strong>Convert From PDF</strong> - Transform PDFs to Word, JPG, PNG, Excel, PowerPoint with premium quality</li>
+              <li><strong>Convert To PDF</strong> - Create PDFs from Word, images, Excel, PowerPoint, HTML, and more</li>
+              <li><strong>Edit & Organize</strong> - Merge, split, compress, rotate, reorder, crop, resize, and annotate PDFs</li>
+              <li><strong>Secure & Protect</strong> - Password protect, unlock, flatten, redact sensitive content, and add watermarks</li>
+              <li><strong>OCR & Extract</strong> - Extract text from scanned documents with OCR, extract images and content</li>
+              <li><strong>Image Tools</strong> - Compress, resize, crop, rotate, and convert images between formats</li>
             </ul>
           </section>
 
@@ -82,11 +84,46 @@ export default function AboutPage() {
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">Our Technology</h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              PDF HUB 24 utilizes cutting-edge technology including Adobe PDF Services API for professional-grade 
+            <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+              PDF HUB 24 utilizes cutting-edge technology including Adobe PDF Services API and CloudConvert for professional-grade 
               conversions, ensuring your documents maintain their formatting, colors, backgrounds, and layouts. 
               All processing happens on secure servers, and your files are never stored permanently.
             </p>
+            <p className="text-muted-foreground leading-relaxed">
+              Our infrastructure is built with security-first principles: 256-bit SSL encryption for all transfers, 
+              automatic file deletion after processing, isolated processing environments, and GDPR-compliant data handling.
+              We never access the contents of your documents or share data with third parties beyond what's necessary for processing.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-semibold mb-4">Trust & Compliance</h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="p-4 bg-card rounded-lg border">
+                <h3 className="font-semibold mb-2">GDPR Compliant</h3>
+                <p className="text-sm text-muted-foreground">
+                  We follow European data protection regulations. Your files are processed in memory and never permanently stored.
+                </p>
+              </div>
+              <div className="p-4 bg-card rounded-lg border">
+                <h3 className="font-semibold mb-2">SSL Encryption</h3>
+                <p className="text-sm text-muted-foreground">
+                  All data transfers are protected with 256-bit SSL encryption, the same standard used by banks.
+                </p>
+              </div>
+              <div className="p-4 bg-card rounded-lg border">
+                <h3 className="font-semibold mb-2">Auto File Deletion</h3>
+                <p className="text-sm text-muted-foreground">
+                  Uploaded files are automatically deleted within 1 hour of processing completion.
+                </p>
+              </div>
+              <div className="p-4 bg-card rounded-lg border">
+                <h3 className="font-semibold mb-2">No Data Mining</h3>
+                <p className="text-sm text-muted-foreground">
+                  We never read, analyze, or mine your documents. Your content remains completely private.
+                </p>
+              </div>
+            </div>
           </section>
 
           <section className="mb-8">
