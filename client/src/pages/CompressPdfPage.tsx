@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
 import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import StepIndicator from "@/components/StepIndicator";
@@ -146,7 +147,7 @@ export default function CompressPdfPage() {
 
           <div className="text-center mb-6 sm:mb-8">
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 tracking-tight">
-              Compress PDF
+              {getToolSEOData("compress")?.longTailH1 || "Compress PDF"}
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto mb-5">
               Reduce your PDF file size while maintaining quality. Choose your compression level based on your needs.

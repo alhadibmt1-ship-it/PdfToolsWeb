@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
+import { getToolSEOData } from "@/data/toolSEOData";
 
 export default function ProtectPdfPage() {
   useSEO({
@@ -129,7 +130,9 @@ export default function ProtectPdfPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">Protect PDF</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">
+              {getToolSEOData("protect-pdf")?.longTailH1 || "Protect PDF"}
+            </h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Add password protection to your PDF file to prevent unauthorized access.
             </p>

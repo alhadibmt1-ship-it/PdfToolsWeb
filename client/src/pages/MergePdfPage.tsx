@@ -21,6 +21,7 @@ import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { usePdfThumbnails, type PdfPage } from "@/hooks/usePdfThumbnails";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useSEO } from "@/hooks/useSEO";
+import { getToolSEOData } from "@/data/toolSEOData";
 
 const MERGE_FAQS = [
   { question: "How do I merge multiple PDF files into one?", answer: "Upload your PDF files, arrange them in your preferred order using drag-and-drop, then click Merge. Your combined PDF will be ready to download instantly." },
@@ -175,7 +176,9 @@ export default function MergePdfPage() {
           </Link>
 
           <div className="text-center mb-6 sm:mb-8">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 tracking-tight">Merge PDF Files</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 tracking-tight">
+              {getToolSEOData("merge")?.longTailH1 || "Merge PDF Files"}
+            </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto mb-5">
               Combine multiple PDF documents into a single file. Preview pages, reorder them by dragging, and remove unwanted pages.
             </p>

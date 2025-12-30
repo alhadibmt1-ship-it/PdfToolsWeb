@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
+import { getToolSEOData } from "@/data/toolSEOData";
 
 export default function PdfToWordPage() {
   useSEO({
@@ -97,7 +98,9 @@ export default function PdfToWordPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">PDF to Word</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">
+              {getToolSEOData("pdf-to-word")?.longTailH1 || "PDF to Word"}
+            </h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Convert your PDF document to an editable Word (DOCX) file. Perfect for making edits to PDF content.
             </p>
