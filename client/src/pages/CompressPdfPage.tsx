@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import ToolSEOContent from "@/components/ToolSEOContent";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import StepIndicator from "@/components/StepIndicator";
@@ -309,91 +309,7 @@ export default function CompressPdfPage() {
             )}
           </div>
 
-          <ToolSEOContent
-            toolName="Compress PDF"
-            toolId="compress"
-            toolDescription="Reduce your PDF file size instantly while maintaining high quality. Our free online PDF compressor helps you shrink documents for email, WhatsApp, websites, and cloud storage — all with one click. Choose from low, medium, or high compression based on your needs. No signup, no installation, no fees. Large PDF files can slow down uploads, email attachments, and website performance. PDF HUB 24 makes it easy to minimize your PDF size without losing clarity."
-            howToSteps={[
-              "Upload your PDF file (drag & drop or click to browse).",
-              "Select compression level: Low (best quality), Medium (balanced), or High (maximum size reduction).",
-              "Click 'Compress PDF' to start processing.",
-              "Download your optimized PDF and check how much space you saved."
-            ]}
-            benefits={[
-              "Reduce PDF size up to 90% with high compression",
-              "Perfect for email attachments and web uploads",
-              "Keep text and images clear and readable",
-              "See final file size before downloading",
-              "Works with all types of PDFs",
-              "Choose from low, medium, or high compression",
-              "Maintain text readability even on high compression",
-              "Process multiple files one after another",
-              "Save your preferred compression level for faster use"
-            ]}
-            faqs={[
-              {
-                question: "Which compression level should I choose?",
-                answer: "For printing or office use, choose Low compression. For emails and uploads, choose Medium. For maximum size reduction, choose High compression."
-              },
-              {
-                question: "How much can I reduce my PDF size?",
-                answer: "Depending on the content, you can reduce size by 30-90%. Image-heavy PDFs shrink the most."
-              },
-              {
-                question: "Will compression affect my text quality?",
-                answer: "No. Our tool keeps text sharp and readable. High compression mostly affects image resolution, not text."
-              },
-              {
-                question: "Can I compress password-protected PDFs?",
-                answer: "Yes, but you must unlock the file first using our Unlock PDF tool, then compress it."
-              },
-              {
-                question: "Is there a file size limit?",
-                answer: "Our tool supports standard PDF sizes. Very large files may take longer, but most compress successfully."
-              }
-            ]}
-            keywords={["compress pdf", "reduce pdf size", "shrink pdf online", "pdf compressor free", "optimize pdf file"]}
-            relatedLinks={[
-              { text: "Remove unwanted pages using Delete PDF Pages", href: "/delete-pages" },
-              { text: "Combine multiple files using Merge PDF", href: "/merge" },
-              { text: "Convert documents using PDF to Word", href: "/pdf-to-word" },
-              { text: "Extract text content using Extract Text", href: "/extract-text" }
-            ]}
-            extraSections={[
-              {
-                title: "Why Do PDF Files Become Large?",
-                content: "PDF files can become heavy due to various factors. PDF HUB 24 optimizes these elements to reduce size without affecting readability.",
-                items: [
-                  "High-resolution images",
-                  "Scanned pages",
-                  "Embedded fonts and graphics",
-                  "Multiple merged documents",
-                  "Print-ready formatting"
-                ]
-              },
-              {
-                title: "When Should You Compress a PDF?",
-                content: "Use this tool when you need to reduce file size for various purposes:",
-                items: [
-                  "Email attachment size is too large",
-                  "Uploading documents to government websites",
-                  "Sharing files on WhatsApp or Messenger",
-                  "Saving storage on your mobile or laptop",
-                  "Uploading PDFs to your website for speed optimization",
-                  "Sending invoices, ID copies, certificates, contracts"
-                ]
-              }
-            ]}
-            exampleTable={{
-              title: "Example PDF Size Reduction",
-              rows: [
-                { label: "Scanned Document (10 MB)", before: "10 MB", after: "1.2 MB" },
-                { label: "Image-heavy PDF (25 MB)", before: "25 MB", after: "3-5 MB" },
-                { label: "Office Document (5 MB)", before: "5 MB", after: "600-800 KB" },
-                { label: "Web-optimized PDF", before: "3 MB", after: "300-500 KB" }
-              ]
-            }}
-          />
+          <EnhancedToolSEOContent toolId="compress" />
           
           <RelatedTools currentToolId="compress" />
         </div>
