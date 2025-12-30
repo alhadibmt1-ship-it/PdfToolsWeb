@@ -99,11 +99,27 @@ export default function PrivacyPage() {
           </section>
 
           <section className="mb-8">
+            <h2 className="text-2xl font-semibold mb-4">GDPR Compliance</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              PDF HUB 24 is committed to GDPR (General Data Protection Regulation) compliance for all users,
+              including those in the European Economic Area. Our practices include:
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+              <li>Minimal data collection — we only process what's necessary for the service</li>
+              <li>No permanent storage of uploaded files</li>
+              <li>Automatic deletion of all processed content within 1 hour</li>
+              <li>Transparent data handling with no hidden tracking</li>
+              <li>No sale or sharing of user data with third parties for marketing purposes</li>
+            </ul>
+          </section>
+
+          <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">Your Rights</h2>
             <p className="text-muted-foreground leading-relaxed">
               Since we don't collect or store personal information or files permanently, there is no 
               personal data to access, modify, or delete. Your uploaded files are automatically removed 
-              from our servers immediately after processing.
+              from our servers within 1 hour of processing. Under GDPR, you have the right to request 
+              information about any data we may hold — though in practice, we hold none after processing.
             </p>
           </section>
 
