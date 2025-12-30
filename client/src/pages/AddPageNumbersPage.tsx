@@ -15,6 +15,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
+import { getToolSEOData } from "@/data/toolSEOData";
 
 type Position = "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right";
 
@@ -108,7 +109,9 @@ export default function AddPageNumbersPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">Add Page Numbers</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">
+              {getToolSEOData("add-page-numbers")?.longTailH1 || "Add Page Numbers"}
+            </h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Add page numbers to every page of your PDF document.
             </p>

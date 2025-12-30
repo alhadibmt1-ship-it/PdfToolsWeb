@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
+import { getToolSEOData } from "@/data/toolSEOData";
 
 export default function PdfToJpgPage() {
   useSEO({
@@ -108,7 +109,9 @@ export default function PdfToJpgPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">PDF to JPG</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">
+              {getToolSEOData("pdf-to-jpg")?.longTailH1 || "PDF to JPG"}
+            </h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Convert each page of your PDF into high-quality JPG images. Single-page PDFs download directly as a JPG file, multi-page PDFs as a ZIP file containing all pages.
             </p>

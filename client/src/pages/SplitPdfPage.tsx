@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
+import { getToolSEOData } from "@/data/toolSEOData";
 
 export default function SplitPdfPage() {
   useSEO({
@@ -112,7 +113,9 @@ export default function SplitPdfPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">Split PDF</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">
+              {getToolSEOData("split")?.longTailH1 || "Split PDF"}
+            </h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Extract specific pages from your PDF document by specifying a page range.
             </p>
