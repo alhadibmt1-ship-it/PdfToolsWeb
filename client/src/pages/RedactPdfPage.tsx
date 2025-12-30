@@ -29,7 +29,8 @@ export default function RedactPdfPage() {
   useSEO({
     title: "Redact PDF Free - Black Out Sensitive Info | PDF HUB 24",
     description: "Redact PDF free. Permanently black out sensitive info in PDFs. Best free PDF redaction tool. No signup.",
-    keywords: "redact pdf free, black out pdf, censor pdf free, remove sensitive info pdf, pdf privacy tool, hide text in pdf"
+    keywords: "redact pdf free, black out pdf, censor pdf free, remove sensitive info pdf, pdf privacy tool, hide text in pdf",
+    canonicalPath: "/redact-pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

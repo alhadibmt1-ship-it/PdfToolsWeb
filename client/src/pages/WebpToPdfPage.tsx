@@ -17,7 +17,8 @@ export default function WebpToPdfPage() {
   useSEO({
     title: "WebP to PDF Free Online - Convert WebP to PDF | PDF HUB 24",
     description: "Convert WebP to PDF free. Transform WebP images to PDF documents instantly. Combine multiple images. No signup.",
-    keywords: "webp to pdf free, convert webp to pdf, webp to pdf converter free, webp image to pdf, webp to pdf online"
+    keywords: "webp to pdf free, convert webp to pdf, webp to pdf converter free, webp image to pdf, webp to pdf online",
+    canonicalPath: "/webp-to-pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

@@ -18,8 +18,9 @@ import { useSEO } from "@/hooks/useSEO";
 export default function CropImagePage() {
   useSEO({
     title: "Crop Image Free Online - Trim Photos Easily | PDF HUB 24",
-    description: "Crop image free online. Remove unwanted areas from photos instantly. Best free image cropper - JPG, PNG, WebP supported. Live preview. No signup required.",
-    keywords: "crop image free, image cropper online, trim image, cut photo free, crop photo online, remove unwanted areas"
+    description: "Crop image free online. Remove unwanted areas from photos. Best free image cropper - JPG, PNG, WebP. Live preview. No signup.",
+    keywords: "crop image free, image cropper online, trim image, cut photo free, crop photo online, remove unwanted areas",
+    canonicalPath: "/crop-image"
   });
 
   const [files, setFiles] = useState<File[]>([]);

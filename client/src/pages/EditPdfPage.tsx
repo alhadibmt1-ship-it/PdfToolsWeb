@@ -44,7 +44,8 @@ export default function EditPdfPage() {
   useSEO({
     title: "Edit PDF Free Online - Free PDF Editor | PDF HUB 24",
     description: "Edit PDF free online. Add text, images, shapes to PDF documents. Best free PDF editor - modify PDFs instantly, no software needed. No signup required.",
-    keywords: "edit pdf free, pdf editor free, add text to pdf, modify pdf online, free pdf editor online, edit pdf online free"
+    keywords: "edit pdf free, pdf editor free, add text to pdf, modify pdf online, free pdf editor online, edit pdf online free",
+    canonicalPath: "/edit-pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

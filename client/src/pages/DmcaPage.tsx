@@ -9,7 +9,8 @@ export default function DmcaPage() {
   useSEO({
     title: "DMCA Policy - PDF HUB 24",
     description: "DMCA policy for PDF HUB 24. Learn how to report copyright infringement and our procedures for handling DMCA takedown requests.",
-    keywords: "dmca policy, copyright, takedown request, pdf hub 24"
+    keywords: "dmca policy, copyright, takedown request, pdf hub 24",
+    canonicalPath: "/dmca"
   });
 
   return (

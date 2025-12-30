@@ -9,7 +9,8 @@ export default function PrivacyPage() {
   useSEO({
     title: "Privacy Policy - PDF HUB 24",
     description: "Read PDF HUB 24's privacy policy to understand how we protect your data and respect your privacy when using our free PDF tools.",
-    keywords: "privacy policy, data protection, pdf hub 24 privacy"
+    keywords: "privacy policy, data protection, pdf hub 24 privacy",
+    canonicalPath: "/privacy"
   });
 
   return (

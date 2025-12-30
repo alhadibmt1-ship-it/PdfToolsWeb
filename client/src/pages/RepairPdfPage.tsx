@@ -17,7 +17,8 @@ export default function RepairPdfPage() {
   useSEO({
     title: "Repair PDF Free - Fix Corrupted Files | PDF HUB 24",
     description: "Repair PDF free. Fix corrupted or damaged PDF files that won't open. Recover broken documents. No signup.",
-    keywords: "repair pdf free, fix corrupted pdf, damaged pdf repair, pdf repair online free, fix broken pdf, recover pdf file"
+    keywords: "repair pdf free, fix corrupted pdf, damaged pdf repair, pdf repair online free, fix broken pdf, recover pdf file",
+    canonicalPath: "/repair-pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

@@ -17,7 +17,8 @@ export default function FlattenPdfPage() {
   useSEO({
     title: "Flatten PDF Free - Remove Form Fields | PDF HUB 24",
     description: "Flatten PDF free. Remove form fields, flatten layers into static PDF. Secure documents for sharing. No signup.",
-    keywords: "flatten pdf free, flatten pdf form, remove pdf form fields free, pdf flatten online, lock pdf form fields"
+    keywords: "flatten pdf free, flatten pdf form, remove pdf form fields free, pdf flatten online, lock pdf form fields",
+    canonicalPath: "/flatten-pdf"
   });
 
   const [files, setFiles] = useState<File[]>([]);

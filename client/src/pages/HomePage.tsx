@@ -290,6 +290,7 @@ export default function HomePage() {
     title: "PDF HUB 24 - 43+ Free PDF Tools | Convert, Edit",
     description: "100% free PDF tools. Convert PDF to Word, JPG, Excel. Merge, split, compress PDFs instantly. Best free PDF converter - no signup, no watermarks.",
     keywords: "free pdf tools, pdf converter free, pdf to word free, merge pdf free, compress pdf free, pdf editor free, convert pdf online, pdf to jpg, split pdf",
+    canonicalPath: "/",
     structuredData: {
       "@context": "https://schema.org",
       "@type": "Organization",

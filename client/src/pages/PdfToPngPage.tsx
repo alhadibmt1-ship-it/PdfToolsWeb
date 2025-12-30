@@ -17,7 +17,8 @@ export default function PdfToPngPage() {
   useSEO({
     title: "PDF to PNG Free Online - Convert PDF to Image | PDF HUB 24",
     description: "Convert PDF to PNG free. Transform PDF pages to PNG images with transparency. Extract all pages. No signup.",
-    keywords: "pdf to png free, convert pdf to png, pdf to image free, save pdf as png, pdf to png converter free, extract pdf pages as images"
+    keywords: "pdf to png free, convert pdf to png, pdf to image free, save pdf as png, pdf to png converter free, extract pdf pages as images",
+    canonicalPath: "/pdf-to-png"
   });
 
   const [files, setFiles] = useState<File[]>([]);

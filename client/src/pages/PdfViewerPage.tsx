@@ -14,7 +14,8 @@ export default function PdfViewerPage() {
   useSEO({
     title: "PDF Viewer Free Online - View PDF in Browser | PDF HUB 24",
     description: "View PDF free. Open and read PDF documents in your browser. Best free PDF viewer - zoom, navigate. No signup.",
-    keywords: "pdf viewer free, view pdf online, open pdf free, read pdf online, pdf reader free, view pdf in browser"
+    keywords: "pdf viewer free, view pdf online, open pdf free, read pdf online, pdf reader free, view pdf in browser",
+    canonicalPath: "/pdf-viewer"
   });
 
   const [files, setFiles] = useState<File[]>([]);
