@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import ToolSEOContent from "@/components/ToolSEOContent";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
@@ -106,7 +107,7 @@ export default function ExtractTextPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">Extract Text from PDF</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("extract-text")?.longTailH1 || "Extract Text from PDF"}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Extract all text content from your PDF document. The text will be displayed here and can be downloaded as a .txt file.
             </p>
@@ -176,90 +177,10 @@ export default function ExtractTextPage() {
             )}
           </div>
 
-          <ToolSEOContent
-            toolName="Extract Text from PDF"
+          <EnhancedToolSEOContent
             toolId="extract-text"
-            toolDescription="Pull all text content from your PDF documents with our free online text extractor. Whether you need to copy content for editing, search through document text, or extract data for analysis, our tool quickly extracts readable text from any PDF. Copy directly to clipboard with one click or download as a plain text file — perfect for repurposing content, research, and data processing."
-            howToSteps={[
-              "Upload your PDF file by clicking the upload area or dragging and dropping your document.",
-              "Click the 'Extract Text' button to process your document.",
-              "View the extracted text in the text area — see the character count displayed.",
-              "Copy the text to your clipboard or download as a .txt file for further use."
-            ]}
-            benefits={[
-              "Extract all readable text from any PDF instantly",
-              "Copy text directly to your clipboard with one click",
-              "Download extracted text as a .txt file",
-              "See character count for extracted content",
-              "Works with multi-page documents of any length",
-              "Preserves paragraph structure where possible",
-              "Fast extraction even for large documents",
-              "No registration or signup required",
-              "Completely free with no hidden costs"
-            ]}
-            faqs={[
-              {
-                question: "Can I extract text from scanned PDFs?",
-                answer: "Our Extract Text tool works with PDFs that have selectable text (native text). For scanned documents (which are essentially images), text extraction will be limited or not possible. For scanned PDFs, use our OCR PDF tool instead, which uses optical character recognition to read text from images."
-              },
-              {
-                question: "Will formatting be preserved?",
-                answer: "The tool extracts plain text content only. Formatting like bold, italics, fonts, and colors is not preserved, as the output is plain text. However, paragraph breaks, line spacing, and basic structure are maintained to keep the content readable."
-              },
-              {
-                question: "What if my PDF has images with text?",
-                answer: "Text within images (such as logos, diagrams, or scanned content) cannot be extracted by this tool. Only text that is stored as actual text characters in the PDF can be extracted. For text in images, use our OCR PDF tool."
-              },
-              {
-                question: "How do I use the extracted text?",
-                answer: "Click 'Copy' to copy all text to your clipboard instantly, then paste it anywhere — Word documents, emails, notes, or any text editor. Alternatively, click 'Download' to save as a .txt file you can open in any text editor or word processor."
-              },
-              {
-                question: "Is there a page limit for text extraction?",
-                answer: "No, you can extract text from PDFs of any length — whether it's 1 page or 1000 pages. The tool processes all pages and combines the text into a single output, making it easy to work with the complete content."
-              }
-            ]}
-            keywords={["extract text from pdf", "pdf to text", "copy pdf text", "pdf text extractor", "get text from pdf"]}
-            relatedLinks={[
-              { text: "Use OCR PDF for scanned documents", href: "/ocr-pdf" },
-              { text: "Convert to Word format using PDF to Word", href: "/pdf-to-word" },
-              { text: "Extract tabular data using PDF to Excel", href: "/pdf-to-excel" },
-              { text: "Extract embedded images using Extract Images", href: "/extract-images" }
-            ]}
-            extraSections={[
-              {
-                title: "Why Extract Text from PDF?",
-                content: "Extracting text makes PDF content accessible and reusable for various purposes.",
-                items: [
-                  "Copy content for research and citations",
-                  "Reuse text in new documents or presentations",
-                  "Search and analyze document content",
-                  "Translate PDF content to other languages",
-                  "Create summaries and notes from documents"
-                ]
-              },
-              {
-                title: "Common Use Cases",
-                content: "Our text extraction tool is used by professionals, students, and researchers:",
-                items: [
-                  "Researchers extracting quotes and citations",
-                  "Students copying content for study notes",
-                  "Writers repurposing content from published materials",
-                  "Data analysts extracting information for processing",
-                  "Translators preparing content for translation",
-                  "Anyone needing quick access to PDF text content"
-                ]
-              }
-            ]}
-            exampleTable={{
-              title: "Text Extraction Examples",
-              rows: [
-                { label: "Research Paper (30 pages)", before: "PDF document", after: "30,000+ characters extracted" },
-                { label: "Contract/Agreement", before: "Legal PDF", after: "Full text for review" },
-                { label: "E-book Chapter", before: "Published PDF", after: "Plain text content" },
-                { label: "Business Report", before: "Corporate PDF", after: "Copyable text output" }
-              ]
-            }}
+            fallbackToolName="Extract Text from PDF"
+            fallbackDescription="Pull all text content from your PDF documents with our free online text extractor."
           />
           
           <RelatedTools currentToolId="extract-text" />

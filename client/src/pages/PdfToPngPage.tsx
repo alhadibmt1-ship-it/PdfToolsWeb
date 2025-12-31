@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import ToolSEOContent from "@/components/ToolSEOContent";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
@@ -108,7 +109,7 @@ export default function PdfToPngPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">PDF to PNG</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("pdf-to-png")?.longTailH1 || "PDF to PNG"}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Convert each page of your PDF into high-quality PNG images with transparent background support. Single-page PDFs download as PNG, multi-page as ZIP.
             </p>
@@ -174,90 +175,10 @@ export default function PdfToPngPage() {
             )}
           </div>
 
-          <ToolSEOContent
-            toolName="PDF to PNG Converter"
+          <EnhancedToolSEOContent
             toolId="pdf-to-png"
-            toolDescription="Our PDF to PNG converter transforms your PDF documents into high-quality PNG images with lossless compression. PNG format supports transparent backgrounds and maintains crisp edges, making it ideal for graphics, logos, diagrams, and images that require pixel-perfect quality. Each page becomes a separate PNG file at high resolution (up to 2048px), perfect for professional use."
-            howToSteps={[
-              "Upload your PDF file by clicking the upload area or dragging and dropping your document.",
-              "Click the 'Convert to PNG' button to start the conversion process.",
-              "Wait for the processing to complete — a progress bar shows the status.",
-              "Download your PNG images (single file or ZIP archive for multiple pages)."
-            ]}
-            benefits={[
-              "High-quality PNG output with lossless compression",
-              "Transparent background support for graphics",
-              "Perfect for presentations, web use, and editing",
-              "Fast cloud-based conversion in seconds",
-              "No software installation required",
-              "Crisp edges preserved for text and diagrams",
-              "Works with any PDF document type",
-              "Multi-page PDFs packaged in convenient ZIP files",
-              "No registration or hidden fees"
-            ]}
-            faqs={[
-              {
-                question: "What's the difference between PNG and JPG?",
-                answer: "PNG supports transparent backgrounds and uses lossless compression, making it better for graphics, logos, text, and diagrams where crisp edges matter. JPG uses lossy compression which is better for photographs and images where small quality loss is acceptable for smaller file sizes."
-              },
-              {
-                question: "Can I convert multiple PDF pages to PNG?",
-                answer: "Yes! Multi-page PDFs are converted to individual PNG files and downloaded as a convenient ZIP archive. Single-page PDFs download directly as a PNG file without zipping."
-              },
-              {
-                question: "What resolution are the PNG images?",
-                answer: "Our converter produces high-resolution PNG images at up to 2048px maximum dimension, ensuring excellent quality for any use case including print, web, and professional presentations."
-              },
-              {
-                question: "Will my PNG have a transparent background?",
-                answer: "PNG format supports transparency, but the resulting transparency depends on your original PDF. If your PDF has a white background, the PNG will also have a white background. PDFs with actual transparency will maintain it in the PNG output."
-              },
-              {
-                question: "Why choose PNG over JPG?",
-                answer: "Choose PNG when you need transparent backgrounds, lossless quality, or are working with graphics, logos, and text. Choose JPG for photographs where smaller file sizes are more important than pixel-perfect quality."
-              }
-            ]}
-            keywords={["pdf to png", "convert pdf to png", "pdf to image lossless", "pdf pages to png", "transparent pdf images"]}
-            relatedLinks={[
-              { text: "Convert to JPG format using PDF to JPG", href: "/pdf-to-jpg" },
-              { text: "Extract embedded images using Extract Images", href: "/extract-images" },
-              { text: "Convert PNG back to PDF using PNG to PDF", href: "/png-to-pdf" },
-              { text: "Select specific pages using Split PDF", href: "/split" }
-            ]}
-            extraSections={[
-              {
-                title: "When to Use PNG vs JPG",
-                content: "Choosing the right format ensures the best quality and file size for your needs.",
-                items: [
-                  "Use PNG for graphics, logos, and diagrams",
-                  "Use PNG when you need transparent backgrounds",
-                  "Use PNG for screenshots and text-heavy images",
-                  "Use JPG for photographs and natural images",
-                  "Use PNG for professional design work"
-                ]
-              },
-              {
-                title: "Common Use Cases for PDF to PNG",
-                content: "Our PDF to PNG converter is ideal for various professional and personal needs:",
-                items: [
-                  "Designers extracting graphics from PDF portfolios",
-                  "Web developers adding document content to websites",
-                  "Marketers creating social media graphics",
-                  "Educators preparing teaching materials",
-                  "Professionals sharing document pages in presentations",
-                  "Anyone needing high-quality document images"
-                ]
-              }
-            ]}
-            exampleTable={{
-              title: "PDF to PNG Conversion Output",
-              rows: [
-                { label: "Logo PDF", before: "Vector PDF", after: "Crisp PNG with transparency" },
-                { label: "Diagram (1 page)", before: "Technical drawing", after: "High-res PNG image" },
-                { label: "Presentation (10 slides)", before: "10 pages", after: "ZIP with 10 PNGs" },
-                { label: "Infographic", before: "Graphics-heavy PDF", after: "Lossless PNG output" }
-              ]
-            }}
+            fallbackToolName="PDF to PNG Converter"
+            fallbackDescription="Our PDF to PNG converter transforms your PDF documents into high-quality PNG images with lossless compression."
           />
 
           <RelatedTools currentToolId="pdf-to-png" />

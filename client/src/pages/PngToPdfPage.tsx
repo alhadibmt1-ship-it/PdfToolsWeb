@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import ToolSEOContent from "@/components/ToolSEOContent";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
@@ -99,7 +100,7 @@ export default function PngToPdfPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">PNG to PDF</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("png-to-pdf")?.longTailH1 || "PNG to PDF"}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Convert multiple PNG images into a single PDF document. Images will appear in the order you upload them. Perfect for creating photo albums or document archives.
             </p>
@@ -164,92 +165,7 @@ export default function PngToPdfPage() {
             )}
           </div>
 
-          <ToolSEOContent
-            toolName="PNG to PDF Converter"
-            toolId="png-to-pdf"
-            toolDescription="Convert your PNG images to professional PDF documents with our free online converter. PNG format is known for its lossless compression and transparency support, and our tool preserves these qualities when creating your PDF. Combine multiple PNG files into a single multi-page document, perfect for graphics, screenshots, diagrams, and high-quality images."
-            howToSteps={[
-              "Select one or more PNG images by clicking the upload area or dragging and dropping.",
-              "Review your selected images - they will appear as pages in upload order.",
-              "Click 'Convert to PDF' to create your multi-page PDF document.",
-              "Download your finished PDF with all PNG images as separate pages."
-            ]}
-            benefits={[
-              "Combine multiple PNG images into a single PDF document",
-              "Preserve original image quality and sharp details",
-              "Supports PNG transparency in the output PDF",
-              "Perfect for screenshots, diagrams, and graphics",
-              "Create photo albums, portfolios, and presentations",
-              "Easy document sharing - one file instead of many",
-              "Upload up to 20 PNG images at once",
-              "No software installation or registration required",
-              "Works on all devices including mobile and tablet"
-            ]}
-            faqs={[
-              {
-                question: "How many PNG files can I convert at once?",
-                answer: "You can convert up to 20 PNG images into a single PDF document in one batch. Each image becomes a separate page in the resulting PDF file."
-              },
-              {
-                question: "Will the image quality and transparency be preserved?",
-                answer: "Yes! Our converter maintains the full quality of your PNG images including sharp edges and text. PNG transparency is also preserved when embedding images in the PDF."
-              },
-              {
-                question: "Can I control the page order in the PDF?",
-                answer: "Images appear in the PDF in the same order you upload them. For different ordering, re-upload in your preferred sequence, or use our Reorder Pages tool after conversion."
-              },
-              {
-                question: "What's the difference between PNG and JPG for PDF conversion?",
-                answer: "PNG is a lossless format ideal for screenshots, text, graphics, and images with transparency. JPG is better for photographs. Both convert well to PDF, but PNG preserves sharper edges and text."
-              },
-              {
-                question: "Is there a file size limit for PNG images?",
-                answer: "There's no strict limit on individual PNG file sizes. However, very large images may take longer to process. For best performance, optimize extremely large PNGs before uploading."
-              }
-            ]}
-            keywords={["png to pdf", "convert png to pdf", "png to pdf converter", "combine png files", "png images to pdf"]}
-            relatedLinks={[
-              { text: "Convert JPG images using JPG to PDF", href: "/jpg-to-pdf" },
-              { text: "Convert WebP images using WebP to PDF", href: "/webp-to-pdf" },
-              { text: "Extract images from PDF using Extract Images", href: "/extract-images" },
-              { text: "Reorder pages using Reorder PDF Pages", href: "/reorder" }
-            ]}
-            extraSections={[
-              {
-                title: "Why Convert PNG Images to PDF?",
-                content: "PNG to PDF conversion offers unique advantages, especially for graphics and screenshots:",
-                items: [
-                  "Preserve sharp edges and text clarity from PNG format",
-                  "Maintain transparency in graphics and logos",
-                  "Create professional presentations and documentation",
-                  "Combine multiple screenshots into a single guide",
-                  "Archive diagrams and technical drawings",
-                  "Universal PDF format opens on any device"
-                ]
-              },
-              {
-                title: "Best Use Cases for PNG to PDF",
-                content: "Our PNG to PDF converter is ideal for these common scenarios:",
-                items: [
-                  "Compiling software screenshots for tutorials",
-                  "Creating graphic design portfolios",
-                  "Archiving infographics and visual content",
-                  "Documenting user interface designs",
-                  "Sharing charts, graphs, and diagrams",
-                  "Building technical documentation with images"
-                ]
-              }
-            ]}
-            exampleTable={{
-              title: "PNG to PDF Conversion Examples",
-              rows: [
-                { label: "Screenshot (1920x1080)", before: "1.2 MB PNG", after: "1.3 MB PDF" },
-                { label: "Logo with Transparency", before: "150 KB PNG", after: "160 KB PDF" },
-                { label: "10 App Screenshots", before: "12 MB total", after: "11.5 MB PDF" },
-                { label: "Infographic Collection", before: "8 MB total", after: "7.8 MB PDF" }
-              ]
-            }}
-          />
+          <EnhancedToolSEOContent toolId="png-to-pdf" />
 
           <RelatedTools currentToolId="png-to-pdf" />
         </div>

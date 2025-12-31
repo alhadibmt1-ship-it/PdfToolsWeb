@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import ToolSEOContent from "@/components/ToolSEOContent";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
@@ -103,7 +104,7 @@ export default function PdfToPptPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">PDF to PowerPoint</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("pdf-to-powerpoint")?.longTailH1 || "PDF to PowerPoint"}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Convert your PDF document to an editable PowerPoint (PPTX) presentation. Perfect for creating slides from PDF content.
             </p>
@@ -151,39 +152,10 @@ export default function PdfToPptPage() {
             )}
           </div>
 
-          <ToolSEOContent
-            toolName="PDF to PowerPoint Converter"
-            toolId="pdf-to-ppt"
-            toolDescription="Our PDF to PowerPoint converter transforms your PDF documents into fully editable Microsoft PowerPoint (PPTX) presentations. Each PDF page becomes a slide, preserving layouts, images, and text for easy editing and presentation."
-            howToSteps={[
-              "Upload your PDF file by clicking the upload area or dragging and dropping your document.",
-              "Wait while our server processes and converts your document to PowerPoint format.",
-              "Click the download button to save your new PowerPoint (PPTX) file to your device.",
-              "Open the file in Microsoft PowerPoint or Google Slides to edit and present."
-            ]}
-            benefits={[
-              "Convert PDF pages to editable slides instantly",
-              "Preserve original layouts and images",
-              "Edit content directly in PowerPoint",
-              "Works with complex multi-page documents",
-              "Completely free with no registration required",
-              "Process files securely with automatic deletion",
-              "Compatible with PowerPoint, Google Slides, and Keynote"
-            ]}
-            faqs={[
-              {
-                question: "Is the PDF to PowerPoint conversion free?",
-                answer: "Yes, PDF HUB 24's PDF to PowerPoint converter is completely free to use. There are no hidden fees, subscriptions, or registration required."
-              },
-              {
-                question: "Will the formatting be preserved?",
-                answer: "Our converter preserves the original layout including images, text positioning, and colors. Each PDF page becomes a separate slide in the PowerPoint presentation."
-              },
-              {
-                question: "What file formats are supported?",
-                answer: "We accept standard PDF files and output PowerPoint PPTX format, which is compatible with Microsoft PowerPoint 2007 and later, as well as Google Slides and Apple Keynote."
-              }
-            ]}
+          <EnhancedToolSEOContent
+            toolId="pdf-to-powerpoint"
+            fallbackToolName="PDF to PowerPoint Converter"
+            fallbackDescription="Our PDF to PowerPoint converter transforms your PDF documents into fully editable Microsoft PowerPoint (PPTX) presentations."
           />
 
           <RelatedTools currentToolId="pdf-to-ppt" />

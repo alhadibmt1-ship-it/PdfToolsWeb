@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import ToolSEOContent from "@/components/ToolSEOContent";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
@@ -149,7 +150,7 @@ export default function AnnotatePdfPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">Annotate PDF</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("annotate-pdf")?.longTailH1 || "Annotate PDF"}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Highlight, underline, and add notes to your PDF documents. Perfect for reviewing and marking up documents.
             </p>
@@ -333,41 +334,7 @@ export default function AnnotatePdfPage() {
             </div>
           )}
 
-          <ToolSEOContent
-            toolName="PDF Annotation Tool"
-            toolId="annotate-pdf"
-            toolDescription="Our online PDF annotation tool allows you to highlight, underline, and add notes to your PDF documents. Perfect for document review, feedback, and markup without any software installation."
-            howToSteps={[
-              "Upload your PDF file by clicking the upload area or drag and drop.",
-              "Select an annotation tool (highlight, underline, note, or freehand).",
-              "Choose a color from the color palette.",
-              "Click on the PDF where you want to add the annotation.",
-              "Click Save to download your annotated PDF."
-            ]}
-            benefits={[
-              "Highlight important text in multiple colors",
-              "Underline key passages",
-              "Add sticky notes with comments",
-              "Freehand drawing for marks",
-              "No software installation required",
-              "Works on any device with a browser",
-              "Completely free with no registration"
-            ]}
-            faqs={[
-              {
-                question: "Can others see my annotations?",
-                answer: "Yes, when you save the PDF, your annotations are permanently added to the document. Anyone who opens the PDF will see your highlights and notes."
-              },
-              {
-                question: "What colors are available?",
-                answer: "We offer preset colors including yellow, green, pink, blue, and orange. You can also use custom colors through the color picker."
-              },
-              {
-                question: "Can I remove annotations later?",
-                answer: "Once saved, annotations are permanent in the output PDF. We recommend keeping your original file if you may need an un-annotated version."
-              }
-            ]}
-          />
+          <EnhancedToolSEOContent toolId="annotate-pdf" />
 
           <RelatedTools currentToolId="annotate-pdf" />
         </div>

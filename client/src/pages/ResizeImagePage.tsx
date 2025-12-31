@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import ToolSEOContent from "@/components/ToolSEOContent";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
@@ -114,7 +115,7 @@ export default function ResizeImagePage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">Resize Image</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("resize-image")?.longTailH1 || "Resize Image"}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Change image dimensions by pixels or percentage. Supports JPG, PNG, WebP, and GIF formats.
             </p>
@@ -236,84 +237,7 @@ export default function ResizeImagePage() {
             )}
           </div>
 
-          <ToolSEOContent
-            toolName="Resize Image"
-            toolId="resize-image"
-            toolDescription="Resize any image to your desired dimensions instantly with our free online image resizer. Whether you need to reduce an image for web use, enlarge a photo for printing, or prepare images for social media platforms, PDF HUB 24 makes it effortless. Our advanced resizing tool offers two flexible modes: resize by exact pixel dimensions for precise control, or resize by percentage for quick scaling. The optional aspect ratio lock ensures your images never look stretched or distorted. Our high-quality bicubic resampling algorithm preserves maximum detail even when scaling images up or down significantly."
-            howToSteps={[
-              "Upload your image by clicking the upload area or drag and drop your JPG, PNG, WebP, or GIF file.",
-              "Choose resize mode: by pixels (specify width and height) or by percentage.",
-              "Enter your desired dimensions or scale percentage.",
-              "Click 'Resize Image' and download your resized image."
-            ]}
-            benefits={[
-              "Resize images by exact pixels or percentage",
-              "Maintain or ignore aspect ratio as needed",
-              "Supports JPG, PNG, WebP, and GIF formats",
-              "High-quality resizing algorithm preserves details",
-              "Perfect for social media, web, and print",
-              "No watermarks on resized images",
-              "Free with no registration required"
-            ]}
-            faqs={[
-              {
-                question: "Will resizing reduce my image quality?",
-                answer: "Our tool uses high-quality bicubic resampling to preserve as much detail as possible. When reducing size, quality loss is minimal. When enlarging, some quality loss is unavoidable, but our algorithm minimizes artifacts."
-              },
-              {
-                question: "What's the maximum image size I can resize?",
-                answer: "You can resize images up to 50MB and up to 10,000 pixels in width or height. This covers most use cases from social media to print-ready images."
-              },
-              {
-                question: "How do I resize for specific social media platforms?",
-                answer: "Common sizes: Instagram post (1080x1080), Facebook cover (820x312), Twitter header (1500x500), LinkedIn banner (1584x396). Enter these dimensions in pixel mode."
-              },
-              {
-                question: "Should I resize images before uploading to my website?",
-                answer: "Yes, resizing images to the exact display size reduces file size and improves page load speed. Oversized images slow down websites and waste bandwidth. Use our tool to match your website's required dimensions."
-              },
-              {
-                question: "What's the difference between resizing by pixels vs percentage?",
-                answer: "Pixel mode gives you exact control over final dimensions - perfect when you need specific sizes. Percentage mode is faster for quick scaling - enter 50 to halve the size or 200 to double it."
-              }
-            ]}
-            keywords={["resize image online", "image resizer free", "change image dimensions", "scale image", "reduce image size"]}
-            relatedLinks={[
-              { text: "Compress images to reduce file size", href: "/image-compressor" },
-              { text: "Crop images to specific areas", href: "/crop-image" },
-              { text: "Convert images to different formats", href: "/convert-image" }
-            ]}
-            extraSections={[
-              {
-                title: "Popular Image Size Presets",
-                content: "Different platforms and use cases require specific image dimensions for optimal display. Using the wrong size can result in cropped images, stretched photos, or rejected uploads. Social media platforms are particularly strict about image dimensions. Instagram requires square images at 1080x1080 pixels for feed posts, while Stories need vertical 1080x1920 images. Facebook cover photos work best at 820x312 pixels to display properly on both desktop and mobile. For professional networking, LinkedIn banners should be 1584x396 pixels. YouTube thumbnails at 1280x720 pixels (16:9 ratio) ensure your video previews look crisp and professional. Using our resize tool with these exact dimensions ensures your images meet platform requirements perfectly.",
-                items: [
-                  "Instagram Square Post: 1080 x 1080 pixels",
-                  "Instagram Story/Reels: 1080 x 1920 pixels",
-                  "Facebook Cover Photo: 820 x 312 pixels",
-                  "Twitter Header: 1500 x 500 pixels",
-                  "LinkedIn Banner: 1584 x 396 pixels",
-                  "YouTube Thumbnail: 1280 x 720 pixels"
-                ]
-              },
-              {
-                title: "When to Resize Images",
-                content: "Image resizing is one of the most common photo editing tasks, essential for both personal and professional use. Website optimization is perhaps the most important reason to resize images. Large photos straight from cameras can be 5-10 MB each, dramatically slowing page load times. Resizing to display dimensions (typically 800-1200 pixels wide for web content) can reduce file sizes by 90% or more. Email attachments with oversized images often fail to send or get blocked by spam filters. Job applications frequently have file size limits that require resizing. E-commerce product photos need consistent dimensions for professional-looking catalogs. Even printing requires specific dimensions based on the desired print size and resolution (typically 300 DPI for high-quality prints).",
-                items: [
-                  "Optimizing website loading speed with smaller images",
-                  "Preparing photos for email attachments",
-                  "Meeting upload requirements for job applications",
-                  "Creating thumbnails for galleries and catalogs",
-                  "Printing photos at specific dimensions",
-                  "Fitting images into presentation slides"
-                ]
-              },
-              {
-                title: "Tips for Best Resizing Results",
-                content: "To achieve the best results when resizing images, keep these professional tips in mind. Always start with the highest quality original image available, as resizing cannot add detail that doesn't exist. When reducing image size, you'll almost always get excellent results because you're removing pixels rather than creating them. When enlarging images, quality loss is unavoidable, so limit upscaling to 150-200% maximum for acceptable results. If you need to resize multiple images to the same dimensions, process them one at a time using our tool to ensure consistent quality across your entire batch. For web use, consider using the percentage mode to quickly create multiple size variants (100%, 75%, 50%, 25%) for responsive websites. After resizing, always preview your image at 100% zoom to verify the quality meets your needs before downloading."
-              }
-            ]}
-          />
+          <EnhancedToolSEOContent toolId="resize-image" />
           
           <RelatedTools currentToolId="resize-image" />
         </div>
