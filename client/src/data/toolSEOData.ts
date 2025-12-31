@@ -1716,6 +1716,1579 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs into one document" },
       { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size after conversion" }
     ]
+  },
+  "rotate": {
+    id: "rotate",
+    primaryKeyword: "rotate pdf pages 90 degrees free",
+    longTailH1: "Rotate PDF Pages 90 Degrees Free - Fix Orientation Online",
+    secondaryKeywords: [
+      "rotate pdf pages online free",
+      "flip pdf upside down free",
+      "rotate scanned pdf 180 degrees",
+      "change pdf page orientation free",
+      "rotate pdf clockwise counterclockwise online"
+    ],
+    metaDescription: "Rotate PDF pages 90 degrees free online. Fix sideways or upside-down PDFs instantly. Best free PDF rotator - no signup, works on all devices. Try now!",
+    heroContent: "Is your PDF displaying sideways or upside down? Our free PDF rotator fixes page orientation instantly. Whether you scanned documents at the wrong angle, received a rotated file, or need to flip specific pages for proper viewing, PDF HUB 24 makes rotation quick and easy. Rotate individual pages or entire documents by 90, 180, or 270 degrees with just a few clicks. Our tool works on any device — Windows, Mac, iPhone, or Android — without requiring software installation or account registration. Perfect for fixing scanned documents, correcting camera-captured PDFs, or adjusting landscape pages to portrait orientation.",
+    useCases: {
+      title: "When to Rotate Your PDF Pages",
+      description: "PDF rotation is essential for fixing document orientation issues. Here's when our tool helps:",
+      items: [
+        "Fixing scanned documents captured at wrong angles",
+        "Correcting sideways PDFs from mobile scanning apps",
+        "Rotating landscape pages to portrait for printing",
+        "Flipping upside-down pages in merged documents",
+        "Adjusting camera-captured document photos",
+        "Rotating individual pages within multi-page PDFs",
+        "Fixing orientation before sharing or presenting"
+      ]
+    },
+    tutorial: {
+      title: "How to Rotate PDF Pages Step by Step",
+      steps: [
+        { step: "Upload Your PDF", detail: "Drag and drop your PDF file or click to browse. All pages will be displayed as thumbnails for easy selection." },
+        { step: "Select Pages to Rotate", detail: "Click on individual pages to select them, or choose 'Select All' to rotate the entire document." },
+        { step: "Choose Rotation Angle", detail: "Click rotate buttons to turn pages 90° clockwise, 90° counterclockwise, or 180° to flip upside down." },
+        { step: "Download Rotated PDF", detail: "Click 'Apply Rotation' and download your corrected PDF with proper page orientation." }
+      ]
+    },
+    troubleshooting: {
+      title: "PDF Rotation Tips & Solutions",
+      issues: [
+        { problem: "Rotated PDF still shows wrong orientation", solution: "Some PDF viewers cache the old version. Close and reopen the file, or clear your viewer's cache." },
+        { problem: "Only some pages need rotation", solution: "Select only the pages that need fixing using the thumbnail preview. Leave correctly oriented pages unselected." },
+        { problem: "Rotation buttons not responding", solution: "Ensure you've selected at least one page first. Selected pages are highlighted with a border." },
+        { problem: "Password-protected PDF won't rotate", solution: "Use our Unlock PDF tool first to remove password protection, then rotate the unprotected file." }
+      ]
+    },
+    securitySection: {
+      title: "Secure PDF Rotation",
+      content: "Your documents remain private throughout the rotation process:",
+      points: [
+        "256-bit SSL encryption for all file transfers",
+        "Documents processed in isolated secure environments",
+        "Automatic deletion after processing completes",
+        "No human access to your uploaded files",
+        "No document content is stored or logged",
+        "GDPR-compliant privacy practices"
+      ]
+    },
+    faqs: [
+      { question: "Can I rotate just one page in a multi-page PDF?", answer: "Yes! Our tool shows thumbnails of all pages. Simply click to select specific pages you want to rotate, leaving others unchanged." },
+      { question: "What rotation angles are available?", answer: "You can rotate pages 90° clockwise, 90° counterclockwise, or 180° (flip upside down). Apply multiple rotations for 270° if needed." },
+      { question: "Does rotation affect PDF quality?", answer: "No, rotation is a lossless operation. Text, images, and formatting remain exactly as they were — only the orientation changes." },
+      { question: "Can I rotate landscape to portrait?", answer: "Rotation changes page orientation display, but doesn't resize content. For changing page dimensions, use our Resize PDF tool instead." },
+      { question: "Is there a page limit for rotation?", answer: "We support PDFs with up to 200 pages. Large files may take slightly longer to process." }
+    ],
+    relatedWorkflows: [
+      { title: "Scanned Document Fix Workflow", description: "Fix and optimize scanned documents", tools: ["rotate", "compress", "ocr-pdf"] },
+      { title: "Document Preparation", description: "Prepare PDFs for professional sharing", tools: ["rotate", "add-page-numbers", "add-watermark"] }
+    ],
+    internalLinks: [
+      { text: "Compress PDF", href: "/compress", context: "Reduce file size after fixing rotation" },
+      { text: "Split PDF", href: "/split", context: "Extract specific pages before rotating" },
+      { text: "Merge PDF", href: "/merge", context: "Combine rotated pages with other documents" },
+      { text: "OCR PDF", href: "/ocr-pdf", context: "Extract text from rotated scanned documents" }
+    ]
+  },
+  "delete-pages": {
+    id: "delete-pages",
+    primaryKeyword: "delete pages from pdf free online",
+    longTailH1: "Delete Pages from PDF Free Online - Remove Unwanted Pages Instantly",
+    secondaryKeywords: [
+      "remove pages from pdf free",
+      "delete single page from pdf online",
+      "pdf page remover free no signup",
+      "remove blank pages from pdf",
+      "delete first page of pdf free"
+    ],
+    metaDescription: "Delete pages from PDF free online. Remove unwanted pages from your PDF instantly. Best free PDF page remover - no signup, preview before deleting. Try now!",
+    heroContent: "Need to remove unwanted pages from your PDF? Our free PDF page remover makes it easy to delete any pages you don't need. Whether you're removing blank pages, eliminating cover sheets, or cutting out irrelevant sections, PDF HUB 24 lets you preview all pages and select exactly which ones to remove. No software installation, no registration, no watermarks — just quick, secure page deletion that works on any device. Perfect for cleaning up scanned documents, removing duplicate pages, or trimming PDFs before sharing with clients and colleagues.",
+    useCases: {
+      title: "When to Delete PDF Pages",
+      description: "PDF page deletion helps you create cleaner, more focused documents:",
+      items: [
+        "Removing blank pages from scanned documents",
+        "Deleting cover pages or table of contents",
+        "Eliminating irrelevant sections before sharing",
+        "Removing duplicate pages from merged PDFs",
+        "Cutting out draft pages from final documents",
+        "Deleting signature pages before re-signing",
+        "Removing ads or promotional pages from downloaded PDFs",
+        "Trimming test pages from print-ready files"
+      ]
+    },
+    tutorial: {
+      title: "How to Delete Pages from PDF Step by Step",
+      steps: [
+        { step: "Upload Your PDF", detail: "Drag and drop your PDF or click to browse. All pages display as thumbnails for easy viewing." },
+        { step: "Select Pages to Delete", detail: "Click on page thumbnails to select pages you want to remove. Selected pages are highlighted." },
+        { step: "Remove Selected Pages", detail: "Click 'Delete Selected Pages' to remove the chosen pages from your document." },
+        { step: "Download Updated PDF", detail: "Download your new PDF with unwanted pages removed. Original formatting is preserved." }
+      ]
+    },
+    troubleshooting: {
+      title: "PDF Page Deletion Tips & Solutions",
+      issues: [
+        { problem: "Accidentally deleted wrong pages", solution: "Re-upload the original file and carefully select the correct pages. We recommend downloading the original first as backup." },
+        { problem: "Can't delete pages from protected PDF", solution: "Use our Unlock PDF tool first to remove password protection, then delete unwanted pages." },
+        { problem: "Want to keep only certain pages instead", solution: "Use our Split PDF tool to extract just the pages you want to keep, rather than deleting unwanted ones." },
+        { problem: "Page numbers changed after deletion", solution: "PDF page numbers automatically renumber. Use our Add Page Numbers tool to add new sequential numbering." }
+      ]
+    },
+    securitySection: {
+      title: "Secure Page Deletion",
+      content: "Your documents are protected throughout the page deletion process:",
+      points: [
+        "SSL encryption for all file uploads and downloads",
+        "Isolated processing environment for each operation",
+        "Automatic file deletion after processing",
+        "No storage of original or modified documents",
+        "No human access to your file contents",
+        "GDPR-compliant data handling practices"
+      ]
+    },
+    faqs: [
+      { question: "Can I delete multiple non-consecutive pages?", answer: "Yes! Click on any pages you want to remove, regardless of their position. You can select pages 1, 5, and 10 to delete all three at once." },
+      { question: "Will deleting pages affect the remaining content?", answer: "No, remaining pages keep their original content, formatting, and links intact. Only the deleted pages are removed." },
+      { question: "Is there an undo option after deleting?", answer: "Once downloaded, deletion is permanent. We recommend keeping your original file as backup before making changes." },
+      { question: "Can I delete pages from a scanned PDF?", answer: "Absolutely! Our tool works with all PDF types including scanned documents. Simply select unwanted pages and delete them." },
+      { question: "What's the maximum number of pages I can delete?", answer: "You can delete as many pages as needed, but must leave at least one page in the document." }
+    ],
+    relatedWorkflows: [
+      { title: "Document Cleanup Workflow", description: "Clean and optimize PDFs for sharing", tools: ["delete-pages", "compress", "add-page-numbers"] },
+      { title: "Scanned Document Processing", description: "Process and clean scanned documents", tools: ["delete-pages", "rotate", "ocr-pdf"] }
+    ],
+    internalLinks: [
+      { text: "Split PDF", href: "/split", context: "Extract specific pages instead of deleting unwanted ones" },
+      { text: "Merge PDF", href: "/merge", context: "Combine remaining pages with other documents" },
+      { text: "Reorder Pages", href: "/reorder-pages", context: "Rearrange pages after removing unwanted ones" },
+      { text: "Add Page Numbers", href: "/add-page-numbers", context: "Add new page numbers after deletion" }
+    ]
+  },
+  "unlock-pdf": {
+    id: "unlock-pdf",
+    primaryKeyword: "remove pdf password free online",
+    longTailH1: "Remove PDF Password Free Online - Unlock Protected PDFs Instantly",
+    secondaryKeywords: [
+      "unlock pdf free no signup",
+      "pdf password remover free online",
+      "remove password protection from pdf",
+      "unlock secured pdf document free",
+      "pdf unlocker free no software"
+    ],
+    metaDescription: "Remove PDF password free online. Unlock protected PDFs instantly to edit, print, or copy content. Best free PDF unlocker - no signup, works on all devices.",
+    heroContent: "Have a password-protected PDF you can't open or edit? Our free PDF unlocker removes password restrictions so you can access your documents. Whether you've forgotten your own password, received a locked file that's hard to work with, or need to edit a protected document, PDF HUB 24 removes restrictions quickly and securely. Unlock PDFs to enable printing, copying, editing, and form filling — all without installing software or creating an account. Our tool handles both user passwords (required to open) and owner passwords (restrictions on editing/printing).",
+    useCases: {
+      title: "When to Unlock PDF Files",
+      description: "PDF unlocking is essential when password restrictions limit what you can do:",
+      items: [
+        "Removing forgotten passwords from your own documents",
+        "Unlocking PDFs to enable printing capabilities",
+        "Removing edit restrictions to make document changes",
+        "Enabling copy-paste from password-protected PDFs",
+        "Unlocking bank statements and financial documents",
+        "Removing restrictions from old archived documents",
+        "Enabling form filling on protected PDF forms"
+      ]
+    },
+    tutorial: {
+      title: "How to Remove PDF Password Step by Step",
+      steps: [
+        { step: "Upload Protected PDF", detail: "Drag and drop your password-protected PDF or click to browse and select it." },
+        { step: "Enter Password (If Required)", detail: "If the PDF requires a password to open, enter it when prompted. Owner-password-only PDFs unlock automatically." },
+        { step: "Remove Protection", detail: "Click 'Unlock PDF' to remove all password restrictions from your document." },
+        { step: "Download Unlocked PDF", detail: "Download your unrestricted PDF. You can now print, edit, copy, and share freely." }
+      ]
+    },
+    troubleshooting: {
+      title: "PDF Unlocking Tips & Solutions",
+      issues: [
+        { problem: "PDF requires password to open and I don't know it", solution: "We can only unlock PDFs where you know the user password, or PDFs with only owner restrictions (no password to open)." },
+        { problem: "Unlock button not working", solution: "Ensure the file is a valid PDF. Some secured PDFs use encryption methods that cannot be removed without the password." },
+        { problem: "PDF still shows restrictions after unlock", solution: "Close and reopen the file in a different PDF viewer. Some viewers cache the old protected version." },
+        { problem: "Unlocked PDF looks different", solution: "Unlocking only removes restrictions — it doesn't change content. If formatting differs, the original may have viewer-specific settings." }
+      ]
+    },
+    securitySection: {
+      title: "Secure PDF Unlocking",
+      content: "Your documents and passwords are handled with maximum security:",
+      points: [
+        "256-bit SSL encryption for all file transfers",
+        "Passwords are never stored or logged",
+        "Documents processed in isolated secure environments",
+        "Automatic file deletion after processing",
+        "No human access to your uploaded files or passwords",
+        "GDPR-compliant privacy practices"
+      ]
+    },
+    faqs: [
+      { question: "Can I unlock a PDF I don't know the password for?", answer: "Only if the PDF has owner restrictions (printing/editing disabled) but no user password. PDFs requiring a password to open need that password to unlock." },
+      { question: "Is it legal to unlock PDFs?", answer: "Unlocking your own documents or those you have permission to access is legal. Don't use this tool to bypass security on documents you're not authorized to access." },
+      { question: "What types of PDF protection can be removed?", answer: "We remove printing restrictions, editing restrictions, copy restrictions, and form-filling restrictions. User passwords require you to enter them." },
+      { question: "Will unlocking damage my PDF content?", answer: "No, unlocking only removes restrictions. All text, images, formatting, and links remain exactly as they were." },
+      { question: "Can I re-add password protection after unlocking?", answer: "Yes! After unlocking, use our Protect PDF tool to add new password protection with your preferred settings." }
+    ],
+    relatedWorkflows: [
+      { title: "Protected Document Editing", description: "Unlock and edit protected documents", tools: ["unlock-pdf", "pdf-to-word", "word-to-pdf"] },
+      { title: "Document Accessibility", description: "Make documents accessible for all uses", tools: ["unlock-pdf", "compress", "split"] }
+    ],
+    internalLinks: [
+      { text: "Protect PDF", href: "/protect-pdf", context: "Re-add password protection after unlocking" },
+      { text: "PDF to Word", href: "/pdf-to-word", context: "Convert unlocked PDF to editable Word format" },
+      { text: "Compress PDF", href: "/compress", context: "Reduce file size after unlocking" },
+      { text: "Edit PDF", href: "/edit-pdf", context: "Make changes to your unlocked document" }
+    ]
+  },
+  "add-watermark": {
+    id: "add-watermark",
+    primaryKeyword: "add watermark to pdf free",
+    longTailH1: "Add Watermark to PDF Free - Text & Image Watermarks Online",
+    secondaryKeywords: [
+      "pdf watermark online free",
+      "add text watermark to pdf",
+      "stamp pdf with watermark free",
+      "add confidential watermark to pdf",
+      "pdf watermark maker free no signup"
+    ],
+    metaDescription: "Add watermark to PDF free online. Insert text or image watermarks on your documents. Best free PDF watermark tool - customize position, opacity, size. Try now!",
+    heroContent: "Need to protect or brand your PDF documents? Our free PDF watermark tool lets you add professional text or image watermarks to any page. Whether you're marking documents as confidential, adding company logos, or branding drafts with your name, PDF HUB 24 makes watermarking easy. Customize watermark position, size, rotation, and opacity to get exactly the look you need. Add watermarks to all pages at once or select specific pages — all without software installation or registration. Perfect for protecting intellectual property, branding proposals, or marking documents as drafts before final approval.",
+    useCases: {
+      title: "When to Add Watermarks to PDFs",
+      description: "PDF watermarking serves many important purposes:",
+      items: [
+        "Marking documents as Confidential or Proprietary",
+        "Adding company logos to proposals and reports",
+        "Stamping Draft on documents pending approval",
+        "Branding PDFs with your name or business",
+        "Adding copyright notices to creative work",
+        "Marking documents with approval status",
+        "Protecting images and designs from unauthorized use",
+        "Adding date stamps to time-sensitive documents"
+      ]
+    },
+    tutorial: {
+      title: "How to Add Watermark to PDF Step by Step",
+      steps: [
+        { step: "Upload Your PDF", detail: "Drag and drop your PDF or click to browse. All pages will be available for watermarking." },
+        { step: "Create Your Watermark", detail: "Enter text (like 'Confidential' or 'Draft') or upload an image (logo, signature). Customize font, size, and color." },
+        { step: "Adjust Position & Style", detail: "Set watermark position (center, corner, diagonal), opacity level, and rotation angle. Preview on your document." },
+        { step: "Apply & Download", detail: "Choose to apply to all pages or select specific ones. Download your watermarked PDF instantly." }
+      ]
+    },
+    troubleshooting: {
+      title: "PDF Watermark Tips & Solutions",
+      issues: [
+        { problem: "Watermark is hard to see", solution: "Increase watermark opacity or choose a darker color. For light documents, use dark watermarks; for dark pages, use light colors." },
+        { problem: "Watermark covers important content", solution: "Reduce opacity to make it semi-transparent, or reposition the watermark to a corner or edge of the page." },
+        { problem: "Image watermark is too large or small", solution: "Adjust the size slider to scale your image watermark. Preview changes before applying to all pages." },
+        { problem: "Need different watermarks on different pages", solution: "Apply watermarks to page ranges separately, or use multiple passes with different settings for different sections." }
+      ]
+    },
+    securitySection: {
+      title: "Secure PDF Watermarking",
+      content: "Your documents are protected throughout the watermarking process:",
+      points: [
+        "SSL encryption for all file uploads and downloads",
+        "Documents processed in isolated secure environments",
+        "Automatic file deletion after processing completes",
+        "Uploaded images and logos are not stored",
+        "No human access to your documents or watermarks",
+        "GDPR-compliant data handling practices"
+      ]
+    },
+    faqs: [
+      { question: "Can I add both text and image watermarks?", answer: "Currently you can add either text or image watermarks per operation. Apply one type, download, then add another type if needed." },
+      { question: "Will the watermark be visible when printing?", answer: "Yes, watermarks are embedded in the PDF and will appear when printed. Adjust opacity if you want a subtle print appearance." },
+      { question: "Can I remove a watermark later?", answer: "Watermarks are permanently embedded. Keep your original unwatermarked file if you might need a clean version later." },
+      { question: "What image formats work for watermarks?", answer: "We support PNG, JPG, and SVG for image watermarks. PNG with transparency works best for logos." },
+      { question: "Can I watermark password-protected PDFs?", answer: "You'll need to unlock the PDF first using our Unlock PDF tool, then add your watermark." }
+    ],
+    relatedWorkflows: [
+      { title: "Document Branding Workflow", description: "Brand and protect your documents", tools: ["add-watermark", "add-page-numbers", "protect-pdf"] },
+      { title: "Draft Document Workflow", description: "Mark and manage draft documents", tools: ["add-watermark", "compress", "merge"] }
+    ],
+    internalLinks: [
+      { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection after watermarking" },
+      { text: "Add Page Numbers", href: "/add-page-numbers", context: "Add page numbers along with watermarks" },
+      { text: "Compress PDF", href: "/compress", context: "Reduce file size after adding watermarks" },
+      { text: "Merge PDF", href: "/merge", context: "Combine watermarked documents together" }
+    ]
+  },
+  "reorder-pages": {
+    id: "reorder-pages",
+    primaryKeyword: "reorder pdf pages free online",
+    longTailH1: "Reorder PDF Pages Free Online - Rearrange Page Order Easily",
+    secondaryKeywords: [
+      "rearrange pdf pages free",
+      "change pdf page order online",
+      "move pdf pages free no signup",
+      "reorganize pdf page sequence",
+      "drag and drop pdf pages order"
+    ],
+    metaDescription: "Reorder PDF pages free online. Rearrange page order by drag and drop. Best free PDF page organizer - no signup, instant preview. Fix page order now!",
+    heroContent: "Need to rearrange pages in your PDF? Our free PDF page reorderer makes it easy to fix page order with simple drag-and-drop. Whether you scanned pages out of order, need to move the appendix, or want to reorganize sections, PDF HUB 24 shows visual thumbnails of every page so you can arrange them exactly how you want. No software installation, no registration required — just upload your PDF, drag pages to their new positions, and download your reorganized document. Perfect for fixing scanned document order, reorganizing reports, or arranging presentation slides.",
+    useCases: {
+      title: "When to Reorder PDF Pages",
+      description: "PDF page reordering helps you organize documents properly:",
+      items: [
+        "Fixing pages scanned or merged in wrong order",
+        "Moving appendices and references to the end",
+        "Reorganizing presentation slides for better flow",
+        "Arranging chapters in correct sequence",
+        "Moving cover page to the front after merging",
+        "Rearranging form pages in logical order",
+        "Organizing scanned receipts chronologically",
+        "Fixing page sequence before printing or binding"
+      ]
+    },
+    tutorial: {
+      title: "How to Reorder PDF Pages Step by Step",
+      steps: [
+        { step: "Upload Your PDF", detail: "Drag and drop your PDF or click to browse. All pages appear as visual thumbnails." },
+        { step: "Drag Pages to New Positions", detail: "Click and drag any page thumbnail to move it. Drop between other pages to reposition." },
+        { step: "Preview New Order", detail: "Review your new page sequence. Continue dragging until the order is exactly right." },
+        { step: "Download Reordered PDF", detail: "Click 'Apply Changes' and download your PDF with pages in the new order." }
+      ]
+    },
+    troubleshooting: {
+      title: "PDF Page Reordering Tips & Solutions",
+      issues: [
+        { problem: "Too many pages to organize easily", solution: "For PDFs with 50+ pages, consider using Split PDF to break into sections, reorder each section, then Merge back together." },
+        { problem: "Can't see page content in thumbnails", solution: "Thumbnails show page previews. Zoom in on your browser or click a thumbnail for a larger preview if available." },
+        { problem: "Accidentally moved wrong page", solution: "Simply drag it back to the correct position. Changes aren't saved until you click Apply and download." },
+        { problem: "Need to reverse entire page order", solution: "Drag pages one by one, or use our tool multiple times. For large documents, start from the last page and move forward." }
+      ]
+    },
+    securitySection: {
+      title: "Secure Page Reordering",
+      content: "Your documents are protected throughout the reordering process:",
+      points: [
+        "256-bit SSL encryption for all file transfers",
+        "Documents processed in isolated secure environments",
+        "Automatic file deletion after processing",
+        "No storage of original or reordered documents",
+        "No human access to your file contents",
+        "GDPR-compliant data handling practices"
+      ]
+    },
+    faqs: [
+      { question: "Can I move multiple pages at once?", answer: "Currently pages are moved one at a time for precise control. This ensures you place each page exactly where you want it." },
+      { question: "Does reordering affect page content?", answer: "No, reordering only changes page sequence. All content, formatting, and links within each page remain unchanged." },
+      { question: "Can I reorder a PDF with 100+ pages?", answer: "Yes, but for very large documents, consider splitting into sections first for easier management, then merge after reordering." },
+      { question: "Will bookmarks update to new page positions?", answer: "Bookmarks move with their associated pages. However, page-number-based bookmarks may need manual adjustment." },
+      { question: "Can I undo my changes before downloading?", answer: "Yes! Re-upload the original file to start fresh, or continue dragging pages until the order is correct." }
+    ],
+    relatedWorkflows: [
+      { title: "Document Organization Workflow", description: "Organize and structure documents properly", tools: ["reorder-pages", "add-page-numbers", "merge"] },
+      { title: "Scanned Document Fixing", description: "Fix and organize scanned documents", tools: ["reorder-pages", "rotate", "delete-pages"] }
+    ],
+    internalLinks: [
+      { text: "Merge PDF", href: "/merge", context: "Combine PDFs before or after reordering" },
+      { text: "Split PDF", href: "/split", context: "Extract sections before reordering" },
+      { text: "Delete Pages", href: "/delete-pages", context: "Remove unwanted pages while reorganizing" },
+      { text: "Add Page Numbers", href: "/add-page-numbers", context: "Add new page numbers after reordering" }
+    ]
+  },
+  "crop-pdf": {
+    id: "crop-pdf",
+    primaryKeyword: "crop pdf margins online free",
+    longTailH1: "Crop PDF Margins Online Free - Remove White Space & Borders",
+    secondaryKeywords: [
+      "crop pdf pages free online",
+      "remove pdf margins free",
+      "trim pdf white space online",
+      "pdf margin cutter free",
+      "resize pdf crop area free"
+    ],
+    metaDescription: "Crop PDF margins online free. Remove white space and trim borders from PDF pages. Best free PDF cropper - no signup, adjust crop area visually. Try now!",
+    heroContent: "Need to remove excess margins or white space from your PDF? Our free PDF cropper lets you trim away unwanted borders and adjust the visible area of your pages. Whether you're removing excessive margins for printing, cropping scanned documents to content boundaries, or trimming whitespace to focus on the important information, PDF HUB 24 makes it easy. Visually adjust your crop area with precision controls, preview the results, and download your perfectly cropped document — all without software installation or registration. Perfect for preparing PDFs for printing, removing scanner borders, or optimizing documents for screen viewing.",
+    useCases: {
+      title: "When to Crop PDF Pages",
+      description: "PDF cropping helps you remove unwanted space and focus on content:",
+      items: [
+        "Removing excessive white margins for printing",
+        "Trimming scanner borders from scanned documents",
+        "Cropping to focus on specific content areas",
+        "Removing unwanted headers or footers",
+        "Trimming presentation slides for embedding",
+        "Adjusting page boundaries for ebook readers",
+        "Removing watermarks at page edges",
+        "Optimizing PDFs for mobile viewing"
+      ]
+    },
+    tutorial: {
+      title: "How to Crop PDF Pages Step by Step",
+      steps: [
+        { step: "Upload Your PDF", detail: "Drag and drop your PDF or click to browse. Pages display with current boundaries visible." },
+        { step: "Set Crop Area", detail: "Drag crop handles or enter precise measurements to define the area you want to keep." },
+        { step: "Apply to Pages", detail: "Choose to crop all pages uniformly or set different crop areas for individual pages." },
+        { step: "Download Cropped PDF", detail: "Preview the cropped result and download your trimmed PDF document." }
+      ]
+    },
+    troubleshooting: {
+      title: "PDF Cropping Tips & Solutions",
+      issues: [
+        { problem: "Cropped away important content accidentally", solution: "Re-upload the original file and set a larger crop area. Keep more margin than you think you need." },
+        { problem: "Different pages need different crop areas", solution: "Crop pages with similar layouts together, or process page ranges separately and merge the results." },
+        { problem: "Cropped PDF looks stretched or distorted", solution: "Cropping removes content, it doesn't resize. The remaining content maintains its original proportions." },
+        { problem: "Text near edges got cut off", solution: "Expand your crop area slightly. Some content may extend closer to edges than visible in preview." }
+      ]
+    },
+    securitySection: {
+      title: "Secure PDF Cropping",
+      content: "Your documents are protected throughout the cropping process:",
+      points: [
+        "SSL encryption for all file uploads and downloads",
+        "Documents processed in isolated secure environments",
+        "Automatic file deletion after processing",
+        "No storage of original or cropped documents",
+        "No human access to your file contents",
+        "GDPR-compliant data handling practices"
+      ]
+    },
+    faqs: [
+      { question: "What's the difference between cropping and resizing?", answer: "Cropping removes content from edges (like cutting a photo). Resizing changes page dimensions while scaling all content. Use our Resize PDF tool for dimension changes." },
+      { question: "Can I crop different pages differently?", answer: "Yes, you can set individual crop areas for different pages, or apply the same crop to all pages at once." },
+      { question: "Will cropping reduce file size?", answer: "Cropping may slightly reduce file size by removing edge content, but for significant size reduction, use our Compress PDF tool." },
+      { question: "Can I undo cropping after download?", answer: "Cropping permanently removes the cropped areas. Keep your original file as backup before cropping." },
+      { question: "Does cropping affect text searchability?", answer: "Text within the crop area remains fully searchable. Only text in the removed margins is no longer accessible." }
+    ],
+    relatedWorkflows: [
+      { title: "Print Optimization Workflow", description: "Prepare PDFs for optimal printing", tools: ["crop-pdf", "resize-pdf", "compress"] },
+      { title: "Scanned Document Cleanup", description: "Clean up scanned document boundaries", tools: ["crop-pdf", "rotate", "ocr-pdf"] }
+    ],
+    internalLinks: [
+      { text: "Resize PDF", href: "/resize-pdf", context: "Change page dimensions after cropping" },
+      { text: "Compress PDF", href: "/compress", context: "Reduce file size after cropping" },
+      { text: "Rotate PDF", href: "/rotate", context: "Fix orientation before cropping" },
+      { text: "Split PDF", href: "/split", context: "Extract pages before cropping" }
+    ]
+  },
+  "resize-pdf": {
+    id: "resize-pdf",
+    primaryKeyword: "resize pdf page size free online",
+    longTailH1: "Resize PDF Page Size Free Online - Change Dimensions Instantly",
+    secondaryKeywords: [
+      "change pdf page size free",
+      "pdf page resizer online free",
+      "convert pdf to a4 size free",
+      "resize pdf to letter size",
+      "scale pdf pages free online"
+    ],
+    metaDescription: "Resize PDF page size free online. Change PDF to A4, Letter, or custom dimensions. Best free PDF resizer - scale pages without losing quality. Try now!",
+    heroContent: "Need to change your PDF page dimensions? Our free PDF resizer lets you scale pages to any standard size like A4, Letter, or Legal, or set custom dimensions for your specific needs. Whether you're preparing documents for different paper sizes, scaling PDFs for printing, or adjusting dimensions for specific requirements, PDF HUB 24 resizes your pages while maintaining content quality. Resize entire documents or individual pages with precise control — all without software installation or registration. Perfect for international document sharing, print preparation, or meeting specific submission requirements.",
+    useCases: {
+      title: "When to Resize PDF Pages",
+      description: "PDF resizing helps you adapt documents to different requirements:",
+      items: [
+        "Converting US Letter size PDFs to A4 for international use",
+        "Scaling A4 documents to Letter for US printing",
+        "Resizing for specific submission requirements",
+        "Preparing PDFs for different paper sizes",
+        "Scaling documents for large format printing",
+        "Adjusting dimensions for ebook or mobile viewing",
+        "Converting to standard sizes for archiving",
+        "Matching page sizes before merging documents"
+      ]
+    },
+    tutorial: {
+      title: "How to Resize PDF Pages Step by Step",
+      steps: [
+        { step: "Upload Your PDF", detail: "Drag and drop your PDF or click to browse. Current page dimensions are displayed." },
+        { step: "Choose Target Size", detail: "Select a preset size (A4, Letter, Legal, etc.) or enter custom dimensions in inches or millimeters." },
+        { step: "Set Scaling Options", detail: "Choose to scale content to fit, maintain aspect ratio, or center content on new page size." },
+        { step: "Download Resized PDF", detail: "Preview the resized pages and download your document with new dimensions." }
+      ]
+    },
+    troubleshooting: {
+      title: "PDF Resizing Tips & Solutions",
+      issues: [
+        { problem: "Content appears too small after resizing", solution: "Try 'Scale to Fit' option which enlarges content to fill the new page size proportionally." },
+        { problem: "Content is cut off at edges", solution: "Choose 'Fit to Page' instead of 'Fill Page' to ensure all content fits within new dimensions." },
+        { problem: "Aspect ratio looks wrong", solution: "Enable 'Maintain Aspect Ratio' to prevent stretching. Content will be centered with margins if needed." },
+        { problem: "Different pages have different original sizes", solution: "Resizing applies uniform target dimensions. All pages will become the same size after processing." }
+      ]
+    },
+    securitySection: {
+      title: "Secure PDF Resizing",
+      content: "Your documents are protected throughout the resizing process:",
+      points: [
+        "256-bit SSL encryption for all file transfers",
+        "Documents processed in isolated secure environments",
+        "Automatic file deletion after processing",
+        "No storage of original or resized documents",
+        "No human access to your file contents",
+        "GDPR-compliant data handling practices"
+      ]
+    },
+    faqs: [
+      { question: "What's the difference between resizing and cropping?", answer: "Resizing changes page dimensions and scales content. Cropping removes content from edges without scaling. Use crop for trimming, resize for dimension changes." },
+      { question: "Will resizing affect image quality?", answer: "Scaling up may slightly reduce apparent quality. Scaling down generally looks fine. Vector text and graphics scale perfectly at any size." },
+      { question: "What page sizes are available?", answer: "Presets include A4, A3, A5, Letter, Legal, Tabloid, and more. You can also enter any custom dimensions." },
+      { question: "Can I resize specific pages only?", answer: "Currently resizing applies to all pages. To resize specific pages, split them out first, resize, then merge back." },
+      { question: "Will my fonts still look correct?", answer: "Yes, embedded fonts scale smoothly to any size. Only extremely small text may become harder to read." }
+    ],
+    relatedWorkflows: [
+      { title: "International Document Prep", description: "Prepare documents for international use", tools: ["resize-pdf", "compress", "protect-pdf"] },
+      { title: "Print Preparation Workflow", description: "Prepare PDFs for various print sizes", tools: ["resize-pdf", "crop-pdf", "add-page-numbers"] }
+    ],
+    internalLinks: [
+      { text: "Crop PDF", href: "/crop-pdf", context: "Trim margins instead of resizing dimensions" },
+      { text: "Compress PDF", href: "/compress", context: "Reduce file size after resizing" },
+      { text: "Merge PDF", href: "/merge", context: "Combine PDFs of matching sizes" },
+      { text: "Split PDF", href: "/split", context: "Extract pages before resizing specific sections" }
+    ]
+  },
+  "sign-pdf": {
+    id: "sign-pdf",
+    primaryKeyword: "add signature to pdf free online",
+    longTailH1: "Add Signature to PDF Free Online - Sign Documents Instantly",
+    secondaryKeywords: [
+      "sign pdf document online free",
+      "electronic signature pdf free no account",
+      "add digital signature to pdf",
+      "draw signature on pdf free",
+      "pdf signature tool online"
+    ],
+    metaDescription: "Add signature to PDF free online. Sign documents instantly with drawn, typed, or uploaded signatures. Best free PDF signer - no signup, legally valid.",
+    heroContent: "Need to sign a PDF document quickly? Our free PDF signature tool lets you add your signature to any document in seconds. Whether you're signing contracts, agreements, forms, or letters, PDF HUB 24 makes electronic signing effortless. Draw your signature with your mouse or touchscreen, type it in a stylish font, or upload an image of your handwritten signature. Our signatures are clear, professional, and legally recognized for most purposes. Position your signature exactly where needed, resize it to fit, and download your signed document immediately. No account required, no software to install, and completely free to use on any device including smartphones and tablets.",
+    useCases: {
+      title: "When to Add Signatures to PDF Documents",
+      description: "Electronic signatures save time and eliminate the need for printing and scanning. Here's when our PDF signing tool helps:",
+      items: [
+        "Signing contracts and agreements without printing",
+        "Adding your signature to job applications and offer letters",
+        "Signing rental agreements, leases, and legal documents",
+        "Approving invoices, purchase orders, and business forms",
+        "Signing permission slips, consent forms, and school documents",
+        "Adding signatures to tax forms and financial documents",
+        "Signing NDAs and confidentiality agreements remotely",
+        "Completing government forms requiring signatures"
+      ]
+    },
+    tutorial: {
+      title: "How to Add Signature to PDF Step by Step",
+      steps: [
+        { step: "Upload Your PDF", detail: "Drag and drop your PDF document or click to browse. The document preview loads instantly." },
+        { step: "Create Your Signature", detail: "Draw your signature with mouse or finger, type your name to generate a signature, or upload an image of your handwritten signature." },
+        { step: "Position and Resize", detail: "Click where you want the signature placed. Drag to reposition and use handles to resize for the perfect fit." },
+        { step: "Download Signed PDF", detail: "Click 'Sign PDF' to apply your signature permanently. Download your signed document ready to share." }
+      ]
+    },
+    troubleshooting: {
+      title: "PDF Signature Tips & Solutions",
+      issues: [
+        { problem: "Signature looks too small or large", solution: "Use the resize handles after placing your signature. You can adjust size before finalizing the signed PDF." },
+        { problem: "Drawing signature with mouse is difficult", solution: "Try using a touchscreen device for more natural signing, or upload an image of your handwritten signature instead." },
+        { problem: "Need to sign multiple pages", solution: "Add signatures to each required page individually. You can navigate through pages and add signatures wherever needed." },
+        { problem: "Signature appears in wrong position", solution: "Click and drag to reposition your signature before downloading. Use zoom to precisely place on signature lines." }
+      ]
+    },
+    securitySection: {
+      title: "Secure PDF Signing",
+      content: "Your documents and signatures are protected with enterprise-grade security:",
+      points: [
+        "256-bit SSL encryption for all uploads and downloads",
+        "Documents processed in isolated secure environments",
+        "Signatures not stored after processing",
+        "Automatic file deletion after signing",
+        "No third-party access to your documents",
+        "GDPR-compliant privacy practices"
+      ]
+    },
+    faqs: [
+      { question: "Are electronic signatures legally valid?", answer: "Yes, electronic signatures are legally binding in most countries under laws like ESIGN Act (US) and eIDAS (EU) for most common documents and agreements." },
+      { question: "Can I sign multiple documents at once?", answer: "Currently you sign one document at a time. After downloading, you can immediately upload and sign additional documents." },
+      { question: "What signature formats are supported?", answer: "You can draw freehand, type your name in signature fonts, or upload PNG, JPG, or GIF images of your signature." },
+      { question: "Will my signature look professional?", answer: "Yes, typed signatures use elegant fonts, and drawn signatures render smoothly. You can resize for the perfect professional appearance." },
+      { question: "Can I add multiple signatures to one document?", answer: "Yes, you can add signatures to multiple locations within the same PDF document before downloading." }
+    ],
+    relatedWorkflows: [
+      { title: "Contract Signing Workflow", description: "Complete contract signing process", tools: ["sign-pdf", "flatten-pdf", "protect-pdf"] },
+      { title: "Form Completion Workflow", description: "Fill and sign forms efficiently", tools: ["edit-pdf", "sign-pdf", "compress"] }
+    ],
+    internalLinks: [
+      { text: "Flatten PDF", href: "/flatten-pdf", context: "Lock your signature permanently after signing" },
+      { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection to signed documents" },
+      { text: "Edit PDF", href: "/edit-pdf", context: "Add text and fill forms before signing" },
+      { text: "Compress PDF", href: "/compress", context: "Reduce file size of signed documents for email" }
+    ]
+  },
+  "flatten-pdf": {
+    id: "flatten-pdf",
+    primaryKeyword: "flatten pdf form fields free online",
+    longTailH1: "Flatten PDF Form Fields Free Online - Lock Content Permanently",
+    secondaryKeywords: [
+      "flatten pdf layers online free",
+      "convert fillable pdf to regular pdf",
+      "lock pdf form fields permanently",
+      "remove interactive elements from pdf",
+      "flatten pdf annotations free"
+    ],
+    metaDescription: "Flatten PDF form fields free online. Convert fillable PDFs to static documents. Best free PDF flattener - lock annotations, forms, and layers permanently.",
+    heroContent: "Need to lock down your PDF's fillable fields, annotations, or layers? Our free PDF flattening tool converts interactive elements into static content that cannot be edited. Flattening is essential when you want to preserve filled form data, prevent changes to annotations, or prepare documents for printing and archiving. Whether you've completed a fillable form, added comments for review, or want to secure signatures and markups, PDF HUB 24 merges all layers into a single, flat document. This ensures your content appears exactly as intended on any device or when printed, with no risk of accidental changes or data loss. Perfect for legal documents, completed applications, finalized contracts, and archived records.",
+    useCases: {
+      title: "When to Flatten Your PDF Documents",
+      description: "PDF flattening is essential for document security and compatibility. Here's when you should flatten:",
+      items: [
+        "Locking filled form data to prevent editing",
+        "Converting completed applications for submission",
+        "Preparing signed documents for archiving",
+        "Ensuring annotations appear in all PDF viewers",
+        "Creating print-ready versions of marked-up documents",
+        "Preventing accidental changes to filled forms",
+        "Making complex PDFs compatible with older viewers",
+        "Finalizing reviewed documents with comments"
+      ]
+    },
+    tutorial: {
+      title: "How to Flatten PDF Step by Step",
+      steps: [
+        { step: "Upload Your PDF", detail: "Drag and drop your PDF with forms, annotations, or layers. The tool detects interactive elements automatically." },
+        { step: "Review Elements", detail: "See which elements will be flattened: form fields, annotations, comments, stamps, and signatures." },
+        { step: "Flatten Document", detail: "Click 'Flatten PDF' to merge all layers and interactive elements into static content." },
+        { step: "Download Flattened PDF", detail: "Download your flattened document where all content is now permanent and uneditable." }
+      ]
+    },
+    troubleshooting: {
+      title: "PDF Flattening Tips & Solutions",
+      issues: [
+        { problem: "Form fields disappeared after flattening", solution: "Form field contents are preserved but merged into the page. The filled data remains visible but is no longer editable." },
+        { problem: "PDF still has editable fields", solution: "Ensure you downloaded the flattened version, not the original. The flattened file should have no interactive elements." },
+        { problem: "Annotations look different after flattening", solution: "Some annotation styles may render slightly differently when flattened. This is normal and content is preserved." },
+        { problem: "File size increased after flattening", solution: "Flattening can sometimes increase size due to rendering. Use Compress PDF afterward if file size is a concern." }
+      ]
+    },
+    securitySection: {
+      title: "Secure PDF Flattening",
+      content: "Your documents are processed securely throughout the flattening operation:",
+      points: [
+        "256-bit SSL encryption protects your files",
+        "Documents processed in isolated environments",
+        "No storage of original or flattened documents",
+        "Automatic deletion after processing",
+        "No access to your document contents",
+        "GDPR-compliant data practices"
+      ]
+    },
+    faqs: [
+      { question: "What does flattening a PDF do?", answer: "Flattening converts interactive elements (forms, annotations, layers) into static, non-editable content merged permanently into the document." },
+      { question: "Can I unflatten a PDF?", answer: "No, flattening is permanent. The original interactive elements cannot be restored. Keep your original file if you need the interactive version." },
+      { question: "Will flattening preserve my form data?", answer: "Yes, all filled-in text and selections are preserved visually. They become permanent static content in the flattened document." },
+      { question: "Does flattening affect PDF quality?", answer: "No, flattening maintains full quality. Text remains sharp, and images retain their original resolution." },
+      { question: "Should I flatten before or after signing?", answer: "Sign first, then flatten if you want to permanently lock the signature. Flattening makes signatures uneditable." }
+    ],
+    relatedWorkflows: [
+      { title: "Form Finalization Workflow", description: "Complete and lock filled forms", tools: ["edit-pdf", "sign-pdf", "flatten-pdf"] },
+      { title: "Document Archive Workflow", description: "Prepare documents for long-term storage", tools: ["flatten-pdf", "compress", "protect-pdf"] }
+    ],
+    internalLinks: [
+      { text: "Sign PDF", href: "/sign-pdf", context: "Add signatures before flattening for permanent signing" },
+      { text: "Edit PDF", href: "/edit-pdf", context: "Add text and fill forms before flattening" },
+      { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection after flattening" },
+      { text: "Compress PDF", href: "/compress", context: "Reduce file size of flattened documents" }
+    ]
+  },
+  "grayscale-pdf": {
+    id: "grayscale-pdf",
+    primaryKeyword: "convert color pdf to grayscale for printing",
+    longTailH1: "Convert Color PDF to Grayscale Free - Save Ink for Printing",
+    secondaryKeywords: [
+      "pdf to black and white converter free",
+      "remove color from pdf online",
+      "convert pdf to grayscale free online",
+      "make pdf black and white for printing",
+      "pdf grayscale converter no signup"
+    ],
+    metaDescription: "Convert color PDF to grayscale free online. Make PDFs black and white for printing to save ink. Best free PDF grayscale converter - instant results.",
+    heroContent: "Need to convert a color PDF to grayscale for printing? Our free PDF grayscale converter transforms colorful documents into crisp black and white versions, perfect for saving ink and toner costs. Whether you're printing business documents, drafts for review, or archival copies, converting to grayscale can reduce printing costs by up to 50%. PDF HUB 24 preserves your document's readability and professional appearance while removing color information. All text remains sharp, images convert to clear grayscale tones, and charts and diagrams stay perfectly readable. The conversion is instant, completely free, and works on any device without software installation. Ideal for offices, schools, and anyone looking to reduce printing expenses while maintaining document quality.",
+    useCases: {
+      title: "When to Convert PDF to Grayscale",
+      description: "Grayscale conversion helps reduce costs and meet specific requirements. Here's when it's useful:",
+      items: [
+        "Printing documents to save color ink and toner",
+        "Creating draft copies for review and markup",
+        "Meeting submission requirements for black and white documents",
+        "Reducing file size for text-heavy colorful documents",
+        "Preparing documents for fax transmission",
+        "Creating archival copies with consistent appearance",
+        "Printing handouts and materials cost-effectively",
+        "Converting marketing materials for internal use"
+      ]
+    },
+    tutorial: {
+      title: "How to Convert PDF to Grayscale Step by Step",
+      steps: [
+        { step: "Upload Your PDF", detail: "Drag and drop your color PDF or click to browse. Preview shows original colors." },
+        { step: "Start Conversion", detail: "Click 'Convert to Grayscale' to process. All colors are mapped to appropriate gray tones." },
+        { step: "Preview Results", detail: "Review the grayscale preview to ensure text and images remain clear and readable." },
+        { step: "Download Grayscale PDF", detail: "Download your black and white PDF ready for cost-effective printing." }
+      ]
+    },
+    troubleshooting: {
+      title: "Grayscale Conversion Tips & Solutions",
+      issues: [
+        { problem: "Some text is hard to read after conversion", solution: "Light-colored text on white backgrounds may be faint. Consider adjusting contrast in the original before converting." },
+        { problem: "Images look too dark or too light", solution: "Our algorithm optimizes for readability. Very dark or light images may need adjustment in the source document." },
+        { problem: "Charts are hard to distinguish", solution: "Color-coded charts may lose clarity. Consider using patterns or labels in the original if grayscale is the final format." },
+        { problem: "Need some pages in color, others in grayscale", solution: "Split your PDF first, convert specific pages to grayscale, then merge them back together." }
+      ]
+    },
+    securitySection: {
+      title: "Secure Grayscale Conversion",
+      content: "Your documents are protected throughout the conversion process:",
+      points: [
+        "256-bit SSL encryption for secure transfers",
+        "Documents processed in isolated environments",
+        "No storage of original or converted files",
+        "Automatic deletion after processing",
+        "No access to your document contents",
+        "GDPR-compliant privacy practices"
+      ]
+    },
+    faqs: [
+      { question: "Will converting to grayscale reduce file size?", answer: "Usually yes, especially for image-heavy documents. Color data is removed, which can significantly reduce file size." },
+      { question: "Can I convert just some pages to grayscale?", answer: "Currently conversion applies to all pages. Split your PDF first to convert specific pages, then merge back." },
+      { question: "Will text remain sharp and readable?", answer: "Yes, text converts to pure black and remains perfectly sharp. Only colored text becomes gray tones." },
+      { question: "Is this the same as black and white?", answer: "Grayscale includes all shades of gray from white to black. True black and white has only two colors with no gray tones." },
+      { question: "Can I undo the grayscale conversion?", answer: "No, color information is permanently removed. Keep your original color PDF if you might need it later." }
+    ],
+    relatedWorkflows: [
+      { title: "Cost-Effective Printing Workflow", description: "Prepare documents for economical printing", tools: ["grayscale-pdf", "compress", "resize-pdf"] },
+      { title: "Draft Review Workflow", description: "Create review copies efficiently", tools: ["grayscale-pdf", "add-watermark", "annotate-pdf"] }
+    ],
+    internalLinks: [
+      { text: "Compress PDF", href: "/compress", context: "Further reduce file size after grayscale conversion" },
+      { text: "Split PDF", href: "/split", context: "Extract specific pages to convert to grayscale" },
+      { text: "Merge PDF", href: "/merge", context: "Combine grayscale and color pages" },
+      { text: "Add Watermark", href: "/add-watermark", context: "Add DRAFT watermark to grayscale review copies" }
+    ]
+  },
+  "repair-pdf": {
+    id: "repair-pdf",
+    primaryKeyword: "fix corrupted pdf file online free",
+    longTailH1: "Fix Corrupted PDF File Online Free - Repair Damaged Documents",
+    secondaryKeywords: [
+      "repair damaged pdf document free",
+      "recover corrupted pdf online",
+      "pdf repair tool free no download",
+      "fix pdf that won't open",
+      "pdf file recovery online free"
+    ],
+    metaDescription: "Fix corrupted PDF file online free. Repair damaged PDFs that won't open. Best free PDF repair tool - recover content from broken documents instantly.",
+    heroContent: "Have a PDF that won't open or displays errors? Our free PDF repair tool can fix corrupted and damaged documents, recovering your valuable content. Whether your PDF was damaged during download, email transmission, or storage, PDF HUB 24 analyzes the file structure and attempts to reconstruct damaged sections. We can repair common issues like broken internal references, corrupted headers, damaged page structures, and incomplete downloads. Our advanced recovery algorithms work to salvage as much content as possible from severely damaged files. Upload your broken PDF and we'll attempt to restore it to working condition — completely free and without any software to install. Don't lose important documents to corruption when a repair might be just seconds away.",
+    useCases: {
+      title: "When to Use PDF Repair",
+      description: "PDF corruption can happen for many reasons. Here's when our repair tool can help:",
+      items: [
+        "PDFs that show 'file is damaged' error messages",
+        "Documents that won't open in any PDF reader",
+        "Files corrupted during incomplete downloads",
+        "PDFs damaged by email transmission issues",
+        "Documents from crashed applications",
+        "Files recovered from damaged storage devices",
+        "PDFs with missing pages or content",
+        "Documents that display garbled text or images"
+      ]
+    },
+    tutorial: {
+      title: "How to Repair Corrupted PDF Step by Step",
+      steps: [
+        { step: "Upload Damaged PDF", detail: "Drag and drop your corrupted PDF file. Even files that won't open elsewhere can be uploaded." },
+        { step: "Analyze Corruption", detail: "Our tool scans the file structure, identifies damaged sections, and determines what can be recovered." },
+        { step: "Repair Document", detail: "Click 'Repair PDF' to attempt reconstruction. Multiple repair algorithms work to restore your file." },
+        { step: "Download Repaired PDF", detail: "If repair is successful, download your restored document. Review to verify content recovery." }
+      ]
+    },
+    troubleshooting: {
+      title: "PDF Repair Tips & Solutions",
+      issues: [
+        { problem: "Repair couldn't fix my PDF", solution: "Severely corrupted files may be unrecoverable. Try uploading again in case of upload issues. If the original source is available, request a new copy." },
+        { problem: "Some pages are still missing", solution: "Heavy corruption may prevent full recovery. Our tool recovers what's possible. Some data may be permanently lost." },
+        { problem: "Images appear corrupted", solution: "Embedded images may be damaged beyond repair. Text content has higher recovery success rates than binary image data." },
+        { problem: "Repaired file is smaller than original", solution: "Unrecoverable corrupted sections are removed. The repaired file contains all successfully recovered content." }
+      ]
+    },
+    securitySection: {
+      title: "Secure PDF Repair",
+      content: "Your damaged documents are handled with complete security:",
+      points: [
+        "256-bit SSL encryption for all file transfers",
+        "Documents processed in isolated secure environments",
+        "No storage of original or repaired files",
+        "Automatic deletion after repair attempt",
+        "No access to your recovered content",
+        "GDPR-compliant privacy practices"
+      ]
+    },
+    faqs: [
+      { question: "Can all corrupted PDFs be repaired?", answer: "No, severely damaged files may be unrecoverable. Our tool works best on PDFs with minor to moderate corruption. We recover as much as possible." },
+      { question: "What types of corruption can be fixed?", answer: "We can repair broken cross-references, damaged headers, incomplete structures, and many internal errors. Physical file damage is harder to recover." },
+      { question: "Will I lose any content during repair?", answer: "Heavily corrupted sections may not be recoverable. We preserve all content that can be successfully reconstructed." },
+      { question: "How long does repair take?", answer: "Most repairs complete in seconds. Severely damaged files requiring deep analysis may take up to a minute." },
+      { question: "Is there a file size limit for repair?", answer: "We accept damaged PDFs up to 100MB. Larger files may have longer processing times." }
+    ],
+    relatedWorkflows: [
+      { title: "Document Recovery Workflow", description: "Recover and verify damaged documents", tools: ["repair-pdf", "compress", "ocr-pdf"] },
+      { title: "Archive Restoration Workflow", description: "Restore old or damaged archived files", tools: ["repair-pdf", "flatten-pdf", "protect-pdf"] }
+    ],
+    internalLinks: [
+      { text: "Compress PDF", href: "/compress", context: "Optimize repaired PDFs for storage" },
+      { text: "OCR PDF", href: "/ocr-pdf", context: "Extract text if repair recovers scanned content" },
+      { text: "Flatten PDF", href: "/flatten-pdf", context: "Stabilize repaired documents with complex elements" },
+      { text: "Merge PDF", href: "/merge", context: "Combine recovered pages into complete documents" }
+    ]
+  },
+  "edit-pdf": {
+    id: "edit-pdf",
+    primaryKeyword: "edit pdf add text images free online",
+    longTailH1: "Edit PDF Free Online - Add Text, Images & Shapes to Documents",
+    secondaryKeywords: [
+      "add text to pdf free online",
+      "insert image into pdf free",
+      "pdf editor no signup required",
+      "modify pdf document online free",
+      "add content to pdf without adobe"
+    ],
+    metaDescription: "Edit PDF free online. Add text, images, and shapes to documents. Best free PDF editor - modify PDFs without Adobe. No signup, no watermarks.",
+    heroContent: "Need to edit a PDF document without expensive software? Our free online PDF editor lets you add text, insert images, draw shapes, and modify your documents directly in your browser. Whether you're filling in forms, adding missing information, inserting logos, or making quick corrections, PDF HUB 24 gives you powerful editing capabilities without the cost of Adobe Acrobat. Add text anywhere on the page with custom fonts and colors, insert images from your device, draw boxes and lines to highlight sections, and position everything precisely where you need it. All edits are applied cleanly and professionally, resulting in a polished PDF that looks like it was created that way from the start. Works on any device, completely free, and no account required.",
+    useCases: {
+      title: "When to Use the PDF Editor",
+      description: "PDF editing helps you modify documents without recreating them. Here's when our editor is invaluable:",
+      items: [
+        "Adding missing text or correcting information",
+        "Inserting company logos or images into documents",
+        "Filling out PDF forms that aren't interactive",
+        "Adding dates, reference numbers, or annotations",
+        "Including additional contact information",
+        "Correcting typos or outdated details",
+        "Adding checkmarks or approval stamps",
+        "Inserting diagrams or explanatory images"
+      ]
+    },
+    tutorial: {
+      title: "How to Edit PDF Step by Step",
+      steps: [
+        { step: "Upload Your PDF", detail: "Drag and drop your PDF or click to browse. The document loads with all pages visible for editing." },
+        { step: "Add Your Content", detail: "Click 'Add Text' to insert text, 'Add Image' to insert pictures, or use shape tools for boxes and lines." },
+        { step: "Position and Style", detail: "Drag elements to position them. Adjust font size, color, and opacity. Resize images as needed." },
+        { step: "Download Edited PDF", detail: "Click 'Apply Changes' to save your edits. Download your modified PDF with all additions included." }
+      ]
+    },
+    troubleshooting: {
+      title: "PDF Editing Tips & Solutions",
+      issues: [
+        { problem: "Text doesn't match the original font", solution: "Our editor offers many fonts. Choose one similar to the original, or use a standard font for added content sections." },
+        { problem: "Image appears blurry", solution: "Use high-resolution images for best results. Small images enlarged significantly may appear pixelated." },
+        { problem: "Can't edit existing text in the PDF", solution: "Our editor adds new content. To modify existing text, use PDF to Word conversion, edit, then convert back." },
+        { problem: "Elements move when adding more content", solution: "Position elements carefully. Use zoom for precise placement. Edits are layered on top of existing content." }
+      ]
+    },
+    securitySection: {
+      title: "Secure PDF Editing",
+      content: "Your documents remain private throughout the editing process:",
+      points: [
+        "256-bit SSL encryption for all file transfers",
+        "Documents processed in isolated secure environments",
+        "No storage of original or edited documents",
+        "Automatic deletion after editing",
+        "No access to your document contents",
+        "GDPR-compliant privacy practices"
+      ]
+    },
+    faqs: [
+      { question: "Can I edit existing text in the PDF?", answer: "Our tool adds new content to PDFs. To modify existing text, convert to Word format, edit, then convert back to PDF." },
+      { question: "What image formats can I insert?", answer: "We support JPG, PNG, and GIF images. PNG with transparency works great for logos and stamps." },
+      { question: "Can I match the original document font?", answer: "We offer many common fonts. Find a close match or use a standard font that complements the original." },
+      { question: "Will edits be permanently saved?", answer: "Yes, once you download the edited PDF, all additions are permanently embedded in the document." },
+      { question: "Is there a limit to how much I can add?", answer: "No strict limits. You can add text, images, and shapes across all pages of your document." }
+    ],
+    relatedWorkflows: [
+      { title: "Form Completion Workflow", description: "Fill and complete PDF forms", tools: ["edit-pdf", "sign-pdf", "flatten-pdf"] },
+      { title: "Document Enhancement Workflow", description: "Add branding and information", tools: ["edit-pdf", "add-watermark", "compress"] }
+    ],
+    internalLinks: [
+      { text: "PDF to Word", href: "/pdf-to-word", context: "Convert to Word to edit existing text content" },
+      { text: "Sign PDF", href: "/sign-pdf", context: "Add signatures after editing content" },
+      { text: "Add Watermark", href: "/add-watermark", context: "Add branding across all pages" },
+      { text: "Flatten PDF", href: "/flatten-pdf", context: "Lock edits permanently after completion" }
+    ]
+  },
+  "annotate-pdf": {
+    id: "annotate-pdf",
+    primaryKeyword: "annotate pdf highlight comment free online",
+    longTailH1: "Annotate PDF Free Online - Add Highlights, Comments & Notes",
+    secondaryKeywords: [
+      "highlight text in pdf free online",
+      "add comments to pdf free",
+      "pdf annotation tool online free",
+      "markup pdf document free",
+      "add notes to pdf no signup"
+    ],
+    metaDescription: "Annotate PDF free online. Add highlights, comments, and notes to documents. Best free PDF annotation tool - markup PDFs for review. No signup required.",
+    heroContent: "Need to review, comment on, or mark up a PDF document? Our free PDF annotation tool lets you highlight text, add comments, insert sticky notes, and draw markup symbols directly on your documents. Whether you're reviewing contracts, providing feedback on drafts, studying documents, or collaborating with colleagues, PDF HUB 24 provides all the annotation tools you need. Highlight important passages in multiple colors, add detailed comments in margin notes, draw circles and arrows to call attention to specific areas, and underline or strikethrough text for editing suggestions. All annotations are saved directly in the PDF and can be viewed in any standard PDF reader. Perfect for students, professionals, legal teams, and anyone who needs to mark up documents for review and collaboration.",
+    useCases: {
+      title: "When to Annotate PDF Documents",
+      description: "PDF annotation improves document review and collaboration. Here's when annotation tools are essential:",
+      items: [
+        "Reviewing and commenting on draft documents",
+        "Highlighting important sections in contracts and agreements",
+        "Adding study notes to educational materials",
+        "Providing feedback on design mockups and proposals",
+        "Marking up legal documents for attorney review",
+        "Noting required changes in business documents",
+        "Collaborating remotely on shared documents",
+        "Creating annotated reference copies of important materials"
+      ]
+    },
+    tutorial: {
+      title: "How to Annotate PDF Step by Step",
+      steps: [
+        { step: "Upload Your PDF", detail: "Drag and drop your PDF or click to browse. All pages load for annotation." },
+        { step: "Select Annotation Tools", detail: "Choose from highlighter, comment box, sticky note, freehand draw, shapes, or text markup tools." },
+        { step: "Add Your Annotations", detail: "Click and drag to highlight text, click to add comments, draw shapes to mark areas of interest." },
+        { step: "Download Annotated PDF", detail: "Click 'Save Annotations' to embed all markups. Download your annotated PDF for sharing." }
+      ]
+    },
+    troubleshooting: {
+      title: "PDF Annotation Tips & Solutions",
+      issues: [
+        { problem: "Highlights don't appear over text", solution: "Ensure you're selecting actual text, not images of text. Scanned PDFs may need OCR first for text selection." },
+        { problem: "Comments are hard to read", solution: "Use contrasting colors for comments. Our sticky notes stand out clearly in yellow by default." },
+        { problem: "Too many annotations clutter the page", solution: "Use sticky notes that can be collapsed, or consider using a separate comments summary page." },
+        { problem: "Annotations don't show in other PDF readers", solution: "Our annotations use standard PDF annotation format. They should appear in all modern PDF viewers." }
+      ]
+    },
+    securitySection: {
+      title: "Secure PDF Annotation",
+      content: "Your documents and annotations are handled securely:",
+      points: [
+        "256-bit SSL encryption for all file transfers",
+        "Documents processed in isolated secure environments",
+        "No storage of original or annotated documents",
+        "Automatic deletion after processing",
+        "No access to your document contents",
+        "GDPR-compliant privacy practices"
+      ]
+    },
+    faqs: [
+      { question: "Will annotations appear in all PDF readers?", answer: "Yes, we use standard PDF annotation format compatible with Adobe Reader, Preview, and all modern PDF applications." },
+      { question: "Can I edit annotations after downloading?", answer: "Yes, annotations remain editable in most PDF readers. To lock them permanently, use our Flatten PDF tool." },
+      { question: "What highlight colors are available?", answer: "We offer yellow, green, blue, pink, and orange highlighters. Comments can also be color-coded." },
+      { question: "Can I annotate scanned PDFs?", answer: "You can draw shapes and add comments, but text highlighting requires actual text. Use OCR first for scanned documents." },
+      { question: "Is there a limit to annotations?", answer: "No strict limits. Add as many highlights, comments, and markups as your review requires." }
+    ],
+    relatedWorkflows: [
+      { title: "Document Review Workflow", description: "Complete document review process", tools: ["annotate-pdf", "flatten-pdf", "compress"] },
+      { title: "Study and Research Workflow", description: "Annotate research materials", tools: ["annotate-pdf", "merge", "extract-text"] }
+    ],
+    internalLinks: [
+      { text: "Flatten PDF", href: "/flatten-pdf", context: "Lock annotations permanently after review" },
+      { text: "OCR PDF", href: "/ocr-pdf", context: "Make scanned PDFs highlightable" },
+      { text: "Extract Text", href: "/extract-text", context: "Extract highlighted content as text" },
+      { text: "Merge PDF", href: "/merge", context: "Combine annotated documents for comprehensive review" }
+    ]
+  },
+  "redact-pdf": {
+    id: "redact-pdf",
+    primaryKeyword: "redact pdf black out information free online",
+    longTailH1: "Redact PDF Free Online - Black Out Sensitive Information Securely",
+    secondaryKeywords: [
+      "black out text in pdf free",
+      "remove sensitive information from pdf",
+      "pdf redaction tool free online",
+      "censor pdf content permanently",
+      "hide personal information in pdf"
+    ],
+    metaDescription: "Redact PDF free online. Black out sensitive information permanently and securely. Best free PDF redaction tool - remove confidential data. No signup.",
+    heroContent: "Need to remove sensitive information from a PDF before sharing? Our free PDF redaction tool lets you permanently black out confidential content like social security numbers, financial details, personal addresses, and proprietary information. Unlike simple black boxes that can be removed, our true redaction permanently deletes the underlying text and data, ensuring sensitive information cannot be recovered by any means. Whether you're preparing legal documents for disclosure, sharing files with clients while protecting confidential details, or complying with privacy regulations like GDPR and HIPAA, PDF HUB 24 provides secure, permanent redaction. The redacted areas appear as clean black boxes, and the original content is completely and irreversibly removed from the document. Protect privacy, maintain compliance, and share documents confidently.",
+    useCases: {
+      title: "When to Redact PDF Documents",
+      description: "PDF redaction is essential for protecting sensitive information. Here's when you need professional redaction:",
+      items: [
+        "Removing social security numbers before sharing documents",
+        "Blacking out financial account numbers and details",
+        "Redacting personal addresses and contact information",
+        "Protecting trade secrets and proprietary information",
+        "Preparing legal documents for court disclosure",
+        "Ensuring GDPR and HIPAA compliance in shared documents",
+        "Hiding salary and compensation details in reports",
+        "Censoring confidential information in public records"
+      ]
+    },
+    tutorial: {
+      title: "How to Redact PDF Step by Step",
+      steps: [
+        { step: "Upload Your PDF", detail: "Drag and drop your PDF document. All pages load for review and redaction." },
+        { step: "Select Content to Redact", detail: "Draw rectangles over text, images, or areas you want to permanently remove. Mark all sensitive content." },
+        { step: "Apply Redactions", detail: "Click 'Apply Redactions' to permanently remove content. This action cannot be undone." },
+        { step: "Download Redacted PDF", detail: "Download your securely redacted document. The original content is permanently deleted." }
+      ]
+    },
+    troubleshooting: {
+      title: "PDF Redaction Tips & Solutions",
+      issues: [
+        { problem: "Need to redact the same info on multiple pages", solution: "Mark each occurrence individually for security. Automated search-and-redact features are planned for future updates." },
+        { problem: "Redaction boxes aren't covering content properly", solution: "Zoom in for precise selection. Draw rectangles slightly larger than the content to ensure complete coverage." },
+        { problem: "Want to undo a redaction", solution: "Redactions are permanent once applied. Work on a copy of your document and review carefully before applying." },
+        { problem: "Some hidden content wasn't removed", solution: "Ensure you've marked all instances. Check headers, footers, and metadata. Our tool redacts visible content in the marked areas." }
+      ]
+    },
+    securitySection: {
+      title: "Secure PDF Redaction",
+      content: "Your sensitive documents receive the highest security throughout redaction:",
+      points: [
+        "256-bit SSL encryption for all file transfers",
+        "Documents processed in isolated secure environments",
+        "Redacted content permanently and irreversibly deleted",
+        "No storage of original or redacted documents",
+        "Automatic deletion of all files after processing",
+        "GDPR-compliant data handling practices"
+      ]
+    },
+    faqs: [
+      { question: "Is the redacted content truly removed?", answer: "Yes, unlike cosmetic black boxes, our redaction permanently deletes underlying text and data. The content cannot be recovered." },
+      { question: "Can redactions be reversed or undone?", answer: "No, redactions are permanent and irreversible. Always keep a copy of your original document if needed." },
+      { question: "What about metadata and hidden content?", answer: "Our tool redacts visible content in marked areas. For complete sanitization, consider using dedicated metadata removal tools." },
+      { question: "Is this compliant with legal requirements?", answer: "Our true redaction meets technical requirements for most legal and regulatory purposes by permanently removing data." },
+      { question: "Can I redact images as well as text?", answer: "Yes, you can draw redaction boxes over any content including images, signatures, logos, and diagrams." }
+    ],
+    relatedWorkflows: [
+      { title: "Legal Document Disclosure Workflow", description: "Prepare documents for legal disclosure", tools: ["redact-pdf", "flatten-pdf", "protect-pdf"] },
+      { title: "Privacy Compliance Workflow", description: "Ensure GDPR/HIPAA compliance", tools: ["redact-pdf", "compress", "add-watermark"] }
+    ],
+    internalLinks: [
+      { text: "Flatten PDF", href: "/flatten-pdf", context: "Lock redacted document to prevent any modifications" },
+      { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection to redacted documents" },
+      { text: "Compress PDF", href: "/compress", context: "Reduce file size of redacted documents for sharing" },
+      { text: "Split PDF", href: "/split", context: "Extract specific pages for targeted redaction" }
+    ]
+  },
+  "pdf-viewer": {
+    id: "pdf-viewer",
+    primaryKeyword: "view pdf online without download",
+    longTailH1: "View PDF Online Without Download - Free Browser PDF Viewer",
+    secondaryKeywords: [
+      "open pdf file online free",
+      "read pdf in browser no software",
+      "pdf reader online free no download",
+      "view pdf document without installing",
+      "online pdf viewer with zoom"
+    ],
+    metaDescription: "View PDF online without download. Open and read PDF files directly in your browser for free. Best online PDF viewer - zoom, navigate, search. No software needed.",
+    heroContent: "Need to quickly view a PDF without downloading software or saving files to your device? Our free online PDF viewer lets you open and read PDF documents directly in your browser. Whether you're reviewing a document on a shared computer, checking a file on your phone, or simply want to preview a PDF before downloading, PDF HUB 24 provides instant access to your documents. Navigate through pages smoothly, zoom in on details, search for specific text, and read your PDFs comfortably on any device. No software installation, no account registration, no file cluttering your downloads folder — just drag, drop, and start reading. Perfect for quick document reviews, reading ebooks, or previewing files before editing.",
+    useCases: {
+      title: "When to Use Online PDF Viewer",
+      description: "Our browser-based PDF viewer is perfect for many everyday scenarios:",
+      items: [
+        "Quickly previewing PDF attachments from emails before downloading",
+        "Reading documents on public or shared computers without installing software",
+        "Viewing PDF files on mobile devices without a dedicated app",
+        "Checking document content before converting or editing",
+        "Reading ebooks and long documents with comfortable navigation",
+        "Previewing invoices, receipts, and statements",
+        "Reviewing contracts and agreements before signing",
+        "Accessing PDF manuals and guides on any device"
+      ]
+    },
+    tutorial: {
+      title: "How to View PDF Online Step by Step",
+      steps: [
+        { step: "Upload Your PDF", detail: "Drag and drop your PDF file or click to browse. The document loads instantly in your browser." },
+        { step: "Navigate Pages", detail: "Use arrow buttons or page thumbnails to move between pages. Jump to any page using the page number input." },
+        { step: "Zoom and Read", detail: "Zoom in for details or fit to width for comfortable reading. Pinch-to-zoom works on mobile devices." },
+        { step: "Search Content", detail: "Use the search feature to find specific words or phrases within your PDF document." }
+      ]
+    },
+    troubleshooting: {
+      title: "PDF Viewer Tips & Solutions",
+      issues: [
+        { problem: "PDF loads slowly or appears blank", solution: "Large PDFs with many images take longer to render. Wait a moment or try refreshing the page. Ensure you have a stable internet connection." },
+        { problem: "Text appears blurry when zoomed", solution: "Some scanned PDFs have low resolution. Our viewer displays the document at its native quality. Try zooming to 100% for clearest view." },
+        { problem: "Cannot search text in the document", solution: "If the PDF is a scanned image rather than text-based, use our OCR PDF tool first to make it searchable." },
+        { problem: "Mobile viewing is difficult", solution: "Rotate your device to landscape mode for wider pages. Use pinch-to-zoom and swipe gestures for natural navigation." }
+      ]
+    },
+    securitySection: {
+      title: "Secure PDF Viewing",
+      content: "Your documents remain private when viewing in our online viewer:",
+      points: [
+        "Files are processed in your browser for enhanced privacy",
+        "256-bit SSL encryption protects file uploads",
+        "No permanent storage of viewed documents",
+        "Automatic cleanup after your session ends",
+        "No document content is logged or tracked",
+        "GDPR-compliant privacy practices"
+      ]
+    },
+    faqs: [
+      { question: "Do I need to create an account to view PDFs?", answer: "No, our PDF viewer is completely free and requires no registration. Just upload your file and start reading immediately." },
+      { question: "Is there a file size limit for viewing?", answer: "We support PDF files up to 100MB. Larger files may take slightly longer to load but will display normally." },
+      { question: "Can I view password-protected PDFs?", answer: "Yes, if you know the password. You'll be prompted to enter it when opening a protected document." },
+      { question: "Does viewing leave the PDF on your servers?", answer: "Documents are temporarily cached for viewing only and automatically deleted when your session ends. We don't store your files." },
+      { question: "Can I print or download from the viewer?", answer: "Yes, use your browser's print function or download the original file using the download button in our viewer." }
+    ],
+    relatedWorkflows: [
+      { title: "Document Review Workflow", description: "View, annotate, and share documents", tools: ["pdf-viewer", "annotate-pdf", "compress"] },
+      { title: "Quick Preview Workflow", description: "Preview before converting or editing", tools: ["pdf-viewer", "pdf-to-word", "split"] }
+    ],
+    internalLinks: [
+      { text: "Annotate PDF", href: "/annotate-pdf", context: "Add highlights and comments after reviewing" },
+      { text: "OCR PDF", href: "/ocr-pdf", context: "Make scanned PDFs searchable" },
+      { text: "Compress PDF", href: "/compress", context: "Reduce file size before sharing" },
+      { text: "PDF to Word", href: "/pdf-to-word", context: "Convert to editable format after review" }
+    ]
+  },
+  "compare-pdf": {
+    id: "compare-pdf",
+    primaryKeyword: "compare two pdf documents for differences",
+    longTailH1: "Compare Two PDF Documents for Differences - Free Online Tool",
+    secondaryKeywords: [
+      "pdf comparison tool free online",
+      "find differences between pdf files",
+      "compare pdf versions side by side",
+      "pdf diff checker online free",
+      "detect changes between two pdfs"
+    ],
+    metaDescription: "Compare two PDF documents for differences free online. Find changes between PDF versions instantly. Best PDF comparison tool - highlights additions, deletions. No signup.",
+    heroContent: "Need to spot differences between two versions of a PDF document? Our free PDF comparison tool analyzes your files and highlights every change, addition, and deletion. Whether you're reviewing contract revisions, checking document edits, comparing legal drafts, or verifying that a document hasn't been altered, PDF HUB 24 makes differences instantly visible. Upload two PDFs and see exactly what changed — text modifications are highlighted, new content is marked, and deleted sections are clearly indicated. Stop manually reading through pages looking for changes. Our intelligent comparison engine handles documents of any length, from single-page letters to multi-page contracts and reports. Essential for legal professionals, editors, compliance officers, and anyone who needs to track document changes accurately.",
+    useCases: {
+      title: "When to Compare PDF Documents",
+      description: "PDF comparison is essential for accurate document review and verification:",
+      items: [
+        "Reviewing contract revisions before signing final versions",
+        "Verifying that document changes were implemented correctly",
+        "Comparing legal briefs and court document versions",
+        "Checking proposal modifications between submission rounds",
+        "Auditing policy updates and compliance documents",
+        "Verifying invoice accuracy against quotes",
+        "Tracking editorial changes in manuscripts and reports",
+        "Detecting unauthorized modifications to important documents"
+      ]
+    },
+    tutorial: {
+      title: "How to Compare PDF Documents Step by Step",
+      steps: [
+        { step: "Upload Original PDF", detail: "Drag and drop or browse to select the original version of your document. This serves as the baseline for comparison." },
+        { step: "Upload Revised PDF", detail: "Add the second PDF file — the version you want to compare against the original." },
+        { step: "Start Comparison", detail: "Click 'Compare PDFs' to analyze both documents. Our engine identifies all textual differences between the files." },
+        { step: "Review Differences", detail: "View highlighted changes in an easy-to-read format. Additions appear in green, deletions in red, and modifications are clearly marked." }
+      ]
+    },
+    troubleshooting: {
+      title: "PDF Comparison Tips & Solutions",
+      issues: [
+        { problem: "Comparison shows too many differences", solution: "Ensure both files are based on the same original document. Completely different PDFs will show extensive changes that may not be meaningful." },
+        { problem: "Scanned PDFs not comparing correctly", solution: "Scanned PDFs contain images, not text. Use our OCR PDF tool on both files first to extract text, then compare." },
+        { problem: "Formatting differences being flagged", solution: "Our comparison focuses on text content. Layout and formatting changes may appear as differences if they affect text flow." },
+        { problem: "Large documents take a long time", solution: "Complex documents with many pages require more processing time. Documents under 50 pages typically process within 30 seconds." }
+      ]
+    },
+    securitySection: {
+      title: "Secure PDF Comparison",
+      content: "Your confidential documents are protected throughout the comparison process:",
+      points: [
+        "256-bit SSL encryption for all file transfers",
+        "Documents compared in isolated secure environments",
+        "No storage of uploaded or comparison result files",
+        "Automatic deletion after processing completes",
+        "No human access to your document content",
+        "GDPR-compliant data handling practices"
+      ]
+    },
+    faqs: [
+      { question: "What types of differences does the tool detect?", answer: "Our tool detects text additions, deletions, and modifications. It compares the actual text content of both PDFs and highlights all changes." },
+      { question: "Can I compare more than two PDFs?", answer: "Currently, comparison works with two documents at a time. For multiple versions, compare sequentially (v1 vs v2, then v2 vs v3)." },
+      { question: "Does it work with scanned documents?", answer: "Scanned PDFs need OCR processing first. Use our OCR PDF tool to extract text from scanned documents before comparing." },
+      { question: "Is there a page limit for comparison?", answer: "We support documents up to 200 pages each. Processing time increases with document length and complexity." },
+      { question: "Can I download a comparison report?", answer: "Yes, you can download a comparison report showing all differences highlighted for easy reference and sharing." }
+    ],
+    relatedWorkflows: [
+      { title: "Contract Review Workflow", description: "Compare and approve contract changes", tools: ["compare-pdf", "annotate-pdf", "sign-pdf"] },
+      { title: "Document Audit Workflow", description: "Verify document integrity and changes", tools: ["compare-pdf", "protect-pdf", "flatten-pdf"] }
+    ],
+    internalLinks: [
+      { text: "OCR PDF", href: "/ocr-pdf", context: "Extract text from scanned PDFs before comparing" },
+      { text: "Annotate PDF", href: "/annotate-pdf", context: "Add comments to differences found" },
+      { text: "Flatten PDF", href: "/flatten-pdf", context: "Lock document after approving changes" },
+      { text: "Protect PDF", href: "/protect-pdf", context: "Secure the final approved version" }
+    ]
+  },
+  "image-compressor": {
+    id: "image-compressor",
+    primaryKeyword: "compress image for website free",
+    longTailH1: "Compress Image for Website Free - Reduce JPG PNG WebP Size",
+    secondaryKeywords: [
+      "reduce image file size online",
+      "compress jpg without losing quality",
+      "image compression tool free",
+      "optimize images for web free",
+      "shrink photo size for email"
+    ],
+    metaDescription: "Compress images for website free. Reduce JPG, PNG, WebP file sizes up to 80% without quality loss. Best free image compressor - optimize photos instantly. No signup.",
+    heroContent: "Need to reduce image file sizes for faster website loading or email attachments? Our free image compressor shrinks JPG, PNG, and WebP files by up to 80% while maintaining excellent visual quality. Whether you're optimizing website images for better page speed, preparing photos for email, reducing storage usage, or meeting upload size limits on social media and platforms, PDF HUB 24 delivers professional-grade compression instantly. Our smart algorithms analyze each image and apply optimal compression settings automatically — preserving important details while eliminating unnecessary data. No software installation, no technical knowledge required. Just upload your images and download optimized versions ready for the web, email, or any purpose that demands smaller file sizes without sacrificing appearance.",
+    useCases: {
+      title: "When to Compress Your Images",
+      description: "Image compression is essential for many digital tasks. Here's when to use our compressor:",
+      items: [
+        "Optimizing website images for faster page loading speed",
+        "Reducing photo sizes to fit email attachment limits",
+        "Preparing images for social media uploads",
+        "Shrinking product photos for ecommerce platforms",
+        "Compressing screenshots and graphics for documentation",
+        "Reducing storage space on devices and cloud drives",
+        "Meeting file size requirements for online forms and applications",
+        "Batch optimizing images for blog posts and articles"
+      ]
+    },
+    tutorial: {
+      title: "How to Compress Images Step by Step",
+      steps: [
+        { step: "Upload Your Image", detail: "Drag and drop your JPG, PNG, or WebP file, or click to browse. We support images up to 50MB." },
+        { step: "Choose Compression Level", detail: "Select quality level: High preserves maximum quality, Medium offers balanced results, Low maximizes file size reduction." },
+        { step: "Start Compression", detail: "Click 'Compress Image' to optimize your file. Processing takes just seconds for most images." },
+        { step: "Download Optimized Image", detail: "Preview the result with before/after comparison and file size savings. Download your compressed image." }
+      ]
+    },
+    troubleshooting: {
+      title: "Image Compression Tips & Solutions",
+      issues: [
+        { problem: "Compressed image looks blurry or pixelated", solution: "Use High or Medium quality setting instead of Low. Some images with fine details need gentler compression to maintain clarity." },
+        { problem: "File size didn't reduce much", solution: "The image may already be optimized. Previously compressed images have less redundant data to remove." },
+        { problem: "Colors look different after compression", solution: "JPEG compression can slightly shift colors. For color-critical work, use PNG format or High quality JPEG settings." },
+        { problem: "Need to compress many images at once", solution: "Upload multiple images to compress them in batch. Each file is processed and available for individual download." }
+      ]
+    },
+    securitySection: {
+      title: "Secure Image Compression",
+      content: "Your images are handled securely throughout the compression process:",
+      points: [
+        "SSL encrypted file uploads and downloads",
+        "Images processed in isolated secure environments",
+        "Automatic deletion after compression completes",
+        "No storage or retention of your images",
+        "No human access to uploaded files",
+        "GDPR-compliant privacy practices"
+      ]
+    },
+    faqs: [
+      { question: "What image formats can I compress?", answer: "We support JPG/JPEG, PNG, and WebP formats. Each format is optimized using algorithms specific to its compression characteristics." },
+      { question: "How much can I reduce image file size?", answer: "Typical reductions range from 40-80% depending on the image and quality setting. Photos with lots of detail compress more than simple graphics." },
+      { question: "Will compression affect image quality?", answer: "High quality compression is nearly indistinguishable from the original. Medium provides good balance. Low prioritizes size reduction." },
+      { question: "Can I compress images in bulk?", answer: "Yes, upload multiple images and compress them all. Each compressed image is available for individual download." },
+      { question: "What's the maximum file size for upload?", answer: "We accept images up to 50MB each. Most web and mobile images are well under this limit." }
+    ],
+    relatedWorkflows: [
+      { title: "Website Optimization Workflow", description: "Prepare images for fast-loading websites", tools: ["image-compressor", "resize-image", "convert-image"] },
+      { title: "Email Attachment Workflow", description: "Optimize photos for email sharing", tools: ["image-compressor", "resize-image", "crop-image"] }
+    ],
+    internalLinks: [
+      { text: "Resize Image", href: "/resize-image", context: "Reduce dimensions before compressing for maximum size savings" },
+      { text: "Convert Image", href: "/convert-image", context: "Change to WebP format for best web compression" },
+      { text: "Crop Image", href: "/crop-image", context: "Remove unnecessary areas before compressing" },
+      { text: "PDF to JPG", href: "/pdf-to-jpg", context: "Convert PDF pages to images for compression" }
+    ]
+  },
+  "resize-image": {
+    id: "resize-image",
+    primaryKeyword: "resize image to specific dimensions online",
+    longTailH1: "Resize Image to Specific Dimensions Online Free - Exact Pixels",
+    secondaryKeywords: [
+      "change image size online free",
+      "resize photo to exact pixels",
+      "image resizer free no watermark",
+      "scale image dimensions online",
+      "resize picture for social media"
+    ],
+    metaDescription: "Resize image to specific dimensions online free. Change photo size to exact pixels instantly. Best free image resizer - no watermark, no signup. Resize for any platform.",
+    heroContent: "Need to resize an image to exact dimensions for a specific platform or purpose? Our free image resizer lets you change photo dimensions precisely — whether you need specific pixel sizes for social media profiles, website headers, product listings, or print requirements. Enter your desired width and height, or choose from popular presets for Instagram, Facebook, Twitter, LinkedIn, and more. PDF HUB 24 resizes your images while maintaining aspect ratio (if desired) and preserving maximum quality. No watermarks, no registration, no software to install. Whether you're preparing profile pictures, resizing product photos for ecommerce, creating banner images, or meeting exact dimension requirements for any application, our tool delivers pixel-perfect results in seconds. Upload any JPG, PNG, or WebP image and download perfectly sized results ready to use.",
+    useCases: {
+      title: "When to Resize Your Images",
+      description: "Image resizing is essential for many digital needs. Here's when our tool helps:",
+      items: [
+        "Creating profile pictures at exact platform dimensions",
+        "Resizing product photos for ecommerce listings",
+        "Preparing banner and header images for websites",
+        "Scaling images for email signatures and templates",
+        "Creating thumbnail images for galleries and lists",
+        "Resizing photos to meet upload requirements",
+        "Preparing images for print at specific dimensions",
+        "Scaling graphics for presentations and documents"
+      ]
+    },
+    tutorial: {
+      title: "How to Resize Images Step by Step",
+      steps: [
+        { step: "Upload Your Image", detail: "Drag and drop your image or click to browse. We support JPG, PNG, and WebP formats up to 50MB." },
+        { step: "Enter Target Dimensions", detail: "Type exact width and height in pixels, or choose from preset sizes for popular platforms like Instagram, Facebook, or YouTube." },
+        { step: "Choose Resize Options", detail: "Lock aspect ratio to prevent distortion, or unlock for exact dimensions. Select resize algorithm for best quality." },
+        { step: "Download Resized Image", detail: "Preview your resized image and download. Original quality is preserved at the new dimensions." }
+      ]
+    },
+    troubleshooting: {
+      title: "Image Resizing Tips & Solutions",
+      issues: [
+        { problem: "Image looks stretched or distorted", solution: "Lock the aspect ratio option to maintain proportions. This adjusts one dimension automatically to prevent distortion." },
+        { problem: "Enlarged image looks blurry or pixelated", solution: "Upscaling has limits. Images enlarged significantly beyond original size will lose sharpness. Start with the highest resolution source possible." },
+        { problem: "Not sure what dimensions to use", solution: "Use our preset sizes for common platforms. For custom needs, check the platform's image specification guidelines." },
+        { problem: "File size increased after resizing", solution: "Larger dimensions mean larger files. Use our Image Compressor after resizing to optimize file size." }
+      ]
+    },
+    securitySection: {
+      title: "Secure Image Resizing",
+      content: "Your images are processed securely with full privacy protection:",
+      points: [
+        "SSL encryption for all file transfers",
+        "Processing in isolated secure environments",
+        "No permanent storage of uploaded images",
+        "Automatic deletion after processing",
+        "No human access to your files",
+        "GDPR-compliant data handling"
+      ]
+    },
+    faqs: [
+      { question: "What image formats can I resize?", answer: "We support JPG, PNG, and WebP images. The output format matches your input, preserving transparency for PNG files." },
+      { question: "Can I resize without changing aspect ratio?", answer: "Yes, enable 'Lock Aspect Ratio' and enter either width or height. The other dimension adjusts automatically to maintain proportions." },
+      { question: "What's the maximum output size?", answer: "You can resize up to 10,000 pixels in either dimension. However, extremely large upscaling may reduce image quality." },
+      { question: "Does resizing reduce image quality?", answer: "Downscaling generally preserves quality well. Upscaling beyond original size can cause softening. We use high-quality resampling algorithms." },
+      { question: "Can I resize multiple images at once?", answer: "Yes, upload multiple images to resize them in batch with the same settings. Each resized image is available for download." }
+    ],
+    relatedWorkflows: [
+      { title: "Social Media Image Workflow", description: "Prepare perfect images for any platform", tools: ["resize-image", "crop-image", "image-compressor"] },
+      { title: "Website Graphics Workflow", description: "Create optimized web images", tools: ["resize-image", "image-compressor", "convert-image"] }
+    ],
+    internalLinks: [
+      { text: "Crop Image", href: "/crop-image", context: "Crop to aspect ratio before resizing for best results" },
+      { text: "Image Compressor", href: "/image-compressor", context: "Reduce file size after resizing" },
+      { text: "Convert Image", href: "/convert-image", context: "Change format while resizing" },
+      { text: "Rotate Image", href: "/rotate-image", context: "Fix orientation before resizing" }
+    ]
+  },
+  "crop-image": {
+    id: "crop-image",
+    primaryKeyword: "crop image online free no download",
+    longTailH1: "Crop Image Online Free - No Download Required, Instant Results",
+    secondaryKeywords: [
+      "cut image to size online",
+      "photo cropper free no signup",
+      "crop picture to specific ratio",
+      "trim image edges online free",
+      "crop photo for instagram free"
+    ],
+    metaDescription: "Crop image online free with no download required. Cut and trim photos to any size or aspect ratio instantly. Best free image cropper - perfect for social media. No signup.",
+    heroContent: "Need to crop an image quickly without downloading any software? Our free online image cropper lets you cut, trim, and resize photos to any dimensions or aspect ratio directly in your browser. Whether you're cropping profile pictures for social media, removing unwanted edges from photos, creating square images for Instagram, or focusing on the important part of a picture, PDF HUB 24 makes it effortless. Simply drag the crop area to select exactly what you want to keep, choose from popular aspect ratio presets like 1:1 for Instagram, 16:9 for YouTube, or 4:3 for traditional photos — or set custom dimensions for precise control. No software installation, no account required, no watermarks on your cropped images. Upload your photo, adjust the crop frame, and download your perfectly cropped result in seconds.",
+    useCases: {
+      title: "When to Crop Your Images",
+      description: "Image cropping is essential for many creative and practical needs:",
+      items: [
+        "Creating square profile pictures for social media",
+        "Removing unwanted background or edges from photos",
+        "Focusing on the subject by cropping out distractions",
+        "Preparing images for specific aspect ratio requirements",
+        "Creating header and banner images from larger photos",
+        "Trimming screenshots to show only relevant content",
+        "Cropping product photos for ecommerce consistency",
+        "Preparing photos for print in standard photo sizes"
+      ]
+    },
+    tutorial: {
+      title: "How to Crop Images Step by Step",
+      steps: [
+        { step: "Upload Your Image", detail: "Drag and drop your photo or click to browse. We support JPG, PNG, and WebP formats." },
+        { step: "Select Crop Area", detail: "Drag the corners or edges of the crop frame to select the area you want to keep. Move the frame to position it perfectly." },
+        { step: "Choose Aspect Ratio", detail: "Select a preset ratio (1:1, 16:9, 4:3, etc.) or use freeform cropping. Lock ratio to maintain proportions while adjusting." },
+        { step: "Download Cropped Image", detail: "Preview your cropped image and download. The output maintains original image quality within the cropped area." }
+      ]
+    },
+    troubleshooting: {
+      title: "Image Cropping Tips & Solutions",
+      issues: [
+        { problem: "Can't get the exact aspect ratio needed", solution: "Use 'Custom' ratio option and enter your specific width and height values. The crop frame will maintain your exact proportions." },
+        { problem: "Important content getting cut off", solution: "Zoom out the view or unlock aspect ratio for freeform cropping. Adjust the crop area to include all important elements." },
+        { problem: "Cropped image resolution is too low", solution: "Cropping removes pixels. Start with the highest resolution source image available. Avoid cropping a small portion of large images." },
+        { problem: "Need to crop multiple images the same way", solution: "Note your crop coordinates or aspect ratio. Apply the same settings to each image for consistent results." }
+      ]
+    },
+    securitySection: {
+      title: "Secure Image Cropping",
+      content: "Your photos are handled with complete privacy and security:",
+      points: [
+        "SSL encryption protects all uploads and downloads",
+        "Images processed in isolated secure environments",
+        "No permanent storage of your photos",
+        "Automatic deletion after you finish",
+        "No human access to uploaded images",
+        "GDPR-compliant privacy practices"
+      ]
+    },
+    faqs: [
+      { question: "What aspect ratios are available?", answer: "We offer presets for 1:1 (square), 16:9 (widescreen), 4:3 (standard), 3:2 (photo), 9:16 (stories), plus freeform and custom ratio options." },
+      { question: "Can I crop to exact pixel dimensions?", answer: "Yes, use our Resize Image tool after cropping, or enter exact dimensions when using custom aspect ratio with specific output size." },
+      { question: "Does cropping reduce image quality?", answer: "No quality is lost in the cropped area. However, the resulting image has fewer total pixels since you're removing portions of the original." },
+      { question: "Can I undo after cropping?", answer: "Before downloading, you can adjust the crop area freely. Once downloaded, the crop is final — keep your original file as backup." },
+      { question: "What file formats are supported?", answer: "We support JPG, PNG, and WebP for both input and output. The format is preserved, maintaining transparency for PNG files." }
+    ],
+    relatedWorkflows: [
+      { title: "Social Media Content Workflow", description: "Crop and optimize images for posting", tools: ["crop-image", "resize-image", "image-compressor"] },
+      { title: "Photo Enhancement Workflow", description: "Improve photos with cropping and adjustments", tools: ["crop-image", "rotate-image", "resize-image"] }
+    ],
+    internalLinks: [
+      { text: "Resize Image", href: "/resize-image", context: "Resize after cropping to exact dimensions" },
+      { text: "Image Compressor", href: "/image-compressor", context: "Optimize cropped images for web use" },
+      { text: "Rotate Image", href: "/rotate-image", context: "Fix orientation before cropping" },
+      { text: "Convert Image", href: "/convert-image", context: "Change format after cropping" }
+    ]
+  },
+  "rotate-image": {
+    id: "rotate-image",
+    primaryKeyword: "rotate image online free 90 degrees",
+    longTailH1: "Rotate Image Online Free - 90 Degrees, Flip, Any Angle",
+    secondaryKeywords: [
+      "flip image horizontally online free",
+      "rotate photo 180 degrees online",
+      "turn picture sideways free",
+      "image rotation tool free no signup",
+      "flip mirror image online"
+    ],
+    metaDescription: "Rotate image online free - 90, 180, 270 degrees or any angle. Flip photos horizontally or vertically. Best free image rotation tool - instant results. No signup required.",
+    heroContent: "Need to fix a sideways photo or flip an image? Our free online image rotation tool lets you rotate pictures 90, 180, or 270 degrees with a single click, flip images horizontally or vertically, or rotate to any custom angle for precise adjustments. Whether you're correcting photos taken in the wrong orientation, creating mirror images, preparing images for design layouts, or fixing scanned documents that uploaded sideways, PDF HUB 24 delivers instant results. No software to download, no account to create. Simply upload your image, choose your rotation or flip option, and download the corrected version. Works perfectly with JPG, PNG, and WebP images. Perfect for fixing smartphone photos, adjusting scanned documents, creating reflected designs, and more. Rotate and flip your images in seconds with professional-quality results.",
+    useCases: {
+      title: "When to Rotate or Flip Images",
+      description: "Image rotation and flipping is needed for many common situations:",
+      items: [
+        "Correcting photos taken in wrong orientation",
+        "Fixing scanned documents that uploaded sideways",
+        "Creating mirror images for design projects",
+        "Adjusting smartphone photos with incorrect rotation",
+        "Flipping selfies to match how you see yourself",
+        "Rotating screenshots to correct orientation",
+        "Creating symmetrical designs with flipped images",
+        "Fixing images for print layout requirements"
+      ]
+    },
+    tutorial: {
+      title: "How to Rotate and Flip Images Step by Step",
+      steps: [
+        { step: "Upload Your Image", detail: "Drag and drop your photo or click to browse. We accept JPG, PNG, and WebP files up to 50MB." },
+        { step: "Choose Rotation", detail: "Click rotate buttons for 90-degree increments, or enter a custom angle. Use flip buttons for horizontal or vertical mirroring." },
+        { step: "Preview Changes", detail: "See your rotated or flipped image instantly. Make additional adjustments if needed." },
+        { step: "Download Result", detail: "Download your corrected image. Quality is fully preserved through rotation and flip operations." }
+      ]
+    },
+    troubleshooting: {
+      title: "Image Rotation Tips & Solutions",
+      issues: [
+        { problem: "Image still appears wrong after rotating", solution: "Some photos need rotation plus flip. Try combinations: rotate 90 degrees then flip horizontally, for example." },
+        { problem: "Custom angle rotation creates blank corners", solution: "When rotating to non-90-degree angles, the image extends beyond original bounds. Crop after rotating to remove blank areas." },
+        { problem: "Colors or quality changed after rotation", solution: "Our rotation preserves original quality. If issues appear, the source image may have metadata that affected initial display." },
+        { problem: "EXIF rotation not being applied", solution: "Some images have rotation stored in metadata rather than actual pixels. Our tool applies physical rotation visible in all applications." }
+      ]
+    },
+    securitySection: {
+      title: "Secure Image Rotation",
+      content: "Your photos are processed with complete security and privacy:",
+      points: [
+        "SSL encryption for secure file transfers",
+        "Processing in isolated secure environments",
+        "No permanent storage of your images",
+        "Automatic cleanup after your session",
+        "No access to uploaded files by anyone",
+        "GDPR-compliant handling practices"
+      ]
+    },
+    faqs: [
+      { question: "What rotation angles are available?", answer: "Quick buttons for 90, 180, and 270 degrees, plus custom angle input for any degree from 1 to 359. Flip options for horizontal and vertical mirroring." },
+      { question: "Does rotating reduce image quality?", answer: "90-degree rotations preserve full quality. Custom angles may require interpolation, but we use high-quality algorithms to minimize any loss." },
+      { question: "What's the difference between rotate and flip?", answer: "Rotating turns the image around its center. Flipping creates a mirror image — horizontal flip reverses left-right, vertical flip reverses top-bottom." },
+      { question: "Can I rotate and flip in one operation?", answer: "Yes, apply rotation first, then flip, or vice versa. Preview shows the combined result before downloading." },
+      { question: "Why do some phone photos need rotation?", answer: "Phones store rotation in EXIF metadata rather than physically rotating pixels. Some apps don't read this data, causing sideways display." }
+    ],
+    relatedWorkflows: [
+      { title: "Photo Correction Workflow", description: "Fix orientation and prepare for sharing", tools: ["rotate-image", "crop-image", "image-compressor"] },
+      { title: "Design Preparation Workflow", description: "Prepare images for graphic design", tools: ["rotate-image", "resize-image", "convert-image"] }
+    ],
+    internalLinks: [
+      { text: "Crop Image", href: "/crop-image", context: "Crop after rotating to remove blank corners" },
+      { text: "Resize Image", href: "/resize-image", context: "Adjust dimensions after correcting orientation" },
+      { text: "Image Compressor", href: "/image-compressor", context: "Optimize rotated images for sharing" },
+      { text: "Rotate PDF", href: "/rotate-pdf", context: "Rotate PDF pages instead of images" }
+    ]
+  },
+  "convert-image": {
+    id: "convert-image",
+    primaryKeyword: "convert image format online free",
+    longTailH1: "Convert Image Format Online Free - JPG PNG WebP Converter",
+    secondaryKeywords: [
+      "change image file type online",
+      "convert png to jpg free",
+      "jpg to webp converter online",
+      "image format converter no signup",
+      "convert picture to different format"
+    ],
+    metaDescription: "Convert image format online free. Change between JPG, PNG, WebP, and more instantly. Best free image converter - preserves quality. No signup, no watermarks.",
+    heroContent: "Need to convert an image to a different format? Our free online image converter transforms photos between JPG, PNG, WebP, and other formats instantly. Whether you need to convert PNG to JPG for smaller email attachments, change JPG to PNG for transparent backgrounds, switch to WebP for optimal web performance, or convert to any other compatible format, PDF HUB 24 handles it effortlessly. Each format has its advantages: JPG offers universal compatibility and smaller files for photographs, PNG preserves transparency and works best for graphics, WebP provides the best compression for modern web browsers. Simply upload your image, select your target format, adjust quality settings if needed, and download your converted file. No software installation, no account required, no watermarks. Professional-quality format conversion available to everyone, completely free.",
+    useCases: {
+      title: "When to Convert Image Formats",
+      description: "Image format conversion is essential for many digital workflows:",
+      items: [
+        "Converting PNG graphics to JPG for smaller file sizes",
+        "Creating PNG versions for images needing transparency",
+        "Converting to WebP for modern website optimization",
+        "Changing formats for platform compatibility requirements",
+        "Converting high-quality images for print production",
+        "Preparing images for applications with format restrictions",
+        "Converting raw or uncommon formats to standard types",
+        "Creating web-optimized versions from original files"
+      ]
+    },
+    tutorial: {
+      title: "How to Convert Image Formats Step by Step",
+      steps: [
+        { step: "Upload Your Image", detail: "Drag and drop your image or click to browse. We support JPG, PNG, WebP, GIF, BMP, and TIFF input formats." },
+        { step: "Select Output Format", detail: "Choose your target format: JPG for photos, PNG for transparency, WebP for web optimization, or other available formats." },
+        { step: "Adjust Quality Settings", detail: "For JPG and WebP, select quality level (higher = better quality, larger file). PNG uses lossless compression automatically." },
+        { step: "Download Converted Image", detail: "Click convert and download your image in the new format. Conversion is instant for most images." }
+      ]
+    },
+    troubleshooting: {
+      title: "Image Conversion Tips & Solutions",
+      issues: [
+        { problem: "Transparency lost when converting to JPG", solution: "JPG doesn't support transparency. Convert to PNG instead, or the transparent areas will become white in JPG." },
+        { problem: "Converted file is larger than original", solution: "Some conversions increase size. PNG to JPG usually reduces size, but JPG to PNG may increase it due to lossless compression." },
+        { problem: "Colors look different after conversion", solution: "Color profiles may differ between formats. For color-critical work, ensure both source and destination support your color space." },
+        { problem: "WebP not displaying in older browsers", solution: "WebP works in all modern browsers but not older versions. Keep JPG/PNG versions for maximum compatibility." }
+      ]
+    },
+    securitySection: {
+      title: "Secure Image Conversion",
+      content: "Your images are converted with complete security and privacy:",
+      points: [
+        "256-bit SSL encryption for file transfers",
+        "Processing in isolated secure environments",
+        "No storage of original or converted images",
+        "Automatic deletion after conversion",
+        "No human access to your uploaded files",
+        "GDPR-compliant data handling practices"
+      ]
+    },
+    faqs: [
+      { question: "What image formats are supported?", answer: "Input: JPG, PNG, WebP, GIF, BMP, TIFF. Output: JPG, PNG, WebP. We're adding more formats regularly." },
+      { question: "Does conversion reduce image quality?", answer: "Lossless formats (PNG) preserve quality. Lossy formats (JPG, WebP) may slightly reduce quality depending on compression settings. Use high quality for best results." },
+      { question: "Which format is best for websites?", answer: "WebP offers the best compression for modern browsers. JPG is universally compatible for photos. PNG is best for graphics with transparency." },
+      { question: "Can I convert multiple images at once?", answer: "Yes, upload multiple images to convert them in batch. All images will be converted to your selected format." },
+      { question: "Will transparent backgrounds be preserved?", answer: "Yes, when converting to PNG or WebP which support transparency. Converting to JPG replaces transparency with white." }
+    ],
+    relatedWorkflows: [
+      { title: "Web Optimization Workflow", description: "Convert and optimize images for websites", tools: ["convert-image", "image-compressor", "resize-image"] },
+      { title: "Format Standardization Workflow", description: "Standardize image formats across projects", tools: ["convert-image", "resize-image", "crop-image"] }
+    ],
+    internalLinks: [
+      { text: "Image Compressor", href: "/image-compressor", context: "Compress after converting for optimal file size" },
+      { text: "Resize Image", href: "/resize-image", context: "Adjust dimensions while changing format" },
+      { text: "Crop Image", href: "/crop-image", context: "Crop before converting to final format" },
+      { text: "JPG to PDF", href: "/jpg-to-pdf", context: "Convert images to PDF documents" }
+    ]
   }
 };
 
