@@ -1197,7 +1197,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       "png photos to pdf document online",
       "transparent png to pdf converter"
     ],
-    metaDescription: "Convert PNG to PDF free online. Transform PNG images to high-quality PDF documents instantly. Best free PNG to PDF converter - preserves transparency, no signup.",
+    metaDescription: "Convert PNG to PDF free online. Transform PNG images to PDF instantly. Best free PNG to PDF converter - preserves transparency, no signup.",
     heroContent: "Need to convert PNG images to PDF format? Our free PNG to PDF converter transforms your PNG files into professional PDF documents while preserving image quality and handling transparency properly. Whether you're converting screenshots for documentation, combining graphic designs for portfolios, preparing transparent logo files for print, or creating PDF presentations from PNG slides, PDF HUB 24 delivers perfect results every time. Upload single or multiple PNG images, arrange them in order, and download a high-quality PDF instantly. Works on all devices, requires no software installation, and is completely free with no account registration needed.",
     useCases: {
       title: "When to Convert PNG to PDF",
@@ -2776,7 +2776,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       "view pdf document without installing",
       "online pdf viewer with zoom"
     ],
-    metaDescription: "View PDF online without download. Open and read PDF files directly in your browser for free. Best online PDF viewer - zoom, navigate, search. No software needed.",
+    metaDescription: "View PDF online without download. Open PDF files in your browser free. Best online PDF viewer - zoom, navigate, search. No software needed.",
     heroContent: "Need to quickly view a PDF without downloading software or saving files to your device? Our free online PDF viewer lets you open and read PDF documents directly in your browser. Whether you're reviewing a document on a shared computer, checking a file on your phone, or simply want to preview a PDF before downloading, PDF HUB 24 provides instant access to your documents. Navigate through pages smoothly, zoom in on details, search for specific text, and read your PDFs comfortably on any device. No software installation, no account registration, no file cluttering your downloads folder — just drag, drop, and start reading. Perfect for quick document reviews, reading ebooks, or previewing files before editing.",
     useCases: {
       title: "When to Use Online PDF Viewer",
@@ -2851,7 +2851,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       "pdf diff checker online free",
       "detect changes between two pdfs"
     ],
-    metaDescription: "Compare two PDF documents for differences free online. Find changes between PDF versions instantly. Best PDF comparison tool - highlights additions, deletions. No signup.",
+    metaDescription: "Compare PDF files free online. Find differences between PDF versions instantly. Best PDF comparison tool - highlights changes. No signup.",
     heroContent: "Need to spot differences between two versions of a PDF document? Our free PDF comparison tool analyzes your files and highlights every change, addition, and deletion. Whether you're reviewing contract revisions, checking document edits, comparing legal drafts, or verifying that a document hasn't been altered, PDF HUB 24 makes differences instantly visible. Upload two PDFs and see exactly what changed — text modifications are highlighted, new content is marked, and deleted sections are clearly indicated. Stop manually reading through pages looking for changes. Our intelligent comparison engine handles documents of any length, from single-page letters to multi-page contracts and reports. Essential for legal professionals, editors, compliance officers, and anyone who needs to track document changes accurately.",
     useCases: {
       title: "When to Compare PDF Documents",
@@ -2926,7 +2926,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       "optimize images for web free",
       "shrink photo size for email"
     ],
-    metaDescription: "Compress images for website free. Reduce JPG, PNG, WebP file sizes up to 80% without quality loss. Best free image compressor - optimize photos instantly. No signup.",
+    metaDescription: "Compress images free. Reduce JPG, PNG, WebP file sizes up to 80% without quality loss. Best free image compressor - no signup.",
     heroContent: "Need to reduce image file sizes for faster website loading or email attachments? Our free image compressor shrinks JPG, PNG, and WebP files by up to 80% while maintaining excellent visual quality. Whether you're optimizing website images for better page speed, preparing photos for email, reducing storage usage, or meeting upload size limits on social media and platforms, PDF HUB 24 delivers professional-grade compression instantly. Our smart algorithms analyze each image and apply optimal compression settings automatically — preserving important details while eliminating unnecessary data. No software installation, no technical knowledge required. Just upload your images and download optimized versions ready for the web, email, or any purpose that demands smaller file sizes without sacrificing appearance.",
     useCases: {
       title: "When to Compress Your Images",
@@ -3001,7 +3001,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       "scale image dimensions online",
       "resize picture for social media"
     ],
-    metaDescription: "Resize image to specific dimensions online free. Change photo size to exact pixels instantly. Best free image resizer - no watermark, no signup. Resize for any platform.",
+    metaDescription: "Resize image to specific dimensions free. Change photo size to exact pixels instantly. Best free image resizer - no signup, no watermark.",
     heroContent: "Need to resize an image to exact dimensions for a specific platform or purpose? Our free image resizer lets you change photo dimensions precisely — whether you need specific pixel sizes for social media profiles, website headers, product listings, or print requirements. Enter your desired width and height, or choose from popular presets for Instagram, Facebook, Twitter, LinkedIn, and more. PDF HUB 24 resizes your images while maintaining aspect ratio (if desired) and preserving maximum quality. No watermarks, no registration, no software to install. Whether you're preparing profile pictures, resizing product photos for ecommerce, creating banner images, or meeting exact dimension requirements for any application, our tool delivers pixel-perfect results in seconds. Upload any JPG, PNG, or WebP image and download perfectly sized results ready to use.",
     useCases: {
       title: "When to Resize Your Images",
@@ -3076,7 +3076,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       "trim image edges online free",
       "crop photo for instagram free"
     ],
-    metaDescription: "Crop image online free with no download required. Cut and trim photos to any size or aspect ratio instantly. Best free image cropper - perfect for social media. No signup.",
+    metaDescription: "Crop image online free. Cut and trim photos to any size or aspect ratio instantly. Best free image cropper - no signup needed.",
     heroContent: "Need to crop an image quickly without downloading any software? Our free online image cropper lets you cut, trim, and resize photos to any dimensions or aspect ratio directly in your browser. Whether you're cropping profile pictures for social media, removing unwanted edges from photos, creating square images for Instagram, or focusing on the important part of a picture, PDF HUB 24 makes it effortless. Simply drag the crop area to select exactly what you want to keep, choose from popular aspect ratio presets like 1:1 for Instagram, 16:9 for YouTube, or 4:3 for traditional photos — or set custom dimensions for precise control. No software installation, no account required, no watermarks on your cropped images. Upload your photo, adjust the crop frame, and download your perfectly cropped result in seconds.",
     useCases: {
       title: "When to Crop Your Images",
@@ -3151,7 +3151,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       "image rotation tool free no signup",
       "flip mirror image online"
     ],
-    metaDescription: "Rotate image online free - 90, 180, 270 degrees or any angle. Flip photos horizontally or vertically. Best free image rotation tool - instant results. No signup required.",
+    metaDescription: "Rotate image online free. Turn photos 90, 180, 270 degrees or flip. Best free image rotation tool - instant results. No signup.",
     heroContent: "Need to fix a sideways photo or flip an image? Our free online image rotation tool lets you rotate pictures 90, 180, or 270 degrees with a single click, flip images horizontally or vertically, or rotate to any custom angle for precise adjustments. Whether you're correcting photos taken in the wrong orientation, creating mirror images, preparing images for design layouts, or fixing scanned documents that uploaded sideways, PDF HUB 24 delivers instant results. No software to download, no account to create. Simply upload your image, choose your rotation or flip option, and download the corrected version. Works perfectly with JPG, PNG, and WebP images. Perfect for fixing smartphone photos, adjusting scanned documents, creating reflected designs, and more. Rotate and flip your images in seconds with professional-quality results.",
     useCases: {
       title: "When to Rotate or Flip Images",
