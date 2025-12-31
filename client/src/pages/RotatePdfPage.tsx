@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import ToolSEOContent from "@/components/ToolSEOContent";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
@@ -102,7 +103,7 @@ export default function RotatePdfPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">Rotate PDF</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("rotate")?.longTailH1 || "Rotate PDF"}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Rotate all pages in your PDF document by 90°, 180°, or 270° clockwise.
             </p>
@@ -176,92 +177,7 @@ export default function RotatePdfPage() {
             )}
           </div>
 
-          <ToolSEOContent
-            toolName="Rotate PDF"
-            toolId="rotate"
-            toolDescription="Fix the orientation of your PDF documents instantly with our free online PDF rotation tool. Whether your scanned document came out sideways, your mobile photos are upside down, or you need to convert between landscape and portrait layouts, PDF HUB 24 makes it effortless. Choose from 90°, 180°, or 270° rotation angles and apply the change to all pages with a single click - no quality loss, no watermarks."
-            howToSteps={[
-              "Upload your PDF file by clicking the upload area or dragging and dropping.",
-              "Select your desired rotation angle: 90° clockwise, 180° flip, or 270° counter-clockwise.",
-              "Click the 'Rotate PDF' button to apply the rotation to all pages.",
-              "Download your correctly oriented PDF file, ready for viewing or printing."
-            ]}
-            benefits={[
-              "Fix wrongly-oriented scanned documents instantly",
-              "Rotate all pages simultaneously with one click",
-              "Three rotation options: 90°, 180°, or 270°",
-              "Perfect for landscape to portrait conversion",
-              "Lossless rotation preserves all content quality",
-              "Works with any PDF regardless of file size",
-              "Fast processing even for multi-page documents",
-              "No watermarks added to rotated PDFs",
-              "Ideal for fixing mobile phone scans and photos"
-            ]}
-            faqs={[
-              {
-                question: "Does rotation apply to all pages in my PDF?",
-                answer: "Yes, the selected rotation angle is applied uniformly to every page in your document. If you need to rotate only specific pages, use our Split PDF tool to extract those pages first, rotate them separately, then use Merge PDF to combine them back with the rest of your document."
-              },
-              {
-                question: "What's the difference between 90° and 270° rotation?",
-                answer: "90° rotates clockwise (to the right), turning a portrait page into landscape with the top now on the right side. 270° rotates counter-clockwise (to the left), putting the top on the left side. 180° flips the page completely upside down. Choose based on your current document orientation."
-              },
-              {
-                question: "Will rotating my PDF affect text searchability or quality?",
-                answer: "No, rotation is a completely lossless operation. All text remains searchable and selectable, images retain their original resolution, and hyperlinks continue to work. Only the visual orientation of the pages changes."
-              },
-              {
-                question: "How do I rotate a PDF back to its original orientation?",
-                answer: "Simply apply the opposite rotation. If you rotated by 90° clockwise, rotate by 270° to return to the original. For 180° rotation, just apply 180° again. You can rotate as many times as needed without any quality degradation."
-              },
-              {
-                question: "Why do scanned documents often need rotation?",
-                answer: "Scanners and mobile phone cameras often capture documents in the wrong orientation, especially during batch scanning or when documents are fed at different angles. Our tool provides a quick fix for these common orientation problems before sharing or printing."
-              }
-            ]}
-            keywords={["rotate pdf pages", "fix pdf orientation", "turn pdf sideways", "flip pdf upside down", "pdf rotation tool"]}
-            relatedLinks={[
-              { text: "Split PDF to rotate specific pages only", href: "/split" },
-              { text: "Merge rotated pages back together", href: "/merge" },
-              { text: "Reorder pages after rotation", href: "/reorder-pages" },
-              { text: "Compress PDF after making changes", href: "/compress" }
-            ]}
-            extraSections={[
-              {
-                title: "Common Rotation Scenarios",
-                content: "PDF rotation is frequently needed in these situations:",
-                items: [
-                  "Scanned documents captured in wrong orientation",
-                  "Photos taken with mobile phones in portrait mode",
-                  "Landscape spreadsheets that need portrait printing",
-                  "Architectural drawings requiring different viewing angles",
-                  "Batch-scanned documents with mixed orientations",
-                  "PDFs created from sideways camera captures"
-                ]
-              },
-              {
-                title: "Understanding Rotation Angles",
-                content: "Choose the right rotation angle for your needs:",
-                items: [
-                  "90° Clockwise: Rotates right - top moves to right side",
-                  "180° Flip: Turns page upside down - top becomes bottom",
-                  "270° Counter-clockwise: Rotates left - top moves to left side",
-                  "Use 90° or 270° to switch between portrait and landscape",
-                  "Use 180° to flip upside-down scans right-side up",
-                  "Multiple rotations can be combined for any final orientation"
-                ]
-              }
-            ]}
-            exampleTable={{
-              title: "Rotation Angle Reference",
-              rows: [
-                { label: "Sideways scan (top on right)", before: "Wrong orientation", after: "90° clockwise fix" },
-                { label: "Upside-down document", before: "Flipped content", after: "180° to correct" },
-                { label: "Sideways scan (top on left)", before: "Wrong orientation", after: "270° counter-clockwise fix" },
-                { label: "Landscape to Portrait", before: "Wide layout", after: "90° or 270° rotation" }
-              ]
-            }}
-          />
+          <EnhancedToolSEOContent toolId="rotate" />
           
           <RelatedTools currentToolId="rotate" />
         </div>

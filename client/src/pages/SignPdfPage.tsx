@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import ToolSEOContent from "@/components/ToolSEOContent";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
@@ -184,7 +185,7 @@ export default function SignPdfPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">Sign PDF</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("sign-pdf")?.longTailH1 || "Sign PDF"}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Add your signature to PDF documents. Draw, type, or upload your signature image.
             </p>
@@ -332,92 +333,7 @@ export default function SignPdfPage() {
             )}
           </div>
 
-          <ToolSEOContent
-            toolName="Sign PDF"
-            toolId="sign-pdf"
-            toolDescription="Add your electronic signature to PDF documents instantly with our free online signing tool. Choose from three convenient methods: type your name in a signature-style font, draw your signature with your mouse or touchscreen, or upload an image of your handwritten signature. Sign contracts, agreements, forms, and any PDF documents without printing, scanning, or faxing — saving time, paper, and money."
-            howToSteps={[
-              "Upload the PDF document you need to sign by clicking the upload area or dragging and dropping.",
-              "Choose your signature method: Type your name, Draw with mouse/touchscreen, or Upload a signature image.",
-              "Adjust the X and Y position coordinates to place your signature exactly where needed on the page.",
-              "Click 'Add Signature to PDF' and download your professionally signed document."
-            ]}
-            benefits={[
-              "Three flexible signature methods: type, draw, or upload image",
-              "No printing, scanning, or faxing required",
-              "Precise X/Y positioning control for accurate placement",
-              "Works on desktop, tablet, and mobile devices",
-              "Draw signatures with mouse, stylus, or touchscreen",
-              "Upload PNG images with transparent backgrounds",
-              "Professional cursive-style typed signatures",
-              "No software installation or account needed",
-              "Completely free to use with unlimited signatures"
-            ]}
-            faqs={[
-              {
-                question: "Is an electronic signature legally binding?",
-                answer: "In most countries, electronic signatures are legally valid and enforceable for the majority of business and personal documents under laws like the US ESIGN Act, EU eIDAS regulation, and similar legislation worldwide. However, certain documents like wills, real estate deeds, and some government forms may still require handwritten signatures. Always check your local laws and the specific requirements of your document or agreement."
-              },
-              {
-                question: "Which signature method should I use?",
-                answer: "Each method has its advantages: Drawing produces the most authentic handwritten look and is ideal for formal documents. Uploading an image of your real signature provides the most consistent and professional result across multiple documents. Typing is the fastest option and works well for internal documents or when a handwritten appearance isn't critical."
-              },
-              {
-                question: "Can I sign multiple pages in the same document?",
-                answer: "Currently, the signature is added to the first page at the coordinates you specify. For documents requiring signatures on multiple pages, you can process the document multiple times with different pages, or for initials/stamps on every page, consider using our Add Watermark tool which can place content on all pages simultaneously."
-              },
-              {
-                question: "How do I position my signature correctly?",
-                answer: "Use the X (horizontal) and Y (vertical) position fields measured in points (72 points = 1 inch). X is the distance from the left edge, Y is the distance from the bottom of the page. Standard PDF pages are 612x792 points (Letter) or 595x842 points (A4). For a signature near the bottom-left, try X=50 and Y=100. For bottom-right on Letter paper, try X=400 and Y=100."
-              },
-              {
-                question: "What image format works best for uploading a signature?",
-                answer: "PNG format with a transparent background works best, as it allows your signature to appear naturally on top of the document without a white box around it. You can create this by signing on white paper, photographing or scanning it, and using any image editor to remove the white background. JPEG images will also work but may show a rectangular background."
-              }
-            ]}
-            keywords={["sign pdf online", "electronic signature free", "add signature to pdf", "esign document", "pdf digital signature"]}
-            relatedLinks={[
-              { text: "Protect signed document using Protect PDF", href: "/protect-pdf" },
-              { text: "Add date stamp using Add Watermark", href: "/add-watermark" },
-              { text: "Flatten signed forms using Flatten PDF", href: "/flatten-pdf" },
-              { text: "Compress before sending using Compress PDF", href: "/compress" }
-            ]}
-            extraSections={[
-              {
-                title: "Why Use Electronic Signatures?",
-                content: "Electronic signatures streamline document workflows and offer significant advantages over traditional paper signing:",
-                items: [
-                  "Sign documents instantly from anywhere in the world",
-                  "Eliminate printing, scanning, and mailing costs",
-                  "Reduce document turnaround time from days to minutes",
-                  "Create a paperless, environmentally friendly workflow",
-                  "Store signed documents securely in digital format",
-                  "Easily share signed documents via email or cloud storage"
-                ]
-              },
-              {
-                title: "Common Document Types for E-Signing",
-                content: "Our PDF signing tool works great for many types of documents:",
-                items: [
-                  "Employment contracts and offer letters",
-                  "Rental agreements and lease documents",
-                  "Sales contracts and purchase orders",
-                  "Non-disclosure agreements (NDAs)",
-                  "Permission forms and consent documents",
-                  "Invoice approvals and financial documents"
-                ]
-              }
-            ]}
-            exampleTable={{
-              title: "Signature Positioning Guide",
-              rows: [
-                { label: "Bottom-left (Letter)", before: "Unsigned", after: "X=50, Y=100" },
-                { label: "Bottom-right (Letter)", before: "Unsigned", after: "X=400, Y=100" },
-                { label: "Center-bottom (A4)", before: "Unsigned", after: "X=250, Y=100" },
-                { label: "Above footer", before: "Unsigned", after: "X=50, Y=150" }
-              ]
-            }}
-          />
+          <EnhancedToolSEOContent toolId="sign-pdf" />
           
           <RelatedTools currentToolId="sign-pdf" />
         </div>

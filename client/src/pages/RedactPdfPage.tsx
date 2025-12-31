@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import ToolSEOContent from "@/components/ToolSEOContent";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
@@ -171,7 +172,7 @@ export default function RedactPdfPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">Redact PDF</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("redact-pdf")?.longTailH1 || "Redact PDF"}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Permanently black out sensitive information in your PDF documents. Protect privacy by redacting personal data.
             </p>
@@ -308,41 +309,7 @@ export default function RedactPdfPage() {
             </div>
           )}
 
-          <ToolSEOContent
-            toolName="PDF Redaction Tool"
-            toolId="redact-pdf"
-            toolDescription="Our online PDF redaction tool allows you to permanently black out sensitive information in your documents. Unlike simply drawing black boxes, true redaction removes the underlying content completely, ensuring it cannot be recovered or accessed."
-            howToSteps={[
-              "Upload your PDF file by clicking the upload area or drag and drop.",
-              "Click and drag on the PDF to draw redaction areas over sensitive content.",
-              "Add multiple redaction areas as needed.",
-              "Click Apply Redactions to permanently remove the content.",
-              "Download your redacted PDF."
-            ]}
-            benefits={[
-              "Permanently removes sensitive content",
-              "Content cannot be recovered or un-redacted",
-              "Protects personal information and privacy",
-              "Compliant with privacy regulations",
-              "No software installation required",
-              "Secure processing with automatic file deletion",
-              "Completely free with no registration"
-            ]}
-            faqs={[
-              {
-                question: "Is the redaction permanent?",
-                answer: "Yes, redaction permanently removes the content from the PDF. The text and images under redaction areas are completely deleted, not just covered with a black box. This cannot be undone."
-              },
-              {
-                question: "Can someone recover the redacted content?",
-                answer: "No. True redaction removes the underlying data from the PDF file. Unlike simply adding a black rectangle overlay, our redaction tool ensures the original content is permanently erased."
-              },
-              {
-                question: "Is my document secure?",
-                answer: "Yes. Your documents are processed securely and automatically deleted from our servers after processing. We do not store or access the content of your files."
-              }
-            ]}
-          />
+          <EnhancedToolSEOContent toolId="redact-pdf" />
 
           <RelatedTools currentToolId="redact-pdf" />
         </div>

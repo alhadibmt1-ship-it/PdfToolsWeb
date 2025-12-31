@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import ToolSEOContent from "@/components/ToolSEOContent";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
@@ -104,7 +105,7 @@ export default function CropPdfPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">Crop PDF</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("crop-pdf")?.longTailH1 || "Crop PDF"}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Remove unwanted margins or trim your PDF pages to specific dimensions. Perfect for removing white space.
             </p>
@@ -207,92 +208,7 @@ export default function CropPdfPage() {
             )}
           </div>
 
-          <ToolSEOContent
-            toolName="Crop PDF"
-            toolId="crop-pdf"
-            toolDescription="Trim unwanted margins, white space, and borders from your PDF documents with our free online PDF cropping tool. Precisely remove excess space from all four edges of every page in your document with custom measurements. Perfect for removing printer margins from scanned documents, focusing on specific content areas, preparing PDFs for presentations, or optimizing documents for digital viewing on screens and mobile devices."
-            howToSteps={[
-              "Upload your PDF file by clicking the upload area or dragging and dropping your document.",
-              "Enter the amount (in points) to crop from each edge: top, bottom, left, and right margins.",
-              "Click the 'Crop PDF' button to apply the crop settings to all pages uniformly.",
-              "Download your cropped PDF with reduced margins and optimized page dimensions."
-            ]}
-            benefits={[
-              "Remove unwanted margins and white borders from PDFs",
-              "Trim excess white space from scanned documents",
-              "Crop all pages uniformly with one click",
-              "Precise control with point-based measurements",
-              "Reduce visual page dimensions for better presentation",
-              "Optimize PDFs for screen viewing and mobile devices",
-              "Prepare documents for embedding in presentations",
-              "No software installation required",
-              "Completely free with no registration needed"
-            ]}
-            faqs={[
-              {
-                question: "What units are used for cropping measurements?",
-                answer: "We use points (pt) as the unit of measurement, which is the standard unit in PDF documents. For reference: 72 points equals 1 inch, and approximately 28.35 points equals 1 centimeter. For example, to crop half an inch from each side, enter 36 points."
-              },
-              {
-                question: "Will cropping affect all pages in my PDF?",
-                answer: "Yes, the crop settings you specify are applied uniformly to all pages in your PDF document. This ensures consistent margins and dimensions throughout the entire document, which is ideal for multi-page documents like reports, books, or presentations."
-              },
-              {
-                question: "Can I undo the cropping after downloading?",
-                answer: "The cropping is permanent on the downloaded file, but your original uploaded file remains unchanged on your device. Always keep a backup of your original document before cropping. If you need to try different crop settings, simply upload the original file again."
-              },
-              {
-                question: "Does cropping reduce the PDF file size?",
-                answer: "Cropping changes the visible area of pages but may not significantly reduce file size because the underlying content data is often still stored in the PDF. For substantial file size reduction, we recommend using our Compress PDF tool after cropping."
-              },
-              {
-                question: "How do I know how much to crop from my PDF?",
-                answer: "Start with small values (like 20-40 points) and preview the result. Standard PDF pages are typically 612x792 points (Letter) or 595x842 points (A4). For scanned documents with large white borders, you might need 50-100 points. Experiment to find the optimal settings for your document."
-              }
-            ]}
-            keywords={["crop pdf online", "trim pdf margins", "remove white space pdf", "pdf cropper free", "cut pdf borders"]}
-            relatedLinks={[
-              { text: "Change page dimensions using Resize PDF", href: "/resize-pdf" },
-              { text: "Remove unwanted pages using Delete Pages", href: "/delete-pages" },
-              { text: "Reduce file size using Compress PDF", href: "/compress" },
-              { text: "Rotate pages if needed using Rotate PDF", href: "/rotate" }
-            ]}
-            extraSections={[
-              {
-                title: "Why Crop PDF Pages?",
-                content: "Cropping PDF pages helps optimize your documents for various use cases. Here are common reasons to trim your PDFs:",
-                items: [
-                  "Remove scanner borders from scanned documents",
-                  "Eliminate printer margins for cleaner presentation",
-                  "Focus on specific content areas in documents",
-                  "Prepare PDFs for embedding in PowerPoint presentations",
-                  "Optimize documents for mobile device viewing",
-                  "Remove headers/footers from pages"
-                ]
-              },
-              {
-                title: "Cropping Tips and Measurement Guide",
-                content: "Use these guidelines to determine the right crop amounts for your documents:",
-                items: [
-                  "72 points = 1 inch (use for documents with inch-based margins)",
-                  "28 points = approximately 1 cm (use for metric measurements)",
-                  "Start with 36 points (0.5 inch) for typical scanner borders",
-                  "Use 18 points (0.25 inch) for minor margin adjustments",
-                  "Standard letter page is 612 x 792 points",
-                  "Standard A4 page is 595 x 842 points"
-                ]
-              }
-            ]}
-            exampleTable={{
-              title: "Common PDF Cropping Scenarios",
-              rows: [
-                { label: "Scanned document", before: "Large white borders", after: "Clean edges" },
-                { label: "Book pages", before: "Wide margins", after: "Content-focused" },
-                { label: "Presentation slides", before: "Excess padding", after: "Optimized view" },
-                { label: "Mobile reading", before: "Wasted screen space", after: "Full content display" }
-              ]
-            }}
-          />
+          <EnhancedToolSEOContent toolId="crop-pdf" />
           
           <RelatedTools currentToolId="crop-pdf" />
         </div>

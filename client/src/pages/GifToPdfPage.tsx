@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import ToolSEOContent from "@/components/ToolSEOContent";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
@@ -105,7 +106,7 @@ export default function GifToPdfPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">GIF to PDF</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("gif-to-pdf")?.longTailH1 || "GIF to PDF"}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Convert GIF images to PDF documents. Upload multiple GIF files to combine them into a single PDF.
             </p>
@@ -153,39 +154,7 @@ export default function GifToPdfPage() {
             )}
           </div>
 
-          <ToolSEOContent
-            toolName="GIF to PDF Converter"
-            toolId="gif-to-pdf"
-            toolDescription="Convert GIF images to PDF format easily. Our converter handles both static and animated GIF files, extracting frames and creating high-quality PDF documents."
-            howToSteps={[
-              "Upload your GIF file(s) by clicking the upload area or drag and drop.",
-              "Add multiple GIF files to combine them into a single PDF.",
-              "Click Convert to process your images.",
-              "Download your new PDF document."
-            ]}
-            benefits={[
-              "Convert static and animated GIF files",
-              "Combine multiple GIFs into one PDF",
-              "Extract first frame from animated GIFs",
-              "Preserve image quality",
-              "Completely free with no registration",
-              "Secure processing with automatic file deletion"
-            ]}
-            faqs={[
-              {
-                question: "What happens to animated GIFs?",
-                answer: "For animated GIFs, our converter extracts the first frame and converts it to a static image in the PDF. Each GIF file becomes one page in the output PDF."
-              },
-              {
-                question: "Can I convert multiple GIF files?",
-                answer: "Yes! You can upload multiple GIF files and they will be combined into a single PDF document with each image as a separate page."
-              },
-              {
-                question: "Is the quality preserved?",
-                answer: "Yes, our converter maintains the original quality of your GIF images while converting them to PDF format."
-              }
-            ]}
-          />
+          <EnhancedToolSEOContent toolId="gif-to-pdf" />
 
           <RelatedTools currentToolId="gif-to-pdf" />
         </div>

@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import ToolSEOContent from "@/components/ToolSEOContent";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
@@ -105,7 +106,7 @@ export default function OcrPdfPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">OCR PDF</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("ocr-pdf")?.longTailH1 || "OCR PDF"}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Extract text from scanned PDF documents using optical character recognition (OCR).
             </p>
@@ -188,90 +189,10 @@ export default function OcrPdfPage() {
             )}
           </div>
 
-          <ToolSEOContent
-            toolName="OCR PDF"
+          <EnhancedToolSEOContent
             toolId="ocr-pdf"
-            toolDescription="Extract text from scanned PDF documents and image-based PDFs using optical character recognition (OCR). Our free online tool recognizes text in scanned documents, photos of documents, receipts, and PDFs where text is embedded as images. Unlike regular text extraction, OCR can read text from images, making previously unsearchable documents fully accessible and editable."
-            howToSteps={[
-              "Upload your scanned PDF or image-based PDF file by clicking the upload area or dragging and dropping.",
-              "Click the 'Extract Text with OCR' button to start processing.",
-              "Wait while our OCR engine analyzes and recognizes text in the document images.",
-              "Copy the extracted text to your clipboard or download it as a plain text file."
-            ]}
-            benefits={[
-              "Extract text from scanned documents and image-based PDFs",
-              "Process photos of documents, receipts, and handwritten notes",
-              "Copy recognized text directly to clipboard",
-              "Download extracted text as a plain text file",
-              "Works with various document types and layouts",
-              "No software installation required",
-              "Fast cloud-based OCR processing",
-              "Completely free with no registration required",
-              "Make scanned documents searchable and editable"
-            ]}
-            faqs={[
-              {
-                question: "What's the difference between OCR and Extract Text?",
-                answer: "OCR (Optical Character Recognition) is for scanned documents and image-based PDFs where text exists as pixels in images. Extract Text is for regular PDFs where text is already stored as selectable characters. Use OCR when you cannot select or highlight text in your PDF — that means the text is actually an image that needs to be 'read' by OCR."
-              },
-              {
-                question: "How accurate is the OCR?",
-                answer: "Accuracy depends primarily on document quality. Clear, high-resolution scans (300 DPI or higher) with good contrast produce the best results — often 95%+ accuracy. Blurry, skewed, low-quality scans, or documents with unusual fonts may have errors. Straightening and enhancing your scan before processing can improve results."
-              },
-              {
-                question: "What languages are supported?",
-                answer: "Our OCR engine works best with English and other Latin-alphabet languages (Spanish, French, German, Italian, Portuguese, etc.). Complex scripts like Arabic, Chinese, Japanese, and Korean may have reduced accuracy. For best results with non-Latin scripts, ensure high-quality, clear scans."
-              },
-              {
-                question: "Why is my text not extracted correctly?",
-                answer: "Common causes include poor scan quality, blurry images, skewed pages, unusual fonts, handwriting, or complex layouts with multiple columns. To improve results: scan at higher resolution (300 DPI+), ensure pages are straight, use good lighting, and choose documents with standard fonts."
-              },
-              {
-                question: "Can OCR read handwritten documents?",
-                answer: "OCR works best with printed text. Handwritten text is much harder to recognize and results vary significantly based on handwriting clarity. Neat, legible handwriting may be partially recognized, but messy handwriting typically won't be processed accurately."
-              }
-            ]}
-            keywords={["ocr pdf", "pdf ocr online", "scan to text", "extract scanned text", "pdf text recognition"]}
-            relatedLinks={[
-              { text: "Extract text from regular PDFs using Extract Text", href: "/extract-text" },
-              { text: "Convert scanned PDF to Word using PDF to Word", href: "/pdf-to-word" },
-              { text: "Extract tables from PDFs using PDF to Excel", href: "/pdf-to-excel" },
-              { text: "Compress large scanned PDFs using Compress PDF", href: "/compress" }
-            ]}
-            extraSections={[
-              {
-                title: "When to Use OCR vs Extract Text",
-                content: "Choosing the right tool ensures the best results for your document type.",
-                items: [
-                  "Use OCR for scanned paper documents saved as PDF",
-                  "Use OCR for photos of documents, receipts, or whiteboards",
-                  "Use OCR for PDFs where you cannot select text",
-                  "Use Extract Text for digital PDFs with selectable text",
-                  "Use Extract Text when text can be copied from the PDF"
-                ]
-              },
-              {
-                title: "Tips for Best OCR Results",
-                content: "Follow these guidelines to improve OCR accuracy:",
-                items: [
-                  "Scan documents at 300 DPI or higher resolution",
-                  "Ensure pages are straight and not skewed",
-                  "Use good lighting and contrast when photographing documents",
-                  "Choose documents with standard, printed fonts",
-                  "Avoid creased, stained, or damaged paper",
-                  "Process single-column documents for best accuracy"
-                ]
-              }
-            ]}
-            exampleTable={{
-              title: "OCR Processing Examples",
-              rows: [
-                { label: "Scanned Contract", before: "Image-based PDF", after: "Searchable, copyable text" },
-                { label: "Photo of Receipt", before: "Camera photo in PDF", after: "Extracted transaction data" },
-                { label: "Old Document Scan", before: "Archived paper scan", after: "Digitized text content" },
-                { label: "Faxed Document", before: "Fax image PDF", after: "Editable text file" }
-              ]
-            }}
+            fallbackToolName="OCR PDF"
+            fallbackDescription="Extract text from scanned PDF documents and image-based PDFs using optical character recognition (OCR)."
           />
           
           <RelatedTools currentToolId="ocr-pdf" />

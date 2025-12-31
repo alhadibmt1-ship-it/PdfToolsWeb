@@ -8,7 +8,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import ToolSEOContent from "@/components/ToolSEOContent";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
@@ -200,7 +201,7 @@ export default function ReorderPagesPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">Reorder Pages</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("reorder-pages")?.longTailH1 || "Reorder Pages"}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Drag and drop to rearrange pages in your PDF document.
             </p>
@@ -277,92 +278,7 @@ export default function ReorderPagesPage() {
             )}
           </div>
 
-          <ToolSEOContent
-            toolName="Reorder PDF Pages"
-            toolId="reorder-pages"
-            toolDescription="Rearrange pages in your PDF documents effortlessly with our intuitive drag-and-drop interface. Whether you need to move pages to different positions, reverse the entire document order, or create a completely custom page sequence, PDF HUB 24 makes it simple. Our visual reordering tool shows each page clearly so you can organize reports, presentations, manuscripts, and any multi-page documents exactly how you want them."
-            howToSteps={[
-              "Upload your PDF file by clicking the upload area or dragging and dropping.",
-              "View all pages and drag them to rearrange in your desired order.",
-              "Click the 'Reorder Pages' button to apply the new page sequence.",
-              "Download your reorganized PDF with pages in the perfect order."
-            ]}
-            benefits={[
-              "Intuitive drag-and-drop interface for easy reordering",
-              "Visual page list shows exact position of each page",
-              "Rearrange any number of pages without limits",
-              "Create custom page sequences for any purpose",
-              "Perfect for fixing incorrectly ordered documents",
-              "Original page content and quality preserved",
-              "Fast processing even for large documents",
-              "No registration or signup required",
-              "Works on any device with a web browser"
-            ]}
-            faqs={[
-              {
-                question: "Can I duplicate pages while reordering?",
-                answer: "The reorder tool is designed to move pages to new positions only, not duplicate them. If you need to include the same page multiple times, use our Merge PDF tool to combine your document with itself, then reorder the combined result as needed."
-              },
-              {
-                question: "What's the maximum number of pages I can reorder?",
-                answer: "There's no strict page limit for reordering. Documents with hundreds of pages work well, though very large files may take slightly longer to process. The drag-and-drop interface remains responsive for typical document sizes."
-              },
-              {
-                question: "How do I reverse the entire page order?",
-                answer: "To reverse your document completely, drag the last page to the first position, then the second-to-last to the second position, and so on. For very long documents, you may find it easier to reorder in sections or use multiple passes."
-              },
-              {
-                question: "Will reordering affect my page content or quality?",
-                answer: "No, reordering is a non-destructive operation. All page content, formatting, images, text, and hyperlinks remain exactly the same. Only the sequence in which pages appear in the document changes."
-              },
-              {
-                question: "Can I remove pages while reordering?",
-                answer: "This tool focuses solely on page reordering to keep the interface simple and focused. To remove unwanted pages, use our Delete Pages tool before or after reordering. You can also use Split PDF to extract only the pages you want."
-              }
-            ]}
-            keywords={["rearrange pdf pages", "sort pdf pages", "organize pdf document", "pdf page order", "move pdf pages"]}
-            relatedLinks={[
-              { text: "Delete unwanted pages from your PDF", href: "/delete-pages" },
-              { text: "Merge multiple PDFs together", href: "/merge" },
-              { text: "Split PDF into separate files", href: "/split" },
-              { text: "Add page numbers after reordering", href: "/add-page-numbers" }
-            ]}
-            extraSections={[
-              {
-                title: "When to Reorder PDF Pages",
-                content: "Page reordering is essential in many document management scenarios:",
-                items: [
-                  "Fixing scanned documents with pages in wrong order",
-                  "Reorganizing presentation slides for a different audience",
-                  "Moving appendices or references to different positions",
-                  "Arranging photo album pages chronologically",
-                  "Restructuring reports to highlight key sections first",
-                  "Preparing documents for binding or printing"
-                ]
-              },
-              {
-                title: "Tips for Efficient Page Reordering",
-                content: "Make the most of our reordering tool with these tips:",
-                items: [
-                  "Plan your desired order before starting to drag pages",
-                  "Use the page numbers as reference while reordering",
-                  "For major reorganizations, work in sections",
-                  "Combine with Delete Pages to remove unwanted content first",
-                  "Add page numbers after reordering for professional documents",
-                  "Preview your original PDF to identify pages by content"
-                ]
-              }
-            ]}
-            exampleTable={{
-              title: "Page Reordering Examples",
-              rows: [
-                { label: "Scanned pages (wrong order)", before: "Pages 3,1,2,5,4", after: "Pages 1,2,3,4,5" },
-                { label: "Move summary to front", before: "Summary on page 10", after: "Summary on page 1" },
-                { label: "Reverse photo album", before: "Newest to oldest", after: "Oldest to newest" },
-                { label: "Reorganize report", before: "Appendix in middle", after: "Appendix at end" }
-              ]
-            }}
-          />
+          <EnhancedToolSEOContent toolId="reorder-pages" />
           
           <RelatedTools currentToolId="reorder-pages" />
         </div>

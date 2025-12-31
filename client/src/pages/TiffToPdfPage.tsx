@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import ToolSEOContent from "@/components/ToolSEOContent";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
@@ -105,7 +106,7 @@ export default function TiffToPdfPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">TIFF to PDF</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("tiff-to-pdf")?.longTailH1 || "TIFF to PDF"}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Convert TIFF images to PDF documents. Upload multiple TIFF files to combine them into a single PDF.
             </p>
@@ -153,39 +154,7 @@ export default function TiffToPdfPage() {
             )}
           </div>
 
-          <ToolSEOContent
-            toolName="TIFF to PDF Converter"
-            toolId="tiff-to-pdf"
-            toolDescription="Convert TIFF images to PDF format with high quality. Our converter handles multi-page TIFF files and preserves image quality while creating universally compatible PDF documents."
-            howToSteps={[
-              "Upload your TIFF file(s) by clicking the upload area or drag and drop.",
-              "Add multiple TIFF files to combine them into a single PDF.",
-              "Click Convert to process your images.",
-              "Download your new PDF document."
-            ]}
-            benefits={[
-              "Convert single or multi-page TIFF files",
-              "Combine multiple TIFF images into one PDF",
-              "Preserve original image quality",
-              "Support for all TIFF compression formats",
-              "Completely free with no registration",
-              "Secure processing with automatic file deletion"
-            ]}
-            faqs={[
-              {
-                question: "What is TIFF format?",
-                answer: "TIFF (Tagged Image File Format) is a high-quality image format commonly used in scanning, printing, and professional photography. It supports lossless compression and multiple pages."
-              },
-              {
-                question: "Can I convert multiple TIFF files at once?",
-                answer: "Yes! You can upload multiple TIFF files and they will be combined into a single PDF document with each image as a separate page."
-              },
-              {
-                question: "Is the quality preserved?",
-                answer: "Yes, our converter maintains the original quality of your TIFF images while converting them to PDF format."
-              }
-            ]}
-          />
+          <EnhancedToolSEOContent toolId="tiff-to-pdf" />
 
           <RelatedTools currentToolId="tiff-to-pdf" />
         </div>

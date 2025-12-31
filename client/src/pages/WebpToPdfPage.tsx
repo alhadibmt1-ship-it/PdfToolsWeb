@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import ToolSEOContent from "@/components/ToolSEOContent";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
@@ -99,7 +100,7 @@ export default function WebpToPdfPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">WebP to PDF</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("webp-to-pdf")?.longTailH1 || "WebP to PDF"}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Convert your WebP images into a PDF document. Upload multiple images to combine them into a single PDF file.
             </p>
@@ -165,92 +166,7 @@ export default function WebpToPdfPage() {
             )}
           </div>
 
-          <ToolSEOContent
-            toolName="WebP to PDF Converter"
-            toolId="webp-to-pdf"
-            toolDescription="Convert your WebP images to universally compatible PDF documents with our free online converter. WebP is Google's modern image format offering superior compression and quality, but not all devices support it natively. Our tool transforms WebP images into PDF files that open anywhere, preserving the original quality and allowing you to combine multiple images into a single document."
-            howToSteps={[
-              "Upload your WebP image(s) by clicking the upload area or dragging and dropping files.",
-              "Select multiple WebP files to combine them into a single multi-page PDF.",
-              "Click 'Convert to PDF' to start the instant conversion process.",
-              "Download your PDF document containing all images as separate pages."
-            ]}
-            benefits={[
-              "Convert WebP to universally compatible PDF format",
-              "Combine multiple WebP images into one PDF document",
-              "Maintains original image resolution and quality",
-              "Each image becomes a full page in the PDF",
-              "Perfect for archiving and sharing WebP collections",
-              "Solves WebP compatibility issues on older devices",
-              "No software installation or registration required",
-              "Works on all devices and browsers instantly",
-              "Completely free with unlimited conversions"
-            ]}
-            faqs={[
-              {
-                question: "What is WebP format and why convert it?",
-                answer: "WebP is a modern image format developed by Google that provides superior compression compared to JPEG and PNG. While great for web use, some older devices and software don't support WebP. Converting to PDF ensures universal compatibility."
-              },
-              {
-                question: "Can I convert multiple WebP images at once?",
-                answer: "Yes! You can upload multiple WebP images and combine them into a single PDF document. Each image becomes its own page, appearing in the order you uploaded them."
-              },
-              {
-                question: "Will the image quality be preserved during conversion?",
-                answer: "Absolutely. We convert WebP images to PDF at their original resolution and quality. There's no compression or quality loss during the conversion process."
-              },
-              {
-                question: "Is there a limit on how many WebP images I can convert?",
-                answer: "You can convert up to 20 WebP images at once into a single PDF. For larger batches, simply convert in multiple sessions and merge the resulting PDFs."
-              },
-              {
-                question: "Can I convert animated WebP files?",
-                answer: "Our converter is designed for static WebP images. Animated WebP files will convert, but only the first frame will appear in the PDF. For animations, consider converting each frame separately."
-              }
-            ]}
-            keywords={["webp to pdf", "convert webp to pdf", "webp to pdf converter", "webp image to pdf", "webp pdf online"]}
-            relatedLinks={[
-              { text: "Convert JPG images using JPG to PDF", href: "/jpg-to-pdf" },
-              { text: "Convert PNG images using PNG to PDF", href: "/png-to-pdf" },
-              { text: "Extract images from PDF using Extract Images", href: "/extract-images" },
-              { text: "Combine PDFs using Merge PDF", href: "/merge" }
-            ]}
-            extraSections={[
-              {
-                title: "Why Convert WebP Images to PDF?",
-                content: "WebP to PDF conversion solves compatibility issues and offers several benefits:",
-                items: [
-                  "Universal compatibility - PDFs open on all devices without WebP support",
-                  "Easy sharing - combine multiple images into one document",
-                  "Professional presentation - create portfolios and galleries",
-                  "Long-term archiving - PDF is a stable, widely-supported format",
-                  "Print-ready output - PDFs print consistently everywhere",
-                  "Preserve quality while gaining compatibility"
-                ]
-              },
-              {
-                title: "Common Use Cases for WebP to PDF",
-                content: "Our WebP to PDF converter helps with these everyday scenarios:",
-                items: [
-                  "Converting web-downloaded images for offline viewing",
-                  "Creating shareable photo collections from WebP galleries",
-                  "Archiving website screenshots saved as WebP",
-                  "Building portfolios from WebP design assets",
-                  "Preparing images for printing on older systems",
-                  "Sharing images with users on older devices"
-                ]
-              }
-            ]}
-            exampleTable={{
-              title: "WebP to PDF Conversion Examples",
-              rows: [
-                { label: "Single WebP Photo", before: "800 KB WebP", after: "1.2 MB PDF" },
-                { label: "5 WebP Screenshots", before: "2.5 MB total", after: "3.8 MB PDF" },
-                { label: "10 Product Images", before: "4 MB total", after: "5.5 MB PDF" },
-                { label: "WebP Photo Album", before: "15 MB total", after: "18 MB PDF" }
-              ]
-            }}
-          />
+          <EnhancedToolSEOContent toolId="webp-to-pdf" />
           
           <RelatedTools currentToolId="webp-to-pdf" />
         </div>

@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import ToolSEOContent from "@/components/ToolSEOContent";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
@@ -111,7 +112,7 @@ export default function UnlockPdfPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">Unlock PDF</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("unlock-pdf")?.longTailH1 || "Unlock PDF"}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Remove password protection from your PDF file when you know the password.
             </p>
@@ -183,92 +184,7 @@ export default function UnlockPdfPage() {
             )}
           </div>
 
-          <ToolSEOContent
-            toolName="Unlock PDF"
-            toolId="unlock-pdf"
-            toolDescription="Remove password protection from PDF files when you know the password with our free online PDF unlocker. Our secure tool decrypts your protected documents so you can regain full access to edit, print, copy, and share without restrictions. Perfect for when you have the password but need an unrestricted version of your own documents for archiving, editing, or sharing with colleagues."
-            howToSteps={[
-              "Upload your password-protected PDF file by clicking the upload area or dragging and dropping.",
-              "Enter the correct password that was used to protect the PDF document.",
-              "Click the 'Unlock PDF' button to decrypt and remove the password protection.",
-              "Download your unlocked PDF file — now free from password restrictions."
-            ]}
-            benefits={[
-              "Remove password protection from PDFs you own",
-              "Regain full access to edit and modify documents",
-              "Enable printing and copying without restrictions",
-              "Share documents freely without password hassle",
-              "Create backup copies without protection",
-              "Merge unlocked PDFs with other documents",
-              "No software installation required",
-              "Secure processing with automatic file deletion",
-              "Fast decryption takes just seconds"
-            ]}
-            faqs={[
-              {
-                question: "Do I need the password to unlock a PDF?",
-                answer: "Yes, you must know and enter the correct password to unlock a protected PDF. This tool is designed for legitimate use when you have authorized access but want to remove the protection for convenience. It does not bypass or crack unknown passwords — it simply removes the protection layer once you provide the correct credentials."
-              },
-              {
-                question: "Is this tool for cracking or bypassing PDF passwords?",
-                answer: "No, absolutely not. This tool is not designed for bypassing security or cracking passwords. It is intended solely for legitimate use cases where you own the document or have been given the password. The tool requires the correct password to function and cannot recover or guess unknown passwords."
-              },
-              {
-                question: "What if I forgot the PDF password?",
-                answer: "Unfortunately, if you have forgotten the password, this tool cannot help you. PDF encryption is specifically designed to prevent access without the password. Try checking your email for when the file was originally shared, look in a password manager, or contact the person who originally protected the file."
-              },
-              {
-                question: "Will unlocking affect the PDF content or quality?",
-                answer: "No, unlocking only removes the password protection layer. All content including text, images, formatting, fonts, and interactive elements remain exactly the same. The document's visual appearance and file size will be virtually identical to the original."
-              },
-              {
-                question: "Can I add a different password after unlocking?",
-                answer: "Yes, after downloading the unlocked PDF, you can use our Protect PDF tool to add new password protection with any password of your choice. This is useful if you need to change the password or share with different access credentials."
-              }
-            ]}
-            keywords={["unlock pdf online", "remove pdf password", "decrypt pdf free", "pdf password remover", "unlock encrypted pdf"]}
-            relatedLinks={[
-              { text: "Add new password using Protect PDF", href: "/protect-pdf" },
-              { text: "Compress unlocked file using Compress PDF", href: "/compress" },
-              { text: "Edit pages using Delete Pages", href: "/delete-pages" },
-              { text: "Merge with other documents using Merge PDF", href: "/merge" }
-            ]}
-            extraSections={[
-              {
-                title: "Why Unlock Password-Protected PDFs?",
-                content: "There are many legitimate reasons to remove PDF password protection when you have authorized access:",
-                items: [
-                  "Create editable copies of your own protected documents",
-                  "Archive documents without needing to remember passwords",
-                  "Share documents with colleagues without password complexity",
-                  "Prepare PDFs for merging with other documents",
-                  "Enable printing on devices that don't support password entry",
-                  "Simplify document management in shared folders"
-                ]
-              },
-              {
-                title: "When Should You Keep Password Protection?",
-                content: "Consider keeping password protection in these situations:",
-                items: [
-                  "Documents containing sensitive personal information",
-                  "Financial records and tax documents",
-                  "Legal contracts and confidential agreements",
-                  "Medical or health-related documents",
-                  "Files shared via unsecured channels",
-                  "Documents stored in cloud services without encryption"
-                ]
-              }
-            ]}
-            exampleTable={{
-              title: "Common PDF Unlock Scenarios",
-              rows: [
-                { label: "Old protected document", before: "Password required", after: "Open freely" },
-                { label: "Archived report", before: "Password forgotten", after: "Accessible (with password)" },
-                { label: "Shared contract", before: "Print restricted", after: "Full print access" },
-                { label: "Team document", before: "Individual access", after: "Shared access" }
-              ]
-            }}
-          />
+          <EnhancedToolSEOContent toolId="unlock-pdf" />
           
           <RelatedTools currentToolId="unlock-pdf" />
         </div>

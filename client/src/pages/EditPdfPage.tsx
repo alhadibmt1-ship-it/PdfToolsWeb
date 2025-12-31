@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import ToolSEOContent from "@/components/ToolSEOContent";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
@@ -175,7 +176,7 @@ export default function EditPdfPage() {
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">Edit PDF</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("edit-pdf")?.longTailH1 || "Edit PDF"}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Add text, shapes, and annotations to your PDF documents. Simple and powerful PDF editing online.
             </p>
@@ -397,41 +398,7 @@ export default function EditPdfPage() {
             </div>
           )}
 
-          <ToolSEOContent
-            toolName="PDF Editor"
-            toolId="edit-pdf"
-            toolDescription="Our online PDF editor allows you to add text, shapes, and annotations directly to your PDF documents. No software installation required - edit PDFs right in your browser with our intuitive interface."
-            howToSteps={[
-              "Upload your PDF file by clicking the upload area or drag and drop.",
-              "Select a tool from the toolbar (text, rectangle, circle, or line).",
-              "Click on the PDF where you want to add the annotation.",
-              "Customize colors and sizes using the options panel.",
-              "Click Save to download your edited PDF."
-            ]}
-            benefits={[
-              "Add text anywhere on your PDF",
-              "Draw shapes like rectangles, circles, and lines",
-              "Customize colors and sizes",
-              "Undo mistakes easily",
-              "No software installation required",
-              "Works on any device with a browser",
-              "Completely free with no registration"
-            ]}
-            faqs={[
-              {
-                question: "Can I edit existing text in the PDF?",
-                answer: "This tool allows you to add new text and shapes to your PDF. To modify existing text, you may need to convert the PDF to Word first, make your changes, then convert back to PDF."
-              },
-              {
-                question: "Are my edits permanent?",
-                answer: "Yes, when you save the PDF, your annotations are permanently added to the document. The original PDF remains unchanged."
-              },
-              {
-                question: "Can I add images?",
-                answer: "Currently, this editor supports text and basic shapes. For adding images, consider using our other PDF tools or converting to Word first."
-              }
-            ]}
-          />
+          <EnhancedToolSEOContent toolId="edit-pdf" />
 
           <RelatedTools currentToolId="edit-pdf" />
         </div>
