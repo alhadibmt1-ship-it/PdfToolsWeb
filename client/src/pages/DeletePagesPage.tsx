@@ -10,7 +10,6 @@ import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { ToolBreadcrumbs } from "@/components/Breadcrumbs";
-import { ToolStructuredData } from "@/components/StructuredData";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -127,14 +126,6 @@ export default function DeletePagesPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <ToolStructuredData
-        toolName="Delete Pages from PDF"
-        toolPath="/delete-pages"
-        description="Delete pages from PDF free online. Remove unwanted PDF pages instantly with our free PDF page remover tool. No registration required."
-        howToSteps={DELETE_STEPS}
-        faqs={DELETE_FAQS}
-        category="edit-pdf"
-      />
       
       <main className="flex-1 py-8">
         <div className="max-w-4xl mx-auto px-6">

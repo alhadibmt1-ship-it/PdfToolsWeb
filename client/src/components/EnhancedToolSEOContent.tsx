@@ -56,12 +56,6 @@ export default function EnhancedToolSEOContent({
         {
           "@type": "ListItem",
           "position": 2,
-          "name": categoryLabels[category],
-          "item": `${BASE_URL}/#${category}`
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
           "name": toolName,
           "item": `${BASE_URL}${toolPath}`
         }

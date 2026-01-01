@@ -12,7 +12,6 @@ import RelatedTools from "@/components/RelatedTools";
 import StepIndicator from "@/components/StepIndicator";
 import SuccessCelebration from "@/components/SuccessCelebration";
 import { ToolBreadcrumbs } from "@/components/Breadcrumbs";
-import { ToolStructuredData } from "@/components/StructuredData";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
@@ -155,14 +154,6 @@ export default function MergePdfPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <ToolStructuredData
-        toolName="Merge PDF"
-        toolPath="/merge"
-        description="Combine multiple PDF files into one document online for free. Drag and drop to reorder pages before merging."
-        howToSteps={MERGE_STEPS}
-        faqs={MERGE_FAQS}
-        category="edit-pdf"
-      />
       
       <main className="flex-1 py-6 sm:py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
