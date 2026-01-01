@@ -39,30 +39,33 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
           <li 
             key={index} 
             className="flex items-center"
-            itemProp="itemListElement" 
-            itemScope 
-            itemType="https://schema.org/ListItem"
+            {...(item.href ? {
+              itemProp: "itemListElement",
+              itemScope: true,
+              itemType: "https://schema.org/ListItem"
+            } : {})}
           >
             <ChevronRight className="w-4 h-4 mx-1 text-muted-foreground/50" aria-hidden="true" />
             {item.href ? (
-              <Link 
-                href={item.href} 
-                className="hover:text-primary transition-colors"
-                data-testid={`breadcrumb-${index}`}
-                itemProp="item"
-              >
-                <span itemProp="name">{item.label}</span>
-              </Link>
+              <>
+                <Link 
+                  href={item.href} 
+                  className="hover:text-primary transition-colors"
+                  data-testid={`breadcrumb-${index}`}
+                  itemProp="item"
+                >
+                  <span itemProp="name">{item.label}</span>
+                </Link>
+                <meta itemProp="position" content={String(index + 2)} />
+              </>
             ) : (
               <span 
                 className="text-foreground font-medium" 
                 data-testid={`breadcrumb-current-${index}`}
-                itemProp="name"
               >
                 {item.label}
               </span>
             )}
-            <meta itemProp="position" content={String(index + 2)} />
           </li>
         ))}
       </ol>
@@ -71,17 +74,9 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
 }
 
 export function ToolBreadcrumbs({ toolName, category }: { toolName: string; category: string }) {
-  const categoryLabels: Record<string, string> = {
-    "from-pdf": "Convert from PDF",
-    "to-pdf": "Convert to PDF",
-    "edit-pdf": "Edit PDF",
-    "utility": "Utility Tools"
-  };
-
   return (
     <Breadcrumbs
       items={[
-        { label: categoryLabels[category] || "PDF Tools" },
         { label: toolName }
       ]}
     />
