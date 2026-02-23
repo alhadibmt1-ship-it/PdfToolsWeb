@@ -15,7 +15,19 @@ export async function serveStatic(app: Express, _server: Server) {
     );
   }
 
-  app.use(express.static(distPath));
+  app.use(express.static(distPath, {
+    maxAge: '1y',
+    immutable: true,
+    setHeaders: (res, filePath) => {
+      if (filePath.endsWith('.html')) {
+        res.setHeader('Cache-Control', 'no-cache');
+      } else if (filePath.match(/\.(js|css|woff2?|ttf|eot)$/)) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      } else if (filePath.match(/\.(png|jpg|jpeg|webp|svg|ico|gif)$/)) {
+        res.setHeader('Cache-Control', 'public, max-age=2592000');
+      }
+    }
+  }));
 
   // fall through to index.html if the file doesn't exist
   // Inject SEO meta tags based on the URL path for search engines

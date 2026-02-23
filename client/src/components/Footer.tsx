@@ -260,7 +260,7 @@ export default function Footer() {
                 role="region"
                 aria-labelledby="footer-company-button"
                 hidden={!isCompanyVisible}
-                className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isCompanyVisible ? 'max-h-[200px] mt-3 md:mt-4' : 'max-h-0'}`}
+                className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isCompanyVisible ? 'max-h-[320px] mt-3 md:mt-4' : 'max-h-0'}`}
               >
                 <div className="flex flex-col gap-2">
                   <FooterLink href="/about" testId="link-footer-about" isVisible={isCompanyVisible}>
@@ -286,6 +286,15 @@ export default function Footer() {
                   </FooterLink>
                   <FooterLink href="/press" testId="link-footer-press" isVisible={isCompanyVisible}>
                     Press Kit
+                  </FooterLink>
+                  <FooterLink href="/all-tools" testId="link-footer-all-tools" isVisible={isCompanyVisible}>
+                    All PDF Tools
+                  </FooterLink>
+                  <FooterLink href="/free-pdf-converter" testId="link-footer-converter" isVisible={isCompanyVisible}>
+                    Free PDF Converter
+                  </FooterLink>
+                  <FooterLink href="/free-pdf-editor" testId="link-footer-editor" isVisible={isCompanyVisible}>
+                    Free PDF Editor
                   </FooterLink>
                 </div>
               </div>
