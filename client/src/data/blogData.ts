@@ -974,6 +974,542 @@ Simply rotate again in the opposite direction (e.g., rotate 90Â° right, then 90Â
       { name: "Crop PDF", path: "/crop-pdf", description: "Remove unwanted margins" },
       { name: "Resize PDF", path: "/resize-pdf", description: "Change page dimensions" }
     ]
+  },
+  {
+    slug: "sign-pdf-electronically",
+    title: "How to Sign a PDF Electronically: Free Online Guide",
+    metaTitle: "Sign PDF Free Online - Electronic Signature | PDF HUB 24",
+    metaDescription: "Sign PDF free online. Add electronic signatures to documents. Draw, type, or upload your signature. Best free PDF signer - no account needed.",
+    excerpt: "Add your signature to PDF documents instantly without printing, signing, and scanning. Learn how to sign PDFs electronically for free.",
+    author: "PDF HUB 24 Team",
+    publishDate: "2026-01-15",
+    readTime: "5 min read",
+    category: "Tutorials",
+    tags: ["sign pdf", "electronic signature", "e-sign", "digital signature"],
+    content: `
+## Why Sign PDFs Electronically?
+
+Gone are the days of printing, signing, and scanning documents. Electronic signatures save time, paper, and hassle:
+
+- **Speed**: Sign documents in seconds instead of hours
+- **Convenience**: Sign from anywhere on any device
+- **Cost savings**: No printing, scanning, or postage needed
+- **Environmental impact**: Reduce paper waste significantly
+- **Legal validity**: Electronic signatures are legally binding in most countries
+
+## Types of Electronic Signatures
+
+### Typed Signatures
+Type your name in a stylized font. Quick and easy for informal documents like internal memos.
+
+### Drawn Signatures
+Draw your signature using your mouse, trackpad, or touchscreen. Most closely resembles a handwritten signature.
+
+### Uploaded Signatures
+Upload an image of your actual handwritten signature. Ideal for professional documents where you want your exact signature.
+
+## How to Sign a PDF with PDF HUB 24
+
+### Step 1: Upload Your PDF
+Visit our [Sign PDF](/sign-pdf) tool and upload your document. We accept files up to 50MB.
+
+### Step 2: Create Your Signature
+Choose from three methods:
+- **Draw**: Use your mouse or finger to draw your signature
+- **Type**: Enter your name and select a font style
+- **Upload**: Import an image of your existing signature
+
+### Step 3: Place Your Signature
+Click where you want to add your signature. You can:
+- Resize the signature to fit the space
+- Move it to the exact position
+- Add multiple signatures to different pages
+
+### Step 4: Download
+Click "Apply Signature" and download your signed PDF.
+
+## Best Practices for Electronic Signatures
+
+1. **Keep it consistent** - Use the same signature style across all documents
+2. **Add date stamps** - Include the date alongside your signature for records
+3. **Flatten after signing** - Use our [Flatten PDF](/flatten-pdf) tool to make signatures permanent
+4. **Protect signed documents** - [Password protect](/protect-pdf) signed PDFs to prevent unauthorized changes
+
+## Are Electronic Signatures Legal?
+
+Yes, in most jurisdictions:
+- **United States**: ESIGN Act (2000) makes e-signatures legally binding
+- **European Union**: eIDAS Regulation recognizes electronic signatures
+- **United Kingdom**: Electronic Communications Act 2000
+- **Canada**: PIPEDA and provincial laws support e-signatures
+
+For documents requiring notarization or government filing, check local requirements.
+
+## When to Use Electronic Signatures
+
+| Document Type | E-Signature Suitable? |
+|---------------|----------------------|
+| Contracts | Yes |
+| NDAs | Yes |
+| Offer letters | Yes |
+| Tax forms | Depends on jurisdiction |
+| Real estate (simple) | Yes |
+| Court documents | Usually no |
+| Wills | Usually no |
+
+## Security Tips
+
+- Always [flatten your PDF](/flatten-pdf) after signing to prevent editing
+- Use [PDF protection](/protect-pdf) for sensitive signed documents
+- [Redact sensitive info](/redact-pdf) before sharing signed documents
+- Keep backup copies of all signed documents
+
+## Frequently Asked Questions
+
+### Is it really free?
+Yes, our Sign PDF tool is completely free with no registration, no watermarks, and no limits.
+
+### Can I sign multiple pages?
+Yes, add your signature to any page in the document. You can sign each page individually.
+
+### Will the quality be affected?
+No, your signature is added as a vector overlay, maintaining full document quality.
+
+### Can I remove a signature after adding it?
+Before downloading, you can undo and redo signatures. After downloading the flattened PDF, signatures are permanent.
+`,
+    relatedTools: [
+      { name: "Sign PDF", path: "/sign-pdf", description: "Add your signature to PDFs" },
+      { name: "Flatten PDF", path: "/flatten-pdf", description: "Make signatures permanent" },
+      { name: "Protect PDF", path: "/protect-pdf", description: "Password protect signed docs" }
+    ]
+  },
+  {
+    slug: "edit-pdf-text-images",
+    title: "How to Edit a PDF: Add Text, Images, and Shapes",
+    metaTitle: "Edit PDF Free - Add Text & Images Online | PDF HUB 24",
+    metaDescription: "Edit PDF free online. Add text, images, shapes, and annotations. Best free PDF editor - modify any PDF without software. No signup required.",
+    excerpt: "Need to make changes to a PDF? Learn how to add text, insert images, draw shapes, and modify PDF documents without expensive software.",
+    author: "PDF HUB 24 Team",
+    publishDate: "2026-01-20",
+    readTime: "6 min read",
+    category: "Tutorials",
+    tags: ["edit pdf", "add text to pdf", "pdf editor", "modify pdf"],
+    content: `
+## Why Edit PDFs?
+
+PDFs are designed to be view-only, but sometimes you need to make changes:
+
+- **Fill in forms** that aren't interactive
+- **Add missing information** to received documents
+- **Insert logos or stamps** for branding
+- **Mark up documents** for review
+- **Correct typos** or outdated information
+
+## How to Edit a PDF Online
+
+### Step 1: Upload Your PDF
+Open our [Edit PDF](/edit-pdf) tool and upload your document.
+
+### Step 2: Choose Your Edit Type
+
+**Add Text**
+- Click the text tool and click anywhere on the page
+- Type your content and adjust font size, color, and style
+- Move and resize text boxes as needed
+
+**Add Images**
+- Click the image tool and upload your image (logo, stamp, photo)
+- Position and resize the image on the page
+- Great for adding company logos or approval stamps
+
+**Draw Shapes**
+- Add rectangles, circles, lines, and arrows
+- Customize colors and line thickness
+- Perfect for highlighting areas or creating callouts
+
+### Step 3: Review and Download
+Preview your edits, then download the modified PDF.
+
+## Common PDF Editing Tasks
+
+### Adding a Company Logo
+1. Upload your PDF to the [Edit PDF](/edit-pdf) tool
+2. Click "Add Image" and upload your logo
+3. Position it in the header or footer area
+4. Resize to fit proportionally
+
+### Filling Non-Interactive Forms
+1. Open the form in the [Edit PDF](/edit-pdf) tool
+2. Use the text tool to type in each field
+3. Match the font size to the existing form text
+4. Download the completed form
+
+### Adding Annotations
+For detailed markup work, our dedicated [Annotate PDF](/annotate-pdf) tool offers:
+- Highlighting text in multiple colors
+- Underlining important passages
+- Adding sticky notes and comments
+- Drawing freehand annotations
+
+### Redacting Sensitive Information
+Need to permanently remove content? Use our [Redact PDF](/redact-pdf) tool to:
+- Black out names, addresses, and phone numbers
+- Remove financial information
+- Hide confidential data permanently
+
+## Tips for Better PDF Editing
+
+1. **Match fonts**: Use similar fonts and sizes to existing document text
+2. **Use layers**: Add edits on top of existing content rather than replacing
+3. **Flatten when done**: Use [Flatten PDF](/flatten-pdf) to merge all edits into the document
+4. **Compress afterwards**: Edited PDFs with images can grow large - use [Compress PDF](/compress) to reduce size
+5. **Keep originals**: Always save a copy of the original before editing
+
+## Edit PDF vs. Convert to Word
+
+| Feature | Edit PDF | Convert to Word |
+|---------|----------|-----------------|
+| Speed | Instant | Requires conversion |
+| Layout preservation | Perfect | May shift |
+| Text editing | Add new text | Edit existing text |
+| Best for | Forms, stamps, notes | Major rewrites |
+
+For minor additions, [Edit PDF](/edit-pdf) is faster. For extensive text changes, [convert to Word](/pdf-to-word) first, edit in Word, then [convert back to PDF](/word-to-pdf).
+
+## Frequently Asked Questions
+
+### Can I edit existing text in a PDF?
+Our tool lets you add new text overlays. To edit existing text, [convert to Word](/pdf-to-word) first.
+
+### Will editing affect the document quality?
+No, edits are added as overlays on top of the original content, preserving quality.
+
+### Can I undo changes?
+Yes, full undo/redo is available while editing. After downloading, changes are permanent.
+`,
+    relatedTools: [
+      { name: "Edit PDF", path: "/edit-pdf", description: "Add text and images to PDFs" },
+      { name: "Annotate PDF", path: "/annotate-pdf", description: "Highlight and mark up PDFs" },
+      { name: "PDF to Word", path: "/pdf-to-word", description: "Convert for full text editing" }
+    ]
+  },
+  {
+    slug: "watermark-pdf-documents",
+    title: "How to Add Watermark to PDF: Protect Your Documents",
+    metaTitle: "Add Watermark to PDF Free Online | PDF HUB 24",
+    metaDescription: "Add watermark to PDF free. Insert text watermarks for branding and security. Best free PDF watermark tool - customize opacity, size, position. No signup.",
+    excerpt: "Protect your PDF documents with watermarks. Learn how to add text watermarks for branding, confidentiality, and copyright protection.",
+    author: "PDF HUB 24 Team",
+    publishDate: "2026-01-22",
+    readTime: "4 min read",
+    category: "Tutorials",
+    tags: ["watermark", "branding", "document protection", "confidential"],
+    content: `
+## Why Add Watermarks to PDFs?
+
+Watermarks serve multiple important purposes:
+
+- **Branding**: Add your company name or logo to all documents
+- **Confidentiality**: Mark documents as "Confidential" or "Draft"
+- **Copyright**: Deter unauthorized copying and distribution
+- **Status indication**: Label documents as "Sample", "Proof", or "Final"
+- **Version control**: Mark "Draft v1", "Draft v2", etc.
+
+## How to Add a Watermark
+
+### Step 1: Upload Your PDF
+Open our [Add Watermark](/add-watermark) tool and upload your document.
+
+### Step 2: Configure Your Watermark
+
+**Text**: Enter your watermark text (e.g., "CONFIDENTIAL", "DRAFT", your company name)
+
+**Customization options**:
+- **Opacity**: Set transparency from 10% to 100% (30% recommended for readability)
+- **Font size**: Choose from 12pt to 72pt depending on visibility needs
+- **Rotation**: Angle the watermark diagonally (-45 degrees is standard)
+
+### Step 3: Apply and Download
+Click "Add Watermark" and download your watermarked PDF.
+
+## Common Watermark Use Cases
+
+### Business Documents
+- Financial reports marked "Confidential"
+- Proposals marked "Draft" until finalized
+- Invoices with company name watermark
+
+### Legal Documents
+- Contracts marked "For Review Only"
+- Legal drafts with law firm branding
+- Evidence documents marked "Copy"
+
+### Creative & Academic
+- Portfolio pieces with photographer/artist name
+- Academic papers marked "Pre-Print"
+- Design proofs marked "Sample"
+
+## Watermark Best Practices
+
+1. **Keep it subtle**: Use 20-30% opacity so content remains readable
+2. **Position diagonally**: -45 degree angle covers the most area
+3. **Use large text**: Larger text is harder to remove and easier to see
+4. **Be specific**: "CONFIDENTIAL - [Company Name]" is better than just "CONFIDENTIAL"
+5. **Make it permanent**: [Flatten your PDF](/flatten-pdf) after adding watermarks to prevent removal
+
+## Watermark vs. Other Protection Methods
+
+| Method | Prevents Copying? | Prevents Viewing? | Easy to Remove? |
+|--------|-------------------|-------------------|-----------------|
+| Watermark | Deters copying | No | If not flattened |
+| [Password Protection](/protect-pdf) | Partially | Optional | With password |
+| [Redaction](/redact-pdf) | Yes (removes content) | Yes | No |
+| Combination | Best protection | Optional | Most difficult |
+
+For maximum protection, combine watermarks with [password protection](/protect-pdf).
+
+## After Adding Watermarks
+
+Complete your document workflow:
+1. [Flatten the PDF](/flatten-pdf) to make watermarks permanent
+2. [Protect with a password](/protect-pdf) to prevent further changes
+3. [Compress the PDF](/compress) if file size is a concern
+
+## Frequently Asked Questions
+
+### Can the watermark be removed?
+If you [flatten the PDF](/flatten-pdf) after adding the watermark, it becomes embedded in the document and cannot be easily removed.
+
+### Will the watermark cover my text?
+At 30% opacity (default), the watermark is visible but does not obstruct readability.
+
+### Can I add different watermarks to different pages?
+Currently, the watermark is applied to all pages uniformly. For page-specific marks, use our [Edit PDF](/edit-pdf) tool.
+`,
+    relatedTools: [
+      { name: "Add Watermark", path: "/add-watermark", description: "Add text watermarks to PDFs" },
+      { name: "Flatten PDF", path: "/flatten-pdf", description: "Make watermarks permanent" },
+      { name: "Protect PDF", path: "/protect-pdf", description: "Add password protection" }
+    ]
+  },
+  {
+    slug: "pdf-to-excel-convert-tables",
+    title: "How to Convert PDF Tables to Excel Spreadsheets",
+    metaTitle: "PDF to Excel Free - Convert Tables Online | PDF HUB 24",
+    metaDescription: "Convert PDF to Excel free. Extract tables from PDF to editable spreadsheets. Best free PDF to XLS converter - preserve data accuracy. No signup.",
+    excerpt: "Extract data tables from PDF documents into Excel spreadsheets. Learn the best methods for accurate PDF to Excel conversion.",
+    author: "PDF HUB 24 Team",
+    publishDate: "2026-01-25",
+    readTime: "5 min read",
+    category: "Tutorials",
+    tags: ["pdf to excel", "extract tables", "spreadsheet", "data extraction"],
+    content: `
+## Why Convert PDF to Excel?
+
+PDFs lock data in a fixed format. Converting to Excel lets you:
+
+- **Analyze data**: Use formulas, pivot tables, and charts
+- **Update information**: Edit values and recalculate totals
+- **Combine datasets**: Merge data from multiple PDFs
+- **Create reports**: Generate new visualizations from extracted data
+- **Import into databases**: Move data into business systems
+
+## How to Convert PDF to Excel
+
+### Step 1: Upload Your PDF
+Open our [PDF to Excel](/pdf-to-excel) tool and upload your document.
+
+### Step 2: Process
+Our converter automatically detects tables in your PDF and extracts the data structure.
+
+### Step 3: Download
+Download the Excel file (.xlsx) with your extracted data.
+
+## Types of PDFs and Conversion Quality
+
+### Digital PDFs (Best Results)
+PDFs created from software (Word, Excel exports) contain structured text data. These convert with the highest accuracy.
+
+### Scanned PDFs (Needs OCR First)
+If your PDF is a scan or image, use our [OCR tool](/ocr-pdf) first to convert it to searchable text, then convert to Excel.
+
+### Mixed Content PDFs
+Documents with both tables and text will have tables extracted while text content is placed in cells.
+
+## Tips for Better Conversion
+
+1. **Clean source documents**: Well-formatted PDFs produce better results
+2. **One table per page**: If possible, structure source documents with clear table boundaries
+3. **Use OCR for scans**: Always run [OCR](/ocr-pdf) on scanned documents before converting
+4. **Check merged cells**: Manually verify merged cell areas after conversion
+5. **Verify formulas**: PDF conversion extracts values only - formulas need to be re-added in Excel
+
+## Common Use Cases
+
+### Financial Reports
+Extract quarterly earnings, balance sheets, and income statements from PDF annual reports into Excel for analysis.
+
+### Invoice Processing
+Convert batches of PDF invoices to Excel for bookkeeping and expense tracking.
+
+### Research Data
+Extract statistical tables from academic papers and government reports for further analysis.
+
+### Inventory Lists
+Convert PDF product catalogs and inventory reports to editable spreadsheets.
+
+## What If Conversion Isn't Perfect?
+
+For complex tables:
+1. Try [extracting text](/extract-text) first and formatting manually
+2. Use [OCR](/ocr-pdf) for scanned documents
+3. Convert [PDF to Word](/pdf-to-word) for better control of table extraction
+4. [Split the PDF](/split) to process individual pages with complex layouts
+
+## Frequently Asked Questions
+
+### Does it preserve formatting?
+Column widths, headers, and basic formatting are preserved. Fonts and colors may need adjustment.
+
+### Can I convert password-protected PDFs?
+First [unlock the PDF](/unlock-pdf), then convert to Excel.
+
+### What about multi-page tables?
+Tables spanning multiple pages are extracted page by page. You may need to combine them in Excel.
+
+### Is there a file size limit?
+Our tool handles PDFs up to 50MB. For larger files, [split your PDF](/split) first.
+`,
+    relatedTools: [
+      { name: "PDF to Excel", path: "/pdf-to-excel", description: "Convert PDF tables to spreadsheets" },
+      { name: "OCR PDF", path: "/ocr-pdf", description: "Make scanned PDFs searchable first" },
+      { name: "Extract Text", path: "/extract-text", description: "Extract raw text from PDFs" }
+    ]
+  },
+  {
+    slug: "redact-sensitive-pdf-information",
+    title: "How to Redact Sensitive Information in PDF Documents",
+    metaTitle: "Redact PDF Free - Remove Sensitive Info | PDF HUB 24",
+    metaDescription: "Redact PDF free online. Permanently remove sensitive information from documents. Best free PDF redaction tool - black out text, images. No signup.",
+    excerpt: "Learn how to permanently remove sensitive information from PDF documents. Protect personal data, financial details, and confidential content.",
+    author: "PDF HUB 24 Team",
+    publishDate: "2026-02-01",
+    readTime: "6 min read",
+    category: "Security",
+    tags: ["redact pdf", "remove sensitive info", "privacy", "data protection"],
+    content: `
+## What Is PDF Redaction?
+
+Redaction permanently removes sensitive content from PDF documents. Unlike highlighting or covering text with black boxes, true redaction:
+
+- **Permanently deletes** the underlying text and data
+- **Cannot be reversed** once applied and saved
+- **Removes metadata** associated with redacted content
+- **Is legally defensible** for compliance and legal proceedings
+
+## Why Redact PDFs?
+
+### Legal Compliance
+- **GDPR**: Remove personal data before sharing documents
+- **HIPAA**: Protect patient health information
+- **FOIA**: Redact exempt information in public records
+- **Court filings**: Remove sensitive details from public documents
+
+### Business Privacy
+- Protect trade secrets in shared documents
+- Remove financial details from proposals
+- Hide employee personal information in reports
+- Sanitize documents before external sharing
+
+### Personal Privacy
+- Remove Social Security numbers
+- Hide account numbers and passwords
+- Protect home addresses and phone numbers
+- Remove signatures from shared copies
+
+## How to Redact a PDF
+
+### Step 1: Upload Your PDF
+Open our [Redact PDF](/redact-pdf) tool and upload the document containing sensitive information.
+
+### Step 2: Select Content to Redact
+- Click and drag over text to create redaction boxes
+- Select areas containing images or graphics
+- Mark multiple sections across different pages
+
+### Step 3: Apply Redactions
+Click "Apply" to permanently remove the selected content. Black boxes replace the redacted areas.
+
+### Step 4: Verify and Download
+Review the redacted document to ensure all sensitive content is removed, then download.
+
+## Important: Redaction vs. Covering
+
+| Method | Content Removed? | Recoverable? | Legally Valid? |
+|--------|-----------------|--------------|---------------|
+| True Redaction | Yes | No | Yes |
+| Black rectangle | No | Yes (copy/paste) | No |
+| White box overlay | No | Yes (select all) | No |
+| Screenshot crop | Partially | Maybe | Weak |
+
+Our [Redact PDF](/redact-pdf) tool performs true redaction, permanently removing content.
+
+## What to Redact: A Checklist
+
+### Personal Identifiers
+- Full names (when privacy is needed)
+- Social Security / National ID numbers
+- Date of birth
+- Home address and phone number
+- Email addresses
+
+### Financial Information
+- Bank account numbers
+- Credit card numbers
+- Tax ID numbers
+- Salary and compensation details
+- Investment account details
+
+### Medical Information
+- Patient names and IDs
+- Diagnosis and treatment details
+- Insurance policy numbers
+- Prescription information
+
+### Legal Information
+- Witness names (when sealed)
+- Juvenile identifiers
+- Trade secrets
+- Attorney-client communications
+
+## After Redacting
+
+Secure your document further:
+1. [Flatten the PDF](/flatten-pdf) to ensure all layers are merged
+2. [Add password protection](/protect-pdf) for an extra security layer
+3. [Add a watermark](/add-watermark) marking it as "Redacted" for identification
+4. [Compress the PDF](/compress) before sharing
+
+## Frequently Asked Questions
+
+### Can redaction be undone?
+No. True redaction permanently removes content. Always keep a copy of the original document.
+
+### Does redaction remove metadata?
+Our tool removes the visible content. For full metadata cleaning, use specialized tools.
+
+### Can I redact images?
+Yes, you can draw redaction boxes over any part of the document, including images, logos, and graphics.
+
+### Is redacted content really gone?
+Yes. Unlike covering text with a black box, our tool removes the underlying data. The content cannot be recovered by copy-pasting, selecting, or editing the PDF.
+`,
+    relatedTools: [
+      { name: "Redact PDF", path: "/redact-pdf", description: "Permanently remove sensitive info" },
+      { name: "Protect PDF", path: "/protect-pdf", description: "Add password protection" },
+      { name: "Flatten PDF", path: "/flatten-pdf", description: "Lock all document layers" }
+    ]
   }
 ];
 
