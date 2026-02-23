@@ -139,3 +139,10 @@ The site includes a blog content hub for SEO and informational traffic:
   - **OCR PDF**: Now uses CloudConvert Tesseract OCR for scanned documents with fallback to text extraction
   - **Extract Images**: Now uses CloudConvert to render PDF pages as high-quality PNG images (was returning dummy images before)
   - All fixed tools follow the same CloudConvert pattern as other working conversions
+- **SEO & Linkable Assets (Feb 2026)**:
+  - Enhanced RelatedTools component: expanded article mappings to all 43 tools, added "What to Do Next" workflow suggestions, increased default related tools from 4 to 6
+  - Created PDF Statistics & Facts page (/pdf-statistics) as linkable asset with citable research data and attribution section
+  - Created Press/Media Kit page (/press) for journalists and bloggers with company facts and tool categories
+  - Added 5 new blog articles: Sign PDF Electronically, Edit PDF Text & Images, Watermark PDF Documents, PDF to Excel Convert Tables, Redact Sensitive Information
+  - Updated sitemap.xml with all new blog URLs and linkable asset pages
+  - Total blog articles: 10 (5 original + 5 new)
