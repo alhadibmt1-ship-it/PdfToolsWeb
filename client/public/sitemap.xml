@@ -3,6 +3,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://pdfhub24.com/</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -10,41 +11,49 @@
   <!-- Convert from PDF Tools (8 tools) -->
   <url>
     <loc>https://pdfhub24.com/pdf-to-word</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/pdf-to-jpg</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/pdf-to-png</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/pdf-to-excel</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/pdf-to-ppt</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/extract-text</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/extract-images</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/ocr-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -52,46 +61,55 @@
   <!-- Convert to PDF Tools (9 tools) -->
   <url>
     <loc>https://pdfhub24.com/word-to-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/jpg-to-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/png-to-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/excel-to-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/ppt-to-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/tiff-to-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/gif-to-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/html-to-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/webp-to-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -99,96 +117,115 @@
   <!-- Edit PDF Tools (19 tools) -->
   <url>
     <loc>https://pdfhub24.com/merge</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/split</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/compress</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/rotate</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/delete-pages</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/protect-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/unlock-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/add-page-numbers</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/add-watermark</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/reorder-pages</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/crop-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/resize-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/sign-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/flatten-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/grayscale-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/repair-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/edit-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/annotate-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/redact-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -196,36 +233,43 @@
   <!-- Utility & Image Tools (7 tools) -->
   <url>
     <loc>https://pdfhub24.com/pdf-viewer</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/compare-pdf</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/image-compressor</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/resize-image</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/crop-image</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/rotate-image</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/convert-image</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -233,110 +277,129 @@
   <!-- Blog Section -->
   <url>
     <loc>https://pdfhub24.com/blog</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/blog/how-to-compress-pdf-for-email</loc>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-12-16</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/blog/convert-pdf-to-word-without-losing-formatting</loc>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-12-16</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/blog/merge-pdf-files-guide</loc>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-12-16</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/blog/protect-pdf-with-password</loc>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-12-16</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/blog/pdf-tools-for-students</loc>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-12-16</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/blog/how-to-split-pdf-pages</loc>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-12-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/blog/add-page-numbers-to-pdf</loc>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-12-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/blog/convert-images-to-pdf</loc>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-12-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/blog/ocr-scanned-pdf-to-text</loc>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-12-20</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/blog/rotate-pdf-pages</loc>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/blog/sign-pdf-electronically</loc>
+    <lastmod>2026-02-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/blog/edit-pdf-text-images</loc>
+    <lastmod>2026-02-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/blog/watermark-pdf-documents</loc>
+    <lastmod>2026-02-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/blog/pdf-to-excel-convert-tables</loc>
+    <lastmod>2026-02-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/blog/redact-sensitive-pdf-information</loc>
+    <lastmod>2026-02-23</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <!-- Information Pages -->
   <url>
     <loc>https://pdfhub24.com/about</loc>
+    <lastmod>2025-12-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/privacy</loc>
+    <lastmod>2025-12-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/terms</loc>
+    <lastmod>2025-12-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/dmca</loc>
+    <lastmod>2025-12-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/contact</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- New Blog Articles (Jan-Feb 2026) -->
-  <url>
-    <loc>https://pdfhub24.com/blog/sign-pdf-electronically</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://pdfhub24.com/blog/edit-pdf-text-images</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://pdfhub24.com/blog/watermark-pdf-documents</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://pdfhub24.com/blog/pdf-to-excel-convert-tables</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://pdfhub24.com/blog/redact-sensitive-pdf-information</loc>
+    <lastmod>2025-12-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -344,12 +407,34 @@
   <!-- Linkable Assets / Resources -->
   <url>
     <loc>https://pdfhub24.com/pdf-statistics</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://pdfhub24.com/press</loc>
+    <lastmod>2026-02-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+
+  <!-- Category Landing Pages -->
+  <url>
+    <loc>https://pdfhub24.com/all-tools</loc>
+    <lastmod>2026-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/free-pdf-converter</loc>
+    <lastmod>2026-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/free-pdf-editor</loc>
+    <lastmod>2026-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>

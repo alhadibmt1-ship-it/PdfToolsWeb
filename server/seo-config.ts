@@ -754,6 +754,146 @@ export const seoConfig: Record<string, PageSEO> = {
       "datePublished": "2025-12-16",
       "url": `${BASE_URL}/blog/pdf-tools-for-students`
     }
+  },
+  "/blog/sign-pdf-electronically": {
+    title: "How to Sign a PDF Electronically - Free Guide | PDF HUB 24",
+    description: "Learn how to sign PDF documents electronically for free. Step-by-step guide to adding digital signatures, drawing signatures, and e-signing PDFs online.",
+    keywords: "sign PDF electronically, e-sign PDF, digital signature PDF, sign PDF free online",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Sign a PDF Electronically: Complete Free Guide",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-01",
+      "url": `${BASE_URL}/blog/sign-pdf-electronically`
+    }
+  },
+  "/blog/edit-pdf-text-images": {
+    title: "How to Edit a PDF - Add Text, Images & Shapes Free | PDF HUB 24",
+    description: "Learn how to edit PDF files online for free. Add text, images, shapes, and annotations to any PDF document. No software installation required.",
+    keywords: "edit PDF free, add text to PDF, edit PDF online, modify PDF document",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Edit a PDF: Add Text, Images, and Shapes",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-01",
+      "url": `${BASE_URL}/blog/edit-pdf-text-images`
+    }
+  },
+  "/blog/watermark-pdf-documents": {
+    title: "How to Add Watermark to PDF - Free Online Guide | PDF HUB 24",
+    description: "Learn how to add text watermarks to PDF documents for free. Protect your PDFs with custom watermarks - set position, opacity, and style.",
+    keywords: "watermark PDF, add watermark to PDF, PDF watermark free, stamp PDF online",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Add Watermark to PDF Documents: Complete Guide",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-01",
+      "url": `${BASE_URL}/blog/watermark-pdf-documents`
+    }
+  },
+  "/blog/pdf-to-excel-convert-tables": {
+    title: "How to Convert PDF Tables to Excel - Free Guide | PDF HUB 24",
+    description: "Learn how to convert PDF tables to Excel spreadsheets accurately. Extract data from PDF to XLS/XLSX while preserving table structure and formatting.",
+    keywords: "PDF to Excel, convert PDF tables, extract data PDF Excel, PDF to spreadsheet",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Convert PDF Tables to Excel: Step-by-Step Guide",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-01",
+      "url": `${BASE_URL}/blog/pdf-to-excel-convert-tables`
+    }
+  },
+  "/blog/redact-sensitive-pdf-information": {
+    title: "How to Redact Sensitive Information in PDFs Free | PDF HUB 24",
+    description: "Learn how to permanently redact sensitive information from PDF documents. Black out text, images, and personal data securely with our free guide.",
+    keywords: "redact PDF, black out PDF text, remove sensitive info PDF, PDF redaction free",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Redact Sensitive Information in PDFs: Complete Guide",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-01",
+      "url": `${BASE_URL}/blog/redact-sensitive-pdf-information`
+    }
+  },
+  "/pdf-statistics": {
+    title: "PDF Statistics & Facts 2026 - Usage Data & Trends | PDF HUB 24",
+    description: "Comprehensive PDF statistics and facts for 2026. Document usage data, conversion trends, file size benchmarks, and security insights with citable sources.",
+    keywords: "PDF statistics, PDF usage data, PDF facts 2026, document format trends, PDF market data",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "PDF Statistics & Facts 2026: Comprehensive Usage Data",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-01",
+      "url": `${BASE_URL}/pdf-statistics`
+    }
+  },
+  "/press": {
+    title: "Press & Media Kit - PDF HUB 24",
+    description: "PDF HUB 24 press kit for journalists and bloggers. Company facts, tool categories, brand assets, and media contact information.",
+    keywords: "PDF HUB 24 press kit, media kit, company information, brand assets",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Press & Media Kit - PDF HUB 24",
+      "url": `${BASE_URL}/press`
+    }
+  },
+  "/all-tools": {
+    title: "All 43+ Free PDF Tools Online - Complete Tool List | PDF HUB 24",
+    description: "Browse all 43+ free online PDF tools. Convert, edit, merge, split, compress PDF files and more. Complete list of PDF HUB 24 tools - no registration required.",
+    keywords: "all PDF tools, free PDF tools list, online PDF tools, PDF converter tools, PDF editor tools",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "PDF HUB 24 - All Tools",
+      "url": `${BASE_URL}/all-tools`,
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "Complete collection of 43+ free online PDF tools"
+    }
+  },
+  "/free-pdf-converter": {
+    title: "Free PDF Converter Online - Convert PDF Files Free | PDF HUB 24",
+    description: "Best free PDF converter online. Convert PDF to Word, Excel, JPG, PNG, PowerPoint and more. Convert images and documents to PDF. No signup required.",
+    keywords: "free PDF converter, PDF converter online, convert PDF free, PDF to Word converter, image to PDF converter",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Free PDF Converter - PDF HUB 24",
+      "url": `${BASE_URL}/free-pdf-converter`,
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "Convert PDF files to and from Word, Excel, JPG, PNG, PowerPoint and more formats for free"
+    }
+  },
+  "/free-pdf-editor": {
+    title: "Free PDF Editor Online - Edit PDF Files Free | PDF HUB 24",
+    description: "Best free online PDF editor. Edit, merge, split, compress, rotate, sign, annotate, and redact PDF files. No software download or registration needed.",
+    keywords: "free PDF editor, edit PDF online, PDF editor free, online PDF editor, modify PDF free",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Free PDF Editor - PDF HUB 24",
+      "url": `${BASE_URL}/free-pdf-editor`,
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "Edit PDF files online for free - merge, split, compress, rotate, sign, annotate, and more"
+    }
   }
 };
 

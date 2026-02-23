@@ -68,6 +68,9 @@ const BlogListPage = lazy(() => import("@/pages/BlogListPage"));
 const BlogPostPage = lazy(() => import("@/pages/BlogPostPage"));
 const PdfStatisticsPage = lazy(() => import("@/pages/PdfStatisticsPage"));
 const PressKitPage = lazy(() => import("@/pages/PressKitPage"));
+const AllToolsPage = lazy(() => import("@/pages/AllToolsPage"));
+const FreePdfConverterPage = lazy(() => import("@/pages/FreePdfConverterPage"));
+const FreePdfEditorPage = lazy(() => import("@/pages/FreePdfEditorPage"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 function PageLoader() {
@@ -140,6 +143,9 @@ function Router() {
         <Route path="/blog/:slug" component={BlogPostPage} />
         <Route path="/pdf-statistics" component={PdfStatisticsPage} />
         <Route path="/press" component={PressKitPage} />
+        <Route path="/all-tools" component={AllToolsPage} />
+        <Route path="/free-pdf-converter" component={FreePdfConverterPage} />
+        <Route path="/free-pdf-editor" component={FreePdfEditorPage} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>
