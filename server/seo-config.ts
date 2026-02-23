@@ -10,8 +10,8 @@ const OG_IMAGE = "https://pdfhub24.com/og-image.png";
 
 export const seoConfig: Record<string, PageSEO> = {
   "/": {
-    title: "PDF HUB 24 - Free Online PDF Tools | Convert, Merge, Split & More",
-    description: "Free online PDF tools for merging, splitting, compressing, converting PDF files. 43+ tools including PDF to Word, image conversion, and editing. No registration required.",
+    title: "Free Online PDF Tools | Convert & Merge | PDF HUB 24",
+    description: "Free online PDF tools for merging, splitting, compressing, and converting. 43+ tools including PDF to Word and image conversion.",
     keywords: "PDF tools, PDF converter, merge PDF, split PDF, compress PDF, PDF to Word, free PDF editor",
     schema: {
       "@context": "https://schema.org",
@@ -32,13 +32,11 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "merge PDF, combine PDF, join PDF files, PDF merger, merge PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Merge PDF - PDF HUB 24",
       "url": `${BASE_URL}/merge`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "description": "Combine multiple PDF files into one document"
+      "description": "Combine multiple PDF files into one document",
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/split": {
@@ -47,12 +45,10 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "split PDF, extract PDF pages, PDF splitter, separate PDF pages, split PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Split PDF - PDF HUB 24",
       "url": `${BASE_URL}/split`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/compress": {
@@ -61,12 +57,10 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "compress PDF, reduce PDF size, PDF compressor, optimize PDF, shrink PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Compress PDF - PDF HUB 24",
       "url": `${BASE_URL}/compress`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/rotate": {
@@ -75,166 +69,142 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "rotate PDF, turn PDF pages, PDF rotator, flip PDF, rotate PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Rotate PDF - PDF HUB 24",
       "url": `${BASE_URL}/rotate`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/pdf-to-word": {
-    title: "PDF to Word Converter Online Free - Convert PDF to DOCX | PDF HUB 24",
+    title: "Free PDF to Word Converter - PDF to DOCX | PDF HUB 24",
     description: "Convert PDF to editable Word documents (DOCX) instantly. Free online PDF to Word converter with high accuracy. Preserves formatting and layout.",
     keywords: "PDF to Word, PDF to DOCX, convert PDF to Word, PDF converter, PDF to Word online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "PDF to Word Converter - PDF HUB 24",
       "url": `${BASE_URL}/pdf-to-word`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/pdf-to-jpg": {
-    title: "PDF to JPG Converter Online Free - Convert PDF to Images | PDF HUB 24",
+    title: "Free PDF to JPG Converter - PDF to Images | PDF HUB 24",
     description: "Convert PDF pages to high-quality JPG images instantly. Free online PDF to JPG converter - extract all pages as separate images. No registration.",
     keywords: "PDF to JPG, PDF to image, convert PDF to JPG, PDF to JPEG, PDF to JPG online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "PDF to JPG Converter - PDF HUB 24",
       "url": `${BASE_URL}/pdf-to-jpg`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/pdf-to-png": {
-    title: "PDF to PNG Converter Online Free - Convert PDF to PNG | PDF HUB 24",
+    title: "Free PDF to PNG Converter - PDF to PNG | PDF HUB 24",
     description: "Convert PDF pages to high-quality PNG images with transparency. Free online PDF to PNG converter - perfect for graphics and presentations.",
     keywords: "PDF to PNG, convert PDF to PNG, PDF to image, PDF to PNG online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "PDF to PNG Converter - PDF HUB 24",
       "url": `${BASE_URL}/pdf-to-png`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/pdf-to-excel": {
-    title: "PDF to Excel Converter Online Free - Convert PDF to XLS | PDF HUB 24",
+    title: "Free PDF to Excel Converter - PDF to XLS | PDF HUB 24",
     description: "Convert PDF tables to Excel spreadsheets (XLS/XLSX) instantly. Free online PDF to Excel converter - extract data accurately. No registration.",
     keywords: "PDF to Excel, PDF to XLS, convert PDF to Excel, PDF to spreadsheet, PDF to Excel online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "PDF to Excel Converter - PDF HUB 24",
       "url": `${BASE_URL}/pdf-to-excel`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/pdf-to-ppt": {
-    title: "PDF to PowerPoint Converter Online Free - Convert PDF to PPT | PDF HUB 24",
+    title: "Free PDF to PowerPoint Converter - to PPT | PDF HUB 24",
     description: "Convert PDF to editable PowerPoint presentations (PPT/PPTX) instantly. Free online PDF to PowerPoint converter - preserves slides and formatting.",
     keywords: "PDF to PowerPoint, PDF to PPT, convert PDF to PowerPoint, PDF to PPTX, PDF to PowerPoint online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "PDF to PowerPoint Converter - PDF HUB 24",
       "url": `${BASE_URL}/pdf-to-ppt`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/word-to-pdf": {
-    title: "Word to PDF Converter Online Free - Convert DOCX to PDF | PDF HUB 24",
+    title: "Free Word to PDF Converter - DOCX to PDF | PDF HUB 24",
     description: "Convert Word documents (DOCX) to PDF instantly. Free online Word to PDF converter - preserves formatting perfectly. No registration required.",
     keywords: "Word to PDF, DOCX to PDF, convert Word to PDF, Word to PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Word to PDF Converter - PDF HUB 24",
       "url": `${BASE_URL}/word-to-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/jpg-to-pdf": {
-    title: "JPG to PDF Converter Online Free - Convert Images to PDF | PDF HUB 24",
+    title: "Free JPG to PDF Converter - Images to PDF | PDF HUB 24",
     description: "Convert JPG images to PDF documents instantly. Free online JPG to PDF converter - combine multiple images into one PDF. No registration.",
     keywords: "JPG to PDF, image to PDF, convert JPG to PDF, JPEG to PDF, JPG to PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "JPG to PDF Converter - PDF HUB 24",
       "url": `${BASE_URL}/jpg-to-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/png-to-pdf": {
-    title: "PNG to PDF Converter Online Free - Convert PNG to PDF | PDF HUB 24",
+    title: "Free PNG to PDF Converter - PNG to PDF | PDF HUB 24",
     description: "Convert PNG images to PDF documents instantly. Free online PNG to PDF converter - maintains transparency and quality. No registration required.",
     keywords: "PNG to PDF, convert PNG to PDF, image to PDF, PNG to PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "PNG to PDF Converter - PDF HUB 24",
       "url": `${BASE_URL}/png-to-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/excel-to-pdf": {
-    title: "Excel to PDF Converter Online Free - Convert XLS to PDF | PDF HUB 24",
+    title: "Free Excel to PDF Converter - XLS to PDF | PDF HUB 24",
     description: "Convert Excel spreadsheets (XLS/XLSX) to PDF instantly. Free online Excel to PDF converter - preserves tables and formatting perfectly.",
     keywords: "Excel to PDF, XLS to PDF, convert Excel to PDF, XLSX to PDF, Excel to PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Excel to PDF Converter - PDF HUB 24",
       "url": `${BASE_URL}/excel-to-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/ppt-to-pdf": {
-    title: "PowerPoint to PDF Converter Online Free - Convert PPT to PDF | PDF HUB 24",
+    title: "Free PowerPoint to PDF Converter - PPT to PDF | PDF HUB 24",
     description: "Convert PowerPoint presentations (PPT/PPTX) to PDF instantly. Free online PowerPoint to PDF converter - preserves slides and animations.",
     keywords: "PowerPoint to PDF, PPT to PDF, convert PowerPoint to PDF, PPTX to PDF, PowerPoint to PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "PowerPoint to PDF Converter - PDF HUB 24",
       "url": `${BASE_URL}/ppt-to-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/protect-pdf": {
-    title: "Protect PDF with Password Online Free - Encrypt PDF | PDF HUB 24",
+    title: "Free PDF Password Protection - Encrypt PDF | PDF HUB 24",
     description: "Add password protection to PDF files instantly. Free online PDF encryption tool - secure your documents with strong encryption. No registration.",
     keywords: "protect PDF, encrypt PDF, password protect PDF, secure PDF, PDF encryption online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Protect PDF - PDF HUB 24",
       "url": `${BASE_URL}/protect-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/unlock-pdf": {
@@ -243,26 +213,22 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "unlock PDF, remove PDF password, PDF unlocker, decrypt PDF, unlock PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Unlock PDF - PDF HUB 24",
       "url": `${BASE_URL}/unlock-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/delete-pages": {
-    title: "Delete PDF Pages Online Free - Remove Pages from PDF | PDF HUB 24",
+    title: "Free Delete PDF Pages - Remove Pages | PDF HUB 24",
     description: "Remove unwanted pages from PDF documents instantly. Free online PDF page remover - select and delete specific pages. No registration required.",
     keywords: "delete PDF pages, remove PDF pages, PDF page remover, delete pages from PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Delete PDF Pages - PDF HUB 24",
       "url": `${BASE_URL}/delete-pages`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/add-page-numbers": {
@@ -271,12 +237,10 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "add page numbers PDF, PDF page numbers, number PDF pages, page numbering PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Add Page Numbers - PDF HUB 24",
       "url": `${BASE_URL}/add-page-numbers`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/add-watermark": {
@@ -285,12 +249,10 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "add watermark PDF, PDF watermark, watermark PDF online free, stamp PDF",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Add Watermark - PDF HUB 24",
       "url": `${BASE_URL}/add-watermark`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/reorder-pages": {
@@ -299,12 +261,10 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "reorder PDF pages, rearrange PDF, organize PDF pages, sort PDF pages, reorder PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Reorder PDF Pages - PDF HUB 24",
       "url": `${BASE_URL}/reorder-pages`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/extract-text": {
@@ -313,12 +273,10 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "extract text PDF, PDF to text, copy text from PDF, PDF text extractor, extract text online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Extract Text from PDF - PDF HUB 24",
       "url": `${BASE_URL}/extract-text`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/extract-images": {
@@ -327,26 +285,22 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "extract images PDF, PDF image extractor, get images from PDF, extract images online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Extract Images from PDF - PDF HUB 24",
       "url": `${BASE_URL}/extract-images`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/ocr-pdf": {
-    title: "OCR PDF Online Free - Extract Text from Scanned PDF | PDF HUB 24",
+    title: "Free OCR PDF - Extract Text from Scans | PDF HUB 24",
     description: "OCR scanned PDFs and extract text using optical character recognition. Free online OCR tool - convert scanned documents to searchable text.",
     keywords: "OCR PDF, optical character recognition, extract text scanned PDF, OCR online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "OCR PDF - PDF HUB 24",
       "url": `${BASE_URL}/ocr-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/crop-pdf": {
@@ -355,12 +309,10 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "crop PDF, trim PDF margins, PDF cropper, remove PDF margins, crop PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Crop PDF - PDF HUB 24",
       "url": `${BASE_URL}/crop-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/resize-pdf": {
@@ -369,12 +321,10 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "resize PDF, change PDF size, PDF page size, resize PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Resize PDF - PDF HUB 24",
       "url": `${BASE_URL}/resize-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/sign-pdf": {
@@ -383,12 +333,10 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "sign PDF, add signature PDF, PDF signature, e-sign PDF, sign PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Sign PDF - PDF HUB 24",
       "url": `${BASE_URL}/sign-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/flatten-pdf": {
@@ -397,26 +345,22 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "flatten PDF, merge PDF layers, flatten PDF forms, PDF flattener, flatten PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Flatten PDF - PDF HUB 24",
       "url": `${BASE_URL}/flatten-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/grayscale-pdf": {
-    title: "Convert PDF to Grayscale Online Free - Black & White | PDF HUB 24",
+    title: "Free PDF to Grayscale - Black & White | PDF HUB 24",
     description: "Convert PDF to grayscale (black and white) for printing. Free online PDF grayscale converter - reduce ink usage. No registration required.",
     keywords: "PDF to grayscale, black and white PDF, convert PDF grayscale, PDF grayscale online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "PDF to Grayscale - PDF HUB 24",
       "url": `${BASE_URL}/grayscale-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/repair-pdf": {
@@ -425,12 +369,10 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "repair PDF, fix corrupted PDF, PDF repair tool, recover PDF, repair PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Repair PDF - PDF HUB 24",
       "url": `${BASE_URL}/repair-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/edit-pdf": {
@@ -439,12 +381,10 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "edit PDF, PDF editor, add text to PDF, modify PDF, edit PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Edit PDF - PDF HUB 24",
       "url": `${BASE_URL}/edit-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/annotate-pdf": {
@@ -453,26 +393,22 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "annotate PDF, highlight PDF, PDF markup, PDF annotation, annotate PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Annotate PDF - PDF HUB 24",
       "url": `${BASE_URL}/annotate-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/redact-pdf": {
-    title: "Redact PDF Online Free - Black Out Sensitive Info | PDF HUB 24",
+    title: "Free Redact PDF - Black Out Sensitive Info | PDF HUB 24",
     description: "Redact sensitive information from PDF documents. Free online PDF redaction tool - permanently black out text. No registration required.",
     keywords: "redact PDF, black out PDF, censor PDF, PDF redaction, redact PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Redact PDF - PDF HUB 24",
       "url": `${BASE_URL}/redact-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/tiff-to-pdf": {
@@ -481,12 +417,10 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "TIFF to PDF, convert TIFF to PDF, TIF to PDF, TIFF to PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "TIFF to PDF Converter - PDF HUB 24",
       "url": `${BASE_URL}/tiff-to-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/gif-to-pdf": {
@@ -495,12 +429,10 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "GIF to PDF, convert GIF to PDF, GIF to PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "GIF to PDF Converter - PDF HUB 24",
       "url": `${BASE_URL}/gif-to-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/webp-to-pdf": {
@@ -509,12 +441,10 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "WebP to PDF, convert WebP to PDF, WebP to PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "WebP to PDF Converter - PDF HUB 24",
       "url": `${BASE_URL}/webp-to-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/html-to-pdf": {
@@ -523,12 +453,10 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "HTML to PDF, convert HTML to PDF, webpage to PDF, HTML to PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "HTML to PDF Converter - PDF HUB 24",
       "url": `${BASE_URL}/html-to-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/pdf-viewer": {
@@ -537,54 +465,46 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "PDF viewer, view PDF online, read PDF, open PDF, PDF viewer online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "PDF Viewer - PDF HUB 24",
       "url": `${BASE_URL}/pdf-viewer`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/compare-pdf": {
-    title: "Compare PDF Files Online Free - Find Differences | PDF HUB 24",
+    title: "Free Compare PDF - Find Differences | PDF HUB 24",
     description: "Compare two PDF files and find differences instantly. Free online PDF comparison tool - highlight changes between documents.",
     keywords: "compare PDF, PDF comparison, find PDF differences, compare PDF online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Compare PDF - PDF HUB 24",
       "url": `${BASE_URL}/compare-pdf`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/image-compressor": {
-    title: "Image Compressor Online Free - Compress JPG PNG WebP | PDF HUB 24",
+    title: "Free Image Compressor - JPG PNG WebP | PDF HUB 24",
     description: "Compress images (JPG, PNG, WebP) and reduce file size. Free online image compressor - maintain quality while saving space.",
     keywords: "compress image, image compressor, reduce image size, compress JPG PNG, image compressor online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Image Compressor - PDF HUB 24",
       "url": `${BASE_URL}/image-compressor`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/resize-image": {
-    title: "Resize Image Online Free - Change Image Dimensions | PDF HUB 24",
+    title: "Free Resize Image - Change Dimensions | PDF HUB 24",
     description: "Resize images by pixels or percentage. Free online image resizer - scale images to any size. Supports JPG, PNG, WebP.",
     keywords: "resize image, change image size, scale image, image resizer, resize image online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Resize Image - PDF HUB 24",
       "url": `${BASE_URL}/resize-image`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/crop-image": {
@@ -593,12 +513,10 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "crop image, trim image, cut image, image cropper, crop image online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Crop Image - PDF HUB 24",
       "url": `${BASE_URL}/crop-image`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/rotate-image": {
@@ -607,12 +525,10 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "rotate image, flip image, turn image, image rotator, rotate image online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Rotate & Flip Image - PDF HUB 24",
       "url": `${BASE_URL}/rotate-image`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/convert-image": {
@@ -621,12 +537,10 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "convert image, image converter, JPG to PNG, PNG to JPG, convert image online free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Convert Image - PDF HUB 24",
       "url": `${BASE_URL}/convert-image`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/about": {
@@ -648,7 +562,8 @@ export const seoConfig: Record<string, PageSEO> = {
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Privacy Policy - PDF HUB 24",
-      "url": `${BASE_URL}/privacy`
+      "url": `${BASE_URL}/privacy`,
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/terms": {
@@ -659,7 +574,8 @@ export const seoConfig: Record<string, PageSEO> = {
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Terms of Service - PDF HUB 24",
-      "url": `${BASE_URL}/terms`
+      "url": `${BASE_URL}/terms`,
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/contact": {
@@ -686,7 +602,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/how-to-compress-pdf-for-email": {
-    title: "How to Compress PDF for Email - Reduce Size Under 25MB | PDF HUB 24",
+    title: "Compress PDF for Email - Reduce Under 25MB | PDF HUB 24",
     description: "Learn how to compress PDF files for email attachments. Step-by-step guide to reduce PDF size under 25MB, 10MB, or even 1MB while maintaining quality.",
     keywords: "compress PDF for email, reduce PDF size, PDF email attachment, shrink PDF",
     schema: {
@@ -715,7 +631,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/blog/merge-pdf-files-guide": {
     title: "How to Merge PDF Files - Combine Multiple PDFs | PDF HUB 24",
-    description: "Learn how to merge multiple PDF files into one document. Step-by-step guide for combining PDFs online for free. Reorder pages and create professional documents.",
+    description: "Learn how to merge multiple PDF files into one document. Step-by-step guide for combining PDFs online for free. Reorder pages easily.",
     keywords: "merge PDF files, combine PDF, join PDF, PDF merger guide",
     schema: {
       "@context": "https://schema.org",
@@ -728,7 +644,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/protect-pdf-with-password": {
-    title: "How to Password Protect PDF - Secure Your Documents | PDF HUB 24",
+    title: "Password Protect PDF - Secure Documents | PDF HUB 24",
     description: "Learn how to add password protection to PDF files. Step-by-step guide to encrypting PDFs, setting permissions, and keeping sensitive documents secure.",
     keywords: "password protect PDF, encrypt PDF, secure PDF, PDF password",
     schema: {
@@ -742,7 +658,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/pdf-tools-for-students": {
-    title: "PDF Tools for Students - Free Academic Document Tools | PDF HUB 24",
+    title: "PDF Tools for Students - Free Academic Tools | PDF HUB 24",
     description: "Discover the essential PDF tools every student needs for academic success. Free tools for research papers, assignments, presentations, and study materials.",
     keywords: "PDF tools students, academic PDF, student PDF guide, free PDF tools school",
     schema: {
@@ -770,7 +686,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/edit-pdf-text-images": {
-    title: "How to Edit a PDF - Add Text, Images & Shapes Free | PDF HUB 24",
+    title: "Edit PDF - Add Text, Images & Shapes | PDF HUB 24",
     description: "Learn how to edit PDF files online for free. Add text, images, shapes, and annotations to any PDF document. No software installation required.",
     keywords: "edit PDF free, add text to PDF, edit PDF online, modify PDF document",
     schema: {
@@ -812,7 +728,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/redact-sensitive-pdf-information": {
-    title: "How to Redact Sensitive Information in PDFs Free | PDF HUB 24",
+    title: "Redact Sensitive Info in PDFs Free | PDF HUB 24",
     description: "Learn how to permanently redact sensitive information from PDF documents. Black out text, images, and personal data securely with our free guide.",
     keywords: "redact PDF, black out PDF text, remove sensitive info PDF, PDF redaction free",
     schema: {
@@ -826,7 +742,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/pdf-statistics": {
-    title: "PDF Statistics & Facts 2026 - Usage Data & Trends | PDF HUB 24",
+    title: "PDF Statistics & Facts 2026 - Data & Trends | PDF HUB 24",
     description: "Comprehensive PDF statistics and facts for 2026. Document usage data, conversion trends, file size benchmarks, and security insights with citable sources.",
     keywords: "PDF statistics, PDF usage data, PDF facts 2026, document format trends, PDF market data",
     schema: {
@@ -847,37 +763,34 @@ export const seoConfig: Record<string, PageSEO> = {
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Press & Media Kit - PDF HUB 24",
-      "url": `${BASE_URL}/press`
+      "url": `${BASE_URL}/press`,
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/all-tools": {
-    title: "All 43+ Free PDF Tools Online - Complete Tool List | PDF HUB 24",
-    description: "Browse all 43+ free online PDF tools. Convert, edit, merge, split, compress PDF files and more. Complete list of PDF HUB 24 tools - no registration required.",
+    title: "All 43+ Free PDF Tools - Complete List | PDF HUB 24",
+    description: "Browse all 43+ free online PDF tools. Convert, edit, merge, split, compress PDFs and more. Complete list of PDF HUB 24 tools.",
     keywords: "all PDF tools, free PDF tools list, online PDF tools, PDF converter tools, PDF editor tools",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "PDF HUB 24 - All Tools",
       "url": `${BASE_URL}/all-tools`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "description": "Complete collection of 43+ free online PDF tools"
+      "description": "Complete collection of 43+ free online PDF tools",
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/free-pdf-converter": {
-    title: "Free PDF Converter Online - Convert PDF Files Free | PDF HUB 24",
+    title: "Free PDF Converter - Convert Any File | PDF HUB 24",
     description: "Best free PDF converter online. Convert PDF to Word, Excel, JPG, PNG, PowerPoint and more. Convert images and documents to PDF. No signup required.",
     keywords: "free PDF converter, PDF converter online, convert PDF free, PDF to Word converter, image to PDF converter",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Free PDF Converter - PDF HUB 24",
       "url": `${BASE_URL}/free-pdf-converter`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "description": "Convert PDF files to and from Word, Excel, JPG, PNG, PowerPoint and more formats for free"
+      "description": "Convert PDF files to and from Word, Excel, JPG, PNG, PowerPoint and more formats for free",
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
   "/free-pdf-editor": {
@@ -886,13 +799,11 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "free PDF editor, edit PDF online, PDF editor free, online PDF editor, modify PDF free",
     schema: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
       "name": "Free PDF Editor - PDF HUB 24",
       "url": `${BASE_URL}/free-pdf-editor`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "description": "Edit PDF files online for free - merge, split, compress, rotate, sign, annotate, and more"
+      "description": "Edit PDF files online for free - merge, split, compress, rotate, sign, annotate, and more",
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   }
 };
@@ -936,6 +847,11 @@ export function injectSEO(html: string, path: string): string {
   
   return html
     .replace(/<title>.*?<\/title>/, '')
-    .replace(/<meta name="description"[^>]*>/, '')
+    .replace(/<meta name="description"[^>]*\/?>/, '')
+    .replace(/<link rel="canonical"[^>]*\/?>/, '')
+    .replace(/<meta name="robots"[^>]*\/?>/, '')
+    .replace(/<meta property="og:[^"]*"[^>]*\/?>/g, '')
+    .replace(/<meta name="twitter:[^"]*"[^>]*\/?>/g, '')
+    .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '')
     .replace('</head>', `${metaTags}\n  </head>`);
 }

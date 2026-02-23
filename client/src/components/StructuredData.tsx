@@ -69,20 +69,17 @@ export function ToolStructuredData({
       }))
     } : null;
 
-    const softwareSchema = {
+    const pageSchema = {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
+      "@type": "WebPage",
       "name": toolName,
       "url": `${BASE_URL}${toolPath}`,
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "All",
-      "browserRequirements": "Requires JavaScript. Requires HTML5.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
       "description": description,
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "PDF HUB 24",
+        "url": BASE_URL
+      },
       "provider": {
         "@type": "Organization",
         "name": "PDF HUB 24",
@@ -94,7 +91,7 @@ export function ToolStructuredData({
     const existingScripts = document.querySelectorAll(`script[data-tool-schema="${toolId}"]`);
     existingScripts.forEach(script => script.remove());
 
-    const schemas = [breadcrumbList, softwareSchema, faqSchema].filter(Boolean);
+    const schemas = [breadcrumbList, pageSchema, faqSchema].filter(Boolean);
     
     schemas.forEach((schema) => {
       const script = document.createElement("script");

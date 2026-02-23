@@ -155,18 +155,16 @@ export function useSEO({ title, description, keywords, canonicalPath, structured
 
     const defaultStructuredData = {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
+      "@type": "WebPage",
       "name": "PDF HUB 24",
       "url": BASE_URL,
       "description": "Free online PDF tools - Convert, merge, split, compress PDF files. No registration required.",
-      "applicationCategory": "UtilityApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "PDF HUB 24",
+        "url": BASE_URL
       },
-      "author": {
+      "provider": {
         "@type": "Organization",
         "name": "PDF HUB 24",
         "url": BASE_URL

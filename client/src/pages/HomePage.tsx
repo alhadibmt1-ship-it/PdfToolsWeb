@@ -946,7 +946,7 @@ export default function HomePage() {
                 </Card>
               </Link>
               
-              <Link href="/blog/how-to-merge-pdf-files">
+              <Link href="/blog/merge-pdf-files-guide">
                 <Card className="p-5 sm:p-6 h-full hover-elevate cursor-pointer">
                   <h3 className="font-semibold mb-2 text-foreground">How to Merge PDF Files</h3>
                   <p className="text-sm text-muted-foreground mb-3">
