@@ -66,6 +66,8 @@ const ContactPage = lazy(() => import("@/pages/ContactPage"));
 const DmcaPage = lazy(() => import("@/pages/DmcaPage"));
 const BlogListPage = lazy(() => import("@/pages/BlogListPage"));
 const BlogPostPage = lazy(() => import("@/pages/BlogPostPage"));
+const PdfStatisticsPage = lazy(() => import("@/pages/PdfStatisticsPage"));
+const PressKitPage = lazy(() => import("@/pages/PressKitPage"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 function PageLoader() {
@@ -136,6 +138,8 @@ function Router() {
         <Route path="/dmca" component={DmcaPage} />
         <Route path="/blog" component={BlogListPage} />
         <Route path="/blog/:slug" component={BlogPostPage} />
+        <Route path="/pdf-statistics" component={PdfStatisticsPage} />
+        <Route path="/press" component={PressKitPage} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>

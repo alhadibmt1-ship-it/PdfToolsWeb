@@ -281,6 +281,12 @@ export default function Footer() {
                   <FooterLink href="/dmca" testId="link-footer-dmca" isVisible={isCompanyVisible}>
                     DMCA Policy
                   </FooterLink>
+                  <FooterLink href="/pdf-statistics" testId="link-footer-statistics" isVisible={isCompanyVisible}>
+                    PDF Statistics 2026
+                  </FooterLink>
+                  <FooterLink href="/press" testId="link-footer-press" isVisible={isCompanyVisible}>
+                    Press Kit
+                  </FooterLink>
                 </div>
               </div>
             </div>

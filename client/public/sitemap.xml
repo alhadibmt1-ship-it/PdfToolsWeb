@@ -313,4 +313,43 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+
+  <!-- New Blog Articles (Jan-Feb 2026) -->
+  <url>
+    <loc>https://pdfhub24.com/blog/sign-pdf-electronically</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/blog/edit-pdf-text-images</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/blog/watermark-pdf-documents</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/blog/pdf-to-excel-convert-tables</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/blog/redact-sensitive-pdf-information</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Linkable Assets / Resources -->
+  <url>
+    <loc>https://pdfhub24.com/pdf-statistics</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://pdfhub24.com/press</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
