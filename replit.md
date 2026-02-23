@@ -153,3 +153,8 @@ The site includes a blog content hub for SEO and informational traffic:
   - Enhanced Footer with internal links to new landing pages for SEO link distribution
   - Added noscript category browsing section for crawler accessibility
   - Production performance: aggressive Cache-Control headers (1yr immutable for JS/CSS, 30 days for images, no-cache for HTML)
+- **SEO Audit Fixes (Feb 2026)**:
+  - Fixed OG URL not matching canonical on all 59+ pages: Updated injectSEO() to strip ALL existing OG, canonical, twitter, robots, and structured data tags before injecting correct ones
+  - Fixed structured data validation errors on 43 tool pages: Changed from SoftwareApplication to WebPage schema type with isPartOf property (both server-side and client-side)
+  - Fixed 16 orphan pages: Added blog articles and resource pages to noscript section in index.html, fixed broken blog link on homepage
+  - Fixed all meta title/description length issues: All 27 titles shortened to ≤60 chars, all descriptions between 70-155 chars
