@@ -38,9 +38,13 @@ app.use(compression({
 // HTTP to HTTPS redirect in production (for SEO - prevents redirect errors in Google Search Console)
 if (process.env.NODE_ENV === 'production') {
   app.use((req, res, next) => {
+    const host = req.headers.host || '';
     const proto = req.headers['x-forwarded-proto'];
     if (proto === 'http') {
-      return res.redirect(301, `https://${req.headers.host}${req.url}`);
+      return res.redirect(301, `https://${host.replace(/^www\./, '')}${req.url}`);
+    }
+    if (host.startsWith('www.')) {
+      return res.redirect(301, `https://${host.replace(/^www\./, '')}${req.url}`);
     }
     next();
   });

@@ -793,6 +793,88 @@ export const seoConfig: Record<string, PageSEO> = {
       "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
+  "/dmca": {
+    title: "DMCA Policy - PDF HUB 24",
+    description: "DMCA policy for PDF HUB 24. Learn about our copyright compliance procedures and how to report infringing content.",
+    keywords: "DMCA policy, copyright, PDF HUB 24 DMCA",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "DMCA Policy - PDF HUB 24",
+      "url": `${BASE_URL}/dmca`,
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
+    }
+  },
+  "/blog/how-to-split-pdf-pages": {
+    title: "Split PDF Pages Free - Extract Sections | PDF HUB 24",
+    description: "Split PDF pages free online. Extract specific pages, separate sections from large PDFs. Best free PDF splitter - no software install, no signup required.",
+    keywords: "split PDF pages, extract PDF pages, separate PDF sections, PDF splitter free",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Split PDF Pages: Extract and Separate PDF Documents",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-01",
+      "url": `${BASE_URL}/blog/how-to-split-pdf-pages`
+    }
+  },
+  "/blog/add-page-numbers-to-pdf": {
+    title: "Add Page Numbers to PDF Free | PDF HUB 24",
+    description: "Add page numbers to PDF free. Customize position, style, starting number. Best free PDF numbering tool for reports. No signup.",
+    keywords: "add page numbers PDF, PDF page numbering, number PDF pages free",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Add Page Numbers to PDF Documents",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-01",
+      "url": `${BASE_URL}/blog/add-page-numbers-to-pdf`
+    }
+  },
+  "/blog/convert-images-to-pdf": {
+    title: "Convert Images to PDF Free - JPG PNG | PDF HUB 24",
+    description: "Convert images to PDF free. JPG, PNG, WebP, TIFF, GIF to PDF instantly. Best free image to PDF converter - combine multiple images, no registration.",
+    keywords: "convert images to PDF, JPG to PDF, PNG to PDF, image to PDF free",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Convert Images to PDF: JPG, PNG, and More",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-01",
+      "url": `${BASE_URL}/blog/convert-images-to-pdf`
+    }
+  },
+  "/blog/ocr-scanned-pdf-to-text": {
+    title: "OCR PDF Free - Scanned PDF to Text | PDF HUB 24",
+    description: "OCR PDF free online. Convert scanned documents to searchable, editable text. Best free OCR tool - extract text from images and scanned pages instantly.",
+    keywords: "OCR PDF, scanned PDF to text, optical character recognition, OCR free online",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "OCR PDF: Convert Scanned Documents to Searchable Text",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-01",
+      "url": `${BASE_URL}/blog/ocr-scanned-pdf-to-text`
+    }
+  },
+  "/blog/rotate-pdf-pages": {
+    title: "Rotate PDF Pages Free - Fix Orientation | PDF HUB 24",
+    description: "Rotate PDF pages free online. Fix upside-down or sideways PDFs. Rotate 90, 180, 270 degrees. Best free PDF rotation tool for all pages.",
+    keywords: "rotate PDF pages, fix PDF orientation, rotate PDF free, turn PDF pages",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Rotate PDF Pages: Fix Orientation Issues",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-01",
+      "url": `${BASE_URL}/blog/rotate-pdf-pages`
+    }
+  },
   "/free-pdf-editor": {
     title: "Free PDF Editor Online - Edit PDF Files Free | PDF HUB 24",
     description: "Best free online PDF editor. Edit, merge, split, compress, rotate, sign, annotate, and redact PDF files. No software download or registration needed.",
