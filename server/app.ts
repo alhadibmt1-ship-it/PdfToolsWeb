@@ -35,6 +35,17 @@ app.use(compression({
   }
 }));
 
+// HTTP to HTTPS redirect in production (for SEO - prevents redirect errors in Google Search Console)
+if (process.env.NODE_ENV === 'production') {
+  app.use((req, res, next) => {
+    const proto = req.headers['x-forwarded-proto'];
+    if (proto === 'http') {
+      return res.redirect(301, `https://${req.headers.host}${req.url}`);
+    }
+    next();
+  });
+}
+
 // Security headers for SEO and protection
 app.use((req, res, next) => {
   // Prevent MIME type sniffing
