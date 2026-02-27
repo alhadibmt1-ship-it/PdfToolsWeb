@@ -110,6 +110,7 @@ export default function Footer() {
                 className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg"
                 width="36"
                 height="36"
+                loading="lazy"
               />
               <h3 className="font-bold text-lg tracking-tight">PDF HUB 24</h3>
             </div>
