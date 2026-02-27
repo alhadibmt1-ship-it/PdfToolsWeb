@@ -876,6 +876,146 @@ export const seoConfig: Record<string, PageSEO> = {
       "url": `${BASE_URL}/blog/rotate-pdf-pages`
     }
   },
+  "/blog/how-to-flatten-pdf": {
+    title: "How to Flatten PDF Free Online | PDF HUB 24",
+    description: "Flatten PDF forms and layers into static content for printing and sharing. Free online tool, no signup required.",
+    keywords: "flatten PDF, flatten PDF forms, PDF flatten online free, merge PDF layers",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Flatten PDF Forms and Layers",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-27",
+      "url": `${BASE_URL}/blog/how-to-flatten-pdf`
+    }
+  },
+  "/blog/crop-pdf-pages-guide": {
+    title: "Crop PDF Pages Free - Remove Margins | PDF HUB 24",
+    description: "Crop PDF pages and remove unwanted margins or whitespace. Free online PDF cropper with no registration needed.",
+    keywords: "crop PDF, remove PDF margins, trim PDF pages, PDF cropper free online",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Crop PDF Pages and Remove Margins",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-27",
+      "url": `${BASE_URL}/blog/crop-pdf-pages-guide`
+    }
+  },
+  "/blog/resize-pdf-to-a4": {
+    title: "Resize PDF to A4 Free Online | PDF HUB 24",
+    description: "Change PDF page size to A4, Letter, or custom dimensions. Free online PDF resizer, no software download required.",
+    keywords: "resize PDF to A4, change PDF page size, PDF resize online free, PDF to letter size",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Resize PDF to A4 or Letter Size",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-27",
+      "url": `${BASE_URL}/blog/resize-pdf-to-a4`
+    }
+  },
+  "/blog/compare-two-pdf-files": {
+    title: "Compare Two PDF Files Free Online | PDF HUB 24",
+    description: "Find differences between two PDF documents side by side. Free online PDF comparison tool with no registration.",
+    keywords: "compare PDF files, PDF diff tool, compare two PDFs online, find PDF differences",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Compare Two PDF Files and Find Differences",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-27",
+      "url": `${BASE_URL}/blog/compare-two-pdf-files`
+    }
+  },
+  "/blog/html-to-pdf-conversion": {
+    title: "Convert HTML to PDF Free Online | PDF HUB 24",
+    description: "Convert HTML code and web pages to PDF documents. Free online HTML to PDF converter with no signup required.",
+    keywords: "HTML to PDF, convert HTML to PDF, web page to PDF, HTML to PDF free online",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Convert HTML to PDF Documents",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-27",
+      "url": `${BASE_URL}/blog/html-to-pdf-conversion`
+    }
+  },
+  "/blog/extract-text-from-pdf": {
+    title: "Extract Text from PDF Free Online | PDF HUB 24",
+    description: "Extract and copy text from PDF files easily. Works with scanned PDFs using OCR. Free online tool, no signup.",
+    keywords: "extract text from PDF, copy text from PDF, PDF text extractor, PDF to text free",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Extract Text from PDF Files",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-27",
+      "url": `${BASE_URL}/blog/extract-text-from-pdf`
+    }
+  },
+  "/blog/best-free-pdf-tools-2026": {
+    title: "Best Free PDF Tools Online 2026 | PDF HUB 24",
+    description: "Complete guide to the best free online PDF tools in 2026. Convert, edit, merge, compress, and more with no signup.",
+    keywords: "best free PDF tools 2026, free PDF editor online, best PDF converter, free PDF tools",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Best Free PDF Tools Online in 2026",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-27",
+      "url": `${BASE_URL}/blog/best-free-pdf-tools-2026`
+    }
+  },
+  "/blog/pdf-accessibility-guide": {
+    title: "PDF Accessibility Guide - OCR & Text | PDF HUB 24",
+    description: "Make PDFs accessible with OCR, text extraction, and formatting. Guide to creating inclusive PDF documents for everyone.",
+    keywords: "PDF accessibility, accessible PDF, OCR PDF, PDF screen reader, ADA PDF compliance",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "PDF Accessibility Guide: Making PDFs Inclusive",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-27",
+      "url": `${BASE_URL}/blog/pdf-accessibility-guide`
+    }
+  },
+  "/blog/batch-convert-images-to-pdf": {
+    title: "Convert Multiple Images to PDF Free | PDF HUB 24",
+    description: "Batch convert JPG, PNG, WebP, TIFF, and GIF images to PDF. Combine multiple images into one PDF free online.",
+    keywords: "batch images to PDF, multiple images to PDF, JPG to PDF, convert photos to PDF free",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Batch Convert Images to PDF",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-27",
+      "url": `${BASE_URL}/blog/batch-convert-images-to-pdf`
+    }
+  },
+  "/blog/unlock-pdf-remove-password": {
+    title: "Unlock PDF - Remove Password Free | PDF HUB 24",
+    description: "Remove password protection from PDF files free online. Unlock PDF documents for editing and printing with no signup.",
+    keywords: "unlock PDF, remove PDF password, PDF password remover free, unprotect PDF online",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Unlock PDF and Remove Password Protection",
+      "author": { "@type": "Organization", "name": "PDF HUB 24" },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "datePublished": "2026-02-27",
+      "url": `${BASE_URL}/blog/unlock-pdf-remove-password`
+    }
+  },
   "/free-pdf-editor": {
     title: "Free PDF Editor Online - Edit PDF Files Free | PDF HUB 24",
     description: "Best free online PDF editor. Edit, merge, split, compress, rotate, sign, annotate, and redact PDF files. No software download or registration needed.",

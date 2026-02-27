@@ -1,60 +1,7 @@
 # PDF HUB 24
 
 ## Overview
-PDF HUB 24 is a comprehensive web-based PDF and image manipulation platform offering 43 tools organized in 4 categories:
-
-### Convert from PDF (8 tools)
-1. **PDF to Word** - Convert PDF to editable DOCX
-2. **PDF to JPG** - Convert PDF pages to JPG images
-3. **PDF to PNG** - Convert PDF pages to PNG images
-4. **PDF to Excel** - Convert PDF tables to XLS spreadsheet
-5. **PDF to PowerPoint** - Convert PDF to editable PPT slides
-6. **Extract Text** - Extract text content from PDF
-7. **Extract Images** - Extract all images from PDF documents
-8. **OCR PDF** - Extract text from scanned PDFs with OCR
-
-### Convert to PDF (9 tools)
-9. **Word to PDF** - Convert DOCX to PDF
-10. **JPG to PDF** - Convert JPG images to PDF
-11. **PNG to PDF** - Convert PNG images to PDF
-12. **Excel to PDF** - Convert XLS/XLSX spreadsheet to PDF
-13. **PowerPoint to PDF** - Convert PPT/PPTX slides to PDF
-14. **TIFF to PDF** - Convert TIFF images to PDF
-15. **GIF to PDF** - Convert GIF images to PDF
-16. **HTML to PDF** - Convert HTML code to PDF documents
-17. **WebP to PDF** - Convert WebP images to PDF
-
-### Edit PDF (19 tools)
-18. **Merge PDF** - Combine multiple PDFs into one
-19. **Split PDF** - Extract specific pages
-20. **Compress PDF** - Reduce file size (CloudConvert optimization)
-21. **Rotate PDF** - Rotate pages 90°, 180°, 270°
-22. **Delete Pages** - Remove unwanted pages
-23. **Protect PDF** - Add password protection
-24. **Unlock PDF** - Remove password protection
-25. **Add Page Numbers** - Add page numbers to documents
-26. **Add Watermark** - Add text watermark to pages
-27. **Reorder Pages** - Drag-and-drop page reordering
-28. **Crop PDF** - Trim margins and remove unwanted whitespace
-29. **Resize PDF** - Change PDF page size to A4, Letter, and more
-30. **Sign PDF** - Add your signature to PDF documents
-31. **Flatten PDF** - Flatten forms and layers into static content
-32. **PDF to Grayscale** - Convert PDF to black and white for printing
-33. **Repair PDF** - Fix corrupted or damaged PDF files
-34. **Edit PDF** - Add text, images, and shapes to PDF
-35. **Annotate PDF** - Highlight, underline, and mark up PDFs
-36. **Redact PDF** - Permanently black out sensitive information
-
-### Utility & Image Tools (7 tools)
-37. **PDF Viewer** - View PDF files directly in your browser
-38. **Compare PDF** - Find differences between two PDF files
-39. **Image Compressor** - Compress JPG, PNG, and WebP images
-40. **Resize Image** - Resize images by pixels or percentage
-41. **Crop Image** - Crop images to remove unwanted areas
-42. **Rotate & Flip Image** - Rotate or flip images in any direction
-43. **Convert Image** - Convert between JPG, PNG, WebP, GIF, TIFF, BMP
-
-Features full dark mode support, user settings, localStorage persistence, and professional-grade PDF processing. Homepage displays tools organized by category with visual conversion icons showing source→target formats (colored labels with arrows). Deployed at pdfhub24.com with complete SEO optimization and PDF24-inspired UX patterns.
+PDF HUB 24 is a comprehensive web-based platform designed for PDF and image manipulation, offering 43 tools across four main categories: Convert from PDF, Convert to PDF, Edit PDF, and Utility & Image Tools. The platform aims to provide professional-grade document processing, enhance user trust through robust SEO and UX, and offer a wide array of free tools for various PDF and image tasks. Key capabilities include conversion between various formats (e.g., PDF to Word, JPG to PDF), extensive PDF editing (merge, split, compress, protect, sign, annotate, redact), and general image utilities (compress, resize, crop, convert). The business vision is to be a leading, user-friendly, and SEO-optimized solution for everyday document processing needs, inspired by successful platforms like PDF24.
 
 ## User Preferences
 Preferred communication style: Simple, everyday language.
@@ -62,111 +9,34 @@ Preferred communication style: Simple, everyday language.
 ## System Architecture
 
 ### Frontend Architecture
-The frontend uses React 18 with TypeScript, Vite for bundling, and Wouter for routing. UI components are built with Radix UI primitives and shadcn/ui, styled using Tailwind CSS, following a "Clean Modern Utility Design" aesthetic. The application supports dark mode, user settings, and a consistent layout across all tool and trust pages. State management relies on local React state, `localStorage` for theme and settings persistence, and TanStack Query for server state. Code splitting is implemented using `React.lazy()` for performance.
+The frontend is built using React 18 with TypeScript, Vite for bundling, and Wouter for routing. UI components leverage Radix UI primitives and shadcn/ui, styled with Tailwind CSS, adhering to a "Clean Modern Utility Design" aesthetic. Features include full dark mode support, user settings, and `localStorage` for theme and settings persistence. State management is primarily local React state and TanStack Query for server state. Performance is optimized with `React.lazy()` for code splitting.
 
 ### Backend Architecture
-The backend is built with Express.js and TypeScript. PDF processing uses a dual-library approach due to dependency conflicts:
-- **pdf-lib-with-encrypt**: Used ONLY for encryption operations (Protect PDF, Unlock PDF) - requires pako 1.x
-- **pdf-lib (standard)**: Used for all non-encryption operations (Add Page Numbers, Add Watermark, JPG to PDF, PNG to PDF, Word to PDF, Excel to PDF, Edit PDF, Annotate PDF, Redact PDF, TIFF to PDF, GIF to PDF) - compatible with pako 2.x
-- **CloudConvert API**: Used for high-quality conversions (PDF to Word, PDF to JPG, PDF to PNG, PDF to PowerPoint, PowerPoint to PDF)
-- **Other libraries**: `sharp` (image processing including TIFF/GIF conversion), `docx` (PDF to Word generation), `mammoth` (Word text extraction), `pdf-parse` (text extraction), `archiver` (ZIP creation)
-
-File uploads are managed by Multer with in-memory storage, including magic byte and MIME type validation. All API endpoints are secured with Zod schema validation for request parameters and comprehensive error handling.
+The backend is implemented with Express.js and TypeScript. PDF processing utilizes a dual-library approach with `pdf-lib-with-encrypt` for encryption-specific tasks and standard `pdf-lib` for all other PDF operations. File uploads are handled by Multer with in-memory storage, incorporating magic byte and MIME type validation. All API endpoints are secured with Zod schema validation and robust error handling.
 
 ### Data Storage
-The application currently uses `localStorage` for client-side persistence of theme preferences and user settings. There is no active persistent database, though Drizzle ORM and NeonDB are configured for future PostgreSQL integration, with schema definitions in `shared/schema.ts`. In-memory storage is used for transient user data during sessions.
+Client-side persistence for user preferences and theme settings is managed via `localStorage`. For future persistent data needs, Drizzle ORM and NeonDB are configured, with schema definitions in `shared/schema.ts`, indicating a planned transition to PostgreSQL.
 
 ### UI/UX Decisions
-The design emphasizes a "Clean Modern Utility Design" with a vibrant color scheme. It includes TrustBadges and RelatedTools components on all tool pages to enhance user trust and discoverability, inspired by PDF24. Homepage improvements include a "How It Works" section and "Why Choose PDF HUB 24?" feature cards. Comprehensive SEO content, including "About Our Tool," "How to Use," "Key Benefits," and FAQs, is integrated into each tool page.
+The design philosophy is "Clean Modern Utility Design" with a vibrant color scheme. The platform incorporates TrustBadges and RelatedTools on all tool pages, drawing inspiration from PDF24, to build user confidence and facilitate tool discovery. The homepage includes sections like "How It Works" and "Why Choose PDF HUB 24?". Each tool page is rich with SEO content, such as "About Our Tool," "How to Use," "Key Benefits," and FAQs.
 
 ### Technical Implementations
-Key technical implementations include:
-- **Performance Optimization**: Image optimization with WebP, code splitting with `React.lazy()`, asynchronous Google Fonts loading, and deferred Google Analytics.
-- **Security**: Magic byte validation for file uploads, comprehensive error handling, and Zod schema validation for all request parameters.
-- **SEO**: Dynamic meta tags via `useSEO` hook, `sitemap.xml`, and `robots.txt` for Google Search Console integration.
-- **Conversion Quality**: Advanced PDF to Word conversion with intelligent formatting (headers, tables, lists, quotes, code blocks), and improved PDF to JPG conversion with high-resolution output and ZIP archiving for multi-page PDFs.
-- **User Settings**: Dark mode toggle and a settings panel for managing default compression levels with `localStorage` persistence.
-- **Interactive Editing**: Edit PDF, Annotate PDF, and Redact PDF tools feature interactive canvas-based editing with real-time preview, undo functionality, and ProcessingState feedback.
+Key technical features include:
+- **Performance**: WebP image optimization, code splitting, asynchronous font loading, and deferred analytics.
+- **Security**: File upload validation (magic byte, MIME type), comprehensive error handling, and Zod schema validation.
+- **SEO**: Dynamic meta tags, `sitemap.xml`, and `robots.txt` integration.
+- **Conversion Quality**: Advanced PDF to Word conversion with intelligent formatting, high-resolution PDF to JPG output.
+- **User Settings**: Dark mode toggle and configurable compression levels.
+- **Interactive Editing**: Canvas-based editing for tools like Edit PDF, Annotate PDF, and Redact PDF, featuring real-time preview and undo functionality.
 
 ## External Dependencies
 
 ### Third-party Services
-- **Google Fonts CDN**: For typography (Inter font family).
-- **CloudConvert API**: Used for PDF to Word, PDF to JPG, PDF to PNG, PDF to PowerPoint, PowerPoint to PDF, Grayscale PDF, and OCR PDF conversions with high-quality output.
+- **Google Fonts CDN**: For typography.
+- **CloudConvert API**: Utilized for high-quality conversions including PDF to Word, PDF to JPG, PDF to PNG, PDF to PowerPoint, PowerPoint to PDF, Grayscale PDF, and OCR PDF.
 
 ### Key NPM Packages
-- **PDF Processing**: `pdf-lib` (standard), `pdf-lib-with-encrypt` (encryption only), `pdf-parse`, `docx`, `mammoth`, `sharp`, `archiver`, `xlsx`.
+- **PDF Processing**: `pdf-lib`, `pdf-lib-with-encrypt`, `pdf-parse`, `docx`, `mammoth`, `sharp`, `archiver`, `xlsx`.
 - **Frontend UI**: `@radix-ui/`, `@tanstack/react-query`, `wouter`.
 - **Backend**: `express`, `multer`, `zod`, `cloudconvert`.
 - **Database (Future)**: `drizzle-orm`, `@neondatabase/serverless`, `connect-pg-simple`.
-- **Development Tools**: `typescript`, `vite`, `tsx`.
-
-## Blog Section
-The site includes a blog content hub for SEO and informational traffic:
-- **Blog List Page** (/blog): Grid of article cards with categories, read time, and tags
-- **Blog Post Pages** (/blog/:slug): Full articles with SEO optimization
-- **5 Initial Articles**:
-  1. How to Compress PDF for Email
-  2. Convert PDF to Word Without Losing Formatting
-  3. How to Merge PDF Files
-  4. Password Protect PDF Guide
-  5. PDF Tools for Students
-- **Internal Linking**: Each article includes primary CTA button to relevant tool + related tools section
-- **SEO**: Article schema markup, unique meta tags per article, sitemap entries
-
-## Recent Changes (December 2025)
-- **Comprehensive SEO Meta Tag Optimization**: Updated all 43 tool pages with improved meta tags emphasizing "free" keyword placement. Pattern: "[Tool Name] Free Online - [Action] | PDF HUB 24". All descriptions include "free", "best free", "no signup" messaging.
-- Added blog section with 10 SEO-optimized articles and internal linking to tools
-- Added 7 new PDF tools: PDF to PowerPoint, PowerPoint to PDF, TIFF to PDF, GIF to PDF, Edit PDF, Annotate PDF, Redact PDF
-- Added 4 new image tools: Resize Image, Crop Image, Rotate & Flip Image, Convert Image
-- Updated PDF compression to use CloudConvert optimize API for real compression
-- Added Facebook and YouTube social links to footer
-- Updated sitemap.xml with all 43 tool URLs + blog URLs
-- Updated homepage and footer to reflect 43+ tools
-- All new tools follow established patterns (FileUploadZone, ProcessingState, TrustBadges, RelatedTools, ToolSEOContent)
-- Added ToolStructuredData component with FAQPage, HowTo, BreadcrumbList, SoftwareApplication schemas
-- Added Organization schema on HomePage (no aggregateRating per Google guidelines)
-- Added competitor-inspired trust elements (privacy badges, Trusted by Professionals section)
-- **Ahrefs SEO Fixes (Dec 2025)**: Removed fabricated aggregateRating from all structured data, added external links to Wikipedia/ISO/Adobe on all tool pages, fixed meta description lengths under 155 chars, fixed title lengths under 60 chars
-- **Security & UX Improvements (Dec 2025)**:
-  - Rate limiting enabled: 60 req/min general API, 20 uploads/min for file endpoints
-  - Security headers: HSTS (production-only), CSP (strict in production, relaxed for dev), X-Content-Type-Options, X-Frame-Options, X-XSS-Protection
-  - User-friendly error messages without sensitive data leakage
-  - Global tool search with Cmd+K / Ctrl+K keyboard shortcut (ToolSearch component)
-  - Improved logging without sensitive response data
-- **Tool Fixes (Dec 2025)**:
-  - **Grayscale PDF**: Now uses CloudConvert with Ghostscript engine for actual grayscale conversion (was stub before)
-  - **OCR PDF**: Now uses CloudConvert Tesseract OCR for scanned documents with fallback to text extraction
-  - **Extract Images**: Now uses CloudConvert to render PDF pages as high-quality PNG images (was returning dummy images before)
-  - All fixed tools follow the same CloudConvert pattern as other working conversions
-- **SEO & Linkable Assets (Feb 2026)**:
-  - Enhanced RelatedTools component: expanded article mappings to all 43 tools, added "What to Do Next" workflow suggestions, increased default related tools from 4 to 6
-  - Created PDF Statistics & Facts page (/pdf-statistics) as linkable asset with citable research data and attribution section
-  - Created Press/Media Kit page (/press) for journalists and bloggers with company facts and tool categories
-  - Added 5 new blog articles: Sign PDF Electronically, Edit PDF Text & Images, Watermark PDF Documents, PDF to Excel Convert Tables, Redact Sensitive Information
-  - Updated sitemap.xml with all new blog URLs and linkable asset pages
-  - Total blog articles: 10 (5 original + 5 new)
-- **SEO Ranking Optimization (Feb 2026)**:
-  - Fixed server-side SEO config: Added 8 missing pages to seo-config.ts (blog articles, linkable assets, landing pages) ensuring Google crawler sees proper meta tags
-  - Added lastmod dates to ALL 60+ sitemap URLs for better crawl prioritization
-  - Created 3 long-tail keyword landing pages: /all-tools (searchable tool grid), /free-pdf-converter (conversion hub), /free-pdf-editor (editing hub) with rich content, structured data, and FAQs
-  - Enhanced Footer with internal links to new landing pages for SEO link distribution
-  - Added noscript category browsing section for crawler accessibility
-  - Production performance: aggressive Cache-Control headers (1yr immutable for JS/CSS, 30 days for images, no-cache for HTML)
-- **SEO Audit Fixes (Feb 2026)**:
-  - Fixed OG URL not matching canonical on all 59+ pages: Updated injectSEO() to strip ALL existing OG, canonical, twitter, robots, and structured data tags before injecting correct ones
-  - Fixed structured data validation errors on 43 tool pages: Changed from SoftwareApplication to WebPage schema type with isPartOf property (both server-side and client-side)
-  - Fixed 16 orphan pages: Added blog articles and resource pages to noscript section in index.html, fixed broken blog link on homepage
-  - Fixed all meta title/description length issues: All 27 titles shortened to ≤60 chars, all descriptions between 70-155 chars
-- **PDF to Word Page SEO Overhaul (Feb 2026)**:
-  - Restructured PdfToWordPage with proper H1→H2→H3 heading hierarchy
-  - Added 12+ internal links to related tools and blog articles
-  - Added FAQ JSON-LD structured data with 5 optimized Q&As
-  - Added CTA buttons below H1, after how-to steps, and at page bottom
-  - Added Security & Privacy section with SSL, auto-deletion, GDPR compliance
-  - Added Complete PDF Workflows section with 4 workflow cards
-  - Added Why Choose PDF HUB 24, Common Issues & Fixes, Related Tools grid
-  - Added AdSense-ready placeholder divs (top, mid-content, bottom)
-  - Updated meta title to "PDF to Word Free Online (No Email, No Watermark)"
-  - Added 5 new blog articles and /dmca page to server-side SEO config
-  - Added www-to-non-www redirect in production for SEO

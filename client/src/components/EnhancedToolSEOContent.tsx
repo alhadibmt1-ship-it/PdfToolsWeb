@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { CheckCircle2, Shield, Zap, Clock, HelpCircle, AlertTriangle, ArrowRight, Lock, FileText, Lightbulb } from "lucide-react";
 import { Link } from "wouter";
 import { PDF_TOOLS } from "@shared/schema";
@@ -139,6 +140,8 @@ export default function EnhancedToolSEOContent({
         />
       </div>
 
+      <div data-ad-slot="top-banner" data-testid="ad-slot-top" />
+
       <section>
         <h2 className="text-2xl font-bold mb-4">About {toolName}</h2>
         <p className="text-lg text-muted-foreground leading-relaxed">
@@ -178,6 +181,16 @@ export default function EnhancedToolSEOContent({
               </div>
             </div>
           ))}
+        </div>
+        <div className="mt-6 text-center">
+          <Button
+            size="lg"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            data-testid="button-cta-start-now"
+          >
+            <Zap className="w-4 h-4 mr-2" />
+            Start Now - It's Free
+          </Button>
         </div>
       </section>
 
@@ -243,6 +256,8 @@ export default function EnhancedToolSEOContent({
         </div>
       </section>
 
+      <div data-ad-slot="mid-content" data-testid="ad-slot-mid" />
+
       {seoData.comparison && (
         <section>
           <h2 className="text-2xl font-bold mb-4">{seoData.comparison.title}</h2>
@@ -272,6 +287,9 @@ export default function EnhancedToolSEOContent({
             </li>
           ))}
         </ul>
+        <p className="text-sm text-muted-foreground mt-4">
+          Learn more about our <Link href="/privacy" className="text-primary hover:underline" data-testid="link-privacy-policy">Privacy Policy</Link> and <Link href="/dmca" className="text-primary hover:underline" data-testid="link-dmca-policy">DMCA & Copyright Policy</Link> for full transparency on how we handle your data.
+        </p>
       </section>
 
       {seoData.internalLinks.length > 0 && (
@@ -373,13 +391,23 @@ export default function EnhancedToolSEOContent({
         </ul>
       </section>
 
+      <div data-ad-slot="bottom-banner" data-testid="ad-slot-bottom" />
+
       <section className="bg-card border rounded-lg p-8 text-center">
         <h2 className="text-2xl font-bold mb-4">Ready to {toolName}?</h2>
-        <p className="text-muted-foreground mb-2 max-w-2xl mx-auto">
+        <p className="text-muted-foreground mb-4 max-w-2xl mx-auto">
           Upload your file above and experience the fastest, most reliable {toolName.toLowerCase()} tool online. 
           No registration, no downloads, no limits — just fast, secure results.
         </p>
-        <p className="text-sm text-muted-foreground">
+        <Button
+          size="lg"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          data-testid="button-cta-bottom"
+        >
+          <FileText className="w-4 h-4 mr-2" />
+          {toolName} - Start Free
+        </Button>
+        <p className="text-sm text-muted-foreground mt-4">
           Trusted by thousands of users worldwide for all their PDF needs.
         </p>
       </section>
