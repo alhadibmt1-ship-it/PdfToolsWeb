@@ -1,0 +1,222 @@
+I want you to refactor and optimize ALL pages across my website pdfhub24.com.
+
+IMPORTANT:
+Do NOT break any tool functionality.
+Do NOT remove upload/conversion logic.
+Only improve structure, SEO, internal linking, and layout.
+
+GOALS:
+1. Improve SEO structure sitewide
+2. Standardize heading hierarchy (H1 → H2 → H3)
+3. Add internal linking system
+4. Add structured data (FAQ + WebApplication schema)
+5. Improve crawlability
+6. Make pages AdSense ready
+7. Improve conversion optimization
+8. Improve page speed (remove unnecessary scripts)
+9. Add security trust signals
+10. Create consistent CTA blocks across all tools
+
+--------------------------------------------------
+
+GLOBAL SEO SETTINGS
+
+Add to every page <head>:
+
+- Unique meta title (keyword optimized)
+- Unique meta description (150–160 characters)
+- Canonical tag
+- Open Graph tags
+- Twitter card tags
+
+Add:
+<meta name="robots" content="index, follow">
+
+--------------------------------------------------
+
+STANDARD TOOL PAGE STRUCTURE
+
+Every tool page must follow this structure:
+
+H1: Primary keyword version
+Short intro paragraph (keyword optimized)
+
+CTA BUTTON
+Primary button: Use [Tool Name] Now
+
+<!-- AdSense Top Banner -->
+
+H2: How to Use [Tool Name]
+Step-by-step instructions (3–5 steps)
+
+H2: Why Use PDF HUB 24 for [Tool Name]?
+Bullet trust points:
+- 100% Free
+- No email required
+- No watermark
+- SSL encrypted
+- Auto-delete files
+- Works on all devices
+
+<!-- AdSense In Content -->
+
+H2: Common Issues & Fixes
+Add troubleshooting section
+
+H2: Complete PDF Workflow
+Add contextual internal links to:
+- /merge
+- /split
+- /compress
+- /pdf-to-word
+- /word-to-pdf
+- /ocr-pdf
+- /pdf-to-excel
+- /pdf-to-jpg
+- /extract-text
+- /compare-pdf
+- /pdf-viewer
+
+H2: Security & Privacy
+Mention:
+- SSL encryption
+- Automatic deletion
+- No human file access
+- GDPR compliant
+Link to /privacy
+
+H2: Frequently Asked Questions
+Add 4–5 FAQs per tool
+
+<!-- AdSense Bottom -->
+
+Final CTA Section:
+Strong conversion paragraph + action button
+
+--------------------------------------------------
+
+STRUCTURED DATA (ADD TO ALL TOOL PAGES)
+
+Add WebApplication schema:
+
+{
+ "@context": "https://schema.org",
+ "@type": "WebApplication",
+ "name": "Tool Name - PDF HUB 24",
+ "url": "https://pdfhub24.com/tool-slug",
+ "applicationCategory": "UtilityApplication",
+ "operatingSystem": "All",
+ "offers": {
+   "@type": "Offer",
+   "price": "0",
+   "priceCurrency": "USD"
+ }
+}
+
+Also add FAQPage schema for each tool page.
+
+--------------------------------------------------
+
+INTERNAL LINKING RULES
+
+1. Each tool page must link to at least 8 other relevant tools.
+2. Use natural anchor text (not exact-match spam).
+3. Always link:
+   - Merge
+   - Compress
+   - Split
+   - OCR
+   - Word to PDF
+4. Link to at least 2 blog posts per page.
+5. No self-referencing links.
+
+--------------------------------------------------
+
+BLOG PAGE STRUCTURE STANDARDIZATION
+
+All blog posts must include:
+
+H1
+Intro paragraph (hook + keyword)
+H2 sections (logical structure)
+H3 subsections where needed
+Bullet lists
+Comparison tables where relevant
+Internal links to tools
+At least 1 CTA mid-article
+FAQ section at bottom
+FAQ Schema markup
+Final CTA block
+
+--------------------------------------------------
+
+HOMEPAGE IMPROVEMENTS
+
+Homepage must include:
+
+H1: Ultimate Free PDF Tools Online
+Intro paragraph (brand authority)
+Tool category sections:
+- Convert From PDF
+- Convert To PDF
+- Edit PDF
+- Optimize PDF
+- Security Tools
+
+Add:
+- Featured tools section
+- Why Choose Us section
+- Trust badges
+- FAQ section
+- Structured data
+
+--------------------------------------------------
+
+FOOTER CLEANUP
+
+Footer must:
+- Remove excessive repetition
+- Keep top 10 tools only
+- Keep 10 blog articles only
+- Add sitemap link
+- Add privacy + terms + contact
+
+--------------------------------------------------
+
+PERFORMANCE OPTIMIZATION
+
+- Remove duplicate scripts
+- Defer non-critical JS
+- Lazy load images
+- Minify inline CSS
+- Remove unused CSS classes
+
+--------------------------------------------------
+
+CONVERSION OPTIMIZATION
+
+Add consistent CTA block to:
+- Top of page
+- Mid content
+- Bottom of page
+
+Button text examples:
+- Convert Now
+- Start Free
+- Upload & Convert
+- Try It Free
+
+--------------------------------------------------
+
+OUTPUT FORMAT
+
+Provide:
+1. Updated reusable layout template for tool pages
+2. Updated blog template
+3. Updated homepage structure
+4. Sample optimized tool page example
+5. Structured data snippets
+6. Footer optimized version
+
+Do NOT change backend logic.
+Only improve frontend structure, SEO, and linking.

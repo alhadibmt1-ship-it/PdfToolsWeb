@@ -1,6 +1,7 @@
 import { useParams, Link } from "wouter";
-import { Calendar, Clock, ArrowLeft, User, Tag } from "lucide-react";
-import { getBlogPost, blogPosts } from "@/data/blogData";
+import { useEffect, useMemo } from "react";
+import { Calendar, Clock, ArrowLeft, User, Tag, Zap, FileText } from "lucide-react";
+import { getBlogPost, blogPosts, type BlogPost } from "@/data/blogData";
 import { useSEO } from "@/hooks/useSEO";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -8,6 +9,112 @@ import { Button } from "@/components/ui/button";
 import NotFound from "./not-found";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+
+const BASE_URL = "https://pdfhub24.com";
+
+function parseFAQsFromContent(content: string): { question: string; answer: string }[] {
+  const faqs: { question: string; answer: string }[] = [];
+  const lines = content.trim().split('\n');
+  let inFaqSection = false;
+  let currentQuestion = '';
+  let currentAnswer: string[] = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const trimmed = lines[i].trim();
+
+    if (trimmed.toLowerCase().includes('frequently asked questions') && trimmed.startsWith('##')) {
+      inFaqSection = true;
+      continue;
+    }
+
+    if (inFaqSection) {
+      if (trimmed.startsWith('## ') && !trimmed.toLowerCase().includes('frequently asked questions')) {
+        if (currentQuestion && currentAnswer.length > 0) {
+          faqs.push({ question: currentQuestion, answer: currentAnswer.join(' ').trim() });
+        }
+        break;
+      }
+
+      if (trimmed.startsWith('### ')) {
+        if (currentQuestion && currentAnswer.length > 0) {
+          faqs.push({ question: currentQuestion, answer: currentAnswer.join(' ').trim() });
+        }
+        currentQuestion = trimmed.slice(4).trim();
+        currentAnswer = [];
+      } else if (trimmed && currentQuestion) {
+        const cleanText = trimmed
+          .replace(/\*\*([^*]+)\*\*/g, '$1')
+          .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+          .replace(/`([^`]+)`/g, '$1');
+        currentAnswer.push(cleanText);
+      }
+    }
+  }
+
+  if (currentQuestion && currentAnswer.length > 0) {
+    faqs.push({ question: currentQuestion, answer: currentAnswer.join(' ').trim() });
+  }
+
+  return faqs;
+}
+
+function buildArticleSchema(post: BlogPost) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.metaDescription,
+    "author": {
+      "@type": "Organization",
+      "name": post.author,
+      "url": BASE_URL
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "PDF HUB 24",
+      "url": BASE_URL,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${BASE_URL}/favicon.png`
+      }
+    },
+    "datePublished": post.publishDate,
+    "dateModified": post.publishDate,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `${BASE_URL}/blog/${post.slug}`
+    },
+    "image": `${BASE_URL}/og-image.png`,
+    "url": `${BASE_URL}/blog/${post.slug}`
+  };
+}
+
+function buildFAQSchema(faqs: { question: string; answer: string }[]) {
+  if (faqs.length === 0) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+}
+
+function AdPlaceholder({ position }: { position: string }) {
+  return (
+    <div
+      className="w-full min-h-[90px] flex items-center justify-center"
+      data-ad-slot={position}
+      data-testid={`ad-placeholder-${position}`}
+      aria-hidden="true"
+    />
+  );
+}
 
 function MarkdownContent({ content }: { content: string }) {
   const lines = content.trim().split('\n');
@@ -187,11 +294,40 @@ export default function BlogPostPage() {
   const params = useParams<{ slug: string }>();
   const post = getBlogPost(params.slug || '');
 
+  const faqs = useMemo(() => post ? parseFAQsFromContent(post.content) : [], [post]);
+
+  const articleSchema = useMemo(() => post ? buildArticleSchema(post) : null, [post]);
+  const faqSchema = useMemo(() => buildFAQSchema(faqs), [faqs]);
+
   useSEO({
     title: post?.metaTitle || "Blog | PDF HUB 24",
     description: post?.metaDescription || "Free PDF tips, tutorials, and guides. Learn how to work with PDF files effectively using our free online tools.",
     canonicalPath: `/blog/${params.slug}`
   });
+
+  useEffect(() => {
+    if (!post) return;
+
+    const schemas: object[] = [];
+    if (articleSchema) schemas.push(articleSchema);
+    if (faqSchema) schemas.push(faqSchema);
+
+    const existingScripts = document.querySelectorAll('script[data-blog-schema]');
+    existingScripts.forEach(s => s.remove());
+
+    schemas.forEach((schema, idx) => {
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.setAttribute('data-blog-schema', `blog-${idx}`);
+      script.textContent = JSON.stringify(schema);
+      document.head.appendChild(script);
+    });
+
+    return () => {
+      const scripts = document.querySelectorAll('script[data-blog-schema]');
+      scripts.forEach(s => s.remove());
+    };
+  }, [post, articleSchema, faqSchema]);
 
   if (!post) {
     return <NotFound />;
@@ -218,6 +354,8 @@ export default function BlogPostPage() {
               </Button>
             </Link>
           </div>
+
+          <AdPlaceholder position="blog-top" />
 
           <article>
             <header className="mb-8">
@@ -250,6 +388,25 @@ export default function BlogPostPage() {
             <div className="border-t pt-8">
               <MarkdownContent content={post.content} />
             </div>
+
+            <AdPlaceholder position="blog-mid" />
+
+            <Card className="my-8 bg-primary/5 border-primary/20">
+              <CardContent className="flex flex-col sm:flex-row items-center gap-4 py-6">
+                <div className="flex-1 text-center sm:text-left">
+                  <h3 className="text-lg font-semibold mb-1">Try Our PDF Tools Free</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Convert, merge, compress, and edit PDFs instantly. No signup required.
+                  </p>
+                </div>
+                <Link href="/#tools">
+                  <Button data-testid="button-mid-cta">
+                    <Zap className="h-4 w-4 mr-2" />
+                    Explore Tools
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
 
             <div className="mt-8 pt-6 border-t">
               <div className="flex flex-wrap gap-2 mb-6">
@@ -298,6 +455,24 @@ export default function BlogPostPage() {
               </div>
             </section>
           )}
+
+          <Card className="mt-12 bg-primary/5 border-primary/20">
+            <CardContent className="flex flex-col items-center gap-4 py-8 text-center">
+              <FileText className="h-10 w-10 text-primary" />
+              <h3 className="text-xl font-semibold">Ready to Work with PDFs?</h3>
+              <p className="text-sm text-muted-foreground max-w-md">
+                Use our free online PDF tools to convert, edit, merge, compress, and more. No installation or signup needed.
+              </p>
+              <Link href="/#tools">
+                <Button size="lg" data-testid="button-bottom-cta">
+                  <Zap className="h-4 w-4 mr-2" />
+                  Get Started Free
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
+
+          <AdPlaceholder position="blog-bottom" />
         </div>
       </main>
       <Footer />

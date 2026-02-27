@@ -65,7 +65,7 @@ import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useSEO } from "@/hooks/useSEO";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import RecentToolsSection from "@/components/RecentToolsSection";
 import SocialProofSection from "@/components/SocialProofSection";
@@ -286,40 +286,6 @@ export default function HomePage() {
     setLocalFile(null);
   };
   
-  useSEO({
-    title: "PDF HUB 24 - 43+ Free PDF Tools | Convert, Edit",
-    description: "100% free PDF tools. Convert PDF to Word, JPG, Excel. Merge, split, compress PDFs instantly. Best free PDF converter - no signup, no watermarks.",
-    keywords: "free pdf tools, pdf converter free, pdf to word free, merge pdf free, compress pdf free, pdf editor free, convert pdf online, pdf to jpg, split pdf",
-    canonicalPath: "/",
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "PDF HUB 24",
-      "url": "https://pdfhub24.com",
-      "logo": "https://pdfhub24.com/og-image.png",
-      "description": "Free online PDF tools - Convert, merge, split, compress PDF files. No registration required.",
-      "sameAs": [
-        "https://www.facebook.com/pdfhub24",
-        "https://www.youtube.com/@pdfhub24"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer support",
-        "availableLanguage": "English"
-      }
-    }
-  });
-
-  const allTools = PDF_TOOLS;
-  const filteredTools = activeCategory === "all" 
-    ? allTools 
-    : allTools.filter(tool => tool.category === activeCategory);
-  
-  const featuredToolsData = featuredTools.map(ft => ({
-    tool: PDF_TOOLS.find(t => t.id === ft.id)!,
-    featured: ft
-  })).filter(ft => ft.tool);
-
   const faqs = [
     {
       question: "Is PDF HUB 24 free to use?",
@@ -342,6 +308,70 @@ export default function HomePage() {
       answer: "No installation required! PDF HUB 24 works entirely in your browser. Simply visit the website, choose your tool, upload your file, and download the result."
     }
   ];
+
+  const faqSchemaData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PDF HUB 24",
+    "url": "https://pdfhub24.com",
+    "logo": "https://pdfhub24.com/og-image.png",
+    "description": "Free online PDF tools - Convert, merge, split, compress PDF files. No registration required.",
+    "sameAs": [
+      "https://www.facebook.com/pdfhub24",
+      "https://www.youtube.com/@pdfhub24"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "availableLanguage": "English"
+    }
+  };
+
+  useSEO({
+    title: "PDF HUB 24 - 43+ Free PDF Tools | Convert, Edit",
+    description: "100% free PDF tools. Convert PDF to Word, JPG, Excel. Merge, split, compress PDFs instantly. Best free PDF converter - no signup, no watermarks.",
+    keywords: "free pdf tools, pdf converter free, pdf to word free, merge pdf free, compress pdf free, pdf editor free, convert pdf online, pdf to jpg, split pdf",
+    canonicalPath: "/",
+    structuredData: organizationSchema
+  });
+
+  useEffect(() => {
+    const faqScript = document.createElement("script");
+    faqScript.setAttribute("type", "application/ld+json");
+    faqScript.setAttribute("data-schema", "faq");
+    faqScript.textContent = JSON.stringify(faqSchemaData);
+    document.head.appendChild(faqScript);
+
+    return () => {
+      const existing = document.querySelector('script[data-schema="faq"]');
+      if (existing) {
+        existing.remove();
+      }
+    };
+  }, []);
+
+  const allTools = PDF_TOOLS;
+  const filteredTools = activeCategory === "all" 
+    ? allTools 
+    : allTools.filter(tool => tool.category === activeCategory);
+  
+  const featuredToolsData = featuredTools.map(ft => ({
+    tool: PDF_TOOLS.find(t => t.id === ft.id)!,
+    featured: ft
+  })).filter(ft => ft.tool);
 
   const categories: CategoryFilter[] = ["all", "from-pdf", "to-pdf", "edit-pdf", "utility"];
 
@@ -491,6 +521,10 @@ export default function HomePage() {
           </div>
         </section>
         
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4" data-testid="ad-placeholder-hero">
+          <div className="min-h-[90px] flex items-center justify-center text-xs text-muted-foreground/50" aria-hidden="true" />
+        </div>
+
         {/* Stats Bar - Like PDFForge */}
         <section className="py-8 sm:py-10 bg-gradient-to-r from-primary/5 via-primary/10 to-cyan-500/5 border-y">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -908,6 +942,10 @@ export default function HomePage() {
           </div>
         </section>
 
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4" data-testid="ad-placeholder-mid">
+          <div className="min-h-[90px] flex items-center justify-center text-xs text-muted-foreground/50" aria-hidden="true" />
+        </div>
+
         {/* Blog Articles Section */}
         <section className="py-16 sm:py-20">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -1034,6 +1072,9 @@ export default function HomePage() {
             </p>
           </div>
         </section>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4" data-testid="ad-placeholder-bottom">
+          <div className="min-h-[90px] flex items-center justify-center text-xs text-muted-foreground/50" aria-hidden="true" />
+        </div>
       </main>
 
       <Footer />
