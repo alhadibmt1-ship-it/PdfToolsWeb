@@ -266,21 +266,32 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     faqs: [
-      { question: "Does PDF to Word conversion preserve formatting?", answer: "Yes, our converter preserves text formatting, images, tables, and layouts. Complex designs may need minor adjustments." },
-      { question: "Can I convert scanned PDFs to Word?", answer: "Scanned PDFs require OCR first. Use our OCR PDF tool to extract text, then convert to Word format." },
-      { question: "What Word format do I get?", answer: "Files are converted to .docx format, compatible with Microsoft Word 2007 and later, Google Docs, and LibreOffice." },
-      { question: "Is there a page limit for conversion?", answer: "We support PDFs with up to 200 pages. For very large documents, consider splitting them first." },
-      { question: "Why is my converted text not editable?", answer: "If the PDF contains scanned images rather than actual text, OCR processing is needed first." }
+      { question: "Does PDF to Word conversion preserve formatting?", answer: "Yes, our PDF to Word converter preserves text formatting, fonts, images, tables, headers, footers, and page layouts. Complex designs with multi-column layouts or heavy graphics may need minor adjustments in Word after conversion." },
+      { question: "Can I convert scanned PDFs to Word?", answer: "Scanned PDFs contain images instead of selectable text, so they need OCR (Optical Character Recognition) processing first. Use our free OCR PDF tool to extract text from scanned documents, then convert the result to an editable Word file." },
+      { question: "Is this PDF to Word tool free?", answer: "Yes, our PDF to Word converter is 100% free with no hidden fees, no email required, no watermarks on output files, and no daily usage limits. Convert as many PDFs as you need." },
+      { question: "Is my document secure during conversion?", answer: "Absolutely. All files are transferred using SSL encryption, processed in isolated server environments, and automatically deleted after conversion. No human ever accesses your files, and we comply with GDPR privacy regulations." },
+      { question: "What file format do I receive after conversion?", answer: "You receive a .docx file (Microsoft Word format), which is compatible with Microsoft Word 2007 and later, Google Docs, LibreOffice Writer, Apple Pages, and most modern word processors." }
     ],
     relatedWorkflows: [
       { title: "Resume Update Workflow", description: "Edit and update your resume from PDF", tools: ["pdf-to-word", "word-to-pdf", "compress"] },
-      { title: "Document Repurposing", description: "Extract and reuse content from PDFs", tools: ["pdf-to-word", "extract-text", "merge"] }
+      { title: "Document Repurposing", description: "Extract and reuse content from PDFs", tools: ["pdf-to-word", "extract-text", "merge"] },
+      { title: "Scanned Document Editing", description: "OCR scanned PDFs then convert to editable Word", tools: ["ocr-pdf", "pdf-to-word", "word-to-pdf"] },
+      { title: "PDF Review & Compare", description: "Convert, edit, and compare PDF versions", tools: ["pdf-to-word", "word-to-pdf", "compare-pdf"] }
     ],
     internalLinks: [
       { text: "OCR PDF", href: "/ocr-pdf", context: "Extract text from scanned PDFs before converting to Word" },
       { text: "Word to PDF", href: "/word-to-pdf", context: "Convert your edited Word document back to PDF" },
       { text: "Extract Text", href: "/extract-text", context: "Get plain text from PDF for simple editing" },
-      { text: "PDF to Excel", href: "/pdf-to-excel", context: "Extract tables and data to spreadsheet format" }
+      { text: "PDF to Excel", href: "/pdf-to-excel", context: "Extract tables and data to spreadsheet format" },
+      { text: "PDF to JPG", href: "/pdf-to-jpg", context: "Convert PDF pages to JPG images" },
+      { text: "PDF to PNG", href: "/pdf-to-png", context: "Convert PDF pages to PNG images with transparency" },
+      { text: "PDF to PowerPoint", href: "/pdf-to-ppt", context: "Convert PDF slides to editable PowerPoint presentations" },
+      { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs into one document before converting" },
+      { text: "Split PDF", href: "/split", context: "Extract specific pages before converting to Word" },
+      { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size for faster uploading and sharing" },
+      { text: "Compare PDF", href: "/compare-pdf", context: "Find differences between two PDF versions" },
+      { text: "PDF Viewer", href: "/pdf-viewer", context: "Preview your PDF before converting" },
+      { text: "Extract Images", href: "/extract-images", context: "Extract all images from your PDF document" }
     ]
   },
   "split": {

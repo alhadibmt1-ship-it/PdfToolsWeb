@@ -76,14 +76,15 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/pdf-to-word": {
-    title: "Free PDF to Word Converter - PDF to DOCX | PDF HUB 24",
-    description: "Convert PDF to editable Word documents (DOCX) instantly. Free online PDF to Word converter with high accuracy. Preserves formatting and layout.",
-    keywords: "PDF to Word, PDF to DOCX, convert PDF to Word, PDF converter, PDF to Word online free",
+    title: "PDF to Word Free Online (No Email, No Watermark) | PDF HUB 24",
+    description: "Convert PDF to editable Word (DOCX) instantly. Free PDF to Word converter online with no email, no watermark, secure and fast. Works on all devices.",
+    keywords: "pdf to word converter free, convert pdf to word online, pdf to docx free, editable word from pdf, free pdf converter no email, secure pdf to word tool",
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "PDF to Word Converter - PDF HUB 24",
       "url": `${BASE_URL}/pdf-to-word`,
+      "description": "Convert PDF to editable Word documents for free online",
       "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
