@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Shield, Zap, Clock, HelpCircle, AlertTriangle, ArrowRight, Lock, FileText, Lightbulb } from "lucide-react";
+import { CheckCircle2, Shield, Zap, Clock, HelpCircle, AlertTriangle, ArrowRight, Lock, FileText, Lightbulb, BookOpen } from "lucide-react";
 import { Link } from "wouter";
 import { PDF_TOOLS } from "@shared/schema";
 import SocialShare from "./SocialShare";
@@ -292,12 +292,12 @@ export default function EnhancedToolSEOContent({
         </p>
       </section>
 
-      {seoData.internalLinks.length > 0 && (
+      {seoData.internalLinks.filter(l => !l.href.startsWith("/blog")).length > 0 && (
         <section>
           <h2 className="text-2xl font-bold mb-4">Related PDF Tools You Might Need</h2>
           <p className="text-muted-foreground mb-4">Complete your PDF workflow with these complementary tools:</p>
           <div className="grid md:grid-cols-2 gap-4">
-            {seoData.internalLinks.map((link, index) => (
+            {seoData.internalLinks.filter(l => !l.href.startsWith("/blog")).map((link, index) => (
               <Link key={index} href={link.href}>
                 <Card className="hover-elevate cursor-pointer h-full">
                   <CardContent className="p-4 flex items-center gap-4">
@@ -308,6 +308,34 @@ export default function EnhancedToolSEOContent({
                         <ArrowRight className="w-4 h-4" aria-hidden="true" />
                       </h3>
                       <p className="text-sm text-muted-foreground">{link.context}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {seoData.internalLinks.filter(l => l.href.startsWith("/blog")).length > 0 && (
+        <section>
+          <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+            <BookOpen className="w-6 h-6" aria-hidden="true" />
+            Helpful Guides & Tutorials
+          </h2>
+          <p className="text-muted-foreground mb-4">Learn more with our in-depth articles and step-by-step guides:</p>
+          <div className="grid md:grid-cols-2 gap-4">
+            {seoData.internalLinks.filter(l => l.href.startsWith("/blog")).map((link, index) => (
+              <Link key={index} href={link.href}>
+                <Card className="hover-elevate cursor-pointer h-full">
+                  <CardContent className="p-4 flex items-center gap-4">
+                    <BookOpen className="w-6 h-6 text-primary flex-shrink-0" aria-hidden="true" />
+                    <div className="flex-1">
+                      <h3 className="font-semibold flex items-center gap-1 text-sm">
+                        {link.text}
+                        <ArrowRight className="w-3 h-3" aria-hidden="true" />
+                      </h3>
+                      <p className="text-xs text-muted-foreground">{link.context}</p>
                     </div>
                   </CardContent>
                 </Card>

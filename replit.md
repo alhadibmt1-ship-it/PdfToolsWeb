@@ -24,10 +24,20 @@ The design philosophy is "Clean Modern Utility Design" with a vibrant color sche
 Key technical features include:
 - **Performance**: WebP image optimization, code splitting, asynchronous font loading, and deferred analytics.
 - **Security**: File upload validation (magic byte, MIME type), comprehensive error handling, and Zod schema validation.
-- **SEO**: Dynamic meta tags, `sitemap.xml`, and `robots.txt` integration.
+- **SEO**: Dynamic meta tags, `sitemap.xml`, and `robots.txt` integration. Server-side SEO injection via `injectSEO()` in `server/app.ts`.
 - **Conversion Quality**: Advanced PDF to Word conversion with intelligent formatting, high-resolution PDF to JPG output.
 - **User Settings**: Dark mode toggle and configurable compression levels.
 - **Interactive Editing**: Canvas-based editing for tools like Edit PDF, Annotate PDF, and Redact PDF, featuring real-time preview and undo functionality.
+
+## SEO Architecture
+- **Server-side meta tags**: `server/seo-config.ts` provides unique title, description, keywords, canonical, OG, Twitter, and robots tags for every page. `injectSEO()` strips existing tags and reinjects correct ones.
+- **Structured data**: WebApplication + FAQPage + BreadcrumbList schemas on all 43 tool pages (client-side via `EnhancedToolSEOContent`). WebPage schema server-side. Organization + FAQ schemas on homepage. Article + FAQ schemas on blog pages.
+- **Internal linking**: Each tool page links to 8+ related tools and 2+ blog articles via `toolSEOData.ts`. Blog articles contain 3-15+ internal links to tools.
+- **Sitemap**: `client/public/sitemap.xml` covers all tools, blogs, categories, and information pages.
+- **Heading hierarchy**: All pages follow H1→H2→H3 structure with long-tail keyword H1s from `toolSEOData.ts`.
+- **AdSense placeholders**: `data-ad-slot` divs on tool pages (top, mid, bottom), blog pages (top, mid, bottom), and homepage (hero, mid, bottom).
+- **CTA blocks**: "Start Now - It's Free" buttons on tool pages after tutorial steps and at bottom. Blog pages have mid-article and bottom CTAs.
+- **Security trust signals**: SSL, auto-delete, GDPR, privacy/DMCA links on every tool page.
 
 ## External Dependencies
 
@@ -40,3 +50,8 @@ Key technical features include:
 - **Frontend UI**: `@radix-ui/`, `@tanstack/react-query`, `wouter`.
 - **Backend**: `express`, `multer`, `zod`, `cloudconvert`.
 - **Database (Future)**: `drizzle-orm`, `@neondatabase/serverless`, `connect-pg-simple`.
+
+## Content
+- **25 blog articles** covering tutorials, guides, and tool roundups with internal linking
+- **43 tool pages** each with EnhancedToolSEOContent (About, Tutorial, Use Cases, Why Choose, Troubleshooting, Security, FAQs, Internal Links, Blog Links, Workflows)
+- **Footer**: Organized by category, limited to top 10 edit-pdf tools and 10 blog articles, includes sitemap link

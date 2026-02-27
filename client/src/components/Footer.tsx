@@ -228,7 +228,7 @@ export default function Footer() {
                 className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isEditPdfVisible ? 'max-h-[600px] mt-3 md:mt-4' : 'max-h-0'}`}
               >
                 <div className="flex flex-col gap-2">
-                  {editPdfTools.map((tool) => (
+                  {editPdfTools.slice(0, 10).map((tool) => (
                     <FooterLink 
                       key={tool.id} 
                       href={tool.path} 
@@ -238,6 +238,17 @@ export default function Footer() {
                       {tool.title}
                     </FooterLink>
                   ))}
+                  {editPdfTools.length > 10 && (
+                    <a 
+                      href="/all-tools" 
+                      data-testid="link-footer-edit-pdf-view-all"
+                      tabIndex={isEditPdfVisible ? 0 : -1}
+                      aria-hidden={!isEditPdfVisible}
+                      className="text-sm text-primary hover:text-primary/80 cursor-pointer transition-colors block py-0.5 font-medium"
+                    >
+                      View All Tools
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -296,6 +307,9 @@ export default function Footer() {
                   <FooterLink href="/free-pdf-editor" testId="link-footer-editor" isVisible={isCompanyVisible}>
                     Free PDF Editor
                   </FooterLink>
+                  <FooterLink href="/sitemap.xml" testId="link-footer-sitemap" isVisible={isCompanyVisible}>
+                    Sitemap
+                  </FooterLink>
                 </div>
               </div>
             </div>
@@ -345,7 +359,7 @@ export default function Footer() {
         <div className="mb-8 pt-6 border-t border-border/50">
           <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground mb-4">Popular Articles</h3>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            {blogPosts.map((post) => (
+            {blogPosts.slice(0, 10).map((post) => (
               <FooterLink 
                 key={post.slug} 
                 href={`/blog/${post.slug}`} 
@@ -355,6 +369,13 @@ export default function Footer() {
                 {post.title}
               </FooterLink>
             ))}
+            <a 
+              href="/blog" 
+              data-testid="link-footer-blog-view-all"
+              className="text-sm text-primary hover:text-primary/80 cursor-pointer transition-colors block py-0.5 font-medium"
+            >
+              View All Articles
+            </a>
           </div>
         </div>
         
