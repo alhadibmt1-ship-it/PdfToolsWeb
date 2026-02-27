@@ -86,19 +86,18 @@ For most email purposes, medium compression strikes the perfect balance between 
 2. **Convert to grayscale** - If color isn't essential, our [Grayscale PDF](/grayscale-pdf) tool can significantly reduce file size
 3. **Flatten layers** - The [Flatten PDF](/flatten-pdf) tool merges layers and reduces complexity
 4. **Resize oversized pages** - Use the [Resize PDF](/resize-pdf) tool to standardize page dimensions
-5. **Extract and re-insert images** - Use [Extract Images](/extract-images) to check if embedded images are unnecessarily high-resolution
+5. **Check image resolution** - Embedded images are often unnecessarily high-resolution and contribute the most to large file sizes
 
 ## Pre-Compression Optimization Workflow
 
 For the best results, follow this workflow before compressing:
 
-1. Open your PDF in our [PDF Viewer](/pdf-viewer) to review its contents
-2. Remove any blank or unnecessary pages with [Delete Pages](/delete-pages)
-3. If the document has pages in the wrong orientation, fix them with [Rotate PDF](/rotate)
-4. If you don't need color, convert to grayscale using [Grayscale PDF](/grayscale-pdf)
-5. Finally, compress the document with [Compress PDF](/compress)
+1. Review your PDF contents and identify unnecessary pages
+2. Remove any blank or unnecessary pages
+3. If you don't need color, convert to grayscale
+4. Finally, compress the document
 
-This multi-step approach can reduce file sizes by up to 95% in some cases, far more than compression alone.
+This multi-step approach can reduce file sizes by up to 95% in some cases, far more than compression alone. For more details on reducing file sizes, check out our guide on [how to compress PDFs for email](/blog/how-to-compress-pdf-for-email).
 
 ## What If Your PDF Is Still Too Large?
 
@@ -128,13 +127,13 @@ Keep in mind that these limits apply to the encoded attachment size, which is ty
 If your compressed PDF appears blurry, try using a lower compression level. Switch from high to medium compression to retain better image clarity while still reducing file size.
 
 ### File size barely changed after compression
-This usually happens with PDFs that are already optimized or contain mostly text. Try removing embedded fonts or converting images to grayscale using our [Grayscale PDF](/grayscale-pdf) tool before compressing.
+This usually happens with PDFs that are already optimized or contain mostly text. Try removing embedded fonts or converting images to grayscale before compressing.
 
 ### Compression takes too long
 Very large PDFs with hundreds of pages may take longer to process. Consider splitting the document into sections first using [Split PDF](/split), compressing each section, and then merging them back together with [Merge PDF](/merge).
 
 ### Text is no longer selectable after compression
-This can happen with certain types of compression. Make sure you're using our tool which preserves text layers. If you have a scanned document, run [OCR PDF](/ocr-pdf) after compression to restore text selectability.
+This can happen with certain types of compression. Make sure you're using our tool which preserves text layers. If you have a scanned document, run [OCR PDF](/ocr-pdf) after compression to restore text selectability. Learn more in our [OCR guide](/blog/ocr-scanned-pdf-to-text).
 
 ## Frequently Asked Questions
 
@@ -145,16 +144,18 @@ Typically, you can reduce PDF size by 50-90% depending on the content. Image-hea
 Our compression algorithm is optimized to maintain readability. Text remains crisp, and images stay clear enough for most purposes. For critical documents, use low or medium compression.
 
 ### Is the compression tool free?
-Yes! Our [Compress PDF](/compress) tool is completely free with no registration required. There are no file size limits or daily usage caps.
+Yes! Our Compress PDF tool is completely free with no registration required. There are no file size limits or daily usage caps.
 
 ### Can I compress multiple PDFs at once?
-You can process PDFs one at a time. For batch workflows, compress each file individually or merge them first using [Merge PDF](/merge) and then compress the combined document.
+You can process PDFs one at a time. For batch workflows, compress each file individually or merge them first and then compress the combined document.
 
 ### Does compression remove any content from my PDF?
 No. Compression optimizes how data is stored within the PDF but does not remove any visible content. All text, images, and formatting remain intact.
 
 ### Can I compress a password-protected PDF?
-You'll need to remove the password first using our [Unlock PDF](/unlock-pdf) tool, then compress the document, and optionally re-protect it using [Protect PDF](/protect-pdf).
+You'll need to remove the password first using our [Unlock PDF](/unlock-pdf) tool, then compress the document. For more on PDF security, see our guide on [password protecting PDFs](/blog/protect-pdf-with-password).
+
+If you're working with large documents that need to be split before compressing, check out our [guide to splitting PDFs](/blog/how-to-split-pdf-pages). And if you need to convert your compressed PDF to another format, our [PDF to Word guide](/blog/convert-pdf-to-word-without-losing-formatting) covers best practices for maintaining quality.
 `,
     relatedTools: [
       { name: "Compress PDF", path: "/compress", description: "Reduce PDF file size instantly" },
@@ -202,7 +203,7 @@ Preparation is key. A well-structured PDF will always produce a better Word docu
 
 ### Step 2: Upload to PDF to Word Converter
 
-Go to our [PDF to Word](/pdf-to-word) tool and upload your document. The conversion process begins automatically. The tool analyzes your document's structure, identifies text blocks, tables, images, and formatting, then reconstructs them in Word format.
+Go to our PDF to Word tool and upload your document. The conversion process begins automatically. The tool analyzes your document's structure, identifies text blocks, tables, images, and formatting, then reconstructs them in Word format.
 
 ### Step 3: Download and Review
 
@@ -219,11 +220,11 @@ Not all PDFs are created equal. The type of PDF you have significantly affects c
 
 | PDF Type | Description | Conversion Quality | Recommended Approach |
 |----------|-------------|-------------------|---------------------|
-| Native PDF | Created digitally from Word, InDesign, etc. | Excellent | Direct conversion with [PDF to Word](/pdf-to-word) |
-| Scanned PDF | Created from a physical scanner | Poor without OCR | Use [OCR PDF](/ocr-pdf) first, then convert |
-| Image-based PDF | Created from photos or screenshots | Poor without OCR | Use [OCR PDF](/ocr-pdf) first, then convert |
+| Native PDF | Created digitally from Word, InDesign, etc. | Excellent | Direct conversion with PDF to Word |
+| Scanned PDF | Created from a physical scanner | Poor without OCR | Use OCR first, then convert |
+| Image-based PDF | Created from photos or screenshots | Poor without OCR | Use OCR first, then convert |
 | Form PDF | Contains interactive form fields | Good | [Flatten PDF](/flatten-pdf) first for static forms |
-| Protected PDF | Password-locked document | Cannot convert | [Unlock PDF](/unlock-pdf) first |
+| Protected PDF | Password-locked document | Cannot convert | Unlock the PDF first |
 
 ## Tips for Better Conversion Results
 
@@ -241,7 +242,7 @@ Images usually convert well, but positioning may shift. After conversion:
 1. Right-click images and select "Wrap Text"
 2. Choose "In Line with Text" for simple layouts
 3. Use "Square" or "Tight" for complex layouts
-4. If you need the images separately, use [Extract Images](/extract-images) to save them in their original quality
+4. If you need the images separately, extract them from the PDF to save them in their original quality
 
 ### For Multi-Column Documents
 
@@ -254,7 +255,7 @@ Multi-column layouts like newsletters can be challenging:
 ### For Documents with Special Formatting
 
 Documents with headers, footers, footnotes, or watermarks require extra care:
-1. Remove watermarks before conversion using [Edit PDF](/edit-pdf) if they interfere with text
+1. Remove watermarks before conversion if they interfere with text
 2. Check that headers and footers transferred correctly
 3. Verify footnote numbering matches the original
 4. Confirm page breaks are in the right places
@@ -265,11 +266,9 @@ Choosing the right conversion format saves time and produces better results. Her
 
 | Scenario | Best Tool | Why |
 |----------|-----------|-----|
-| Edit text content | [PDF to Word](/pdf-to-word) | Preserves formatting and allows full editing |
+| Edit text content | PDF to Word | Preserves formatting and allows full editing |
 | Extract data from tables | [PDF to Excel](/pdf-to-excel) | Maintains cell structure and enables calculations |
-| Edit presentations | [PDF to PowerPoint](/pdf-to-ppt) | Recreates slide layouts for editing |
 | Just need the text | [Extract Text](/extract-text) | Fastest option for plain text extraction |
-| Need images only | [Extract Images](/extract-images) | Saves embedded images in original format |
 | Archival purposes | [Compress PDF](/compress) | Keep as PDF but reduce file size |
 
 ## Post-Conversion Optimization
@@ -278,7 +277,7 @@ After converting your PDF to Word, follow these steps to polish the document:
 
 1. **Check page breaks** - Ensure they fall in logical places and match the original document
 2. **Verify fonts** - If the original PDF used custom fonts, Word may substitute similar ones. Install the original fonts if available
-3. **Review spacing** - Line spacing and paragraph spacing may need adjustment. Compare with the original PDF in our [PDF Viewer](/pdf-viewer)
+3. **Review spacing** - Line spacing and paragraph spacing may need adjustment. Compare with the original PDF side by side
 4. **Fix table formatting** - Adjust column widths and cell padding as needed
 5. **Check bullet points** - Verify that list formatting is consistent throughout
 6. **Save as PDF when done** - Use [Word to PDF](/word-to-pdf) to create a final polished PDF from your edited document
@@ -286,36 +285,36 @@ After converting your PDF to Word, follow these steps to polish the document:
 ## Common Conversion Problems and Solutions
 
 ### Problem: Text appears as an image
-This means your PDF is scanned or image-based. Run it through [OCR PDF](/ocr-pdf) first to create a text layer, then convert to Word.
+This means your PDF is scanned or image-based. Run it through OCR first to create a text layer, then convert to Word. See our [OCR guide](/blog/ocr-scanned-pdf-to-text) for details.
 
 ### Problem: Tables are split across pages
-Try splitting the PDF into individual pages using [Split PDF](/split), converting each page separately, and then combining the tables in Word.
+Try splitting the PDF into individual pages, converting each page separately, and then combining the tables in Word. Our [PDF to Excel guide](/blog/pdf-to-excel-convert-tables) covers table extraction in detail.
 
 ### Problem: Fonts look different
 Word substitutes fonts it doesn't have. If fidelity is critical, install the original fonts on your computer before opening the converted document.
 
 ### Problem: Headers and footers are missing
-Some complex headers and footers may not transfer perfectly. Check the original in [PDF Viewer](/pdf-viewer) and recreate them manually in Word.
+Some complex headers and footers may not transfer perfectly. Check the original and recreate them manually in Word.
 
 ### Problem: Document is too large to convert
-If your PDF is very large, [Compress PDF](/compress) it first or use [Split PDF](/split) to break it into smaller sections for conversion.
+If your PDF is very large, compress it first to reduce the file size before conversion. See our [compression guide](/blog/how-to-compress-pdf-for-email) for tips.
 
 ## Frequently Asked Questions
 
 ### Can I convert password-protected PDFs?
-Yes, but you'll need to remove the password first using our [Unlock PDF](/unlock-pdf) tool. You must know the password to unlock the document.
+Yes, but you'll need to remove the password first. Learn more in our [unlock PDF guide](/blog/unlock-pdf-remove-password).
 
 ### What about scanned PDFs?
-Scanned PDFs are images, not text. Use our [OCR PDF](/ocr-pdf) tool to convert them to searchable, editable text first, then proceed with the PDF to Word conversion.
+Scanned PDFs are images, not text. Use OCR to convert them to searchable, editable text first, then proceed with the PDF to Word conversion.
 
 ### Is the conversion free?
-Absolutely! Our [PDF to Word](/pdf-to-word) converter is free with no file size limits and no registration required.
+Absolutely! Our PDF to Word converter is free with no file size limits and no registration required.
 
 ### How long does conversion take?
 Most documents convert in just a few seconds. Very large PDFs with many pages or complex formatting may take slightly longer.
 
 ### Can I convert multiple PDFs to Word at once?
-Process each PDF individually for the best results. If you need to combine multiple PDFs first, use [Merge PDF](/merge) before converting.
+Process each PDF individually for the best results. If you need to combine multiple PDFs first, use [Merge PDF](/merge) before converting. Check our [merging guide](/blog/merge-pdf-files-guide) for step-by-step instructions.
 
 ### Will my hyperlinks be preserved?
 Yes, most hyperlinks in the original PDF will be preserved in the converted Word document. Check them after conversion to ensure they work correctly.
@@ -456,11 +455,11 @@ For large projects with many files:
 
 ### Challenge: Files Are Password Protected
 
-**Solution:** Use our [Unlock PDF](/unlock-pdf) tool to remove password protection before merging. You'll need to know the password.
+**Solution:** Remove password protection before merging. You'll need to know the password. See our [unlock PDF guide](/blog/unlock-pdf-remove-password) for instructions.
 
 ### Challenge: Merged File Is Too Large
 
-**Solution:** After merging, use [Compress PDF](/compress) to reduce file size. Choose "Medium" compression for email attachments or "High" for maximum reduction.
+**Solution:** After merging, compress to reduce file size. Choose "Medium" compression for email attachments or "High" for maximum reduction. Our [compression guide](/blog/how-to-compress-pdf-for-email) has detailed tips.
 
 ### Challenge: Pages Are in Wrong Order
 
@@ -474,7 +473,7 @@ For large projects with many files:
 
 1. **Keep originals** - Always save backup copies of your original files
 2. **Use descriptive names** - Name your merged file clearly (e.g., "2025_Annual_Report_Final.pdf")
-3. **Check the result** - Review your merged PDF using our [PDF Viewer](/pdf-viewer) before sharing
+3. **Check the result** - Review your merged PDF before sharing
 4. **Consider file size** - For email attachments, keep merged files under 25MB
 5. **Add page numbers** - Makes navigation easier for readers
 
@@ -482,7 +481,7 @@ For large projects with many files:
 
 ### Is it really free to merge PDFs?
 
-Yes! Our [Merge PDF](/merge) tool is 100% free. There's no registration, no hidden fees, no watermarks, and no file limits. You can use it as many times as you need.
+Yes! Our Merge PDF tool is 100% free. There's no registration, no hidden fees, no watermarks, and no file limits. You can use it as many times as you need.
 
 ### Will merging affect document quality?
 
@@ -506,39 +505,27 @@ Not all your documents will start as PDFs. Here's how to convert common formats 
 
 | Source Format | Conversion Tool | Tips |
 |--------------|----------------|------|
-| Word (.docx) | [Word to PDF](/word-to-pdf) | Preserves formatting, fonts, and images |
-| Excel (.xlsx) | [Excel to PDF](/excel-to-pdf) | Each sheet becomes a separate page |
-| PowerPoint (.pptx) | [PowerPoint to PDF](/ppt-to-pdf) | Slides convert as individual pages |
-| JPG images | [JPG to PDF](/jpg-to-pdf) | Great for adding photos to documents |
-| PNG images | [PNG to PDF](/png-to-pdf) | Supports transparency |
+| Word (.docx) | Word to PDF | Preserves formatting, fonts, and images |
+| JPG/PNG images | JPG to PDF | Great for adding photos to documents |
 
-Convert all your source files to PDF first, then merge them into a single cohesive document. This workflow ensures consistency across different document types.
+Convert all your source files to PDF first, then merge them into a single cohesive document. This workflow ensures consistency across different document types. For image conversion tips, check our [images to PDF guide](/blog/convert-images-to-pdf).
 
 ## Troubleshooting Merge Issues
 
 ### Merged PDF has blank pages
-This usually occurs when source documents have trailing blank pages. Use [Delete Pages](/delete-pages) to remove blank pages from individual files before merging, or from the merged result afterward.
+This usually occurs when source documents have trailing blank pages. Remove blank pages from individual files before merging, or from the merged result afterward.
 
 ### Page sizes are inconsistent
-When merging PDFs from different sources, page sizes may vary. Use [Resize PDF](/resize-pdf) after merging to standardize all pages to a consistent size like A4 or Letter.
+When merging PDFs from different sources, page sizes may vary. Standardize all pages to a consistent size like A4 or Letter after merging.
 
 ### Bookmarks and links are broken
-Hyperlinks within individual PDFs are preserved during merging. However, cross-document links may need to be updated. Review your merged document in [PDF Viewer](/pdf-viewer) to check all links.
+Hyperlinks within individual PDFs are preserved during merging. However, cross-document links may need to be updated. Review your merged document to check all links.
 
 ## Conclusion
 
 Merging PDF files doesn't have to be complicated or expensive. With our free [Merge PDF](/merge) tool, you can combine documents in seconds, right from your browser. Whether you're a business professional assembling reports, a student compiling research, or anyone who needs to combine PDF files, our tool makes the process simple and efficient.
 
-Ready to merge your PDFs? [Get started now](/merge) - it's free and takes just seconds.
-
----
-
-**Related Tools You Might Find Useful:**
-
-- [Split PDF](/split) - Extract pages from PDFs
-- [Compress PDF](/compress) - Reduce file size
-- [Add Page Numbers](/add-page-numbers) - Number your pages professionally
-- [Reorder Pages](/reorder-pages) - Rearrange page order
+If you're a student, check out our [essential PDF tools for students](/blog/pdf-tools-for-students) guide for more academic workflows. Ready to merge your PDFs? Get started now - it's free and takes just seconds.
 `,
     relatedTools: [
       { name: "Merge PDF", path: "/merge", description: "Combine multiple PDFs into one" },
@@ -757,10 +744,12 @@ We don't store passwords. If you forget it, the document cannot be recovered. Al
 Yes. First [Unlock PDF](/unlock-pdf) with the current password, then [Protect PDF](/protect-pdf) again with a new password.
 
 ### Is password protection enough for legal compliance?
-Password protection with AES-256 encryption meets most regulatory requirements. However, consult your compliance officer for industry-specific guidance. Combine encryption with [redaction](/redact-pdf) for maximum compliance.
+Password protection with AES-256 encryption meets most regulatory requirements. However, consult your compliance officer for industry-specific guidance. Combine encryption with [redaction](/redact-pdf) for maximum compliance. For more on redaction, see our [redacting sensitive information guide](/blog/redact-sensitive-pdf-information).
 
 ### Can I protect multiple PDFs with the same password?
 Yes, but it's more secure to use unique passwords for each document. If one password is compromised, only one document is affected.
+
+For related workflows, check out our guides on [merging PDFs](/blog/merge-pdf-files-guide) before protecting, [compressing PDFs for email](/blog/how-to-compress-pdf-for-email), and [flattening PDFs](/blog/how-to-flatten-pdf) to prevent editing.
 `,
     relatedTools: [
       { name: "Protect PDF", path: "/protect-pdf", description: "Add password encryption" },
@@ -848,7 +837,6 @@ Research is the backbone of academic work. These tools streamline the research p
 |------|------|----------|
 | Extract quotes | [Extract Text](/extract-text) | Copy text for citations without retyping |
 | Read scanned books | [OCR PDF](/ocr-pdf) | Convert scanned pages to searchable text |
-| Extract figures | [Extract Images](/extract-images) | Get charts and graphs for presentations |
 | Compare versions | [Compare PDF](/compare-pdf) | Check differences between paper drafts |
 
 ### For Group Projects
@@ -857,10 +845,8 @@ Group projects require seamless collaboration. Use these tools to work efficient
 
 | Task | Tool | Use Case |
 |------|------|----------|
-| Combine contributions | [Merge PDF](/merge) | Unite team members' work into one file |
 | Organize pages | [Reorder Pages](/reorder-pages) | Arrange sections in the correct logical order |
 | Remove errors | [Delete Pages](/delete-pages) | Remove duplicate or wrong pages before submission |
-| Add branding | [Add Watermark](/add-watermark) | Add group name or project title as watermark |
 
 ### For Presentations
 
@@ -869,8 +855,6 @@ Whether presenting in class or submitting slides, these tools have you covered:
 | Task | Tool | Use Case |
 |------|------|----------|
 | Convert slides | [PDF to PowerPoint](/pdf-to-ppt) | Edit downloaded presentations from professors |
-| Create handouts | [PowerPoint to PDF](/ppt-to-pdf) | Share presentation notes as handouts |
-| View presentations | [PDF Viewer](/pdf-viewer) | Present without needing PowerPoint installed |
 | Convert images to slides | [JPG to PDF](/jpg-to-pdf) | Turn photos and diagrams into presentable PDFs |
 
 ## Study Workflow Tips
@@ -880,43 +864,43 @@ Whether presenting in class or submitting slides, these tools have you covered:
 An effective study packet combines all relevant materials for a topic in one organized document:
 
 1. Download lecture slides and readings as PDFs from your course portal
-2. Use [Split PDF](/split) to extract key sections from textbooks and articles
-3. [Merge PDF](/merge) related materials together by topic or chapter
-4. [Add Page Numbers](/add-page-numbers) for easy reference during study sessions
-5. [Compress PDF](/compress) for easy storage and sharing with study partners
+2. Use Split PDF to extract key sections from textbooks and articles
+3. Merge related materials together by topic or chapter
+4. Add page numbers for easy reference during study sessions
+5. Compress the final packet for easy storage and sharing with study partners
 
-This workflow is especially valuable during exam preparation when you need all relevant materials at your fingertips.
+This workflow is especially valuable during exam preparation when you need all relevant materials at your fingertips. For more details on merging, check our [complete merging guide](/blog/merge-pdf-files-guide).
 
 ### Annotating Research Articles
 
 Making notes on research articles is crucial for literature reviews and paper writing:
 
-1. Convert PDF to Word with [PDF to Word](/pdf-to-word) for full editing capability
+1. Convert PDF to Word for full editing capability
 2. Add your notes, highlights, and comments directly in Word
 3. Use color-coded highlights for different themes or arguments
-4. Convert back to PDF with [Word to PDF](/word-to-pdf) for archiving
+4. Convert back to PDF for archiving
 5. Keep originals organized by topic or course
 
-Alternatively, for scanned articles that don't contain selectable text, use [OCR PDF](/ocr-pdf) first to make the text searchable and copyable.
+Alternatively, for scanned articles that don't contain selectable text, use OCR first to make the text searchable and copyable. See our [OCR guide](/blog/ocr-scanned-pdf-to-text) for step-by-step instructions.
 
 ### Preparing Submissions
 
 A polished submission reflects well on your work. Follow this checklist:
 
 1. Write your paper in Word or Google Docs
-2. Convert to PDF using [Word to PDF](/word-to-pdf) for consistent formatting
-3. [Merge PDF](/merge) with appendices, references, or supplementary materials if needed
-4. [Compress PDF](/compress) if the file exceeds your portal's upload limit
-5. [Add Page Numbers](/add-page-numbers) if required by your style guide
-6. Double-check in [PDF Viewer](/pdf-viewer) before submitting to verify everything looks correct
+2. Convert to PDF for consistent formatting
+3. Merge with appendices, references, or supplementary materials if needed
+4. Compress if the file exceeds your portal's upload limit. Our [compression guide](/blog/how-to-compress-pdf-for-email) explains how
+5. Add page numbers if required by your style guide
+6. Double-check your PDF before submitting to verify everything looks correct
 
 ### Managing Scanned Notes and Handouts
 
 Many professors still distribute physical handouts that you need in digital form:
 
 1. Scan the handout using your phone's camera
-2. Convert the scanned image to PDF using [JPG to PDF](/jpg-to-pdf)
-3. Run [OCR PDF](/ocr-pdf) to make the text searchable
+2. Convert the scanned image to PDF using a JPG to PDF converter
+3. Run OCR to make the text searchable
 4. Now you can search, copy, and reference the text from the handout
 
 ## LMS Upload Size Limits: Quick Reference
@@ -925,12 +909,12 @@ Different learning management systems have different file size limits. Here's wh
 
 | Platform | Typical Upload Limit | Solution |
 |----------|---------------------|----------|
-| Canvas | 500MB per file | Usually fine, [Compress PDF](/compress) for large files |
-| Blackboard | 250MB per file | [Compress PDF](/compress) for image-heavy submissions |
-| Moodle | Varies (often 50MB) | Always [Compress PDF](/compress) before uploading |
-| Google Classroom | 10MB assignment limit | [Compress PDF](/compress) is essential |
-| Turnitin | 100MB | [Compress PDF](/compress) for scanned documents |
-| Email submission | 25MB (Gmail) | [Compress PDF](/compress) or [Split PDF](/split) into parts |
+| Canvas | 500MB per file | Usually fine, compress for large files |
+| Blackboard | 250MB per file | Compress image-heavy submissions |
+| Moodle | Varies (often 50MB) | Always compress before uploading |
+| Google Classroom | 10MB assignment limit | Compression is essential |
+| Turnitin | 100MB | Compress scanned documents |
+| Email submission | 25MB (Gmail) | Compress or split into parts |
 
 ## Free vs. Paid PDF Tools
 
@@ -948,16 +932,16 @@ This means you can focus on your studies without worrying about subscription cos
 ### Citation Style Compliance
 
 When preparing documents for submission, make sure your PDFs comply with your required citation style:
-- **APA**: Check margins, running headers, and page numbers with [PDF Viewer](/pdf-viewer)
+- **APA**: Check margins, running headers, and page numbers
 - **MLA**: Verify double-spacing and header formatting in the converted document
-- **Chicago**: Ensure footnotes transferred correctly when converting with [PDF to Word](/pdf-to-word)
+- **Chicago**: Ensure footnotes transferred correctly when converting
 
 ### Accessibility Considerations
 
 Making your PDFs accessible is increasingly important in academic settings:
-- Use [OCR PDF](/ocr-pdf) on scanned documents so screen readers can interpret the text
+- Use OCR on scanned documents so screen readers can interpret the text
 - Ensure text is selectable rather than image-based
-- Use [Extract Text](/extract-text) to verify text layer integrity
+- Verify text layer integrity before submission
 
 ## Frequently Asked Questions
 
@@ -968,13 +952,15 @@ Yes! All our tools work on any device with a web browser - perfect for last-minu
 Your files are processed securely and automatically deleted after processing. We never store, access, or share your documents. Your assignment drafts and research materials remain completely private.
 
 ### What if my PDF is a scanned document?
-Use our [OCR PDF](/ocr-pdf) tool to convert scanned pages into searchable, editable text. This is essential for working with scanned textbook pages or handwritten notes that have been photographed.
+Use our OCR tool to convert scanned pages into searchable, editable text. This is essential for working with scanned textbook pages or handwritten notes that have been photographed.
 
 ### Can I use these tools for my thesis or dissertation?
-Absolutely! Tools like [Merge PDF](/merge) are perfect for combining thesis chapters, and [Add Page Numbers](/add-page-numbers) ensures proper pagination throughout your document. Use [Compress PDF](/compress) when the final thesis file is too large for your institution's submission portal.
+Absolutely! Merge PDF is perfect for combining thesis chapters, and Add Page Numbers ensures proper pagination throughout your document. Compress your PDF when the final thesis file is too large for your institution's submission portal.
 
 ### How do I handle PDFs in different languages?
-Our tools work with PDFs in any language. For scanned documents in languages other than English, [OCR PDF](/ocr-pdf) supports multiple languages for text recognition.
+Our tools work with PDFs in any language. For scanned documents in languages other than English, OCR supports multiple languages for text recognition.
+
+For more tips on working with PDFs, check out our guides on [converting PDF to Word](/blog/convert-pdf-to-word-without-losing-formatting) and [splitting PDFs](/blog/how-to-split-pdf-pages).
 `,
     relatedTools: [
       { name: "Merge PDF", path: "/merge", description: "Combine documents for submission" },
@@ -1097,7 +1083,7 @@ For the best results, prepare your PDF before splitting:
 Enhance your split files after extraction:
 
 1. **Rename files clearly** so you can identify each section later
-2. **Add page numbers** with [Add Page Numbers](/add-page-numbers) since splitting resets pagination
+2. **Add page numbers** since splitting resets pagination
 3. **Compress large sections** using [Compress PDF](/compress) if the extracted file is still too big for email
 4. **Merge related sections** back together with [Merge PDF](/merge) if you need to recombine specific pages from different sources
 
@@ -1105,7 +1091,7 @@ Enhance your split files after extraction:
 
 Large PDFs can be slow on e-readers and tablets. Split long documents into smaller chapters:
 
-1. Split the PDF into chapter-sized files using [Split PDF](/split)
+1. Split the PDF into chapter-sized files
 2. [Crop unnecessary margins](/crop-pdf) for better readability on smaller screens
 3. Each chapter loads faster and is easier to navigate
 
@@ -1113,12 +1099,12 @@ Large PDFs can be slow on e-readers and tablets. Split long documents into small
 
 | Action | What It Does | Result | Best Tool |
 |--------|-------------|--------|-----------|
-| Split PDF | Extracts selected pages into a new file | New PDF with chosen pages | [Split PDF](/split) |
+| Split PDF | Extracts selected pages into a new file | New PDF with chosen pages | Split PDF |
 | Delete Pages | Removes pages from the original document | Same PDF minus removed pages | [Delete Pages](/delete-pages) |
 | Reorder Pages | Rearranges page sequence | Same pages in new order | [Reorder Pages](/reorder-pages) |
-| Extract Images | Pulls images out of pages | Image files (JPG, PNG) | [Extract Images](/extract-images) |
+| Extract Images | Pulls images out of pages | Image files (JPG, PNG) | Extract Images |
 
-If you want to keep most pages and remove just a few, [Delete Pages](/delete-pages) is more efficient. If you want just a handful of pages from a large document, splitting is the better choice.
+If you want to keep most pages and remove just a few, Delete Pages is more efficient. If you want just a handful of pages from a large document, splitting is the better choice.
 
 ## Troubleshooting Common Issues
 
@@ -1127,14 +1113,14 @@ If you want to keep most pages and remove just a few, [Delete Pages](/delete-pag
 Even after splitting, some sections may be larger than expected due to embedded images:
 
 1. Use [Compress PDF](/compress) to reduce the file size
-2. Consider converting image-heavy pages to [Grayscale PDF](/grayscale-pdf) for further reduction
+2. Consider converting image-heavy pages to grayscale for further reduction
 3. Check if any pages contain high-resolution images that can be downsampled
 
 ### Pages Appear in Wrong Order
 
 If your extracted pages are not in the expected sequence:
 
-1. Use [Reorder Pages](/reorder-pages) to rearrange them
+1. Rearrange them using the reorder tool
 2. Double-check that you entered the correct page numbers before splitting
 3. Preview page thumbnails before confirming the split
 
@@ -1142,9 +1128,9 @@ If your extracted pages are not in the expected sequence:
 
 Password-protected PDFs cannot be split directly:
 
-1. Use [Unlock PDF](/unlock-pdf) to remove the password first
-2. Then upload the unlocked version to [Split PDF](/split)
-3. After splitting, you can [re-protect](/protect-pdf) individual sections if needed
+1. Use the unlock tool to remove the password first
+2. Then upload the unlocked version to Split PDF
+3. After splitting, you can re-protect individual sections if needed
 
 ## Tips for Efficient PDF Splitting
 
@@ -1157,13 +1143,13 @@ Password-protected PDFs cannot be split directly:
 ## Frequently Asked Questions
 
 ### Can I split a password-protected PDF?
-You will need to unlock it first using our [Unlock PDF](/unlock-pdf) tool. Enter the password to remove protection, then upload the unlocked file to the splitter.
+You will need to unlock it first. Enter the password to remove protection, then upload the unlocked file to the splitter.
 
 ### Will splitting affect document quality?
 No, splitting preserves the original quality of your pages. Text, images, fonts, and formatting remain exactly as they were in the source document.
 
 ### Can I merge split files back together?
-Yes! Use our [Merge PDF](/merge) tool to recombine files. You can merge them in any order and even add pages from other documents.
+Yes! Use our Merge PDF tool to recombine files. You can merge them in any order and even add pages from other documents.
 
 ### How many pages can I split at once?
 There is no strict page limit. Our tool handles documents with hundreds of pages efficiently.
@@ -1172,7 +1158,11 @@ There is no strict page limit. Our tool handles documents with hundreds of pages
 Our tool supports large PDF files. For very large documents, ensure you have a stable internet connection during upload.
 
 ### Can I split PDFs on my phone?
-Absolutely. Our [Split PDF](/split) tool is fully responsive and works on any smartphone or tablet with a modern web browser.
+Absolutely. Our Split PDF tool is fully responsive and works on any smartphone or tablet with a modern web browser.
+
+## Related Reading
+
+Looking for more PDF tips? Check out our guide on [merging PDF files](/blog/merge-pdf-files-guide) if you need to recombine split documents. If your split files are too large for email, learn [how to compress PDFs for email](/blog/how-to-compress-pdf-for-email). After splitting, you may want to [add page numbers to your PDF](/blog/add-page-numbers-to-pdf) for professional formatting. For scanned documents, read our guide on [OCR for scanned PDFs](/blog/ocr-scanned-pdf-to-text) to make text searchable before or after splitting.
 `,
     relatedTools: [
       { name: "Split PDF", path: "/split", description: "Extract specific pages" },
@@ -1284,8 +1274,8 @@ The placement of page numbers depends on the type of document:
 When you [merge multiple PDFs](/merge) into one file, the combined document often lacks consistent page numbering. Here is the recommended workflow:
 
 1. Gather all your PDF files
-2. Use [Merge PDF](/merge) to combine them into a single document
-3. Open [Add Page Numbers](/add-page-numbers) and upload the merged file
+2. Combine them into a single document using the merge tool
+3. Open the Add Page Numbers tool and upload the merged file
 4. Set the starting number and format
 5. Download the paginated result
 
@@ -1293,10 +1283,10 @@ When you [merge multiple PDFs](/merge) into one file, the combined document ofte
 
 If you [split a large PDF](/split) into sections, each section starts with its own page count. You may want to add sequential page numbers:
 
-1. Split the document using [Split PDF](/split)
+1. Split the document into sections
 2. Add page numbers to the first section starting at 1
 3. Add page numbers to the second section starting where the first left off
-4. [Merge the sections back](/merge) if needed
+4. Merge the sections back if needed
 
 ### Professional Report Workflow
 
@@ -1304,7 +1294,7 @@ For polished business reports:
 
 1. Create your report content in Word and [convert to PDF](/word-to-pdf)
 2. [Add a watermark](/add-watermark) with your company name or "CONFIDENTIAL" if needed
-3. [Add page numbers](/add-page-numbers) at the bottom center
+3. Add page numbers at the bottom center
 4. [Compress the final file](/compress) for easy email distribution
 5. [Protect with a password](/protect-pdf) if the content is sensitive
 
@@ -1316,7 +1306,7 @@ If your PDF already has page numbers that are incorrect or inconsistent:
 
 1. Use [Edit PDF](/edit-pdf) to cover or remove existing numbers with white rectangles
 2. [Flatten the PDF](/flatten-pdf) to make the edits permanent
-3. Then add new, correct page numbers using [Add Page Numbers](/add-page-numbers)
+3. Then add new, correct page numbers
 
 ### Adding Page Numbers to Scanned Documents
 
@@ -1338,10 +1328,10 @@ When preparing documents for double-sided (duplex) printing:
 
 | Enhancement | Purpose | Tool |
 |-------------|---------|------|
-| Page numbers | Sequential numbering for navigation | [Add Page Numbers](/add-page-numbers) |
-| Watermarks | Branding or confidentiality marks | [Add Watermark](/add-watermark) |
-| Headers/footers | Document title, date, author info | [Edit PDF](/edit-pdf) |
-| Bookmarks | Clickable navigation within the PDF | [Edit PDF](/edit-pdf) |
+| Page numbers | Sequential numbering for navigation | Add Page Numbers |
+| Watermarks | Branding or confidentiality marks | Add Watermark |
+| Headers/footers | Document title, date, author info | Edit PDF |
+| Bookmarks | Clickable navigation within the PDF | Edit PDF |
 
 For maximum professionalism, combine page numbers with watermarks and proper headers.
 
@@ -1367,18 +1357,18 @@ If you need to change the starting number after applying:
 
 For documents requiring roman numerals for the introduction and Arabic for the body:
 
-1. [Split the PDF](/split) into introduction and body sections
+1. Split the PDF into introduction and body sections
 2. Add roman numerals to the introduction
 3. Add Arabic numerals to the body starting at 1
-4. [Merge the sections](/merge) back into one document
+4. Merge the sections back into one document
 
 ## Frequently Asked Questions
 
 ### Can I add numbers to specific pages only?
-Currently, page numbers are added to all pages. Use [Split PDF](/split) to separate sections, then add numbers to specific parts, and [merge them back](/merge) into one file.
+Currently, page numbers are added to all pages. Split the PDF to separate sections, then add numbers to specific parts, and merge them back into one file.
 
 ### Can I remove existing page numbers first?
-Use our [Edit PDF](/edit-pdf) tool to cover or remove existing numbers before adding new ones.
+Use our Edit PDF tool to cover or remove existing numbers before adding new ones.
 
 ### Will adding page numbers increase file size?
 The increase is negligible. Page numbers are rendered as lightweight text elements.
@@ -1390,7 +1380,11 @@ Yes. The tool adds numbers as a text overlay on each page regardless of whether 
 Yes. Page numbers are positioned relative to the page dimensions, so they work correctly on both portrait and landscape pages.
 
 ### Is the tool free?
-Absolutely. Our [Add Page Numbers](/add-page-numbers) tool is completely free with no registration, no watermarks, and no limits.
+Absolutely. Our Add Page Numbers tool is completely free with no registration, no watermarks, and no limits.
+
+## Related Reading
+
+For more document formatting tips, check out our guide on [adding watermarks to PDF documents](/blog/watermark-pdf-documents). If you need to combine files before numbering, see our [complete guide to merging PDFs](/blog/merge-pdf-files-guide). Learn about [splitting PDF pages](/blog/how-to-split-pdf-pages) when you need different numbering for different sections. You may also find our guide on [flattening PDFs](/blog/how-to-flatten-pdf) useful when dealing with existing page numbers that need to be replaced.
 `,
     relatedTools: [
       { name: "Add Page Numbers", path: "/add-page-numbers", description: "Number your PDF pages" },
@@ -1439,15 +1433,15 @@ A lossless format that supports transparency. PNG files retain full quality but 
 
 ### WebP
 
-A modern web-optimized format developed by Google. WebP provides excellent compression with minimal quality loss. Convert using our [WebP to PDF](/webp-to-pdf) tool.
+A modern web-optimized format developed by Google. WebP provides excellent compression with minimal quality loss.
 
 ### TIFF
 
-A high-quality professional format commonly used in printing, scanning, and photography. TIFF files can be very large. Convert them with our [TIFF to PDF](/tiff-to-pdf) tool.
+A high-quality professional format commonly used in printing, scanning, and photography. TIFF files can be very large.
 
 ### GIF
 
-A format known for animations and simple graphics. Our [GIF to PDF](/gif-to-pdf) converter handles both static and animated GIF files.
+A format known for animations and simple graphics. Our converter handles both static and animated GIF files.
 
 ## Format Comparison Table
 
@@ -1465,7 +1459,7 @@ A format known for animations and simple graphics. Our [GIF to PDF](/gif-to-pdf)
 
 Converting one image at a time is straightforward:
 
-1. Go to the appropriate tool ([JPG to PDF](/jpg-to-pdf), [PNG to PDF](/png-to-pdf), [WebP to PDF](/webp-to-pdf), [TIFF to PDF](/tiff-to-pdf), or [GIF to PDF](/gif-to-pdf))
+1. Go to the appropriate tool (JPG to PDF, PNG to PDF, WebP to PDF, TIFF to PDF, or GIF to PDF)
 2. Upload your image by dragging it into the upload area or clicking to browse
 3. Adjust settings if needed (page size, orientation, margins)
 4. Click Convert and download your PDF
@@ -1520,7 +1514,7 @@ Produces the smallest file sizes with acceptable quality for on-screen viewing. 
 
 Combine vacation photos, family pictures, or event photos into a single PDF album:
 
-1. Select all photos and upload them to [JPG to PDF](/jpg-to-pdf)
+1. Select all photos and upload them to the JPG to PDF tool
 2. Arrange them in chronological order
 3. Convert to PDF for easy sharing with family and friends
 4. [Add page numbers](/add-page-numbers) for a polished, book-like feel
@@ -1552,7 +1546,7 @@ Organize receipts and financial documents:
 1. Photograph or scan receipts on your phone
 2. Upload all receipt images to the converter
 3. Convert to a single PDF for each month or expense report
-4. [Compress the PDF](/compress) for compact storage
+4. Compress the PDF for compact storage
 
 ### Real Estate and Property Documentation
 
@@ -1560,7 +1554,7 @@ Agents and property managers often need to compile photos:
 
 1. Take photos of the property from multiple angles
 2. Convert to PDF with one image per page
-3. [Add page numbers](/add-page-numbers) and [a watermark](/add-watermark) with your agency logo
+3. Add page numbers and a watermark with your agency logo
 4. Share the property listing as a single PDF file
 
 ## Page Size and Orientation Options
@@ -1580,11 +1574,11 @@ For most purposes, A4 or US Letter works well. Use "Fit to Image" when exact pro
 
 After converting your images to PDF, consider these enhancements:
 
-1. **Compress the PDF** - Image-based PDFs can be large. Use [Compress PDF](/compress) to shrink the file without noticeable quality loss
-2. **Add page numbers** - Use [Add Page Numbers](/add-page-numbers) for easy navigation through multi-page image PDFs
-3. **Add watermarks** - Protect your photos with [Add Watermark](/add-watermark) to prevent unauthorized use
+1. **Compress the PDF** - Image-based PDFs can be large. Use the compress tool to shrink the file without noticeable quality loss
+2. **Add page numbers** - Add sequential numbering for easy navigation through multi-page image PDFs
+3. **Add watermarks** - Protect your photos with a watermark to prevent unauthorized use
 4. **Merge with other PDFs** - Use [Merge PDF](/merge) to combine your image PDF with text documents, cover pages, or other files
-5. **Protect with a password** - Keep sensitive images secure using [Protect PDF](/protect-pdf)
+5. **Protect with a password** - Keep sensitive images secure
 
 ## Troubleshooting Common Issues
 
@@ -1593,14 +1587,14 @@ After converting your images to PDF, consider these enhancements:
 Some phone cameras embed rotation metadata that may not be read correctly:
 
 1. Convert the images to PDF
-2. Use [Rotate PDF](/rotate) to fix any incorrectly oriented pages
+2. Fix any incorrectly oriented pages using the rotate tool
 3. Download the corrected version
 
 ### PDF Is Too Large to Email
 
 Image-heavy PDFs can easily exceed email size limits:
 
-1. Use [Compress PDF](/compress) to reduce the file size
+1. Use the compress tool to reduce the file size
 2. If still too large, [split the PDF](/split) into smaller sections
 3. Or reduce the quality setting during conversion
 
@@ -1627,10 +1621,14 @@ A4 or US Letter are standard for most documents. Use "Fit to Image" to match you
 Absolutely. After uploading, drag and drop the image thumbnails to set the exact order you want in the final PDF.
 
 ### Is there a limit on the number of images?
-You can upload and convert a generous number of images in a single session. For very large batches, consider converting in groups and then using [Merge PDF](/merge) to combine the results.
+You can upload and convert a generous number of images in a single session. For very large batches, consider converting in groups and then using the merge tool to combine the results.
 
 ### Can I convert images on my phone?
 Yes. All our image-to-PDF tools are fully responsive and work on any smartphone or tablet browser.
+
+## Related Reading
+
+For more tips on working with images and PDFs, check out our guide on [batch converting images to PDF](/blog/batch-convert-images-to-pdf) for handling large collections. If your image PDFs are too large, learn [how to compress PDFs for email](/blog/how-to-compress-pdf-for-email). After converting scanned pages, you may want to read our guide on [OCR for scanned documents](/blog/ocr-scanned-pdf-to-text) to make text searchable. See also our tips on [adding page numbers](/blog/add-page-numbers-to-pdf) for a polished, professional result.
 `,
     relatedTools: [
       { name: "JPG to PDF", path: "/jpg-to-pdf", description: "Convert JPG images to PDF" },
@@ -1741,9 +1739,9 @@ The accuracy of OCR depends heavily on the quality of the source document. Follo
 
 ### Document Preparation
 
-1. **Remove unnecessary pages** - Use [Delete Pages](/delete-pages) to remove blank or irrelevant pages before OCR to speed up processing
+1. **Remove unnecessary pages** - Remove blank or irrelevant pages before OCR to speed up processing
 2. **Crop excess margins** - Use [Crop PDF](/crop-pdf) to remove dark scanner borders that can interfere with recognition
-3. **Flatten any annotations** - Use [Flatten PDF](/flatten-pdf) if the document has overlaid annotations that might confuse the OCR engine
+3. **Flatten any annotations** - Flatten overlaid annotations that might confuse the OCR engine
 4. **Split large documents** - For very large scanned PDFs, [split them](/split) into smaller batches for faster, more reliable processing
 
 ### Resolution Guide
@@ -1786,19 +1784,19 @@ Organizations that digitize paper archives rely on OCR to make scanned records f
 
 ### Legal
 
-Law firms scan thousands of pages of contracts, court filings, and depositions. OCR makes these documents searchable, enabling keyword searches across entire case files. After OCR, [protect sensitive documents](/protect-pdf) with passwords for security.
+Law firms scan thousands of pages of contracts, court filings, and depositions. OCR makes these documents searchable, enabling keyword searches across entire case files. After OCR, protect sensitive documents with passwords for security.
 
 ### Healthcare
 
-Medical records, insurance forms, and patient histories are often scanned. OCR allows healthcare providers to search and cross-reference patient information quickly. Use [Redact PDF](/redact-pdf) after OCR to remove sensitive patient data before sharing.
+Medical records, insurance forms, and patient histories are often scanned. OCR allows healthcare providers to search and cross-reference patient information quickly. Redact sensitive patient data before sharing.
 
 ### Education
 
-Students and researchers scan textbook pages, journal articles, and handwritten notes. OCR converts these into searchable, quotable text for papers and assignments. After OCR, use [Extract Text](/extract-text) to pull quotes directly.
+Students and researchers scan textbook pages, journal articles, and handwritten notes. OCR converts these into searchable, quotable text for papers and assignments. After OCR, use the extract text tool to pull quotes directly.
 
 ### Finance and Accounting
 
-Scanned invoices, receipts, and financial statements can be OCR-processed to extract data for accounting systems. Use [PDF to Excel](/pdf-to-excel) after OCR to get tabular financial data into spreadsheets.
+Scanned invoices, receipts, and financial statements can be OCR-processed to extract data for accounting systems. Use PDF to Excel after OCR to get tabular financial data into spreadsheets.
 
 ### Government and Public Records
 
@@ -1820,23 +1818,23 @@ Use OCR as the first step when working with scanned documents. Then choose the a
 ### Digitizing Paper Archives
 
 1. Scan all documents at 300 DPI
-2. Convert scanned images to PDF using [JPG to PDF](/jpg-to-pdf) or [PNG to PDF](/png-to-pdf)
-3. Run [OCR](/ocr-pdf) on each PDF to make them searchable
+2. Convert scanned images to PDF
+3. Run OCR on each PDF to make them searchable
 4. [Merge related documents](/merge) into organized collections
 5. [Compress the final PDFs](/compress) for efficient storage
 
 ### Converting Scanned Documents for Editing
 
-1. Upload the scanned PDF to [OCR PDF](/ocr-pdf)
+1. Upload the scanned PDF to the OCR tool
 2. Download the searchable PDF
-3. Convert to [PDF to Word](/pdf-to-word) for full editing capability
+3. Convert to PDF to Word for full editing capability
 4. Make your edits in Word
-5. [Convert back to PDF](/word-to-pdf) when finished
+5. Convert back to PDF when finished
 
 ### Extracting Data from Scanned Tables
 
-1. Run [OCR](/ocr-pdf) on the scanned document
-2. Use [PDF to Excel](/pdf-to-excel) to extract table data
+1. Run OCR on the scanned document
+2. Use PDF to Excel to extract table data
 3. Clean up the data in your spreadsheet application
 4. Use the data for analysis, reporting, or migration
 
@@ -1865,8 +1863,8 @@ If OCR accuracy is low:
 
 1. Re-scan the document at a higher resolution
 2. Improve contrast and brightness of the source image
-3. Straighten any skewed pages using [Rotate PDF](/rotate)
-4. [Crop away](/crop-pdf) dark borders, stains, or scanner artifacts
+3. Straighten any skewed pages using the rotate tool
+4. Crop away dark borders, stains, or scanner artifacts
 5. Try processing fewer pages at a time
 
 ## Frequently Asked Questions
@@ -1878,7 +1876,7 @@ OCR works best with printed text. Handwriting recognition is limited and signifi
 Our OCR supports English and other major languages using Latin characters, as well as many additional scripts. For best results with non-Latin languages, ensure the source scan is high quality.
 
 ### Will OCR preserve my document layout?
-Yes. OCR adds an invisible text layer on top of the original image, so the visual layout remains exactly as it was. If you want to edit the content with formatting preserved, use [PDF to Word](/pdf-to-word) after OCR.
+Yes. OCR adds an invisible text layer on top of the original image, so the visual layout remains exactly as it was. If you want to edit the content with formatting preserved, use PDF to Word after OCR.
 
 ### How long does OCR processing take?
 Processing time depends on the number of pages and their complexity. Most documents are processed within a few seconds to a minute.
@@ -1887,7 +1885,11 @@ Processing time depends on the number of pages and their complexity. Most docume
 You will need to [unlock the PDF](/unlock-pdf) first, then run OCR on the unprotected version.
 
 ### Is the OCR tool free?
-Yes, our [OCR PDF](/ocr-pdf) tool is completely free with no registration, no watermarks, and no usage limits.
+Yes, our OCR PDF tool is completely free with no registration, no watermarks, and no usage limits.
+
+## Related Reading
+
+Want to learn more about working with scanned documents? Check out our guide on [converting PDF to Word without losing formatting](/blog/convert-pdf-to-word-without-losing-formatting) for editing OCR-processed text. If you need to extract data from tables, see our [PDF to Excel conversion guide](/blog/pdf-to-excel-convert-tables). Learn more about [extracting text from PDFs](/blog/extract-text-from-pdf) for plain text needs. You might also find our [image to PDF conversion guide](/blog/convert-images-to-pdf) helpful when preparing scanned images for OCR.
 `,
     relatedTools: [
       { name: "OCR PDF", path: "/ocr-pdf", description: "Convert scanned PDFs to searchable text" },
@@ -2024,9 +2026,9 @@ Older documents received via fax or legacy systems sometimes have random page or
 ### After Rotating
 
 1. **Verify the result** by scrolling through all pages to confirm they display correctly
-2. **Run OCR** with [OCR PDF](/ocr-pdf) if the document is scanned, since OCR works better on correctly oriented pages
-3. **Add page numbers** with [Add Page Numbers](/add-page-numbers) to help readers navigate
-4. **Compress if needed** using [Compress PDF](/compress) to reduce file size for sharing
+2. **Run OCR** if the document is scanned, since OCR works better on correctly oriented pages
+3. **Add page numbers** to help readers navigate
+4. **Compress if needed** to reduce file size for sharing
 
 ## Rotate vs. Other Page Operations
 
@@ -2098,14 +2100,14 @@ If the pages still appear in the wrong orientation after rotating:
 
 If your document has a mix of correctly and incorrectly oriented pages:
 1. Use the page-specific rotation option to target only the affected pages
-2. Alternatively, [split the PDF](/split), rotate the problematic section, and [merge](/merge) it back
+2. Alternatively, [split the PDF](/split), rotate the problematic section, and merge it back
 
 ### Rotated PDF Prints Incorrectly
 
 If your rotated PDF prints in the wrong orientation:
 1. Check your printer's orientation settings (portrait vs. landscape)
 2. Use the "Auto-rotate and center" option in your print dialog
-3. Try [resizing the PDF](/resize-pdf) to match your paper size exactly
+3. Try resizing the PDF to match your paper size exactly
 
 ## Frequently Asked Questions
 
@@ -2119,13 +2121,17 @@ No, rotation preserves the original quality completely. It only changes the page
 Simply rotate again in the opposite direction. For example, if you rotated 90° clockwise, rotate 90° counter-clockwise to return to the original orientation.
 
 ### Can I rotate a password-protected PDF?
-You will need to [unlock the PDF](/unlock-pdf) first, then rotate the pages, and optionally [re-protect](/protect-pdf) the document afterward.
+You will need to unlock the PDF first, then rotate the pages, and optionally re-protect the document afterward.
 
 ### Does rotation work on scanned PDFs?
 Yes. Rotation works on all types of PDFs, whether they are digital, scanned, or image-based.
 
 ### Is the rotation tool free?
-Absolutely. Our [Rotate PDF](/rotate) tool is completely free with no registration, no watermarks, and no usage limits.
+Absolutely. Our Rotate PDF tool is completely free with no registration, no watermarks, and no usage limits.
+
+## Related Reading
+
+After fixing page orientation, you may want to explore related guides. Learn about [OCR for scanned documents](/blog/ocr-scanned-pdf-to-text) to make your rotated scans searchable. Check out our [guide to cropping PDF pages](/blog/crop-pdf-pages-guide) to remove scanner borders after rotation. If you need to reorganize pages further, see our guide on [splitting PDF pages](/blog/how-to-split-pdf-pages). You might also find our tips on [adding page numbers](/blog/add-page-numbers-to-pdf) helpful for finishing your document.
 `,
     relatedTools: [
       { name: "Rotate PDF", path: "/rotate", description: "Fix page orientation" },
@@ -2211,9 +2217,9 @@ Click "Apply Signature" and download your signed PDF. The signature is embedded 
 
 1. **Keep it consistent** - Use the same signature style across all documents for brand consistency
 2. **Add date stamps** - Include the date alongside your signature for accurate record-keeping
-3. **Flatten after signing** - Use our [Flatten PDF](/flatten-pdf) tool to make signatures permanent and prevent tampering
-4. **Protect signed documents** - [Password protect](/protect-pdf) signed PDFs to prevent unauthorized changes
-5. **Verify before sending** - Review the entire document using our [PDF Viewer](/pdf-viewer) to ensure signatures are correctly placed
+3. **Flatten after signing** - Use our [Flatten PDF](/flatten-pdf) tool to make signatures permanent and prevent tampering. Learn more in our guide on [how to flatten PDFs](/blog/how-to-flatten-pdf)
+4. **Protect signed documents** - [Password protect](/protect-pdf) signed PDFs to prevent unauthorized changes. See our [PDF password protection guide](/blog/protect-pdf-with-password) for details
+5. **Verify before sending** - Review the entire document to ensure signatures are correctly placed
 6. **Keep originals** - Always save both the unsigned original and the signed copy for your records
 7. **Compress for sharing** - After signing, use [Compress PDF](/compress) to reduce file size before emailing
 
@@ -2253,7 +2259,7 @@ HR departments use electronic signatures daily for onboarding paperwork, employm
 Sales teams close deals faster by sending contracts for electronic signature. Purchase orders, vendor agreements, and service-level agreements can all be signed without printing a single page.
 
 ### Legal Practice
-Law firms use e-signatures for engagement letters, settlement agreements, and affidavits (where permitted). Always [redact sensitive information](/redact-pdf) from documents before sharing with opposing parties.
+Law firms use e-signatures for engagement letters, settlement agreements, and affidavits (where permitted). Always [redact sensitive information](/redact-pdf) from documents before sharing with opposing parties. Our guide on [redacting sensitive PDF information](/blog/redact-sensitive-pdf-information) covers this in detail.
 
 ### Education
 Teachers, administrators, and parents sign permission slips, enrollment forms, and report cards electronically. Students can sign academic integrity pledges and group project agreements.
@@ -2265,16 +2271,16 @@ Before adding your signature, make sure the document is ready:
 1. **Remove password protection** - If the PDF is locked, use our [Unlock PDF](/unlock-pdf) tool first
 2. **Ensure readability** - For scanned documents, run [OCR](/ocr-pdf) to make text searchable
 3. **Check page orientation** - Use [Rotate PDF](/rotate-pdf) to fix any upside-down or sideways pages
-4. **Add page numbers** - Use [Add Page Numbers](/add-page-numbers) for multi-page agreements to ensure completeness
 
 ## Security Tips for Signed Documents
 
-- Always [flatten your PDF](/flatten-pdf) after signing to prevent anyone from moving or removing the signature
-- Use [PDF protection](/protect-pdf) to add a password to sensitive signed documents
-- [Redact sensitive info](/redact-pdf) such as Social Security numbers before sharing signed documents externally
+- Always flatten your PDF after signing to prevent anyone from moving or removing the signature
+- Use password protection to add a password to sensitive signed documents
+- Redact sensitive info such as Social Security numbers before sharing signed documents externally
 - Keep backup copies of all signed documents in a secure location
-- Add a [watermark](/add-watermark) reading "Signed Original" or "Copy" to control document distribution
-- Consider [compressing](/compress) signed documents before archiving to save storage space
+- Consider compressing signed documents before archiving to save storage space
+
+If you need to [edit the PDF](/blog/edit-pdf-text-images) before signing, check out our comprehensive editing guide.
 
 ## Troubleshooting Common Issues
 
@@ -2282,10 +2288,10 @@ Before adding your signature, make sure the document is ready:
 After placing your signature, use the resize handles to adjust it. Zoom into the page for more precise placement.
 
 ### Document Is Read-Only
-If you cannot interact with the PDF, it may already be flattened or protected. Use [Unlock PDF](/unlock-pdf) to remove restrictions before signing.
+If you cannot interact with the PDF, it may already be flattened or protected. Unlock the PDF to remove restrictions before signing.
 
 ### Scanned Document Without Signature Lines
-For scanned forms without clear signature fields, use our [Edit PDF](/edit-pdf) tool to add a signature line, then sign above it.
+For scanned forms without clear signature fields, use the Edit PDF tool to add a signature line, then sign above it.
 
 ### Multiple Signers Required
 For documents needing multiple signatures, sign your portion first, download the document, then share it with the next signer. Each person can upload the partially signed PDF and add their own signature.
@@ -2293,7 +2299,7 @@ For documents needing multiple signatures, sign your portion first, download the
 ## Frequently Asked Questions
 
 ### Is it really free?
-Yes, our [Sign PDF](/sign-pdf) tool is completely free with no registration, no watermarks, and no limits on the number of documents you can sign.
+Yes, our Sign PDF tool is completely free with no registration, no watermarks, and no limits on the number of documents you can sign.
 
 ### Can I sign multiple pages?
 Yes, add your signature to any page in the document. You can sign each page individually, which is common for initialing every page of a legal agreement.
@@ -2308,7 +2314,7 @@ Before downloading, you can undo and redo signatures freely. After downloading t
 You can upload signature images in PNG, JPG, or SVG format. For best results, use a PNG with a transparent background.
 
 ### Can I sign PDFs on my phone?
-Absolutely. Our [Sign PDF](/sign-pdf) tool is fully responsive and works on smartphones and tablets. Drawing signatures with your finger on a touchscreen provides a natural signing experience.
+Absolutely. Our Sign PDF tool is fully responsive and works on smartphones and tablets. Drawing signatures with your finger on a touchscreen provides a natural signing experience.
 `,
     relatedTools: [
       { name: "Sign PDF", path: "/sign-pdf", description: "Add your signature to PDFs" },
@@ -2347,13 +2353,13 @@ Editing PDFs used to require expensive desktop software, but online tools have c
 Understanding what kind of edits are possible helps you choose the right approach:
 
 ### Overlay Edits (Adding New Content)
-These edits place new elements on top of the existing document without altering the original content. This includes adding text, images, shapes, and stamps. Our [Edit PDF](/edit-pdf) tool specializes in overlay edits.
+These edits place new elements on top of the existing document without altering the original content. This includes adding text, images, shapes, and stamps.
 
 ### Structural Edits (Modifying Document Structure)
-These involve changing page order, removing pages, or combining documents. Use tools like [Reorder Pages](/reorder-pages), [Delete Pages](/delete-pages), or [Merge PDF](/merge) for these tasks.
+These involve changing page order, removing pages, or combining documents. Use tools like [Merge PDF](/merge) for combining files or [Split PDF](/split) for breaking them apart.
 
 ### Content Edits (Changing Existing Text)
-To modify existing text within a PDF, the best approach is to [convert to Word](/pdf-to-word), make your changes in a word processor, then [convert back to PDF](/word-to-pdf).
+To modify existing text within a PDF, the best approach is to [convert to Word](/pdf-to-word), make your changes in a word processor, then convert back to PDF. Our guide on [converting PDF to Word without losing formatting](/blog/convert-pdf-to-word-without-losing-formatting) covers this process in detail.
 
 ## How to Edit a PDF Online
 
@@ -2391,7 +2397,7 @@ Preview your edits across all pages, then download the modified PDF. Your origin
 ## Common PDF Editing Tasks
 
 ### Adding a Company Logo
-1. Upload your PDF to the [Edit PDF](/edit-pdf) tool
+1. Upload your PDF to the Edit PDF tool
 2. Click "Add Image" and upload your logo file (PNG with transparent background works best)
 3. Position it in the header or footer area
 4. Resize to fit proportionally without distortion
@@ -2399,7 +2405,7 @@ Preview your edits across all pages, then download the modified PDF. Your origin
 
 ### Filling Non-Interactive Forms
 Many older forms are static PDFs without fillable fields. Here is how to complete them digitally:
-1. Open the form in the [Edit PDF](/edit-pdf) tool
+1. Open the form in the Edit PDF tool
 2. Use the text tool to type in each field
 3. Match the font size to the existing form text (usually 10-12pt)
 4. Align text within the form boxes carefully
@@ -2410,22 +2416,13 @@ For document approval workflows:
 1. Upload the document that needs approval
 2. Add a text box with "APPROVED", "REVIEWED", or "DRAFT" in bold
 3. Include the date and your name below the stamp
-4. Consider adding your signature using our [Sign PDF](/sign-pdf) tool for additional authority
+4. Consider adding your signature using our [Sign PDF](/sign-pdf) tool for additional authority. See our guide on [signing PDFs electronically](/blog/sign-pdf-electronically) for best practices
 
 ### Adding Annotations
-For detailed markup work, our dedicated [Annotate PDF](/annotate-pdf) tool offers:
-- Highlighting text in multiple colors for categorized review
-- Underlining important passages
-- Adding sticky notes and comments with detailed feedback
-- Drawing freehand annotations for visual feedback
-- Strikethrough text to indicate deletions
+For detailed markup work, our dedicated [Annotate PDF](/annotate-pdf) tool offers highlighting, underlining, sticky notes, freehand annotations, and strikethrough capabilities for comprehensive document review.
 
 ### Redacting Sensitive Information
-Need to permanently remove content rather than just cover it? Use our [Redact PDF](/redact-pdf) tool to:
-- Black out names, addresses, and phone numbers
-- Remove financial information like account numbers
-- Hide confidential data permanently so it cannot be recovered
-- Comply with GDPR, HIPAA, and other privacy regulations
+Need to permanently remove content rather than just cover it? Use our [Redact PDF](/redact-pdf) tool to black out sensitive data and comply with privacy regulations. Learn more in our [redaction guide](/blog/redact-sensitive-pdf-information).
 
 ## Tips for Better PDF Editing
 
@@ -2447,33 +2444,25 @@ Need to permanently remove content rather than just cover it? Use our [Redact PD
 | Table editing | Add annotations around tables | Full table editing capability |
 | Image editing | Add new images, position freely | Replace and resize existing images |
 | Best for | Forms, stamps, notes, logos | Major rewrites, content restructuring |
-| Required tools | [Edit PDF](/edit-pdf) | [PDF to Word](/pdf-to-word) then [Word to PDF](/word-to-pdf) |
 
-For minor additions like filling forms, adding stamps, or inserting logos, [Edit PDF](/edit-pdf) is significantly faster. For extensive text changes, paragraph restructuring, or content rewrites, [convert to Word](/pdf-to-word) first, edit in your word processor, then [convert back to PDF](/word-to-pdf).
+For minor additions like filling forms, adding stamps, or inserting logos, Edit PDF is significantly faster. For extensive text changes, paragraph restructuring, or content rewrites, convert to Word first, edit in your word processor, then convert back to PDF.
 
 ## Professional PDF Editing Workflows
 
 ### Document Review and Approval
 1. Receive PDF for review
-2. Open in [Edit PDF](/edit-pdf) or [Annotate PDF](/annotate-pdf)
+2. Open in Edit PDF or Annotate PDF
 3. Add comments, stamps, and markups
-4. [Add a watermark](/add-watermark) reading "DRAFT" or "FOR REVIEW"
+4. You can also [add a watermark](/add-watermark) reading "DRAFT" or "FOR REVIEW". Our [watermarking guide](/blog/watermark-pdf-documents) explains the best approaches
 5. Share with stakeholders for further feedback
-6. Once approved, [flatten the PDF](/flatten-pdf) to lock all changes
-
-### Branding Document Templates
-1. Upload your template PDF
-2. Add your company logo to every page header
-3. Insert contact information in the footer
-4. [Protect the PDF](/protect-pdf) to prevent unauthorized modifications
-5. [Compress](/compress) the final template for easy distribution
+6. Once approved, flatten the PDF to lock all changes
 
 ### Form Completion and Submission
 1. Download the form from the issuing organization
-2. Open in [Edit PDF](/edit-pdf) to fill in all required fields
-3. Add your [electronic signature](/sign-pdf) where needed
-4. [Flatten the PDF](/flatten-pdf) to ensure the form appears correctly everywhere
-5. [Compress](/compress) before emailing if the file is large
+2. Open in Edit PDF to fill in all required fields
+3. Add your electronic signature where needed
+4. Flatten the PDF to ensure the form appears correctly everywhere
+5. Compress before emailing if the file is large
 
 ## Troubleshooting Common Editing Issues
 
@@ -2484,21 +2473,21 @@ This usually happens when the zoom level is too low during editing. Zoom in to 1
 Use higher resolution source images. For logos, SVG or high-resolution PNG files produce the best results. Avoid stretching small images to fill large areas.
 
 ### Edits Do Not Show When Printing
-Some printers skip overlay layers. [Flatten the PDF](/flatten-pdf) before printing to ensure all added elements print correctly.
+Some printers skip overlay layers. Flatten the PDF before printing to ensure all added elements print correctly.
 
 ### File Size Increased Significantly
-Adding images increases file size. After finishing your edits, use [Compress PDF](/compress) to optimize the file while maintaining visual quality.
+Adding images increases file size. After finishing your edits, use Compress PDF to optimize the file while maintaining visual quality.
 
 ## Frequently Asked Questions
 
 ### Can I edit existing text in a PDF?
-Our tool lets you add new text overlays on top of existing content. To edit the original text directly, [convert to Word](/pdf-to-word) first, make your changes, then [convert back to PDF](/word-to-pdf).
+Our tool lets you add new text overlays on top of existing content. To edit the original text directly, convert to Word first, make your changes, then convert back to PDF.
 
 ### Will editing affect the document quality?
 No, edits are added as overlays on top of the original content, preserving the quality of everything underneath.
 
 ### Can I undo changes?
-Yes, full undo/redo is available while editing. After downloading, changes become permanent, especially if you [flatten the PDF](/flatten-pdf).
+Yes, full undo/redo is available while editing. After downloading, changes become permanent, especially if you flatten the PDF.
 
 ### Can I edit a scanned PDF?
 Scanned PDFs are essentially images. You can add text and shapes on top of them, but to edit the scanned text itself, first use [OCR PDF](/ocr-pdf) to make the text recognizable, then convert to a Word document for editing.
@@ -2540,7 +2529,7 @@ Watermarks serve multiple important purposes in document management:
 - **Version control**: Mark "Draft v1", "Draft v2", etc. to track document revisions
 - **Accountability**: Add recipient names to trace document distribution
 
-Watermarks are one of the most effective ways to visually communicate the status and ownership of a document. Combined with other security measures like [password protection](/protect-pdf) and [redaction](/redact-pdf), watermarks form a comprehensive document protection strategy.
+Watermarks are one of the most effective ways to visually communicate the status and ownership of a document. Combined with other security measures like [password protection](/protect-pdf) and [redaction](/redact-pdf), watermarks form a comprehensive document protection strategy. For more on securing documents, see our guide on [protecting PDFs with passwords](/blog/protect-pdf-with-password).
 
 ## Types of PDF Watermarks
 
@@ -2608,7 +2597,7 @@ Click "Add Watermark" and download your watermarked PDF. The watermark is applie
 2. **Position diagonally**: -45 degree angle covers the most area and is hardest to remove
 3. **Use large text**: Larger text is harder to crop out and easier to identify at a glance
 4. **Be specific**: "CONFIDENTIAL - [Company Name]" is more effective than just "CONFIDENTIAL" because it establishes ownership
-5. **Make it permanent**: [Flatten your PDF](/flatten-pdf) after adding watermarks to prevent removal with PDF editing tools
+5. **Make it permanent**: [Flatten your PDF](/flatten-pdf) after adding watermarks to prevent removal with PDF editing tools. Our [flattening guide](/blog/how-to-flatten-pdf) explains the process
 6. **Test readability**: Open the watermarked document and ensure all text beneath the watermark remains legible
 7. **Consider your audience**: Internal documents can use bolder watermarks while client-facing documents should be more subtle
 
@@ -2617,38 +2606,37 @@ Click "Add Watermark" and download your watermarked PDF. The watermark is applie
 | Method | Prevents Copying? | Prevents Viewing? | Easy to Remove? | Best For |
 |--------|-------------------|-------------------|-----------------|----------|
 | Watermark | Deters copying | No | If not flattened | Visual deterrent, branding |
-| [Password Protection](/protect-pdf) | Partially | Optional | With password | Access control |
-| [Redaction](/redact-pdf) | Yes (removes content) | Yes | No | Removing sensitive data |
-| [Flattening](/flatten-pdf) | Prevents editing | No | No | Locking document state |
+| Password Protection | Partially | Optional | With password | Access control |
+| Redaction | Yes (removes content) | Yes | No | Removing sensitive data |
+| Flattening | Prevents editing | No | No | Locking document state |
 | Combination | Best protection | Optional | Most difficult | Maximum security |
 
-For maximum protection, combine watermarks with [password protection](/protect-pdf) and [flattening](/flatten-pdf). This multi-layered approach ensures your document is both visually marked and technically secured.
+For maximum protection, combine watermarks with password protection and flattening. This multi-layered approach ensures your document is both visually marked and technically secured.
 
 ## Complete Document Security Workflow
 
 For documents that require comprehensive protection, follow this workflow:
 
 ### Step 1: Prepare the Document
-- Remove any pages you do not want included using [Delete Pages](/delete-pages)
-- [Redact sensitive information](/redact-pdf) that should not be visible to the recipient
+- Remove any pages you do not want included
+- [Redact sensitive information](/blog/redact-sensitive-pdf-information) that should not be visible to the recipient
 - Ensure the document is complete and finalized
 
 ### Step 2: Add the Watermark
-- Open [Add Watermark](/add-watermark) and upload your prepared document
+- Open Add Watermark and upload your prepared document
 - Configure your watermark text, opacity, and rotation
 - Apply the watermark to all pages
 
 ### Step 3: Lock the Document
-- [Flatten the PDF](/flatten-pdf) to merge the watermark permanently into the document layers
+- Flatten the PDF to merge the watermark permanently into the document layers
 - This prevents anyone from removing the watermark with a PDF editor
 
 ### Step 4: Add Access Control
-- [Protect with a password](/protect-pdf) to prevent unauthorized access
+- Protect with a password to prevent unauthorized access
 - Set permissions to restrict printing or copying if needed
 
 ### Step 5: Optimize for Sharing
-- [Compress the PDF](/compress) if file size is a concern for email attachments
-- Review the final document using our [PDF Viewer](/pdf-viewer) before distribution
+- [Compress the PDF](/compress) if file size is a concern for email attachments. Our [compression guide](/blog/how-to-compress-pdf-for-email) covers email-specific tips
 
 ## Removing Watermarks
 
@@ -2663,10 +2651,10 @@ Note: Our tools are designed for adding watermarks to your own documents. We do 
 ## Industry-Specific Watermark Guidelines
 
 ### Healthcare (HIPAA)
-Mark patient documents as "Protected Health Information" and always combine watermarks with [password protection](/protect-pdf) and [redaction](/redact-pdf) of personally identifiable information.
+Mark patient documents as "Protected Health Information" and always combine watermarks with password protection and redaction of personally identifiable information.
 
 ### Legal
-Use watermarks like "Attorney-Client Privileged" or "Work Product" for appropriate documents. [Flatten the PDF](/flatten-pdf) after watermarking to ensure the privilege marking cannot be removed.
+Use watermarks like "Attorney-Client Privileged" or "Work Product" for appropriate documents. Flatten the PDF after watermarking to ensure the privilege marking cannot be removed.
 
 ### Education
 Mark exam papers as "Do Not Distribute" and student records as "Confidential Student Information" in compliance with FERPA regulations.
@@ -2674,7 +2662,7 @@ Mark exam papers as "Do Not Distribute" and student records as "Confidential Stu
 ## Frequently Asked Questions
 
 ### Can the watermark be removed?
-If you [flatten the PDF](/flatten-pdf) after adding the watermark, it becomes embedded in the document and cannot be easily removed. Without flattening, watermarks exist as a separate layer that could potentially be removed with PDF editing software.
+If you flatten the PDF after adding the watermark, it becomes embedded in the document and cannot be easily removed. Without flattening, watermarks exist as a separate layer that could potentially be removed with PDF editing software.
 
 ### Will the watermark cover my text?
 At 20-30% opacity (recommended setting), the watermark is visible but does not obstruct readability of the underlying content. You can adjust opacity lower if the document has dense text that needs to remain highly legible.
@@ -2683,13 +2671,13 @@ At 20-30% opacity (recommended setting), the watermark is visible but does not o
 Currently, the watermark is applied uniformly to all pages. For page-specific marks or custom positioning, use our [Edit PDF](/edit-pdf) tool to add text overlays to individual pages.
 
 ### Does adding a watermark increase file size?
-Watermarks add minimal data to the PDF, typically less than 1KB per page. If file size is a concern, use [Compress PDF](/compress) after watermarking.
+Watermarks add minimal data to the PDF, typically less than 1KB per page. If file size is a concern, compress the PDF after watermarking.
 
 ### Can I watermark a scanned PDF?
 Yes, watermarks work on any PDF regardless of how it was created. For scanned documents, the watermark is placed on top of the scanned image layer. If you also need the scanned text to be searchable, run [OCR](/ocr-pdf) on the document first.
 
 ### Is the watermark tool free?
-Yes, our [Add Watermark](/add-watermark) tool is completely free with no registration, no file limits, and no watermarks of our own added to your document.
+Yes, our Add Watermark tool is completely free with no registration, no file limits, and no watermarks of our own added to your document.
 `,
     relatedTools: [
       { name: "Add Watermark", path: "/add-watermark", description: "Add text watermarks to PDFs" },
@@ -2747,13 +2735,13 @@ Understanding the type of PDF you are working with helps set expectations for co
 PDFs created from software such as Word, Excel, or accounting systems contain structured text data. These convert with the highest accuracy because the underlying data is already organized in a machine-readable format. Column headers, row values, and cell boundaries are typically preserved perfectly.
 
 ### Scanned PDFs (Needs OCR First)
-If your PDF is a scan or photograph of a printed document, the data exists only as an image. Use our [OCR tool](/ocr-pdf) first to convert the scanned image to searchable text, then run the PDF through our Excel converter. This two-step process ensures the best possible data extraction from scanned sources.
+If your PDF is a scan or photograph of a printed document, the data exists only as an image. Use our [OCR tool](/ocr-pdf) first to convert the scanned image to searchable text, then run the PDF through our Excel converter. Our guide on [OCR for scanned PDFs](/blog/ocr-scanned-pdf-to-text) explains this process in detail.
 
 ### Protected PDFs
 Password-protected PDFs must be unlocked before conversion. Use our [Unlock PDF](/unlock-pdf) tool to remove the password, then proceed with the conversion.
 
 ### Mixed Content PDFs
-Documents containing both tables and paragraphs of text will have tables extracted into separate worksheets while text content is placed in cells. For documents that are primarily text with occasional tables, consider using [Extract Text](/extract-text) for the narrative content and [PDF to Excel](/pdf-to-excel) specifically for the tabular data.
+Documents containing both tables and paragraphs of text will have tables extracted into separate worksheets while text content is placed in cells. For documents that are primarily text with occasional tables, consider using [Extract Text](/extract-text) for the narrative content and PDF to Excel specifically for the tabular data.
 
 ## Step-by-Step Workflow for Complex Documents
 
@@ -2761,11 +2749,10 @@ For documents with multiple tables, complex layouts, or mixed content, follow th
 
 ### Step 1: Prepare Your PDF
 - If the PDF has many pages but you only need specific tables, use [Split PDF](/split) to extract just the relevant pages
-- If pages are rotated incorrectly, fix them with [Rotate PDF](/rotate-pdf) before conversion
-- For scanned documents, run [OCR](/ocr-pdf) to make the text machine-readable
+- For scanned documents, run OCR to make the text machine-readable
 
 ### Step 2: Convert to Excel
-- Upload your prepared PDF to our [PDF to Excel](/pdf-to-excel) tool
+- Upload your prepared PDF to our PDF to Excel tool
 - The converter processes each page and extracts all detected tables
 - Download the resulting Excel file
 
@@ -2782,11 +2769,11 @@ If you converted several PDFs, you can combine the Excel outputs into a single w
 
 1. **Start with clean source documents**: Well-formatted PDFs with clear table borders produce significantly better results
 2. **One table per page**: If possible, structure source documents so each page contains a single, well-defined table
-3. **Use OCR for scans**: Always run [OCR](/ocr-pdf) on scanned documents before converting to ensure text is recognized
+3. **Use OCR for scans**: Always run OCR on scanned documents before converting to ensure text is recognized
 4. **Check merged cells**: Manually verify merged cell areas after conversion, as these are the most common source of data misalignment
 5. **Verify formulas**: PDF conversion extracts displayed values only. Formulas, conditional formatting, and data validation rules need to be re-added in Excel
-6. **Process pages individually**: For PDFs with varying table layouts, [split the document](/split) and convert each section separately for better accuracy
-7. **Compare against the original**: Open the original PDF in our [PDF Viewer](/pdf-viewer) alongside the Excel output to verify data accuracy
+6. **Process pages individually**: For PDFs with varying table layouts, split the document and convert each section separately for better accuracy
+7. **Compare against the original**: Open the original PDF alongside the Excel output to verify data accuracy
 
 ## Common Use Cases
 
@@ -2797,7 +2784,7 @@ Extract quarterly earnings, balance sheets, income statements, and cash flow sta
 Convert batches of PDF invoices to Excel for automated bookkeeping and expense tracking. This is particularly useful for small businesses that receive invoices from multiple vendors in PDF format and need to consolidate them into a single accounting spreadsheet.
 
 ### Research and Academic Data
-Extract statistical tables from academic papers, government reports, census data, and survey results for further analysis. Researchers can convert published data tables into Excel for meta-analysis, cross-study comparisons, and visualization.
+Extract statistical tables from academic papers, government reports, census data, and survey results for further analysis. Researchers can convert published data tables into Excel for meta-analysis, cross-study comparisons, and visualization. For extracting raw text from research papers, see our guide on [extracting text from PDFs](/blog/extract-text-from-pdf).
 
 ### Inventory and Product Management
 Convert PDF product catalogs, inventory reports, and supplier price lists to editable spreadsheets. This enables easy comparison shopping, inventory reconciliation, and order planning.
@@ -2812,19 +2799,18 @@ Extract employee data from PDF reports for payroll processing, headcount analysi
 | PDF to Excel | Tabular data, numbers, financial data | [PDF to Excel](/pdf-to-excel) |
 | PDF to Word | Text-heavy documents with some tables | [PDF to Word](/pdf-to-word) |
 | Extract Text | Raw text content without formatting | [Extract Text](/extract-text) |
-| PDF to PowerPoint | Presentations and slide content | [PDF to PowerPoint](/pdf-to-ppt) |
 
-Choose [PDF to Excel](/pdf-to-excel) when your primary goal is extracting structured numeric or tabular data. Choose [PDF to Word](/pdf-to-word) when you need to preserve the overall document layout and edit narrative text around tables.
+Choose PDF to Excel when your primary goal is extracting structured numeric or tabular data. Choose [PDF to Word](/pdf-to-word) when you need to preserve the overall document layout and edit narrative text around tables. For a complete overview of conversion options, check out our [best free PDF tools guide](/blog/best-free-pdf-tools-2026).
 
 ## What If Conversion Is Not Perfect?
 
 For complex tables that do not convert cleanly:
 
-1. **Try extracting text first**: Use [Extract Text](/extract-text) and format the data manually in Excel using Text to Columns and other data cleanup tools
-2. **Use OCR for scanned documents**: Run [OCR](/ocr-pdf) on scanned documents to improve text recognition before converting
-3. **Convert to Word as an alternative**: [PDF to Word](/pdf-to-word) sometimes handles complex table layouts differently and may produce better results for certain document types
-4. **Split complex documents**: [Split the PDF](/split) to process individual pages with complex layouts separately, then combine the results in Excel
-5. **Check for password protection**: If conversion fails entirely, the PDF may be protected. Use [Unlock PDF](/unlock-pdf) first
+1. **Try extracting text first**: Use Extract Text and format the data manually in Excel using Text to Columns and other data cleanup tools
+2. **Use OCR for scanned documents**: Run OCR on scanned documents to improve text recognition before converting
+3. **Convert to Word as an alternative**: PDF to Word sometimes handles complex table layouts differently and may produce better results for certain document types
+4. **Split complex documents**: Split the PDF to process individual pages with complex layouts separately, then combine the results in Excel
+5. **Check for password protection**: If conversion fails entirely, the PDF may be protected. Use Unlock PDF first
 
 ## Frequently Asked Questions
 
@@ -2832,19 +2818,19 @@ For complex tables that do not convert cleanly:
 Column widths, headers, and basic formatting are preserved. Fonts, colors, and cell styles may need adjustment in Excel after conversion. The focus is on data accuracy rather than visual formatting.
 
 ### Can I convert password-protected PDFs?
-Yes, but first [unlock the PDF](/unlock-pdf) to remove the password protection, then convert to Excel.
+Yes, but first unlock the PDF to remove the password protection, then convert to Excel. See our guide on [unlocking PDFs](/blog/unlock-pdf-remove-password) for instructions.
 
 ### What about multi-page tables?
 Tables spanning multiple pages are extracted page by page. Each page becomes rows in the same worksheet. You may need to verify that column alignment is consistent across page breaks.
 
 ### Is there a file size limit?
-Our tool handles PDFs up to 50MB. For larger files, use [Split PDF](/split) to break the document into smaller sections, convert each section, then combine the results in Excel.
+Our tool handles PDFs up to 50MB. For larger files, use Split PDF to break the document into smaller sections, convert each section, then combine the results in Excel.
 
 ### Can I convert multiple PDFs at once?
 Currently, our tool processes one PDF at a time. For batch conversion, upload and convert each file individually, then use [Merge PDF](/merge) to combine the source documents first if you want a single Excel output.
 
 ### Will it convert charts and graphs?
-Charts and graphs embedded in PDFs are images, not data. The converter extracts the underlying data tables but not the visual chart representations. Use [Extract Images](/extract-images) if you need the chart graphics themselves.
+Charts and graphs embedded in PDFs are images, not data. The converter extracts the underlying data tables but not the visual chart representations.
 `,
     relatedTools: [
       { name: "PDF to Excel", path: "/pdf-to-excel", description: "Convert PDF tables to spreadsheets" },
@@ -3151,7 +3137,7 @@ Annotations include sticky notes, highlights, strikethroughs, underlines, and dr
 
 ### Digital Signatures
 
-Digital signature fields are special interactive elements that verify document authenticity. After flattening, the visual representation of the signature remains on the page, but the cryptographic verification data may be removed. Always verify signatures before flattening if authenticity verification is important.
+Digital signature fields are special interactive elements that verify document authenticity. After flattening, the visual representation of the signature remains on the page, but the cryptographic verification data may be removed. Always verify signatures before flattening if authenticity verification is important. Our guide on [signing PDFs electronically](/blog/sign-pdf-electronically) covers the complete signing workflow.
 
 ### Multiple Layers
 
@@ -3173,20 +3159,19 @@ Some PDFs, particularly those created from design software, contain multiple lay
 
 ### For Business Documents
 
-1. Fill out the form or add annotations using the [Edit PDF](/edit-pdf) tool
+1. Fill out the form or add annotations
 2. [Add your signature](/sign-pdf) if required
-3. Review the document in our [PDF Viewer](/pdf-viewer) to verify everything looks correct
-4. Flatten the document with [Flatten PDF](/flatten-pdf)
-5. [Add a watermark](/add-watermark) if needed for branding or confidentiality
-6. [Protect with a password](/protect-pdf) for sensitive documents
-7. [Compress the final file](/compress) if you need to email it
+3. Review the document to verify everything looks correct
+4. Flatten the document
+5. Protect with a password for sensitive documents
+6. Compress the final file if you need to email it — our [compression guide](/blog/how-to-compress-pdf-for-email) covers best practices
 
 ### For Print Production
 
 1. Ensure all text, images, and graphics are in their final positions
 2. Flatten all layers and interactive elements
-3. [Resize the PDF](/resize-pdf) to match your target print dimensions
-4. Run a final check in the [PDF Viewer](/pdf-viewer)
+3. Resize the PDF to match your target print dimensions — see our [resizing guide](/blog/resize-pdf-to-a4) for details
+4. Run a final check to verify everything looks correct
 5. Send the flattened file to the printer
 
 ### For Legal Archiving
@@ -3220,11 +3205,11 @@ This happens when form fields were never filled in. The flatten operation preser
 
 ### File Size Increased After Flattening
 
-In rare cases, flattening can increase file size if the document contains complex vector annotations or high-resolution stamp images. After flattening, use [Compress PDF](/compress) to bring the file size back down.
+In rare cases, flattening can increase file size if the document contains complex vector annotations or high-resolution stamp images. After flattening, use the compress tool to bring the file size back down.
 
 ### Signatures No Longer Verify
 
-Flattening removes the interactive signature validation layer. If you need the signature to remain cryptographically verifiable, do not flatten the document. Instead, use [Protect PDF](/protect-pdf) to prevent modifications while keeping the signature intact.
+Flattening removes the interactive signature validation layer. If you need the signature to remain cryptographically verifiable, do not flatten the document. Instead, use password protection to prevent modifications while keeping the signature intact. Learn more in our guide to [protecting PDFs with passwords](/blog/protect-pdf-with-password).
 
 ## Frequently Asked Questions
 
@@ -3244,7 +3229,7 @@ Our tool flattens all pages in the document at once. If you need to flatten only
 No. PDF/A is an archival format standard that includes specific requirements for font embedding, color profiles, and metadata. Flattening is one step toward PDF/A compliance, but additional processing may be needed for full compliance.
 
 ### Should I flatten before or after adding page numbers?
-Flatten first, then [add page numbers](/add-page-numbers). This way the page numbers appear on top of the flattened content and remain clearly visible.
+Flatten first, then add page numbers. This way the page numbers appear on top of the flattened content and remain clearly visible. See our [guide to adding page numbers](/blog/add-page-numbers-to-pdf) for detailed instructions.
 `,
     relatedTools: [
       { name: "Flatten PDF", path: "/flatten-pdf", description: "Merge all layers into one" },
@@ -3302,11 +3287,11 @@ Many academic PDFs and journal articles have wide margins intended for printed a
 
 ### Trimming Scanned Documents
 
-Scanned pages often include scanner borders, dark edges, or misaligned shadows from the scanning process. These artifacts look unprofessional and can interfere with text recognition. Crop them away for a cleaner look, then run [OCR](/ocr-pdf) to make the text searchable and copyable.
+Scanned pages often include scanner borders, dark edges, or misaligned shadows from the scanning process. These artifacts look unprofessional and can interfere with text recognition. Crop them away for a cleaner look, then run [OCR](/ocr-pdf) to make the text searchable and copyable. Our [OCR guide](/blog/ocr-scanned-pdf-to-text) walks through the complete process.
 
 ### Extracting a Chart or Diagram
 
-Need just one chart from a full page? Crop the page down to the chart area, then [convert to an image](/pdf-to-jpg) for use in presentations, reports, or social media posts. This is far cleaner than taking a screenshot, as the PDF maintains vector quality for text and lines.
+Need just one chart from a full page? Crop the page down to the chart area, then [convert to an image](/pdf-to-jpg) for use in presentations, reports, or social media posts. This is far cleaner than taking a screenshot, as the PDF maintains vector quality for text and lines. Learn more about working with images in our [image-to-PDF guide](/blog/convert-images-to-pdf).
 
 ### Cleaning Up Multi-Page Reports
 
@@ -3325,17 +3310,17 @@ If you plan to print and bind a document, you may need to remove existing margin
 | Delete Pages | Removes entire pages from the document | Removes whole pages | Eliminating unnecessary pages |
 | Rotate | Changes page orientation | No content change | Fixing sideways scans |
 
-Choose the right tool for the job. If you need to change the paper size instead of trimming margins, use [Resize PDF](/resize-pdf). If you need to remove entire pages, use [Delete Pages](/delete-pages). If pages are rotated incorrectly, use [Rotate PDF](/rotate-pdf) before cropping.
+Choose the right tool for the job. If you need to change the paper size instead of trimming margins, check our [resizing guide](/blog/resize-pdf-to-a4). If you need to remove entire pages, use [Delete Pages](/delete-pages). If pages are rotated incorrectly, fix the orientation before cropping.
 
 ## Step-by-Step Workflow: Crop and Optimize a Scanned Document
 
 Scanned documents are among the most common candidates for cropping. Here is a complete workflow to turn a messy scan into a clean, searchable PDF:
 
 1. **Scan your document** at 300 DPI or higher for best quality
-2. **Upload to [Crop PDF](/crop-pdf)** and trim the scanner borders and dark edges
-3. **Run [OCR](/ocr-pdf)** on the cropped pages to make the text searchable
+2. **Upload to the crop tool** and trim the scanner borders and dark edges
+3. **Run OCR** on the cropped pages to make the text searchable
 4. **[Compress the PDF](/compress)** to reduce file size while maintaining readability
-5. **[Add page numbers](/add-page-numbers)** if the document has multiple pages
+5. **Add page numbers** if the document has multiple pages
 6. **[Merge with other documents](/merge)** if needed to create a complete package
 
 This workflow transforms raw scans into professional, searchable documents ready for sharing or archiving.
@@ -3343,25 +3328,25 @@ This workflow transforms raw scans into professional, searchable documents ready
 ## Tips for Better Results
 
 1. **Preview before cropping** to make sure all important content is inside the crop area. Check multiple pages, not just the first one.
-2. **Crop scanned documents** before running [OCR](/ocr-pdf) for better text recognition. OCR works more accurately when scanner artifacts are removed.
-3. **Compress after cropping** using [Compress PDF](/compress) if the file is still large. Cropping removes visual content but may not always reduce file size proportionally.
+2. **Crop scanned documents** before running OCR for better text recognition. OCR works more accurately when scanner artifacts are removed.
+3. **Compress after cropping** if the file is still large. Cropping removes visual content but may not always reduce file size proportionally.
 4. **Use consistent margins** when cropping multi-page documents. Apply the same crop area to all pages for a uniform appearance.
 5. **Keep a backup** of the original file. Cropping permanently removes content outside the crop area.
-6. **Consider your output format**. If you plan to [convert the cropped PDF to images](/pdf-to-png), tight cropping produces cleaner image files.
+6. **Consider your output format**. If you plan to convert the cropped PDF to images, tight cropping produces cleaner image files.
 
 ## Advanced Cropping Techniques
 
 ### Batch Cropping Multiple Documents
 
-If you have several PDFs that all need the same margins removed, process them one by one with the same crop settings. Alternatively, [merge them first](/merge), apply a single crop operation, then [split them back](/split) into individual files.
+If you have several PDFs that all need the same margins removed, process them one by one with the same crop settings. Alternatively, merge them first, apply a single crop operation, then [split them back](/split) into individual files.
 
 ### Cropping for Presentation Slides
 
-When extracting content from PDFs for use in presentations, crop each page to isolate the specific content you need. Then [convert to PNG](/pdf-to-png) for high-quality images that look sharp on projector screens.
+When extracting content from PDFs for use in presentations, crop each page to isolate the specific content you need. Then convert to PNG for high-quality images that look sharp on projector screens.
 
 ### Cropping for Social Media
 
-Need to share a snippet from a PDF on social media? Crop the page to the relevant section, then [convert to JPG](/pdf-to-jpg) for easy uploading. The result is much cleaner than a phone screenshot.
+Need to share a snippet from a PDF on social media? Crop the page to the relevant section, then convert to an image format for easy uploading. The result is much cleaner than a phone screenshot.
 
 ## Troubleshooting Common Issues
 
@@ -3371,11 +3356,11 @@ If important content near the edges is being removed, your crop area is too tigh
 
 ### Different Pages Have Different Layouts
 
-When pages have varying layouts (some landscape, some portrait), a single crop area may not work well for all pages. In this case, [split the PDF](/split) into groups of similarly-formatted pages, crop each group separately, then [merge them back together](/merge).
+When pages have varying layouts (some landscape, some portrait), a single crop area may not work well for all pages. In this case, split the PDF into groups of similarly-formatted pages, crop each group separately, then merge them back together.
 
 ### Cropped PDF Still Has Large File Size
 
-Cropping removes visible content but the underlying data may still be stored in the file. For maximum size reduction, run [Compress PDF](/compress) after cropping. This removes the hidden data and optimizes the remaining content.
+Cropping removes visible content but the underlying data may still be stored in the file. For maximum size reduction, run the compress tool after cropping. This removes the hidden data and optimizes the remaining content. Check our [compression guide](/blog/how-to-compress-pdf-for-email) for tips on reducing file size.
 
 ## Frequently Asked Questions
 
@@ -3383,16 +3368,16 @@ Cropping removes visible content but the underlying data may still be stored in 
 Yes. Content outside the crop area is discarded. Always keep a backup of the original file before cropping.
 
 ### Can I crop different pages to different sizes?
-Our tool applies the same crop area to all pages. For page-specific adjustments, [split the PDF](/split) first, crop each section individually, then [merge](/merge) them back together.
+Our tool applies the same crop area to all pages. For page-specific adjustments, split the PDF first, crop each section individually, then merge them back together.
 
 ### Will cropping reduce file size?
-It can, especially for image-heavy PDFs where cropped regions contain large graphics. For text-heavy PDFs, the reduction may be minimal. Follow up with [Compress PDF](/compress) for maximum size savings.
+It can, especially for image-heavy PDFs where cropped regions contain large graphics. For text-heavy PDFs, the reduction may be minimal. Follow up with compression for maximum size savings.
 
 ### Can I crop a password-protected PDF?
-You will need to [unlock the PDF](/unlock-pdf) first before cropping. Once unlocked, crop as normal, then [re-protect](/protect-pdf) the cropped version if needed.
+You will need to [unlock the PDF](/unlock-pdf) first before cropping. Once unlocked, crop as normal, then re-protect the cropped version if needed. See our [guide to unlocking PDFs](/blog/unlock-pdf-remove-password) for step-by-step instructions.
 
 ### What file formats can I crop?
-Our tool works exclusively with PDF files. If you have images you want to crop, use our [Crop Image](/crop-image) tool instead. For other document formats, convert them to PDF first using tools like [Word to PDF](/word-to-pdf) or [JPG to PDF](/jpg-to-pdf).
+Our tool works exclusively with PDF files. If you have images you want to crop, use our Crop Image tool instead. For other document formats, convert them to PDF first before cropping.
 
 ### Is there a page limit for cropping?
 No. You can crop PDFs with any number of pages. The same crop area is applied uniformly to every page in the document.
@@ -3483,10 +3468,10 @@ Resizing changes the entire page dimensions and scales content to fit. [Cropping
 ## Tips for Best Results
 
 1. **Check orientation first**: Make sure your document is in portrait or landscape to match the target size. Use [Rotate PDF](/rotate-pdf) to fix orientation before resizing.
-2. **Use Crop first**: If you have unwanted margins, [crop them](/crop-pdf) before resizing for a cleaner result. Removing excess white space before scaling produces tighter, more professional output.
-3. **Flatten interactive elements**: [Flatten the PDF](/flatten-pdf) before resizing forms to preserve field positions. Interactive elements may not scale correctly otherwise.
+2. **Use Crop first**: If you have unwanted margins, [crop them](/crop-pdf) before resizing for a cleaner result. See our [cropping guide](/blog/crop-pdf-pages-guide) for detailed instructions.
+3. **Flatten interactive elements**: [Flatten the PDF](/flatten-pdf) before resizing forms to preserve field positions. Learn more in our [flattening guide](/blog/how-to-flatten-pdf).
 4. **Compress after resizing**: Use [Compress PDF](/compress) if the resized file is larger than expected. Scaling up can increase file size.
-5. **Verify the result**: Always open the resized PDF in our [PDF Viewer](/pdf-viewer) to confirm content looks correct before printing or sharing.
+5. **Verify the result**: Always review the resized PDF to confirm content looks correct before printing or sharing.
 6. **Maintain aspect ratio**: When possible, resize between sizes with similar aspect ratios to minimize distortion. A4 and US Letter are close enough that content scales well between them.
 
 ## Common Workflows
@@ -3498,8 +3483,8 @@ This is the most frequent resizing task for businesses working across borders:
 1. Upload your Letter-sized PDF to [Resize PDF](/resize-pdf)
 2. Select A4 as the target size
 3. Choose "Fit to page" scaling
-4. Download and verify the result in our [PDF Viewer](/pdf-viewer)
-5. [Compress the PDF](/compress) if needed for email delivery
+4. Download and verify the result
+5. Compress the PDF if needed for email delivery — see our [email compression guide](/blog/how-to-compress-pdf-for-email)
 
 ### Converting A4 to US Letter for American Clients
 
@@ -3516,9 +3501,9 @@ For conference posters, banners, or large charts:
 
 1. [Merge all pages](/merge) into a single document if needed
 2. Resize to the target poster dimensions (A3, A2, or custom)
-3. [Add a watermark](/add-watermark) with your branding or conference name
+3. Add a watermark with your branding or conference name
 4. Verify image resolution is sufficient for the larger size
-5. [Compress](/compress) for easier file transfer to the print shop
+5. Compress for easier file transfer to the print shop
 
 ### Standardizing Page Sizes in a Merged Document
 
@@ -3526,7 +3511,7 @@ When merging PDFs from different sources, pages may have different sizes:
 
 1. [Split the merged document](/split) by page size groups
 2. Resize each group to the target size
-3. [Merge everything back together](/merge) for a uniform document
+3. Merge everything back together for a uniform document
 4. [Add page numbers](/add-page-numbers) to the final version
 
 ### Creating Booklet-Sized PDFs
@@ -3534,8 +3519,8 @@ When merging PDFs from different sources, pages may have different sizes:
 For pocket guides, handouts, or booklets:
 
 1. Resize your document from A4 or Letter to A5
-2. [Crop any excess margins](/crop-pdf) for tighter content
-3. [Add page numbers](/add-page-numbers) for navigation
+2. Crop any excess margins for tighter content
+3. Add page numbers for navigation
 4. Print two A5 pages per A4 sheet for efficient booklet production
 
 ## Understanding Scaling and Quality
@@ -3564,7 +3549,7 @@ This typically happens when resizing from a larger page (like A3) to a smaller o
 
 ### Margins Look Uneven After Resizing
 
-Different page sizes have different aspect ratios. When resizing between sizes with different ratios, extra space may appear on one axis. [Crop the resized PDF](/crop-pdf) to even out the margins.
+Different page sizes have different aspect ratios. When resizing between sizes with different ratios, extra space may appear on one axis. Crop the resized PDF to even out the margins.
 
 ### Colors Look Different After Resizing
 
@@ -3576,19 +3561,19 @@ Resizing does not change colors. If colors appear different, it is likely due to
 Content is proportionally scaled when using the "Fit to page" option. For best results, resize between similar aspect ratios (e.g., A4 and Letter). Only the "Stretch" option can cause distortion.
 
 ### Can I resize individual pages?
-Our tool resizes all pages uniformly. To resize specific pages, [split the PDF](/split) first, resize each part separately, then [merge](/merge) them back together.
+Our tool resizes all pages uniformly. To resize specific pages, split the PDF first, resize each part separately, then merge them back together. Our [splitting guide](/blog/how-to-split-pdf-pages) explains the process.
 
 ### Does resizing affect print quality?
 Scaling up increases page size but may reduce apparent resolution for raster images. Vector text and graphics remain sharp at any size. Start with the highest quality source file for best results.
 
 ### Can I resize a scanned PDF?
-Yes, but scanned pages are raster images. Scaling them up will reduce clarity. For scanned documents, run [OCR](/ocr-pdf) first to convert the text to vector format, then resize.
+Yes, but scanned pages are raster images. Scaling them up will reduce clarity. For scanned documents, run [OCR](/ocr-pdf) first to convert the text to vector format, then resize. See our [OCR guide](/blog/ocr-scanned-pdf-to-text) for more details.
 
 ### What if I need a custom page size?
 Our tool supports custom dimensions in addition to standard presets. Enter your desired width and height in millimeters or inches.
 
 ### Should I resize before or after merging documents?
-If all source documents need the same final size, resize each one individually first, then [merge them](/merge). This ensures consistent page sizes throughout the merged document.
+If all source documents need the same final size, resize each one individually first, then merge them. This ensures consistent page sizes throughout the merged document.
 `,
     relatedTools: [
       { name: "Resize PDF", path: "/resize-pdf", description: "Change PDF page dimensions" },
@@ -3668,8 +3653,8 @@ Contracts often go through multiple rounds of negotiation. Each revision may con
 3. Cross-reference changes with the negotiation notes or redline comments
 4. [Add annotations](/annotate-pdf) to flag items that need further discussion
 5. Confirm no unexpected clauses were added or removed
-6. [Sign the document](/sign-pdf) once satisfied that all changes are acceptable
-7. [Flatten the signed version](/flatten-pdf) to prevent further modifications
+6. [Sign the document](/sign-pdf) once satisfied — see our [e-signing guide](/blog/sign-pdf-electronically)
+7. Flatten the signed version to prevent further modifications
 
 ### Academic Paper Revisions
 
@@ -3678,7 +3663,7 @@ Track reviewer edits across journal submissions and ensure every comment has bee
 1. Compare the submitted and revised manuscripts side by side
 2. Verify all reviewer comments were addressed in the revision
 3. Check that new content does not introduce errors
-4. [Add annotations](/annotate-pdf) to note any remaining items or responses to reviewers
+4. Add annotations to note any remaining items or responses to reviewers
 5. [Extract text](/extract-text) from both versions for a line-by-line diff if needed
 
 ### Business Report Updates
@@ -3689,8 +3674,7 @@ Verify quarterly or annual report changes before publication:
 2. Confirm data updates are accurate, especially financial figures
 3. Check that charts and tables reflect the latest data
 4. [Add page numbers](/add-page-numbers) to the final approved version
-5. [Add a watermark](/add-watermark) marking it as the approved final copy
-6. [Protect with a password](/protect-pdf) before distributing
+5. [Protect with a password](/protect-pdf) before distributing
 
 ### Insurance and Financial Document Review
 
@@ -3714,7 +3698,7 @@ Organizations subject to regulatory requirements must track changes to standard 
 
 ### Ensure Both Documents Are Text-Based
 
-The comparison tool works best with text-based PDFs. If either document is a scanned image, run [OCR](/ocr-pdf) on it first to convert the images to searchable, comparable text. Without OCR, the tool can only compare documents at a visual pixel level, which is less precise.
+The comparison tool works best with text-based PDFs. If either document is a scanned image, run OCR on it first to convert the images to searchable, comparable text. Without OCR, the tool can only compare documents at a visual pixel level, which is less precise.
 
 ### Flatten Before Comparing
 
@@ -3727,34 +3711,34 @@ For the most meaningful comparison, both documents should have the same general 
 ## Tips for Effective Comparison
 
 1. **Compare similar versions**: The tool works best when documents share the same overall structure. Comparing completely different documents will produce mostly irrelevant differences.
-2. **Flatten before comparing**: [Flatten PDFs](/flatten-pdf) first if they contain form fields or annotations that might interfere with the text comparison.
-3. **Extract text for detailed analysis**: Use [Extract Text](/extract-text) on both files for a line-by-line text comparison when you need maximum precision.
+2. **Flatten before comparing**: Flatten PDFs first if they contain form fields or annotations that might interfere with the text comparison. Our [flattening guide](/blog/how-to-flatten-pdf) explains the process.
+3. **Extract text for detailed analysis**: Extract text from both files for a line-by-line text comparison when you need maximum precision.
 4. **Check page counts**: Use [PDF Statistics](/pdf-statistics) to verify both documents have the expected number of pages before starting the comparison.
 5. **Review in order**: Go through differences page by page in order rather than jumping around. This helps you understand the context of each change.
 6. **Save the comparison report**: Download and archive the comparison results alongside both document versions for future reference.
-7. **Use annotations**: After reviewing differences, [annotate the revised document](/annotate-pdf) with your comments or approval notes.
+7. **Use annotations**: After reviewing differences, annotate the revised document with your comments or approval notes.
 
 ## Comparison Workflow: Step-by-Step
 
 Here is a complete professional workflow for comparing document versions:
 
 1. Gather the original and revised PDFs
-2. Run [OCR](/ocr-pdf) on any scanned documents
-3. [Flatten](/flatten-pdf) both documents to remove interactive elements
-4. Upload both to [Compare PDF](/compare-pdf)
+2. Run [OCR](/ocr-pdf) on any scanned documents — see our [OCR guide](/blog/ocr-scanned-pdf-to-text)
+3. Flatten both documents to remove interactive elements
+4. Upload both to the comparison tool
 5. Review all highlighted differences systematically
-6. [Annotate](/annotate-pdf) the revised version with your comments
+6. Annotate the revised version with your comments
 7. Share the annotated version and comparison report with stakeholders
-8. Once approved, [sign the final version](/sign-pdf)
-9. [Flatten the signed copy](/flatten-pdf) and [protect it](/protect-pdf)
+8. Once approved, sign the final version
+9. Protect the signed copy with a password — learn how in our [PDF protection guide](/blog/protect-pdf-with-password)
 
 ## Frequently Asked Questions
 
 ### Can I compare scanned PDFs?
-For best results, run [OCR](/ocr-pdf) on scanned documents first so the tool can compare the actual text content rather than just the visual appearance of the pages.
+For best results, run OCR on scanned documents first so the tool can compare the actual text content rather than just the visual appearance of the pages.
 
 ### How many pages can I compare?
-There is no strict page limit. However, shorter documents produce faster and clearer results. For very long documents (100+ pages), consider [splitting them](/split) into sections and comparing each section separately.
+There is no strict page limit. However, shorter documents produce faster and clearer results. For very long documents (100+ pages), consider splitting them into sections and comparing each section separately.
 
 ### Does it compare images and charts?
 The tool primarily compares text content and layout. Visual elements like images and charts are compared at a pixel level, which means the tool can detect when an image has changed but may not describe exactly what changed within the image.
@@ -3766,7 +3750,7 @@ Yes. The comparison tool works with text in any language, including languages wi
 The tool handles documents with different page counts. Added or removed pages are flagged as differences, and the remaining pages are compared as expected.
 
 ### Can I compare password-protected PDFs?
-You will need to [unlock both PDFs](/unlock-pdf) before comparing them. Once the password protection is removed, upload both documents to the comparison tool.
+You will need to [unlock both PDFs](/unlock-pdf) before comparing them. See our [unlocking guide](/blog/unlock-pdf-remove-password) for instructions. Once the password protection is removed, upload both documents to the comparison tool.
 
 ### Is the comparison report downloadable?
 Yes. You can download the comparison report as a PDF or summary document to share with your team or archive for record keeping.
@@ -3860,7 +3844,7 @@ Online dashboards, analytics pages, and reporting tools are often hard to print 
 - Financial summaries
 - Performance scorecards
 
-After converting, [add page numbers](/add-page-numbers) and [a watermark](/add-watermark) for professional presentation.
+After converting, [add page numbers](/add-page-numbers) for professional presentation.
 
 ### Saving Online Receipts and Confirmations
 
@@ -3868,11 +3852,11 @@ E-commerce receipts, booking confirmations, subscription invoices, and banking s
 
 ### Building Offline Reading Lists
 
-Traveling without reliable internet? Convert articles to PDF and [merge them](/merge) into a single reading pack. This is perfect for long flights, remote travel, or any situation where internet access is limited. You can also [add page numbers](/add-page-numbers) to your merged reading pack for easy navigation.
+Traveling without reliable internet? Convert articles to PDF and [merge them](/merge) into a single reading pack. This is perfect for long flights, remote travel, or any situation where internet access is limited. See our [merging guide](/blog/merge-pdf-files-guide) for tips on combining multiple documents.
 
 ### Creating Training Materials
 
-Online documentation, tutorials, and how-to guides can be converted to PDF for offline training sessions. [Merge multiple converted pages](/merge) into a comprehensive training manual, [add a watermark](/add-watermark) with your company branding, and distribute to team members.
+Online documentation, tutorials, and how-to guides can be converted to PDF for offline training sessions. Merge multiple converted pages into a comprehensive training manual and distribute to team members.
 
 ### Legal and Compliance Documentation
 
@@ -3884,10 +3868,10 @@ Capture web page content for legal evidence, regulatory compliance, or dispute r
 |--------------|------|----------|---------|
 | HTML / Web pages | [HTML to PDF](/html-to-pdf) | Web content archiving | High - preserves CSS layout |
 | Word documents | [Word to PDF](/word-to-pdf) | Office documents | High - exact formatting |
-| Excel spreadsheets | [Excel to PDF](/excel-to-pdf) | Data tables and reports | High - table structure preserved |
-| PowerPoint slides | [PPT to PDF](/ppt-to-pdf) | Presentations | High - slide layout preserved |
+| Excel spreadsheets | Excel to PDF | Data tables and reports | High - table structure preserved |
+| PowerPoint slides | PPT to PDF | Presentations | High - slide layout preserved |
 | Images (JPG) | [JPG to PDF](/jpg-to-pdf) | Photos and scans | High - original resolution |
-| Images (PNG) | [PNG to PDF](/png-to-pdf) | Screenshots and graphics | High - transparency preserved |
+| Images (PNG) | PNG to PDF | Screenshots and graphics | High - transparency preserved |
 
 Choose the right conversion tool based on your source format. If you have the original document file (Word, Excel, PowerPoint), converting from that format typically produces better results than converting from the web version.
 
@@ -3895,12 +3879,11 @@ Choose the right conversion tool based on your source format. If you have the or
 
 Once you have your PDF, enhance it with these additional tools:
 
-1. **[Compress](/compress)** to reduce file size for emailing or cloud storage
-2. **[Add page numbers](/add-page-numbers)** for easy navigation through multi-page documents
-3. **[Add a watermark](/add-watermark)** to mark it as an archived copy, draft, or confidential
-4. **[Merge](/merge)** multiple converted pages into one organized document
-5. **[Protect with a password](/protect-pdf)** if the content is sensitive or confidential
-6. **[OCR](/ocr-pdf)** to ensure all text is searchable, even text within images on the page
+1. **[Compress](/compress)** to reduce file size for emailing or cloud storage — see our [compression guide](/blog/how-to-compress-pdf-for-email)
+2. **Add page numbers** for easy navigation through multi-page documents
+3. **Merge** multiple converted pages into one organized document
+4. **Protect with a password** if the content is sensitive or confidential — see our [PDF protection guide](/blog/protect-pdf-with-password)
+5. **[OCR](/ocr-pdf)** to ensure all text is searchable, even text within images on the page
 
 ## Advanced Conversion Tips
 
@@ -3910,7 +3893,7 @@ Some web pages load content dynamically using JavaScript. If the converted PDF i
 
 ### Converting Multiple Pages at Once
 
-If you need to save an entire section of a website (for example, a multi-page tutorial), convert each page individually and then [merge all the PDFs](/merge) into a single document. [Add page numbers](/add-page-numbers) to the merged result for easy reference.
+If you need to save an entire section of a website (for example, a multi-page tutorial), convert each page individually and then merge all the PDFs into a single document. Add page numbers to the merged result for easy reference.
 
 ### Optimizing for Print
 
@@ -3919,12 +3902,12 @@ When converting web pages specifically for printing:
 1. Use Reader Mode to strip unnecessary elements
 2. Convert to PDF with appropriate margins for your printer
 3. Set the page size to match your paper (A4 or Letter)
-4. [Resize the PDF](/resize-pdf) if needed after conversion
-5. Preview in our [PDF Viewer](/pdf-viewer) before sending to the printer
+4. Resize the PDF if needed after conversion — see our [resizing guide](/blog/resize-pdf-to-a4)
+5. Preview the result before sending to the printer
 
 ### Preserving Interactive Elements
 
-Standard PDF conversion captures the visual appearance of a web page but not its interactivity. Forms, dropdown menus, and JavaScript-powered features become static in the PDF. If you need to preserve form fields, consider using the [Edit PDF](/edit-pdf) tool to add interactive form fields to the converted PDF.
+Standard PDF conversion captures the visual appearance of a web page but not its interactivity. Forms, dropdown menus, and JavaScript-powered features become static in the PDF. If you need to preserve form fields, consider using the edit tool to add interactive form fields to the converted PDF. Our [PDF editing guide](/blog/edit-pdf-text-images) covers the process in detail.
 
 ## Troubleshooting Common Issues
 
@@ -3938,7 +3921,7 @@ If images are loaded lazily (only when scrolled into view), they may not appear 
 
 ### File Size Is Too Large
 
-Web pages with many high-resolution images can produce large PDFs. After conversion, run [Compress PDF](/compress) to reduce the file size. For maximum compression, choose high compression level for text-heavy pages or medium for pages with important images.
+Web pages with many high-resolution images can produce large PDFs. After conversion, run the compress tool to reduce the file size. For maximum compression, choose high compression level for text-heavy pages or medium for pages with important images.
 
 ### Page Breaks Are in Awkward Places
 
@@ -3956,10 +3939,10 @@ Pages that require login or authentication cannot be converted directly via URL.
 Static HTML content and CSS-rendered layouts are captured reliably. Pages that rely heavily on JavaScript for content loading may need to be saved as complete HTML files after the content has fully rendered in your browser.
 
 ### Can I convert multiple URLs at once?
-Convert each URL individually, then [merge the resulting PDFs](/merge) into a single document. This gives you more control over the order and allows you to review each conversion before combining.
+Convert each URL individually, then merge the resulting PDFs into a single document. This gives you more control over the order and allows you to review each conversion before combining.
 
 ### Is there a file size limit?
-There is no strict file size limit for HTML files. However, very large files with many high-resolution images may take longer to process. [Compress the result](/compress) if the output PDF is larger than needed.
+There is no strict file size limit for HTML files. However, very large files with many high-resolution images may take longer to process. Compress the result if the output PDF is larger than needed.
 
 ### Does it work with all websites?
 The converter works with standard HTML and CSS. Highly interactive single-page applications (SPAs) or sites with complex JavaScript frameworks may not convert perfectly via URL. In these cases, save the rendered page as HTML first.
@@ -4018,7 +4001,7 @@ Not all PDFs are created equal. The type of PDF you are working with determines 
 
 ### Digital PDFs (Text-Based)
 
-PDFs created from Word, Excel, Google Docs, or other software contain embedded text data. The [Extract Text](/extract-text) tool reads this directly with near-perfect accuracy. These are the easiest PDFs to extract from because the text layer is already present in the file structure.
+PDFs created from Word, Excel, Google Docs, or other software contain embedded text data. The Extract Text tool reads this directly with near-perfect accuracy. These are the easiest PDFs to extract from because the text layer is already present in the file structure.
 
 Examples of digital PDFs include:
 - Documents exported from Microsoft Office or Google Workspace
@@ -4032,18 +4015,18 @@ Scanned documents are essentially photographs of pages. They contain no selectab
 
 1. Upload to [OCR PDF](/ocr-pdf) first to add a searchable text layer
 2. The tool recognizes characters and words in each scanned page
-3. Then use [Extract Text](/extract-text) on the OCR-processed result, or use the searchable PDF directly
+3. Then use Extract Text on the OCR-processed result, or use the searchable PDF directly
 
-For best OCR results, ensure your scans are at least 300 DPI and the text is clearly printed. Handwritten content may have lower accuracy.
+For best OCR results, ensure your scans are at least 300 DPI and the text is clearly printed. Handwritten content may have lower accuracy. For a deeper dive into OCR workflows, see our guide on [how to OCR scanned PDFs to text](/blog/ocr-scanned-pdf-to-text).
 
 ### Locked PDFs
 
-Some PDFs have copy protection enabled by the document owner. If the PDF has copy restrictions, [unlock it](/unlock-pdf) first by entering the password, then extract the text. Our unlock tool removes permission restrictions while preserving the document content.
+Some PDFs have copy protection enabled by the document owner. If the PDF has copy restrictions, [unlock it](/unlock-pdf) first by entering the password, then extract the text. Our unlock tool removes permission restrictions while preserving the document content. Learn more in our [guide to unlocking PDFs](/blog/unlock-pdf-remove-password).
 
 ### PDFs with Mixed Content
 
 Many real-world PDFs contain a mix of text, images, tables, and charts. For these documents:
-- Use [Extract Text](/extract-text) for the text portions
+- Use Extract Text for the text portions
 - Use [Extract Images](/extract-images) to pull out embedded photos, charts, and diagrams separately
 - Use [PDF to Excel](/pdf-to-excel) if the document contains data tables you need in spreadsheet format
 
@@ -4061,13 +4044,13 @@ Choosing the right tool depends on what you need from the PDF content. Here is a
 | Best for | Quotes, data, indexing, search | Editing and reformatting | Data analysis and calculations |
 | Speed | Fastest | Moderate | Moderate |
 
-For formatted output with layout preservation, use [PDF to Word](/pdf-to-word). For raw text that you plan to paste elsewhere, [Extract Text](/extract-text) is the fastest and simplest option. For tabular data, [PDF to Excel](/pdf-to-excel) gives you structured cells ready for analysis.
+For formatted output with layout preservation, use [PDF to Word](/pdf-to-word). For raw text that you plan to paste elsewhere, Extract Text is the fastest and simplest option. For tabular data, check our guide on [converting PDF tables to Excel](/blog/pdf-to-excel-convert-tables).
 
 ## Tips for Better Text Extraction
 
-1. **Use OCR for scans**: Always run [OCR](/ocr-pdf) on scanned or photographed documents before attempting text extraction
+1. **Use OCR for scans**: Always run OCR on scanned or photographed documents before attempting text extraction
 2. **Check the source quality**: Higher resolution scans produce better OCR results - aim for 300 DPI or higher
-3. **Extract images separately**: If you also need images from the PDF, use [Extract Images](/extract-images) alongside text extraction
+3. **Extract images separately**: If you also need images from the PDF, use Extract Images alongside text extraction
 4. **Handle multi-column layouts**: Text from multi-column PDFs (like newspapers or academic journals) may need manual reordering after extraction since columns are read sequentially
 5. **Remove unnecessary pages first**: If you only need text from specific pages, use [Split PDF](/split) or [Delete Pages](/delete-pages) to isolate the relevant sections before extracting
 6. **Verify the output**: Always review extracted text for accuracy, especially from OCR-processed documents where character recognition errors may occur
@@ -4078,20 +4061,19 @@ For formatted output with layout preservation, use [PDF to Word](/pdf-to-word). 
 
 Extracting text is essential for academic research where you need to quote sources accurately:
 
-1. [Extract text](/extract-text) from journal article PDFs
+1. Extract text from journal article PDFs
 2. Paste relevant quotes into your paper with proper citation
-3. Use [PDF Statistics](/pdf-statistics) to get page and word count info for bibliographic records
-4. For scanned academic papers, run [OCR](/ocr-pdf) first to make them searchable
+3. For scanned academic papers, run OCR first to make them searchable
+4. Check out our [PDF tools for students guide](/blog/pdf-tools-for-students) for more academic workflows
 
 ### Content Migration
 
 When moving content from old PDF documents to a modern website or content management system:
 
-1. Extract text from legacy documents using [Extract Text](/extract-text)
+1. Extract text from legacy documents
 2. Clean up and format the content in your text editor
 3. Paste into your website CMS, blog platform, or new document template
-4. [Convert the new document to PDF](/word-to-pdf) when finished for archival purposes
-5. Use [Compress PDF](/compress) to optimize the new file for web distribution
+4. Use [Compress PDF](/compress) to optimize any new PDF files for web distribution
 
 ### Data Processing and Analysis
 
@@ -4099,33 +4081,33 @@ For business intelligence and data extraction workflows:
 
 1. Extract text from financial reports, invoices, or inventory documents
 2. Paste tabular data into Excel or Google Sheets for analysis
-3. Or use [PDF to Excel](/pdf-to-excel) directly for structured table extraction with cell boundaries preserved
+3. Or use PDF to Excel directly for structured table extraction with cell boundaries preserved
 4. Combine data from multiple PDFs by [merging them first](/merge) and then extracting all text at once
 
 ### Legal Document Review
 
 Lawyers and legal professionals often need to extract text for case preparation:
 
-1. [Unlock](/unlock-pdf) any password-protected case documents
-2. [Extract text](/extract-text) from court filings, contracts, and depositions
+1. Unlock any password-protected case documents
+2. Extract text from court filings, contracts, and depositions
 3. Search extracted text for key terms and phrases
-4. [Redact sensitive information](/redact-pdf) before sharing extracted content with third parties
+4. Redact sensitive information before sharing extracted content with third parties
 
 ### Archiving and Digitization
 
 Organizations digitizing paper records follow this workflow:
 
 1. Scan paper documents to create PDF files
-2. Run [OCR](/ocr-pdf) to convert scanned images to searchable text
-3. [Extract text](/extract-text) to create searchable indexes
-4. [Add page numbers](/add-page-numbers) to the PDF for reference
-5. [Compress](/compress) the final documents for long-term storage
+2. Run OCR to convert scanned images to searchable text
+3. Extract text to create searchable indexes
+4. Compress the final documents for long-term storage
+5. For more on making documents accessible, see our [PDF accessibility guide](/blog/pdf-accessibility-guide)
 
 ## Troubleshooting Common Issues
 
 ### Extracted Text Is Garbled or Missing Characters
 
-This usually indicates the PDF uses embedded fonts that are not standard. Try [converting to Word](/pdf-to-word) first, which uses a different decoding approach, then copy the text from the Word document.
+This usually indicates the PDF uses embedded fonts that are not standard. Try converting to Word first, which uses a different decoding approach, then copy the text from the Word document.
 
 ### No Text Is Extracted At All
 
@@ -4133,28 +4115,28 @@ The PDF is likely a scanned image. Run [OCR PDF](/ocr-pdf) to add a text layer, 
 
 ### Text Appears in Wrong Order
 
-Multi-column layouts and complex page designs can cause text to appear out of sequence. Use [Split PDF](/split) to process one page at a time, or copy text manually from specific sections.
+Multi-column layouts and complex page designs can cause text to appear out of sequence. Use Split PDF to process one page at a time, or copy text manually from specific sections.
 
 ### Special Characters Are Missing
 
-Some PDFs encode special characters differently. If mathematical symbols, accented characters, or non-Latin scripts are missing, try [PDF to Word](/pdf-to-word) for better character support.
+Some PDFs encode special characters differently. If mathematical symbols, accented characters, or non-Latin scripts are missing, try PDF to Word for better character support.
 
 ## Frequently Asked Questions
 
 ### Can I extract text from a protected PDF?
-If copy protection is enabled, [unlock the PDF](/unlock-pdf) first by entering the document password, then extract the text. Our unlock tool handles both user and owner password restrictions.
+If copy protection is enabled, unlock the PDF first by entering the document password, then extract the text. Our unlock tool handles both user and owner password restrictions.
 
 ### Does it preserve formatting?
-The tool extracts plain text only, which means bold, italic, font sizes, and colors are not retained. For formatted output that preserves styling, use [PDF to Word](/pdf-to-word) instead.
+The tool extracts plain text only, which means bold, italic, font sizes, and colors are not retained. For formatted output that preserves styling, use PDF to Word instead.
 
 ### What about non-Latin scripts?
 The tool supports most languages and character sets, including Arabic, Chinese, Japanese, Korean, Hindi, Thai, and Cyrillic scripts. For scanned documents in these languages, OCR accuracy varies by script complexity.
 
 ### Can I extract text from specific pages only?
-Use [Split PDF](/split) to isolate the pages you need, then run text extraction on just those pages. Alternatively, [Delete Pages](/delete-pages) can remove unwanted pages before extraction.
+Use Split PDF to isolate the pages you need, then run text extraction on just those pages. Alternatively, Delete Pages can remove unwanted pages before extraction.
 
 ### Is there a limit on file size?
-Our tool handles PDFs up to 50MB. For larger files, [split your PDF](/split) into smaller sections and extract text from each part.
+Our tool handles PDFs up to 50MB. For larger files, split your PDF into smaller sections and extract text from each part.
 
 ### How accurate is OCR-based text extraction?
 For clearly printed text at 300+ DPI, OCR accuracy typically exceeds 98%. Lower resolution scans, unusual fonts, or handwritten content will have reduced accuracy.
@@ -4204,25 +4186,25 @@ Converting PDFs back into editable documents is one of the most common tasks. He
 
 - [PDF to Word](/pdf-to-word) - Convert to editable DOCX while preserving formatting, fonts, and images. Ideal for editing contracts, reports, and any text-heavy document
 - [PDF to Excel](/pdf-to-excel) - Extract tables and data into spreadsheets with cell structure preserved. Essential for financial reports and data analysis
-- [PDF to PowerPoint](/pdf-to-ppt) - Turn PDF slides back into editable presentations for updating meeting decks and training materials
+- PDF to PowerPoint - Turn PDF slides back into editable presentations for updating meeting decks and training materials
 
 ### Office to PDF
 
 Lock down your documents in a universally readable format that looks identical on every device:
 
 - [Word to PDF](/word-to-pdf) - Convert DOCX files with perfect formatting preservation. The go-to tool for final document submissions
-- [Excel to PDF](/excel-to-pdf) - Turn spreadsheets into shareable PDFs while maintaining cell borders and formatting
-- [PPT to PDF](/ppt-to-pdf) - Convert presentations for easy distribution without requiring PowerPoint on the recipient's device
+- Excel to PDF - Turn spreadsheets into shareable PDFs while maintaining cell borders and formatting
+- PPT to PDF - Convert presentations for easy distribution without requiring PowerPoint on the recipient's device
 
 ### Image Conversions
 
 Work seamlessly between images and PDFs for photo albums, portfolios, and document scanning:
 
 - [JPG to PDF](/jpg-to-pdf) - Combine photos into a PDF album or document. Perfect for creating photo books and scanned document collections
-- [PNG to PDF](/png-to-pdf) - Convert PNG screenshots and graphics with transparency support
-- [PDF to JPG](/pdf-to-jpg) - Export PDF pages as JPG images for web use, social media, or presentations
-- [PDF to PNG](/pdf-to-png) - Export pages as high-quality PNG images with lossless compression
-- [GIF to PDF](/gif-to-pdf), [TIFF to PDF](/tiff-to-pdf), [WebP to PDF](/webp-to-pdf) - Support for all major image formats including professional and web-optimized types
+- PNG to PDF - Convert PNG screenshots and graphics with transparency support
+- PDF to JPG - Export PDF pages as JPG images for web use, social media, or presentations
+- PDF to PNG - Export pages as high-quality PNG images with lossless compression
+- GIF to PDF, TIFF to PDF, WebP to PDF - Support for all major image formats including professional and web-optimized types
 
 ## Editing and Annotation Tools
 
@@ -4231,10 +4213,10 @@ Work seamlessly between images and PDFs for photo albums, portfolios, and docume
 Sometimes you need to modify a PDF without converting it first. These tools let you make changes directly:
 
 - [Edit PDF](/edit-pdf) - Add text, images, and shapes to any PDF. Fill in forms, add company logos, or insert missing information
-- [Annotate PDF](/annotate-pdf) - Highlight, underline, and add comments for document review and collaboration
+- Annotate PDF - Highlight, underline, and add comments for document review and collaboration
 - [Sign PDF](/sign-pdf) - Draw, type, or upload your signature for contracts, agreements, and official documents
-- [Add Watermark](/add-watermark) - Stamp documents with branding, confidentiality notices, or draft labels
-- [Add Page Numbers](/add-page-numbers) - Add professional page numbering for multi-page documents
+- Add Watermark - Stamp documents with branding, confidentiality notices, or draft labels
+- Add Page Numbers - Add professional page numbering for multi-page documents
 
 ## Organization Tools
 
@@ -4244,39 +4226,39 @@ Reorganize your PDFs to create exactly the document you need:
 
 - [Merge PDF](/merge) - Combine multiple PDFs into one cohesive document. Essential for assembling reports, applications, and project deliverables
 - [Split PDF](/split) - Extract specific pages or divide large documents into smaller, focused files
-- [Reorder Pages](/reorder-pages) - Rearrange page order with an intuitive drag-and-drop interface
-- [Delete Pages](/delete-pages) - Remove unwanted, blank, or irrelevant pages from your documents
-- [Rotate PDF](/rotate-pdf) - Fix page orientation for scanned documents or sideways pages
+- Reorder Pages - Rearrange page order with an intuitive drag-and-drop interface
+- Delete Pages - Remove unwanted, blank, or irrelevant pages from your documents
+- Rotate PDF - Fix page orientation for scanned documents or sideways pages
 
 ### Size and Dimensions
 
 Control the physical characteristics of your PDF files:
 
 - [Compress PDF](/compress) - Reduce file size by up to 90% for email attachments and uploads. Choose from low, medium, or high compression levels
-- [Crop PDF](/crop-pdf) - Trim margins and unwanted areas to focus on the content that matters
-- [Resize PDF](/resize-pdf) - Change page dimensions to A4, Letter, Legal, or custom sizes for printing and standardization
+- Crop PDF - Trim margins and unwanted areas to focus on the content that matters
+- Resize PDF - Change page dimensions to A4, Letter, Legal, or custom sizes for printing and standardization
 
 ## Security Tools
 
 Keep your documents safe and compliant with privacy regulations:
 
 - [Protect PDF](/protect-pdf) - Add AES-256 password encryption to prevent unauthorized access
-- [Unlock PDF](/unlock-pdf) - Remove password protection when you have authorization and the password
-- [Redact PDF](/redact-pdf) - Permanently remove sensitive information like names, numbers, and financial data
-- [Flatten PDF](/flatten-pdf) - Lock form fields, annotations, and signatures so they cannot be edited
+- Unlock PDF - Remove password protection when you have authorization and the password
+- Redact PDF - Permanently remove sensitive information like names, numbers, and financial data
+- Flatten PDF - Lock form fields, annotations, and signatures so they cannot be edited
 
 ## Advanced Tools
 
 Power users and specialized workflows benefit from these advanced capabilities:
 
 - [OCR PDF](/ocr-pdf) - Convert scanned documents to searchable, selectable text using optical character recognition
-- [Compare PDF](/compare-pdf) - Find differences between document versions, essential for contract review and revision tracking
+- Compare PDF - Find differences between document versions, essential for contract review and revision tracking
 - [Extract Text](/extract-text) - Pull raw text content from any PDF for quoting, indexing, and content migration
-- [Extract Images](/extract-images) - Download all images embedded in PDFs for use in other projects
-- [Repair PDF](/repair-pdf) - Fix corrupted or damaged PDF files that fail to open
-- [Grayscale PDF](/grayscale-pdf) - Convert color pages to black and white for printing and file size reduction
-- [HTML to PDF](/html-to-pdf) - Save web pages as PDF documents for offline reading and archiving
-- [PDF Viewer](/pdf-viewer) - View PDFs directly in your browser without downloading additional software
+- Extract Images - Download all images embedded in PDFs for use in other projects
+- Repair PDF - Fix corrupted or damaged PDF files that fail to open
+- Grayscale PDF - Convert color pages to black and white for printing and file size reduction
+- HTML to PDF - Save web pages as PDF documents for offline reading and archiving
+- PDF Viewer - View PDFs directly in your browser without downloading additional software
 
 ## How to Choose the Right Tool
 
@@ -4284,36 +4266,38 @@ With so many options available, here is a quick reference guide to match your ta
 
 | Task | Recommended Tool | Why |
 |------|-----------------|-----|
-| Send a large PDF by email | [Compress PDF](/compress) | Reduces size below email limits |
-| Edit text in a PDF | [PDF to Word](/pdf-to-word) then edit | Full text editing in Word |
-| Combine application materials | [Merge PDF](/merge) | Creates one professional document |
-| Make a scanned PDF searchable | [OCR PDF](/ocr-pdf) | Adds selectable text layer |
-| Remove confidential data | [Redact PDF](/redact-pdf) | Permanently deletes sensitive info |
-| Print a web article | [HTML to PDF](/html-to-pdf) | Clean printable format |
-| Submit a class assignment | [Word to PDF](/word-to-pdf) | Consistent formatting for graders |
-| Prepare a contract for signing | [Sign PDF](/sign-pdf) | Add electronic signatures |
-| Archive old documents | [Compress PDF](/compress) + [OCR PDF](/ocr-pdf) | Small searchable files |
-| Create a photo portfolio | [JPG to PDF](/jpg-to-pdf) + [Merge PDF](/merge) | Professional presentation |
+| Send a large PDF by email | Compress PDF | Reduces size below email limits |
+| Edit text in a PDF | PDF to Word then edit | Full text editing in Word |
+| Combine application materials | Merge PDF | Creates one professional document |
+| Make a scanned PDF searchable | OCR PDF | Adds selectable text layer |
+| Remove confidential data | Redact PDF | Permanently deletes sensitive info |
+| Print a web article | HTML to PDF | Clean printable format |
+| Submit a class assignment | Word to PDF | Consistent formatting for graders |
+| Prepare a contract for signing | Sign PDF | Add electronic signatures |
+| Archive old documents | Compress PDF + OCR PDF | Small searchable files |
+| Create a photo portfolio | JPG to PDF + Merge PDF | Professional presentation |
 
 ## Common PDF Workflows
 
 ### Student Workflow
 1. Write your paper in Word
-2. [Convert to PDF](/word-to-pdf) for submission
-3. If the file is too large, [compress it](/compress)
-4. [Merge](/merge) with your cover page and bibliography
+2. Convert to PDF for submission
+3. If the file is too large, compress it
+4. Merge with your cover page and bibliography
+
+For more student-focused tips, read our [PDF tools for students guide](/blog/pdf-tools-for-students).
 
 ### Business Professional Workflow
-1. [Merge](/merge) proposal components into one file
-2. [Add page numbers](/add-page-numbers) for professionalism
-3. [Add a watermark](/add-watermark) with your company name
-4. [Protect with a password](/protect-pdf) for confidentiality
+1. Merge proposal components into one file
+2. Add page numbers for professionalism
+3. Add a watermark with your company name
+4. Protect with a password for confidentiality
 
 ### Legal Professional Workflow
-1. [OCR](/ocr-pdf) any scanned case documents
-2. [Extract text](/extract-text) for research and indexing
-3. [Redact](/redact-pdf) sensitive information before sharing
-4. [Flatten](/flatten-pdf) and [protect](/protect-pdf) the final version
+1. OCR any scanned case documents
+2. Extract text for research and indexing
+3. Redact sensitive information before sharing
+4. Flatten and protect the final version
 
 ## Free vs. Paid PDF Tools: Do You Really Need to Pay?
 
@@ -4344,6 +4328,15 @@ All the tools listed above are available right here at PDF HUB 24, completely fr
 - **Constantly updated** - New features and improvements are added regularly
 
 Ready to get started? Pick any tool from the list above and try it now. Your first conversion takes just seconds.
+
+## Related Reading
+
+Looking for step-by-step guides on specific tools? Check out these popular articles:
+
+- [How to compress PDF for email](/blog/how-to-compress-pdf-for-email)
+- [Convert PDF to Word without losing formatting](/blog/convert-pdf-to-word-without-losing-formatting)
+- [How to merge PDF files](/blog/merge-pdf-files-guide)
+- [OCR scanned PDFs to searchable text](/blog/ocr-scanned-pdf-to-text)
 `,
     relatedTools: [
       { name: "Compress PDF", path: "/compress", description: "Reduce PDF file size" },
@@ -4438,7 +4431,7 @@ OCR is the foundation, but truly accessible PDFs require additional steps. Here 
 
 ### Extract Text for Alternative Formats
 
-After running OCR, use [Extract Text](/extract-text) to create a plain-text version of the document. This is useful for:
+After running OCR, use [Extract Text](/extract-text) to create a plain-text version of the document. For a detailed walkthrough, see our guide on [how to extract text from any PDF](/blog/extract-text-from-pdf). This is useful for:
 
 - Creating HTML alternatives that are inherently more accessible than PDFs
 - Providing text-only versions optimized for screen readers and braille displays
@@ -4447,23 +4440,23 @@ After running OCR, use [Extract Text](/extract-text) to create a plain-text vers
 
 ### Add Page Numbers for Navigation
 
-Documents without page numbers are difficult to navigate, especially for screen reader users who cannot visually scan the page. Use [Add Page Numbers](/add-page-numbers) so readers and assistive technology users can reference specific pages when discussing or citing the document.
+Documents without page numbers are difficult to navigate, especially for screen reader users who cannot visually scan the page. Use [Add Page Numbers](/add-page-numbers) so readers and assistive technology users can reference specific pages when discussing or citing the document. See our [guide to adding page numbers](/blog/add-page-numbers-to-pdf) for detailed instructions.
 
 ### Ensure Proper Page Order
 
-If pages are out of order due to scanning errors or file assembly mistakes, readers get confused and lose context. Use [Reorder Pages](/reorder-pages) to fix the sequence before publishing. This is especially important for documents that will be read sequentially.
+If pages are out of order due to scanning errors or file assembly mistakes, readers get confused and lose context. Use [Reorder Pages](/reorder-pages) to fix the sequence before publishing.
 
 ### Flatten Interactive Elements
 
-Interactive forms can cause issues with certain assistive technologies. After forms are completed, [flatten the PDF](/flatten-pdf) to create a static, universally readable version. This also prevents accidental changes to filled-in data.
+Interactive forms can cause issues with certain assistive technologies. After forms are completed, [flatten the PDF](/flatten-pdf) to create a static, universally readable version. Learn more about this process in our [guide to flattening PDFs](/blog/how-to-flatten-pdf).
 
 ### Optimize File Size
 
-Large PDF files load slowly, which creates barriers for users on slow connections or mobile devices. [Compress](/compress) your documents to keep file sizes manageable while maintaining readability. This is particularly important for documents shared via email or downloaded from websites.
+Large PDF files load slowly, which creates barriers for users on slow connections or mobile devices. [Compress](/compress) your documents to keep file sizes manageable while maintaining readability.
 
 ### Remove Unnecessary Restrictions
 
-Some PDFs have copy protection or other permission restrictions that prevent assistive technologies from accessing the text. If a document has unnecessary restrictions, [unlock it](/unlock-pdf) to ensure screen readers and other tools can process the content.
+Some PDFs have copy protection or other permission restrictions that prevent assistive technologies from accessing the text. If a document has unnecessary restrictions, [unlock it](/unlock-pdf) to ensure screen readers and other tools can process the content. Our [guide to unlocking PDFs](/blog/unlock-pdf-remove-password) walks through the process step by step.
 
 ## Accessibility Checklist for PDFs
 
@@ -4471,26 +4464,26 @@ Use this checklist to evaluate and improve the accessibility of any PDF document
 
 | Check | How to Fix | Tool |
 |-------|-----------|------|
-| Text is selectable (not a scan) | Add OCR text layer | [OCR PDF](/ocr-pdf) |
-| Pages are in correct order | Rearrange pages | [Reorder Pages](/reorder-pages) |
-| Document has page numbers | Add page numbering | [Add Page Numbers](/add-page-numbers) |
-| File size is reasonable for download | Reduce file size | [Compress PDF](/compress) |
-| No unnecessary copy restrictions | Remove password | [Unlock PDF](/unlock-pdf) |
-| Content can be extracted as text | Verify text extraction | [Extract Text](/extract-text) |
-| Unnecessary pages removed | Delete blank or irrelevant pages | [Delete Pages](/delete-pages) |
-| Pages display in correct orientation | Fix rotated pages | [Rotate PDF](/rotate-pdf) |
+| Text is selectable (not a scan) | Add OCR text layer | OCR PDF |
+| Pages are in correct order | Rearrange pages | Reorder Pages |
+| Document has page numbers | Add page numbering | Add Page Numbers |
+| File size is reasonable for download | Reduce file size | Compress PDF |
+| No unnecessary copy restrictions | Remove password | Unlock PDF |
+| Content can be extracted as text | Verify text extraction | Extract Text |
+| Unnecessary pages removed | Delete blank or irrelevant pages | Delete Pages |
+| Pages display in correct orientation | Fix rotated pages | Rotate PDF |
 
 ## Accessible PDF Workflow: Step by Step
 
 Follow this workflow to transform any document into an accessible PDF:
 
 1. **Start with the best source material** you have, whether that is a digital document or a high-quality scan
-2. If scanned, run [OCR](/ocr-pdf) to add a searchable text layer
-3. [Delete unnecessary pages](/delete-pages) such as blank pages or duplicate scans
-4. [Reorder pages](/reorder-pages) if the sequence is incorrect
-5. [Rotate pages](/rotate-pdf) that are sideways or upside down
-6. [Add page numbers](/add-page-numbers) for navigation and reference
-7. [Compress](/compress) to keep file size manageable for download and email
+2. If scanned, run OCR to add a searchable text layer
+3. Delete unnecessary pages such as blank pages or duplicate scans
+4. Reorder pages if the sequence is incorrect
+5. Rotate pages that are sideways or upside down
+6. Add page numbers for navigation and reference
+7. Compress to keep file size manageable for download and email
 8. Test accessibility by trying to select and copy text from the result
 9. Verify with a screen reader or accessibility checker if possible
 
@@ -4512,7 +4505,7 @@ If you are creating new documents, build accessibility in from the start rather 
 ## Common Accessibility Mistakes to Avoid
 
 ### Mistake 1: Using Images of Text
-Never scan a printed page and distribute it as a PDF without running OCR. This is the most common accessibility failure and the easiest to fix with [OCR PDF](/ocr-pdf).
+Never scan a printed page and distribute it as a PDF without running OCR. This is the most common accessibility failure and the easiest to fix with OCR PDF.
 
 ### Mistake 2: Forgetting About Color Contrast
 Documents with light gray text on a white background, or colored text on colored backgrounds, can be unreadable for users with low vision. Always verify contrast ratios.
@@ -4521,7 +4514,7 @@ Documents with light gray text on a white background, or colored text on colored
 A PDF that is just one long block of text without headings, lists, or paragraphs is difficult for everyone, but especially for screen reader users who rely on structural elements to navigate.
 
 ### Mistake 4: Locking Copy Permissions
-Password protecting a PDF with copy restrictions prevents screen readers from accessing the text. If security is needed, use [password protection](/protect-pdf) that allows copy access but prevents editing.
+Password protecting a PDF with copy restrictions prevents screen readers from accessing the text. If security is needed, use password protection that allows copy access but prevents editing. Learn more in our [guide to protecting PDFs with passwords](/blog/protect-pdf-with-password).
 
 ## Who Needs Accessible PDFs?
 
@@ -4541,10 +4534,10 @@ Accessibility benefits a wider audience than many realize:
 OCR adds a searchable text layer, which is the most critical step. Full accessibility may also require tagged structure, alt text for images, proper reading order, and language identification, depending on the standard you need to meet. However, OCR alone dramatically improves accessibility for the majority of users.
 
 ### Can OCR handle handwritten text?
-OCR works best with printed text. Handwritten content may have lower accuracy depending on legibility, pen color, and writing style. For handwritten documents, consider having them typed up and then [converted to PDF](/word-to-pdf).
+OCR works best with printed text. Handwritten content may have lower accuracy depending on legibility, pen color, and writing style. For handwritten documents, consider having them typed up and then converted to PDF.
 
 ### What languages does OCR support?
-Our [OCR tool](/ocr-pdf) supports most major languages including English, Spanish, French, German, Portuguese, Italian, Dutch, Chinese, Japanese, Korean, Arabic, Hindi, and Russian.
+Our OCR tool supports most major languages including English, Spanish, French, German, Portuguese, Italian, Dutch, Chinese, Japanese, Korean, Arabic, Hindi, and Russian.
 
 ### How do I test if my PDF is accessible?
 The simplest test is to try selecting and copying text from every page. If text is selectable, the basic accessibility requirement is met. For more thorough testing, use a screen reader such as NVDA (free) or JAWS to verify the reading experience.
@@ -4599,15 +4592,15 @@ Before converting, it helps to understand which image format you are working wit
 | TIFF | [TIFF to PDF](/tiff-to-pdf) | High-quality scans and prints | Lossless, very large files, professional quality |
 | WebP | [WebP to PDF](/webp-to-pdf) | Modern web images | Google format, excellent compression, growing adoption |
 
-Choosing the right converter ensures your images are processed optimally. For example, [JPG to PDF](/jpg-to-pdf) is tuned for photographic content, while [PNG to PDF](/png-to-pdf) handles transparency and crisp edges better for screenshots and graphics.
+Choosing the right converter ensures your images are processed optimally. For example, [JPG to PDF](/jpg-to-pdf) is tuned for photographic content, while [PNG to PDF](/png-to-pdf) handles transparency and crisp edges better for screenshots and graphics. For more on image formats, see our guide on [converting images to PDF](/blog/convert-images-to-pdf).
 
 ## How to Batch Convert Images to PDF
 
 ### Step 1: Choose the Right Tool
 
-Pick the converter that matches your image format. For JPG photos from your camera or phone, start with [JPG to PDF](/jpg-to-pdf). For PNG screenshots or design exports, use [PNG to PDF](/png-to-pdf). For professional scans saved as TIFF, use [TIFF to PDF](/tiff-to-pdf).
+Pick the converter that matches your image format. For JPG photos from your camera or phone, start with JPG to PDF. For PNG screenshots or design exports, use PNG to PDF. For professional scans saved as TIFF, use TIFF to PDF.
 
-If you have a mix of formats, convert each type separately and then [merge the resulting PDFs](/merge) into one document.
+If you have a mix of formats, convert each type separately and then [merge the resulting PDFs](/merge) into one document. Our [guide to merging PDFs](/blog/merge-pdf-files-guide) covers this workflow in detail.
 
 ### Step 2: Upload Multiple Images
 
@@ -4629,7 +4622,7 @@ Click the convert button to generate your PDF. Each image becomes one page in th
 2. **Use consistent orientation**: Ensure all images are rotated to the correct viewing angle. If any images are sideways or upside down, use our [Rotate Image](/rotate-image) tool to fix them before converting
 3. **Optimize image size**: Very large images (from high-resolution cameras) create unnecessarily big PDFs. Use [Image Compressor](/image-compressor) to reduce image file size before converting, especially if the PDF will be shared via email
 4. **Crop unnecessary areas**: Trim images with [Crop Image](/crop-image) before converting for cleaner, more focused pages. Remove backgrounds, borders, and irrelevant portions
-5. **Resize for consistency**: If your images vary in size, use [Resize Image](/resize-image) to standardize dimensions so all pages in the PDF look uniform
+5. **Resize for consistency**: If your images vary in size, use Resize Image to standardize dimensions so all pages in the PDF look uniform
 
 ### During Conversion
 
@@ -4641,25 +4634,25 @@ Click the convert button to generate your PDF. Each image becomes one page in th
 
 ### Combine Multiple PDFs
 
-If you converted different batches or formats separately, use [Merge PDF](/merge) to combine them into one unified document. This is especially useful when mixing JPG photos with PNG screenshots or TIFF scans.
+If you converted different batches or formats separately, use [Merge PDF](/merge) to combine them into one unified document.
 
 ### Add Professional Touches
 
 - [Add page numbers](/add-page-numbers) so readers can navigate and reference specific images
-- [Add a watermark](/add-watermark) with your name, brand, or event name for branding and copyright protection
+- Add a watermark with your name, brand, or event name for branding and copyright protection
 - [Add text annotations](/edit-pdf) to label images, add captions, or include descriptions
 
 ### Optimize for Sharing
 
-- [Compress the PDF](/compress) if the file is too large for email (keep it under 25MB for most email providers)
-- [Resize pages](/resize-pdf) to a standard size like A4 or Letter for printing
-- [Protect with a password](/protect-pdf) if the images are confidential or proprietary
+- [Compress the PDF](/compress) if the file is too large for email (keep it under 25MB for most email providers). See our [guide to compressing PDFs for email](/blog/how-to-compress-pdf-for-email) for tips
+- Resize pages to a standard size like A4 or Letter for printing
+- Protect with a password if the images are confidential or proprietary
 
 ### Make Text Searchable
 
 If your images contain text (like photographed documents or receipts):
 - Run [OCR](/ocr-pdf) on the converted PDF to add a searchable text layer
-- Use [Extract Text](/extract-text) to pull out the recognized text for other uses
+- Use Extract Text to pull out the recognized text for other uses
 
 ## Practical Workflows
 
@@ -4668,53 +4661,53 @@ If your images contain text (like photographed documents or receipts):
 Transform your best photos into a polished digital photo book:
 
 1. Select and organize your best photos chronologically or by theme
-2. [Crop images](/crop-image) to remove distracting backgrounds
-3. Convert with [JPG to PDF](/jpg-to-pdf), arranging photos in the desired order
-4. [Add page numbers](/add-page-numbers) for easy navigation
-5. [Add a watermark](/add-watermark) with the event name, date, or your photographer credit
-6. [Compress](/compress) the final document if you plan to share it digitally
+2. Crop images to remove distracting backgrounds
+3. Convert with JPG to PDF, arranging photos in the desired order
+4. Add page numbers for easy navigation
+5. Add a watermark with the event name, date, or your photographer credit
+6. Compress the final document if you plan to share it digitally
 
 ### Digitizing Paper Documents
 
 Convert physical documents to searchable digital files:
 
 1. Photograph each page with your phone, keeping the camera steady and parallel to the page
-2. [Crop the images](/crop-image) to remove the desk, table, or background around the document
-3. Convert with [JPG to PDF](/jpg-to-pdf), ordering pages correctly
-4. Run [OCR](/ocr-pdf) to make all text searchable and selectable
-5. [Add page numbers](/add-page-numbers) for reference
-6. [Compress](/compress) the final document for efficient storage
+2. Crop the images to remove the desk, table, or background around the document
+3. Convert with JPG to PDF, ordering pages correctly
+4. Run OCR to make all text searchable and selectable
+5. Add page numbers for reference
+6. Compress the final document for efficient storage
 
 ### Submitting a Design Portfolio
 
 Present your creative work professionally:
 
 1. Export your designs as high-quality PNG files from your design software
-2. Convert with [PNG to PDF](/png-to-pdf), arranging projects in presentation order
-3. [Merge](/merge) with your resume or cover letter PDF to create a complete application package
-4. [Add a watermark](/add-watermark) with your name or studio brand
-5. [Protect with a password](/protect-pdf) if the work is confidential or pre-release
+2. Convert with PNG to PDF, arranging projects in presentation order
+3. Merge with your resume or cover letter PDF to create a complete application package
+4. Add a watermark with your name or studio brand
+5. Protect with a password if the work is confidential or pre-release
 
 ### Building an Insurance Claim File
 
 Organize documentation for insurance submissions:
 
 1. Photograph all damage, receipts, and supporting documents
-2. [Crop images](/crop-image) to focus on relevant details
-3. Convert with [JPG to PDF](/jpg-to-pdf) in chronological order
-4. [Add text annotations](/edit-pdf) to label each photo with descriptions
-5. [Merge](/merge) with any existing PDF documentation (police reports, estimates)
-6. [Compress](/compress) for email submission
+2. Crop images to focus on relevant details
+3. Convert with JPG to PDF in chronological order
+4. Add text annotations to label each photo with descriptions
+5. Merge with any existing PDF documentation (police reports, estimates)
+6. Compress for email submission
 
 ### Creating Course Materials
 
 Teachers and trainers can compile visual resources:
 
 1. Gather diagrams, charts, and reference images
-2. Convert with [PNG to PDF](/png-to-pdf) or [JPG to PDF](/jpg-to-pdf)
-3. [Add page numbers](/add-page-numbers) for student reference
-4. [Add a watermark](/add-watermark) with the course name and term
-5. [Compress](/compress) for LMS upload
+2. Convert with PNG to PDF or JPG to PDF
+3. Add page numbers for student reference
+4. Add a watermark with the course name and term
+5. Compress for LMS upload. Check out our [PDF tools for students guide](/blog/pdf-tools-for-students) for more educational workflows
 
 ## Image Quality and File Size Considerations
 
@@ -4727,38 +4720,38 @@ Understanding the relationship between image quality and resulting PDF size help
 | 3840x2160 (4K) | 1-3 MB | Medium | Quality prints |
 | 4000x6000 (DSLR) | 3-8 MB | Large | Professional prints |
 
-If your PDF will primarily be viewed on screen, Full HD resolution is sufficient. For printing, use the highest resolution available and [compress the PDF](/compress) afterward to manage file size.
+If your PDF will primarily be viewed on screen, Full HD resolution is sufficient. For printing, use the highest resolution available and compress the PDF afterward to manage file size.
 
 ## Troubleshooting Common Issues
 
 ### PDF Pages Are in Wrong Order
-Rearrange pages after conversion using [Reorder Pages](/reorder-pages), or rename your source files numerically before uploading.
+Rearrange pages after conversion using Reorder Pages, or rename your source files numerically before uploading.
 
 ### PDF File Is Too Large
-Use [Compress PDF](/compress) to reduce the file size. For extreme compression needs, reduce image resolution with [Image Compressor](/image-compressor) before converting.
+Use Compress PDF to reduce the file size. For extreme compression needs, reduce image resolution with Image Compressor before converting.
 
 ### Images Appear Sideways
-Fix image rotation before converting using [Rotate Image](/rotate-image), or after converting using [Rotate PDF](/rotate-pdf).
+Fix image rotation before converting using Rotate Image, or after converting using Rotate PDF.
 
 ### Need to Add or Remove Pages Later
-Use [Merge PDF](/merge) to add new pages or [Delete Pages](/delete-pages) to remove unwanted ones from an existing PDF.
+Use Merge PDF to add new pages or Delete Pages to remove unwanted ones from an existing PDF.
 
 ## Frequently Asked Questions
 
 ### How many images can I convert at once?
-You can upload and convert multiple images in a single batch. For very large collections (hundreds of images), convert in groups of 20-30 and then [merge](/merge) the resulting PDFs into one document.
+You can upload and convert multiple images in a single batch. For very large collections (hundreds of images), convert in groups of 20-30 and then merge the resulting PDFs into one document.
 
 ### Will image quality be preserved?
-Yes. Images are embedded at their original resolution in the PDF. The conversion process does not re-compress or degrade your images. For smaller file sizes after conversion, [compress](/compress) the output PDF.
+Yes. Images are embedded at their original resolution in the PDF. The conversion process does not re-compress or degrade your images. For smaller file sizes after conversion, compress the output PDF.
 
 ### Can I mix different image formats in one PDF?
-Convert each format using its respective tool ([JPG to PDF](/jpg-to-pdf), [PNG to PDF](/png-to-pdf), etc.), then [merge the PDFs](/merge) into one unified document.
+Convert each format using its respective tool (JPG to PDF, PNG to PDF, etc.), then merge the PDFs into one unified document.
 
 ### What is the maximum image size supported?
-Our tools handle images of virtually any size and resolution. For very large images (over 50 megapixels), consider reducing resolution with [Image Compressor](/image-compressor) before converting.
+Our tools handle images of virtually any size and resolution. For very large images (over 50 megapixels), consider reducing resolution with Image Compressor before converting.
 
 ### Can I add text or captions to the images in the PDF?
-Yes. After converting images to PDF, use [Edit PDF](/edit-pdf) to add text overlays, captions, labels, or annotations to any page.
+Yes. After converting images to PDF, use Edit PDF to add text overlays, captions, labels, or annotations to any page.
 `,
     relatedTools: [
       { name: "JPG to PDF", path: "/jpg-to-pdf", description: "Convert JPG photos to PDF" },
