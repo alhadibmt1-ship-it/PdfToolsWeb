@@ -71,6 +71,15 @@ const PressKitPage = lazy(() => import("@/pages/PressKitPage"));
 const AllToolsPage = lazy(() => import("@/pages/AllToolsPage"));
 const FreePdfConverterPage = lazy(() => import("@/pages/FreePdfConverterPage"));
 const FreePdfEditorPage = lazy(() => import("@/pages/FreePdfEditorPage"));
+const CategoryHubPage = lazy(() => import("@/pages/CategoryHubPage"));
+const ProgrammaticSeoPage = lazy(() => import("@/pages/ProgrammaticSeoPage"));
+const WriteForUsPage = lazy(() => import("@/pages/WriteForUsPage"));
+const DataSecurityPage = lazy(() => import("@/pages/DataSecurityPage"));
+const AutoDeletePage = lazy(() => import("@/pages/AutoDeletePage"));
+const PricingPage = lazy(() => import("@/pages/PricingPage"));
+const EmbedWidgetPage = lazy(() => import("@/pages/EmbedWidgetPage"));
+const PdfComparisonPage = lazy(() => import("@/pages/PdfComparisonPage"));
+const PdfFileFormatsPage = lazy(() => import("@/pages/PdfFileFormatsPage"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 function PageLoader() {
@@ -146,6 +155,20 @@ function Router() {
         <Route path="/all-tools" component={AllToolsPage} />
         <Route path="/free-pdf-converter" component={FreePdfConverterPage} />
         <Route path="/free-pdf-editor" component={FreePdfEditorPage} />
+        
+        <Route path="/write-for-us" component={WriteForUsPage} />
+        <Route path="/data-security" component={DataSecurityPage} />
+        <Route path="/auto-delete" component={AutoDeletePage} />
+        <Route path="/pricing" component={PricingPage} />
+        <Route path="/embed" component={EmbedWidgetPage} />
+        <Route path="/pdf-comparison-chart" component={PdfComparisonPage} />
+        <Route path="/pdf-file-formats-guide" component={PdfFileFormatsPage} />
+        <Route path="/tools/:slug" component={ProgrammaticSeoPage} />
+        <Route path="/convert-pdf" component={CategoryHubPage} />
+        <Route path="/compress-pdf-tools" component={CategoryHubPage} />
+        <Route path="/edit-pdf-tools" component={CategoryHubPage} />
+        <Route path="/secure-pdf" component={CategoryHubPage} />
+        <Route path="/image-tools" component={CategoryHubPage} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>
