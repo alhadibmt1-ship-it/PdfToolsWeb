@@ -10,8 +10,8 @@ const OG_IMAGE = "https://pdfhub24.com/og-image.png";
 
 export const seoConfig: Record<string, PageSEO> = {
   "/": {
-    title: "Free Online PDF Tools | Convert & Merge | PDF HUB 24",
-    description: "Free online PDF tools for merging, splitting, compressing, and converting. 43+ tools including PDF to Word and image conversion.",
+    title: "43+ Free Online PDF Tools (Fast & Secure) | PDF HUB 24",
+    description: "43+ free PDF tools online — merge, split, compress, convert PDF to Word & more. No signup, no watermark, 100% secure. Trusted by millions in 2026.",
     keywords: "PDF tools, PDF converter, merge PDF, split PDF, compress PDF, PDF to Word, free PDF editor",
     schema: {
       "@context": "https://schema.org",
@@ -27,8 +27,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/merge": {
-    title: "Merge PDF Files Online Free - Combine PDFs | PDF HUB 24",
-    description: "Merge multiple PDF files into one document instantly. Free online PDF merger - no registration, no watermarks. Drag and drop to combine PDFs in seconds.",
+    title: "Merge PDF Free Online (No Watermark, No Signup) | PDF HUB 24",
+    description: "Merge multiple PDF files into one document in seconds. Free online PDF merger — no registration, no watermarks. Drag & drop to combine PDFs instantly.",
     keywords: "merge PDF, combine PDF, join PDF files, PDF merger, merge PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -40,8 +40,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/split": {
-    title: "Split PDF Online Free - Extract Pages from PDF | PDF HUB 24",
-    description: "Split PDF files and extract specific pages instantly. Free online PDF splitter - select page ranges, extract single pages. No registration required.",
+    title: "Split PDF Free Online (Extract Any Page) | PDF HUB 24",
+    description: "Split PDF files and extract specific pages in seconds. Free online PDF splitter — select page ranges or extract single pages. No signup, no watermark.",
     keywords: "split PDF, extract PDF pages, PDF splitter, separate PDF pages, split PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -52,8 +52,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/compress": {
-    title: "Compress PDF Online Free - Reduce PDF File Size | PDF HUB 24",
-    description: "Compress PDF files and reduce file size by up to 90%. Free online PDF compressor with quality options. Optimize PDFs for email and web sharing.",
+    title: "Compress PDF Free Online — Reduce Size 90% (Fast) | PDF HUB 24",
+    description: "Compress PDF files and reduce size by up to 90%. Free online PDF compressor — 3 quality levels. Perfect for email under 25MB. No signup required.",
     keywords: "compress PDF, reduce PDF size, PDF compressor, optimize PDF, shrink PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -64,8 +64,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/rotate": {
-    title: "Rotate PDF Online Free - Turn PDF Pages | PDF HUB 24",
-    description: "Rotate PDF pages 90°, 180°, or 270° clockwise. Free online PDF rotator - fix orientation issues instantly. No watermarks, no registration.",
+    title: "Rotate PDF Free Online — Fix Orientation (Instant) | PDF HUB 24",
+    description: "Rotate PDF pages 90°, 180°, or 270° clockwise. Free online PDF rotator — fix orientation issues instantly. No watermarks, no signup required.",
     keywords: "rotate PDF, turn PDF pages, PDF rotator, flip PDF, rotate PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -76,8 +76,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/pdf-to-word": {
-    title: "PDF to Word Free Online (No Email, No Watermark) | PDF HUB 24",
-    description: "Convert PDF to editable Word (DOCX) instantly. Free PDF to Word converter online with no email, no watermark, secure and fast. Works on all devices.",
+    title: "PDF to Word Free (No Email, No Watermark, 100% Secure) | PDF HUB 24",
+    description: "Convert PDF to editable Word (DOCX) in seconds. Free PDF to Word converter — no email, no watermark, keeps formatting. Works on all devices.",
     keywords: "pdf to word converter free, convert pdf to word online, pdf to docx free, editable word from pdf, free pdf converter no email, secure pdf to word tool",
     schema: {
       "@context": "https://schema.org",
@@ -89,8 +89,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/pdf-to-jpg": {
-    title: "Free PDF to JPG Converter - PDF to Images | PDF HUB 24",
-    description: "Convert PDF pages to high-quality JPG images instantly. Free online PDF to JPG converter - extract all pages as separate images. No registration.",
+    title: "PDF to JPG Free Online (High Quality, No Signup) | PDF HUB 24",
+    description: "Convert PDF pages to high-quality JPG images instantly. Free PDF to JPG converter — extract all pages as images. No registration, no watermark.",
     keywords: "PDF to JPG, PDF to image, convert PDF to JPG, PDF to JPEG, PDF to JPG online free",
     schema: {
       "@context": "https://schema.org",
@@ -101,8 +101,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/pdf-to-png": {
-    title: "Free PDF to PNG Converter - PDF to PNG | PDF HUB 24",
-    description: "Convert PDF pages to high-quality PNG images with transparency. Free online PDF to PNG converter - perfect for graphics and presentations.",
+    title: "PDF to PNG Free Online (Transparent, High Quality) | PDF HUB 24",
+    description: "Convert PDF pages to high-quality PNG images with transparency. Free PDF to PNG converter — perfect for graphics and presentations. No signup.",
     keywords: "PDF to PNG, convert PDF to PNG, PDF to image, PDF to PNG online free",
     schema: {
       "@context": "https://schema.org",
@@ -113,8 +113,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/pdf-to-excel": {
-    title: "Free PDF to Excel Converter - PDF to XLS | PDF HUB 24",
-    description: "Convert PDF tables to Excel spreadsheets (XLS/XLSX) instantly. Free online PDF to Excel converter - extract data accurately. No registration.",
+    title: "PDF to Excel Free (Keep Table Format) | PDF HUB 24",
+    description: "Convert PDF tables to Excel spreadsheets (XLS/XLSX) instantly. Free PDF to Excel converter — extract data accurately. No registration, no watermark.",
     keywords: "PDF to Excel, PDF to XLS, convert PDF to Excel, PDF to spreadsheet, PDF to Excel online free",
     schema: {
       "@context": "https://schema.org",
@@ -125,8 +125,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/pdf-to-ppt": {
-    title: "Free PDF to PowerPoint Converter - to PPT | PDF HUB 24",
-    description: "Convert PDF to editable PowerPoint presentations (PPT/PPTX) instantly. Free online PDF to PowerPoint converter - preserves slides and formatting.",
+    title: "PDF to PowerPoint Free (Keeps Slides & Format) | PDF HUB 24",
+    description: "Convert PDF to editable PowerPoint (PPT/PPTX) in seconds. Free PDF to PowerPoint converter — preserves slides and formatting. No signup required.",
     keywords: "PDF to PowerPoint, PDF to PPT, convert PDF to PowerPoint, PDF to PPTX, PDF to PowerPoint online free",
     schema: {
       "@context": "https://schema.org",
@@ -137,8 +137,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/word-to-pdf": {
-    title: "Free Word to PDF Converter - DOCX to PDF | PDF HUB 24",
-    description: "Convert Word documents (DOCX) to PDF instantly. Free online Word to PDF converter - preserves formatting perfectly. No registration required.",
+    title: "Word to PDF Free Online (Keeps Formatting) | PDF HUB 24",
+    description: "Convert Word documents (DOCX) to PDF in seconds. Free Word to PDF converter — preserves formatting perfectly. No signup, no watermark required.",
     keywords: "Word to PDF, DOCX to PDF, convert Word to PDF, Word to PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -149,8 +149,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/jpg-to-pdf": {
-    title: "Free JPG to PDF Converter - Images to PDF | PDF HUB 24",
-    description: "Convert JPG images to PDF documents instantly. Free online JPG to PDF converter - combine multiple images into one PDF. No registration.",
+    title: "JPG to PDF Free Online (Combine Multiple Images) | PDF HUB 24",
+    description: "Convert JPG images to PDF in seconds. Free JPG to PDF converter — combine multiple photos into one PDF. No signup, no watermark, high quality.",
     keywords: "JPG to PDF, image to PDF, convert JPG to PDF, JPEG to PDF, JPG to PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -161,8 +161,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/png-to-pdf": {
-    title: "Free PNG to PDF Converter - PNG to PDF | PDF HUB 24",
-    description: "Convert PNG images to PDF documents instantly. Free online PNG to PDF converter - maintains transparency and quality. No registration required.",
+    title: "PNG to PDF Free Online (Keeps Transparency) | PDF HUB 24",
+    description: "Convert PNG images to PDF in seconds. Free PNG to PDF converter — maintains transparency and quality. No signup, no watermark required.",
     keywords: "PNG to PDF, convert PNG to PDF, image to PDF, PNG to PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -173,8 +173,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/excel-to-pdf": {
-    title: "Free Excel to PDF Converter - XLS to PDF | PDF HUB 24",
-    description: "Convert Excel spreadsheets (XLS/XLSX) to PDF instantly. Free online Excel to PDF converter - preserves tables and formatting perfectly.",
+    title: "Excel to PDF Free Online (Keeps Tables & Format) | PDF HUB 24",
+    description: "Convert Excel spreadsheets (XLS/XLSX) to PDF in seconds. Free Excel to PDF converter — preserves tables and formatting perfectly. No signup.",
     keywords: "Excel to PDF, XLS to PDF, convert Excel to PDF, XLSX to PDF, Excel to PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -185,8 +185,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/ppt-to-pdf": {
-    title: "Free PowerPoint to PDF Converter - PPT to PDF | PDF HUB 24",
-    description: "Convert PowerPoint presentations (PPT/PPTX) to PDF instantly. Free online PowerPoint to PDF converter - preserves slides and animations.",
+    title: "PowerPoint to PDF Free (Keeps Slides) | PDF HUB 24",
+    description: "Convert PowerPoint (PPT/PPTX) to PDF in seconds. Free PPT to PDF converter — preserves slides, images, and layout. No signup, no watermark.",
     keywords: "PowerPoint to PDF, PPT to PDF, convert PowerPoint to PDF, PPTX to PDF, PowerPoint to PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -197,8 +197,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/protect-pdf": {
-    title: "Free PDF Password Protection - Encrypt PDF | PDF HUB 24",
-    description: "Add password protection to PDF files instantly. Free online PDF encryption tool - secure your documents with strong encryption. No registration.",
+    title: "Protect PDF Free — Add Password (AES-256 Encryption) | PDF HUB 24",
+    description: "Add password protection to PDF files in seconds. Free PDF encryption tool — AES-256 security, set permissions. No signup, no watermark required.",
     keywords: "protect PDF, encrypt PDF, password protect PDF, secure PDF, PDF encryption online free",
     schema: {
       "@context": "https://schema.org",
@@ -209,8 +209,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/unlock-pdf": {
-    title: "Unlock PDF Online Free - Remove PDF Password | PDF HUB 24",
-    description: "Remove password protection from PDF files instantly. Free online PDF unlocker - unlock password-protected PDFs. Requires knowing the password.",
+    title: "Unlock PDF Free Online (Remove Password Instantly) | PDF HUB 24",
+    description: "Remove password protection from PDF files in seconds. Free PDF unlocker — unlock PDFs for editing and printing. Requires your password. No signup.",
     keywords: "unlock PDF, remove PDF password, PDF unlocker, decrypt PDF, unlock PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -221,8 +221,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/delete-pages": {
-    title: "Free Delete PDF Pages - Remove Pages | PDF HUB 24",
-    description: "Remove unwanted pages from PDF documents instantly. Free online PDF page remover - select and delete specific pages. No registration required.",
+    title: "Delete PDF Pages Free Online (Select & Remove) | PDF HUB 24",
+    description: "Remove unwanted pages from PDF documents in seconds. Free PDF page remover — select and delete specific pages. No signup, no watermark.",
     keywords: "delete PDF pages, remove PDF pages, PDF page remover, delete pages from PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -233,8 +233,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/add-page-numbers": {
-    title: "Add Page Numbers to PDF Online Free | PDF HUB 24",
-    description: "Add page numbers to PDF documents instantly. Free online PDF page numbering tool - customize position, format, and style. No registration.",
+    title: "Add Page Numbers to PDF Free (Custom Position) | PDF HUB 24",
+    description: "Add page numbers to PDF documents in seconds. Free PDF numbering tool — customize position, format, and style. No signup, no watermark.",
     keywords: "add page numbers PDF, PDF page numbers, number PDF pages, page numbering PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -245,8 +245,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/add-watermark": {
-    title: "Add Watermark to PDF Online Free | PDF HUB 24",
-    description: "Add text watermarks to PDF documents instantly. Free online PDF watermarking tool - customize text, position, and opacity. No registration.",
+    title: "Add Watermark to PDF Free (Text & Custom Style) | PDF HUB 24",
+    description: "Add text watermarks to PDF documents in seconds. Free PDF watermark tool — customize text, position, and opacity. No signup, no watermark limits.",
     keywords: "add watermark PDF, PDF watermark, watermark PDF online free, stamp PDF",
     schema: {
       "@context": "https://schema.org",
@@ -257,8 +257,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/reorder-pages": {
-    title: "Reorder PDF Pages Online Free - Rearrange Pages | PDF HUB 24",
-    description: "Reorder and rearrange PDF pages with drag and drop. Free online PDF page organizer - change page sequence instantly. No registration required.",
+    title: "Reorder PDF Pages Free (Drag & Drop) | PDF HUB 24",
+    description: "Reorder and rearrange PDF pages with drag & drop. Free PDF page organizer — change page sequence instantly. No signup, no watermark required.",
     keywords: "reorder PDF pages, rearrange PDF, organize PDF pages, sort PDF pages, reorder PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -269,8 +269,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/extract-text": {
-    title: "Extract Text from PDF Online Free - PDF to Text | PDF HUB 24",
-    description: "Extract text content from PDF documents instantly. Free online PDF text extractor - copy text from any PDF. No registration required.",
+    title: "Extract Text from PDF Free (Copy & Download) | PDF HUB 24",
+    description: "Extract text from PDF documents in seconds. Free PDF text extractor — copy text from any PDF. Works with scanned PDFs via OCR. No signup.",
     keywords: "extract text PDF, PDF to text, copy text from PDF, PDF text extractor, extract text online free",
     schema: {
       "@context": "https://schema.org",
@@ -281,8 +281,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/extract-images": {
-    title: "Extract Images from PDF Online Free | PDF HUB 24",
-    description: "Extract all images from PDF documents instantly. Free online PDF image extractor - download images in original quality. No registration.",
+    title: "Extract Images from PDF Free (Original Quality) | PDF HUB 24",
+    description: "Extract all images from PDF documents in seconds. Free PDF image extractor — download images in original quality. No signup, no watermark.",
     keywords: "extract images PDF, PDF image extractor, get images from PDF, extract images online free",
     schema: {
       "@context": "https://schema.org",
@@ -293,8 +293,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/ocr-pdf": {
-    title: "Free OCR PDF - Extract Text from Scans | PDF HUB 24",
-    description: "OCR scanned PDFs and extract text using optical character recognition. Free online OCR tool - convert scanned documents to searchable text.",
+    title: "OCR PDF Free — Scanned PDF to Searchable Text | PDF HUB 24",
+    description: "OCR scanned PDFs and extract text instantly. Free online OCR tool — convert scanned documents to searchable, selectable text. No signup required.",
     keywords: "OCR PDF, optical character recognition, extract text scanned PDF, OCR online free",
     schema: {
       "@context": "https://schema.org",
@@ -305,8 +305,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/crop-pdf": {
-    title: "Crop PDF Online Free - Trim PDF Margins | PDF HUB 24",
-    description: "Crop and trim PDF page margins instantly. Free online PDF cropper - remove white space and unwanted areas. No registration required.",
+    title: "Crop PDF Free Online (Remove Margins Instantly) | PDF HUB 24",
+    description: "Crop and trim PDF page margins in seconds. Free PDF cropper — remove white space and unwanted areas. No signup, no watermark required.",
     keywords: "crop PDF, trim PDF margins, PDF cropper, remove PDF margins, crop PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -317,8 +317,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/resize-pdf": {
-    title: "Resize PDF Online Free - Change PDF Page Size | PDF HUB 24",
-    description: "Resize PDF pages to A4, Letter, Legal, and more. Free online PDF resizer - change document dimensions instantly. No registration.",
+    title: "Resize PDF Free Online — A4, Letter & More | PDF HUB 24",
+    description: "Resize PDF pages to A4, Letter, Legal, and custom sizes. Free PDF resizer — change document dimensions instantly. No signup, no watermark.",
     keywords: "resize PDF, change PDF size, PDF page size, resize PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -329,8 +329,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/sign-pdf": {
-    title: "Sign PDF Online Free - Add Signature to PDF | PDF HUB 24",
-    description: "Add your signature to PDF documents instantly. Free online PDF signing tool - draw or type your signature. No registration required.",
+    title: "Sign PDF Free Online (Draw, Type or Upload) | PDF HUB 24",
+    description: "Add your signature to PDF documents in seconds. Free PDF signing tool — draw, type, or upload your signature. No signup, no watermark.",
     keywords: "sign PDF, add signature PDF, PDF signature, e-sign PDF, sign PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -341,8 +341,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/flatten-pdf": {
-    title: "Flatten PDF Online Free - Merge Layers | PDF HUB 24",
-    description: "Flatten PDF forms and layers into static content. Free online PDF flattener - convert fillable forms to regular PDFs. No registration.",
+    title: "Flatten PDF Free Online (Forms & Layers) | PDF HUB 24",
+    description: "Flatten PDF forms and layers into static content. Free PDF flattener — convert fillable forms to regular PDFs. Perfect for printing. No signup.",
     keywords: "flatten PDF, merge PDF layers, flatten PDF forms, PDF flattener, flatten PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -353,8 +353,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/grayscale-pdf": {
-    title: "Free PDF to Grayscale - Black & White | PDF HUB 24",
-    description: "Convert PDF to grayscale (black and white) for printing. Free online PDF grayscale converter - reduce ink usage. No registration required.",
+    title: "PDF to Grayscale Free (Save Ink & Toner) | PDF HUB 24",
+    description: "Convert PDF to grayscale for black & white printing. Free PDF grayscale converter — reduce ink usage by up to 80%. No signup, no watermark.",
     keywords: "PDF to grayscale, black and white PDF, convert PDF grayscale, PDF grayscale online free",
     schema: {
       "@context": "https://schema.org",
@@ -365,8 +365,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/repair-pdf": {
-    title: "Repair PDF Online Free - Fix Corrupted PDF | PDF HUB 24",
-    description: "Repair corrupted or damaged PDF files instantly. Free online PDF repair tool - fix broken PDFs and recover content. No registration.",
+    title: "Repair PDF Free Online (Fix Corrupted Files) | PDF HUB 24",
+    description: "Repair corrupted or damaged PDF files in seconds. Free PDF repair tool — fix broken PDFs and recover content. No signup, no watermark.",
     keywords: "repair PDF, fix corrupted PDF, PDF repair tool, recover PDF, repair PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -377,8 +377,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/edit-pdf": {
-    title: "Edit PDF Online Free - Add Text & Images | PDF HUB 24",
-    description: "Edit PDF documents online - add text, images, and shapes. Free online PDF editor with drawing tools. No registration required.",
+    title: "Edit PDF Free Online (Add Text, Images & Shapes) | PDF HUB 24",
+    description: "Edit PDF documents online — add text, images, shapes, and annotations. Free PDF editor with drawing tools. No signup, no watermark required.",
     keywords: "edit PDF, PDF editor, add text to PDF, modify PDF, edit PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -389,8 +389,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/annotate-pdf": {
-    title: "Annotate PDF Online Free - Highlight & Markup | PDF HUB 24",
-    description: "Annotate PDF documents with highlights, underlines, and notes. Free online PDF annotation tool - mark up any PDF. No registration.",
+    title: "Annotate PDF Free (Highlight, Underline & Notes) | PDF HUB 24",
+    description: "Annotate PDF documents with highlights, underlines, and notes. Free PDF annotation tool — mark up any PDF. No signup, no watermark required.",
     keywords: "annotate PDF, highlight PDF, PDF markup, PDF annotation, annotate PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -401,8 +401,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/redact-pdf": {
-    title: "Free Redact PDF - Black Out Sensitive Info | PDF HUB 24",
-    description: "Redact sensitive information from PDF documents. Free online PDF redaction tool - permanently black out text. No registration required.",
+    title: "Redact PDF Free (Permanently Remove Sensitive Info) | PDF HUB 24",
+    description: "Redact sensitive information from PDF documents. Free PDF redaction tool — permanently black out text and images. No signup, 100% secure.",
     keywords: "redact PDF, black out PDF, censor PDF, PDF redaction, redact PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -413,8 +413,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/tiff-to-pdf": {
-    title: "TIFF to PDF Converter Online Free | PDF HUB 24",
-    description: "Convert TIFF images to PDF documents instantly. Free online TIFF to PDF converter - maintains image quality. No registration required.",
+    title: "TIFF to PDF Free Online (High Quality) | PDF HUB 24",
+    description: "Convert TIFF images to PDF in seconds. Free TIFF to PDF converter — maintains image quality perfectly. No signup, no watermark required.",
     keywords: "TIFF to PDF, convert TIFF to PDF, TIF to PDF, TIFF to PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -425,8 +425,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/gif-to-pdf": {
-    title: "GIF to PDF Converter Online Free | PDF HUB 24",
-    description: "Convert GIF images to PDF documents instantly. Free online GIF to PDF converter - preserves all frames. No registration required.",
+    title: "GIF to PDF Free Online (All Frames Preserved) | PDF HUB 24",
+    description: "Convert GIF images to PDF in seconds. Free GIF to PDF converter — preserves all frames and quality. No signup, no watermark required.",
     keywords: "GIF to PDF, convert GIF to PDF, GIF to PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -437,8 +437,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/webp-to-pdf": {
-    title: "WebP to PDF Converter Online Free | PDF HUB 24",
-    description: "Convert WebP images to PDF documents instantly. Free online WebP to PDF converter - maintains quality. No registration required.",
+    title: "WebP to PDF Free Online (Fast & Lossless) | PDF HUB 24",
+    description: "Convert WebP images to PDF in seconds. Free WebP to PDF converter — maintains original quality. No signup, no watermark required.",
     keywords: "WebP to PDF, convert WebP to PDF, WebP to PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -449,8 +449,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/html-to-pdf": {
-    title: "HTML to PDF Converter Online Free | PDF HUB 24",
-    description: "Convert HTML code to PDF documents instantly. Free online HTML to PDF converter - render web pages as PDFs. No registration required.",
+    title: "HTML to PDF Free Online (Render Web Pages) | PDF HUB 24",
+    description: "Convert HTML code to PDF documents in seconds. Free HTML to PDF converter — render web pages as PDFs with styling. No signup, no watermark.",
     keywords: "HTML to PDF, convert HTML to PDF, webpage to PDF, HTML to PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -461,8 +461,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/pdf-viewer": {
-    title: "PDF Viewer Online Free - View PDF Files | PDF HUB 24",
-    description: "View PDF files directly in your browser. Free online PDF viewer - no download required. Open and read PDFs instantly.",
+    title: "PDF Viewer Free Online (No Download Needed) | PDF HUB 24",
+    description: "View PDF files directly in your browser. Free online PDF viewer — no download needed. Open and read PDFs instantly on any device.",
     keywords: "PDF viewer, view PDF online, read PDF, open PDF, PDF viewer online free",
     schema: {
       "@context": "https://schema.org",
@@ -473,8 +473,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/compare-pdf": {
-    title: "Free Compare PDF - Find Differences | PDF HUB 24",
-    description: "Compare two PDF files and find differences instantly. Free online PDF comparison tool - highlight changes between documents.",
+    title: "Compare PDF Free Online (Find Every Difference) | PDF HUB 24",
+    description: "Compare two PDF files and find differences in seconds. Free PDF comparison tool — highlight changes between documents. No signup required.",
     keywords: "compare PDF, PDF comparison, find PDF differences, compare PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -485,8 +485,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/image-compressor": {
-    title: "Free Image Compressor - JPG PNG WebP | PDF HUB 24",
-    description: "Compress images (JPG, PNG, WebP) and reduce file size. Free online image compressor - maintain quality while saving space.",
+    title: "Image Compressor Free (JPG PNG WebP — No Quality Loss) | PDF HUB 24",
+    description: "Compress images (JPG, PNG, WebP) and reduce file size up to 80%. Free image compressor — maintain quality while saving space. No signup.",
     keywords: "compress image, image compressor, reduce image size, compress JPG PNG, image compressor online free",
     schema: {
       "@context": "https://schema.org",
@@ -497,8 +497,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/resize-image": {
-    title: "Free Resize Image - Change Dimensions | PDF HUB 24",
-    description: "Resize images by pixels or percentage. Free online image resizer - scale images to any size. Supports JPG, PNG, WebP.",
+    title: "Resize Image Free (Pixels or Percentage) | PDF HUB 24",
+    description: "Resize images by pixels or percentage in seconds. Free image resizer — scale to any size. Supports JPG, PNG, WebP. No signup, no watermark.",
     keywords: "resize image, change image size, scale image, image resizer, resize image online free",
     schema: {
       "@context": "https://schema.org",
@@ -509,8 +509,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/crop-image": {
-    title: "Crop Image Online Free - Trim Images | PDF HUB 24",
-    description: "Crop images to remove unwanted areas. Free online image cropper - select and trim any portion. Supports JPG, PNG, WebP.",
+    title: "Crop Image Free Online (Select & Trim) | PDF HUB 24",
+    description: "Crop images to remove unwanted areas in seconds. Free image cropper — select and trim any portion. Supports JPG, PNG, WebP. No signup.",
     keywords: "crop image, trim image, cut image, image cropper, crop image online free",
     schema: {
       "@context": "https://schema.org",
@@ -521,8 +521,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/rotate-image": {
-    title: "Rotate & Flip Image Online Free | PDF HUB 24",
-    description: "Rotate or flip images in any direction. Free online image rotator - turn images 90°, 180°, or flip horizontally/vertically.",
+    title: "Rotate & Flip Image Free (90°, 180°, Mirror) | PDF HUB 24",
+    description: "Rotate or flip images in any direction. Free image rotator — turn images 90°, 180°, or flip horizontally/vertically. No signup required.",
     keywords: "rotate image, flip image, turn image, image rotator, rotate image online free",
     schema: {
       "@context": "https://schema.org",
@@ -533,8 +533,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/convert-image": {
-    title: "Convert Image Online Free - JPG PNG WebP GIF | PDF HUB 24",
-    description: "Convert between image formats - JPG, PNG, WebP, GIF, TIFF, BMP. Free online image converter - change format instantly.",
+    title: "Convert Image Free (JPG PNG WebP GIF — Instant) | PDF HUB 24",
+    description: "Convert between image formats — JPG, PNG, WebP, GIF, TIFF, BMP. Free image converter — change format instantly. No signup, no watermark.",
     keywords: "convert image, image converter, JPG to PNG, PNG to JPG, convert image online free",
     schema: {
       "@context": "https://schema.org",
@@ -591,8 +591,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog": {
-    title: "PDF Tips & Tutorials Blog | PDF HUB 24",
-    description: "Learn how to work with PDF files effectively. Tutorials, guides, and tips for compressing, converting, merging, and editing PDFs.",
+    title: "PDF Tips & Tutorials Blog (25+ Free Guides) | PDF HUB 24",
+    description: "25+ free PDF tutorials and guides. Learn to compress, convert, merge, edit, sign, and secure PDFs with step-by-step instructions. Updated for 2026.",
     keywords: "PDF tips, PDF tutorials, how to PDF, PDF guide, PDF help",
     schema: {
       "@context": "https://schema.org",
@@ -603,8 +603,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/how-to-compress-pdf-for-email": {
-    title: "Compress PDF for Email - Reduce Under 25MB | PDF HUB 24",
-    description: "Learn how to compress PDF files for email attachments. Step-by-step guide to reduce PDF size under 25MB, 10MB, or even 1MB while maintaining quality.",
+    title: "Compress PDF for Email — Under 25MB (Free, No Signup) | PDF HUB 24",
+    description: "Compress PDF for email in seconds. Reduce under 25MB, 10MB, or 1MB while keeping quality. Free step-by-step guide with 3 compression levels.",
     keywords: "compress PDF for email, reduce PDF size, PDF email attachment, shrink PDF",
     schema: {
       "@context": "https://schema.org",
@@ -617,8 +617,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/convert-pdf-to-word-without-losing-formatting": {
-    title: "Convert PDF to Word Without Losing Formatting | PDF HUB 24",
-    description: "Learn how to convert PDF to editable Word documents while preserving formatting, tables, and images. Free online converter with step-by-step instructions.",
+    title: "PDF to Word (Keep Formatting, No Email) — Free Guide 2026",
+    description: "Convert PDF to Word without losing formatting, tables, or images. Free converter — no email, no watermark. Step-by-step guide with tips for 2026.",
     keywords: "PDF to Word formatting, convert PDF Word, preserve PDF formatting, PDF to DOCX",
     schema: {
       "@context": "https://schema.org",
@@ -631,8 +631,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/merge-pdf-files-guide": {
-    title: "How to Merge PDF Files - Combine Multiple PDFs | PDF HUB 24",
-    description: "Learn how to merge multiple PDF files into one document. Step-by-step guide for combining PDFs online for free. Reorder pages easily.",
+    title: "Merge PDF Files Free — Combine 2+ PDFs (No Signup) | PDF HUB 24",
+    description: "Merge multiple PDF files into one document for free. Step-by-step guide to combining PDFs online — drag, drop, reorder pages. No signup or watermark.",
     keywords: "merge PDF files, combine PDF, join PDF, PDF merger guide",
     schema: {
       "@context": "https://schema.org",
@@ -645,8 +645,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/protect-pdf-with-password": {
-    title: "Password Protect PDF - Secure Documents | PDF HUB 24",
-    description: "Learn how to add password protection to PDF files. Step-by-step guide to encrypting PDFs, setting permissions, and keeping sensitive documents secure.",
+    title: "Password Protect PDF Free (AES-256, Step-by-Step) | PDF HUB 24",
+    description: "Add password protection to PDF files with AES-256 encryption. Free step-by-step guide to encrypting PDFs, setting permissions, and securing documents.",
     keywords: "password protect PDF, encrypt PDF, secure PDF, PDF password",
     schema: {
       "@context": "https://schema.org",
@@ -659,8 +659,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/pdf-tools-for-students": {
-    title: "PDF Tools for Students - Free Academic Tools | PDF HUB 24",
-    description: "Discover the essential PDF tools every student needs for academic success. Free tools for research papers, assignments, presentations, and study materials.",
+    title: "10 Free PDF Tools Every Student Needs in 2026 | PDF HUB 24",
+    description: "Essential free PDF tools for students — merge assignments, compress for LMS, convert to Word, sign forms. Complete academic guide for 2026.",
     keywords: "PDF tools students, academic PDF, student PDF guide, free PDF tools school",
     schema: {
       "@context": "https://schema.org",
@@ -673,8 +673,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/sign-pdf-electronically": {
-    title: "How to Sign a PDF Electronically - Free Guide | PDF HUB 24",
-    description: "Learn how to sign PDF documents electronically for free. Step-by-step guide to adding digital signatures, drawing signatures, and e-signing PDFs online.",
+    title: "Sign PDF Free Online (3 Methods, No Printing) | PDF HUB 24",
+    description: "Sign PDF documents electronically for free — draw, type, or upload your signature. No printing, no scanning. Step-by-step e-signing guide for 2026.",
     keywords: "sign PDF electronically, e-sign PDF, digital signature PDF, sign PDF free online",
     schema: {
       "@context": "https://schema.org",
@@ -687,8 +687,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/edit-pdf-text-images": {
-    title: "Edit PDF - Add Text, Images & Shapes | PDF HUB 24",
-    description: "Learn how to edit PDF files online for free. Add text, images, shapes, and annotations to any PDF document. No software installation required.",
+    title: "Edit PDF Free — Add Text, Images & Shapes (No Install) | PDF HUB 24",
+    description: "Edit PDF files online for free — add text, images, shapes, and annotations. No software install. Step-by-step guide with tips for 2026.",
     keywords: "edit PDF free, add text to PDF, edit PDF online, modify PDF document",
     schema: {
       "@context": "https://schema.org",
@@ -701,8 +701,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/watermark-pdf-documents": {
-    title: "How to Add Watermark to PDF - Free Online Guide | PDF HUB 24",
-    description: "Learn how to add text watermarks to PDF documents for free. Protect your PDFs with custom watermarks - set position, opacity, and style.",
+    title: "Add Watermark to PDF Free (Custom Text & Style) | PDF HUB 24",
+    description: "Add text watermarks to PDF documents for free. Set custom position, opacity, and style. Step-by-step guide to branding and protecting your PDFs.",
     keywords: "watermark PDF, add watermark to PDF, PDF watermark free, stamp PDF online",
     schema: {
       "@context": "https://schema.org",
@@ -715,8 +715,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/pdf-to-excel-convert-tables": {
-    title: "How to Convert PDF Tables to Excel - Free Guide | PDF HUB 24",
-    description: "Learn how to convert PDF tables to Excel spreadsheets accurately. Extract data from PDF to XLS/XLSX while preserving table structure and formatting.",
+    title: "PDF to Excel Free — Convert Tables (Keep Format) | PDF HUB 24",
+    description: "Convert PDF tables to Excel spreadsheets accurately. Extract data to XLS/XLSX while preserving table structure. Free step-by-step guide for 2026.",
     keywords: "PDF to Excel, convert PDF tables, extract data PDF Excel, PDF to spreadsheet",
     schema: {
       "@context": "https://schema.org",
@@ -729,8 +729,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/redact-sensitive-pdf-information": {
-    title: "Redact Sensitive Info in PDFs Free | PDF HUB 24",
-    description: "Learn how to permanently redact sensitive information from PDF documents. Black out text, images, and personal data securely with our free guide.",
+    title: "Redact PDF Free — Remove Sensitive Info (100% Secure) | PDF HUB 24",
+    description: "Permanently redact sensitive information from PDFs. Black out text, images, and personal data securely. Free step-by-step guide for GDPR and HIPAA.",
     keywords: "redact PDF, black out PDF text, remove sensitive info PDF, PDF redaction free",
     schema: {
       "@context": "https://schema.org",
@@ -769,8 +769,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/all-tools": {
-    title: "All 43+ Free PDF Tools - Complete List | PDF HUB 24",
-    description: "Browse all 43+ free online PDF tools. Convert, edit, merge, split, compress PDFs and more. Complete list of PDF HUB 24 tools.",
+    title: "All 43+ Free PDF Tools — Complete List 2026 | PDF HUB 24",
+    description: "Browse all 43+ free online PDF tools. Convert, edit, merge, split, compress PDFs and more. Complete tool directory — no signup, no watermark.",
     keywords: "all PDF tools, free PDF tools list, online PDF tools, PDF converter tools, PDF editor tools",
     schema: {
       "@context": "https://schema.org",
@@ -782,8 +782,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/free-pdf-converter": {
-    title: "Free PDF Converter - Convert Any File | PDF HUB 24",
-    description: "Best free PDF converter online. Convert PDF to Word, Excel, JPG, PNG, PowerPoint and more. Convert images and documents to PDF. No signup required.",
+    title: "Free PDF Converter (Any File, No Signup) | PDF HUB 24",
+    description: "Best free PDF converter online. Convert PDF to Word, Excel, JPG, PNG, PPT and more. Convert images and documents to PDF. No signup, no watermark.",
     keywords: "free PDF converter, PDF converter online, convert PDF free, PDF to Word converter, image to PDF converter",
     schema: {
       "@context": "https://schema.org",
@@ -807,8 +807,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/how-to-split-pdf-pages": {
-    title: "Split PDF Pages Free - Extract Sections | PDF HUB 24",
-    description: "Split PDF pages free online. Extract specific pages, separate sections from large PDFs. Best free PDF splitter - no software install, no signup required.",
+    title: "Split PDF Free — Extract Pages in Seconds (No Signup) | PDF HUB 24",
+    description: "Split PDF pages and extract sections from large PDFs. Free PDF splitter — select page ranges or single pages. No software install, no signup.",
     keywords: "split PDF pages, extract PDF pages, separate PDF sections, PDF splitter free",
     schema: {
       "@context": "https://schema.org",
@@ -821,8 +821,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/add-page-numbers-to-pdf": {
-    title: "Add Page Numbers to PDF Free | PDF HUB 24",
-    description: "Add page numbers to PDF free. Customize position, style, starting number. Best free PDF numbering tool for reports. No signup.",
+    title: "Add Page Numbers to PDF Free (Custom Position & Style) | PDF HUB 24",
+    description: "Add page numbers to PDF free. Customize position, style, starting number. Best free PDF numbering tool for reports and theses. No signup.",
     keywords: "add page numbers PDF, PDF page numbering, number PDF pages free",
     schema: {
       "@context": "https://schema.org",
@@ -835,8 +835,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/convert-images-to-pdf": {
-    title: "Convert Images to PDF Free - JPG PNG | PDF HUB 24",
-    description: "Convert images to PDF free. JPG, PNG, WebP, TIFF, GIF to PDF instantly. Best free image to PDF converter - combine multiple images, no registration.",
+    title: "Images to PDF Free — JPG PNG WebP (No Signup) | PDF HUB 24",
+    description: "Convert images to PDF free. JPG, PNG, WebP, TIFF, GIF to PDF instantly. Best free image to PDF converter — combine multiple images, no signup.",
     keywords: "convert images to PDF, JPG to PDF, PNG to PDF, image to PDF free",
     schema: {
       "@context": "https://schema.org",
@@ -849,8 +849,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/ocr-scanned-pdf-to-text": {
-    title: "OCR PDF Free - Scanned PDF to Text | PDF HUB 24",
-    description: "OCR PDF free online. Convert scanned documents to searchable, editable text. Best free OCR tool - extract text from images and scanned pages instantly.",
+    title: "OCR PDF Free — Scanned to Searchable Text (Fast) | PDF HUB 24",
+    description: "OCR PDF free online. Convert scanned documents to searchable text. Best free OCR tool — extract text from images and scanned pages instantly.",
     keywords: "OCR PDF, scanned PDF to text, optical character recognition, OCR free online",
     schema: {
       "@context": "https://schema.org",
@@ -863,8 +863,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/rotate-pdf-pages": {
-    title: "Rotate PDF Pages Free - Fix Orientation | PDF HUB 24",
-    description: "Rotate PDF pages free online. Fix upside-down or sideways PDFs. Rotate 90, 180, 270 degrees. Best free PDF rotation tool for all pages.",
+    title: "Rotate PDF Pages Free — Fix Orientation (90° 180° 270°) | PDF HUB 24",
+    description: "Rotate PDF pages free. Fix upside-down or sideways PDFs — rotate 90°, 180°, 270°. Best free PDF rotation tool for all or specific pages.",
     keywords: "rotate PDF pages, fix PDF orientation, rotate PDF free, turn PDF pages",
     schema: {
       "@context": "https://schema.org",
@@ -877,8 +877,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/how-to-flatten-pdf": {
-    title: "How to Flatten PDF Free Online | PDF HUB 24",
-    description: "Flatten PDF forms and layers into static content for printing and sharing. Free online tool, no signup required.",
+    title: "Flatten PDF Free (Forms, Layers & Annotations) | PDF HUB 24",
+    description: "Flatten PDF forms and layers into static content for printing and sharing. Free online tool — no signup. Perfect for archiving and distribution.",
     keywords: "flatten PDF, flatten PDF forms, PDF flatten online free, merge PDF layers",
     schema: {
       "@context": "https://schema.org",
@@ -891,8 +891,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/crop-pdf-pages-guide": {
-    title: "Crop PDF Pages Free - Remove Margins | PDF HUB 24",
-    description: "Crop PDF pages and remove unwanted margins or whitespace. Free online PDF cropper with no registration needed.",
+    title: "Crop PDF Pages Free (Remove Margins & Whitespace) | PDF HUB 24",
+    description: "Crop PDF pages and remove unwanted margins or whitespace in seconds. Free online PDF cropper — no registration, no watermark needed.",
     keywords: "crop PDF, remove PDF margins, trim PDF pages, PDF cropper free online",
     schema: {
       "@context": "https://schema.org",
@@ -905,8 +905,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/resize-pdf-to-a4": {
-    title: "Resize PDF to A4 Free Online | PDF HUB 24",
-    description: "Change PDF page size to A4, Letter, or custom dimensions. Free online PDF resizer, no software download required.",
+    title: "Resize PDF to A4 or Letter Free (No Software) | PDF HUB 24",
+    description: "Change PDF page size to A4, Letter, Legal, or custom dimensions. Free online PDF resizer — no software download, no signup required.",
     keywords: "resize PDF to A4, change PDF page size, PDF resize online free, PDF to letter size",
     schema: {
       "@context": "https://schema.org",
@@ -919,8 +919,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/compare-two-pdf-files": {
-    title: "Compare Two PDF Files Free Online | PDF HUB 24",
-    description: "Find differences between two PDF documents side by side. Free online PDF comparison tool with no registration.",
+    title: "Compare 2 PDF Files Free (Find Every Change) | PDF HUB 24",
+    description: "Compare two PDF files side by side and find every difference. Free PDF comparison tool — highlight changes between documents. No signup.",
     keywords: "compare PDF files, PDF diff tool, compare two PDFs online, find PDF differences",
     schema: {
       "@context": "https://schema.org",
@@ -933,8 +933,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/html-to-pdf-conversion": {
-    title: "Convert HTML to PDF Free Online | PDF HUB 24",
-    description: "Convert HTML code and web pages to PDF documents. Free online HTML to PDF converter with no signup required.",
+    title: "HTML to PDF Free — Render Web Pages (Keeps CSS) | PDF HUB 24",
+    description: "Convert HTML and web pages to PDF documents with CSS styling. Free HTML to PDF converter — no signup, no watermark. Perfect for reports.",
     keywords: "HTML to PDF, convert HTML to PDF, web page to PDF, HTML to PDF free online",
     schema: {
       "@context": "https://schema.org",
@@ -947,8 +947,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/extract-text-from-pdf": {
-    title: "Extract Text from PDF Free Online | PDF HUB 24",
-    description: "Extract and copy text from PDF files easily. Works with scanned PDFs using OCR. Free online tool, no signup.",
+    title: "Extract Text from PDF Free (Works with Scans via OCR) | PDF HUB 24",
+    description: "Extract and copy text from PDF files easily. Works with scanned PDFs using OCR. Free online tool — no signup, instant results.",
     keywords: "extract text from PDF, copy text from PDF, PDF text extractor, PDF to text free",
     schema: {
       "@context": "https://schema.org",
@@ -961,8 +961,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/best-free-pdf-tools-2026": {
-    title: "Best Free PDF Tools Online 2026 | PDF HUB 24",
-    description: "Complete guide to the best free online PDF tools in 2026. Convert, edit, merge, compress, and more with no signup.",
+    title: "12 Best Free PDF Tools Online in 2026 (No Signup) | PDF HUB 24",
+    description: "Complete guide to the best free online PDF tools in 2026. Convert, edit, merge, compress, sign, and more — no signup, no watermark, 100% free.",
     keywords: "best free PDF tools 2026, free PDF editor online, best PDF converter, free PDF tools",
     schema: {
       "@context": "https://schema.org",
@@ -975,8 +975,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/pdf-accessibility-guide": {
-    title: "PDF Accessibility Guide - OCR & Text | PDF HUB 24",
-    description: "Make PDFs accessible with OCR, text extraction, and formatting. Guide to creating inclusive PDF documents for everyone.",
+    title: "PDF Accessibility Guide 2026 — OCR, Tags & ADA Tips | PDF HUB 24",
+    description: "Make PDFs accessible with OCR, text extraction, and proper formatting. Complete guide to ADA-compliant, inclusive PDF documents for 2026.",
     keywords: "PDF accessibility, accessible PDF, OCR PDF, PDF screen reader, ADA PDF compliance",
     schema: {
       "@context": "https://schema.org",
@@ -989,8 +989,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/batch-convert-images-to-pdf": {
-    title: "Convert Multiple Images to PDF Free | PDF HUB 24",
-    description: "Batch convert JPG, PNG, WebP, TIFF, and GIF images to PDF. Combine multiple images into one PDF free online.",
+    title: "Batch Convert Images to PDF Free (JPG PNG TIFF) | PDF HUB 24",
+    description: "Batch convert JPG, PNG, WebP, TIFF, and GIF images to PDF. Combine multiple images into one PDF — free online, no signup, no watermark.",
     keywords: "batch images to PDF, multiple images to PDF, JPG to PDF, convert photos to PDF free",
     schema: {
       "@context": "https://schema.org",
@@ -1003,8 +1003,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/unlock-pdf-remove-password": {
-    title: "Unlock PDF - Remove Password Free | PDF HUB 24",
-    description: "Remove password protection from PDF files free online. Unlock PDF documents for editing and printing with no signup.",
+    title: "Unlock PDF Free — Remove Password (Instant) | PDF HUB 24",
+    description: "Remove password protection from PDF files for free. Unlock PDFs for editing, printing, and copying. No signup — requires your password.",
     keywords: "unlock PDF, remove PDF password, PDF password remover free, unprotect PDF online",
     schema: {
       "@context": "https://schema.org",
@@ -1017,8 +1017,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/free-pdf-editor": {
-    title: "Free PDF Editor Online - Edit PDF Files Free | PDF HUB 24",
-    description: "Best free online PDF editor. Edit, merge, split, compress, rotate, sign, annotate, and redact PDF files. No software download or registration needed.",
+    title: "Free PDF Editor Online — 43+ Tools (No Install) | PDF HUB 24",
+    description: "Best free PDF editor online. Edit, merge, split, compress, rotate, sign, annotate, and redact PDFs. 43+ tools, no download, no registration needed.",
     keywords: "free PDF editor, edit PDF online, PDF editor free, online PDF editor, modify PDF free",
     schema: {
       "@context": "https://schema.org",
