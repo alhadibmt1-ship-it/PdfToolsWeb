@@ -130,7 +130,7 @@ If your compressed PDF appears blurry, try using a lower compression level. Swit
 This usually happens with PDFs that are already optimized or contain mostly text. Try removing embedded fonts or converting images to grayscale before compressing.
 
 ### Compression takes too long
-Very large PDFs with hundreds of pages may take longer to process. Consider splitting the document into sections first using [Split PDF](/split), compressing each section, and then merging them back together with [Merge PDF](/merge).
+Very large PDFs with hundreds of pages may take longer to process. Consider splitting the document into sections first using Split PDF, compressing each section, and then merging them back together with [Merge PDF](/merge).
 
 ### Text is no longer selectable after compression
 This can happen with certain types of compression. Make sure you're using our tool which preserves text layers. If you have a scanned document, run [OCR PDF](/ocr-pdf) after compression to restore text selectability. Learn more in our [OCR guide](/blog/ocr-scanned-pdf-to-text).
@@ -267,7 +267,7 @@ Choosing the right conversion format saves time and produces better results. Her
 | Scenario | Best Tool | Why |
 |----------|-----------|-----|
 | Edit text content | PDF to Word | Preserves formatting and allows full editing |
-| Extract data from tables | [PDF to Excel](/pdf-to-excel) | Maintains cell structure and enables calculations |
+| Extract data from tables | PDF to Excel | Maintains cell structure and enables calculations |
 | Just need the text | [Extract Text](/extract-text) | Fastest option for plain text extraction |
 | Archival purposes | [Compress PDF](/compress) | Keep as PDF but reduce file size |
 
@@ -523,7 +523,7 @@ Hyperlinks within individual PDFs are preserved during merging. However, cross-d
 
 ## Conclusion
 
-Merging PDF files doesn't have to be complicated or expensive. With our free [Merge PDF](/merge) tool, you can combine documents in seconds, right from your browser. Whether you're a business professional assembling reports, a student compiling research, or anyone who needs to combine PDF files, our tool makes the process simple and efficient.
+Merging PDF files doesn't have to be complicated or expensive. With our free Merge PDF tool, you can combine documents in seconds, right from your browser. Whether you're a business professional assembling reports, a student compiling research, or anyone who needs to combine PDF files, our tool makes the process simple and efficient.
 
 If you're a student, check out our [essential PDF tools for students](/blog/pdf-tools-for-students) guide for more academic workflows. Ready to merge your PDFs? Get started now - it's free and takes just seconds.
 `,
@@ -654,28 +654,28 @@ Password protection is just one layer of a complete document security strategy. 
 ### Layer 1: Redact Sensitive Information
 
 Before sharing, permanently remove sensitive content that recipients should never see:
-1. Use [Redact PDF](/redact-pdf) to permanently black out confidential text like social security numbers, account numbers, or proprietary data
+1. Use Redact PDF to permanently black out confidential text like social security numbers, account numbers, or proprietary data
 2. Redaction is permanent and irreversible - the information is completely removed from the file
 3. This is more secure than covering text with black boxes, which can be removed
 
 ### Layer 2: Add Watermarks
 
 Deter unauthorized sharing with visible watermarks:
-1. Use [Add Watermark](/add-watermark) to stamp "CONFIDENTIAL", "DRAFT", or "DO NOT DISTRIBUTE"
+1. Use Add Watermark to stamp "CONFIDENTIAL", "DRAFT", or "DO NOT DISTRIBUTE"
 2. Add recipient names to track document distribution and identify the source of leaks
 3. Position watermarks diagonally across the entire page for maximum visibility
 
 ### Layer 3: Flatten Before Sharing
 
 Prevent editing by flattening interactive elements:
-1. Use [Flatten PDF](/flatten-pdf) to merge all layers into a single flat document
+1. Use Flatten PDF to merge all layers into a single flat document
 2. Form fields become static text that cannot be modified
 3. Annotations and comments become permanent parts of the document
 
 ### Layer 4: Encrypt with Password
 
 Apply password protection as the final security layer:
-1. Use [Protect PDF](/protect-pdf) to encrypt the document
+1. Use Protect PDF to encrypt the document
 2. Set both open and permission passwords for maximum control
 3. Share the password through a separate secure channel
 
@@ -724,7 +724,7 @@ Unfortunately, if you forget the password and don't have it stored anywhere, the
 Ensure they're entering the password exactly as you set it, including case sensitivity. Share the password through a different channel than the document itself.
 
 ### Password protection seems to have been removed
-Some PDF editors can strip permission passwords (but not open passwords). For maximum security, always use an open password. Consider also [flattening](/flatten-pdf) the document.
+Some PDF editors can strip permission passwords (but not open passwords). For maximum security, always use an open password. Consider also flattening the document.
 
 ### My protected PDF is larger than the original
 Encryption adds a small amount of overhead. If file size is a concern, [Compress PDF](/compress) your document before adding password protection.
@@ -741,10 +741,10 @@ With a strong password (12+ characters, mixed types), cracking would take millio
 We don't store passwords. If you forget it, the document cannot be recovered. Always store passwords securely in a password manager or other safe location.
 
 ### Can I change the password on a protected PDF?
-Yes. First [Unlock PDF](/unlock-pdf) with the current password, then [Protect PDF](/protect-pdf) again with a new password.
+Yes. First Unlock PDF with the current password, then Protect PDF again with a new password.
 
 ### Is password protection enough for legal compliance?
-Password protection with AES-256 encryption meets most regulatory requirements. However, consult your compliance officer for industry-specific guidance. Combine encryption with [redaction](/redact-pdf) for maximum compliance. For more on redaction, see our [redacting sensitive information guide](/blog/redact-sensitive-pdf-information).
+Password protection with AES-256 encryption meets most regulatory requirements. However, consult your compliance officer for industry-specific guidance. Combine encryption with redaction for maximum compliance. For more on redaction, see our [redacting sensitive information guide](/blog/redact-sensitive-pdf-information).
 
 ### Can I protect multiple PDFs with the same password?
 Yes, but it's more secure to use unique passwords for each document. If one password is compromised, only one document is affected.
@@ -1112,7 +1112,7 @@ If you want to keep most pages and remove just a few, Delete Pages is more effic
 
 Even after splitting, some sections may be larger than expected due to embedded images:
 
-1. Use [Compress PDF](/compress) to reduce the file size
+1. Use Compress PDF to reduce the file size
 2. Consider converting image-heavy pages to grayscale for further reduction
 3. Check if any pages contain high-resolution images that can be downsampled
 
@@ -1978,7 +1978,7 @@ Click Rotate and download your fixed PDF. The process completes in seconds and y
 Flatbed scanners and automatic document feeders sometimes misread page orientation. This is especially common when scanning a mix of portrait and landscape pages in one batch.
 
 **Solution:**
-1. Upload the scanned PDF to [Rotate PDF](/rotate)
+1. Upload the scanned PDF to Rotate PDF
 2. Identify the misoriented pages using the thumbnail preview
 3. Rotate those specific pages by 90° or 180° as needed
 4. Download the corrected document
@@ -1989,30 +1989,27 @@ Flatbed scanners and automatic document feeders sometimes misread page orientati
 When you photograph documents with your phone, the camera's orientation sensor may not always get it right. The resulting PDF pages might appear sideways or upside down.
 
 **Solution:**
-1. Upload the phone-scanned PDF to [Rotate PDF](/rotate)
+1. Upload the phone-scanned PDF to Rotate PDF
 2. Rotate affected pages to the correct orientation
 3. Use [Crop PDF](/crop-pdf) to trim any excess borders from the phone camera
-4. Run [OCR](/ocr-pdf) if you need the text to be searchable
 
 ### Standardizing Mixed-Orientation Documents
 
 Reports and proposals often include both portrait text pages and landscape data tables or charts. When assembled, these mixed orientations can be confusing.
 
 **Solution:**
-1. Upload the mixed-orientation document to [Rotate PDF](/rotate)
+1. Upload the mixed-orientation document to Rotate PDF
 2. Identify landscape pages that should remain landscape (keep them as-is)
 3. Rotate any genuinely misoriented pages
 4. Download the standardized document
-5. Use [Add Page Numbers](/add-page-numbers) for consistent navigation
 
 ### Fixing Legacy and Faxed Documents
 
 Older documents received via fax or legacy systems sometimes have random page orientations.
 
 **Solution:**
-1. Upload to [Rotate PDF](/rotate) and fix all misoriented pages
+1. Upload to Rotate PDF and fix all misoriented pages
 2. [Compress the PDF](/compress) since older documents may have unnecessarily large file sizes
-3. Run [OCR](/ocr-pdf) to make the text searchable if the document is image-based
 
 ## Rotation Best Practices
 
@@ -2034,11 +2031,11 @@ Older documents received via fax or legacy systems sometimes have random page or
 
 | Operation | What It Does | Best Tool |
 |-----------|-------------|-----------|
-| Rotate | Changes page orientation (90°, 180°, 270°) | [Rotate PDF](/rotate) |
-| Crop | Trims visible area, removes margins | [Crop PDF](/crop-pdf) |
+| Rotate | Changes page orientation (90°, 180°, 270°) | Rotate PDF |
+| Crop | Trims visible area, removes margins | Crop PDF |
 | Resize | Changes page dimensions (e.g., A4 to Letter) | [Resize PDF](/resize-pdf) |
-| Reorder | Rearranges page sequence | [Reorder Pages](/reorder-pages) |
-| Delete | Removes entire pages | [Delete Pages](/delete-pages) |
+| Reorder | Rearranges page sequence | Reorder Pages |
+| Delete | Removes entire pages | Delete Pages |
 
 These tools work well together. For example, you might rotate a scanned page, then crop the scanner border, then run OCR for searchable text.
 
@@ -2046,25 +2043,25 @@ These tools work well together. For example, you might rotate a scanned page, th
 
 ### Complete Scan Cleanup Workflow
 
-1. **Rotate** misoriented pages with [Rotate PDF](/rotate)
-2. **Crop** scanner borders and dark edges using [Crop PDF](/crop-pdf)
-3. **Run OCR** with [OCR PDF](/ocr-pdf) to make text searchable
-4. **Compress** the final result using [Compress PDF](/compress)
-5. **Add page numbers** with [Add Page Numbers](/add-page-numbers) for navigation
+1. **Rotate** misoriented pages with Rotate PDF
+2. **Crop** scanner borders and dark edges using Crop PDF
+3. **Run OCR** with OCR PDF to make text searchable
+4. **Compress** the final result using Compress PDF
+5. **Add page numbers** for navigation
 
 ### Preparing a Merged Document
 
 1. Rotate all source PDFs to the correct orientation
 2. [Merge them](/merge) into a single document
-3. [Reorder pages](/reorder-pages) if the sequence needs adjustment
-4. [Add page numbers](/add-page-numbers) to the final document
-5. [Compress](/compress) for email distribution
+3. Reorder pages if the sequence needs adjustment
+4. Add page numbers to the final document
+5. Compress for email distribution
 
 ### Fixing a Presentation PDF
 
-1. Rotate any sideways slides using [Rotate PDF](/rotate)
+1. Rotate any sideways slides using Rotate PDF
 2. Verify the page order matches the original presentation
-3. Use [PDF to PowerPoint](/pdf-to-ppt) if you need to edit the slides
+3. Convert to PowerPoint if you need to edit the slides
 4. Or share the corrected PDF directly
 
 ## Technical Details
@@ -2100,7 +2097,7 @@ If the pages still appear in the wrong orientation after rotating:
 
 If your document has a mix of correctly and incorrectly oriented pages:
 1. Use the page-specific rotation option to target only the affected pages
-2. Alternatively, [split the PDF](/split), rotate the problematic section, and merge it back
+2. Alternatively, split the PDF into sections, rotate the problematic part, and merge it back
 
 ### Rotated PDF Prints Incorrectly
 
@@ -2364,7 +2361,7 @@ To modify existing text within a PDF, the best approach is to [convert to Word](
 ## How to Edit a PDF Online
 
 ### Step 1: Upload Your PDF
-Open our [Edit PDF](/edit-pdf) tool and upload your document. You can drag and drop files directly or click to browse your device. Files up to 50MB are supported.
+Open our Edit PDF tool and upload your document. You can drag and drop files directly or click to browse your device. Files up to 50MB are supported.
 
 ### Step 2: Choose Your Edit Type
 
@@ -2545,7 +2542,7 @@ Smaller, horizontal watermarks placed at the top or bottom of each page. These a
 ## How to Add a Watermark
 
 ### Step 1: Upload Your PDF
-Open our [Add Watermark](/add-watermark) tool and upload your document. Drag and drop your file into the upload area or click to browse your device. We support PDFs up to 50MB.
+Open our Add Watermark tool and upload your document. Drag and drop your file into the upload area or click to browse your device. We support PDFs up to 50MB.
 
 ### Step 2: Configure Your Watermark
 
@@ -2796,11 +2793,11 @@ Extract employee data from PDF reports for payroll processing, headcount analysi
 
 | Conversion | Best For | Tool |
 |------------|----------|------|
-| PDF to Excel | Tabular data, numbers, financial data | [PDF to Excel](/pdf-to-excel) |
+| PDF to Excel | Tabular data, numbers, financial data | PDF to Excel |
 | PDF to Word | Text-heavy documents with some tables | [PDF to Word](/pdf-to-word) |
-| Extract Text | Raw text content without formatting | [Extract Text](/extract-text) |
+| Extract Text | Raw text content without formatting | Extract Text |
 
-Choose PDF to Excel when your primary goal is extracting structured numeric or tabular data. Choose [PDF to Word](/pdf-to-word) when you need to preserve the overall document layout and edit narrative text around tables. For a complete overview of conversion options, check out our [best free PDF tools guide](/blog/best-free-pdf-tools-2026).
+Choose PDF to Excel when your primary goal is extracting structured numeric or tabular data. Choose PDF to Word when you need to preserve the overall document layout and edit narrative text around tables. For a complete overview of conversion options, check out our [best free PDF tools guide](/blog/best-free-pdf-tools-2026).
 
 ## What If Conversion Is Not Perfect?
 
@@ -2883,7 +2880,7 @@ This distinction is critical. Many people mistakenly believe that placing a blac
 - Remove Social Security numbers from tax forms before sharing with advisors
 - Hide bank account numbers and financial details in shared statements
 - Protect home addresses and phone numbers in documents given to third parties
-- Remove personal signatures from copies distributed for reference
+- Remove personal [signatures from copies](/sign-pdf) distributed for reference
 - Redact medical information from insurance correspondence
 
 ## How to Redact a PDF: Step-by-Step Guide
@@ -2929,7 +2926,7 @@ Understanding the difference between true redaction and visual covering is essen
 | Cropping or clipping | Partially | Yes (resize) | No | Hidden areas can be revealed |
 | Screenshot and re-insert | Partially | Maybe | Weak | OCR can recover text |
 
-Our [Redact PDF](/redact-pdf) tool performs true redaction, permanently removing the underlying content from the file. This is the only method that is legally defensible and truly secure.
+Our Redact PDF tool performs true redaction, permanently removing the underlying content from the file. This is the only method that is legally defensible and truly secure.
 
 ### Real-World Redaction Failures
 Numerous high-profile incidents have occurred when organizations used black rectangles instead of true redaction:
@@ -2987,17 +2984,17 @@ For maximum security when handling sensitive documents, follow this comprehensiv
 Never redact your only copy of a document. Save the original in a secure location before beginning the redaction process.
 
 ### Step 2: Redact Sensitive Content
-Open our [Redact PDF](/redact-pdf) tool and methodically remove all sensitive information from the document. Work through the checklist above to ensure nothing is missed.
+Open our Redact PDF tool and methodically remove all sensitive information from the document. Work through the checklist above to ensure nothing is missed.
 
 ### Step 3: Flatten the Document
-After redacting, use [Flatten PDF](/flatten-pdf) to merge all layers into a single static layer. This ensures no hidden layers contain residual data and prevents any possibility of layer manipulation.
+After redacting, use [Flatten PDF](/flatten-pdf) to merge all layers into a single static layer. This ensures no hidden layers contain residual data and prevents any possibility of layer manipulation. Learn more in our [guide to flattening PDFs](/blog/how-to-flatten-pdf).
 
 ### Step 4: Verify the Redaction
-Use [Extract Text](/extract-text) to scan the redacted document. Verify that no sensitive text appears in the extracted output. This is a critical verification step that catches incomplete redactions.
+Use Extract Text to scan the redacted document. Verify that no sensitive text appears in the extracted output. This is a critical verification step that catches incomplete redactions.
 
 ### Step 5: Add Additional Protections
 - [Add a watermark](/add-watermark) marking the document as "Redacted Version" for clear identification
-- [Password protect](/protect-pdf) the document to control access
+- [Password protect](/protect-pdf) the document to control access. See our [password protection guide](/blog/protect-pdf-with-password) for best practices
 - [Compress the PDF](/compress) to optimize file size before distribution
 
 ### Step 6: Document the Redaction
@@ -3009,7 +3006,7 @@ For legal and compliance purposes, maintain a log of what was redacted, when, by
 HIPAA requires the removal of 18 specific identifiers from Protected Health Information. When sharing medical records for research, legal proceedings, or insurance purposes, redact all patient identifiers including names, dates, geographic data, phone numbers, email addresses, Social Security numbers, medical record numbers, and any unique identifying characteristics.
 
 ### Legal Practice
-Attorneys regularly redact documents for discovery production, public filings, and FOIA responses. Use our [Redact PDF](/redact-pdf) tool for privilege logs, protective order compliance, and sealed document preparation. Always [flatten](/flatten-pdf) redacted legal documents before filing or sharing.
+Attorneys regularly redact documents for discovery production, public filings, and FOIA responses. Use our Redact PDF tool for privilege logs, protective order compliance, and sealed document preparation. Always flatten redacted legal documents before filing or sharing.
 
 ### Financial Services
 Banks, insurance companies, and investment firms must redact customer financial information when sharing documents externally. This includes account numbers, transaction details, credit scores, and personal financial data. Compliance with regulations like GLBA (Gramm-Leach-Bliley Act) requires proper redaction procedures.
@@ -3020,11 +3017,11 @@ Government agencies handle redaction for FOIA requests, security clearance docum
 ## After Redacting: Post-Processing Steps
 
 Secure your document further after redaction:
-1. [Flatten the PDF](/flatten-pdf) to ensure all layers are permanently merged
-2. [Add password protection](/protect-pdf) for an additional security layer controlling access
-3. [Add a watermark](/add-watermark) marking it as "Redacted" or "Redacted Copy" for clear identification
-4. [Compress the PDF](/compress) before sharing via email or uploading to shared drives
-5. Use our [PDF Viewer](/pdf-viewer) for a final review before distribution
+1. Flatten the PDF to ensure all layers are permanently merged
+2. Add password protection for an additional security layer controlling access
+3. Add a watermark marking it as "Redacted" or "Redacted Copy" for clear identification
+4. Compress the PDF before sharing via email or uploading to shared drives. Our [compression guide](/blog/how-to-compress-pdf-for-email) has tips for email-friendly file sizes
+5. Review the final document before distribution
 
 ## Frequently Asked Questions
 
@@ -3041,13 +3038,13 @@ Yes, you can draw redaction boxes over any part of the document, including photo
 Yes. Unlike covering text with a black box or white rectangle, our tool removes the underlying data from the PDF file structure. The content cannot be recovered by copy-pasting, selecting all text, editing the PDF, or using any recovery tool.
 
 ### How do I verify that redaction worked properly?
-After redacting and downloading, upload the document to our [Extract Text](/extract-text) tool. If no sensitive text appears in the extracted output, the redaction was successful.
+After redacting and downloading, upload the document to our Extract Text tool. If no sensitive text appears in the extracted output, the redaction was successful.
 
 ### Can I redact a scanned PDF?
-Yes, you can redact any PDF regardless of how it was created. For scanned PDFs, the redaction boxes cover the scanned image areas. If you need to verify what text exists in a scanned document before redacting, use [OCR PDF](/ocr-pdf) first to identify the text content.
+Yes, you can redact any PDF regardless of how it was created. For scanned PDFs, the redaction boxes cover the scanned image areas. If you need to verify what text exists in a scanned document before redacting, run [OCR](/ocr-pdf) first to identify the text content. See our [guide to OCR for scanned PDFs](/blog/ocr-scanned-pdf-to-text).
 
 ### Is the redaction tool free?
-Yes, our [Redact PDF](/redact-pdf) tool is completely free with no registration, no watermarks, and no limits on the number of documents you can process.
+Yes, our Redact PDF tool is completely free with no registration, no watermarks, and no limits on the number of documents you can process. For a broader overview of free tools, see our [best free PDF tools roundup](/blog/best-free-pdf-tools-2026).
 `,
     relatedTools: [
       { name: "Redact PDF", path: "/redact-pdf", description: "Permanently remove sensitive info" },
@@ -3115,7 +3112,7 @@ Many industries require documents to be archived in a non-editable format. Flatt
 
 ### Step 1: Upload Your PDF
 
-Open the [Flatten PDF](/flatten-pdf) tool and drag your file into the upload area. The tool accepts PDFs of any size containing forms, annotations, comments, or multiple layers.
+Open the Flatten PDF tool and drag your file into the upload area. The tool accepts PDFs of any size containing forms, annotations, comments, or multiple layers.
 
 ### Step 2: Flatten
 
@@ -3468,7 +3465,7 @@ Resizing changes the entire page dimensions and scales content to fit. [Cropping
 ## Tips for Best Results
 
 1. **Check orientation first**: Make sure your document is in portrait or landscape to match the target size. Use [Rotate PDF](/rotate-pdf) to fix orientation before resizing.
-2. **Use Crop first**: If you have unwanted margins, [crop them](/crop-pdf) before resizing for a cleaner result. See our [cropping guide](/blog/crop-pdf-pages-guide) for detailed instructions.
+2. **Use Crop first**: If you have unwanted margins, crop them before resizing for a cleaner result. See our [cropping guide](/blog/crop-pdf-pages-guide) for detailed instructions.
 3. **Flatten interactive elements**: [Flatten the PDF](/flatten-pdf) before resizing forms to preserve field positions. Learn more in our [flattening guide](/blog/how-to-flatten-pdf).
 4. **Compress after resizing**: Use [Compress PDF](/compress) if the resized file is larger than expected. Scaling up can increase file size.
 5. **Verify the result**: Always review the resized PDF to confirm content looks correct before printing or sharing.
@@ -3480,7 +3477,7 @@ Resizing changes the entire page dimensions and scales content to fit. [Cropping
 
 This is the most frequent resizing task for businesses working across borders:
 
-1. Upload your Letter-sized PDF to [Resize PDF](/resize-pdf)
+1. Upload your Letter-sized PDF to Resize PDF
 2. Select A4 as the target size
 3. Choose "Fit to page" scaling
 4. Download and verify the result
@@ -3490,7 +3487,7 @@ This is the most frequent resizing task for businesses working across borders:
 
 When sending documents to recipients in the United States:
 
-1. Upload your A4 PDF to [Resize PDF](/resize-pdf)
+1. Upload your A4 PDF to Resize PDF
 2. Select US Letter as the target
 3. Check that margins look balanced after scaling
 4. Download the resized version
@@ -3648,7 +3645,7 @@ Download the comparison results to share with your team or attach to your review
 
 Contracts often go through multiple rounds of negotiation. Each revision may contain subtle changes that significantly affect your obligations. Here is a thorough review workflow:
 
-1. Upload the original and revised versions to [Compare PDF](/compare-pdf)
+1. Upload the original and revised versions to Compare PDF
 2. Review every highlighted change, paying close attention to numbers, dates, and legal terms
 3. Cross-reference changes with the negotiation notes or redline comments
 4. [Add annotations](/annotate-pdf) to flag items that need further discussion
@@ -3852,7 +3849,7 @@ E-commerce receipts, booking confirmations, subscription invoices, and banking s
 
 ### Building Offline Reading Lists
 
-Traveling without reliable internet? Convert articles to PDF and [merge them](/merge) into a single reading pack. This is perfect for long flights, remote travel, or any situation where internet access is limited. See our [merging guide](/blog/merge-pdf-files-guide) for tips on combining multiple documents.
+Traveling without reliable internet? Convert articles to PDF and merge them into a single reading pack. This is perfect for long flights, remote travel, or any situation where internet access is limited. See our [merging guide](/blog/merge-pdf-files-guide) for tips on combining multiple documents.
 
 ### Creating Training Materials
 
@@ -3866,7 +3863,7 @@ Capture web page content for legal evidence, regulatory compliance, or dispute r
 
 | Source Format | Tool | Best For | Quality |
 |--------------|------|----------|---------|
-| HTML / Web pages | [HTML to PDF](/html-to-pdf) | Web content archiving | High - preserves CSS layout |
+| HTML / Web pages | HTML to PDF | Web content archiving | High - preserves CSS layout |
 | Word documents | [Word to PDF](/word-to-pdf) | Office documents | High - exact formatting |
 | Excel spreadsheets | Excel to PDF | Data tables and reports | High - table structure preserved |
 | PowerPoint slides | PPT to PDF | Presentations | High - slide layout preserved |
@@ -3879,7 +3876,7 @@ Choose the right conversion tool based on your source format. If you have the or
 
 Once you have your PDF, enhance it with these additional tools:
 
-1. **[Compress](/compress)** to reduce file size for emailing or cloud storage — see our [compression guide](/blog/how-to-compress-pdf-for-email)
+1. **Compress** to reduce file size for emailing or cloud storage — see our [compression guide](/blog/how-to-compress-pdf-for-email)
 2. **Add page numbers** for easy navigation through multi-page documents
 3. **Merge** multiple converted pages into one organized document
 4. **Protect with a password** if the content is sensitive or confidential — see our [PDF protection guide](/blog/protect-pdf-with-password)
@@ -4111,7 +4108,7 @@ This usually indicates the PDF uses embedded fonts that are not standard. Try co
 
 ### No Text Is Extracted At All
 
-The PDF is likely a scanned image. Run [OCR PDF](/ocr-pdf) to add a text layer, then extract again.
+The PDF is likely a scanned image. Run OCR PDF to add a text layer, then extract again.
 
 ### Text Appears in Wrong Order
 
@@ -4592,7 +4589,7 @@ Before converting, it helps to understand which image format you are working wit
 | TIFF | [TIFF to PDF](/tiff-to-pdf) | High-quality scans and prints | Lossless, very large files, professional quality |
 | WebP | [WebP to PDF](/webp-to-pdf) | Modern web images | Google format, excellent compression, growing adoption |
 
-Choosing the right converter ensures your images are processed optimally. For example, [JPG to PDF](/jpg-to-pdf) is tuned for photographic content, while [PNG to PDF](/png-to-pdf) handles transparency and crisp edges better for screenshots and graphics. For more on image formats, see our guide on [converting images to PDF](/blog/convert-images-to-pdf).
+Choosing the right converter ensures your images are processed optimally. For example, JPG to PDF is tuned for photographic content, while PNG to PDF handles transparency and crisp edges better for screenshots and graphics. For more on image formats, see our guide on [converting images to PDF](/blog/convert-images-to-pdf).
 
 ## How to Batch Convert Images to PDF
 
@@ -4619,10 +4616,10 @@ Click the convert button to generate your PDF. Each image becomes one page in th
 ### Before Converting
 
 1. **Sort images first**: Name your files numerically (001.jpg, 002.jpg, 003.jpg) so they upload in the correct order automatically
-2. **Use consistent orientation**: Ensure all images are rotated to the correct viewing angle. If any images are sideways or upside down, use our [Rotate Image](/rotate-image) tool to fix them before converting
+2. **Use consistent orientation**: Ensure all images are rotated to the correct viewing angle before converting
 3. **Optimize image size**: Very large images (from high-resolution cameras) create unnecessarily big PDFs. Use [Image Compressor](/image-compressor) to reduce image file size before converting, especially if the PDF will be shared via email
 4. **Crop unnecessary areas**: Trim images with [Crop Image](/crop-image) before converting for cleaner, more focused pages. Remove backgrounds, borders, and irrelevant portions
-5. **Resize for consistency**: If your images vary in size, use Resize Image to standardize dimensions so all pages in the PDF look uniform
+5. **Resize for consistency**: If your images vary in size, standardize dimensions so all pages in the PDF look uniform
 
 ### During Conversion
 
@@ -4634,7 +4631,7 @@ Click the convert button to generate your PDF. Each image becomes one page in th
 
 ### Combine Multiple PDFs
 
-If you converted different batches or formats separately, use [Merge PDF](/merge) to combine them into one unified document.
+If you converted different batches or formats separately, use Merge PDF to combine them into one unified document.
 
 ### Add Professional Touches
 
@@ -4852,43 +4849,34 @@ Once your PDF is unlocked, the full range of PDF tools becomes available. Here a
 - [Edit the PDF](/edit-pdf) to add text, images, shapes, or annotations directly
 - [Convert to Word](/pdf-to-word) for full text editing and reformatting capabilities
 - [Sign the document](/sign-pdf) by adding your electronic signature
-- [Add a watermark](/add-watermark) for branding or confidentiality marking
 
 ### Organize and Combine
 
 - [Merge](/merge) with other documents to create a comprehensive file
 - [Split](/split) into separate files by page or section
-- [Reorder pages](/reorder-pages) to change the page sequence
-- [Delete pages](/delete-pages) to remove unwanted content
-- [Rotate pages](/rotate-pdf) to fix orientation issues
+- Reorder, delete, or rotate pages as needed
 
-### Extract Content
+### Extract and Optimize
 
 - [Extract text](/extract-text) to copy all text content for quoting or analysis
-- [Extract images](/extract-images) to download embedded photos and graphics
-- [Convert to Excel](/pdf-to-excel) to extract tabular data for spreadsheets
-
-### Optimize
-
 - [Compress](/compress) to reduce file size for email or upload
 - [Flatten](/flatten-pdf) to make all interactive elements static and permanent
-- [Convert to grayscale](/grayscale-pdf) for printing in black and white
 
 ## When Unlocking Is Needed: Common Scenarios
 
 | Scenario | Symptom | Solution |
 |----------|---------|----------|
-| Cannot open PDF at all | "Password required" dialog appears | Enter user password in [Unlock PDF](/unlock-pdf) |
-| Cannot print the document | Print option is grayed out or disabled | Remove owner password in [Unlock PDF](/unlock-pdf) |
-| Cannot select or copy text | Text cursor does not appear when clicking | Remove restrictions, then [Extract Text](/extract-text) |
-| Cannot edit or annotate | Edit tools are disabled or changes cannot be saved | Unlock, then use [Edit PDF](/edit-pdf) or [convert to Word](/pdf-to-word) |
-| Cannot merge with other PDFs | Error during merge operation | Unlock all protected PDFs first, then [merge](/merge) |
+| Cannot open PDF at all | "Password required" dialog appears | Enter user password in Unlock PDF |
+| Cannot print the document | Print option is grayed out or disabled | Remove owner password with Unlock PDF |
+| Cannot select or copy text | Text cursor does not appear when clicking | Remove restrictions, then extract text |
+| Cannot edit or annotate | Edit tools are disabled or changes cannot be saved | Unlock, then edit or convert to Word |
+| Cannot merge with other PDFs | Error during merge operation | Unlock all protected PDFs first, then merge |
 | Screen reader cannot access content | Assistive technology reports no text | Unlock to remove copy restrictions for accessibility |
 | Forgot your own password | Cannot access your own document | Password cannot be recovered - always use a password manager |
 
 ## Security and Ethics
 
-PDF password protection exists for good reasons, and we take security seriously. Our [Unlock PDF](/unlock-pdf) tool is designed exclusively for legitimate use cases:
+PDF password protection exists for good reasons, and we take security seriously. Our Unlock PDF tool is designed exclusively for legitimate use cases:
 
 - **Removing protection from your own documents** when you no longer need the password
 - **Accessing files where you have authorization** and the password has been shared with you
@@ -4911,9 +4899,9 @@ When in doubt, contact the document owner to request an unprotected copy.
 
 After making your edits to an unlocked document, you may want to add new protection with an updated password or different permission settings:
 
-1. Make all necessary changes using [Edit PDF](/edit-pdf), [PDF to Word](/pdf-to-word), or other editing tools
-2. [Flatten the document](/flatten-pdf) to permanently lock in all modifications, annotations, and form data
-3. [Add a new password](/protect-pdf) with your desired permission settings and a strong password
+1. Make all necessary changes using your preferred editing tools
+2. Flatten the document to permanently lock in all modifications and form data
+3. [Add a new password](/protect-pdf) with your desired permission settings and a strong password. See our [password protection guide](/blog/protect-pdf-with-password) for best practices
 4. Test the re-protected document by opening it and verifying the password works correctly
 5. Share the newly protected document with the intended recipients
 
@@ -4931,12 +4919,12 @@ Since our tool requires the correct password, keeping track of your PDF password
 
 ## Tips for Working with Protected PDFs
 
-1. **Always unlock before batch processing**: Remove protection from all PDFs before [merging](/merge), [compressing](/compress), or performing other batch operations to avoid errors
-2. **Flatten after unlocking forms**: If the PDF contains filled-in forms, [flatten](/flatten-pdf) the document after unlocking to preserve the form data as static text
+1. **Always unlock before batch processing**: Remove protection from all PDFs before merging, compressing, or performing other batch operations to avoid errors
+2. **Flatten after unlocking forms**: If the PDF contains filled-in forms, flatten the document after unlocking to preserve the form data as static text. Our [flattening guide](/blog/how-to-flatten-pdf) covers this in detail
 3. **Check for both password types**: Some PDFs have both user and owner passwords. Unlocking with the user password removes both
 4. **Verify the unlocked version**: After downloading, open the unlocked PDF and verify that all content is intact and all restrictions are removed
 5. **Keep backups**: Always retain a copy of the original protected PDF in case you need to reference or restore it
-6. **Consider alternatives to password protection**: For documents you share frequently, consider using [watermarks](/add-watermark) or [redaction](/redact-pdf) instead of passwords for appropriate security scenarios
+6. **Consider alternatives to password protection**: For documents you share frequently, consider using watermarks or [redaction](/redact-pdf) instead of passwords for appropriate security scenarios. See our [redaction guide](/blog/redact-sensitive-pdf-information) for details
 
 ## Troubleshooting
 
@@ -4947,7 +4935,7 @@ Double-check that you are entering the correct password. Passwords are case-sens
 Some PDF viewers cache permission settings. Close and reopen the unlocked PDF in a fresh viewer window. If the issue persists, try opening in a different PDF viewer or web browser.
 
 ### Cannot Unlock a PDF with No Visible Password Prompt
-Some PDFs have owner password restrictions without a user password. The document opens normally but actions like printing or copying are restricted. Upload to [Unlock PDF](/unlock-pdf) and enter the owner password to remove these restrictions.
+Some PDFs have owner password restrictions without a user password. The document opens normally but actions like printing or copying are restricted. Upload to our Unlock PDF tool and enter the owner password to remove these restrictions.
 
 ## Frequently Asked Questions
 
@@ -4964,10 +4952,14 @@ No. Unlocking only removes the password restriction. All text, formatting, image
 Enter the user (open) password to unlock viewing. The owner password restrictions are automatically removed in the process, giving you full unrestricted access to the document.
 
 ### Can I set a different password after unlocking?
-Yes. After unlocking and making any desired changes, use [Protect PDF](/protect-pdf) to add a new password with your preferred permission settings.
+Yes. After unlocking and making any desired changes, use Protect PDF to add a new password with your preferred permission settings.
 
 ### What encryption does PDF use?
 Modern PDFs use AES-256 encryption, the same standard used by banks and government agencies. With a strong password, this encryption is virtually unbreakable with current technology.
+
+## Related Reading
+
+For more on PDF security, check out our guide to password protecting PDFs. If you need to permanently remove sensitive information instead of just unlocking, see our redaction guide. Students and professionals working with many PDFs should explore our [PDF tools for students](/blog/pdf-tools-for-students) guide for productivity tips.
 `,
     relatedTools: [
       { name: "Unlock PDF", path: "/unlock-pdf", description: "Remove PDF password protection" },
