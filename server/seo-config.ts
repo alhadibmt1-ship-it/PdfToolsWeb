@@ -1028,6 +1028,198 @@ export const seoConfig: Record<string, PageSEO> = {
       "description": "Edit PDF files online for free - merge, split, compress, rotate, sign, annotate, and more",
       "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
+  },
+  "/convert-pdf": {
+    title: "Convert PDF Online Free — All Formats Supported | PDF HUB 24",
+    description: "Convert PDF to Word, Excel, JPG, PNG, PowerPoint and more. Convert images and documents to PDF. Free online converter with no signup, no watermark.",
+    keywords: "convert PDF, PDF converter, PDF to Word, PDF to JPG, Word to PDF, image to PDF",
+    schema: { "@context": "https://schema.org", "@type": "CollectionPage", "name": "Convert PDF Tools", "url": `${BASE_URL}/convert-pdf`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/compress-pdf-tools": {
+    title: "Compress PDF Online Free — Reduce Size Up to 90% | PDF HUB 24",
+    description: "Reduce PDF file size by up to 90% without losing quality. Free PDF compressor with 3 compression levels. Perfect for email, upload, and storage.",
+    keywords: "compress PDF, reduce PDF size, PDF compressor, shrink PDF, optimize PDF",
+    schema: { "@context": "https://schema.org", "@type": "CollectionPage", "name": "Compress PDF Tools", "url": `${BASE_URL}/compress-pdf-tools`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/edit-pdf-tools": {
+    title: "Edit PDF Online Free — 15+ Editing Tools (No Install) | PDF HUB 24",
+    description: "Edit, merge, split, rotate, sign, annotate, and redact PDF documents free online. 15+ PDF editing tools with no software install and no watermarks.",
+    keywords: "edit PDF, PDF editor, merge PDF, split PDF, sign PDF, annotate PDF",
+    schema: { "@context": "https://schema.org", "@type": "CollectionPage", "name": "Edit PDF Tools", "url": `${BASE_URL}/edit-pdf-tools`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/secure-pdf": {
+    title: "Secure PDF Online Free — Encrypt, Redact & Protect | PDF HUB 24",
+    description: "Password protect, encrypt, redact, and secure PDF documents free online. AES-256 encryption, permanent redaction, and file privacy tools.",
+    keywords: "secure PDF, protect PDF, encrypt PDF, redact PDF, password protect PDF",
+    schema: { "@context": "https://schema.org", "@type": "CollectionPage", "name": "Secure PDF Tools", "url": `${BASE_URL}/secure-pdf`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/image-tools": {
+    title: "Free Image Tools Online — Compress, Resize, Crop & Convert | PDF HUB 24",
+    description: "Free online image tools for compression, resizing, cropping, rotating, and format conversion. Supports JPG, PNG, WebP, GIF, TIFF.",
+    keywords: "image tools, compress image, resize image, crop image, convert image, image compressor",
+    schema: { "@context": "https://schema.org", "@type": "CollectionPage", "name": "Image Tools", "url": `${BASE_URL}/image-tools`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/write-for-us": {
+    title: "Write for Us — Contribute to PDF HUB 24 Blog | PDF HUB 24",
+    description: "Contribute guest posts to PDF HUB 24. Write about PDF tools, document management, and productivity. Get exposure to 300,000+ monthly readers.",
+    keywords: "write for us, guest post, contribute, PDF blog, document management blog",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Write for Us", "url": `${BASE_URL}/write-for-us`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/data-security": {
+    title: "Data Security & Privacy — How We Protect Your Files | PDF HUB 24",
+    description: "Learn how PDF HUB 24 protects your files. SSL encryption, automatic deletion within 1 hour, zero-access policy, GDPR compliance.",
+    keywords: "data security, file privacy, PDF security, GDPR, file encryption, auto delete",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Data Security", "url": `${BASE_URL}/data-security`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/auto-delete": {
+    title: "Auto-Delete — How We Remove Your Files | PDF HUB 24",
+    description: "PDF HUB 24 automatically deletes all uploaded files within 1 hour. Learn how our automatic file deletion works to protect your privacy.",
+    keywords: "auto delete files, file deletion, privacy, secure deletion, temporary files",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Automatic File Deletion", "url": `${BASE_URL}/auto-delete`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/pricing": {
+    title: "Pricing — 43+ Free PDF Tools (No Hidden Costs) | PDF HUB 24",
+    description: "All 43+ PDF tools are 100% free. No signup, no watermarks, no limits. See our free plan features and upcoming Pro plan details.",
+    keywords: "free pdf tools, pdf tool pricing, free pdf converter, free pdf editor, pdf hub pricing",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Pricing", "url": `${BASE_URL}/pricing`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/embed": {
+    title: "Embed PDF Tools on Your Website Free — Widget Generator | PDF HUB 24",
+    description: "Embed free PDF tools on your website with our widget generator. Get iframe code for merge, compress, convert, and 40+ PDF tools.",
+    keywords: "embed pdf tools, pdf widget, iframe pdf converter, embed pdf merger, website pdf tools",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Embed Widget Generator", "url": `${BASE_URL}/embed`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/pdf-comparison-chart": {
+    title: "Free PDF Tools Comparison Chart 2026 — 6 Platforms Reviewed | PDF HUB 24",
+    description: "Compare 6 free PDF tool platforms side by side. Features, pricing, file limits, and capabilities of PDF HUB 24, Adobe, Smallpdf, ILovePDF, PDF24, and Sejda.",
+    keywords: "pdf tools comparison, free pdf tools, best pdf tool, pdf converter comparison, adobe vs smallpdf",
+    schema: { "@context": "https://schema.org", "@type": "Article", "headline": "Free PDF Tools Comparison Chart 2026", "url": `${BASE_URL}/pdf-comparison-chart`, "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/pdf-file-formats-guide": {
+    title: "PDF & Document File Formats Guide 2026 — 10 Formats Explained | PDF HUB 24",
+    description: "Complete guide to PDF, DOCX, XLSX, PPTX, JPG, PNG, WebP, TIFF, GIF file formats. Specs, use cases, compression types, and conversion options.",
+    keywords: "file formats guide, pdf format, docx format, image formats, document formats, file format comparison",
+    schema: { "@context": "https://schema.org", "@type": "Article", "headline": "Ultimate Guide to PDF & Document File Formats 2026", "url": `${BASE_URL}/pdf-file-formats-guide`, "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/compress-pdf-under-100kb": {
+    title: "Compress PDF Under 100KB Free Online | PDF HUB 24",
+    description: "Reduce PDF file size to under 100KB free. Perfect for form submissions, online applications, and strict upload limits.",
+    keywords: "compress pdf under 100kb, reduce pdf size 100kb, small pdf, pdf under 100kb",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Compress PDF Under 100KB", "url": `${BASE_URL}/tools/compress-pdf-under-100kb`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/reduce-pdf-size-to-200kb": {
+    title: "Reduce PDF Size to 200KB Free Online | PDF HUB 24",
+    description: "Reduce PDF file size to 200KB or less. Free online tool for meeting upload requirements. Maintain quality while shrinking files.",
+    keywords: "reduce pdf 200kb, compress pdf 200kb, pdf size 200kb, small pdf file",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Reduce PDF to 200KB", "url": `${BASE_URL}/tools/reduce-pdf-size-to-200kb`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/compress-pdf-to-1mb": {
+    title: "Compress PDF to 1MB Free Online | PDF HUB 24",
+    description: "Compress large PDF files to 1MB or under. Free PDF compressor with quality options. Perfect for email and uploads.",
+    keywords: "compress pdf 1mb, reduce pdf to 1mb, pdf under 1mb, shrink pdf 1mb",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Compress PDF to 1MB", "url": `${BASE_URL}/tools/compress-pdf-to-1mb`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/merge-pdf-for-visa-application": {
+    title: "Merge PDF for Visa Application Free Online | PDF HUB 24",
+    description: "Combine passport, bank statements, photos, and supporting documents into one PDF for visa applications. Free online merger.",
+    keywords: "merge pdf visa, combine documents visa, visa application pdf, merge pdf passport",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Merge PDF for Visa Application", "url": `${BASE_URL}/tools/merge-pdf-for-visa-application`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/convert-scanned-pdf-to-word-editable": {
+    title: "Convert Scanned PDF to Editable Word Free | PDF HUB 24",
+    description: "Convert scanned PDF documents to editable Word (DOCX) files using OCR. Free online tool extracts text from scans.",
+    keywords: "scanned pdf to word, ocr pdf to word, convert scan to editable, scanned document to word",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert Scanned PDF to Word", "url": `${BASE_URL}/tools/convert-scanned-pdf-to-word-editable`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/make-pdf-smaller-for-email": {
+    title: "Make PDF Smaller for Email Free Online | PDF HUB 24",
+    description: "Make your PDF smaller for email in seconds. Reduce under 25MB for Gmail, 20MB for Outlook. Free compressor with quality options.",
+    keywords: "make pdf smaller email, compress pdf email, pdf too large email, reduce pdf for gmail",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Make PDF Smaller for Email", "url": `${BASE_URL}/tools/make-pdf-smaller-for-email`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/pdf-to-jpg-high-quality": {
+    title: "PDF to JPG High Quality Free Online | PDF HUB 24",
+    description: "Convert PDF pages to high-resolution JPG images. Free online converter with 300 DPI output. Perfect for presentations and social media.",
+    keywords: "pdf to jpg high quality, pdf to image hd, convert pdf jpg high resolution, pdf to jpg 300dpi",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "PDF to JPG High Quality", "url": `${BASE_URL}/tools/pdf-to-jpg-high-quality`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/merge-pdf-free-no-limit": {
+    title: "Merge PDF Free No Limit — Combine Unlimited Files | PDF HUB 24",
+    description: "Combine unlimited PDF files into one document free. No file count limits, no page limits, no daily caps.",
+    keywords: "merge pdf free no limit, combine pdf unlimited, merge pdf no restriction, unlimited pdf merger",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Merge PDF Free No Limit", "url": `${BASE_URL}/tools/merge-pdf-free-no-limit`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/split-pdf-by-pages": {
+    title: "Split PDF by Pages Free Online | PDF HUB 24",
+    description: "Split PDF files by page number or range free. Extract specific pages, split into chapters, or divide large documents.",
+    keywords: "split pdf by pages, extract pdf pages, split pdf page range, separate pdf pages",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Split PDF by Pages", "url": `${BASE_URL}/tools/split-pdf-by-pages`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/add-signature-to-pdf-free": {
+    title: "Add Signature to PDF Free Online | PDF HUB 24",
+    description: "Sign PDF documents free online. Draw, type, or upload your signature. No printing, no scanning needed. Legally recognized e-signatures.",
+    keywords: "add signature pdf, sign pdf free, electronic signature pdf, e-sign pdf online",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Add Signature to PDF", "url": `${BASE_URL}/tools/add-signature-to-pdf-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/compress-pdf-without-losing-quality": {
+    title: "Compress PDF Without Losing Quality Free | PDF HUB 24",
+    description: "Reduce PDF file size without visible quality loss. Free lossless-like compression preserves text and images. 3 quality levels.",
+    keywords: "compress pdf without losing quality, lossless pdf compression, reduce pdf keep quality",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Compress PDF Without Losing Quality", "url": `${BASE_URL}/tools/compress-pdf-without-losing-quality`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/pdf-to-word-editable-free": {
+    title: "PDF to Word Editable Free Online | PDF HUB 24",
+    description: "Convert any PDF to fully editable Word (DOCX) format free. Preserves tables, images, and formatting. No email required.",
+    keywords: "pdf to word editable, convert pdf to editable word, pdf to docx free, editable word from pdf",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "PDF to Editable Word", "url": `${BASE_URL}/tools/pdf-to-word-editable-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/unlock-pdf-for-editing": {
+    title: "Unlock PDF for Editing Free Online | PDF HUB 24",
+    description: "Remove editing restrictions from password-protected PDFs free. Unlock PDFs for copying, printing, and editing. Requires your password.",
+    keywords: "unlock pdf editing, remove pdf restrictions, unlock pdf free, pdf remove password editing",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Unlock PDF for Editing", "url": `${BASE_URL}/tools/unlock-pdf-for-editing`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/rotate-pdf-and-save": {
+    title: "Rotate PDF and Save Permanently Free | PDF HUB 24",
+    description: "Rotate PDF pages 90, 180, or 270 degrees and save permanently. Fix sideways or upside-down pages. Free online tool.",
+    keywords: "rotate pdf save, fix sideways pdf, rotate pdf permanently, turn pdf pages",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Rotate PDF and Save", "url": `${BASE_URL}/tools/rotate-pdf-and-save`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/convert-pdf-to-jpg-all-pages": {
+    title: "Convert PDF to JPG All Pages Free Online | PDF HUB 24",
+    description: "Convert every page of your PDF to individual JPG images free. Download all pages as a ZIP file. High quality output.",
+    keywords: "pdf to jpg all pages, convert all pdf pages jpg, pdf pages to images, extract all pages jpg",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert PDF to JPG All Pages", "url": `${BASE_URL}/tools/convert-pdf-to-jpg-all-pages`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/protect-pdf-with-password-free": {
+    title: "Password Protect PDF Free Online (AES-256) | PDF HUB 24",
+    description: "Add AES-256 password protection to PDF files free. Set open and edit passwords, control printing and copying permissions.",
+    keywords: "password protect pdf, encrypt pdf free, aes 256 pdf, pdf password protection online",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Password Protect PDF", "url": `${BASE_URL}/tools/protect-pdf-with-password-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/remove-pages-from-pdf": {
+    title: "Remove Pages from PDF Free Online | PDF HUB 24",
+    description: "Delete specific pages from PDF documents free. Select and remove unwanted pages instantly. Keep your documents clean.",
+    keywords: "remove pages pdf, delete pdf pages, remove page from pdf free, delete pages pdf online",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Remove Pages from PDF", "url": `${BASE_URL}/tools/remove-pages-from-pdf`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/flatten-pdf-for-printing": {
+    title: "Flatten PDF for Printing Free Online | PDF HUB 24",
+    description: "Flatten PDF forms and layers for reliable printing. Convert fillable fields to static text. Ensures consistent print output.",
+    keywords: "flatten pdf printing, flatten pdf forms, pdf print correctly, flatten fillable pdf",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Flatten PDF for Printing", "url": `${BASE_URL}/tools/flatten-pdf-for-printing`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/add-watermark-to-pdf-free": {
+    title: "Add Watermark to PDF Free Online | PDF HUB 24",
+    description: "Add text or image watermarks to PDF files online for free. Customize position, opacity, and rotation. Protect your documents with professional watermarks.",
+    keywords: "add watermark pdf free, watermark pdf online, text watermark pdf, image watermark pdf, stamp pdf",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Add Watermark to PDF Free", "url": `${BASE_URL}/tools/add-watermark-to-pdf-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/convert-excel-to-pdf-free": {
+    title: "Convert Excel to PDF Free Online | PDF HUB 24",
+    description: "Convert Excel XLS and XLSX files to PDF online for free. Preserve formatting, formulas display, and column widths. No signup required.",
+    keywords: "excel to pdf free, convert xlsx to pdf, spreadsheet to pdf, xls to pdf online, excel pdf converter",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert Excel to PDF Free", "url": `${BASE_URL}/tools/convert-excel-to-pdf-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   }
 };
 

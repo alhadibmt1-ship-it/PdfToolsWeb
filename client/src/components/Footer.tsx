@@ -272,7 +272,7 @@ export default function Footer() {
                 role="region"
                 aria-labelledby="footer-company-button"
                 hidden={!isCompanyVisible}
-                className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isCompanyVisible ? 'max-h-[320px] mt-3 md:mt-4' : 'max-h-0'}`}
+                className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isCompanyVisible ? 'max-h-[600px] mt-3 md:mt-4' : 'max-h-0'}`}
               >
                 <div className="flex flex-col gap-2">
                   <FooterLink href="/about" testId="link-footer-about" isVisible={isCompanyVisible}>
@@ -308,12 +308,55 @@ export default function Footer() {
                   <FooterLink href="/free-pdf-editor" testId="link-footer-editor" isVisible={isCompanyVisible}>
                     Free PDF Editor
                   </FooterLink>
+                  <FooterLink href="/pricing" testId="link-footer-pricing" isVisible={isCompanyVisible}>
+                    Pricing
+                  </FooterLink>
+                  <FooterLink href="/data-security" testId="link-footer-security" isVisible={isCompanyVisible}>
+                    Data Security
+                  </FooterLink>
+                  <FooterLink href="/auto-delete" testId="link-footer-auto-delete" isVisible={isCompanyVisible}>
+                    Auto-Delete Policy
+                  </FooterLink>
+                  <FooterLink href="/write-for-us" testId="link-footer-write" isVisible={isCompanyVisible}>
+                    Write for Us
+                  </FooterLink>
+                  <FooterLink href="/embed" testId="link-footer-embed" isVisible={isCompanyVisible}>
+                    Embed Our Tools
+                  </FooterLink>
+                  <FooterLink href="/pdf-comparison-chart" testId="link-footer-comparison" isVisible={isCompanyVisible}>
+                    PDF Tools Comparison
+                  </FooterLink>
+                  <FooterLink href="/pdf-file-formats-guide" testId="link-footer-formats" isVisible={isCompanyVisible}>
+                    File Formats Guide
+                  </FooterLink>
                   <FooterLink href="/sitemap.xml" testId="link-footer-sitemap" isVisible={isCompanyVisible}>
                     Sitemap
                   </FooterLink>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Category Hubs - Prominent section */}
+        <div className="mb-8 pt-6 border-t border-border/50">
+          <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground mb-4">Tool Categories</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            <a href="/convert-pdf" className="flex items-center gap-2 p-3 rounded-lg bg-muted/50 hover:bg-primary/10 transition-colors group" data-testid="link-category-convert">
+              <span className="text-sm font-medium group-hover:text-primary transition-colors">Convert PDF</span>
+            </a>
+            <a href="/compress-pdf-tools" className="flex items-center gap-2 p-3 rounded-lg bg-muted/50 hover:bg-primary/10 transition-colors group" data-testid="link-category-compress">
+              <span className="text-sm font-medium group-hover:text-primary transition-colors">Compress PDF</span>
+            </a>
+            <a href="/edit-pdf-tools" className="flex items-center gap-2 p-3 rounded-lg bg-muted/50 hover:bg-primary/10 transition-colors group" data-testid="link-category-edit">
+              <span className="text-sm font-medium group-hover:text-primary transition-colors">Edit PDF</span>
+            </a>
+            <a href="/secure-pdf" className="flex items-center gap-2 p-3 rounded-lg bg-muted/50 hover:bg-primary/10 transition-colors group" data-testid="link-category-secure">
+              <span className="text-sm font-medium group-hover:text-primary transition-colors">Secure PDF</span>
+            </a>
+            <a href="/image-tools" className="flex items-center gap-2 p-3 rounded-lg bg-muted/50 hover:bg-primary/10 transition-colors group" data-testid="link-category-image">
+              <span className="text-sm font-medium group-hover:text-primary transition-colors">Image Tools</span>
+            </a>
           </div>
         </div>
 
