@@ -1257,8 +1257,147 @@ export function generateMetaTags(path: string): string {
   `;
 }
 
+function generateCrawlableNav(currentPath: string): string {
+  const toolLinks = [
+    { href: "/pdf-to-word", text: "PDF to Word" },
+    { href: "/pdf-to-jpg", text: "PDF to JPG" },
+    { href: "/pdf-to-png", text: "PDF to PNG" },
+    { href: "/pdf-to-excel", text: "PDF to Excel" },
+    { href: "/pdf-to-ppt", text: "PDF to PowerPoint" },
+    { href: "/word-to-pdf", text: "Word to PDF" },
+    { href: "/jpg-to-pdf", text: "JPG to PDF" },
+    { href: "/png-to-pdf", text: "PNG to PDF" },
+    { href: "/excel-to-pdf", text: "Excel to PDF" },
+    { href: "/ppt-to-pdf", text: "PowerPoint to PDF" },
+    { href: "/tiff-to-pdf", text: "TIFF to PDF" },
+    { href: "/gif-to-pdf", text: "GIF to PDF" },
+    { href: "/html-to-pdf", text: "HTML to PDF" },
+    { href: "/webp-to-pdf", text: "WebP to PDF" },
+    { href: "/merge", text: "Merge PDF" },
+    { href: "/split", text: "Split PDF" },
+    { href: "/compress", text: "Compress PDF" },
+    { href: "/rotate", text: "Rotate PDF" },
+    { href: "/delete-pages", text: "Delete Pages" },
+    { href: "/protect-pdf", text: "Protect PDF" },
+    { href: "/unlock-pdf", text: "Unlock PDF" },
+    { href: "/add-page-numbers", text: "Add Page Numbers" },
+    { href: "/add-watermark", text: "Add Watermark" },
+    { href: "/reorder-pages", text: "Reorder Pages" },
+    { href: "/crop-pdf", text: "Crop PDF" },
+    { href: "/resize-pdf", text: "Resize PDF" },
+    { href: "/sign-pdf", text: "Sign PDF" },
+    { href: "/flatten-pdf", text: "Flatten PDF" },
+    { href: "/grayscale-pdf", text: "PDF to Grayscale" },
+    { href: "/repair-pdf", text: "Repair PDF" },
+    { href: "/edit-pdf", text: "Edit PDF" },
+    { href: "/annotate-pdf", text: "Annotate PDF" },
+    { href: "/redact-pdf", text: "Redact PDF" },
+    { href: "/extract-text", text: "Extract Text" },
+    { href: "/ocr-pdf", text: "OCR PDF" },
+    { href: "/pdf-viewer", text: "PDF Viewer" },
+    { href: "/compare-pdf", text: "Compare PDF" },
+    { href: "/image-compressor", text: "Image Compressor" },
+    { href: "/resize-image", text: "Resize Image" },
+    { href: "/crop-image", text: "Crop Image" },
+    { href: "/rotate-image", text: "Rotate Image" },
+    { href: "/convert-image", text: "Convert Image" },
+    { href: "/extract-images", text: "Extract Images from PDF" },
+  ];
+
+  const categoryLinks = [
+    { href: "/convert-pdf", text: "Convert PDF Tools" },
+    { href: "/compress-pdf-tools", text: "Compress PDF Tools" },
+    { href: "/edit-pdf-tools", text: "Edit PDF Tools" },
+    { href: "/secure-pdf", text: "Secure PDF Tools" },
+    { href: "/image-tools", text: "Image Tools" },
+    { href: "/all-tools", text: "All PDF Tools" },
+    { href: "/free-pdf-converter", text: "Free PDF Converter" },
+    { href: "/free-pdf-editor", text: "Free PDF Editor" },
+  ];
+
+  const programmaticLinks = [
+    { href: "/tools/compress-pdf-under-100kb", text: "Compress PDF Under 100KB" },
+    { href: "/tools/reduce-pdf-size-to-200kb", text: "Reduce PDF Size to 200KB" },
+    { href: "/tools/compress-pdf-to-1mb", text: "Compress PDF to 1MB" },
+    { href: "/tools/merge-pdf-for-visa-application", text: "Merge PDF for Visa Application" },
+    { href: "/tools/convert-scanned-pdf-to-word-editable", text: "Convert Scanned PDF to Word" },
+    { href: "/tools/make-pdf-smaller-for-email", text: "Make PDF Smaller for Email" },
+    { href: "/tools/pdf-to-jpg-high-quality", text: "PDF to JPG High Quality" },
+    { href: "/tools/merge-pdf-free-no-limit", text: "Merge PDF Free No Limit" },
+    { href: "/tools/split-pdf-by-pages", text: "Split PDF by Pages" },
+    { href: "/tools/add-signature-to-pdf-free", text: "Add Signature to PDF Free" },
+    { href: "/tools/compress-pdf-without-losing-quality", text: "Compress PDF Without Losing Quality" },
+    { href: "/tools/pdf-to-word-editable-free", text: "PDF to Word Editable Free" },
+    { href: "/tools/unlock-pdf-for-editing", text: "Unlock PDF for Editing" },
+    { href: "/tools/rotate-pdf-and-save", text: "Rotate PDF and Save" },
+    { href: "/tools/convert-pdf-to-jpg-all-pages", text: "Convert PDF to JPG All Pages" },
+    { href: "/tools/protect-pdf-with-password-free", text: "Protect PDF with Password Free" },
+    { href: "/tools/remove-pages-from-pdf", text: "Remove Pages from PDF" },
+    { href: "/tools/flatten-pdf-for-printing", text: "Flatten PDF for Printing" },
+    { href: "/tools/add-watermark-to-pdf-free", text: "Add Watermark to PDF Free" },
+    { href: "/tools/convert-excel-to-pdf-free", text: "Convert Excel to PDF Free" },
+  ];
+
+  const blogLinks = [
+    { href: "/blog/how-to-compress-pdf-for-email", text: "How to Compress PDF for Email" },
+    { href: "/blog/convert-pdf-to-word-without-losing-formatting", text: "Convert PDF to Word Without Losing Formatting" },
+    { href: "/blog/merge-pdf-files-guide", text: "How to Merge PDF Files" },
+    { href: "/blog/protect-pdf-with-password", text: "Password Protect PDF Guide" },
+    { href: "/blog/pdf-tools-for-students", text: "PDF Tools for Students" },
+    { href: "/blog/how-to-split-pdf-pages", text: "How to Split PDF Pages" },
+    { href: "/blog/add-page-numbers-to-pdf", text: "Add Page Numbers to PDF" },
+    { href: "/blog/convert-images-to-pdf", text: "Convert Images to PDF" },
+    { href: "/blog/ocr-scanned-pdf-to-text", text: "OCR Scanned PDF to Text" },
+    { href: "/blog/rotate-pdf-pages", text: "Rotate PDF Pages" },
+    { href: "/blog/sign-pdf-electronically", text: "Sign PDF Electronically" },
+    { href: "/blog/edit-pdf-text-images", text: "Edit PDF Text and Images" },
+    { href: "/blog/watermark-pdf-documents", text: "Watermark PDF Documents" },
+    { href: "/blog/pdf-to-excel-convert-tables", text: "PDF to Excel Convert Tables" },
+    { href: "/blog/redact-sensitive-pdf-information", text: "Redact Sensitive PDF Information" },
+    { href: "/blog/how-to-flatten-pdf", text: "How to Flatten PDF" },
+    { href: "/blog/crop-pdf-pages-guide", text: "Crop PDF Pages Guide" },
+    { href: "/blog/resize-pdf-to-a4", text: "Resize PDF to A4" },
+    { href: "/blog/compare-two-pdf-files", text: "Compare Two PDF Files" },
+    { href: "/blog/html-to-pdf-conversion", text: "HTML to PDF Conversion" },
+    { href: "/blog/extract-text-from-pdf", text: "Extract Text from PDF" },
+    { href: "/blog/best-free-pdf-tools-2026", text: "Best Free PDF Tools 2026" },
+    { href: "/blog/pdf-accessibility-guide", text: "PDF Accessibility Guide" },
+    { href: "/blog/batch-convert-images-to-pdf", text: "Batch Convert Images to PDF" },
+    { href: "/blog/unlock-pdf-remove-password", text: "Unlock PDF Remove Password" },
+  ];
+
+  const infoLinks = [
+    { href: "/", text: "Home" },
+    { href: "/blog", text: "Blog" },
+    { href: "/about", text: "About Us" },
+    { href: "/privacy", text: "Privacy Policy" },
+    { href: "/terms", text: "Terms of Service" },
+    { href: "/contact", text: "Contact Us" },
+    { href: "/dmca", text: "DMCA Policy" },
+    { href: "/pricing", text: "Pricing" },
+    { href: "/data-security", text: "Data Security" },
+    { href: "/auto-delete", text: "Auto-Delete Policy" },
+    { href: "/write-for-us", text: "Write for Us" },
+    { href: "/embed", text: "Embed Our Tools" },
+    { href: "/pdf-comparison-chart", text: "PDF Tools Comparison" },
+    { href: "/pdf-file-formats-guide", text: "File Formats Guide" },
+    { href: "/pdf-statistics", text: "PDF Statistics 2026" },
+    { href: "/press", text: "Press and Media" },
+  ];
+
+  const allLinks = [...toolLinks, ...categoryLinks, ...programmaticLinks, ...blogLinks, ...infoLinks]
+    .filter(link => link.href !== currentPath);
+
+  const linkHtml = allLinks
+    .map(link => `<a href="${link.href}">${link.text}</a>`)
+    .join(" ");
+
+  return `<nav aria-label="Site Navigation" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">${linkHtml}</nav>`;
+}
+
 export function injectSEO(html: string, path: string): string {
   const metaTags = generateMetaTags(path);
+  const crawlableNav = generateCrawlableNav(path);
   
   return html
     .replace(/<title>.*?<\/title>/, '')
@@ -1268,5 +1407,6 @@ export function injectSEO(html: string, path: string): string {
     .replace(/<meta property="og:[^"]*"[^>]*\/?>/g, '')
     .replace(/<meta name="twitter:[^"]*"[^>]*\/?>/g, '')
     .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '')
-    .replace('</head>', `${metaTags}\n  </head>`);
+    .replace('</head>', `${metaTags}\n  </head>`)
+    .replace('</body>', `${crawlableNav}\n  </body>`);
 }
