@@ -33,7 +33,7 @@ Key technical features include:
 - **Server-side meta tags**: `server/seo-config.ts` provides unique title, description, keywords, canonical, OG, Twitter, and robots tags for every page. `injectSEO()` strips existing tags and reinjects correct ones.
 - **Structured data**: WebApplication + FAQPage + BreadcrumbList schemas on all 43 tool pages (client-side via `EnhancedToolSEOContent`). WebPage schema server-side. Organization + FAQ schemas on homepage. Article + FAQ schemas on blog pages.
 - **Internal linking**: Each tool page links to 8+ related tools and 2+ blog articles via `toolSEOData.ts`. Blog articles contain 3-15+ internal links to tools.
-- **Sitemap**: `client/public/sitemap.xml` covers all tools, blogs, categories, and information pages.
+- **Sitemap**: `client/public/sitemap.xml` covers 132 URLs — all tools, blogs, categories, programmatic pages, and information pages.
 - **Heading hierarchy**: All pages follow H1→H2→H3 structure with long-tail keyword H1s from `toolSEOData.ts`.
 - **AdSense placeholders**: `data-ad-slot` divs on tool pages (top, mid, bottom), blog pages (top, mid, bottom), and homepage (hero, mid, bottom).
 - **CTA blocks**: "Start Now - It's Free" buttons on tool pages after tutorial steps and at bottom. Blog pages have mid-article and bottom CTAs.
@@ -55,14 +55,14 @@ Key technical features include:
 - **25 blog articles** covering tutorials, guides, and tool roundups with internal linking
 - **43 tool pages** each with EnhancedToolSEOContent (About, Tutorial, Use Cases, Why Choose, Troubleshooting, Security, FAQs, Internal Links, Blog Links, Workflows)
 - **5 category hub pages** (/convert-pdf, /compress-pdf-tools, /edit-pdf-tools, /secure-pdf, /image-tools) — 800+ word intros, tool listings, FAQs, blog links, structured data
-- **20 programmatic SEO landing pages** (/tools/:slug) — long-tail keyword pages with unique content, CTAs, FAQs, use cases
+- **40 programmatic SEO landing pages** (/tools/:slug) — long-tail keyword pages with unique content, CTAs, FAQs, use cases
 - **Trust pages**: /data-security (security practices), /auto-delete (file deletion policy), /pricing (free vs pro)
 - **Backlink pages**: /write-for-us (guest post guidelines), /embed (iframe widget generator), /pdf-comparison-chart (6-platform comparison), /pdf-file-formats-guide (10-format reference)
 - **Footer**: Organized by category with tool category hub links, company links including pricing/security/write-for-us/embed/comparison/formats, popular tools, utility tools, and blog articles
-- **Sitemap**: 112 URLs covering all tools, blogs, categories, trust pages, linkable assets, and programmatic SEO pages
+- **Sitemap**: 132 URLs covering all tools, blogs, categories, trust pages, linkable assets, and programmatic SEO pages
 
 ### Data Files
 - `client/src/data/categoryHubData.ts` — 5 category hub configurations with tools, FAQs, blogs
-- `client/src/data/programmaticSeoData.ts` — 20 long-tail SEO page configurations
+- `client/src/data/programmaticSeoData.ts` — 40 long-tail SEO page configurations
 - `client/src/data/toolSEOData.ts` — SEO content for all 43 tool pages
 - `client/src/data/blogData.ts` — 25 blog article configurations
