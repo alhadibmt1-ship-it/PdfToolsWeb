@@ -1220,6 +1220,126 @@ export const seoConfig: Record<string, PageSEO> = {
     description: "Convert Excel XLS and XLSX files to PDF online for free. Preserve formatting, formulas display, and column widths. No signup required.",
     keywords: "excel to pdf free, convert xlsx to pdf, spreadsheet to pdf, xls to pdf online, excel pdf converter",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert Excel to PDF Free", "url": `${BASE_URL}/tools/convert-excel-to-pdf-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/convert-word-to-pdf-free-online": {
+    title: "Convert Word to PDF Free Online | PDF HUB 24",
+    description: "Convert Word DOC and DOCX files to PDF free online. Preserves fonts, images, and formatting perfectly. No signup, no watermark required.",
+    keywords: "convert word to pdf free, word to pdf online, docx to pdf free, doc to pdf converter, word pdf free online",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert Word to PDF Free Online", "url": `${BASE_URL}/tools/convert-word-to-pdf-free-online`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/convert-docx-to-pdf-keep-formatting": {
+    title: "Convert DOCX to PDF Keep Formatting Free | PDF HUB 24",
+    description: "Convert DOCX to PDF while preserving all formatting, fonts, and layout. Free online tool ensures your Word document looks identical as a PDF.",
+    keywords: "docx to pdf keep formatting, word to pdf preserve layout, convert docx pdf formatting, word pdf same format",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert DOCX to PDF Keep Formatting", "url": `${BASE_URL}/tools/convert-docx-to-pdf-keep-formatting`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/edit-pdf-text-online-free": {
+    title: "Edit PDF Text Online Free | PDF HUB 24",
+    description: "Edit text in PDF documents online for free. Add, modify, or delete text directly in your PDF files. No software download or signup required.",
+    keywords: "edit pdf text online free, modify pdf text, change text in pdf, pdf text editor free, edit pdf content",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Edit PDF Text Online Free", "url": `${BASE_URL}/tools/edit-pdf-text-online-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/edit-pdf-without-adobe-acrobat": {
+    title: "Edit PDF Without Adobe Acrobat Free Online | PDF HUB 24",
+    description: "Edit PDF files without Adobe Acrobat. Free online PDF editor with text, images, shapes, and annotations. No expensive software needed.",
+    keywords: "edit pdf without adobe, pdf editor no acrobat, free alternative adobe acrobat, edit pdf free no adobe",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Edit PDF Without Adobe Acrobat", "url": `${BASE_URL}/tools/edit-pdf-without-adobe-acrobat`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/convert-pdf-to-excel-with-tables": {
+    title: "Convert PDF to Excel With Tables Free Online | PDF HUB 24",
+    description: "Convert PDF tables to Excel spreadsheets accurately. Free online tool preserves table structure, rows, and columns. Extract data from PDF to XLSX.",
+    keywords: "pdf to excel with tables, extract tables pdf excel, pdf table to spreadsheet, convert pdf tables xlsx",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert PDF to Excel With Tables", "url": `${BASE_URL}/tools/convert-pdf-to-excel-with-tables`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/extract-tables-from-pdf-to-spreadsheet": {
+    title: "Extract Tables From PDF to Spreadsheet Free | PDF HUB 24",
+    description: "Extract tables from PDF documents into editable spreadsheets. Free online tool detects and converts PDF tables to Excel or CSV format accurately.",
+    keywords: "extract tables pdf, pdf table to spreadsheet, pdf table extractor, copy table from pdf to excel",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Extract Tables From PDF to Spreadsheet", "url": `${BASE_URL}/tools/extract-tables-from-pdf-to-spreadsheet`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/convert-jpg-to-pdf-free-online": {
+    title: "Convert JPG to PDF Free Online | PDF HUB 24",
+    description: "Convert JPG and JPEG images to PDF free online. Combine multiple photos into one PDF document. Adjust page size and orientation. No signup needed.",
+    keywords: "convert jpg to pdf free, jpeg to pdf online, jpg to pdf converter, image to pdf free online",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert JPG to PDF Free Online", "url": `${BASE_URL}/tools/convert-jpg-to-pdf-free-online`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/convert-multiple-images-to-one-pdf": {
+    title: "Convert Multiple Images to One PDF Free Online | PDF HUB 24",
+    description: "Combine multiple images into a single PDF document. Supports JPG, PNG, WebP, and more. Drag and drop to reorder pages. Free online, no signup.",
+    keywords: "multiple images to pdf, combine images pdf, merge photos to pdf, images to one pdf free",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert Multiple Images to One PDF", "url": `${BASE_URL}/tools/convert-multiple-images-to-one-pdf`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/add-page-numbers-to-pdf-free": {
+    title: "Add Page Numbers to PDF Free Online | PDF HUB 24",
+    description: "Add page numbers to any PDF document free online. Customize position, font, size, and starting number. Perfect for reports and manuscripts.",
+    keywords: "add page numbers pdf free, number pdf pages, pdf page numbering, insert page numbers pdf online",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Add Page Numbers to PDF Free", "url": `${BASE_URL}/tools/add-page-numbers-to-pdf-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/redact-pdf-black-out-text": {
+    title: "Redact PDF Black Out Text Free Online | PDF HUB 24",
+    description: "Black out sensitive text in PDF documents permanently. Free PDF redaction tool removes confidential information securely. GDPR and HIPAA compliant.",
+    keywords: "redact pdf black out text, censor pdf text, black out pdf, remove sensitive info pdf, pdf redaction tool",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Redact PDF Black Out Text", "url": `${BASE_URL}/tools/redact-pdf-black-out-text`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/crop-pdf-margins-free-online": {
+    title: "Crop PDF Margins Free Online | PDF HUB 24",
+    description: "Crop and remove PDF margins free online. Trim white space, adjust page boundaries, and resize PDF content area. Perfect for printing and presentations.",
+    keywords: "crop pdf margins free, trim pdf margins, remove pdf white space, pdf margin cutter online",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Crop PDF Margins Free Online", "url": `${BASE_URL}/tools/crop-pdf-margins-free-online`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/resize-pdf-to-a4-free": {
+    title: "Resize PDF to A4 Free Online | PDF HUB 24",
+    description: "Resize PDF pages to A4 paper size (210x297mm) free online. Convert Letter, Legal, or custom sizes to standard A4 format for printing.",
+    keywords: "resize pdf a4 free, change pdf to a4, pdf a4 size converter, convert pdf page size a4",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Resize PDF to A4 Free", "url": `${BASE_URL}/tools/resize-pdf-to-a4-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/convert-html-webpage-to-pdf": {
+    title: "Convert HTML Webpage to PDF Free Online | PDF HUB 24",
+    description: "Convert any HTML webpage to PDF free online. Render web pages with CSS styling, images, and layout preserved. Save websites as PDF documents.",
+    keywords: "convert html to pdf, webpage to pdf, save website as pdf, html page to pdf online free",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert HTML Webpage to PDF", "url": `${BASE_URL}/tools/convert-html-webpage-to-pdf`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/compress-jpg-png-image-online": {
+    title: "Compress JPG PNG Image Online Free | PDF HUB 24",
+    description: "Compress JPG and PNG images online for free. Reduce image file size by up to 80% without visible quality loss. Perfect for web and email.",
+    keywords: "compress jpg png online, image compressor free, reduce image size, compress photo online free",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Compress JPG PNG Image Online", "url": `${BASE_URL}/tools/compress-jpg-png-image-online`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/rearrange-pdf-pages-free": {
+    title: "Rearrange PDF Pages Free Online | PDF HUB 24",
+    description: "Rearrange and reorder PDF pages free online. Drag and drop to change page sequence. Move, swap, or reverse page order instantly. No signup needed.",
+    keywords: "rearrange pdf pages free, reorder pdf pages, change pdf page order, move pdf pages, sort pdf pages",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Rearrange PDF Pages Free", "url": `${BASE_URL}/tools/rearrange-pdf-pages-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/convert-pdf-to-png-high-resolution": {
+    title: "Convert PDF to PNG High Resolution Free | PDF HUB 24",
+    description: "Convert PDF pages to high-resolution PNG images free online. 300 DPI output with transparency support. Perfect for graphics and design work.",
+    keywords: "pdf to png high resolution, convert pdf png hd, pdf to png 300dpi, high quality pdf to png",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert PDF to PNG High Resolution", "url": `${BASE_URL}/tools/convert-pdf-to-png-high-resolution`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/annotate-pdf-highlight-text-free": {
+    title: "Annotate PDF Highlight Text Free Online | PDF HUB 24",
+    description: "Highlight, underline, and annotate text in PDF documents free online. Add notes, comments, and markup to any PDF. Perfect for study and review.",
+    keywords: "annotate pdf highlight text, highlight pdf free, pdf annotation tool, mark up pdf online free",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Annotate PDF Highlight Text Free", "url": `${BASE_URL}/tools/annotate-pdf-highlight-text-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/convert-pdf-to-powerpoint-free": {
+    title: "Convert PDF to PowerPoint Free Online | PDF HUB 24",
+    description: "Convert PDF files to editable PowerPoint (PPTX) presentations free online. Preserves slides, text, images, and layout. No signup or watermark.",
+    keywords: "convert pdf to powerpoint free, pdf to pptx online, pdf to ppt converter free, pdf to slides free",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert PDF to PowerPoint Free", "url": `${BASE_URL}/tools/convert-pdf-to-powerpoint-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/convert-pdf-to-word-without-losing-formatting": {
+    title: "Convert PDF to Word Without Losing Formatting Free | PDF HUB 24",
+    description: "Convert PDF to Word DOCX without losing formatting. Free online converter preserves fonts, tables, images, and layout exactly as in the original PDF.",
+    keywords: "pdf to word without losing formatting, convert pdf word keep format, pdf to docx preserve layout",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert PDF to Word Without Losing Formatting", "url": `${BASE_URL}/tools/convert-pdf-to-word-without-losing-formatting`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/tools/unlock-pdf-remove-password-online": {
+    title: "Unlock PDF Remove Password Online Free | PDF HUB 24",
+    description: "Remove password protection from PDF files online for free. Unlock PDFs for editing, printing, and copying. Requires your password. 100% secure.",
+    keywords: "unlock pdf remove password, remove pdf password online, pdf password remover free, unlock protected pdf",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Unlock PDF Remove Password Online", "url": `${BASE_URL}/tools/unlock-pdf-remove-password-online`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   }
 };
 
@@ -1336,6 +1456,26 @@ function generateCrawlableNav(currentPath: string): string {
     { href: "/tools/flatten-pdf-for-printing", text: "Flatten PDF for Printing" },
     { href: "/tools/add-watermark-to-pdf-free", text: "Add Watermark to PDF Free" },
     { href: "/tools/convert-excel-to-pdf-free", text: "Convert Excel to PDF Free" },
+    { href: "/tools/convert-word-to-pdf-free-online", text: "Convert Word to PDF Free Online" },
+    { href: "/tools/convert-docx-to-pdf-keep-formatting", text: "Convert DOCX to PDF Keep Formatting" },
+    { href: "/tools/edit-pdf-text-online-free", text: "Edit PDF Text Online Free" },
+    { href: "/tools/edit-pdf-without-adobe-acrobat", text: "Edit PDF Without Adobe Acrobat" },
+    { href: "/tools/convert-pdf-to-excel-with-tables", text: "Convert PDF to Excel With Tables" },
+    { href: "/tools/extract-tables-from-pdf-to-spreadsheet", text: "Extract Tables From PDF to Spreadsheet" },
+    { href: "/tools/convert-jpg-to-pdf-free-online", text: "Convert JPG to PDF Free Online" },
+    { href: "/tools/convert-multiple-images-to-one-pdf", text: "Convert Multiple Images to One PDF" },
+    { href: "/tools/add-page-numbers-to-pdf-free", text: "Add Page Numbers to PDF Free" },
+    { href: "/tools/redact-pdf-black-out-text", text: "Redact PDF Black Out Text" },
+    { href: "/tools/crop-pdf-margins-free-online", text: "Crop PDF Margins Free Online" },
+    { href: "/tools/resize-pdf-to-a4-free", text: "Resize PDF to A4 Free" },
+    { href: "/tools/convert-html-webpage-to-pdf", text: "Convert HTML Webpage to PDF" },
+    { href: "/tools/compress-jpg-png-image-online", text: "Compress JPG PNG Image Online" },
+    { href: "/tools/rearrange-pdf-pages-free", text: "Rearrange PDF Pages Free" },
+    { href: "/tools/convert-pdf-to-png-high-resolution", text: "Convert PDF to PNG High Resolution" },
+    { href: "/tools/annotate-pdf-highlight-text-free", text: "Annotate PDF Highlight Text Free" },
+    { href: "/tools/convert-pdf-to-powerpoint-free", text: "Convert PDF to PowerPoint Free" },
+    { href: "/tools/convert-pdf-to-word-without-losing-formatting", text: "Convert PDF to Word Without Losing Formatting" },
+    { href: "/tools/unlock-pdf-remove-password-online", text: "Unlock PDF Remove Password Online" },
   ];
 
   const blogLinks = [
