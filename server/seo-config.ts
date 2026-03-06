@@ -1054,7 +1054,7 @@ export const seoConfig: Record<string, PageSEO> = {
     schema: { "@context": "https://schema.org", "@type": "CollectionPage", "name": "Secure PDF Tools", "url": `${BASE_URL}/secure-pdf`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/image-tools": {
-    title: "Free Image Tools Online — Compress, Resize, Crop & Convert | PDF HUB 24",
+    title: "Free Image Tools — Compress, Resize & Convert | PDF HUB 24",
     description: "Free online image tools for compression, resizing, cropping, rotating, and format conversion. Supports JPG, PNG, WebP, GIF, TIFF.",
     keywords: "image tools, compress image, resize image, crop image, convert image, image compressor",
     schema: { "@context": "https://schema.org", "@type": "CollectionPage", "name": "Image Tools", "url": `${BASE_URL}/image-tools`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
@@ -1090,20 +1090,20 @@ export const seoConfig: Record<string, PageSEO> = {
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Embed Widget Generator", "url": `${BASE_URL}/embed`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/pdf-comparison-chart": {
-    title: "Free PDF Tools Comparison Chart 2026 — 6 Platforms Reviewed | PDF HUB 24",
+    title: "PDF Tools Comparison Chart 2026 | PDF HUB 24",
     description: "Compare 6 free PDF tool platforms side by side. Features, pricing, file limits, and capabilities of PDF HUB 24, Adobe, Smallpdf, ILovePDF, PDF24, and Sejda.",
     keywords: "pdf tools comparison, free pdf tools, best pdf tool, pdf converter comparison, adobe vs smallpdf",
     schema: { "@context": "https://schema.org", "@type": "Article", "headline": "Free PDF Tools Comparison Chart 2026", "url": `${BASE_URL}/pdf-comparison-chart`, "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/pdf-file-formats-guide": {
-    title: "PDF & Document File Formats Guide 2026 — 10 Formats Explained | PDF HUB 24",
+    title: "File Formats Guide 2026 — PDF & Documents | PDF HUB 24",
     description: "Complete guide to PDF, DOCX, XLSX, PPTX, JPG, PNG, WebP, TIFF, GIF file formats. Specs, use cases, compression types, and conversion options.",
     keywords: "file formats guide, pdf format, docx format, image formats, document formats, file format comparison",
     schema: { "@context": "https://schema.org", "@type": "Article", "headline": "Ultimate Guide to PDF & Document File Formats 2026", "url": `${BASE_URL}/pdf-file-formats-guide`, "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/tools/compress-pdf-under-100kb": {
     title: "Compress PDF Under 100KB Free Online | PDF HUB 24",
-    description: "Reduce PDF file size to under 100KB free. Perfect for form submissions, online applications, and strict upload limits.",
+    description: "Reduce PDF file size to under 100KB free online. Perfect for form submissions, online applications, and strict upload limits. No signup required.",
     keywords: "compress pdf under 100kb, reduce pdf size 100kb, small pdf, pdf under 100kb",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Compress PDF Under 100KB", "url": `${BASE_URL}/tools/compress-pdf-under-100kb`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
@@ -1115,7 +1115,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/tools/compress-pdf-to-1mb": {
     title: "Compress PDF to 1MB Free Online | PDF HUB 24",
-    description: "Compress large PDF files to 1MB or under. Free PDF compressor with quality options. Perfect for email and uploads.",
+    description: "Compress large PDF files to 1MB or under. Free online PDF compressor with adjustable quality options. Perfect for email attachments and website uploads.",
     keywords: "compress pdf 1mb, reduce pdf to 1mb, pdf under 1mb, shrink pdf 1mb",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Compress PDF to 1MB", "url": `${BASE_URL}/tools/compress-pdf-to-1mb`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
@@ -1127,7 +1127,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/tools/convert-scanned-pdf-to-word-editable": {
     title: "Convert Scanned PDF to Editable Word Free | PDF HUB 24",
-    description: "Convert scanned PDF documents to editable Word (DOCX) files using OCR. Free online tool extracts text from scans.",
+    description: "Convert scanned PDF documents to editable Word (DOCX) files using OCR technology. Free online tool accurately extracts text from image-based scans.",
     keywords: "scanned pdf to word, ocr pdf to word, convert scan to editable, scanned document to word",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert Scanned PDF to Word", "url": `${BASE_URL}/tools/convert-scanned-pdf-to-word-editable`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
@@ -1145,13 +1145,13 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/tools/merge-pdf-free-no-limit": {
     title: "Merge PDF Free No Limit — Combine Unlimited Files | PDF HUB 24",
-    description: "Combine unlimited PDF files into one document free. No file count limits, no page limits, no daily caps.",
+    description: "Combine unlimited PDF files into one document free online. No file count limits, no page limits, no daily caps. Merge as many PDFs as you need.",
     keywords: "merge pdf free no limit, combine pdf unlimited, merge pdf no restriction, unlimited pdf merger",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Merge PDF Free No Limit", "url": `${BASE_URL}/tools/merge-pdf-free-no-limit`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/tools/split-pdf-by-pages": {
     title: "Split PDF by Pages Free Online | PDF HUB 24",
-    description: "Split PDF files by page number or range free. Extract specific pages, split into chapters, or divide large documents.",
+    description: "Split PDF files by page number or range free online. Extract specific pages, split into chapters, or divide large documents. No signup required.",
     keywords: "split pdf by pages, extract pdf pages, split pdf page range, separate pdf pages",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Split PDF by Pages", "url": `${BASE_URL}/tools/split-pdf-by-pages`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
@@ -1163,13 +1163,13 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/tools/compress-pdf-without-losing-quality": {
     title: "Compress PDF Without Losing Quality Free | PDF HUB 24",
-    description: "Reduce PDF file size without visible quality loss. Free lossless-like compression preserves text and images. 3 quality levels.",
+    description: "Reduce PDF file size without visible quality loss. Free lossless-like compression preserves text, images, and formatting. Choose from 3 adjustable quality levels.",
     keywords: "compress pdf without losing quality, lossless pdf compression, reduce pdf keep quality",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Compress PDF Without Losing Quality", "url": `${BASE_URL}/tools/compress-pdf-without-losing-quality`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/tools/pdf-to-word-editable-free": {
     title: "PDF to Word Editable Free Online | PDF HUB 24",
-    description: "Convert any PDF to fully editable Word (DOCX) format free. Preserves tables, images, and formatting. No email required.",
+    description: "Convert any PDF to fully editable Word (DOCX) format free online. Preserves tables, images, headers, and formatting perfectly. No email or signup required.",
     keywords: "pdf to word editable, convert pdf to editable word, pdf to docx free, editable word from pdf",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "PDF to Editable Word", "url": `${BASE_URL}/tools/pdf-to-word-editable-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
@@ -1181,31 +1181,31 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/tools/rotate-pdf-and-save": {
     title: "Rotate PDF and Save Permanently Free | PDF HUB 24",
-    description: "Rotate PDF pages 90, 180, or 270 degrees and save permanently. Fix sideways or upside-down pages. Free online tool.",
+    description: "Rotate PDF pages 90, 180, or 270 degrees and save permanently. Fix sideways or upside-down scanned pages instantly. Free online tool, no signup.",
     keywords: "rotate pdf save, fix sideways pdf, rotate pdf permanently, turn pdf pages",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Rotate PDF and Save", "url": `${BASE_URL}/tools/rotate-pdf-and-save`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/tools/convert-pdf-to-jpg-all-pages": {
     title: "Convert PDF to JPG All Pages Free Online | PDF HUB 24",
-    description: "Convert every page of your PDF to individual JPG images free. Download all pages as a ZIP file. High quality output.",
+    description: "Convert every page of your PDF to individual JPG images free online. Download all pages as a ZIP file. High quality 300 DPI output, no signup needed.",
     keywords: "pdf to jpg all pages, convert all pdf pages jpg, pdf pages to images, extract all pages jpg",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert PDF to JPG All Pages", "url": `${BASE_URL}/tools/convert-pdf-to-jpg-all-pages`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/tools/protect-pdf-with-password-free": {
     title: "Password Protect PDF Free Online (AES-256) | PDF HUB 24",
-    description: "Add AES-256 password protection to PDF files free. Set open and edit passwords, control printing and copying permissions.",
+    description: "Add AES-256 password protection to PDF files free online. Set open and edit passwords, control printing and copying permissions. Enterprise-grade encryption.",
     keywords: "password protect pdf, encrypt pdf free, aes 256 pdf, pdf password protection online",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Password Protect PDF", "url": `${BASE_URL}/tools/protect-pdf-with-password-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/tools/remove-pages-from-pdf": {
     title: "Remove Pages from PDF Free Online | PDF HUB 24",
-    description: "Delete specific pages from PDF documents free. Select and remove unwanted pages instantly. Keep your documents clean.",
+    description: "Delete specific pages from PDF documents free online. Select and remove unwanted pages instantly with visual preview. Keep your documents clean and organized.",
     keywords: "remove pages pdf, delete pdf pages, remove page from pdf free, delete pages pdf online",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Remove Pages from PDF", "url": `${BASE_URL}/tools/remove-pages-from-pdf`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/tools/flatten-pdf-for-printing": {
     title: "Flatten PDF for Printing Free Online | PDF HUB 24",
-    description: "Flatten PDF forms and layers for reliable printing. Convert fillable fields to static text. Ensures consistent print output.",
+    description: "Flatten PDF forms and layers for reliable printing. Convert fillable fields to static text. Ensures consistent print output across all printers and devices.",
     keywords: "flatten pdf printing, flatten pdf forms, pdf print correctly, flatten fillable pdf",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Flatten PDF for Printing", "url": `${BASE_URL}/tools/flatten-pdf-for-printing`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },

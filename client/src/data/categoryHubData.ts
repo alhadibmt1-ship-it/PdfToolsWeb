@@ -63,7 +63,12 @@ Our conversion technology uses advanced parsing algorithms that intelligently de
       { title: "How to Convert PDF to Word Without Losing Formatting", path: "/blog/convert-pdf-to-word-without-losing-formatting" },
       { title: "Convert PDF Tables to Excel Accurately", path: "/blog/pdf-to-excel-convert-tables" },
       { title: "Convert Images to PDF Free", path: "/blog/convert-images-to-pdf" },
-      { title: "HTML to PDF Conversion Guide", path: "/blog/html-to-pdf-conversion" }
+      { title: "HTML to PDF Conversion Guide", path: "/blog/html-to-pdf-conversion" },
+      { title: "Convert PDF to Editable Word Free", path: "/tools/pdf-to-word-editable-free" },
+      { title: "Convert Scanned PDF to Editable Word", path: "/tools/convert-scanned-pdf-to-word-editable" },
+      { title: "Convert PDF to JPG High Quality", path: "/tools/pdf-to-jpg-high-quality" },
+      { title: "Convert All PDF Pages to JPG", path: "/tools/convert-pdf-to-jpg-all-pages" },
+      { title: "Convert Excel to PDF Free", path: "/tools/convert-excel-to-pdf-free" }
     ],
     relatedCategories: [
       { name: "Edit PDF Tools", path: "/edit-pdf-tools" },
@@ -106,7 +111,12 @@ Our compression engine processes files entirely on secure servers with automatic
     relatedBlogs: [
       { title: "How to Compress PDF for Email Under 25MB", path: "/blog/how-to-compress-pdf-for-email" },
       { title: "Best Free PDF Tools in 2026", path: "/blog/best-free-pdf-tools-2026" },
-      { title: "How to Flatten PDF Forms and Layers", path: "/blog/how-to-flatten-pdf" }
+      { title: "How to Flatten PDF Forms and Layers", path: "/blog/how-to-flatten-pdf" },
+      { title: "Compress PDF Under 100KB", path: "/tools/compress-pdf-under-100kb" },
+      { title: "Reduce PDF Size to 200KB", path: "/tools/reduce-pdf-size-to-200kb" },
+      { title: "Compress PDF to 1MB", path: "/tools/compress-pdf-to-1mb" },
+      { title: "Make PDF Smaller for Email", path: "/tools/make-pdf-smaller-for-email" },
+      { title: "Compress PDF Without Losing Quality", path: "/tools/compress-pdf-without-losing-quality" }
     ],
     relatedCategories: [
       { name: "Convert PDF Tools", path: "/convert-pdf" },
@@ -159,7 +169,15 @@ Professional document preparation often requires multiple editing steps. Our too
       { title: "How to Edit PDF Text and Images Free", path: "/blog/edit-pdf-text-images" },
       { title: "How to Merge PDF Files Step by Step", path: "/blog/merge-pdf-files-guide" },
       { title: "Sign PDF Electronically Free", path: "/blog/sign-pdf-electronically" },
-      { title: "Add Watermark to PDF Documents", path: "/blog/watermark-pdf-documents" }
+      { title: "Add Watermark to PDF Documents", path: "/blog/watermark-pdf-documents" },
+      { title: "Merge PDF Free with No File Limit", path: "/tools/merge-pdf-free-no-limit" },
+      { title: "Merge PDF for Visa Application", path: "/tools/merge-pdf-for-visa-application" },
+      { title: "Split PDF by Pages Free", path: "/tools/split-pdf-by-pages" },
+      { title: "Add Signature to PDF Free", path: "/tools/add-signature-to-pdf-free" },
+      { title: "Rotate PDF and Save Permanently", path: "/tools/rotate-pdf-and-save" },
+      { title: "Remove Pages from PDF Free", path: "/tools/remove-pages-from-pdf" },
+      { title: "Flatten PDF for Printing", path: "/tools/flatten-pdf-for-printing" },
+      { title: "Add Watermark to PDF Free", path: "/tools/add-watermark-to-pdf-free" }
     ],
     relatedCategories: [
       { name: "Convert PDF Tools", path: "/convert-pdf" },
@@ -202,7 +220,11 @@ Every security tool is free to use with no registration required. Whether you ar
       { title: "How to Password Protect PDF Files", path: "/blog/protect-pdf-with-password" },
       { title: "Redact Sensitive Information in PDFs", path: "/blog/redact-sensitive-pdf-information" },
       { title: "How to Unlock PDF and Remove Password", path: "/blog/unlock-pdf-remove-password" },
-      { title: "How to Flatten PDF Forms", path: "/blog/how-to-flatten-pdf" }
+      { title: "How to Flatten PDF Forms", path: "/blog/how-to-flatten-pdf" },
+      { title: "Password Protect PDF Free (AES-256)", path: "/tools/protect-pdf-with-password-free" },
+      { title: "Unlock PDF for Editing Free", path: "/tools/unlock-pdf-for-editing" },
+      { title: "Flatten PDF for Printing Free", path: "/tools/flatten-pdf-for-printing" },
+      { title: "Add Watermark to PDF Free", path: "/tools/add-watermark-to-pdf-free" }
     ],
     relatedCategories: [
       { name: "Edit PDF Tools", path: "/edit-pdf-tools" },
@@ -248,7 +270,9 @@ Every image tool processes files in your browser or on our secure servers with a
     relatedBlogs: [
       { title: "Convert Images to PDF Free", path: "/blog/convert-images-to-pdf" },
       { title: "Batch Convert Images to PDF", path: "/blog/batch-convert-images-to-pdf" },
-      { title: "How to Compress PDF for Email", path: "/blog/how-to-compress-pdf-for-email" }
+      { title: "How to Compress PDF for Email", path: "/blog/how-to-compress-pdf-for-email" },
+      { title: "Convert PDF to JPG High Quality", path: "/tools/pdf-to-jpg-high-quality" },
+      { title: "Convert All PDF Pages to JPG", path: "/tools/convert-pdf-to-jpg-all-pages" }
     ],
     relatedCategories: [
       { name: "Convert PDF Tools", path: "/convert-pdf" },

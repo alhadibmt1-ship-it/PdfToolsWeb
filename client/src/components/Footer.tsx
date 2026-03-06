@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { PDF_TOOLS } from "@shared/schema";
 import { blogPosts } from "@/data/blogData";
+import { programmaticPages } from "@/data/programmaticSeoData";
 import { ChevronDown, Shield, Lock, Zap, Globe } from "lucide-react";
 import { SiFacebook, SiYoutube } from "react-icons/si";
 import siteLogo from "@assets/generated_images/logo-64.webp";
@@ -399,11 +400,28 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* How-To Guides - Programmatic SEO Pages */}
+        <div className="mb-8 pt-6 border-t border-border/50">
+          <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground mb-4">How-To Guides</h3>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            {programmaticPages.map((page) => (
+              <FooterLink 
+                key={page.slug} 
+                href={`/tools/${page.slug}`} 
+                testId={`link-footer-guide-${page.slug}`}
+                isVisible={true}
+              >
+                {page.h1.replace(/ — .*$/, '').replace(/ Free$/, '')}
+              </FooterLink>
+            ))}
+          </div>
+        </div>
+
         {/* Blog Articles - Horizontal row */}
         <div className="mb-8 pt-6 border-t border-border/50">
           <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground mb-4">Popular Articles</h3>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            {blogPosts.slice(0, 10).map((post) => (
+            {blogPosts.map((post) => (
               <FooterLink 
                 key={post.slug} 
                 href={`/blog/${post.slug}`} 
