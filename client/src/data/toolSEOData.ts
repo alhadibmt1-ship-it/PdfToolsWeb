@@ -120,7 +120,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "PDF to JPG", href: "/pdf-to-jpg", context: "Convert to images for maximum file size reduction" },
       { text: "Unlock PDF", href: "/unlock-pdf", context: "Remove password protection before compressing secured PDFs" },
       { text: "How to Compress PDF for Email", href: "/blog/how-to-compress-pdf-for-email", context: "Step-by-step guide to reducing PDF size under 25MB for email attachments" },
-      { text: "Essential PDF Tools for Students", href: "/blog/pdf-tools-for-students", context: "Learn how students use compression and other PDF tools for academic work" }
+      { text: "Essential PDF Tools for Students", href: "/blog/pdf-tools-for-students", context: "Learn how students use compression and other PDF tools for academic work" },
+      { text: "Compress PDF Under 100KB", href: "/tools/compress-pdf-under-100kb", context: "Meet strict 100KB upload limits for government portals and applications" },
+      { text: "Reduce PDF Size to 200KB", href: "/tools/reduce-pdf-size-to-200kb", context: "Reduce PDF to 200KB for resume uploads and academic submissions" },
+      { text: "Compress PDF to 1MB", href: "/tools/compress-pdf-to-1mb", context: "Get your PDF under 1MB for fast mobile viewing and email sharing" },
+      { text: "Make PDF Smaller for Email", href: "/tools/make-pdf-smaller-for-email", context: "Reduce PDF size to fit Gmail 25MB and Outlook 20MB attachment limits" },
+      { text: "Compress PDF Without Losing Quality", href: "/tools/compress-pdf-without-losing-quality", context: "Reduce file size while preserving text clarity and image sharpness" }
     ]
   },
   "merge": {
@@ -197,7 +202,9 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Reorder Pages", href: "/reorder-pages", context: "Rearrange pages after merging for perfect order" },
       { text: "Protect PDF", href: "/protect-pdf", context: "Add password security to your merged document" },
       { text: "How to Merge PDF Files: Complete Guide", href: "/blog/merge-pdf-files-guide", context: "Comprehensive guide covering basic merging to advanced professional workflows" },
-      { text: "Essential PDF Tools for Students", href: "/blog/pdf-tools-for-students", context: "How students use PDF merging for assignments and group projects" }
+      { text: "Essential PDF Tools for Students", href: "/blog/pdf-tools-for-students", context: "How students use PDF merging for assignments and group projects" },
+      { text: "Merge PDF for Visa Application", href: "/tools/merge-pdf-for-visa-application", context: "Combine passport, bank statements, and supporting documents for visa submissions" },
+      { text: "Merge PDF Free No Limit", href: "/tools/merge-pdf-free-no-limit", context: "Combine unlimited PDF files with no file count or daily usage restrictions" }
     ]
   },
   "pdf-to-word": {
@@ -297,7 +304,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "PDF Viewer", href: "/pdf-viewer", context: "Preview your PDF before converting" },
       { text: "Extract Images", href: "/extract-images", context: "Extract all images from your PDF document" },
       { text: "Convert PDF to Word Without Losing Formatting", href: "/blog/convert-pdf-to-word-without-losing-formatting", context: "Best practices to preserve tables, images, and fonts during PDF to Word conversion" },
-      { text: "Essential PDF Tools for Students", href: "/blog/pdf-tools-for-students", context: "How students use PDF to Word conversion for editing research papers and assignments" }
+      { text: "Essential PDF Tools for Students", href: "/blog/pdf-tools-for-students", context: "How students use PDF to Word conversion for editing research papers and assignments" },
+      { text: "PDF to Word Editable Free", href: "/tools/pdf-to-word-editable-free", context: "Convert any PDF to a fully editable Word document with preserved formatting" }
     ]
   },
   "split": {
@@ -374,7 +382,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Compress PDF", href: "/compress", context: "Reduce the size of extracted pages" },
       { text: "Reorder Pages", href: "/reorder-pages", context: "Rearrange pages before or after splitting" },
       { text: "How to Split PDF Pages", href: "/blog/how-to-split-pdf-pages", context: "Complete guide to extracting and separating PDF pages for any use case" },
-      { text: "Essential PDF Tools for Students", href: "/blog/pdf-tools-for-students", context: "How students split large textbooks and research papers into focused study materials" }
+      { text: "Essential PDF Tools for Students", href: "/blog/pdf-tools-for-students", context: "How students split large textbooks and research papers into focused study materials" },
+      { text: "Split PDF by Pages", href: "/tools/split-pdf-by-pages", context: "Extract specific page numbers or ranges from your PDF document" }
     ]
   },
   "pdf-to-jpg": {
@@ -451,7 +460,9 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Image Compressor", href: "/image-compressor", context: "Reduce JPG file sizes after conversion" },
       { text: "Resize Image", href: "/resize-image", context: "Adjust image dimensions for your needs" },
       { text: "How to Convert Images to PDF", href: "/blog/convert-images-to-pdf", context: "Guide to converting JPG, PNG, and other image formats to and from PDF" },
-      { text: "Best Free PDF Tools in 2026", href: "/blog/best-free-pdf-tools-2026", context: "Discover the top free PDF conversion tools including PDF to image converters" }
+      { text: "Best Free PDF Tools in 2026", href: "/blog/best-free-pdf-tools-2026", context: "Discover the top free PDF conversion tools including PDF to image converters" },
+      { text: "PDF to JPG High Quality", href: "/tools/pdf-to-jpg-high-quality", context: "Convert PDF pages to high-resolution JPG images for presentations and social media" },
+      { text: "Convert PDF to JPG All Pages", href: "/tools/convert-pdf-to-jpg-all-pages", context: "Convert every page of your PDF to individual JPG images in one batch" }
     ]
   },
   "protect-pdf": {
@@ -528,7 +539,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Compress PDF", href: "/compress", context: "Reduce file size before protecting" },
       { text: "Flatten PDF", href: "/flatten-pdf", context: "Lock form fields and layers before protection" },
       { text: "How to Password Protect a PDF", href: "/blog/protect-pdf-with-password", context: "Security best practices for encrypting and password-protecting PDF documents" },
-      { text: "Best Free PDF Tools in 2026", href: "/blog/best-free-pdf-tools-2026", context: "Overview of the best free PDF security and protection tools available" }
+      { text: "Best Free PDF Tools in 2026", href: "/blog/best-free-pdf-tools-2026", context: "Overview of the best free PDF security and protection tools available" },
+      { text: "Password Protect PDF Free with AES-256", href: "/tools/protect-pdf-with-password-free", context: "Add bank-grade AES-256 encryption to your PDF with open and edit passwords" }
     ]
   },
   "add-page-numbers": {
@@ -1057,7 +1069,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "PDF to Excel", href: "/pdf-to-excel", context: "Extract tables from OCR'd documents to spreadsheets" },
       { text: "Compress PDF", href: "/compress", context: "Reduce file size after OCR processing" },
       { text: "OCR Scanned PDF to Text Guide", href: "/blog/ocr-scanned-pdf-to-text", context: "Complete guide to extracting text from scanned documents using OCR technology" },
-      { text: "Convert PDF to Word Without Losing Formatting", href: "/blog/convert-pdf-to-word-without-losing-formatting", context: "Learn when to use OCR before converting scanned PDFs to editable Word documents" }
+      { text: "Convert PDF to Word Without Losing Formatting", href: "/blog/convert-pdf-to-word-without-losing-formatting", context: "Learn when to use OCR before converting scanned PDFs to editable Word documents" },
+      { text: "Convert Scanned PDF to Editable Word", href: "/tools/convert-scanned-pdf-to-word-editable", context: "Use OCR to extract text from scanned PDFs and convert to editable Word documents" }
     ]
   },
   "word-to-pdf": {
@@ -1363,7 +1376,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "PDF to Excel", href: "/pdf-to-excel", context: "Convert PDF tables back to editable Excel format" },
       { text: "Word to PDF", href: "/word-to-pdf", context: "Convert Word documents to PDF format" },
       { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size for email sharing" },
-      { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection to sensitive spreadsheets" }
+      { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection to sensitive spreadsheets" },
+      { text: "Convert Excel to PDF Free", href: "/tools/convert-excel-to-pdf-free", context: "Transform XLSX spreadsheets to professional PDF documents with perfect formatting" }
     ]
   },
   "powerpoint-to-pdf": {
@@ -1817,7 +1831,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Compress PDF", href: "/compress", context: "Reduce file size after fixing rotation" },
       { text: "Split PDF", href: "/split", context: "Extract specific pages before rotating" },
       { text: "Merge PDF", href: "/merge", context: "Combine rotated pages with other documents" },
-      { text: "OCR PDF", href: "/ocr-pdf", context: "Extract text from rotated scanned documents" }
+      { text: "OCR PDF", href: "/ocr-pdf", context: "Extract text from rotated scanned documents" },
+      { text: "Rotate PDF and Save Permanently", href: "/tools/rotate-pdf-and-save", context: "Fix sideways or upside-down pages and save the corrected orientation permanently" }
     ]
   },
   "delete-pages": {
@@ -1892,7 +1907,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Split PDF", href: "/split", context: "Extract specific pages instead of deleting unwanted ones" },
       { text: "Merge PDF", href: "/merge", context: "Combine remaining pages with other documents" },
       { text: "Reorder Pages", href: "/reorder-pages", context: "Rearrange pages after removing unwanted ones" },
-      { text: "Add Page Numbers", href: "/add-page-numbers", context: "Add new page numbers after deletion" }
+      { text: "Add Page Numbers", href: "/add-page-numbers", context: "Add new page numbers after deletion" },
+      { text: "Remove Pages from PDF", href: "/tools/remove-pages-from-pdf", context: "Select and delete unwanted pages to create cleaner, more focused documents" }
     ]
   },
   "unlock-pdf": {
@@ -1968,7 +1984,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Compress PDF", href: "/compress", context: "Reduce file size after unlocking" },
       { text: "Edit PDF", href: "/edit-pdf", context: "Make changes to your unlocked document" },
       { text: "How to Remove PDF Password", href: "/blog/unlock-pdf-remove-password", context: "Step-by-step guide to removing password restrictions from PDF documents" },
-      { text: "How to Password Protect a PDF", href: "/blog/protect-pdf-with-password", context: "Learn about PDF security best practices and how to re-protect documents after unlocking" }
+      { text: "How to Password Protect a PDF", href: "/blog/protect-pdf-with-password", context: "Learn about PDF security best practices and how to re-protect documents after unlocking" },
+      { text: "Unlock PDF for Editing", href: "/tools/unlock-pdf-for-editing", context: "Remove editing restrictions from password-protected PDFs to enable copying, printing, and modifications" }
     ]
   },
   "add-watermark": {
@@ -2043,7 +2060,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection after watermarking" },
       { text: "Add Page Numbers", href: "/add-page-numbers", context: "Add page numbers along with watermarks" },
       { text: "Compress PDF", href: "/compress", context: "Reduce file size after adding watermarks" },
-      { text: "Merge PDF", href: "/merge", context: "Combine watermarked documents together" }
+      { text: "Merge PDF", href: "/merge", context: "Combine watermarked documents together" },
+      { text: "Add Watermark to PDF Free", href: "/tools/add-watermark-to-pdf-free", context: "Add custom text or image watermarks to protect your PDF documents" }
     ]
   },
   "reorder-pages": {
@@ -2349,7 +2367,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Edit PDF", href: "/edit-pdf", context: "Add text and fill forms before signing" },
       { text: "Compress PDF", href: "/compress", context: "Reduce file size of signed documents for email" },
       { text: "How to Sign PDF Electronically", href: "/blog/sign-pdf-electronically", context: "Complete guide to adding electronic signatures to PDF documents legally" },
-      { text: "Best Free PDF Tools in 2026", href: "/blog/best-free-pdf-tools-2026", context: "Discover the top free PDF signing and document tools available online" }
+      { text: "Best Free PDF Tools in 2026", href: "/blog/best-free-pdf-tools-2026", context: "Discover the top free PDF signing and document tools available online" },
+      { text: "Add Signature to PDF Free", href: "/tools/add-signature-to-pdf-free", context: "Draw, type, or upload your signature to sign PDF documents without printing" }
     ]
   },
   "flatten-pdf": {
@@ -2426,7 +2445,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection after flattening" },
       { text: "Compress PDF", href: "/compress", context: "Reduce file size of flattened documents" },
       { text: "How to Flatten PDF", href: "/blog/how-to-flatten-pdf", context: "Guide to flattening form fields, annotations, and layers in PDF documents" },
-      { text: "How to Password Protect a PDF", href: "/blog/protect-pdf-with-password", context: "Learn about flattening as a security measure before password-protecting documents" }
+      { text: "How to Password Protect a PDF", href: "/blog/protect-pdf-with-password", context: "Learn about flattening as a security measure before password-protecting documents" },
+      { text: "Flatten PDF for Printing", href: "/tools/flatten-pdf-for-printing", context: "Convert fillable form fields to static content for reliable, consistent printing" }
     ]
   },
   "grayscale-pdf": {

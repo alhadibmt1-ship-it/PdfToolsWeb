@@ -156,6 +156,8 @@ No. Compression optimizes how data is stored within the PDF but does not remove 
 You'll need to remove the password first using our [Unlock PDF](/unlock-pdf) tool, then compress the document. For more on PDF security, see our guide on [password protecting PDFs](/blog/protect-pdf-with-password).
 
 If you're working with large documents that need to be split before compressing, check out our [guide to splitting PDFs](/blog/how-to-split-pdf-pages). And if you need to convert your compressed PDF to another format, our [PDF to Word guide](/blog/convert-pdf-to-word-without-losing-formatting) covers best practices for maintaining quality.
+
+For specific file size targets, check out our dedicated guides: [compress PDF under 100KB](/tools/compress-pdf-under-100kb), [reduce PDF size to 200KB](/tools/reduce-pdf-size-to-200kb), [compress PDF to 1MB](/tools/compress-pdf-to-1mb), [make PDF smaller for email](/tools/make-pdf-smaller-for-email), and [compress PDF without losing quality](/tools/compress-pdf-without-losing-quality).
 `,
     relatedTools: [
       { name: "Compress PDF", path: "/compress", description: "Reduce PDF file size instantly" },
@@ -318,6 +320,8 @@ Process each PDF individually for the best results. If you need to combine multi
 
 ### Will my hyperlinks be preserved?
 Yes, most hyperlinks in the original PDF will be preserved in the converted Word document. Check them after conversion to ensure they work correctly.
+
+For more details, see our dedicated guides on [converting PDF to editable Word free](/tools/pdf-to-word-editable-free) and [converting scanned PDF to editable Word](/tools/convert-scanned-pdf-to-word-editable).
 `,
     relatedTools: [
       { name: "PDF to Word", path: "/pdf-to-word", description: "Convert PDF to editable DOCX" },
@@ -525,7 +529,7 @@ Hyperlinks within individual PDFs are preserved during merging. However, cross-d
 
 Merging PDF files doesn't have to be complicated or expensive. With our free Merge PDF tool, you can combine documents in seconds, right from your browser. Whether you're a business professional assembling reports, a student compiling research, or anyone who needs to combine PDF files, our tool makes the process simple and efficient.
 
-If you're a student, check out our [essential PDF tools for students](/blog/pdf-tools-for-students) guide for more academic workflows. Ready to merge your PDFs? Get started now - it's free and takes just seconds.
+If you're a student, check out our [essential PDF tools for students](/blog/pdf-tools-for-students) guide for more academic workflows. Need to merge PDFs for a specific purpose? See our guides on [merging PDFs for visa applications](/tools/merge-pdf-for-visa-application) and [merging PDF free with no file limit](/tools/merge-pdf-free-no-limit). Ready to merge your PDFs? Get started now - it's free and takes just seconds.
 `,
     relatedTools: [
       { name: "Merge PDF", path: "/merge", description: "Combine multiple PDFs into one" },
@@ -749,7 +753,7 @@ Password protection with AES-256 encryption meets most regulatory requirements. 
 ### Can I protect multiple PDFs with the same password?
 Yes, but it's more secure to use unique passwords for each document. If one password is compromised, only one document is affected.
 
-For related workflows, check out our guides on [merging PDFs](/blog/merge-pdf-files-guide) before protecting, [compressing PDFs for email](/blog/how-to-compress-pdf-for-email), and [flattening PDFs](/blog/how-to-flatten-pdf) to prevent editing.
+For related workflows, check out our guides on [merging PDFs](/blog/merge-pdf-files-guide) before protecting, [compressing PDFs for email](/blog/how-to-compress-pdf-for-email), and [flattening PDFs](/blog/how-to-flatten-pdf) to prevent editing. You can also [password protect PDF free with AES-256 encryption](/tools/protect-pdf-with-password-free).
 `,
     relatedTools: [
       { name: "Protect PDF", path: "/protect-pdf", description: "Add password encryption" },
@@ -1162,7 +1166,7 @@ Absolutely. Our Split PDF tool is fully responsive and works on any smartphone o
 
 ## Related Reading
 
-Looking for more PDF tips? Check out our guide on [merging PDF files](/blog/merge-pdf-files-guide) if you need to recombine split documents. If your split files are too large for email, learn [how to compress PDFs for email](/blog/how-to-compress-pdf-for-email). After splitting, you may want to [add page numbers to your PDF](/blog/add-page-numbers-to-pdf) for professional formatting. For scanned documents, read our guide on [OCR for scanned PDFs](/blog/ocr-scanned-pdf-to-text) to make text searchable before or after splitting.
+Looking for more PDF tips? Check out our guide on [merging PDF files](/blog/merge-pdf-files-guide) if you need to recombine split documents. If your split files are too large for email, learn [how to compress PDFs for email](/blog/how-to-compress-pdf-for-email). After splitting, you may want to [add page numbers to your PDF](/blog/add-page-numbers-to-pdf) for professional formatting. For scanned documents, read our guide on [OCR for scanned PDFs](/blog/ocr-scanned-pdf-to-text) to make text searchable before or after splitting. You can also check out our guide on [splitting PDF by pages](/tools/split-pdf-by-pages) for more details.
 `,
     relatedTools: [
       { name: "Split PDF", path: "/split", description: "Extract specific pages" },
@@ -1384,7 +1388,7 @@ Absolutely. Our Add Page Numbers tool is completely free with no registration, n
 
 ## Related Reading
 
-For more document formatting tips, check out our guide on [adding watermarks to PDF documents](/blog/watermark-pdf-documents). If you need to combine files before numbering, see our [complete guide to merging PDFs](/blog/merge-pdf-files-guide). Learn about [splitting PDF pages](/blog/how-to-split-pdf-pages) when you need different numbering for different sections. You may also find our guide on [flattening PDFs](/blog/how-to-flatten-pdf) useful when dealing with existing page numbers that need to be replaced.
+For more document formatting tips, check out our guide on [adding watermarks to PDF documents](/blog/watermark-pdf-documents). If you need to combine files before numbering, see our [complete guide to merging PDFs](/blog/merge-pdf-files-guide). Learn about [splitting PDF pages](/blog/how-to-split-pdf-pages) when you need different numbering for different sections. You may also find our guide on [flattening PDFs](/blog/how-to-flatten-pdf) useful when dealing with existing page numbers that need to be replaced. Before numbering, you might want to [remove unnecessary pages from your PDF](/tools/remove-pages-from-pdf) first.
 `,
     relatedTools: [
       { name: "Add Page Numbers", path: "/add-page-numbers", description: "Number your PDF pages" },
@@ -1628,7 +1632,7 @@ Yes. All our image-to-PDF tools are fully responsive and work on any smartphone 
 
 ## Related Reading
 
-For more tips on working with images and PDFs, check out our guide on [batch converting images to PDF](/blog/batch-convert-images-to-pdf) for handling large collections. If your image PDFs are too large, learn [how to compress PDFs for email](/blog/how-to-compress-pdf-for-email). After converting scanned pages, you may want to read our guide on [OCR for scanned documents](/blog/ocr-scanned-pdf-to-text) to make text searchable. See also our tips on [adding page numbers](/blog/add-page-numbers-to-pdf) for a polished, professional result.
+For more tips on working with images and PDFs, check out our guide on [batch converting images to PDF](/blog/batch-convert-images-to-pdf) for handling large collections. If your image PDFs are too large, learn [how to compress PDFs for email](/blog/how-to-compress-pdf-for-email). After converting scanned pages, you may want to read our guide on [OCR for scanned documents](/blog/ocr-scanned-pdf-to-text) to make text searchable. See also our tips on [adding page numbers](/blog/add-page-numbers-to-pdf) for a polished, professional result. If you need the reverse conversion, see our guides on [converting PDF to JPG in high quality](/tools/pdf-to-jpg-high-quality) and [converting all PDF pages to JPG](/tools/convert-pdf-to-jpg-all-pages).
 `,
     relatedTools: [
       { name: "JPG to PDF", path: "/jpg-to-pdf", description: "Convert JPG images to PDF" },
@@ -1889,7 +1893,7 @@ Yes, our OCR PDF tool is completely free with no registration, no watermarks, an
 
 ## Related Reading
 
-Want to learn more about working with scanned documents? Check out our guide on [converting PDF to Word without losing formatting](/blog/convert-pdf-to-word-without-losing-formatting) for editing OCR-processed text. If you need to extract data from tables, see our [PDF to Excel conversion guide](/blog/pdf-to-excel-convert-tables). Learn more about [extracting text from PDFs](/blog/extract-text-from-pdf) for plain text needs. You might also find our [image to PDF conversion guide](/blog/convert-images-to-pdf) helpful when preparing scanned images for OCR.
+Want to learn more about working with scanned documents? Check out our guide on [converting PDF to Word without losing formatting](/blog/convert-pdf-to-word-without-losing-formatting) for editing OCR-processed text. If you need to extract data from tables, see our [PDF to Excel conversion guide](/blog/pdf-to-excel-convert-tables). Learn more about [extracting text from PDFs](/blog/extract-text-from-pdf) for plain text needs. You might also find our [image to PDF conversion guide](/blog/convert-images-to-pdf) helpful when preparing scanned images for OCR. For a complete walkthrough on converting scans to editable documents, see our guide on [converting scanned PDF to editable Word](/tools/convert-scanned-pdf-to-word-editable).
 `,
     relatedTools: [
       { name: "OCR PDF", path: "/ocr-pdf", description: "Convert scanned PDFs to searchable text" },
@@ -2128,7 +2132,7 @@ Absolutely. Our Rotate PDF tool is completely free with no registration, no wate
 
 ## Related Reading
 
-After fixing page orientation, you may want to explore related guides. Learn about [OCR for scanned documents](/blog/ocr-scanned-pdf-to-text) to make your rotated scans searchable. Check out our [guide to cropping PDF pages](/blog/crop-pdf-pages-guide) to remove scanner borders after rotation. If you need to reorganize pages further, see our guide on [splitting PDF pages](/blog/how-to-split-pdf-pages). You might also find our tips on [adding page numbers](/blog/add-page-numbers-to-pdf) helpful for finishing your document.
+After fixing page orientation, you may want to explore related guides. Learn about [OCR for scanned documents](/blog/ocr-scanned-pdf-to-text) to make your rotated scans searchable. Check out our [guide to cropping PDF pages](/blog/crop-pdf-pages-guide) to remove scanner borders after rotation. If you need to reorganize pages further, see our guide on [splitting PDF pages](/blog/how-to-split-pdf-pages). You might also find our tips on [adding page numbers](/blog/add-page-numbers-to-pdf) helpful for finishing your document. For a quick rotation fix, see our guide on [rotating PDF and saving permanently](/tools/rotate-pdf-and-save).
 `,
     relatedTools: [
       { name: "Rotate PDF", path: "/rotate", description: "Fix page orientation" },
@@ -2312,6 +2316,8 @@ You can upload signature images in PNG, JPG, or SVG format. For best results, us
 
 ### Can I sign PDFs on my phone?
 Absolutely. Our Sign PDF tool is fully responsive and works on smartphones and tablets. Drawing signatures with your finger on a touchscreen provides a natural signing experience.
+
+For a step-by-step walkthrough, see our guide on [adding a signature to PDF free](/tools/add-signature-to-pdf-free).
 `,
     relatedTools: [
       { name: "Sign PDF", path: "/sign-pdf", description: "Add your signature to PDFs" },
@@ -2675,6 +2681,8 @@ Yes, watermarks work on any PDF regardless of how it was created. For scanned do
 
 ### Is the watermark tool free?
 Yes, our Add Watermark tool is completely free with no registration, no file limits, and no watermarks of our own added to your document.
+
+For a quick start, see our guide on [adding watermarks to PDF free](/tools/add-watermark-to-pdf-free).
 `,
     relatedTools: [
       { name: "Add Watermark", path: "/add-watermark", description: "Add text watermarks to PDFs" },
@@ -2797,7 +2805,7 @@ Extract employee data from PDF reports for payroll processing, headcount analysi
 | PDF to Word | Text-heavy documents with some tables | [PDF to Word](/pdf-to-word) |
 | Extract Text | Raw text content without formatting | Extract Text |
 
-Choose PDF to Excel when your primary goal is extracting structured numeric or tabular data. Choose PDF to Word when you need to preserve the overall document layout and edit narrative text around tables. For a complete overview of conversion options, check out our [best free PDF tools guide](/blog/best-free-pdf-tools-2026).
+Choose PDF to Excel when your primary goal is extracting structured numeric or tabular data. Choose PDF to Word when you need to preserve the overall document layout and edit narrative text around tables. For a complete overview of conversion options, check out our [best free PDF tools guide](/blog/best-free-pdf-tools-2026). If you need the reverse conversion, see our guide on [converting Excel to PDF free](/tools/convert-excel-to-pdf-free).
 
 ## What If Conversion Is Not Perfect?
 
@@ -3227,6 +3235,8 @@ No. PDF/A is an archival format standard that includes specific requirements for
 
 ### Should I flatten before or after adding page numbers?
 Flatten first, then add page numbers. This way the page numbers appear on top of the flattened content and remain clearly visible. See our [guide to adding page numbers](/blog/add-page-numbers-to-pdf) for detailed instructions.
+
+Need to flatten a PDF specifically for printing? Check out our dedicated guide on [flattening PDF for printing](/tools/flatten-pdf-for-printing).
 `,
     relatedTools: [
       { name: "Flatten PDF", path: "/flatten-pdf", description: "Merge all layers into one" },
@@ -4334,6 +4344,8 @@ Looking for step-by-step guides on specific tools? Check out these popular artic
 - [Convert PDF to Word without losing formatting](/blog/convert-pdf-to-word-without-losing-formatting)
 - [How to merge PDF files](/blog/merge-pdf-files-guide)
 - [OCR scanned PDFs to searchable text](/blog/ocr-scanned-pdf-to-text)
+
+You can also explore our specialized how-to guides: [compress PDF under 100KB](/tools/compress-pdf-under-100kb), [merge PDF for visa applications](/tools/merge-pdf-for-visa-application), [add signature to PDF free](/tools/add-signature-to-pdf-free), [compress PDF without losing quality](/tools/compress-pdf-without-losing-quality), and [convert PDF to editable Word free](/tools/pdf-to-word-editable-free).
 `,
     relatedTools: [
       { name: "Compress PDF", path: "/compress", description: "Reduce PDF file size" },
@@ -4959,7 +4971,7 @@ Modern PDFs use AES-256 encryption, the same standard used by banks and governme
 
 ## Related Reading
 
-For more on PDF security, check out our guide to password protecting PDFs. If you need to permanently remove sensitive information instead of just unlocking, see our redaction guide. Students and professionals working with many PDFs should explore our [PDF tools for students](/blog/pdf-tools-for-students) guide for productivity tips.
+For more on PDF security, check out our guide to password protecting PDFs. If you need to permanently remove sensitive information instead of just unlocking, see our redaction guide. Students and professionals working with many PDFs should explore our [PDF tools for students](/blog/pdf-tools-for-students) guide for productivity tips. For a focused guide on removing editing restrictions, see our dedicated page on [unlocking PDF for editing](/tools/unlock-pdf-for-editing).
 `,
     relatedTools: [
       { name: "Unlock PDF", path: "/unlock-pdf", description: "Remove PDF password protection" },
