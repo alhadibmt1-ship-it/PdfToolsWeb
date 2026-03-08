@@ -1978,51 +1978,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
       }
 
-      // Fallback: Use pdf-img-convert to render pages, convert to grayscale with sharp
-      try {
-        const pdfImgConvert = await import('pdf-img-convert');
-        
-        // Convert PDF pages to PNG images
-        const outputImages = await pdfImgConvert.convert(file.buffer, {
-          width: 2000,
-          height: 2000,
-          scale: 2.0
-        });
-        
-        const newDoc = await PDFDocumentStandard.create();
-        
-        for (const imageData of outputImages as Uint8Array[]) {
-          // Convert to grayscale using sharp
-          const grayscaleImage = await sharp(Buffer.from(imageData))
-            .grayscale()
-            .png()
-            .toBuffer();
-          
-          // Get image dimensions
-          const metadata = await sharp(grayscaleImage).metadata();
-          const imgWidth = metadata.width || 612;
-          const imgHeight = metadata.height || 792;
-          
-          // Embed grayscale image in new PDF
-          const pngImage = await newDoc.embedPng(grayscaleImage);
-          const page = newDoc.addPage([imgWidth, imgHeight]);
-          page.drawImage(pngImage, {
-            x: 0,
-            y: 0,
-            width: imgWidth,
-            height: imgHeight
-          });
-        }
-        
-        const pdfBytes = await newDoc.save({ useObjectStreams: false });
-        res.setHeader("Content-Type", "application/pdf");
-        res.setHeader("Content-Disposition", "attachment; filename=grayscale.pdf");
-        res.send(Buffer.from(pdfBytes));
-        return;
-      } catch (fallbackError) {
-        console.error("Grayscale fallback failed:", fallbackError);
-        return res.status(500).json({ error: "Grayscale conversion failed. Please try again." });
-      }
+      return res.status(500).json({ error: "Grayscale conversion is temporarily unavailable. Please try again later." });
     } catch (error) {
       console.error("Grayscale PDF error:", error);
       res.status(500).json({ error: "Failed to convert PDF to grayscale" });
@@ -2463,46 +2419,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
       }
 
-      // Fallback: Use pdf-img-convert to render pages as images
-      try {
-        const pdfImgConvert = await import('pdf-img-convert');
-        
-        const outputImages = await pdfImgConvert.convert(file.buffer, {
-          width: 1200,
-          height: 1600,
-          scale: 1.5
-        }) as Uint8Array[];
-
-        if (outputImages.length === 0) {
-          return res.status(400).json({ error: "No images could be extracted from this PDF" });
-        }
-
-        // Single page - return image directly
-        if (outputImages.length === 1) {
-          res.setHeader("Content-Type", "image/png");
-          res.setHeader("Content-Disposition", "attachment; filename=extracted-image.png");
-          res.setHeader("X-Image-Count", "1");
-          res.send(Buffer.from(outputImages[0]));
-          return;
-        }
-
-        // Multiple pages - create ZIP archive
-        const archive = archiver("zip", { zlib: { level: 9 } });
-        res.setHeader("Content-Type", "application/zip");
-        res.setHeader("Content-Disposition", "attachment; filename=extracted-images.zip");
-        res.setHeader("X-Image-Count", outputImages.length.toString());
-        archive.pipe(res);
-
-        for (let i = 0; i < outputImages.length; i++) {
-          archive.append(Buffer.from(outputImages[i]), { name: `page-${i + 1}.png` });
-        }
-
-        await archive.finalize();
-        return;
-      } catch (fallbackError) {
-        console.error("Local image extraction failed:", fallbackError);
-        return res.status(500).json({ error: "Image extraction failed. Please try again." });
-      }
+      return res.status(500).json({ error: "Image extraction is temporarily unavailable. Please try again later." });
     } catch (error) {
       console.error("Extract images error:", error);
       res.status(500).json({ error: "Failed to extract images from PDF" });
