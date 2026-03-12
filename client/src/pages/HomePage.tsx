@@ -1033,6 +1033,101 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Tools for Students & Business */}
+        <section className="py-16 sm:py-20 bg-muted/30 border-y">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-12 sm:mb-16">
+              <span className="section-label block mb-3">Built for Real People</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-4">
+                Tools Organized by How You Work
+              </h2>
+              <p className="text-muted-foreground max-w-xl mx-auto">
+                Whether you're a student, professional, or running a business — we have the right tools for your workflow
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* For Students */}
+              <div className="bg-card border rounded-2xl p-6 sm:p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
+                    <GraduationCap className="w-6 h-6 text-blue-500" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold">Tools for Students</h3>
+                    <p className="text-sm text-muted-foreground">Assignments, essays, research & more</p>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  {[
+                    { href: "/merge", label: "Merge PDF", desc: "Combine multiple assignment files into one submission" },
+                    { href: "/compress", label: "Compress PDF", desc: "Shrink large files to meet university upload limits" },
+                    { href: "/pdf-to-word", label: "PDF to Word", desc: "Convert lecture PDFs to editable notes in Word" },
+                    { href: "/split", label: "Split PDF", desc: "Extract specific chapters from large textbook PDFs" },
+                    { href: "/ocr-pdf", label: "OCR PDF", desc: "Make scanned handwritten notes searchable and selectable" },
+                    { href: "/add-page-numbers", label: "Add Page Numbers", desc: "Number pages on essays and reports automatically" },
+                  ].map((tool, i) => (
+                    <Link key={i} href={tool.href}>
+                      <div className="flex items-start gap-3 p-3 rounded-lg hover-elevate cursor-pointer group">
+                        <CheckCircle className="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" />
+                        <div>
+                          <span className="font-medium text-sm group-hover:text-primary transition-colors">{tool.label}</span>
+                          <p className="text-xs text-muted-foreground leading-relaxed">{tool.desc}</p>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+                <Link href="/compress">
+                  <Button className="w-full mt-6 gap-2" variant="outline" data-testid="button-students-cta">
+                    <GraduationCap className="w-4 h-4" />
+                    Start with Student Tools
+                  </Button>
+                </Link>
+              </div>
+
+              {/* For Business */}
+              <div className="bg-card border rounded-2xl p-6 sm:p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center">
+                    <Briefcase className="w-6 h-6 text-purple-500" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold">Tools for Business</h3>
+                    <p className="text-sm text-muted-foreground">Contracts, invoices, reports & presentations</p>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  {[
+                    { href: "/protect-pdf", label: "Password Protect PDF", desc: "Lock confidential contracts and financial reports" },
+                    { href: "/sign-pdf", label: "Sign PDF", desc: "Add electronic signatures to contracts without printing" },
+                    { href: "/redact-pdf", label: "Redact PDF", desc: "Permanently black out sensitive client or employee data" },
+                    { href: "/excel-to-pdf", label: "Excel to PDF", desc: "Share financial reports that look perfect on any screen" },
+                    { href: "/add-watermark", label: "Add Watermark", desc: "Brand proposals and reports with your company watermark" },
+                    { href: "/pdf-to-excel", label: "PDF to Excel", desc: "Extract invoice tables and financial data into spreadsheets" },
+                  ].map((tool, i) => (
+                    <Link key={i} href={tool.href}>
+                      <div className="flex items-start gap-3 p-3 rounded-lg hover-elevate cursor-pointer group">
+                        <CheckCircle className="w-4 h-4 text-purple-500 flex-shrink-0 mt-0.5" />
+                        <div>
+                          <span className="font-medium text-sm group-hover:text-primary transition-colors">{tool.label}</span>
+                          <p className="text-xs text-muted-foreground leading-relaxed">{tool.desc}</p>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+                <Link href="/sign-pdf">
+                  <Button className="w-full mt-6 gap-2" variant="outline" data-testid="button-business-cta">
+                    <Briefcase className="w-4 h-4" />
+                    Start with Business Tools
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Social Proof */}
         <SocialProofSection />
 
