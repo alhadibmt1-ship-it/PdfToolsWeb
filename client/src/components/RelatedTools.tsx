@@ -23,144 +23,219 @@ import { Card } from "@/components/ui/card";
 
 const relatedArticles: Record<string, { title: string; slug: string }[]> = {
   "compress": [
-    { title: "How to Compress PDF for Email", slug: "how-to-compress-pdf-for-email" }
+    { title: "How to Compress PDF for Email (Under 25MB)", slug: "how-to-compress-pdf-for-email" },
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" }
   ],
   "pdf-to-word": [
-    { title: "Convert PDF to Word Without Losing Formatting", slug: "convert-pdf-to-word-without-losing-formatting" }
+    { title: "Convert PDF to Word Without Losing Formatting", slug: "convert-pdf-to-word-without-losing-formatting" },
+    { title: "How to Edit a PDF: Add Text, Images, and Shapes", slug: "edit-pdf-text-images" },
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" }
   ],
   "merge": [
-    { title: "How to Merge PDF Files: Complete Guide", slug: "merge-pdf-files-guide" }
+    { title: "How to Merge PDF Files: Complete 2025 Guide", slug: "merge-pdf-files-guide" },
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" }
   ],
   "protect-pdf": [
-    { title: "Password Protect PDF: Complete Security Guide", slug: "protect-pdf-with-password" }
+    { title: "How to Password Protect a PDF: Security Best Practices", slug: "protect-pdf-with-password" },
+    { title: "How to Redact Sensitive Information in PDFs", slug: "redact-sensitive-pdf-information" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" }
   ],
   "split": [
-    { title: "How to Split PDF Pages", slug: "how-to-split-pdf-pages" },
-    { title: "How to Compress PDF for Email", slug: "how-to-compress-pdf-for-email" }
+    { title: "How to Split PDF Pages: Extract and Separate Documents", slug: "how-to-split-pdf-pages" },
+    { title: "How to Merge PDF Files: Complete 2025 Guide", slug: "merge-pdf-files-guide" },
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" }
   ],
   "unlock-pdf": [
-    { title: "Password Protect PDF: Complete Security Guide", slug: "protect-pdf-with-password" }
+    { title: "How to Unlock a PDF and Remove Password Protection", slug: "unlock-pdf-remove-password" },
+    { title: "How to Password Protect a PDF: Security Best Practices", slug: "protect-pdf-with-password" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" }
   ],
   "add-watermark": [
-    { title: "How to Add Watermark to PDF", slug: "watermark-pdf-documents" },
-    { title: "Password Protect PDF: Complete Security Guide", slug: "protect-pdf-with-password" }
+    { title: "How to Add Watermark to PDF: Protect Your Documents", slug: "watermark-pdf-documents" },
+    { title: "How to Password Protect a PDF: Security Best Practices", slug: "protect-pdf-with-password" },
+    { title: "How to Redact Sensitive Information in PDFs", slug: "redact-sensitive-pdf-information" }
   ],
   "annotate-pdf": [
     { title: "How to Edit a PDF: Add Text, Images, and Shapes", slug: "edit-pdf-text-images" },
-    { title: "Essential PDF Tools for Students", slug: "pdf-tools-for-students" }
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" },
+    { title: "Making PDFs Accessible: OCR, Text Extraction, and Best Practices", slug: "pdf-accessibility-guide" }
   ],
   "edit-pdf": [
     { title: "How to Edit a PDF: Add Text, Images, and Shapes", slug: "edit-pdf-text-images" },
-    { title: "Essential PDF Tools for Students", slug: "pdf-tools-for-students" }
+    { title: "Convert PDF to Word Without Losing Formatting", slug: "convert-pdf-to-word-without-losing-formatting" },
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" }
   ],
   "grayscale-pdf": [
-    { title: "How to Compress PDF for Email", slug: "how-to-compress-pdf-for-email" }
+    { title: "How to Compress PDF for Email (Under 25MB)", slug: "how-to-compress-pdf-for-email" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" },
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" }
   ],
   "delete-pages": [
-    { title: "How to Split PDF Pages", slug: "how-to-split-pdf-pages" },
-    { title: "How to Merge PDF Files: Complete Guide", slug: "merge-pdf-files-guide" }
+    { title: "How to Split PDF Pages: Extract and Separate Documents", slug: "how-to-split-pdf-pages" },
+    { title: "How to Merge PDF Files: Complete 2025 Guide", slug: "merge-pdf-files-guide" },
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" }
   ],
   "reorder-pages": [
-    { title: "How to Merge PDF Files: Complete Guide", slug: "merge-pdf-files-guide" }
+    { title: "How to Merge PDF Files: Complete 2025 Guide", slug: "merge-pdf-files-guide" },
+    { title: "How to Add Page Numbers to PDF Documents", slug: "add-page-numbers-to-pdf" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" }
   ],
   "word-to-pdf": [
-    { title: "Convert PDF to Word Without Losing Formatting", slug: "convert-pdf-to-word-without-losing-formatting" }
+    { title: "Convert PDF to Word Without Losing Formatting", slug: "convert-pdf-to-word-without-losing-formatting" },
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" }
   ],
   "excel-to-pdf": [
-    { title: "Essential PDF Tools for Students", slug: "pdf-tools-for-students" }
+    { title: "How to Convert PDF Tables to Excel Spreadsheets", slug: "pdf-to-excel-convert-tables" },
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" }
   ],
   "jpg-to-pdf": [
-    { title: "How to Convert Images to PDF", slug: "convert-images-to-pdf" },
-    { title: "Essential PDF Tools for Students", slug: "pdf-tools-for-students" }
+    { title: "How to Convert Images to PDF: JPG, PNG, and More", slug: "convert-images-to-pdf" },
+    { title: "How to Convert Multiple Images to PDF: Batch Conversion", slug: "batch-convert-images-to-pdf" },
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" }
   ],
   "png-to-pdf": [
-    { title: "How to Convert Images to PDF", slug: "convert-images-to-pdf" },
-    { title: "Essential PDF Tools for Students", slug: "pdf-tools-for-students" }
+    { title: "How to Convert Images to PDF: JPG, PNG, and More", slug: "convert-images-to-pdf" },
+    { title: "How to Convert Multiple Images to PDF: Batch Conversion", slug: "batch-convert-images-to-pdf" },
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" }
   ],
   "pdf-to-jpg": [
-    { title: "How to Convert Images to PDF", slug: "convert-images-to-pdf" }
+    { title: "How to Convert Images to PDF: JPG, PNG, and More", slug: "convert-images-to-pdf" },
+    { title: "How to Convert Multiple Images to PDF: Batch Conversion", slug: "batch-convert-images-to-pdf" },
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" }
   ],
   "pdf-to-png": [
-    { title: "How to Convert Images to PDF", slug: "convert-images-to-pdf" }
+    { title: "How to Convert Images to PDF: JPG, PNG, and More", slug: "convert-images-to-pdf" },
+    { title: "How to Convert Multiple Images to PDF: Batch Conversion", slug: "batch-convert-images-to-pdf" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" }
   ],
   "pdf-to-excel": [
-    { title: "How to Convert PDF Tables to Excel", slug: "pdf-to-excel-convert-tables" },
-    { title: "Essential PDF Tools for Students", slug: "pdf-tools-for-students" }
+    { title: "How to Convert PDF Tables to Excel Spreadsheets", slug: "pdf-to-excel-convert-tables" },
+    { title: "How to Extract and Copy Text from Any PDF File", slug: "extract-text-from-pdf" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" }
   ],
   "pdf-to-ppt": [
-    { title: "Essential PDF Tools for Students", slug: "pdf-tools-for-students" }
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" },
+    { title: "How to Edit a PDF: Add Text, Images, and Shapes", slug: "edit-pdf-text-images" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" }
   ],
   "ppt-to-pdf": [
-    { title: "Essential PDF Tools for Students", slug: "pdf-tools-for-students" }
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" },
+    { title: "Convert PDF to Word Without Losing Formatting", slug: "convert-pdf-to-word-without-losing-formatting" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" }
   ],
   "rotate": [
-    { title: "How to Rotate PDF Pages", slug: "rotate-pdf-pages" }
+    { title: "How to Rotate PDF Pages: Fix Orientation Issues", slug: "rotate-pdf-pages" },
+    { title: "How to Crop PDF Pages and Remove Unwanted Margins", slug: "crop-pdf-pages-guide" },
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" }
   ],
   "add-page-numbers": [
-    { title: "How to Add Page Numbers to PDF", slug: "add-page-numbers-to-pdf" }
+    { title: "How to Add Page Numbers to PDF Documents", slug: "add-page-numbers-to-pdf" },
+    { title: "How to Merge PDF Files: Complete 2025 Guide", slug: "merge-pdf-files-guide" },
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" }
   ],
   "extract-text": [
-    { title: "OCR PDF: Scanned Documents to Text", slug: "ocr-scanned-pdf-to-text" }
+    { title: "How to Extract and Copy Text from Any PDF File", slug: "extract-text-from-pdf" },
+    { title: "OCR PDF: Convert Scanned Documents to Searchable Text", slug: "ocr-scanned-pdf-to-text" },
+    { title: "Making PDFs Accessible: OCR, Text Extraction, and Best Practices", slug: "pdf-accessibility-guide" }
   ],
   "ocr-pdf": [
-    { title: "OCR PDF: Scanned Documents to Text", slug: "ocr-scanned-pdf-to-text" }
+    { title: "OCR PDF: Convert Scanned Documents to Searchable Text", slug: "ocr-scanned-pdf-to-text" },
+    { title: "How to Extract and Copy Text from Any PDF File", slug: "extract-text-from-pdf" },
+    { title: "Making PDFs Accessible: OCR, Text Extraction, and Best Practices", slug: "pdf-accessibility-guide" }
   ],
   "extract-images": [
-    { title: "How to Convert Images to PDF", slug: "convert-images-to-pdf" }
+    { title: "How to Convert Images to PDF: JPG, PNG, and More", slug: "convert-images-to-pdf" },
+    { title: "How to Convert Multiple Images to PDF: Batch Conversion", slug: "batch-convert-images-to-pdf" },
+    { title: "How to Extract and Copy Text from Any PDF File", slug: "extract-text-from-pdf" }
   ],
   "tiff-to-pdf": [
-    { title: "How to Convert Images to PDF", slug: "convert-images-to-pdf" }
+    { title: "How to Convert Images to PDF: JPG, PNG, and More", slug: "convert-images-to-pdf" },
+    { title: "How to Convert Multiple Images to PDF: Batch Conversion", slug: "batch-convert-images-to-pdf" },
+    { title: "OCR PDF: Convert Scanned Documents to Searchable Text", slug: "ocr-scanned-pdf-to-text" }
   ],
   "gif-to-pdf": [
-    { title: "How to Convert Images to PDF", slug: "convert-images-to-pdf" }
+    { title: "How to Convert Images to PDF: JPG, PNG, and More", slug: "convert-images-to-pdf" },
+    { title: "How to Convert Multiple Images to PDF: Batch Conversion", slug: "batch-convert-images-to-pdf" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" }
   ],
   "webp-to-pdf": [
-    { title: "How to Convert Images to PDF", slug: "convert-images-to-pdf" }
+    { title: "How to Convert Images to PDF: JPG, PNG, and More", slug: "convert-images-to-pdf" },
+    { title: "How to Convert Multiple Images to PDF: Batch Conversion", slug: "batch-convert-images-to-pdf" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" }
   ],
   "html-to-pdf": [
-    { title: "Essential PDF Tools for Students", slug: "pdf-tools-for-students" }
+    { title: "How to Convert HTML Web Pages to PDF Documents", slug: "html-to-pdf-conversion" },
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" }
   ],
   "crop-pdf": [
-    { title: "How to Compress PDF for Email", slug: "how-to-compress-pdf-for-email" }
+    { title: "How to Crop PDF Pages and Remove Unwanted Margins", slug: "crop-pdf-pages-guide" },
+    { title: "How to Resize PDF to A4, Letter, or Any Page Size", slug: "resize-pdf-to-a4" },
+    { title: "How to Compress PDF for Email (Under 25MB)", slug: "how-to-compress-pdf-for-email" }
   ],
   "resize-pdf": [
-    { title: "How to Compress PDF for Email", slug: "how-to-compress-pdf-for-email" }
+    { title: "How to Resize PDF to A4, Letter, or Any Page Size", slug: "resize-pdf-to-a4" },
+    { title: "How to Crop PDF Pages and Remove Unwanted Margins", slug: "crop-pdf-pages-guide" },
+    { title: "How to Compress PDF for Email (Under 25MB)", slug: "how-to-compress-pdf-for-email" }
   ],
   "sign-pdf": [
-    { title: "How to Sign a PDF Electronically", slug: "sign-pdf-electronically" },
-    { title: "Password Protect PDF: Complete Security Guide", slug: "protect-pdf-with-password" }
+    { title: "How to Sign a PDF Electronically: Free Online Guide", slug: "sign-pdf-electronically" },
+    { title: "How to Password Protect a PDF: Security Best Practices", slug: "protect-pdf-with-password" },
+    { title: "How to Flatten a PDF: Forms, Layers, and Annotations", slug: "how-to-flatten-pdf" }
   ],
   "flatten-pdf": [
-    { title: "How to Sign a PDF Electronically", slug: "sign-pdf-electronically" },
-    { title: "How to Compress PDF for Email", slug: "how-to-compress-pdf-for-email" }
+    { title: "How to Flatten a PDF: Forms, Layers, and Annotations", slug: "how-to-flatten-pdf" },
+    { title: "How to Sign a PDF Electronically: Free Online Guide", slug: "sign-pdf-electronically" },
+    { title: "How to Password Protect a PDF: Security Best Practices", slug: "protect-pdf-with-password" }
   ],
   "repair-pdf": [
-    { title: "How to Merge PDF Files: Complete Guide", slug: "merge-pdf-files-guide" }
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" },
+    { title: "How to Merge PDF Files: Complete 2025 Guide", slug: "merge-pdf-files-guide" },
+    { title: "How to Compress PDF for Email (Under 25MB)", slug: "how-to-compress-pdf-for-email" }
   ],
   "redact-pdf": [
     { title: "How to Redact Sensitive Information in PDFs", slug: "redact-sensitive-pdf-information" },
-    { title: "Password Protect PDF: Complete Security Guide", slug: "protect-pdf-with-password" }
+    { title: "How to Password Protect a PDF: Security Best Practices", slug: "protect-pdf-with-password" },
+    { title: "How to Edit a PDF: Add Text, Images, and Shapes", slug: "edit-pdf-text-images" }
   ],
   "pdf-viewer": [
-    { title: "Essential PDF Tools for Students", slug: "pdf-tools-for-students" }
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" },
+    { title: "How to Extract and Copy Text from Any PDF File", slug: "extract-text-from-pdf" }
   ],
   "compare-pdf": [
-    { title: "Essential PDF Tools for Students", slug: "pdf-tools-for-students" }
+    { title: "How to Compare Two PDF Files and Find Differences", slug: "compare-two-pdf-files" },
+    { title: "How to Edit a PDF: Add Text, Images, and Shapes", slug: "edit-pdf-text-images" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" }
   ],
   "image-compressor": [
-    { title: "How to Compress PDF for Email", slug: "how-to-compress-pdf-for-email" }
+    { title: "How to Compress PDF for Email (Under 25MB)", slug: "how-to-compress-pdf-for-email" },
+    { title: "How to Convert Images to PDF: JPG, PNG, and More", slug: "convert-images-to-pdf" },
+    { title: "How to Convert Multiple Images to PDF: Batch Conversion", slug: "batch-convert-images-to-pdf" }
   ],
   "resize-image": [
-    { title: "How to Convert Images to PDF", slug: "convert-images-to-pdf" }
+    { title: "How to Convert Images to PDF: JPG, PNG, and More", slug: "convert-images-to-pdf" },
+    { title: "How to Convert Multiple Images to PDF: Batch Conversion", slug: "batch-convert-images-to-pdf" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" }
   ],
   "crop-image": [
-    { title: "How to Convert Images to PDF", slug: "convert-images-to-pdf" }
+    { title: "How to Convert Images to PDF: JPG, PNG, and More", slug: "convert-images-to-pdf" },
+    { title: "How to Crop PDF Pages and Remove Unwanted Margins", slug: "crop-pdf-pages-guide" },
+    { title: "How to Convert Multiple Images to PDF: Batch Conversion", slug: "batch-convert-images-to-pdf" }
   ],
   "rotate-image": [
-    { title: "How to Rotate PDF Pages", slug: "rotate-pdf-pages" }
+    { title: "How to Rotate PDF Pages: Fix Orientation Issues", slug: "rotate-pdf-pages" },
+    { title: "How to Convert Images to PDF: JPG, PNG, and More", slug: "convert-images-to-pdf" },
+    { title: "How to Convert Multiple Images to PDF: Batch Conversion", slug: "batch-convert-images-to-pdf" }
   ],
   "convert-image": [
-    { title: "How to Convert Images to PDF", slug: "convert-images-to-pdf" }
+    { title: "How to Convert Images to PDF: JPG, PNG, and More", slug: "convert-images-to-pdf" },
+    { title: "How to Convert Multiple Images to PDF: Batch Conversion", slug: "batch-convert-images-to-pdf" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" }
   ]
 };
 
