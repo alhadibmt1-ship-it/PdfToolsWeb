@@ -1,11 +1,20 @@
 import { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Shield, Zap, Clock, HelpCircle, AlertTriangle, ArrowRight, Lock, FileText, Lightbulb, BookOpen } from "lucide-react";
+import { CheckCircle2, Shield, Zap, Clock, HelpCircle, AlertTriangle, ArrowRight, Lock, FileText, Lightbulb, BookOpen, Newspaper } from "lucide-react";
 import { Link } from "wouter";
 import { PDF_TOOLS } from "@shared/schema";
 import SocialShare from "./SocialShare";
 import { getToolSEOData, ToolSEOData } from "@/data/toolSEOData";
+
+const FEATURED_BLOG_POSTS = [
+  { slug: "best-free-pdf-tools-2026", title: "Best Free PDF Tools in 2026: The Complete Roundup", desc: "A comprehensive guide to the most useful PDF tools available for free online." },
+  { slug: "how-to-compress-pdf-for-email", title: "How to Compress PDF for Email (Under 25MB)", desc: "Step-by-step guide to reducing PDF file sizes without losing quality." },
+  { slug: "convert-pdf-to-word-without-losing-formatting", title: "PDF to Word Without Losing Formatting", desc: "Keep fonts, tables, and layouts intact when converting PDFs to editable Word docs." },
+  { slug: "pdf-tools-for-students", title: "Essential PDF Tools Every Student Needs", desc: "The must-have PDF tools for assignments, research, and university submissions." },
+  { slug: "sign-pdf-electronically", title: "How to Sign a PDF Electronically — Free Guide", desc: "Add legally valid electronic signatures to contracts and forms without printing." },
+  { slug: "protect-pdf-with-password", title: "How to Password Protect a PDF", desc: "Keep sensitive documents secure with encryption and password protection." },
+];
 
 const BASE_URL = "https://pdfhub24.com";
 
@@ -373,6 +382,38 @@ export default function EnhancedToolSEOContent({
           </div>
         </section>
       )}
+
+      <section>
+        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+          <Newspaper className="w-6 h-6" aria-hidden="true" />
+          More from Our Blog
+        </h2>
+        <p className="text-muted-foreground mb-4">In-depth guides and tutorials to help you work smarter with PDFs:</p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {FEATURED_BLOG_POSTS.map((post, index) => (
+            <Link key={index} href={`/blog/${post.slug}`}>
+              <Card className="hover-elevate cursor-pointer h-full">
+                <CardContent className="p-4 flex flex-col gap-2 h-full">
+                  <BookOpen className="w-5 h-5 text-primary flex-shrink-0" aria-hidden="true" />
+                  <h3 className="font-semibold text-sm leading-snug">{post.title}</h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed flex-1">{post.desc}</p>
+                  <span className="text-xs text-primary font-medium flex items-center gap-1 mt-1">
+                    Read Guide <ArrowRight className="w-3 h-3" aria-hidden="true" />
+                  </span>
+                </CardContent>
+              </Card>
+            </Link>
+          ))}
+        </div>
+        <div className="mt-4 text-center">
+          <Link href="/blog">
+            <Button variant="outline" className="gap-2" data-testid="button-view-all-blog">
+              <BookOpen className="w-4 h-4" />
+              View All Blog Articles
+            </Button>
+          </Link>
+        </div>
+      </section>
 
       <section>
         <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
