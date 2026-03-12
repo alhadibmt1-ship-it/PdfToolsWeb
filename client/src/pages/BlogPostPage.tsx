@@ -333,7 +333,14 @@ export default function BlogPostPage() {
     return <NotFound />;
   }
 
-  const otherPosts = blogPosts.filter(p => p.slug !== post.slug).slice(0, 3);
+  const sameCategoryPosts = blogPosts.filter(p => p.slug !== post.slug && p.category === post.category);
+  const otherPosts = sameCategoryPosts.length >= 3
+    ? sameCategoryPosts.slice(0, 3)
+    : [
+        ...sameCategoryPosts,
+        ...blogPosts.filter(p => p.slug !== post.slug && p.category !== post.category)
+      ].slice(0, 3);
+  const primaryTool = post.relatedTools[0];
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -394,15 +401,17 @@ export default function BlogPostPage() {
             <Card className="my-8 bg-primary/5 border-primary/20">
               <CardContent className="flex flex-col sm:flex-row items-center gap-4 py-6">
                 <div className="flex-1 text-center sm:text-left">
-                  <h3 className="text-lg font-semibold mb-1">Try Our PDF Tools Free</h3>
+                  <h3 className="text-lg font-semibold mb-1">
+                    {primaryTool ? `Try ${primaryTool.name} Free` : "Try Our PDF Tools Free"}
+                  </h3>
                   <p className="text-sm text-muted-foreground">
-                    Convert, merge, compress, and edit PDFs instantly. No signup required.
+                    {primaryTool ? primaryTool.description : "Convert, merge, compress, and edit PDFs instantly."} No signup required.
                   </p>
                 </div>
-                <Link href="/#tools">
+                <Link href={primaryTool ? primaryTool.path : "/#tools"}>
                   <Button data-testid="button-mid-cta">
                     <Zap className="h-4 w-4 mr-2" />
-                    Explore Tools
+                    {primaryTool ? `Use ${primaryTool.name}` : "Explore Tools"}
                   </Button>
                 </Link>
               </CardContent>
@@ -440,18 +449,31 @@ export default function BlogPostPage() {
 
           {otherPosts.length > 0 && (
             <section className="mt-12 pt-8 border-t">
-              <h2 className="text-xl font-bold mb-6">More Articles</h2>
+              <h2 className="text-xl font-bold mb-2">More Guides You'll Find Useful</h2>
+              <p className="text-sm text-muted-foreground mb-6">Related articles from our PDF resource library</p>
               <div className="space-y-4">
                 {otherPosts.map((otherPost) => (
                   <Link key={otherPost.slug} href={`/blog/${otherPost.slug}`}>
                     <Card className="hover-elevate cursor-pointer" data-testid={`card-related-${otherPost.slug}`}>
                       <CardHeader className="py-4">
-                        <CardTitle className="text-base">{otherPost.title}</CardTitle>
-                        <CardDescription className="text-sm">{otherPost.excerpt}</CardDescription>
+                        <div className="flex items-start gap-3">
+                          <Badge variant="outline" className="text-xs flex-shrink-0 mt-0.5">{otherPost.category}</Badge>
+                          <div>
+                            <CardTitle className="text-base">{otherPost.title}</CardTitle>
+                            <CardDescription className="text-sm mt-1">{otherPost.excerpt}</CardDescription>
+                          </div>
+                        </div>
                       </CardHeader>
                     </Card>
                   </Link>
                 ))}
+              </div>
+              <div className="mt-4 text-center">
+                <Link href="/blog">
+                  <Button variant="outline" size="sm" data-testid="button-all-articles">
+                    View All 25 Blog Articles
+                  </Button>
+                </Link>
               </div>
             </section>
           )}
