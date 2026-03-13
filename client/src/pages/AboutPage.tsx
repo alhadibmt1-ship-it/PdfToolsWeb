@@ -207,6 +207,51 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Founder / Face of Brand */}
+        <section className="py-14 sm:py-20 border-t">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-8">Meet the Team</h2>
+            <Card className="border">
+              <CardContent className="p-6 sm:p-8">
+                <div className="flex flex-col sm:flex-row gap-6 items-start">
+                  <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Users className="w-8 h-8 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center gap-3 mb-2">
+                      <h3 className="text-xl font-bold">Ahmad Malik</h3>
+                      <span className="text-xs px-2.5 py-1 rounded-full bg-primary/10 text-primary font-medium">Founder &amp; Developer</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-4">
+                      Based in Lahore, Pakistan — building tools used daily across Pakistan, the US, and worldwide.
+                    </p>
+                    <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+                      <p>
+                        I built PDF HUB 24 after spending too many hours trying to edit documents with tools that 
+                        either charged a monthly fee, required a sign-up, or added watermarks to everything I 
+                        produced. That frustration is something most of us in Pakistan know well — internet costs 
+                        matter, and paying $15/month for a PDF tool you use occasionally just doesn't make sense.
+                      </p>
+                      <p>
+                        I wanted a platform that works as well for a student in Karachi submitting an assignment 
+                        as it does for a freelancer in New York sending a contract. No regional restrictions, 
+                        no paywalls based on usage volume, no data harvesting. Just tools that do exactly what 
+                        they say, free, every time.
+                      </p>
+                      <p>
+                        I maintain all 43 tools personally, fix issues as they're reported, and add new tools 
+                        based on what users actually need. If something isn't working right, 
+                        <Link href="/contact" className="text-primary hover:underline ml-1">reach out directly</Link> — 
+                        I read every message.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
         {/* CTA */}
         <section className="py-14 sm:py-20 bg-muted/30 border-t">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">

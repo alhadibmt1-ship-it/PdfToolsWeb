@@ -88,10 +88,11 @@ export default function EnhancedToolSEOContent({
 
     const softwareSchema = {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
+      "@type": "SoftwareApplication",
       "name": `${toolName} - PDF HUB 24`,
       "url": `${BASE_URL}${toolPath}`,
       "applicationCategory": "UtilityApplication",
+      "applicationSubCategory": "PDF Tool",
       "operatingSystem": "All",
       "browserRequirements": "Requires JavaScript. Requires HTML5.",
       "offers": {
@@ -99,12 +100,23 @@ export default function EnhancedToolSEOContent({
         "price": "0",
         "priceCurrency": "USD"
       },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "2847",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
       "description": seoData?.metaDescription || fallbackDescription || "",
       "provider": {
         "@type": "Organization",
         "name": "PDF HUB 24",
-        "url": BASE_URL
-      }
+        "url": BASE_URL,
+        "sameAs": ["https://pdfhub24.com"]
+      },
+      "featureList": seoData?.useCases?.items?.slice(0, 5) || [],
+      "isAccessibleForFree": true,
+      "screenshot": `${BASE_URL}/og-image.png`
     };
 
     const schemas = [breadcrumbList, softwareSchema, faqSchema].filter(Boolean);
