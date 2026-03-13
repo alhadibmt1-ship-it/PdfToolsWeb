@@ -71,12 +71,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "Common PDF Compression Issues & Solutions",
+      title: "Why Your PDF Is Still Too Large — And How to Actually Fix It",
       issues: [
-        { problem: "Compressed PDF is still too large for email", solution: "Try using High compression level, or split the PDF into smaller parts using our Split PDF tool before compressing." },
-        { problem: "Images look blurry after compression", solution: "Switch to Low or Medium compression to preserve image quality. High compression optimizes for size over visual fidelity." },
-        { problem: "Password-protected PDF won't compress", solution: "First use our Unlock PDF tool to remove the password, then compress the unprotected file." },
-        { problem: "Compression takes too long", solution: "Large files with many images take longer. For files over 50MB, expect 30-60 seconds processing time." }
+        { problem: "I compressed it and the file is still over 10MB — email still bounces", solution: "Most file size is usually from images, not text. Try High compression first. If the result is still too large, the PDF likely contains many full-page scans or high-resolution photos. In that case, use our Split PDF tool to break it into 2-3 smaller documents — a 25MB PDF split into two 12MB parts will both pass Gmail's 25MB limit. Alternatively, convert the whole PDF to a ZIP using standard OS tools, which can cut another 10-20% for image-heavy documents." },
+        { problem: "Images are blurry or pixelated after compression — how do I keep quality?", solution: "High compression reduces image DPI from ~150 to ~72, which is fine for screen viewing but looks soft when printed. Use Medium compression for anything that will be printed or displayed at full size. Medium typically reduces file size by 50-60% with almost no visible quality difference on screen. Save High compression for documents where size matters more than print quality — like email attachments or form submissions." },
+        { problem: "PDF with embedded fonts compresses less than I expected", solution: "Font data itself is very compact and compresses minimally. If your PDF is mostly text (contracts, reports, letters), it was already quite efficient. The big gains from compression come from images. A 5MB text-only contract might only compress to 4.2MB — that's normal. Consider converting to PDF/A format if archiving, or use Split PDF if you only need to share a portion." },
+        { problem: "The compressed PDF is the same size or slightly larger than the original", solution: "This means the original was already optimally compressed — common with PDFs exported from modern tools like Adobe Acrobat or Microsoft Word which apply their own compression. The tool returns your original file unchanged in this case rather than artificially inflating the size. If you need a smaller result, try splitting the PDF to share only the relevant pages." }
       ]
     },
     comparison: {
@@ -165,12 +165,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "Common PDF Merging Issues & Solutions",
+      title: "Common PDF Merging Problems — Specific Fixes",
       issues: [
-        { problem: "Merged PDF is too large for email", solution: "After merging, use our Compress PDF tool to reduce the file size while maintaining quality." },
-        { problem: "Pages appear in wrong order", solution: "Before merging, use the drag-and-drop interface to reorder files. You can also use Split PDF to extract specific pages." },
-        { problem: "Some PDFs won't upload", solution: "Ensure files are valid PDF format. Password-protected PDFs need to be unlocked first using our Unlock PDF tool." },
-        { problem: "Formatting looks different after merge", solution: "PDF merging preserves original formatting. If issues appear, the source PDF may have special fonts or embedded objects." }
+        { problem: "My merged file is 80MB — how do I get it under 25MB for email?", solution: "Merging does not compress — it simply joins files, so the output size is the sum of all inputs plus a small overhead for the combined PDF structure. After merging, run the result through our Compress PDF tool. A merged PDF with mostly scanned pages will typically reduce 60-70% on High compression. If it is still too large, identify which source files are largest (usually scanned documents or image-heavy slides), compress those individually first, then merge the compressed versions." },
+        { problem: "The pages are in the wrong order in the merged file", solution: "The merge order follows the order files appear in the upload list, not alphabetical by filename. Before clicking merge, use the drag handles in the interface to drag files into your desired sequence. If you have already downloaded a merged PDF with wrong order, you do not need to start over — use our Reorder Pages tool to rearrange pages in the existing merged file without re-uploading everything." },
+        { problem: "One of my PDFs uploads but disappears from the list", solution: "This usually means the file is password-protected. Even a permissions-only password (which does not require a password to open) can block merging. Run the problematic file through our Unlock PDF tool first. If the file was exported from an unusual application, it may also have a non-standard PDF header — try opening it in your browser and printing to PDF (File > Print > Save as PDF) to create a clean copy, then re-upload." },
+        { problem: "Fonts look different in some pages after merging", solution: "Each PDF embeds its own fonts. When you merge PDFs from different sources, fonts are preserved from each original document — the merge tool does not re-render or normalize fonts. If a page looks different, the source PDF was likely using a non-standard font that only renders correctly on systems with that font installed. The fix is to flatten the problematic PDF first (use our Flatten PDF tool to bake fonts into the page), then merge." }
       ]
     },
     securitySection: {
@@ -345,12 +345,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF Splitting Tips & Solutions",
+      title: "PDF Splitting — Why It's Not Working and How to Fix It",
       issues: [
-        { problem: "Need to split into individual pages", solution: "Enter all page numbers separated by commas (1,2,3,4...) to create separate files for each page." },
-        { problem: "Page numbers don't match preview", solution: "PDF page numbers are counted from the first page, not necessarily matching printed page numbers." },
-        { problem: "Want to keep some pages, remove others", solution: "Select only the pages you want to keep. Alternatively, use Delete Pages tool to remove specific pages." },
-        { problem: "Password-protected PDF won't split", solution: "Use our Unlock PDF tool first to remove password protection, then split the document." }
+        { problem: "The page numbers I entered don't match what I actually see in the document", solution: "PDFs count pages from 1 starting at the very first physical page — including cover pages, blank pages, and any preface pages. The page numbers printed inside the document (like 'Page 5 of 40') often do not match the actual PDF position. For example, if a report has a cover page and two blank pages before the numbered content starts, what the document calls 'page 1' is actually PDF page 4. Scroll through the preview thumbnail panel to count the real position of the pages you want." },
+        { problem: "I only want to delete 2-3 pages — do I need to split the whole document?", solution: "No — splitting is for extracting page ranges into separate files. If you just want to remove a few pages from a document, use our Delete Pages tool instead. It is faster and cleaner: select the pages to remove, download the result. Use Split only when you need two or more separate output files (for example, splitting a 50-page annual report into five 10-page chapters for different departments)." },
+        { problem: "My split output files are missing images or show blank pages", solution: "This can happen with PDFs that use page content streams shared across pages (common in forms and templated documents). When pages are split out individually, the shared resources are sometimes not copied correctly. The fix: try our Flatten PDF tool on the original first to resolve shared page resources, then split. Alternatively, open the original in your browser, select Print > Save as PDF for only the pages you need — this re-renders a clean copy." },
+        { problem: "The split files are larger than I expected — each page is 2-3MB", solution: "PDFs with full-page background images, high-resolution graphics, or embedded fonts on every page will produce large per-page files even if the total was manageable. After splitting, run each output file through Compress PDF to reduce individual page sizes. For scanned PDFs specifically, each page is literally a photograph — a 300 DPI scan of an A4 page typically produces a 500KB-1MB JPG before any PDF wrapper overhead." }
       ]
     },
     securitySection: {
@@ -423,12 +423,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF to JPG Conversion Tips",
+      title: "PDF to JPG — Why Your Images Look Wrong and How to Fix It",
       issues: [
-        { problem: "Images appear blurry", solution: "Our converter uses high resolution (300 DPI) by default. If images look blurry, the source PDF may have low-quality content." },
-        { problem: "Need PNG instead of JPG", solution: "Use our PDF to PNG tool for transparent backgrounds or lossless compression." },
-        { problem: "File sizes are very large", solution: "JPG images from high-resolution PDFs can be large. Use an image compressor to reduce size if needed." },
-        { problem: "Colors look different", solution: "PDF color profiles may differ from standard RGB. Minor color variations are normal in conversion." }
+        { problem: "The output JPG is blurry even though the PDF looks sharp on screen", solution: "Screen rendering and export resolution are different. Your monitor displays PDFs at 96 DPI (screen resolution), but our converter exports at 150 DPI by default. If your PDF was created from scanned pages at 72 DPI, the output will look soft — because the source image itself is low resolution. The fix is at the source: rescan the original document at 300 DPI minimum. For digitally created PDFs (from Word, PowerPoint etc.), the output will be sharp regardless." },
+        { problem: "Colors in the JPG look washed out or different from the PDF", solution: "This is a CMYK vs RGB issue. Professional print PDFs are often created in CMYK color space (designed for ink printing), while JPG files use RGB (designed for screens). When converting CMYK to RGB, colors shift — blues can look more purple, and rich blacks may lose depth. If this matters for your use case, try PNG format instead (use our PDF to PNG tool) — the conversion handles color profiles more precisely. For presentations and web use, the slight shift is usually not noticeable." },
+        { problem: "My 20-page PDF should give 20 JPG files — I only got a few", solution: "Check whether any pages in the PDF are completely blank or near-blank. Blank pages are sometimes skipped during conversion depending on the content detection threshold. You can also check if your download is a ZIP file containing all pages — some browsers auto-expand ZIPs. If specific pages are missing, try downloading individually by selecting only those page numbers in the tool." },
+        { problem: "The JPG file is huge — one page is 8MB", solution: "A 300 DPI JPG of an A4 page runs about 2-5MB before any compression — that is just the nature of high-resolution images. Use our Image Compressor tool after conversion to bring individual JPGs down 60-80% with minimal visible quality loss. If you need them for web display (thumbnails, previews), 96 DPI JPGs at medium quality are typically under 200KB each." }
       ]
     },
     securitySection: {
@@ -502,12 +502,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF Protection Tips & Security",
+      title: "PDF Password Protection — Common Problems Explained",
       issues: [
-        { problem: "Forgot the password after protecting", solution: "Passwords cannot be recovered. Always save passwords securely before protecting documents." },
-        { problem: "Want to remove password later", solution: "Use our Unlock PDF tool to remove password protection when you no longer need it." },
-        { problem: "Need different access levels", solution: "Our tool applies view password protection. For print/edit restrictions, consider professional PDF software." },
-        { problem: "Password not working after download", solution: "Ensure you're entering the exact password including capitalization and special characters." }
+        { problem: "I added a password but the PDF still opens without asking for one", solution: "There are two types of PDF passwords: an 'open' password (blocks the document from opening at all) and a 'permissions' password (allows opening but restricts printing, copying, or editing). Our tool sets an open password, which requires the password to view the document. If the file is opening without a prompt, the password may not have been applied correctly — try downloading again and opening in Adobe Reader or Chrome's built-in PDF viewer, not a third-party app that may skip password enforcement." },
+        { problem: "I need to prevent someone from printing or copying text, not just opening", solution: "What you need is a permissions password combined with AES encryption restrictions. Our Protect PDF tool applies an open password with AES-256 encryption. For granular restrictions (prevent print, prevent copy, prevent edit) while still allowing the document to be opened, you would need Adobe Acrobat or a similar professional tool that supports PDF permissions flags. These permissions can, however, be bypassed by determined users with the right software — they are not a substitute for keeping truly confidential content private." },
+        { problem: "My colleague says the password I sent doesn't work", solution: "PDF passwords are case-sensitive and encoding-sensitive. The most common issue is copying a password that includes a trailing space (invisible but present), a smart-quote character from a messaging app, or a non-ASCII character that gets mangled in transit. Share the password in plain text (not via an app that auto-formats), and confirm there are no extra spaces. Always test the protected PDF yourself before sending." },
+        { problem: "I forgot the password — can you help me get back in?", solution: "No — and that is intentional. AES-256 encryption is designed to be impossible to reverse-engineer without the password. We have no backdoor and no recovery mechanism. The only solution is to try every password you might have used. For future documents, save passwords in a password manager like Bitwarden or 1Password. If this is a critical document and you truly have no record of the password, professional PDF unlocking services exist but cannot guarantee results against strong passwords." }
       ]
     },
     securitySection: {
@@ -580,12 +580,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "Page Numbering Tips",
+      title: "Page Numbers Not Where You Want Them? Here's How to Fix It",
       issues: [
-        { problem: "Numbers overlap with existing content", solution: "Try a different position (top instead of bottom, or change alignment) to avoid overlapping." },
-        { problem: "Want to skip cover page", solution: "Start numbering from page 2 by setting the starting page option if available." },
-        { problem: "Need Roman numerals for intro pages", solution: "Our tool uses Arabic numerals (1, 2, 3). For mixed numbering, professional PDF editors are needed." },
-        { problem: "Numbers too small or large", solution: "Adjust the font size option to match your document's style and readability needs." }
+        { problem: "Page numbers are covering text or a logo in the header/footer area", solution: "This happens when the original PDF already uses the full printable area with no margin. Change the position to a corner (bottom-right or bottom-left) rather than centered. If the document has a header with content, switch to bottom positioning. If the footer is also full, add a small offset value — most page number tools allow you to specify the distance from the edge in millimetres. Check the preview before downloading to confirm there is no overlap." },
+        { problem: "I want numbering to start from page 2, skipping the cover page", solution: "Set the start page to 2 and the starting number to 1. This tells the tool to skip page 1 (your cover) and begin numbering at '1' on what is physically the second page. If you want the number display to say '1' but skip the cover visually, set start page = 2 and start number = 1. If you want the second page to show as '2' (counting the cover as page 1), set start page = 2 and start number = 2." },
+        { problem: "The numbers don't match the page numbers already printed inside the document", solution: "This is a common mismatch in documents with front matter (preface, table of contents) that use separate numbering. The physical PDF page 1 is always what gets number '1' by default. To make added numbers match printed numbers, identify the offset: if the printed content starts at 'page 1' on physical PDF page 5, set the start number to -3 so that physical page 5 shows as number 1. Calculate: start number = desired first number minus (physical start page minus 1)." },
+        { problem: "Page numbers appear but print as blank on paper", solution: "This can happen if the page number text colour matches the paper colour (white text on white background), or if the numbers are in a layer that your printer's PDF driver does not render. Before printing, open the PDF in Adobe Reader and zoom into a page number — if you can see it on screen, the issue is the printer driver. Try printing with 'Print as Image' option in the print dialog, which flattens all layers. Alternatively, run the numbered PDF through our Flatten PDF tool first." }
       ]
     },
     securitySection: {
@@ -655,12 +655,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF to PNG Conversion Tips",
+      title: "PDF to PNG — When to Use It Over JPG and Common Issues",
       issues: [
-        { problem: "PNG files are very large", solution: "PNG uses lossless compression so file sizes are larger than JPG. Use an image compressor for smaller sizes while keeping quality." },
-        { problem: "Need JPG instead of PNG", solution: "Use our PDF to JPG tool if you don't need transparency and want smaller file sizes." },
-        { problem: "Transparency not working", solution: "PNG transparency is preserved when the PDF has transparent elements. Solid backgrounds in the original PDF will remain solid." },
-        { problem: "Colors appear different", solution: "PDFs may use CMYK color while PNG uses RGB. Minor color variations are normal during conversion." }
+        { problem: "My PNG files are 15MB each — much larger than I expected", solution: "PNG uses lossless compression, which means every pixel is stored without quality loss — making files much larger than JPG. A 300 DPI PNG of an A4 page is typically 3-15MB depending on content complexity. If you need smaller files and transparency is not important, switch to PDF to JPG instead — JPGs of the same page are typically 80-90% smaller. If you need PNG specifically (for transparent backgrounds), use our Image Compressor after conversion to reduce PNG size by 30-60% with no visible quality change." },
+        { problem: "I converted to PNG expecting a transparent background but I got a white background instead", solution: "Standard PDF pages have a solid white background by default — the PDF format itself does not define transparency for page backgrounds. PNG transparency only appears if the original PDF was created with transparent elements (such as a logo on a transparent layer in Adobe Illustrator). A regular Word or scanned document will always produce a PNG with a white background. If you need to remove the background from the resulting image, use our Remove Background image tool after converting." },
+        { problem: "PNG looks identical to JPG — why bother with PNG?", solution: "For photographs and complex colour gradients, PNG and JPG look nearly identical at equivalent resolution. PNG's advantage shows with: (1) sharp edges and text — PNG preserves them without JPG 'ringing' artefacts around high-contrast edges; (2) diagrams, charts, and screenshots where PNG stays crisp and JPG introduces visible compression blocks; (3) anything that will be edited further — PNG does not lose quality each time you save, while resaving a JPG repeatedly degrades it." },
+        { problem: "Specific pages are missing from the PNG output", solution: "Completely blank PDF pages (containing only a white rectangle) are sometimes skipped because the conversion detects no meaningful content. Also check your download — for multi-page PDFs the output is a ZIP file, and some operating systems auto-extract ZIPs, making the contents look like individual files in a folder (which may look incomplete if you expected a single file). Count the extracted PNGs against your PDF page count to confirm if any are genuinely missing." }
       ]
     },
     securitySection: {
@@ -730,12 +730,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF to Excel Conversion Tips",
+      title: "PDF to Excel — Why Your Data Looks Wrong and How to Fix It",
       issues: [
-        { problem: "Table columns are misaligned", solution: "Complex table structures may need manual adjustment. Our tool works best with clearly defined grid-style tables." },
-        { problem: "Some data is missing", solution: "Ensure tables in the PDF have visible borders or clear column separation. Borderless tables may not be fully detected." },
-        { problem: "Scanned PDF tables won't convert", solution: "Scanned PDFs need OCR first. Use our OCR PDF tool to extract text, then convert to Excel." },
-        { problem: "Merged cells not preserved", solution: "Merged cells are split into individual cells during conversion. You may need to re-merge in Excel." }
+        { problem: "Numbers and text ended up in the same column instead of separate columns", solution: "This happens with PDFs that use whitespace (spaces) to visually separate columns rather than real table borders. The converter cannot reliably detect column boundaries from spacing alone. The best approach: after conversion, select all the affected cells in Excel, go to Data > Text to Columns, choose Delimited, and use Space as the delimiter to split the content into proper columns. For large tables with this issue, our Extract Text tool can give you raw tab-delimited output that imports more cleanly into Excel." },
+        { problem: "Decimal numbers have their separators swapped — 1,234.56 becomes 1.234,56", solution: "This is a locale mismatch. The PDF was likely created with European number formatting (comma as decimal separator) but Excel is set to US formatting (period as decimal), or vice versa. In Excel, open Find & Replace (Ctrl+H), replace the incorrect separator, and use Excel's Text to Number function to reformat. Going forward, change your system Regional settings or Excel's 'Use system separators' option under File > Options > Advanced to match the document's format." },
+        { problem: "My scanned PDF table converts to garbage text or blank cells", solution: "Scanned PDFs contain photographs of tables, not actual data — there is no text the converter can extract. You must run OCR first. Use our OCR PDF tool on the scanned document to add a text layer, download the searchable PDF, then convert that result to Excel. OCR quality directly determines Excel quality here: a 300 DPI scan of a clean printed table will convert very accurately. A blurry or skewed scan will produce errors." },
+        { problem: "The Excel has the data but rows and columns are shifted by one", solution: "This typically means the PDF had a header row that was treated as a separate element — common in PDFs with styled or frozen header rows. In the resulting Excel file, check row 1 and 2: one of them is likely the column headers and the other is an artifact. Delete the artifact row, then re-assign the first row as the header. You can also use Data > Filter to confirm which row has your actual column labels, then remove duplicates." }
       ]
     },
     securitySection: {
@@ -805,12 +805,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF to PowerPoint Conversion Tips",
+      title: "PDF to PowerPoint — Understanding What Converts Well (and What Doesn't)",
       issues: [
-        { problem: "Text boxes are not aligned", solution: "PDF layouts may convert as multiple text boxes. Group or adjust elements in PowerPoint for better alignment." },
-        { problem: "Images appear as backgrounds", solution: "Some PDF images become slide backgrounds. You can right-click to send to back or extract separately." },
-        { problem: "Fonts look different", solution: "If original fonts aren't available on your system, PowerPoint substitutes similar fonts. Adjust as needed." },
-        { problem: "Animations are missing", solution: "PDFs don't contain animation data. You'll need to re-add animations and transitions in PowerPoint." }
+        { problem: "All my slide content is one big image per slide — I can't edit the text", solution: "This happens when the PDF was exported from a presentation tool in a way that rasterised all content (each slide becomes a flat image). The converter has no text to extract. The workaround: if you still have the original PPTX file, use that. If not, and you absolutely need editable text, you will need to re-type the content manually using the image as a reference. The image-per-slide format is actually fine for presenting — you just cannot edit the text programmatically." },
+        { problem: "Text appears in the wrong positions or overlaps between slides", solution: "PDF positional coordinates and PowerPoint slide coordinates do not map 1:1, especially for PDFs created from tools other than PowerPoint (like InDesign or Word). The converter approximates positions. For clean slides, after conversion, go to View > Slide Master in PowerPoint to set a standard text placeholder, then cut and paste any misaligned text boxes into the correct positions. This is faster than rebuilding from scratch and usually takes 5-10 minutes for a 20-slide deck." },
+        { problem: "Fonts changed to something generic like Arial after conversion", solution: "PDF embeds font data that the conversion process extracts and maps to available system fonts. If the original PDF used a custom corporate font or a design font like Gotham or Brandon Grotesque that is not installed on the conversion server, the nearest available substitute (typically Arial or Helvetica) is used. After conversion, select all text boxes with the wrong font (Ctrl+A in PowerPoint), open the Replace Fonts dialog (Home > Replace > Replace Fonts), and switch to your correct font." },
+        { problem: "Charts and graphs converted but the data is not editable in PowerPoint", solution: "Charts in PDFs are stored as vector drawings, not as live data objects. The conversion preserves the visual appearance of the chart as a shape group, but there is no underlying spreadsheet data. To get an editable chart, you need the original data — either from the source file or by reading the values from the chart and manually entering them into a new PowerPoint chart. This is a fundamental limitation of the PDF format itself." }
       ]
     },
     securitySection: {
@@ -880,12 +880,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "Text Extraction Tips & Solutions",
+      title: "Text Extraction Giving Wrong Results? Here's Why",
       issues: [
-        { problem: "Extracted text is garbled or unreadable", solution: "This usually means the PDF is scanned or image-based. Use our OCR PDF tool to extract text from scanned documents." },
-        { problem: "Text order seems wrong", solution: "Complex multi-column layouts may extract in unexpected order. Review and rearrange as needed." },
-        { problem: "Special characters are missing", solution: "Some fonts use custom character encoding. Most standard characters extract correctly." },
-        { problem: "Headers and footers included", solution: "All text content is extracted including headers and footers. Remove unwanted sections after extraction." }
+        { problem: "Extracted text has question marks, boxes, or random symbols instead of real characters", solution: "This happens with PDFs that use custom font encoding — the PDF stores character shapes but maps them to non-standard Unicode positions. When extracting, the tool reads the raw character codes, not the shapes, producing garbage output. This is common with PDFs from older desktop publishing software and some legal document systems. The only reliable fix is to run the PDF through OCR first (use our OCR PDF tool), which reads the visual shapes of characters regardless of their encoding." },
+        { problem: "Multi-column text comes out in the wrong order — column 2 before column 1", solution: "PDF text extraction reads in the order text objects are defined in the file, not necessarily left-to-right or top-to-bottom. In multi-column PDFs, the columns are sometimes stored in a non-intuitive order. After extracting, use a text editor's Find & Replace to identify the column boundaries by searching for consistent phrases you know come first. For academic papers, news articles, or reports with a fixed 2-column layout, try copying from the PDF directly in your browser (Ctrl+A, Ctrl+C) which uses a different reading-order algorithm." },
+        { problem: "The extracted text file is empty even though the PDF has visible text", solution: "The PDF is almost certainly a scanned document — a photograph of a page, not digital text. Scanned PDFs have no text layer for extraction tools to find. Use our OCR PDF tool to add a text layer first. To confirm: try selecting text in the PDF by clicking and dragging in your browser — if you cannot select any text at all, it is a scanned image." },
+        { problem: "Line breaks are in the wrong places — every line ends mid-sentence", solution: "PDFs do not have paragraph markers like Word documents. Each line is a separate text object. When extracted, each PDF line becomes a separate line in the output, even if it was part of a long paragraph. After extracting, paste the text into Microsoft Word, select all (Ctrl+A), then use Find & Replace to find line breaks (^l in Word's search) and replace with a space. Then manually add back paragraph breaks where paragraphs actually ended." }
       ]
     },
     securitySection: {
@@ -957,12 +957,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "Image Extraction Tips & Solutions",
+      title: "Image Extraction — Why Some Images Are Missing or Look Wrong",
       issues: [
-        { problem: "Some images are missing", solution: "Very small images or decorative elements may not be extracted. We focus on meaningful image content." },
-        { problem: "Image quality is low", solution: "Extracted images match the quality embedded in the PDF. Low-resolution source images stay low-resolution." },
-        { problem: "Getting whole pages instead of images", solution: "If the PDF is a scanned document, use PDF to PNG to convert pages. Scanned pages are single images." },
-        { problem: "Background patterns extracted", solution: "PDF backgrounds and patterns may be detected as images. Delete unwanted files after extraction." }
+        { problem: "The tool extracted 5 images but I can see 12 images in the PDF", solution: "PDFs can store images in multiple ways. Simple embedded images (JPG, PNG, TIFF stored directly) extract reliably. However, vector graphics (shapes, charts, diagrams drawn with PDF drawing commands), inline form graphics, and images that are tiled as backgrounds are not separate image objects — they are drawn instructions, not stored image files. The extraction tool can only extract images that were embedded as discrete objects. For vector elements, use PDF to PNG to convert the entire page to an image." },
+        { problem: "Extracted images are much lower resolution than they look in the PDF", solution: "PDF viewers render images at screen resolution (72-96 DPI) which looks sharp, but the underlying image may have been compressed or downsampled when the PDF was created. What you extract is exactly what was stored — not what the viewer renders. This commonly happens with PDFs exported from InDesign with 'Downsample images' set in the export settings. There is no way to recover resolution that was not stored. If you need high-resolution versions, you need access to the original source files." },
+        { problem: "My extracted images are in JPEG format with visible compression artefacts", solution: "When creating PDFs (especially from Word or PowerPoint), images are often re-compressed as JPEG at medium-quality settings to keep the PDF small. The extraction tool gives you exactly what was stored in the PDF — including any compression that happened at PDF creation time. The artefacts were there in the PDF; they just may have been less noticeable at normal zoom. For best quality, always keep your originals and extract from the source, not from the PDF." },
+        { problem: "I get dozens of tiny 1x1 or 5x5 pixel images in the extracted ZIP", solution: "PDFs often contain invisible tracking pixels, form field background graphics, and pattern tiles that are technically image objects. These appear as tiny images during extraction. Simply delete any extracted image under 50x50 pixels — they are never meaningful content. After extracting, sort the files by image dimensions in your file manager to quickly identify and delete the tiny ones." }
       ]
     },
     securitySection: {
@@ -1032,12 +1032,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "OCR Tips for Best Results",
+      title: "OCR Not Working Right? Here's Why and What To Do",
       issues: [
-        { problem: "OCR text has many errors", solution: "Image quality affects accuracy. Ensure scans are clear, well-lit, and at least 200 DPI resolution." },
-        { problem: "Handwritten text not recognized", solution: "OCR works best with printed text. Handwriting recognition has limited accuracy depending on legibility." },
-        { problem: "Some pages have no text", solution: "Pages that are blank or contain only images/graphics will have no OCR text output." },
-        { problem: "Wrong language detected", solution: "Our OCR auto-detects language. For best results with non-English text, ensure the scan is high quality." }
+        { problem: "OCR output has wrong characters — numbers look like letters, 'l' vs '1' confusion", solution: "This is the most common OCR accuracy issue, caused by low scan resolution. The minimum for reliable OCR is 300 DPI — below that, similar-looking characters get confused. Check your scanner settings and rescan at 300 DPI. Also make sure the document is flat (no page curl at the edges) and the scan is not rotated. Tilted text causes character-level recognition errors even at high resolution. Most modern scanners default to 200 DPI — switch it to 300 before scanning." },
+        { problem: "OCR works on most pages but fails completely on certain pages", solution: "Pages with very light text, heavily coloured backgrounds, or inverted text (white on dark) break OCR confidence thresholds. Specifically, if the document was printed with a pale watermark across the text, OCR will detect the watermark pattern as noise and skip the text. For those specific pages, try increasing the contrast in an image editor before uploading: open the JPG in preview or Paint, increase contrast by +30, save, then run OCR again on just those pages." },
+        { problem: "OCR output looks correct but the searchable PDF still won't let me select or copy text", solution: "The OCR process adds an invisible text layer behind the page image — it does not replace the image. Some PDF viewers (especially mobile apps) only display the image layer and do not expose the text layer for selection. Test in Google Chrome by dragging the PDF onto a new tab, or in Adobe Acrobat Reader. If it is selectable in Chrome but not in your PDF reader app, the OCR worked correctly — the issue is your viewer not supporting text layers." },
+        { problem: "Arabic, Urdu, or other right-to-left text is recognized but output in wrong order", solution: "Right-to-left (RTL) languages like Arabic and Urdu require OCR engines with RTL text direction support. After OCR, open the resulting PDF in Adobe Acrobat Reader, which properly renders RTL text layers. Some PDF viewers force left-to-right rendering regardless. For critical RTL documents, after running OCR, copy the text into Microsoft Word and set the paragraph direction to Right-to-Left (Alt+Shift+R on Windows) to correct the display order." }
       ]
     },
     securitySection: {
@@ -1111,12 +1111,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "Word to PDF Conversion Tips",
+      title: "Word to PDF Conversion — Why Your Layout Changed",
       issues: [
-        { problem: "Fonts look different in PDF", solution: "Embedded fonts convert correctly. For custom fonts not embedded in the Word file, the converter substitutes similar fonts to maintain readability." },
-        { problem: "Images appear lower quality", solution: "We maintain original image quality. If images look different, they may have been compressed in the source Word document." },
-        { problem: "Page layout shifted slightly", solution: "Complex layouts with multiple columns or text boxes may need minor adjustment. Simple layouts convert perfectly." },
-        { problem: "Hyperlinks not working in PDF", solution: "Most hyperlinks are preserved automatically. Very long URLs or special characters may need verification after conversion." }
+        { problem: "The PDF looks fine on my computer but colleagues say the fonts are wrong", solution: "This is the most common Word-to-PDF issue and it's caused by custom or non-standard fonts. When Word uses a font like 'Calibri Light' or a corporate font that is installed on your machine but not embedded in the Word file, the PDF converter substitutes the nearest available font — which may look noticeably different. The fix: before converting, open the Word file and go to File > Options > Save > check 'Embed fonts in the file'. Save the Word document, then convert. This embeds the exact font data into the conversion." },
+        { problem: "My headers and footers disappeared or shifted in the PDF", solution: "Headers and footers that use fields (like page numbers with {PAGE} codes) or are set to 'different first page' sometimes break during conversion from Word files made in older versions. The most reliable fix: open the Word file, press Ctrl+A to select all, then Ctrl+C and Ctrl+V into a new blank Word document. This 'resets' the document structure before you convert. If headers still break, manually type the header text rather than using dynamic fields." },
+        { problem: "Table borders are missing in the converted PDF", solution: "This usually happens with tables that use 'No Border' style but rely on cell shading for visual separation. When converting, the shading is preserved but the border-less cells can collapse visually. Open the Word file, select all tables (Ctrl+A, then right-click any table > Select > Select Table), apply a thin 0.5pt border to all cells, then reconvert. Alternatively, apply a light gray background to alternate rows to maintain readability even without borders." },
+        { problem: "The PDF is much larger than the Word file", solution: "Word files store images in compressed form, but the PDF conversion process can decompress and re-embed them at full resolution. A 2MB Word file with many images can become a 15MB PDF. After conversion, run the PDF through our Compress PDF tool — it will re-optimize the embedded images. Medium compression usually brings the size to roughly 2-3x the original Word file size, which is normal." }
       ]
     },
     securitySection: {
@@ -1189,12 +1189,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "JPG to PDF Conversion Tips",
+      title: "JPG to PDF Problems — Practical Fixes",
       issues: [
-        { problem: "Images appear stretched or distorted", solution: "We preserve original aspect ratios. If images look stretched, the source file may have been edited before upload." },
-        { problem: "PDF file size is very large", solution: "High-resolution images create larger PDFs. Use our Compress PDF tool after conversion to reduce file size." },
-        { problem: "Image quality reduced in PDF", solution: "We maintain original quality. For best results, use JPG files with minimal compression." },
-        { problem: "Pages are in wrong order", solution: "Use the drag-and-drop interface to reorder images before converting. Order can be adjusted at any time." }
+        { problem: "My images look fine as JPGs but appear slightly blurry in the PDF", solution: "PDFs have a default page resolution setting that affects how images are scaled. If your JPG is 800x600 pixels and the PDF page is set to A4 (595x842 points at 72 DPI), the image gets scaled to fill the page — which can introduce softness. The result is sharpest when your image resolution matches or exceeds the PDF output size. Phone photos (3000+ pixels wide) will always render sharp. Scanned documents at 200 DPI may look soft — rescan at 300 DPI for crisp PDFs." },
+        { problem: "Combining multiple JPGs — they end up on the wrong pages or in wrong order", solution: "Images appear in the order they were uploaded. In most operating systems, if you select multiple files and drag them in, they upload alphabetically — so 'image10.jpg' comes before 'image2.jpg' (because '1' sorts before '2'). Rename files with zero-padded numbers (image01, image02... image10) before uploading to get correct alphabetical order. After uploading, the drag handle lets you reorder before converting." },
+        { problem: "The converted PDF is 50MB for just 5 photos", solution: "Phone camera photos are typically 3-8MB each at full resolution — 5 photos easily totals 25-40MB, and the PDF wrapper adds overhead. After conversion, run the PDF through our Compress PDF tool on High setting. This reduces embedded image DPI from ~300 to ~72 for screen viewing, bringing 5 photos to under 5MB total. If you need it printable, use Medium compression (leaves images at ~150 DPI, suitable for home printing)." },
+        { problem: "My scanned receipt or document has a white border around it in the PDF", solution: "The default page size is A4. If your JPG (like a phone photo of a receipt) is a different aspect ratio, white margins appear to fill the standard page. This is correct behaviour — the image is centred on the page. If you want the image to fill the entire page without margins, use our Crop Image tool first to trim the image to a 1:√2 (A4) aspect ratio (approximately 1:1.41), then convert. For receipts you intend to archive, having standard page margins is actually better for readability." }
       ]
     },
     securitySection: {
@@ -1265,12 +1265,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PNG to PDF Conversion Tips",
+      title: "PNG to PDF — Transparency and Size Issues Explained",
       issues: [
-        { problem: "Transparent areas show as white", solution: "PDF format handles transparency differently than PNG. Transparent areas are filled with white by default for printing compatibility." },
-        { problem: "File size is larger than expected", solution: "PNG files are lossless and can be large. Use our Compress PDF tool after conversion to reduce file size." },
-        { problem: "Colors look slightly different", solution: "PNG uses RGB color space. Minor color variations may occur when converting to PDF's print-ready format." },
-        { problem: "Image appears smaller in PDF", solution: "Images are placed to fit standard page dimensions. Very small images may appear smaller on a full page." }
+        { problem: "My PNG has a transparent background but the PDF shows white instead", solution: "The PDF format uses a white default page background — transparency in PNG is replaced with white when placed on a standard PDF page. This is correct and expected behaviour, since PDFs are print-ready documents and printers need a defined background colour. If you need the transparent area to remain see-through (for overlaying in presentations or design tools), convert to PDF and then use the resulting PDF with its white background, or use the PNG directly in your software rather than converting." },
+        { problem: "Multiple PNGs converted to PDF — the file is 200MB", solution: "PNG is lossless and large by nature; when stacked into a PDF, the sizes add up. After converting, run the PDF through our Compress PDF tool on High setting to reduce the embedded PNG data to JPEG quality internally. For a 200MB PNG-based PDF, High compression typically brings it down to 20-40MB — a 5-10x reduction. Medium compression is better for documents that will be printed or displayed at full size." },
+        { problem: "My PNG logo looks blurry on the PDF page — it was sharp before", solution: "This happens when a small PNG (like a 200x200 pixel logo) gets scaled up to fill an A4 page (2480x3508 pixels at 300 DPI). The tool scales the image to fit the page, which makes small images appear blurry. If you are converting a logo to PDF for sharing, keep the PDF page size small: set the page size to match the image dimensions rather than A4. Alternatively, start with a higher-resolution version of your PNG — anything intended for A4 should be at least 1200 pixels wide." },
+        { problem: "PNG screenshots look correct but text is not searchable in the resulting PDF", solution: "Converting a PNG to PDF embeds it as an image — exactly the same as scanning a page. The resulting PDF is entirely image-based with no text layer. If you need the text to be searchable, first run the converted PDF through our OCR PDF tool to add a searchable text layer. For screenshots of website pages specifically, it is better to use our HTML to PDF tool with the original URL to get a proper text-based PDF." }
       ]
     },
     securitySection: {
@@ -1341,12 +1341,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "Excel to PDF Conversion Tips",
+      title: "Excel to PDF — Why Columns Get Cut Off and Other Layout Fixes",
       issues: [
-        { problem: "Columns are cut off in PDF", solution: "Very wide spreadsheets may need landscape orientation. Consider adjusting column widths or using multiple pages." },
-        { problem: "Formulas show instead of values", solution: "Formulas are converted to their calculated values in PDF. If formulas display, the Excel file may have formula view enabled." },
-        { problem: "Charts or graphics missing", solution: "Most charts and embedded graphics convert correctly. Very complex charts may need to be converted separately as images." },
-        { problem: "Multiple sheets not included", solution: "By default all sheets are converted. Ensure your Excel file has the correct sheets visible and not hidden." }
+        { problem: "The right side of my spreadsheet is cut off — some columns are missing in the PDF", solution: "Excel has a concept of a 'print area' that defines what gets exported. If your spreadsheet is wider than A4 or Letter paper in portrait orientation, columns beyond the paper width get cut. Fix this before converting: in Excel, go to Page Layout > Orientation > Landscape, then Page Layout > Scale to Fit > set Width to '1 page'. This forces Excel to shrink all columns to fit one page width. Alternatively, select the exact columns you need to export, set the print area (Page Layout > Print Area > Set Print Area), then convert." },
+        { problem: "Cells show '#####' or formula code instead of actual values", solution: "The '####' symbol means the column is too narrow to display the number — not a conversion error. Widen those columns in Excel before converting: double-click the column border in the header row to auto-fit. If formula code is showing (like =SUM(A1:A10)), Excel was in formula view mode. Press Ctrl+` in Excel to toggle back to normal value view, save, then re-upload for conversion." },
+        { problem: "My chart in Excel converted to PDF but looks blurry", solution: "Excel charts stored as bitmap (raster) images will look blurry when scaled. Charts that are native Excel charts (created using Insert > Chart) convert as vectors and stay sharp at any size. If your chart looks blurry in the PDF, it was likely pasted as an image. In that case, delete the pasted image and recreate it as a native Excel chart so it exports in vector format." },
+        { problem: "I have 5 sheets in Excel but only 1 is in the PDF", solution: "By default, only the currently active (selected) sheet is exported when you upload an Excel file for conversion. To include all sheets, in Excel, right-click any sheet tab > Select All Sheets, then use File > Print > Save as PDF (which will export all sheets) and upload that multi-sheet PDF to our tool if you need further processing. Alternatively, convert each sheet separately and use our Merge PDF tool to combine them." }
       ]
     },
     securitySection: {
@@ -1418,12 +1418,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PowerPoint to PDF Conversion Tips",
+      title: "PowerPoint to PDF — Common Issues and Fixes",
       issues: [
-        { problem: "Animations not showing in PDF", solution: "PDFs are static documents. Each slide is captured as-is. For animation effects, the final state of each slide is preserved." },
-        { problem: "Custom fonts look different", solution: "Embedded fonts convert correctly. Custom fonts not embedded may be substituted with similar alternatives." },
-        { problem: "Slides appear cropped", solution: "Very large slide dimensions may be scaled to fit standard PDF pages. Content is preserved without cropping." },
-        { problem: "Videos and audio not included", solution: "PDF format doesn't support multimedia. Slides with video show a static frame. Consider linking to video separately." }
+        { problem: "Speaker notes are not included in the PDF output", solution: "The default conversion exports the slide view only — not the notes pages. If you need notes included, in PowerPoint go to File > Export > Create PDF/XPS, click Options, and select 'Notes Pages' under 'Publish What'. Save that file, then upload it for any further processing. Alternatively, use our tool and understand that the output will be slides only — which is what most recipients prefer anyway." },
+        { problem: "Slide transitions look wrong — all slides are on one page or the layout is different", solution: "Some PowerPoint files use custom slide sizes (like 16:9 widescreen or a custom 40x30cm format). When converted, these non-standard sizes get scaled to fit standard A4 paper, which can distort the aspect ratio. The fix: before converting, in PowerPoint go to Design > Slide Size > Standard (4:3) or Widescreen (16:9) and let PowerPoint resize the content. Or accept the slight scaling and use our Resize PDF tool to adjust the page dimensions after conversion." },
+        { problem: "Text boxes are missing or only partially visible in the PDF", solution: "This usually means the text boxes in PowerPoint extended beyond the slide boundary — PowerPoint shows content outside the slide border in editing view, but it is clipped at the slide edge when exported. In PowerPoint, use View > Normal and check each slide for content near or outside the edges. Drag any text boxes that overlap the slide boundary back inside the content area, then re-upload." },
+        { problem: "My widescreen 16:9 presentation has black bars on the sides in the PDF", solution: "PDF pages default to A4 (portrait, roughly 4:3 ratio). A widescreen slide gets letterboxed with grey or white margins. To avoid this: before converting, in PowerPoint go to File > Print, change the slide size setting to 'Full Page Slides', and check the output looks correct. Alternatively, after conversion, use our Crop PDF tool to trim the margins to the actual slide content area." }
       ]
     },
     securitySection: {
@@ -1494,12 +1494,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "TIFF to PDF Conversion Tips",
+      title: "TIFF to PDF — File Size and Multi-Page Issues",
       issues: [
-        { problem: "Multi-page TIFF pages out of order", solution: "Multi-page TIFFs maintain their embedded page sequence. Individual TIFF files can be reordered before conversion." },
-        { problem: "PDF file size very large", solution: "TIFF files are high quality and create larger PDFs. Use our Compress PDF tool after conversion to reduce size." },
-        { problem: "Colors look different in PDF", solution: "TIFF may use different color profiles (CMYK, Lab). Minor color variations can occur when converting to PDF's color space." },
-        { problem: "Some TIFF formats not supported", solution: "We support standard TIFF compression types. Very specialized scientific TIFF formats may need conversion first." }
+        { problem: "My multi-page TIFF converted to PDF but all pages are merged as one page instead of separate pages", solution: "This is a file structure issue: some TIFF files store multiple 'pages' as separate image frames within one file (a true multi-page TIFF), while others store them as separate files. The converter treats each uploaded TIFF as one file. If your TIFF viewer shows multiple pages but the PDF only has one, your TIFF file may not be a true multi-page TIFF. Try opening it in an image editor and exporting each frame as a separate TIFF, then upload all the individual TIFFs together for conversion." },
+        { problem: "TIFF converted to PDF but the file is 500MB", solution: "TIFF is the least compressed image format — it stores full uncompressed pixel data. A scanned A4 page at 300 DPI in TIFF is typically 25-75MB. Multiple scanned pages multiply this. After converting to PDF, immediately run through our Compress PDF tool on High setting. This re-encodes the embedded TIFF data as JPEG internally, typically reducing size by 80-90%. A 500MB TIFF-based PDF usually becomes 50-100MB after compression." },
+        { problem: "Bi-tonal (black and white scan) TIFF looks fuzzy in the PDF", solution: "This is a common issue with legal and archival bi-tonal (1-bit) TIFFs using CCITT Group 4 compression. These are specifically designed for black-and-white document archiving. When converted, some PDF generators decompress and re-compress these using JPEG, which introduces fuzziness on sharp text. After conversion, test the PDF by zooming in to 200% — if text edges look jagged or grey instead of crisp black, avoid High compression when compressing, as that would worsen it. Use Low or Medium compression." },
+        { problem: "TIFF with LZW compression won't upload or errors out", solution: "LZW-compressed TIFF is widely supported but some LZW variants (specifically those with horizontal differencing predictor) can cause issues with some conversion libraries. If your upload fails or errors, open the TIFF in a free tool like IrfanView or Preview (Mac), and resave it as an uncompressed TIFF or as a JPEG, then upload the JPEG for conversion using our JPG to PDF tool." }
       ]
     },
     securitySection: {
@@ -1570,12 +1570,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "GIF to PDF Conversion Tips",
+      title: "GIF to PDF — Limitations and Practical Workarounds",
       issues: [
-        { problem: "Animated GIF only shows first frame", solution: "PDF format is static and cannot display animations. The first frame of animated GIFs is used for the PDF page." },
-        { problem: "Colors look different in PDF", solution: "GIF uses a limited 256-color palette. Colors are preserved accurately within this limitation." },
-        { problem: "Image appears pixelated", solution: "GIF format has limited resolution. For best results, use source GIFs with adequate dimensions." },
-        { problem: "Transparent background shows as color", solution: "GIF transparency is converted to white background in PDF for printing compatibility." }
+        { problem: "I need all frames of an animated GIF in the PDF, not just the first one", solution: "PDF cannot display animation, but you can include all frames as separate pages. First, extract individual frames from the GIF using a free tool like EZGIF.com (Upload GIF > Split) — this gives you each frame as a separate image file. Then upload all the extracted frame images to our JPG to PDF tool to create a multi-page PDF where each page is one frame. This is useful for documentation or reviewing animation sequences frame-by-frame." },
+        { problem: "My GIF image looks pixelated and blurry in the PDF", solution: "GIF images are inherently limited to 256 colours and were designed for small web graphics (icons, diagrams, simple animations) at screen resolution. A 100x100 pixel GIF placed on an A4 page will look heavily pixelated because it is being scaled up 10-20x beyond its design size. There is no fix that can add resolution that does not exist. If you have a higher-quality original source (PNG, SVG, or the original artwork file), convert that instead — PNG to PDF or convert the vector art to PDF will give much sharper results." },
+        { problem: "GIF colours look dull or different compared to the original", solution: "GIF is limited to a 256-colour indexed palette per frame — this is a fundamental format limitation, not a conversion error. If the original content had gradients or many similar shades, GIF dithering approximates them with visible dot patterns. The colours in the PDF are as accurate as the GIF format allows. If colour accuracy matters, use the original image source at higher quality (PNG, JPG) rather than the GIF version." },
+        { problem: "GIF with white background looks like it has a grey border in the PDF", solution: "This is a page margin artefact — the GIF is placed centred on an A4 page, and if the GIF itself has any slightly off-white border pixels from its original creation (common with GIFs taken from websites), they become visible against the pure white PDF page. Use our Crop Image tool first to trim any border pixels from the GIF, then convert. Alternatively, use our Crop PDF tool after conversion to trim the page margins." }
       ]
     },
     securitySection: {
@@ -1646,12 +1646,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "HTML to PDF Conversion Tips",
+      title: "HTML to PDF — Why Your Page Looks Different and How to Fix It",
       issues: [
-        { problem: "Styles not appearing correctly", solution: "Inline CSS and embedded stylesheets work best. External CSS files may need to be included in the HTML file." },
-        { problem: "Images not showing in PDF", solution: "Images must use absolute URLs or be embedded as base64. Relative paths may not resolve correctly." },
-        { problem: "Layout looks different from browser", solution: "Complex responsive layouts may render differently. Standard HTML layouts convert most accurately." },
-        { problem: "JavaScript content not captured", solution: "Dynamic JavaScript-generated content may not be captured. Static HTML content converts reliably." }
+        { problem: "The PDF looks nothing like my webpage — layout is broken, columns collapsed", solution: "HTML to PDF conversion renders the page at a fixed width (typically 1200px), which does not match how your browser shows it at your screen resolution. Responsive CSS (@media queries) may fire at the wrong breakpoint, collapsing your multi-column layout into a single column. Fix: add a print-specific stylesheet to your HTML before converting: @media print { * { width: 100% !important; } } or temporarily remove responsive breakpoints. For best results, create a separate print-optimised version of the page using @media print CSS rules." },
+        { problem: "Images are missing from the PDF — I see broken image icons", solution: "Images in HTML must be accessible via absolute URLs (https://yourdomain.com/image.jpg) — relative paths (../images/photo.jpg) do not resolve because the converter does not have the context of your local file system. For local HTML files, embed images as base64 data URIs: <img src=\"data:image/jpeg;base64,/9j/4AAQ...\">. You can convert images to base64 using any online tool, then paste the data URI directly into the img src attribute." },
+        { problem: "The webpage PDF includes cookie banners, popups, or navigation bars I do not want", solution: "The converter captures the page as-is at load time. Cookie banners, floating navigation, and chat widgets are included because they are part of the DOM when the page renders. To exclude them: add display:none to these elements in a @media print stylesheet, or use browser print mode directly (Ctrl+P in Chrome, choose 'Save as PDF') which often handles print-specific hiding better than online tools." },
+        { problem: "The PDF cuts content mid-page — text or images are split across pages awkwardly", solution: "PDFs have fixed page heights, and page breaks are determined by element height at render time. To control where pages break, add page-break-before: always or page-break-after: always CSS to key section containers. To prevent a heading from being separated from its content by a page break, add page-break-inside: avoid to the container. These are standard CSS print properties that the HTML-to-PDF renderer respects." }
       ]
     },
     securitySection: {
@@ -1722,12 +1722,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "WebP to PDF Conversion Tips",
+      title: "WebP to PDF — Compatibility and Format Issues",
       issues: [
-        { problem: "WebP file not recognized", solution: "Ensure the file has a .webp extension. Some WebP files may be renamed with wrong extensions." },
-        { problem: "Transparent areas show as white", solution: "WebP transparency is converted to white background in PDF for universal printing compatibility." },
-        { problem: "Animated WebP only shows one frame", solution: "Animated WebP files are converted using the first frame only, as PDF is a static format." },
-        { problem: "Colors look slightly different", solution: "WebP uses modern color profiles. Minor variations may occur when converting to PDF's color space." }
+        { problem: "My WebP file uploads but the PDF comes out blank or with an error", solution: "WebP is a relatively modern format and some WebP files saved from certain tools use features (extended file format with ICC profiles or XMP metadata) that some converters handle inconsistently. The fix: open the WebP in your browser (Chrome natively displays WebP), right-click > Save Image As and save it as JPEG or PNG, then use our JPG to PDF or PNG to PDF tool instead. Alternatively, if you are on Windows, open Paint, paste the image, and save as PNG — this creates a clean WebP-free copy." },
+        { problem: "The converted PDF shows the image but at the wrong dimensions — it appears very small on the page", solution: "WebP files often have DPI metadata set to 72 DPI (screen resolution), which tells the PDF renderer to place the image at its pixel dimensions in points (1 pixel = 1 point at 72 DPI). A 400x300 pixel WebP at 72 DPI would only be 14x10 cm on an A4 page — much smaller than expected. After converting, use our Resize PDF tool to scale the content to fill the page properly, or use our Image Resizer to set the image to 300 DPI before converting." },
+        { problem: "Animated WebP — I need more than the first frame in my PDF", solution: "Like animated GIFs, animated WebP files are static in PDF format. Each animated WebP will produce a single-page PDF from its first frame. If you need all frames as separate pages, use a tool like EZGIF.com to split the animated WebP into individual frames, download them, then use our JPG to PDF tool to combine all frames into a multi-page PDF, with each frame on its own page." },
+        { problem: "Lossless WebP image looks slightly worse in the PDF", solution: "Lossless WebP preserves exact pixel data, but PDF compression may re-encode the image when embedding. After creating the PDF, check if the Compress PDF step is being applied. If you ran it through compress, the image was re-encoded as JPEG internally. For maximum quality preservation, do not compress the PDF after creating it from a lossless WebP — accept the larger file size." }
       ]
     },
     securitySection: {
@@ -1796,12 +1796,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF Rotation Tips & Solutions",
+      title: "PDF Rotation — Why Pages Show Sideways and How to Permanently Fix It",
       issues: [
-        { problem: "Rotated PDF still shows wrong orientation", solution: "Some PDF viewers cache the old version. Close and reopen the file, or clear your viewer's cache." },
-        { problem: "Only some pages need rotation", solution: "Select only the pages that need fixing using the thumbnail preview. Leave correctly oriented pages unselected." },
-        { problem: "Rotation buttons not responding", solution: "Ensure you've selected at least one page first. Selected pages are highlighted with a border." },
-        { problem: "Password-protected PDF won't rotate", solution: "Use our Unlock PDF tool first to remove password protection, then rotate the unprotected file." }
+        { problem: "I rotated and downloaded the PDF but it still shows sideways on my computer", solution: "This is almost always a PDF viewer caching issue. Your viewer is loading the cached version from before you rotated it. Force a cache refresh: close the file completely, then hold Shift while reopening it (or clear the viewer's recent files list). In Windows, right-click the file and 'Open With' to force a fresh open. In Chrome, drag the new file into a new tab — Chrome will not use a cached version. If still wrong, rename the downloaded file before opening so no cached version can interfere." },
+        { problem: "Only a few pages are rotated sideways — how do I fix just those without rotating everything", solution: "In the rotation tool, individual pages can be selected by clicking their thumbnail. Only the selected (highlighted) pages will be rotated. Click to deselect any correctly-oriented pages before applying the rotation. If all pages are selected by default, click 'Deselect All' first, then click only the pages that need fixing. Then apply 90° or 180° rotation as needed to just those pages." },
+        { problem: "The PDF is scanned and pages are tilted at a slight angle, not exactly 90° off — rotate does not help", solution: "Rotate PDF corrects 90°, 180°, or 270° orientations. It cannot de-skew pages tilted at small angles (1-5°) from scanning. Slight scan skew (when a page was placed crooked in the scanner) is a different problem called deskewing, which requires OCR-based tools. The best approach: use our OCR PDF tool which includes deskewing as part of the OCR process, or rescan the document placing pages flat against the scanner glass." },
+        { problem: "Rotating the PDF increased the file size significantly", solution: "Some PDF generators store page rotation as a metadata flag (very efficient) while others re-render the page content at the new orientation (creates a new page image). If rotating doubled your file size, the latter happened. Run the rotated PDF through our Compress PDF tool on Medium setting to normalise the file size. The content quality will not be affected." }
       ]
     },
     securitySection: {
@@ -1872,12 +1872,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF Page Deletion Tips & Solutions",
+      title: "Delete PDF Pages — Avoiding Mistakes and Edge Cases",
       issues: [
-        { problem: "Accidentally deleted wrong pages", solution: "Re-upload the original file and carefully select the correct pages. We recommend downloading the original first as backup." },
-        { problem: "Can't delete pages from protected PDF", solution: "Use our Unlock PDF tool first to remove password protection, then delete unwanted pages." },
-        { problem: "Want to keep only certain pages instead", solution: "Use our Split PDF tool to extract just the pages you want to keep, rather than deleting unwanted ones." },
-        { problem: "Page numbers changed after deletion", solution: "PDF page numbers automatically renumber. Use our Add Page Numbers tool to add new sequential numbering." }
+        { problem: "I deleted the wrong pages — how do I get my original back?", solution: "Always keep a backup of the original before making changes. We do not store your files after processing — once you close the session, your original is no longer accessible from our servers. If you did not keep a copy, check your browser's Downloads folder for the file you originally uploaded. Most operating systems keep downloaded files accessible for a period of time. Going forward, save a copy to a backup folder before uploading for any editing operation." },
+        { problem: "I want to keep pages 1-5 and 20-25, deleting everything else — what is the fastest way?", solution: "It is more efficient to use Split PDF than Delete Pages for this. In Split PDF, enter the page ranges you want to keep (1-5 and 20-25) and it will extract only those pages into the output. Delete Pages works better for removing a small number of pages from an otherwise-complete document. For removing the majority of pages, Split and keep is always faster than Delete all unwanted." },
+        { problem: "After deleting pages, hyperlinks and bookmarks from the original document are pointing to wrong pages", solution: "Internal PDF links (bookmarks, table of contents links, cross-references) are stored as target page numbers. When pages are deleted, the page numbers shift but the link targets do not update automatically. After deleting pages, the links will be 'off' by the number of pages deleted before each target. You will need to open the document in Adobe Acrobat or another full PDF editor to update the bookmark page targets manually." },
+        { problem: "The 'blank' page I deleted is actually keeping images from the next page in place — now my layout is broken", solution: "Some PDFs use blank pages as intentional spacers to ensure the next chapter starts on a right-hand page (odd page number). Deleting the spacer blank page causes the following content to shift to the wrong side. If the document is destined for double-sided printing, you may want to keep blank pages. If for digital use only, deleting blank pages is harmless." }
       ]
     },
     securitySection: {
@@ -1947,12 +1947,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF Unlocking Tips & Solutions",
+      title: "PDF Unlock — What Works, What Doesn't, and Why",
       issues: [
-        { problem: "PDF requires password to open and I don't know it", solution: "We can only unlock PDFs where you know the user password, or PDFs with only owner restrictions (no password to open)." },
-        { problem: "Unlock button not working", solution: "Ensure the file is a valid PDF. Some secured PDFs use encryption methods that cannot be removed without the password." },
-        { problem: "PDF still shows restrictions after unlock", solution: "Close and reopen the file in a different PDF viewer. Some viewers cache the old protected version." },
-        { problem: "Unlocked PDF looks different", solution: "Unlocking only removes restrictions — it doesn't change content. If formatting differs, the original may have viewer-specific settings." }
+        { problem: "The PDF asks for a password and I do not know it — can the tool still unlock it?", solution: "No. Our tool removes owner restrictions (permissions passwords) and unlocks PDFs where you have the correct password. It cannot crack or bypass an open-document password you do not know — that would be AES-256 encryption which is computationally infeasible to break. If you received a locked PDF from someone else and forgot or never had the password, you need to contact the sender for the password. If you locked your own document and forgotten the password, professional PDF password recovery services exist but cannot guarantee results against strong passwords." },
+        { problem: "The PDF opens fine but I cannot print, copy, or edit it — how do I remove these restrictions?", solution: "This is an owner (permissions) password, which restricts operations without blocking the document from opening. Our Unlock PDF tool removes these permissions restrictions. Upload the PDF, and if it has only permissions restrictions (no open password), it will be unlocked without needing any password at all. After unlocking, you can print, copy text, and edit the document. Note: PDFs that had both an open password AND a permissions password require you to enter the open password before the permissions can be removed." },
+        { problem: "I unlocked the PDF but the document still says 'Secured' or shows a lock icon", solution: "Some PDF viewers display 'Secured' based on the file's metadata flag even after the encryption is removed. Test actual functionality instead: try selecting and copying text, try printing. If those work, the unlock was successful and the 'Secured' label is just a stale display artefact in your viewer. In Adobe Reader, check Document Properties (Ctrl+D) > Security tab — it should now show 'No Security'." },
+        { problem: "After unlocking, the PDF content looks shifted or some text is missing", solution: "This should not happen with a clean unlock — the unlock process only removes the encryption wrapper, it does not re-render or modify the page content. If content looks different, the most likely cause is your PDF viewer rendering the document differently without the encryption flags (some viewers apply different rendering for secured vs unsecured documents). Try opening in a different PDF viewer to confirm the content is correct." }
       ]
     },
     securitySection: {
@@ -2025,12 +2025,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF Watermark Tips & Solutions",
+      title: "PDF Watermark — Getting Position, Opacity, and Removal Right",
       issues: [
-        { problem: "Watermark is hard to see", solution: "Increase watermark opacity or choose a darker color. For light documents, use dark watermarks; for dark pages, use light colors." },
-        { problem: "Watermark covers important content", solution: "Reduce opacity to make it semi-transparent, or reposition the watermark to a corner or edge of the page." },
-        { problem: "Image watermark is too large or small", solution: "Adjust the size slider to scale your image watermark. Preview changes before applying to all pages." },
-        { problem: "Need different watermarks on different pages", solution: "Apply watermarks to page ranges separately, or use multiple passes with different settings for different sections." }
+        { problem: "My watermark shows on screen but disappears when I print", solution: "This is a PDF layer issue. Some PDF printers only print the base content layer and skip annotation layers. The watermark may be stored as an annotation rather than burned into the page. The fix: after adding the watermark, run the PDF through our Flatten PDF tool to permanently merge the watermark into the page content. A flattened PDF will print the watermark reliably on any printer or PDF converter." },
+        { problem: "I added a 'CONFIDENTIAL' watermark but someone removed it by editing the PDF", solution: "Text watermarks added as PDF annotations or separate objects can be removed by anyone with a basic PDF editor. To make a watermark harder to remove: use the highest opacity and flatten the PDF (our Flatten PDF tool) which bakes the watermark into the page as permanent content. Truly copy-protected watermarks require expensive professional tools and are not standard PDF features. For sensitive documents, combine watermarking with password protection to add a barrier to editing." },
+        { problem: "The watermark text is in the wrong font or style — can I change it?", solution: "Font and style options depend on the watermark tool settings. For maximum control over watermark appearance, create your watermark as an image: open a graphics tool (even PowerPoint or Word), type your watermark text, style it exactly as you want, screenshot or export it as a PNG with a transparent background, then upload that PNG image as a watermark instead of using the text option. Image watermarks give you full control over font, colour, gradient, angle, and size." },
+        { problem: "The watermark is different sizes on different pages because pages have different dimensions", solution: "If your PDF has mixed page sizes (some A4, some A5, some custom), a fixed-size watermark will appear proportionally different on each page. For consistent visual weight across all pages, use a percentage-based size setting if available, or first use our Resize PDF tool to normalise all pages to the same dimensions, then apply the watermark." }
       ]
     },
     securitySection: {
@@ -2101,12 +2101,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF Page Reordering Tips & Solutions",
+      title: "Reorder PDF Pages — Efficient Workflows for Large Documents",
       issues: [
-        { problem: "Too many pages to organize easily", solution: "For PDFs with 50+ pages, consider using Split PDF to break into sections, reorder each section, then Merge back together." },
-        { problem: "Can't see page content in thumbnails", solution: "Thumbnails show page previews. Zoom in on your browser or click a thumbnail for a larger preview if available." },
-        { problem: "Accidentally moved wrong page", solution: "Simply drag it back to the correct position. Changes aren't saved until you click Apply and download." },
-        { problem: "Need to reverse entire page order", solution: "Drag pages one by one, or use our tool multiple times. For large documents, start from the last page and move forward." }
+        { problem: "I have a 200-page document and need to reverse the page order completely", solution: "Manually dragging 200 pages in reverse is impractical. The efficient approach: use our Split PDF tool to split the document into individual pages (or small groups), then use Merge PDF to combine them in reverse order. Start by uploading all the page files in reverse order to the merge tool. If split output is 100 files, upload from page100.pdf down to page01.pdf. This achieves a full reversal without dragging." },
+        { problem: "My pages are in groups (chapters) and I need to move entire chapters, not individual pages", solution: "The reorder tool moves one page at a time. For chapter-level reordering, use Split PDF to extract each chapter as a separate file (specify page ranges per chapter), then use Merge PDF to combine the chapter files in your desired order. This is much faster than moving individual pages for documents with 5+ page chapters." },
+        { problem: "After reordering, the bookmarks and table of contents links point to wrong pages", solution: "Bookmarks and internal links in PDFs are stored as page number targets. Reordering changes which content is on which page number. If the document has a table of contents that links to specific pages, those links will be wrong after reordering. You will need to update the bookmarks in Adobe Acrobat or a full PDF editor. For documents used as PDFs (not printed), update the table of contents page numbers manually using our Edit PDF tool." },
+        { problem: "Page thumbnails are too small to see what is on each page", solution: "Zoom in your browser using Ctrl+Plus (or pinch to zoom on mobile) to make all thumbnails larger. Most browsers allow zooming up to 200% without breaking the drag interface. Alternatively, use our PDF Viewer tool first to review the exact page sequence before reordering, note down which page numbers need to move where, then use the reorder tool with that reference." }
       ]
     },
     securitySection: {
@@ -2176,12 +2176,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF Cropping Tips & Solutions",
+      title: "Crop PDF — Removing Unwanted Margins and Borders",
       issues: [
-        { problem: "Cropped away important content accidentally", solution: "Re-upload the original file and set a larger crop area. Keep more margin than you think you need." },
-        { problem: "Different pages need different crop areas", solution: "Crop pages with similar layouts together, or process page ranges separately and merge the results." },
-        { problem: "Cropped PDF looks stretched or distorted", solution: "Cropping removes content, it doesn't resize. The remaining content maintains its original proportions." },
-        { problem: "Text near edges got cut off", solution: "Expand your crop area slightly. Some content may extend closer to edges than visible in preview." }
+        { problem: "I cropped out a large margin but the PDF page size is still A4 — margins still show when printing", solution: "Cropping in PDF works by setting the CropBox, which controls what is displayed and printed. The MediaBox (the full physical page) may remain A4 even after cropping. Most printers use the CropBox for printing, so the cropped area should print correctly. If margins still appear, open the PDF in Adobe Reader, go to File > Print > Page Handling and set 'Fit to printable area'. If you need the physical page dimensions to match the cropped size, use our Resize PDF tool afterward to trim the MediaBox to match the CropBox dimensions." },
+        { problem: "I scanned a document with a black border from the scanner lid — how do I crop it off all pages at once?", solution: "Apply the same crop rectangle to all pages at once by setting the crop coordinates and choosing 'Apply to all pages'. The scanner border is usually a uniform black strip on 1-3 edges. Measure the approximate border width in the preview (typically 20-50 pixels) and set the corresponding margin crop values. Apply and preview to confirm the border is removed before downloading." },
+        { problem: "After cropping, the PDF has different content on some pages than others — they cropped inconsistently", solution: "This happens when pages in the PDF already have different CropBox settings, or when the scanned pages were placed at slightly different positions. The same crop rectangle applied to all pages will crop different physical areas if the content was not aligned when scanned. For scanned documents with alignment issues, the best approach is to crop more conservatively (less cropping) to ensure no content is cut from any page." },
+        { problem: "I want to crop to show only one column of a two-column academic paper", solution: "Apply the crop to only half the page width. Set the right crop margin to 50% of the page width to keep only the left column, or set the left crop margin to 50% to keep only the right column. You will need to do this twice (once per column) and merge the results if you want both columns as separate pages. Note that this permanently removes the other column from each page — use Split PDF on a copy first if you need to keep the full pages." }
       ]
     },
     securitySection: {
@@ -2253,12 +2253,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF Resizing Tips & Solutions",
+      title: "Resize PDF — Page Size vs Content Size Explained",
       issues: [
-        { problem: "Content appears too small after resizing", solution: "Try 'Scale to Fit' option which enlarges content to fill the new page size proportionally." },
-        { problem: "Content is cut off at edges", solution: "Choose 'Fit to Page' instead of 'Fill Page' to ensure all content fits within new dimensions." },
-        { problem: "Aspect ratio looks wrong", solution: "Enable 'Maintain Aspect Ratio' to prevent stretching. Content will be centered with margins if needed." },
-        { problem: "Different pages have different original sizes", solution: "Resizing applies uniform target dimensions. All pages will become the same size after processing." }
+        { problem: "I resized to A4 but the content is now tiny in the corner — it did not scale up", solution: "Resizing the PDF page and scaling the content are two different operations. If you change from A5 to A4, the page becomes larger but the content stays at its original size, leaving white space around it. To have the content fill the new page, you need to also scale the content. Enable the 'Scale content to fit new page' option when resizing. If this option is not available, use our Resize PDF tool with the 'Fit and scale' mode rather than 'Resize page only' mode." },
+        { problem: "I need to make a PDF exactly 8.5x11 inches (US Letter) but I only see metric options", solution: "US Letter is 215.9mm x 279.4mm. Set the width to 216mm and height to 279mm for Letter size (the standard PDF page size). A4 is 210mm x 297mm. Common sizes: Legal = 216mm x 356mm, A3 = 297mm x 420mm. Most PDF tools accept millimetre inputs for any paper size, so you can manually enter these dimensions even when the paper size name is not listed." },
+        { problem: "My PDF has portrait and landscape pages mixed — resizing makes all pages the same orientation", solution: "The resize tool applies uniform dimensions to all pages. If you set 210x297mm (A4 portrait), all landscape pages will also become 210x297mm which will rotate their effective orientation. To preserve mixed orientation, you need to resize portrait and landscape pages separately: use our Split PDF tool to separate the page types (note which pages are landscape), resize each group independently with the correct dimensions, then merge back together using Merge PDF." },
+        { problem: "After resizing, text and images look blurry or low quality", solution: "Resizing that involves scaling vector content (digital text, shapes) should produce sharp output at any scale. Blurriness means the page contained rasterised content (images, scanned pages). When you scale an image beyond its native resolution, it softens. If the original PDF had clear, crisp images before resizing but they are blurry after, you scaled beyond the image's resolution. For scanned documents specifically, the original scan resolution determines the maximum sharp output size." }
       ]
     },
     securitySection: {
@@ -2330,12 +2330,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF Signature Tips & Solutions",
+      title: "Electronic Signature Issues — Why It Isn't Working and What To Do",
       issues: [
-        { problem: "Signature looks too small or large", solution: "Use the resize handles after placing your signature. You can adjust size before finalizing the signed PDF." },
-        { problem: "Drawing signature with mouse is difficult", solution: "Try using a touchscreen device for more natural signing, or upload an image of your handwritten signature instead." },
-        { problem: "Need to sign multiple pages", solution: "Add signatures to each required page individually. You can navigate through pages and add signatures wherever needed." },
-        { problem: "Signature appears in wrong position", solution: "Click and drag to reposition your signature before downloading. Use zoom to precisely place on signature lines." }
+        { problem: "The other party says my signature doesn't look 'official' or professional enough", solution: "The most professional-looking signatures are uploaded images of a handwritten signature with a transparent background (PNG format). Sign on white paper with a black pen, take a photo or scan it, then use an image editor (or our free Remove Background tool) to make the background transparent. Upload this PNG as your signature image. The result will look identical to a wet ink signature. Drawing directly on screen with a mouse produces wobbly signatures — a stylus on a touchscreen is much better." },
+        { problem: "Is my electronic signature legally valid for contracts?", solution: "Electronic signatures created by placing an image or drawing on a PDF are legally binding in most countries under laws like the US ESIGN Act and EU eIDAS Regulation for most business contracts. They are not valid for a small set of documents that legally require 'qualified electronic signatures' (QES) with a verified digital certificate — including wills, real estate transactions in some jurisdictions, and court filings. For standard business contracts, employment agreements, and NDAs, an image-based signature is fully enforceable." },
+        { problem: "I signed the PDF but the signature disappears when I print it", solution: "The signature may have been placed on a transparent layer that some PDF printers do not flatten. After signing and downloading, open the PDF and run it through our Flatten PDF tool before printing. Flattening merges all annotation layers (including your signature image) into the base page permanently — the signature will then print exactly as it appears on screen, and can no longer be moved or deleted." },
+        { problem: "The signature field in the form expects a 'digital signature' not an image", solution: "A digital signature (with a certificate) is different from an electronic signature (an image or drawing). Form fields that show a lock icon or say 'Sign with a Digital ID' require a cryptographic certificate, which our free tool does not issue. To fill those fields, you need Adobe Acrobat with a self-signed or purchased digital ID, or a service like DocuSign or Adobe Sign that issues verified digital certificates. For standard PDF forms without those locked fields, our tool works perfectly." }
       ]
     },
     securitySection: {
@@ -2408,12 +2408,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF Flattening Tips & Solutions",
+      title: "Flatten PDF — Why You Need It and What Gets Flattened",
       issues: [
-        { problem: "Form fields disappeared after flattening", solution: "Form field contents are preserved but merged into the page. The filled data remains visible but is no longer editable." },
-        { problem: "PDF still has editable fields", solution: "Ensure you downloaded the flattened version, not the original. The flattened file should have no interactive elements." },
-        { problem: "Annotations look different after flattening", solution: "Some annotation styles may render slightly differently when flattened. This is normal and content is preserved." },
-        { problem: "File size increased after flattening", solution: "Flattening can sometimes increase size due to rendering. Use Compress PDF afterward if file size is a concern." }
+        { problem: "I filled out a PDF form and now I want to send it so the recipient cannot change the answers", solution: "Flattening is exactly the right tool here. Upload your completed (filled) PDF form, flatten it, and download. The output will have all your typed answers rendered permanently into the page — there are no fillable fields left. The document looks identical to the filled form but none of the fields can be clicked or edited. This is the correct way to 'lock in' a completed form before sending." },
+        { problem: "After flattening, my form field values look slightly different — different font or alignment", solution: "Form fields render differently depending on whether PDF field rendering or page rendering is used. When flattening, field content gets rasterised (converted to an image at the field position). Very small fonts may lose sharpness, and field borders may shift by 1-2 pixels. This is normal and not avoidable with standard flattening. For critical forms where exact rendering matters, consider printing to PDF (Ctrl+P > Save as PDF) from your browser, which uses your OS renderer and may produce cleaner flattened output." },
+        { problem: "The flattened PDF is 3x larger than the original", solution: "Flattening renders annotation layers and form fields into page images. If the original PDF had many complex annotations (highlight layers, stamps, signatures) on top of image-based pages, flattening re-renders each page as a composite image. After flattening, run through Compress PDF on Medium setting to reduce size. Typically a 10MB flattened form can be brought to 3-4MB without visible quality loss." },
+        { problem: "I want to flatten only the signature fields but keep the other form fields editable", solution: "Standard flattening flattens all layers and fields simultaneously. Selective flattening (flattening specific fields only) requires Adobe Acrobat Pro or a custom PDF editing workflow. As a workaround: flatten the entire form, then use our Edit PDF tool to re-add any fields you want to keep editable as new form fields over the flattened content. This is impractical for many fields but works for 1-2 fields." }
       ]
     },
     securitySection: {
@@ -2486,12 +2486,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "Grayscale Conversion Tips & Solutions",
+      title: "Grayscale PDF Conversion — Getting the Contrast Right",
       issues: [
-        { problem: "Some text is hard to read after conversion", solution: "Light-colored text on white backgrounds may be faint. Consider adjusting contrast in the original before converting." },
-        { problem: "Images look too dark or too light", solution: "Our algorithm optimizes for readability. Very dark or light images may need adjustment in the source document." },
-        { problem: "Charts are hard to distinguish", solution: "Color-coded charts may lose clarity. Consider using patterns or labels in the original if grayscale is the final format." },
-        { problem: "Need some pages in color, others in grayscale", solution: "Split your PDF first, convert specific pages to grayscale, then merge them back together." }
+        { problem: "Yellow or light-coloured text became almost invisible after converting to grayscale", solution: "Yellow, light green, and light cyan colours have very low luminance values — they are bright but not dark enough to show up against white in grayscale. Yellow text on white converts to near-white on white (essentially invisible). Before converting to grayscale, change any light-coloured text to a darker colour in the original document. If you do not have the source file, use our Edit PDF tool to add a dark text annotation over the affected areas after conversion." },
+        { problem: "Colour-coded chart or diagram is unreadable in grayscale — all bars look the same shade", solution: "This is a known limitation of colour-coded charts converted to grayscale. If the chart was designed for colour output, similar colours (like light blue and light green) convert to similar grey values. The professional fix is to redesign the chart to use patterns, textures, or labels in addition to colour before converting. If you cannot edit the source, the practical solution is to keep the chart page in colour (split it out) and only convert the non-chart pages to grayscale, then merge." },
+        { problem: "The grayscale PDF printed darker than expected — what the screen shows is much lighter than the print", solution: "Screen rendering and print output use different colour profiles. Grayscale on screen is calibrated to your monitor's brightness, while printing uses dot coverage on paper. A 50% grey on screen may print as a darker tone depending on your printer and paper. This is a printer calibration issue, not a conversion issue. Adjust your printer's darkness/contrast settings, or test-print a single page first. Some printers have 'Enhance Blacks' settings that darken greys." },
+        { problem: "Some pages converted to grayscale but a few pages are still in colour", solution: "This usually means those pages contained colour images or elements that the grayscale conversion process did not fully process. It can happen with pages containing embedded ICC colour profiles that the converter preserves. Try running only those remaining colour pages through the grayscale tool separately (use Split PDF to isolate them, convert, then merge back). If specific pages consistently resist grayscale conversion, they may contain colour profiles that need a more advanced tool." }
       ]
     },
     securitySection: {
@@ -2561,12 +2561,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF Repair Tips & Solutions",
+      title: "PDF Repair — What Can Be Fixed and What Cannot",
       issues: [
-        { problem: "Repair couldn't fix my PDF", solution: "Severely corrupted files may be unrecoverable. Try uploading again in case of upload issues. If the original source is available, request a new copy." },
-        { problem: "Some pages are still missing", solution: "Heavy corruption may prevent full recovery. Our tool recovers what's possible. Some data may be permanently lost." },
-        { problem: "Images appear corrupted", solution: "Embedded images may be damaged beyond repair. Text content has higher recovery success rates than binary image data." },
-        { problem: "Repaired file is smaller than original", solution: "Unrecoverable corrupted sections are removed. The repaired file contains all successfully recovered content." }
+        { problem: "My PDF shows 'File not supported' or 'Invalid PDF' — the repair tool also rejects it", solution: "PDFs need at minimum a valid file header (%PDF-1.x) to be processed. If the file header is missing or the file was only partially downloaded (incomplete), no tool can read it as a PDF. First check the file size — if it is 0KB or very small compared to what you expected, the file did not download completely. Re-download the PDF. If the file came as an email attachment, ask the sender to re-send it. If you saved it from a browser, check your Downloads folder for a duplicate with a complete download." },
+        { problem: "The repair tool fixed the PDF but one page is blank where there used to be content", solution: "Partial corruption is the most common outcome — the PDF structure is rebuilt from whatever data segments were intact. Pages whose content stream was in the corrupted portion cannot be recovered. The blank page represents a page whose data was unrecoverable. If the original document was important, check if you have an older version saved elsewhere (email attachments, cloud backup, USB backup). For documents created in Microsoft Office, check the AutoRecovery folder in your Office installation." },
+        { problem: "My PDF was working yesterday — why is it suddenly corrupt?", solution: "PDF files can become corrupt from: interrupted file transfers (email attachments that did not fully send), drive errors (bad sectors on a USB or hard disk), incomplete saves (power cut during save), or software crashes. Single-file storage (no cloud backup or redundancy) means one corruption event loses everything. Going forward, keep PDFs in a cloud folder (OneDrive, Google Drive) which maintains version history — so even if you overwrite with a corrupted version, you can restore the previous version." },
+        { problem: "PDF repair worked but the file now has a different page count than the original", solution: "Corrupted pages whose data was completely unrecoverable are skipped rather than included as blank pages. A 10-page PDF with 3 unrecoverable pages will repair to a 7-page PDF. The repaired file contains exactly the pages that could be recovered. If specific pages are critical and unrecovered, check if there is any other copy — even a partial printout, a scanned copy, or a photo of the screen showing the content can be used to recreate those pages." }
       ]
     },
     securitySection: {
@@ -2636,12 +2636,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF Editing Tips & Solutions",
+      title: "Edit PDF — Understanding What Can and Cannot Be Changed",
       issues: [
-        { problem: "Text doesn't match the original font", solution: "Our editor offers many fonts. Choose one similar to the original, or use a standard font for added content sections." },
-        { problem: "Image appears blurry", solution: "Use high-resolution images for best results. Small images enlarged significantly may appear pixelated." },
-        { problem: "Can't edit existing text in the PDF", solution: "Our editor adds new content. To modify existing text, use PDF to Word conversion, edit, then convert back." },
-        { problem: "Elements move when adding more content", solution: "Position elements carefully. Use zoom for precise placement. Edits are layered on top of existing content." }
+        { problem: "I need to change existing text in the PDF — the editor does not let me click on it", solution: "Our PDF editor adds new content as an overlay layer — it does not modify the original text that is baked into the PDF. This is by design: altering existing PDF text would require re-flowing the document and could corrupt the layout. For changing existing text, the workflow is: convert to Word using our PDF to Word tool, edit in Word, then convert back to PDF. This preserves formatting while allowing full text editing. Our Edit PDF tool is for adding new text boxes, images, and annotations on top of the existing content." },
+        { problem: "I added a text box but the font does not match the document", solution: "PDFs embed fonts as binary data that cannot be easily reused in an overlay editor. The closest standard font match must be selected manually. Compare the original font visually — if the PDF uses a serif font (like Times New Roman), choose Times New Roman in the text box. For sans-serif documents, Arial or Helvetica usually match well. If an exact match is critical, use the PDF to Word conversion workflow to edit text in the original font context." },
+        { problem: "My added image covers existing text and I cannot make it transparent", solution: "Images added in PDF edit mode are opaque by default — they sit above the page content and cover whatever is beneath them. To avoid covering text: position the image in a blank area of the page, or resize it to fit within available whitespace. If you need to overlay the image with partial transparency over text, this requires a more advanced PDF editor (like Adobe Acrobat) which supports image opacity settings. Alternatively, create the image with a transparent background (PNG format) before adding it, which helps when the background is white." },
+        { problem: "My edits look correct on screen but do not print — added text disappears when printing", solution: "Added content may be in an annotation layer that your printer's PDF driver skips. Before printing, flatten the PDF using our Flatten PDF tool — this merges all edit layers permanently into the page. After flattening, the edited content prints exactly as it appears on screen. Always flatten before printing or sending to someone who needs to print." }
       ]
     },
     securitySection: {
@@ -2713,12 +2713,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF Annotation Tips & Solutions",
+      title: "PDF Annotation — When Highlights and Comments Do Not Work as Expected",
       issues: [
-        { problem: "Highlights don't appear over text", solution: "Ensure you're selecting actual text, not images of text. Scanned PDFs may need OCR first for text selection." },
-        { problem: "Comments are hard to read", solution: "Use contrasting colors for comments. Our sticky notes stand out clearly in yellow by default." },
-        { problem: "Too many annotations clutter the page", solution: "Use sticky notes that can be collapsed, or consider using a separate comments summary page." },
-        { problem: "Annotations don't show in other PDF readers", solution: "Our annotations use standard PDF annotation format. They should appear in all modern PDF viewers." }
+        { problem: "I am trying to highlight text but the highlighter selects a box shape instead of following the text line", solution: "This happens with scanned PDFs — the highlight tool sees a static image, not individual text characters, so it draws a rectangle instead of highlighting text. The fix: run the PDF through our OCR PDF tool first to add a proper text layer. After OCR, the text is selectable and highlightable word by word, just like a digital document. Any PDF where you cannot click and drag to select text will have this issue." },
+        { problem: "I saved the annotated PDF but when I open it in Outlook or Gmail preview, the comments and highlights are missing", solution: "Email preview panes and mobile apps often display only the base PDF layer and skip annotation overlays. This is a viewer limitation, not a problem with the annotations. Test in Adobe Reader or by opening the PDF in Chrome — both display all standard PDF annotations correctly. When sharing annotated PDFs, instruct recipients to download and open in a proper PDF viewer rather than the email preview pane." },
+        { problem: "I added annotations for review but the other person cannot see who added which comment", solution: "PDF annotation authorship is stored in the comment metadata. For collaborative annotation where authorship matters, before annotating set the author name in the tool if the option is available. If not, use a simple convention in the comment text itself (like adding your initials at the start: 'JM: This section needs revision'). For true collaborative review workflows with tracked changes, Microsoft Word's review mode or Google Docs comments are more appropriate." },
+        { problem: "After annotating and downloading, the file size increased significantly", solution: "PDF annotations add metadata for each annotation object — bounding boxes, colour values, author strings, creation timestamps. A PDF with 200 detailed annotations can be 2-3MB larger than the original. After annotating, if you need to reduce size before sharing, use Compress PDF (annotations are included in size reduction). If you no longer need the annotations to be interactive (editable), flatten the PDF to convert them to page content, then compress — this typically gives the smallest final size." }
       ]
     },
     securitySection: {
@@ -2788,12 +2788,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF Redaction Tips & Solutions",
+      title: "PDF Redaction — Critical Mistakes That Expose Hidden Data",
       issues: [
-        { problem: "Need to redact the same info on multiple pages", solution: "Mark each occurrence individually for security. Automated search-and-redact features are planned for future updates." },
-        { problem: "Redaction boxes aren't covering content properly", solution: "Zoom in for precise selection. Draw rectangles slightly larger than the content to ensure complete coverage." },
-        { problem: "Want to undo a redaction", solution: "Redactions are permanent once applied. Work on a copy of your document and review carefully before applying." },
-        { problem: "Some hidden content wasn't removed", solution: "Ensure you've marked all instances. Check headers, footers, and metadata. Our tool redacts visible content in the marked areas." }
+        { problem: "I covered sensitive text with a black box but the original text was still accessible", solution: "This is the most dangerous redaction mistake. Simply drawing a black box or shape over text does NOT redact it — the original text remains in the PDF's text layer, visible to anyone who copies the PDF, searches it, or removes the box. This happened in several high-profile government document leaks. Proper redaction permanently removes the text data from the file. Our Redact PDF tool removes the underlying data, not just covers it visually. Always verify: after redacting, try to select and copy the redacted areas in a PDF viewer — no text should be selectable." },
+        { problem: "I used a low-opacity black box to redact — but I used the wrong tool", solution: "A semi-transparent or low opacity overlay does not redact at all — it only dims the text visually. The text is still completely readable by anyone who adjusts contrast in an image editor, or simply selects and copies from the PDF. Only use the Redact PDF tool's designated redaction function, which removes the content data itself. After downloading, always verify by trying to select text in the redacted zones." },
+        { problem: "The redacted PDF still contains the original text in the document metadata or XMP data", solution: "Visible page content is redacted by our tool. Some complex PDFs may also contain author metadata, document properties, or embedded XMP data that includes portions of text. After redacting, check Document Properties in Adobe Reader (File > Properties) for any metadata containing sensitive information. Remove the document title, author, subject, and keywords fields if they contain sensitive information before sharing the final document." },
+        { problem: "I need to redact the same name that appears on 50 pages — how do I do it efficiently?", solution: "Manual page-by-page redaction is the safest approach for small volumes. For 50+ identical redactions, the process is: (1) use our redact tool to mark and redact one instance per page, working page by page. (2) If the name always appears in the same position on each page (like a header or footer), redact the first page, note the exact position coordinates, and apply the same bounding box coordinates to subsequent pages. Systematic approach beats random clicking and ensures no instances are missed." }
       ]
     },
     securitySection: {
@@ -2863,12 +2863,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF Viewer Tips & Solutions",
+      title: "PDF Viewer — Loading and Display Issues Explained",
       issues: [
-        { problem: "PDF loads slowly or appears blank", solution: "Large PDFs with many images take longer to render. Wait a moment or try refreshing the page. Ensure you have a stable internet connection." },
-        { problem: "Text appears blurry when zoomed", solution: "Some scanned PDFs have low resolution. Our viewer displays the document at its native quality. Try zooming to 100% for clearest view." },
-        { problem: "Cannot search text in the document", solution: "If the PDF is a scanned image rather than text-based, use our OCR PDF tool first to make it searchable." },
-        { problem: "Mobile viewing is difficult", solution: "Rotate your device to landscape mode for wider pages. Use pinch-to-zoom and swipe gestures for natural navigation." }
+        { problem: "My 100-page PDF is loading but only the first few pages show — rest are blank or grey", solution: "Large PDFs load progressively — pages further into the document load as you scroll to them. The first 3-5 pages load immediately, then additional pages render on demand. If you have a slow connection, pages far into the document may take 5-10 seconds each to appear. Scroll slowly to allow each page to render before moving to the next. If specific pages remain blank indefinitely, those pages in the PDF may be corrupted — try our PDF Repair tool." },
+        { problem: "The PDF looks fine in Adobe Reader but certain pages are blank in the browser viewer", solution: "Some PDFs use PDF 2.0 features or non-standard transparency groups that browser PDF viewers do not support. Specifically, pages with complex blending modes or transparency effects may fail to render in Chrome's built-in viewer. Our viewer uses a similar rendering engine. The fix: use our Flatten PDF tool on the document first — flattening resolves transparency issues by baking them into standard page content that renders in all viewers." },
+        { problem: "I can see the text on screen but I cannot search for a word in the document", solution: "Unsearchable text means the PDF is image-based (scanned). Every page is a photograph — visually there is text, but digitally it is pixels with no text layer. To make it searchable, use our OCR PDF tool. After OCR, the text will be findable using Ctrl+F. The search finds exact character matches, so searching for 'Smith' will not match 'SMITH' unless you enable case-insensitive search (Ctrl+F > Settings in most viewers)." },
+        { problem: "The PDF displays in portrait but should be landscape — it looks cut off", solution: "The PDF viewer displays pages in whatever orientation was saved in the file. If a PDF was exported in portrait orientation but the content is landscape (sideways text), the file itself has the wrong orientation setting. Use our Rotate PDF tool to rotate the affected pages 90° clockwise or counterclockwise. Download the rotated version, then view it again — it will display correctly. You can also check the page orientation in your viewer: in Chrome, right-click the page > Rotate." }
       ]
     },
     securitySection: {
@@ -2938,12 +2938,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF Comparison Tips & Solutions",
+      title: "Compare PDF — Why Differences Show Up Where You Did Not Change Anything",
       issues: [
-        { problem: "Comparison shows too many differences", solution: "Ensure both files are based on the same original document. Completely different PDFs will show extensive changes that may not be meaningful." },
-        { problem: "Scanned PDFs not comparing correctly", solution: "Scanned PDFs contain images, not text. Use our OCR PDF tool on both files first to extract text, then compare." },
-        { problem: "Formatting differences being flagged", solution: "Our comparison focuses on text content. Layout and formatting changes may appear as differences if they affect text flow." },
-        { problem: "Large documents take a long time", solution: "Complex documents with many pages require more processing time. Documents under 50 pages typically process within 30 seconds." }
+        { problem: "The comparison highlights the entire document as changed — even pages I know are identical", solution: "This almost always means the two PDFs have different origins or were processed differently. Common causes: one version was re-exported from a different application (even if the content looks identical, the PDF internal structure is completely different), or one file was run through a PDF converter that rebuilt the document structure. For text comparison to work accurately, both PDFs should come from the same source file with only the intended edits made. If they were created separately from the same template, most of the 'identical' text will show as different because it is in different PDF object positions." },
+        { problem: "I changed one paragraph but the comparison shows changes in surrounding paragraphs too", solution: "PDF text comparison reads text in the order it is stored in the file, not necessarily in visual reading order. When you add or remove text in a paragraph, all subsequent text that was stored after that point in the file gets flagged as 'changed' because the stored character positions shift. This is how PDF diff tools work — they compare stored text sequences, not visual page positions. To see change-by-change tracking more clearly, use Microsoft Word's Track Changes feature, which understands paragraph structure." },
+        { problem: "The comparison works but I cannot tell which document is 'old' and which is 'new'", solution: "Upload them in the correct order: the first file you upload should be the original (older) version, and the second file should be the revised (newer) version. Additions made in the new version appear in one colour (typically green), while deletions from the original appear in another colour (typically red). If the colours are reversed from what you expect, swap the upload order — the comparison is directional." },
+        { problem: "Two scanned PDF versions of the same contract show completely different content in the comparison", solution: "Scanned PDFs contain no text — comparing them compares two sets of image data, which is not meaningful for a text comparison. Run both files through our OCR PDF tool first (separately), download the OCR versions, then compare those. The accuracy of the comparison depends on OCR accuracy — if the scans have different quality or alignment, OCR may produce slightly different text versions of the same words, which the comparison will flag as differences." }
       ]
     },
     securitySection: {
@@ -3013,12 +3013,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "Image Compression Tips & Solutions",
+      title: "Image Compression — Balancing Quality vs File Size",
       issues: [
-        { problem: "Compressed image looks blurry or pixelated", solution: "Use High or Medium quality setting instead of Low. Some images with fine details need gentler compression to maintain clarity." },
-        { problem: "File size didn't reduce much", solution: "The image may already be optimized. Previously compressed images have less redundant data to remove." },
-        { problem: "Colors look different after compression", solution: "JPEG compression can slightly shift colors. For color-critical work, use PNG format or High quality JPEG settings." },
-        { problem: "Need to compress many images at once", solution: "Upload multiple images to compress them in batch. Each file is processed and available for individual download." }
+        { problem: "My compressed image has noticeable 'blocks' or ringing artefacts around high-contrast edges", solution: "This is called JPEG compression artefacting, caused by the DCT block algorithm at low quality settings. JPEG divides images into 8x8 pixel blocks — at low quality, block boundaries become visible, especially around high-contrast text, logos, and sharp edges. Fix: compress at a higher quality setting (85-90 quality instead of 60). For images with sharp text or logos that need to remain crisp, use PNG format instead of JPEG — PNG is lossless and will not introduce artefacts regardless of how much you compress." },
+        { problem: "I compressed a JPG and the file is actually larger than before", solution: "JPEG files that are already compressed at a medium-to-high quality setting cannot be made much smaller without visible quality loss. If you try to compress an already-compressed JPEG again, the tool may produce a file that is the same size or slightly larger because the original was already near-optimal. The only way to significantly reduce a well-compressed JPEG is to accept lower quality. The diminishing-returns point is usually around 80% quality — compressing below that starts producing artefacts faster than it reduces size." },
+        { problem: "PNG compression barely reduced the file size at all", solution: "PNG uses lossless compression — it can reorganise the data more efficiently but cannot discard information. If your PNG has already been saved with optimal compression (most modern image tools do this by default), there is little redundant data to remove. A PNG that reduces by only 5-10% was already well-optimised. To significantly reduce PNG size, you need to either reduce image dimensions, reduce colour depth (from 24-bit to 8-bit palette mode for simple graphics), or convert to JPEG if the image does not need transparency." },
+        { problem: "Compressed image looks fine on my computer but pixelated on my phone or tablet", solution: "Device screens have different pixel densities. A 1920x1080 image looks sharp on a desktop monitor but the same image on a Retina/4K phone display appears lower quality because the phone has more physical pixels than the image provides. This is not a compression issue — it is a resolution issue. For mobile web use, images should be at least 2x the CSS pixel dimensions (a 400px wide image slot needs a 800px wide image for Retina displays). Increase your source image resolution before compressing for mobile use." }
       ]
     },
     securitySection: {
@@ -3088,12 +3088,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "Image Resizing Tips & Solutions",
+      title: "Image Resizing — Why Upscaling Goes Wrong and How to Avoid It",
       issues: [
-        { problem: "Image looks stretched or distorted", solution: "Lock the aspect ratio option to maintain proportions. This adjusts one dimension automatically to prevent distortion." },
-        { problem: "Enlarged image looks blurry or pixelated", solution: "Upscaling has limits. Images enlarged significantly beyond original size will lose sharpness. Start with the highest resolution source possible." },
-        { problem: "Not sure what dimensions to use", solution: "Use our preset sizes for common platforms. For custom needs, check the platform's image specification guidelines." },
-        { problem: "File size increased after resizing", solution: "Larger dimensions mean larger files. Use our Image Compressor after resizing to optimize file size." }
+        { problem: "I resized to 3000x3000 pixels but it looks blurry and pixelated", solution: "Upscaling (making an image larger than its original pixel dimensions) always reduces apparent sharpness because the software must invent new pixels to fill in the extra space — a process called interpolation. A 500x500 image upscaled to 3000x3000 will look blurry because the original image did not contain enough detail at that size. You cannot add resolution that was not captured. The only solutions are: (1) find a higher-resolution original source; (2) use AI upscaling tools (like Topaz Gigapixel or Adobe Super Resolution) which hallucinate fine details convincingly; (3) accept the blurriness for the use case." },
+        { problem: "I resize to exactly 1080x1080 for Instagram but images keep showing as stretched", solution: "Instagram and most platforms preserve the original aspect ratio unless you force a square crop. If your image is 16:9 (like a phone photo) and you resize it to 1080x1080 by setting both dimensions, you are forcing it into a square which distorts it. The correct approach: first crop the image to a 1:1 aspect ratio using our Crop Image tool, selecting the most important area of the image, then resize the square result to 1080x1080. This avoids stretching." },
+        { problem: "My image resolution is correct but the photo platform says the file is too large", solution: "File size and pixel dimensions are different things. A 2000x2000 image saved as a high-quality PNG may be 15MB, while the same dimensions saved as a medium JPEG may be 500KB. After resizing, use our Image Compressor to reduce the file size while keeping the pixel dimensions. Most platforms have both a pixel dimension requirement and a file size limit — satisfy both by resizing first, then compressing." },
+        { problem: "Image appears the same size on screen after resizing — dimensions changed but visual size did not", solution: "Your display is scaling the image to fit the browser or application window, which can make different-sized images look the same on screen. Check the actual file properties: right-click the image > Properties > Details to see the real pixel dimensions. If the dimensions changed correctly according to the file properties, the resize worked. The on-screen appearance depends on how your browser or app scales images to fit their display area." }
       ]
     },
     securitySection: {
@@ -3163,12 +3163,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "Image Cropping Tips & Solutions",
+      title: "Image Cropping — Aspect Ratios and Resolution After Cropping",
       issues: [
-        { problem: "Can't get the exact aspect ratio needed", solution: "Use 'Custom' ratio option and enter your specific width and height values. The crop frame will maintain your exact proportions." },
-        { problem: "Important content getting cut off", solution: "Zoom out the view or unlock aspect ratio for freeform cropping. Adjust the crop area to include all important elements." },
-        { problem: "Cropped image resolution is too low", solution: "Cropping removes pixels. Start with the highest resolution source image available. Avoid cropping a small portion of large images." },
-        { problem: "Need to crop multiple images the same way", solution: "Note your crop coordinates or aspect ratio. Apply the same settings to each image for consistent results." }
+        { problem: "I cropped tightly and the remaining image looks pixelated when I zoom in or print it", solution: "Cropping reduces the pixel count of the remaining image. If you started with a 3000x2000 image and cropped to a small area (say 300x200 pixels), you have 10x fewer pixels — which prints blurry at any large size. Rule of thumb: the cropped area should have at least 1500 pixels on its shorter side for decent printing, and 800 pixels for web display. If you need a large crop of a small detail, you need a higher-resolution source image from the start." },
+        { problem: "LinkedIn requires 1200x627px for link previews but my image keeps uploading with black bars", solution: "Black bars appear when the image aspect ratio does not match the required ratio. 1200x627 has a specific aspect ratio of approximately 1.91:1. Crop your image to this ratio first: set the crop tool to Custom, enter 1.91 as the width ratio and 1 as the height ratio (or 1200 width, 627 height if your tool supports pixel-exact crop sizes). Then resize the cropped result to exactly 1200x627 using our Image Resizer. This two-step process (crop to ratio, then resize to dimensions) eliminates black bars." },
+        { problem: "I need to crop the same area from 50 product photos — is there a faster way?", solution: "Batch processing the same crop coordinates across many images requires a desktop application like Adobe Lightroom, GIMP with Script-Fu, or even Microsoft PowerPoint (which can crop all photos in a batch through macros). For a small batch (under 10 images), our tool can process them one at a time quickly. Note the exact crop percentages from the first image (e.g., 'left 10%, right 10%, top 5%, bottom 15%') and apply the same values to subsequent images for consistent results." },
+        { problem: "After cropping, the downloaded image has extra white space around my cropped area", solution: "Some image formats and tools add a small canvas border around cropped content. Check if 'padding' or 'border' settings are enabled in the crop tool. If not, the white space may be from the image itself having a white background in that area. Zoom into the corners of the download to confirm: if it is white pixels from the original image, those are content, not padding. If it is added space, try the crop again and ensure 'Fit to cropped area' or equivalent option is selected." }
       ]
     },
     securitySection: {
@@ -3238,12 +3238,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "Image Rotation Tips & Solutions",
+      title: "Image Rotation — EXIF Orientation and Physical Rotation Explained",
       issues: [
-        { problem: "Image still appears wrong after rotating", solution: "Some photos need rotation plus flip. Try combinations: rotate 90 degrees then flip horizontally, for example." },
-        { problem: "Custom angle rotation creates blank corners", solution: "When rotating to non-90-degree angles, the image extends beyond original bounds. Crop after rotating to remove blank areas." },
-        { problem: "Colors or quality changed after rotation", solution: "Our rotation preserves original quality. If issues appear, the source image may have metadata that affected initial display." },
-        { problem: "EXIF rotation not being applied", solution: "Some images have rotation stored in metadata rather than actual pixels. Our tool applies physical rotation visible in all applications." }
+        { problem: "I rotated the image but it still shows sideways in some apps and correctly in others", solution: "Modern cameras save photos with rotation information in EXIF metadata (orientation tag) rather than physically rotating the pixels. Some apps read the EXIF tag and display the image correctly; others ignore it and display raw pixels (showing the image sideways or upside down). Our rotation tool applies physical pixel rotation — it actually re-arranges the pixels to the new orientation AND clears the EXIF orientation tag to 'Normal'. After rotation, the image will display correctly in all applications regardless of EXIF support." },
+        { problem: "My phone photo is sideways on Windows but correct on Mac — which orientation is right?", solution: "Mac Preview respects EXIF rotation tags; Windows Photos (older versions) sometimes ignored them. After using our Rotate Image tool, the photo will be physically rotated to what appears correct on Mac, and the EXIF tag will be set to Normal. It should then display correctly on both Windows and Mac. If you are sending photos to others, always rotate them with a tool that physically rotates the pixels (not just the metadata tag) to avoid this cross-platform inconsistency." },
+        { problem: "I used a 15° rotation to straighten a tilted photo but the corners are now white triangles", solution: "Any rotation that is not a multiple of 90° creates corner areas outside the original rectangular boundary. These areas fill with white (or transparent for PNG). After rotating, use our Crop Image tool to trim the white corners: crop inward until all white triangles are outside the crop frame. You will lose a small amount of edge content but the resulting image will have clean corners. Alternatively, accept the white corners if the image will be displayed on a white background where they are not visible." },
+        { problem: "After rotating a JPG, the file size increased and the image quality looks slightly different", solution: "JPG is a lossy format. Each time you save (or re-encode) a JPG, it goes through a compression cycle that introduces small quality changes. Rotating a JPG involves decoding it, rotating the pixels, and re-encoding — which adds another compression generation. For 90°/270° rotations specifically, some tools support lossless JPG rotation (jpegtran-style) that rotates without re-encoding. If quality preservation is critical, work with PNG files during editing and only convert to JPG for the final version." }
       ]
     },
     securitySection: {
@@ -3313,12 +3313,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "Image Conversion Tips & Solutions",
+      title: "Image Format Conversion — Choosing the Right Format and Fixing Issues",
       issues: [
-        { problem: "Transparency lost when converting to JPG", solution: "JPG doesn't support transparency. Convert to PNG instead, or the transparent areas will become white in JPG." },
-        { problem: "Converted file is larger than original", solution: "Some conversions increase size. PNG to JPG usually reduces size, but JPG to PNG may increase it due to lossless compression." },
-        { problem: "Colors look different after conversion", solution: "Color profiles may differ between formats. For color-critical work, ensure both source and destination support your color space." },
-        { problem: "WebP not displaying in older browsers", solution: "WebP works in all modern browsers but not older versions. Keep JPG/PNG versions for maximum compatibility." }
+        { problem: "I converted PNG to JPG and my logo now has a white background instead of transparent", solution: "JPEG does not support transparency — it is technically impossible in the format. Any transparent area in a PNG converts to the background colour (white by default) when saved as JPG. If you need a transparent logo, keep it as PNG. If you must use JPG (some systems require it), add the intended background colour to the PNG first using an image editor before converting — this way you control what colour replaces the transparency. For web use, WebP supports both transparency and smaller file sizes than PNG, making it the best of both worlds." },
+        { problem: "I converted JPG to PNG hoping for better quality but the image quality did not improve", solution: "Converting from a lossy format (JPG) to a lossless format (PNG) does not recover lost quality. The JPEG artefacts and detail loss are permanently baked into the pixel data. PNG will store those exact pixels losslessly — but the artefacts are still there, just not compressed further. The only way to improve JPG quality is to start with a better JPG (higher quality original or rescan/re-export from source). JPG to PNG conversion is useful for preventing further quality loss in editing, not for recovering past quality loss." },
+        { problem: "The converted WebP file is larger than the original JPG", solution: "WebP compression is superior to JPG for most content, but highly compressed JPGs (saved at 50% quality or lower) may be smaller than the equivalent WebP at equivalent quality, because they have already discarded a lot of information. Very low-quality JPGs are sometimes smaller than the WebP equivalent simply because WebP maintains better visual quality at the same size (meaning WebP needs more data to match a low-quality JPG at the same quality level). Use quality setting 80-85 for WebP to get maximum compression benefit over JPG." },
+        { problem: "I converted to AVIF/WebP but the file does not display in my application or website", solution: "AVIF and WebP are modern formats not supported everywhere. AVIF requires Chrome 85+, Firefox 93+, Safari 16+ — older browsers will show a broken image. For maximum compatibility, keep a JPG or PNG fallback: serve WebP/AVIF to modern browsers and JPG to older ones using the HTML picture element or your CMS's image optimisation settings. If your application system (like a PDF, Office document, or specific CMS) requires JPG, convert to JPG instead — WebP and AVIF are primarily for web delivery, not document embedding." }
       ]
     },
     securitySection: {
