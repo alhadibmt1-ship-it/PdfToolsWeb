@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { Menu, X, Download, Upload, FileText, Settings, ChevronDown, Home, BookOpen } from "lucide-react";
+import { Menu, X, Download, Upload, FileText, Settings, ChevronDown, Home, BookOpen, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -63,6 +63,30 @@ export default function MobileMenu() {
                 <span className="font-medium">Blog</span>
               </div>
             </Link>
+
+            {/* Quick access — top 3 tools */}
+            <div className="mx-2 my-1 p-3 rounded-lg bg-primary/5 border border-primary/10">
+              <div className="flex items-center gap-1.5 mb-2">
+                <Zap className="w-3.5 h-3.5 text-primary" />
+                <span className="text-xs font-semibold text-primary uppercase tracking-wider">Popular Tools</span>
+              </div>
+              <div className="flex flex-col gap-1">
+                {[
+                  { href: "/pdf-to-word", label: "PDF to Word", testId: "mobile-link-pdf-to-word" },
+                  { href: "/merge", label: "Merge PDF", testId: "mobile-link-merge" },
+                  { href: "/compress", label: "Compress PDF", testId: "mobile-link-compress" },
+                ].map(({ href, label, testId }) => (
+                  <Link key={href} href={href} onClick={closeMenu}>
+                    <div
+                      className="px-3 py-2 rounded-md text-sm font-medium text-primary hover:bg-primary/10 cursor-pointer transition-colors"
+                      data-testid={testId}
+                    >
+                      {label}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
 
             {/* Categories with expandable tools */}
             {categories.map((category) => {

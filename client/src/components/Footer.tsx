@@ -33,6 +33,8 @@ export default function Footer() {
   const [isToPdfOpen, setIsToPdfOpen] = useState(false);
   const [isEditPdfOpen, setIsEditPdfOpen] = useState(false);
   const [isCompanyOpen, setIsCompanyOpen] = useState(false);
+  const [isHowToOpen, setIsHowToOpen] = useState(false);
+  const [isBlogOpen, setIsBlogOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
@@ -53,6 +55,8 @@ export default function Footer() {
   const isToPdfVisible = isDesktop || isToPdfOpen;
   const isEditPdfVisible = isDesktop || isEditPdfOpen;
   const isCompanyVisible = isDesktop || isCompanyOpen;
+  const isHowToVisible = isDesktop || isHowToOpen;
+  const isBlogVisible = isDesktop || isBlogOpen;
 
   return (
     <footer className="border-t border-border/50 bg-gradient-to-b from-background to-muted/30 mt-12 sm:mt-16 md:mt-20">
@@ -400,44 +404,80 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* How-To Guides - Programmatic SEO Pages */}
+        {/* How-To Guides - Collapsible on mobile */}
         <div className="mb-8 pt-6 border-t border-border/50">
-          <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground mb-4">How-To Guides</h3>
-          <div className="flex flex-wrap gap-x-6 gap-y-2">
-            {programmaticPages.map((page) => (
-              <FooterLink 
-                key={page.slug} 
-                href={`/tools/${page.slug}`} 
-                testId={`link-footer-guide-${page.slug}`}
-                isVisible={true}
-              >
-                {page.h1.replace(/ — .*$/, '').replace(/ Free$/, '')}
-              </FooterLink>
-            ))}
+          <button
+            id="footer-howto-button"
+            className="w-full flex items-center justify-between md:cursor-default"
+            onClick={() => !isDesktop && setIsHowToOpen(!isHowToOpen)}
+            data-testid="toggle-howto"
+            aria-expanded={isHowToVisible}
+            aria-controls="footer-howto-content"
+          >
+            <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground">How-To Guides</h3>
+            <ChevronDown className={`w-4 h-4 text-muted-foreground md:hidden transition-transform ${isHowToOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
+          </button>
+          <div
+            id="footer-howto-content"
+            role="region"
+            aria-labelledby="footer-howto-button"
+            hidden={!isHowToVisible}
+            className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isHowToVisible ? 'max-h-[600px] mt-4' : 'max-h-0'}`}
+          >
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+              {programmaticPages.map((page) => (
+                <FooterLink 
+                  key={page.slug} 
+                  href={`/tools/${page.slug}`} 
+                  testId={`link-footer-guide-${page.slug}`}
+                  isVisible={isHowToVisible}
+                >
+                  {page.h1.replace(/ — .*$/, '').replace(/ Free$/, '')}
+                </FooterLink>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Blog Articles - Horizontal row */}
+        {/* Blog Articles - Collapsible on mobile */}
         <div className="mb-8 pt-6 border-t border-border/50">
-          <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground mb-4">Popular Articles</h3>
-          <div className="flex flex-wrap gap-x-6 gap-y-2">
-            {blogPosts.map((post) => (
-              <FooterLink 
-                key={post.slug} 
-                href={`/blog/${post.slug}`} 
-                testId={`link-footer-blog-${post.slug}`}
-                isVisible={true}
+          <button
+            id="footer-blog-button"
+            className="w-full flex items-center justify-between md:cursor-default"
+            onClick={() => !isDesktop && setIsBlogOpen(!isBlogOpen)}
+            data-testid="toggle-blog"
+            aria-expanded={isBlogVisible}
+            aria-controls="footer-blog-content"
+          >
+            <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground">Popular Articles</h3>
+            <ChevronDown className={`w-4 h-4 text-muted-foreground md:hidden transition-transform ${isBlogOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
+          </button>
+          <div
+            id="footer-blog-content"
+            role="region"
+            aria-labelledby="footer-blog-button"
+            hidden={!isBlogVisible}
+            className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isBlogVisible ? 'max-h-[600px] mt-4' : 'max-h-0'}`}
+          >
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+              {blogPosts.map((post) => (
+                <FooterLink 
+                  key={post.slug} 
+                  href={`/blog/${post.slug}`} 
+                  testId={`link-footer-blog-${post.slug}`}
+                  isVisible={isBlogVisible}
+                >
+                  {post.title}
+                </FooterLink>
+              ))}
+              <a 
+                href="/blog" 
+                data-testid="link-footer-blog-view-all"
+                className="text-sm text-primary hover:text-primary/80 cursor-pointer transition-colors block py-0.5 font-medium"
               >
-                {post.title}
-              </FooterLink>
-            ))}
-            <a 
-              href="/blog" 
-              data-testid="link-footer-blog-view-all"
-              className="text-sm text-primary hover:text-primary/80 cursor-pointer transition-colors block py-0.5 font-medium"
-            >
-              View All Articles
-            </a>
+                View All Articles
+              </a>
+            </div>
           </div>
         </div>
         

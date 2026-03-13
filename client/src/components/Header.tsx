@@ -40,6 +40,22 @@ export default function Header() {
                 Blog
               </span>
             </Link>
+            <div className="w-px h-5 bg-border/60 mx-1" aria-hidden="true" />
+            <Link href="/pdf-to-word" data-testid="link-nav-pdf-to-word">
+              <span className="px-3 py-2 text-sm font-semibold rounded-lg hover-elevate active-elevate-2 cursor-pointer transition-all text-primary">
+                PDF to Word
+              </span>
+            </Link>
+            <Link href="/merge" data-testid="link-nav-merge">
+              <span className="px-3 py-2 text-sm font-semibold rounded-lg hover-elevate active-elevate-2 cursor-pointer transition-all text-primary">
+                Merge PDF
+              </span>
+            </Link>
+            <Link href="/compress" data-testid="link-nav-compress">
+              <span className="px-3 py-2 text-sm font-semibold rounded-lg hover-elevate active-elevate-2 cursor-pointer transition-all text-primary">
+                Compress
+              </span>
+            </Link>
           </nav>
           
           {/* Desktop search, settings and theme */}

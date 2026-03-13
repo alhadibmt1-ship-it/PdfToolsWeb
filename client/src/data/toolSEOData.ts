@@ -244,12 +244,12 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       ]
     },
     troubleshooting: {
-      title: "PDF to Word Conversion Tips",
+      title: "Why Your PDF Didn't Convert Perfectly — And How to Fix It",
       issues: [
-        { problem: "Formatting looks different in Word", solution: "Complex PDF layouts may need minor adjustments. For best results, use PDFs with standard layouts rather than heavily designed documents." },
-        { problem: "Images are missing from Word document", solution: "Ensure the original PDF has properly embedded images. Very large images may need to be re-inserted manually." },
-        { problem: "Scanned PDF produces garbled text", solution: "Scanned PDFs need OCR first. Use our OCR PDF tool to extract text from scanned documents before converting." },
-        { problem: "Tables are not aligned correctly", solution: "Complex table structures may require manual adjustment in Word. Simple tables convert accurately." }
+        { problem: "My table columns are merged or the borders disappeared after conversion", solution: "This happens when the PDF was created from a scanned image rather than a real Word document. Run our OCR PDF tool on it first — this extracts the actual text layer. Then convert to Word. If the source was a real Word file exported to PDF, the table should convert cleanly. Heavily styled tables with merged cells (common in financial reports) may need a quick clean-up in Word after conversion." },
+        { problem: "The converted Word file has random line breaks in every paragraph", solution: "This is the most common issue and it comes from how the original PDF was built. PDFs store text as individual lines, not paragraphs. Our converter attempts to detect paragraph flow, but with multi-column layouts or narrow text columns, line breaks can leak through. Fix: In Word, press Ctrl+H (Find & Replace). In 'Find what', type ^p^p and replace with a placeholder like ###. Then replace ^p with a space. Then replace ### back with ^p^p. This removes single line breaks while keeping real paragraph breaks." },
+        { problem: "Text appears in the wrong order — columns are mixed up", solution: "Multi-column PDFs (like newspaper layouts or academic papers) present text in visual columns, but the underlying PDF reading order sometimes jumps between columns. After conversion, select all text in Word (Ctrl+A), then use Format > Columns to restructure the layout. For complex academic papers, extracting text with our Extract Text tool first, then copying into Word manually, often gives cleaner results." },
+        { problem: "Scanned PDF gives garbled characters or symbols instead of text", solution: "A scanned PDF is just a photograph of a document — there is no text layer for the converter to extract. You must run OCR (Optical Character Recognition) first. Use our OCR PDF tool to create a searchable PDF with a proper text layer, then convert that result to Word. The OCR output quality depends on scan resolution — ideally 300 DPI or higher for clean character recognition." }
       ]
     },
     comparison: {
