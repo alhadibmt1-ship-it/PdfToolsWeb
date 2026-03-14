@@ -70,6 +70,8 @@ import { useLocation } from "wouter";
 import RecentToolsSection from "@/components/RecentToolsSection";
 import SocialProofSection from "@/components/SocialProofSection";
 import { useUploadContext } from "@/contexts/UploadContext";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle } from "@/lib/languages";
 
 const iconMap: Record<string, any> = {
   merge: Combine,
@@ -105,12 +107,12 @@ const iconMap: Record<string, any> = {
 
 type CategoryFilter = "all" | "from-pdf" | "to-pdf" | "edit-pdf" | "utility";
 
-const categoryInfo: Record<CategoryFilter, { label: string; color: string; gradient: string }> = {
-  "all": { label: "All Tools", color: "text-primary", gradient: "from-primary to-blue-600" },
-  "from-pdf": { label: "Convert from PDF", color: "text-red-500", gradient: "from-red-500 to-red-600" },
-  "to-pdf": { label: "Convert to PDF", color: "text-green-500", gradient: "from-green-500 to-green-600" },
-  "edit-pdf": { label: "Edit PDF", color: "text-blue-500", gradient: "from-blue-500 to-blue-600" },
-  "utility": { label: "Utility Tools", color: "text-purple-500", gradient: "from-purple-500 to-purple-600" }
+const categoryInfo: Record<CategoryFilter, { labelKey: string; color: string; gradient: string }> = {
+  "all":      { labelKey: "allTools",       color: "text-primary",     gradient: "from-primary to-blue-600" },
+  "from-pdf": { labelKey: "convertFromPdf", color: "text-red-500",     gradient: "from-red-500 to-red-600" },
+  "to-pdf":   { labelKey: "convertToPdf",   color: "text-green-500",   gradient: "from-green-500 to-green-600" },
+  "edit-pdf": { labelKey: "editPdf",        color: "text-blue-500",    gradient: "from-blue-500 to-blue-600" },
+  "utility":  { labelKey: "utilityTools",   color: "text-purple-500",  gradient: "from-purple-500 to-purple-600" },
 };
 
 const featuredTools = [
@@ -209,6 +211,8 @@ function FAQItem({ question, answer, isOpen, onClick, id }: { question: string; 
 }
 
 function FeaturedToolCard({ tool, featured }: { tool: typeof PDF_TOOLS[0]; featured: typeof featuredTools[0] }) {
+  const { lang } = useLanguage();
+  const translatedTitle = getToolTitle(tool.id, lang, tool.title);
   return (
     <Link href={tool.path} data-testid={`link-featured-${tool.id}`}>
       <div className="group relative h-full overflow-hidden rounded-2xl bg-gradient-to-br from-card via-card to-muted/30 border border-border/50 p-6 sm:p-8 cursor-pointer transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5">
@@ -219,12 +223,12 @@ function FeaturedToolCard({ tool, featured }: { tool: typeof PDF_TOOLS[0]; featu
             <ConversionIcon iconType={tool.icon} size="large" />
             <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30">
               <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
-              <span className="text-xs font-semibold text-amber-600 dark:text-amber-400">Featured</span>
+              <span className="text-xs font-semibold text-amber-600 dark:text-amber-400">{t(lang, "featuredLabel")}</span>
             </div>
           </div>
           
           <h3 className="text-xl sm:text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
-            {tool.title}
+            {translatedTitle}
           </h3>
           
           <p className="text-muted-foreground mb-4 text-sm sm:text-base leading-relaxed">
@@ -239,7 +243,7 @@ function FeaturedToolCard({ tool, featured }: { tool: typeof PDF_TOOLS[0]; featu
           </div>
           
           <div className="flex items-center text-sm font-semibold text-primary group-hover:gap-2 transition-all">
-            <span>Use {tool.title}</span>
+            <span>{t(lang, "useTool")} {translatedTitle}</span>
             <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
           </div>
         </div>
@@ -255,6 +259,7 @@ export default function HomePage() {
   const [showToolSelector, setShowToolSelector] = useState(false);
   const [, navigate] = useLocation();
   const { setUploadedFile } = useUploadContext();
+  const { lang } = useLanguage();
 
   const handleFileDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -389,17 +394,16 @@ export default function HomePage() {
             <div className="text-center max-w-4xl mx-auto">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/15 border border-primary/30 mb-6">
                 <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                <span className="text-xs sm:text-sm font-semibold text-blue-700 dark:text-blue-300">43+ Free PDF Tools - No Registration Required</span>
+                <span className="text-xs sm:text-sm font-semibold text-blue-700 dark:text-blue-300">{t(lang, "heroBadge")}</span>
               </div>
               
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 leading-[1.1] tracking-tight">
-                Professional PDF Tools
-                <span className="block gradient-text mt-1">100% Free Online</span>
+                {t(lang, "heroTitle")}
+                <span className="block gradient-text mt-1">{t(lang, "heroFree")}</span>
               </h1>
               
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8">
-                Convert, merge, compress, and edit PDF files instantly. 
-                Trusted by millions of users worldwide.
+                {t(lang, "heroSubtitle")}
               </p>
               
               {/* Quick Upload Zone - Customer Chooses Tool */}
@@ -424,8 +428,8 @@ export default function HomePage() {
                       <Upload className="w-7 h-7 text-primary" />
                     </div>
                     <div>
-                      <p className="font-semibold text-lg">Drop your file here or click to upload</p>
-                      <p className="text-sm text-muted-foreground mt-1">Then choose what you want to do with it</p>
+                      <p className="font-semibold text-lg">{t(lang, "heroDropFile")}</p>
+                      <p className="text-sm text-muted-foreground mt-1">{t(lang, "heroChooseTool")}</p>
                     </div>
                   </div>
                 </div>
@@ -437,7 +441,7 @@ export default function HomePage() {
                   <div className="bg-card border rounded-2xl shadow-2xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
                     <div className="p-6 border-b">
                       <div className="flex items-center justify-between mb-2">
-                        <h3 className="text-xl font-bold">What would you like to do?</h3>
+                        <h3 className="text-xl font-bold">{t(lang, "whatWouldYouLikeToDo")}</h3>
                         <button onClick={closeToolSelector} className="p-2 hover:bg-muted rounded-lg" data-testid="button-close-tool-selector">
                           <span className="sr-only">Close</span>
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
@@ -457,7 +461,7 @@ export default function HomePage() {
                             data-testid={`button-select-tool-${tool.id}`}
                           >
                             <ConversionIcon iconType={tool.icon} />
-                            <span className="text-sm font-medium">{tool.title}</span>
+                            <span className="text-sm font-medium">{getToolTitle(tool.id, lang, tool.title)}</span>
                           </button>
                         ))}
                       </div>
@@ -465,7 +469,7 @@ export default function HomePage() {
                         <Link href="/all-tools" onClick={closeToolSelector}>
                           <Button variant="outline" className="gap-2" data-testid="button-view-all-tools">
                             <LayoutGrid className="w-4 h-4" />
-                            View All 43+ Tools
+                            {t(lang, "viewAllTools")}
                           </Button>
                         </Link>
                       </div>
@@ -479,25 +483,25 @@ export default function HomePage() {
                 <Link href="/merge">
                   <Button size="default" className="gap-2" data-testid="button-merge-hero">
                     <Combine className="w-4 h-4" />
-                    Merge PDF
+                    {t(lang, "merge")}
                   </Button>
                 </Link>
                 <Link href="/compress">
                   <Button size="default" variant="outline" className="gap-2" data-testid="button-compress-hero">
                     <FileDown className="w-4 h-4" />
-                    Compress PDF
+                    {t(lang, "compressPdf")}
                   </Button>
                 </Link>
                 <Link href="/pdf-to-word">
                   <Button size="default" variant="outline" className="gap-2" data-testid="button-convert-hero">
                     <FileText className="w-4 h-4" />
-                    PDF to Word
+                    {t(lang, "pdfToWord")}
                   </Button>
                 </Link>
                 <Link href="/split">
                   <Button size="default" variant="outline" className="gap-2" data-testid="button-split-hero">
                     <SplitSquareHorizontal className="w-4 h-4" />
-                    Split PDF
+                    {t(lang, "splitPdf")}
                   </Button>
                 </Link>
               </div>
@@ -553,9 +557,9 @@ export default function HomePage() {
         <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-muted/30 to-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-10 sm:mb-14">
-              <span className="section-label block mb-3">Most Popular</span>
+              <span className="section-label block mb-3">{t(lang, "mostPopular")}</span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-                Featured Tools
+                {t(lang, "featuredTools")}
               </h2>
             </div>
             
@@ -575,12 +579,12 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             {/* Section Header */}
             <div className="text-center mb-8 sm:mb-10">
-              <span className="section-label block mb-3">Complete Toolkit</span>
+              <span className="section-label block mb-3">{t(lang, "completeToolkit")}</span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-4">
-                All PDF Tools
+                {t(lang, "allPdfTools")}
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Choose from 43+ professional tools for all your PDF needs
+                {t(lang, "allPdfToolsSubtitle")}
               </p>
             </div>
             
@@ -597,10 +601,10 @@ export default function HomePage() {
                   }`}
                   data-testid={`button-filter-${cat}`}
                 >
-                  {categoryInfo[cat].label}
+                  {t(lang, categoryInfo[cat].labelKey)}
                   {cat !== "all" && (
                     <span className={`ml-1.5 ${activeCategory === cat ? "opacity-80" : "text-muted-foreground"}`}>
-                      ({allTools.filter(t => t.category === cat).length})
+                      ({allTools.filter(tool => tool.category === cat).length})
                     </span>
                   )}
                 </button>
@@ -621,7 +625,7 @@ export default function HomePage() {
                       </div>
                       
                       <h3 className="text-xs sm:text-sm font-semibold group-hover:text-primary transition-colors leading-tight line-clamp-2 mb-1">
-                        {tool.title}
+                        {getToolTitle(tool.id, lang, tool.title)}
                       </h3>
                       
                       <p className="text-[10px] sm:text-xs text-muted-foreground line-clamp-2 flex-1 hidden sm:block">
@@ -668,12 +672,12 @@ export default function HomePage() {
         <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-muted/30 to-background">
           <div className="max-w-5xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-12 sm:mb-16">
-              <span className="section-label block mb-3">Simple Process</span>
+              <span className="section-label block mb-3">{t(lang, "simpleProcess")}</span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-4">
-                How It Works
+                {t(lang, "howItWorks")}
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto">
-                Three simple steps to transform your PDF files
+                {t(lang, "howItWorksSubtitle")}
               </p>
             </div>
             
@@ -682,7 +686,7 @@ export default function HomePage() {
                 <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-primary to-blue-600 text-white flex items-center justify-center mx-auto mb-5 text-2xl sm:text-3xl font-bold shadow-xl shadow-primary/25">
                   1
                 </div>
-                <h3 className="font-semibold text-lg mb-2">Choose Your Tool</h3>
+                <h3 className="font-semibold text-lg mb-2">{t(lang, "step1Title")}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Select from 43+ free PDF tools including converters, editors, and utilities
                 </p>
@@ -693,7 +697,7 @@ export default function HomePage() {
                 <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-primary to-blue-600 text-white flex items-center justify-center mx-auto mb-5 text-2xl sm:text-3xl font-bold shadow-xl shadow-primary/25">
                   2
                 </div>
-                <h3 className="font-semibold text-lg mb-2">Upload Your File</h3>
+                <h3 className="font-semibold text-lg mb-2">{t(lang, "step2Title")}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Drag and drop or click to upload your PDF or document files securely
                 </p>
@@ -704,7 +708,7 @@ export default function HomePage() {
                 <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-primary to-blue-600 text-white flex items-center justify-center mx-auto mb-5 text-2xl sm:text-3xl font-bold shadow-xl shadow-primary/25">
                   3
                 </div>
-                <h3 className="font-semibold text-lg mb-2">Download Result</h3>
+                <h3 className="font-semibold text-lg mb-2">{t(lang, "step3Title")}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Get your processed file instantly - fast, free, and with no watermarks
                 </p>
@@ -717,12 +721,12 @@ export default function HomePage() {
         <section className="py-16 sm:py-20 md:py-24">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-12 sm:mb-16">
-              <span className="section-label block mb-3">Why Choose Us</span>
+              <span className="section-label block mb-3">{t(lang, "whyChooseUs")}</span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-4">
-                Why PDF HUB 24?
+                {t(lang, "whyPdfHub24")}
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto">
-                Trusted by users worldwide for fast, secure, and reliable PDF processing
+                {t(lang, "whyChooseSubtitle")}
               </p>
             </div>
             
@@ -1000,7 +1004,7 @@ export default function HomePage() {
             <div className="text-center mt-8">
               <Link href="/blog">
                 <Button variant="outline" className="gap-2" data-testid="button-view-all-articles">
-                  View All Articles
+                  {t(lang, "viewAllArticles")}
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
