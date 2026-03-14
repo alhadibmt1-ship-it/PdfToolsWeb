@@ -111,6 +111,9 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     viewAllArticles: "View All Articles",
     featuredLabel: "Featured",
     useTool: "Use",
+    selectFile: "Select File",
+    gdprCompliant: "GDPR Compliant",
+    noRegistration: "No Registration",
   },
   es: {
     home: "Inicio",
@@ -178,6 +181,9 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     viewAllArticles: "Ver todos los artículos",
     featuredLabel: "Destacado",
     useTool: "Usar",
+    selectFile: "Seleccionar archivo",
+    gdprCompliant: "Cumple con GDPR",
+    noRegistration: "Sin registro",
   },
   ar: {
     home: "الرئيسية",
@@ -245,6 +251,9 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     viewAllArticles: "عرض جميع المقالات",
     featuredLabel: "مميز",
     useTool: "استخدم",
+    selectFile: "اختر ملفًا",
+    gdprCompliant: "متوافق مع GDPR",
+    noRegistration: "بدون تسجيل",
   },
   hi: {
     home: "होम",
@@ -312,6 +321,9 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     viewAllArticles: "सभी लेख देखें",
     featuredLabel: "विशेष",
     useTool: "उपयोग करें",
+    selectFile: "फ़ाइल चुनें",
+    gdprCompliant: "GDPR अनुपालित",
+    noRegistration: "कोई पंजीकरण नहीं",
   },
   fr: {
     home: "Accueil",
@@ -379,6 +391,9 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     viewAllArticles: "Voir tous les articles",
     featuredLabel: "En vedette",
     useTool: "Utiliser",
+    selectFile: "Sélectionner un fichier",
+    gdprCompliant: "Conforme au RGPD",
+    noRegistration: "Sans inscription",
   },
   pt: {
     home: "Início",
@@ -446,6 +461,9 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     viewAllArticles: "Ver todos os artigos",
     featuredLabel: "Em destaque",
     useTool: "Usar",
+    selectFile: "Selecionar arquivo",
+    gdprCompliant: "Conforme com GDPR",
+    noRegistration: "Sem registro",
   },
 };
 
