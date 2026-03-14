@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
 import { lazy, Suspense } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -8,8 +8,10 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import { SettingsProvider } from "@/contexts/SettingsContext";
 import { RecentToolsProvider } from "@/contexts/RecentToolsContext";
 import { UploadProvider } from "@/contexts/UploadContext";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 import ScrollToTop from "@/components/ScrollToTop";
 import MobileQuickActions from "@/components/MobileQuickActions";
+import LanguageBanner from "@/components/LanguageBanner";
 import HomePage from "@/pages/HomePage";
 
 const MergePdfPage = lazy(() => import("@/pages/MergePdfPage"));
@@ -90,10 +92,11 @@ function PageLoader() {
   );
 }
 
-function Router() {
+function AppRoutes() {
   return (
     <Suspense fallback={<PageLoader />}>
       <ScrollToTop />
+      <LanguageBanner />
       <Switch>
         <Route path="/" component={HomePage} />
         <Route path="/merge" component={MergePdfPage} />
@@ -115,7 +118,6 @@ function Router() {
         <Route path="/add-page-numbers" component={AddPageNumbersPage} />
         <Route path="/add-watermark" component={AddWatermarkPage} />
         <Route path="/reorder-pages" component={ReorderPagesPage} />
-        
         <Route path="/html-to-pdf" component={HtmlToPdfPage} />
         <Route path="/image-compressor" component={ImageCompressorPage} />
         <Route path="/webp-to-pdf" component={WebpToPdfPage} />
@@ -129,7 +131,6 @@ function Router() {
         <Route path="/sign-pdf" component={SignPdfPage} />
         <Route path="/ocr-pdf" component={OcrPdfPage} />
         <Route path="/compare-pdf" component={ComparePdfPage} />
-        
         <Route path="/pdf-to-ppt" component={PdfToPptPage} />
         <Route path="/ppt-to-pdf" component={PptToPdfPage} />
         <Route path="/tiff-to-pdf" component={TiffToPdfPage} />
@@ -137,12 +138,10 @@ function Router() {
         <Route path="/edit-pdf" component={EditPdfPage} />
         <Route path="/annotate-pdf" component={AnnotatePdfPage} />
         <Route path="/redact-pdf" component={RedactPdfPage} />
-        
         <Route path="/resize-image" component={ResizeImagePage} />
         <Route path="/crop-image" component={CropImagePage} />
         <Route path="/rotate-image" component={RotateImagePage} />
         <Route path="/convert-image" component={ConvertImagePage} />
-        
         <Route path="/about" component={AboutPage} />
         <Route path="/privacy" component={PrivacyPage} />
         <Route path="/terms" component={TermsPage} />
@@ -155,7 +154,6 @@ function Router() {
         <Route path="/all-tools" component={AllToolsPage} />
         <Route path="/free-pdf-converter" component={FreePdfConverterPage} />
         <Route path="/free-pdf-editor" component={FreePdfEditorPage} />
-        
         <Route path="/write-for-us" component={WriteForUsPage} />
         <Route path="/data-security" component={DataSecurityPage} />
         <Route path="/auto-delete" component={AutoDeletePage} />
@@ -175,6 +173,24 @@ function Router() {
   );
 }
 
+const LANG_CODES = ["es", "ar", "hi", "fr", "pt"];
+
+function Router() {
+  const [location] = useLocation();
+  const langMatch = location.match(/^\/(es|ar|hi|fr|pt)(\/.*)?$/);
+  const activeLang = langMatch ? langMatch[1] : "en";
+
+  if (activeLang !== "en") {
+    return (
+      <WouterRouter base={`/${activeLang}`}>
+        <AppRoutes />
+      </WouterRouter>
+    );
+  }
+
+  return <AppRoutes />;
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
@@ -183,11 +199,13 @@ function App() {
           <RecentToolsProvider>
             <UploadProvider>
               <TooltipProvider>
-                <div className="pb-16 md:pb-0">
-                  <Toaster />
-                  <Router />
-                  <MobileQuickActions />
-                </div>
+                <LanguageProvider>
+                  <div className="pb-16 md:pb-0">
+                    <Toaster />
+                    <Router />
+                    <MobileQuickActions />
+                  </div>
+                </LanguageProvider>
               </TooltipProvider>
             </UploadProvider>
           </RecentToolsProvider>

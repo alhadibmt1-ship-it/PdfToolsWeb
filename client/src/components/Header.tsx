@@ -3,6 +3,7 @@ import ThemeToggle from "./ThemeToggle";
 import SettingsDialog from "./SettingsDialog";
 import MobileMenu from "./MobileMenu";
 import ToolSearch from "./ToolSearch";
+import LanguageSwitcher from "./LanguageSwitcher";
 import siteLogo from "@assets/generated_images/logo-64.webp";
 
 export default function Header() {
@@ -58,15 +59,19 @@ export default function Header() {
             </Link>
           </nav>
           
-          {/* Desktop search, settings and theme */}
+          {/* Desktop search, language, settings and theme */}
           <div className="hidden md:flex items-center gap-2 pl-2 border-l border-border/50">
             <ToolSearch />
+            <LanguageSwitcher />
             <SettingsDialog />
             <ThemeToggle />
           </div>
           
-          {/* Mobile: theme toggle and hamburger menu */}
+          {/* Mobile: language switcher, theme toggle and hamburger menu */}
           <div className="flex items-center gap-0.5">
+            <div className="md:hidden">
+              <LanguageSwitcher />
+            </div>
             <div className="md:hidden">
               <ThemeToggle />
             </div>
