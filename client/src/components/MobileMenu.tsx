@@ -5,15 +5,18 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { PDF_TOOLS } from "@shared/schema";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t } from "@/lib/languages";
 
 const categories = [
-  { id: "from-pdf", label: "Convert from PDF", icon: Download, color: "text-red-500" },
-  { id: "to-pdf", label: "Convert to PDF", icon: Upload, color: "text-green-500" },
-  { id: "edit-pdf", label: "Edit PDF", icon: FileText, color: "text-primary" },
-  { id: "utility", label: "Utility Tools", icon: Settings, color: "text-purple-500" },
+  { id: "from-pdf", labelKey: "convertFromPdf", icon: Download, color: "text-red-500" },
+  { id: "to-pdf", labelKey: "convertToPdf", icon: Upload, color: "text-green-500" },
+  { id: "edit-pdf", labelKey: "editPdf", icon: FileText, color: "text-primary" },
+  { id: "utility", labelKey: "utilityTools", icon: Settings, color: "text-purple-500" },
 ];
 
 export default function MobileMenu() {
+  const { lang } = useLanguage();
   const [open, setOpen] = useState(false);
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
 
@@ -29,7 +32,7 @@ export default function MobileMenu() {
           variant="ghost"
           size="icon"
           data-testid="button-mobile-menu"
-          aria-label="Open menu"
+          aria-label={t(lang, "openMenu")}
           className="md:hidden"
         >
           <Menu className="w-5 h-5" />
@@ -37,7 +40,7 @@ export default function MobileMenu() {
       </SheetTrigger>
       <SheetContent side="right" className="w-[85vw] max-w-[320px] p-0">
         <SheetHeader className="p-4 border-b">
-          <SheetTitle>Menu</SheetTitle>
+          <SheetTitle>{t(lang, "menu")}</SheetTitle>
         </SheetHeader>
         
         <div className="flex flex-col h-[calc(100%-60px)]">
@@ -49,7 +52,7 @@ export default function MobileMenu() {
                 data-testid="mobile-link-home"
               >
                 <Home className="w-5 h-5 text-blue-500" />
-                <span className="font-medium">Home</span>
+                <span className="font-medium">{t(lang, "home")}</span>
               </div>
             </Link>
 
@@ -60,7 +63,7 @@ export default function MobileMenu() {
                 data-testid="mobile-link-blog"
               >
                 <BookOpen className="w-5 h-5 text-amber-500" />
-                <span className="font-medium">Blog</span>
+                <span className="font-medium">{t(lang, "blog")}</span>
               </div>
             </Link>
 
@@ -68,20 +71,20 @@ export default function MobileMenu() {
             <div className="mx-2 my-1 p-3 rounded-lg bg-primary/5 border border-primary/10">
               <div className="flex items-center gap-1.5 mb-2">
                 <Zap className="w-3.5 h-3.5 text-primary" />
-                <span className="text-xs font-semibold text-primary uppercase tracking-wider">Popular Tools</span>
+                <span className="text-xs font-semibold text-primary uppercase tracking-wider">{t(lang, "popularTools")}</span>
               </div>
               <div className="flex flex-col gap-1">
                 {[
-                  { href: "/pdf-to-word", label: "PDF to Word", testId: "mobile-link-pdf-to-word" },
-                  { href: "/merge", label: "Merge PDF", testId: "mobile-link-merge" },
-                  { href: "/compress", label: "Compress PDF", testId: "mobile-link-compress" },
-                ].map(({ href, label, testId }) => (
+                  { href: "/pdf-to-word", labelKey: "pdfToWord", testId: "mobile-link-pdf-to-word" },
+                  { href: "/merge", labelKey: "merge", testId: "mobile-link-merge" },
+                  { href: "/compress", labelKey: "compressPdf", testId: "mobile-link-compress" },
+                ].map(({ href, labelKey, testId }) => (
                   <Link key={href} href={href} onClick={closeMenu}>
                     <div
                       className="px-3 py-2 rounded-md text-sm font-medium text-primary hover:bg-primary/10 cursor-pointer transition-colors"
                       data-testid={testId}
                     >
-                      {label}
+                      {t(lang, labelKey)}
                     </div>
                   </Link>
                 ))}
@@ -107,7 +110,7 @@ export default function MobileMenu() {
                     >
                       <div className="flex items-center gap-3">
                         <CategoryIcon className={`w-5 h-5 ${category.color}`} />
-                        <span className="font-medium">{category.label}</span>
+                        <span className="font-medium">{t(lang, category.labelKey)}</span>
                       </div>
                       <ChevronDown
                         className={`w-4 h-4 text-muted-foreground transition-transform duration-200 ${
@@ -138,7 +141,7 @@ export default function MobileMenu() {
           {/* Footer */}
           <div className="p-4 border-t bg-muted/30">
             <p className="text-xs text-muted-foreground text-center">
-              43+ Free PDF Tools
+              {t(lang, "freeToolsCount")}
             </p>
           </div>
         </div>
