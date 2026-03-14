@@ -260,6 +260,7 @@ export default function HomePage() {
   const [, navigate] = useLocation();
   const { setUploadedFile } = useUploadContext();
   const { lang } = useLanguage();
+  const [showAllInGrid, setShowAllInGrid] = useState(false);
 
   const handleFileDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -372,6 +373,16 @@ export default function HomePage() {
   const filteredTools = activeCategory === "all" 
     ? allTools 
     : allTools.filter(tool => tool.category === activeCategory);
+
+  const TOOLS_INITIAL_COUNT = 15;
+  const displayedTools = (activeCategory === "all" && !showAllInGrid)
+    ? filteredTools.slice(0, TOOLS_INITIAL_COUNT)
+    : filteredTools;
+
+  const handleCategoryChange = (cat: CategoryFilter) => {
+    setActiveCategory(cat);
+    setShowAllInGrid(false);
+  };
   
   const featuredToolsData = featuredTools.map(ft => ({
     tool: PDF_TOOLS.find(t => t.id === ft.id)!,
@@ -385,173 +396,129 @@ export default function HomePage() {
       <Header />
       
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="hero-gradient py-12 sm:py-16 md:py-20 lg:py-24 relative overflow-hidden">
+        {/* Hero Section — compact, tool-first */}
+        <section className="hero-gradient pt-6 pb-4 sm:pt-8 sm:pb-5 relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,hsl(217_91%_60%/0.1)_0%,transparent_50%)]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,hsl(192_91%_50%/0.08)_0%,transparent_40%)]" />
-          
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-            <div className="text-center max-w-4xl mx-auto">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/15 border border-primary/30 mb-6">
-                <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                <span className="text-xs sm:text-sm font-semibold text-blue-700 dark:text-blue-300">{t(lang, "heroBadge")}</span>
+            <div className="text-center max-w-3xl mx-auto">
+
+              {/* Badge */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/30 mb-3">
+                <Sparkles className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                <span className="text-xs font-semibold text-blue-700 dark:text-blue-300">{t(lang, "heroBadge")}</span>
               </div>
-              
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 leading-[1.1] tracking-tight">
+
+              {/* Heading */}
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 leading-[1.15] tracking-tight">
                 {t(lang, "heroTitle")}
-                <span className="block gradient-text mt-1">{t(lang, "heroFree")}</span>
+                <span className="gradient-text"> {t(lang, "heroFree")}</span>
               </h1>
-              
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8">
+
+              <p className="text-sm sm:text-base text-muted-foreground mb-4 max-w-xl mx-auto">
                 {t(lang, "heroSubtitle")}
               </p>
-              
-              {/* Quick Upload Zone - Customer Chooses Tool */}
-              <div className="max-w-xl mx-auto mb-8">
-                <div 
-                  className="group border-2 border-dashed border-primary/30 hover:border-primary/60 rounded-2xl p-6 sm:p-8 bg-card/50 backdrop-blur-sm cursor-pointer transition-all hover:shadow-lg hover:shadow-primary/5 relative" 
+
+              {/* Compact horizontal upload strip */}
+              <div className="max-w-lg mx-auto mb-4">
+                <div
+                  className="group flex items-center gap-3 border-2 border-dashed border-primary/30 hover:border-primary/60 rounded-xl px-4 py-3 bg-card/60 backdrop-blur-sm cursor-pointer transition-all hover:shadow-md"
                   data-testid="hero-upload-zone"
                   onDragOver={(e) => e.preventDefault()}
                   onDrop={handleFileDrop}
                   onClick={() => document.getElementById('hero-file-input')?.click()}
                 >
-                  <input 
-                    type="file" 
-                    id="hero-file-input" 
-                    className="hidden" 
+                  <input
+                    type="file"
+                    id="hero-file-input"
+                    className="hidden"
                     accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png,.gif,.tiff,.webp,.html"
                     onChange={handleFileSelect}
                     data-testid="input-hero-file"
                   />
-                  <div className="flex flex-col items-center gap-3">
-                    <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Upload className="w-7 h-7 text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-lg">{t(lang, "heroDropFile")}</p>
-                      <p className="text-sm text-muted-foreground mt-1">{t(lang, "heroChooseTool")}</p>
-                    </div>
+                  <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-105 transition-transform flex-shrink-0">
+                    <Upload className="w-5 h-5 text-primary" />
                   </div>
+                  <div className="text-left">
+                    <p className="font-semibold text-sm">{t(lang, "heroDropFile")}</p>
+                    <p className="text-xs text-muted-foreground">{t(lang, "heroChooseTool")}</p>
+                  </div>
+                  <Button size="sm" className="ml-auto flex-shrink-0" data-testid="button-upload-hero">
+                    {t(lang, "selectFile")}
+                  </Button>
                 </div>
               </div>
 
-              {/* Tool Selector Modal */}
-              {showToolSelector && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm" onClick={closeToolSelector}>
-                  <div className="bg-card border rounded-2xl shadow-2xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
-                    <div className="p-6 border-b">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="text-xl font-bold">{t(lang, "whatWouldYouLikeToDo")}</h3>
-                        <button onClick={closeToolSelector} className="p-2 hover:bg-muted rounded-lg" data-testid="button-close-tool-selector">
-                          <span className="sr-only">Close</span>
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-                        </button>
-                      </div>
-                      {localFile && (
-                        <p className="text-sm text-muted-foreground">File: <span className="font-medium text-foreground">{localFile.name}</span></p>
-                      )}
-                    </div>
-                    <div className="p-4 overflow-y-auto max-h-[60vh]">
-                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        {PDF_TOOLS.slice(0, 18).map((tool) => (
-                          <button
-                            key={tool.id}
-                            onClick={() => handleToolSelect(tool.path)}
-                            className="flex flex-col items-center gap-2 p-4 rounded-xl border hover:border-primary/50 hover:bg-primary/5 transition-all text-center"
-                            data-testid={`button-select-tool-${tool.id}`}
-                          >
-                            <ConversionIcon iconType={tool.icon} />
-                            <span className="text-sm font-medium">{getToolTitle(tool.id, lang, tool.title)}</span>
-                          </button>
-                        ))}
-                      </div>
-                      <div className="mt-4 pt-4 border-t text-center">
-                        <Link href="/all-tools" onClick={closeToolSelector}>
-                          <Button variant="outline" className="gap-2" data-testid="button-view-all-tools">
-                            <LayoutGrid className="w-4 h-4" />
-                            {t(lang, "viewAllTools")}
-                          </Button>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-              
-              {/* Quick Action Buttons */}
-              <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8">
-                <Link href="/merge">
-                  <Button size="default" className="gap-2" data-testid="button-merge-hero">
-                    <Combine className="w-4 h-4" />
-                    {t(lang, "merge")}
-                  </Button>
-                </Link>
-                <Link href="/compress">
-                  <Button size="default" variant="outline" className="gap-2" data-testid="button-compress-hero">
-                    <FileDown className="w-4 h-4" />
-                    {t(lang, "compressPdf")}
-                  </Button>
-                </Link>
-                <Link href="/pdf-to-word">
-                  <Button size="default" variant="outline" className="gap-2" data-testid="button-convert-hero">
-                    <FileText className="w-4 h-4" />
-                    {t(lang, "pdfToWord")}
-                  </Button>
-                </Link>
-                <Link href="/split">
-                  <Button size="default" variant="outline" className="gap-2" data-testid="button-split-hero">
-                    <SplitSquareHorizontal className="w-4 h-4" />
-                    {t(lang, "splitPdf")}
-                  </Button>
-                </Link>
-              </div>
-              
-              {/* Trust Badges */}
-              <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-green-500" />
+              {/* Trust row — 5 badges */}
+              <div className="flex flex-wrap justify-center gap-3 sm:gap-5 text-xs text-muted-foreground">
+                <div className="flex items-center gap-1.5">
+                  <Shield className="w-3.5 h-3.5 text-green-500" />
                   <span>SSL Encrypted</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-orange-500" />
+                <div className="flex items-center gap-1.5">
+                  <Lock className="w-3.5 h-3.5 text-blue-500" />
+                  <span>GDPR Compliant</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle className="w-3.5 h-3.5 text-primary" />
+                  <span>No Registration</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Zap className="w-3.5 h-3.5 text-orange-500" />
                   <span>Instant Processing</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-blue-500" />
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle className="w-3.5 h-3.5 text-purple-500" />
                   <span>No Watermarks</span>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4" data-testid="ad-placeholder-hero">
-          <div className="min-h-[90px] flex items-center justify-center text-xs text-muted-foreground/50" aria-hidden="true" />
-        </div>
 
-        {/* Stats Bar - Like PDFForge */}
-        <section className="py-8 sm:py-10 bg-gradient-to-r from-primary/5 via-primary/10 to-cyan-500/5 border-y">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-              <div className="text-center">
-                <div className="text-3xl sm:text-4xl font-bold text-primary mb-1">1M+</div>
-                <div className="text-sm text-muted-foreground">Files Processed</div>
+        {/* Tool Selector Modal */}
+        {showToolSelector && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm" onClick={closeToolSelector}>
+            <div className="bg-card border rounded-2xl shadow-2xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
+              <div className="p-6 border-b">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-xl font-bold">{t(lang, "whatWouldYouLikeToDo")}</h3>
+                  <button onClick={closeToolSelector} className="p-2 hover:bg-muted rounded-lg" data-testid="button-close-tool-selector">
+                    <span className="sr-only">Close</span>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                  </button>
+                </div>
+                {localFile && (
+                  <p className="text-sm text-muted-foreground">File: <span className="font-medium text-foreground">{localFile.name}</span></p>
+                )}
               </div>
-              <div className="text-center">
-                <div className="text-3xl sm:text-4xl font-bold text-primary mb-1">43+</div>
-                <div className="text-sm text-muted-foreground">PDF Tools</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl sm:text-4xl font-bold text-primary mb-1">99%</div>
-                <div className="text-sm text-muted-foreground">Satisfaction Rate</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl sm:text-4xl font-bold text-primary mb-1">24/7</div>
-                <div className="text-sm text-muted-foreground">Always Available</div>
+              <div className="p-4 overflow-y-auto max-h-[60vh]">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {PDF_TOOLS.slice(0, 18).map((tool) => (
+                    <button
+                      key={tool.id}
+                      onClick={() => handleToolSelect(tool.path)}
+                      className="flex flex-col items-center gap-2 p-4 rounded-xl border hover:border-primary/50 hover:bg-primary/5 transition-all text-center"
+                      data-testid={`button-select-tool-${tool.id}`}
+                    >
+                      <ConversionIcon iconType={tool.icon} />
+                      <span className="text-sm font-medium">{getToolTitle(tool.id, lang, tool.title)}</span>
+                    </button>
+                  ))}
+                </div>
+                <div className="mt-4 pt-4 border-t text-center">
+                  <Link href="/all-tools" onClick={closeToolSelector}>
+                    <Button variant="outline" className="gap-2" data-testid="button-view-all-tools">
+                      <LayoutGrid className="w-4 h-4" />
+                      {t(lang, "viewAllTools")}
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-        </section>
+        )}
 
         {/* Featured Tools Section - Adobe Style */}
         <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-muted/30 to-background">
@@ -593,7 +560,7 @@ export default function HomePage() {
               {categories.map((cat) => (
                 <button
                   key={cat}
-                  onClick={() => setActiveCategory(cat)}
+                  onClick={() => handleCategoryChange(cat)}
                   className={`px-4 sm:px-5 py-2.5 rounded-full text-sm font-medium transition-all touch-manipulation ${
                     activeCategory === cat
                       ? `bg-gradient-to-r ${categoryInfo[cat].gradient} text-white shadow-lg`
@@ -613,7 +580,7 @@ export default function HomePage() {
             
             {/* Tools Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
-              {filteredTools.map((tool, index) => (
+              {displayedTools.map((tool, index) => (
                 <Link key={tool.id} href={tool.path} data-testid={`link-tool-${tool.id}`}>
                   <div 
                     className="group relative h-full overflow-hidden rounded-xl bg-card border border-border/50 p-4 sm:p-5 cursor-pointer transition-all duration-200 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 active:scale-[0.98] touch-manipulation"
@@ -642,6 +609,32 @@ export default function HomePage() {
               ))}
             </div>
             
+            {/* Show all / show less expander */}
+            {activeCategory === "all" && filteredTools.length > TOOLS_INITIAL_COUNT && (
+              <div className="mt-6 text-center">
+                {!showAllInGrid ? (
+                  <Button
+                    variant="outline"
+                    className="gap-2"
+                    onClick={() => setShowAllInGrid(true)}
+                    data-testid="button-show-all-tools"
+                  >
+                    <LayoutGrid className="w-4 h-4" />
+                    Show all {filteredTools.length} tools
+                  </Button>
+                ) : (
+                  <Button
+                    variant="ghost"
+                    className="gap-2 text-muted-foreground"
+                    onClick={() => setShowAllInGrid(false)}
+                    data-testid="button-show-less-tools"
+                  >
+                    Show fewer tools
+                  </Button>
+                )}
+              </div>
+            )}
+
             {/* Category Stats */}
             <div className="mt-10 sm:mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
               <div className="text-center p-4 rounded-xl bg-red-500/5 border border-red-500/10">

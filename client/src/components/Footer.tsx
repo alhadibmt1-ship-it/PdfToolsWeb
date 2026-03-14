@@ -515,9 +515,14 @@ export default function Footer() {
         </div>
         <div className="premium-divider mb-6" />
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
             <p className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} PDF HUB 24. All rights reserved.
+            </p>
+            <p className="text-xs text-muted-foreground/60">
+              Built by{" "}
+              <a href="/about" className="hover:text-primary transition-colors">Ahmad Malik</a>
+              {" "}· Lahore, Pakistan
             </p>
             <div className="flex items-center gap-3">
               <a 
