@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
+import CloudImportBar from "@/components/CloudImportBar";
 import ProcessingState from "@/components/ProcessingState";
 import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
 import TrustBadges from "@/components/TrustBadges";
@@ -125,6 +126,7 @@ export default function PdfToJpgPage() {
               multiple={false}
               disabled={status === "processing"}
             />
+            <CloudImportBar accept="pdf" onFileImported={(file) => setFiles([file])} />
 
             {files.length > 0 && status === "idle" && (
               <Button 

@@ -4,7 +4,7 @@ import { Link } from "wouter";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
-import UrlImportButton from "@/components/UrlImportButton";
+import CloudImportBar from "@/components/CloudImportBar";
 import ProcessingState from "@/components/ProcessingState";
 import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
 import TrustBadges from "@/components/TrustBadges";
@@ -130,12 +130,10 @@ export default function SplitPdfPage() {
               multiple={false}
               disabled={status === "processing"}
             />
-            <div className="flex justify-center">
-              <UrlImportButton
-                accept=".pdf"
-                onFileImported={(file) => setFiles([file])}
-              />
-            </div>
+            <CloudImportBar
+              accept="pdf"
+              onFileImported={(file) => setFiles([file])}
+            />
 
             {files.length > 0 && status === "idle" && (
               <div className="rounded-lg border bg-card p-6 space-y-4">
