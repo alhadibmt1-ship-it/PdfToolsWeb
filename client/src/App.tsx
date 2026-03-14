@@ -58,6 +58,10 @@ const EditPdfPage = lazy(() => import("@/pages/EditPdfPage"));
 const AnnotatePdfPage = lazy(() => import("@/pages/AnnotatePdfPage"));
 const RedactPdfPage = lazy(() => import("@/pages/RedactPdfPage"));
 
+const ScanToPdfPage = lazy(() => import("@/pages/ScanToPdfPage"));
+const PdfToAPage = lazy(() => import("@/pages/PdfToAPage"));
+const BatchCompressPage = lazy(() => import("@/pages/BatchCompressPage"));
+
 const ResizeImagePage = lazy(() => import("@/pages/ResizeImagePage"));
 const CropImagePage = lazy(() => import("@/pages/CropImagePage"));
 const RotateImagePage = lazy(() => import("@/pages/RotateImagePage"));
@@ -148,6 +152,9 @@ function AppRoutes() {
         <Route path="/edit-pdf" component={EditPdfPage} />
         <Route path="/annotate-pdf" component={AnnotatePdfPage} />
         <Route path="/redact-pdf" component={RedactPdfPage} />
+        <Route path="/scan-to-pdf" component={ScanToPdfPage} />
+        <Route path="/pdf-to-pdfa" component={PdfToAPage} />
+        <Route path="/batch-compress" component={BatchCompressPage} />
         <Route path="/resize-image" component={ResizeImagePage} />
         <Route path="/crop-image" component={CropImagePage} />
         <Route path="/rotate-image" component={RotateImagePage} />

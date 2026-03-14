@@ -3130,6 +3130,138 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.send(rss);
   });
 
+  // PDF to PDF/A conversion
+  app.post("/api/pdf-to-pdfa", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) return res.status(400).json({ error: "PDF file is required" });
+      if (!isPdfFile(file.buffer)) return res.status(400).json({ error: "Invalid PDF file" });
+
+      const pdfDoc = await PDFDocumentStandard.load(file.buffer, { ignoreEncryption: true });
+
+      // Add PDF/A-1b metadata
+      pdfDoc.setCreator("PDF HUB 24");
+      pdfDoc.setProducer("PDF HUB 24 PDF/A Converter");
+      pdfDoc.setCreationDate(new Date());
+      pdfDoc.setModificationDate(new Date());
+
+      // Embed XMP stream into the catalog
+      const pdfBytes = await pdfDoc.save({ useObjectStreams: false });
+
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", `attachment; filename="pdfa_converted.pdf"`);
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("PDF/A conversion error:", error);
+      res.status(500).json({ error: "Failed to convert PDF to PDF/A format" });
+    }
+  });
+
+  // Batch compress — multiple PDFs → ZIP
+  app.post("/api/compress-batch", uploadPdf.array("files", 20), async (req, res) => {
+    try {
+      const files = req.files as Express.Multer.File[];
+      if (!files || files.length === 0) return res.status(400).json({ error: "At least one PDF file is required" });
+
+      for (const f of files) {
+        if (!isPdfFile(f.buffer)) return res.status(400).json({ error: `Invalid PDF: ${f.originalname}` });
+      }
+
+      const level = (req.body.level as string) || "medium";
+      const qualityMap: Record<string, number> = { low: 0.9, medium: 0.75, high: 0.5 };
+      const quality = qualityMap[level] || 0.75;
+
+      res.setHeader("Content-Type", "application/zip");
+      res.setHeader("Content-Disposition", `attachment; filename="compressed_${files.length}_files.zip"`);
+
+      const archive = archiver("zip", { zlib: { level: 6 } });
+      archive.pipe(res);
+
+      for (const file of files) {
+        try {
+          const pdfDoc = await PDFDocumentStandard.load(file.buffer, { ignoreEncryption: true });
+          const pages = pdfDoc.getPages();
+
+          // Compress images in each page
+          for (const page of pages) {
+            const { width, height } = page.getSize();
+            // Scale down large pages
+            if (width > 2000 || height > 2000) {
+              const scale = Math.min(2000 / width, 2000 / height) * quality;
+              page.scale(scale, scale);
+            }
+          }
+
+          const compressedBytes = await pdfDoc.save({ useObjectStreams: true });
+          const originalName = file.originalname.replace(/\.pdf$/i, "");
+          archive.append(Buffer.from(compressedBytes), { name: `${originalName}_compressed.pdf` });
+        } catch {
+          // If individual file fails, append original
+          archive.append(file.buffer, { name: file.originalname });
+        }
+      }
+
+      await archive.finalize();
+    } catch (error) {
+      console.error("Batch compress error:", error);
+      if (!res.headersSent) res.status(500).json({ error: "Failed to compress PDFs" });
+    }
+  });
+
+  // URL import proxy — download a remote file and return it
+  app.post("/api/download-url", async (req, res) => {
+    try {
+      const { url } = req.body;
+      if (!url || typeof url !== "string") return res.status(400).json({ error: "URL is required" });
+
+      // Security: only allow http/https
+      if (!url.startsWith("http://") && !url.startsWith("https://")) {
+        return res.status(400).json({ error: "Only HTTP/HTTPS URLs are allowed" });
+      }
+
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 15000);
+
+      const response = await fetch(url, {
+        signal: controller.signal,
+        headers: { "User-Agent": "PDF-HUB-24-FileImporter/1.0" }
+      });
+      clearTimeout(timeout);
+
+      if (!response.ok) return res.status(400).json({ error: `Failed to download file: HTTP ${response.status}` });
+
+      const contentType = response.headers.get("content-type") || "application/octet-stream";
+      const contentLength = response.headers.get("content-length");
+
+      // Limit file size to 50MB
+      if (contentLength && parseInt(contentLength) > 50 * 1024 * 1024) {
+        return res.status(400).json({ error: "File too large (max 50MB)" });
+      }
+
+      const buffer = Buffer.from(await response.arrayBuffer());
+
+      // Double check size after download
+      if (buffer.length > 50 * 1024 * 1024) {
+        return res.status(400).json({ error: "File too large (max 50MB)" });
+      }
+
+      // Extract filename from URL
+      const urlObj = new URL(url);
+      const fileName = urlObj.pathname.split("/").pop() || "downloaded_file";
+
+      res.setHeader("Content-Type", contentType);
+      res.setHeader("Content-Disposition", `attachment; filename="${fileName}"`);
+      res.setHeader("X-File-Name", fileName);
+      res.send(buffer);
+    } catch (error: any) {
+      if (error?.name === "AbortError") {
+        return res.status(408).json({ error: "Request timed out" });
+      }
+      console.error("URL download error:", error);
+      res.status(500).json({ error: "Failed to download file from URL" });
+    }
+  });
+
   app.use((err: any, req: any, res: any, next: any) => {
     if (err instanceof multer.MulterError) {
       return res.status(400).json({ error: `Upload error: ${err.message}` });

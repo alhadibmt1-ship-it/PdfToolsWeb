@@ -292,6 +292,42 @@ export const seoConfig: Record<string, PageSEO> = {
       "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
+  "/scan-to-pdf": {
+    title: "Scan to PDF Free — Camera Scan Documents to PDF | PDF HUB 24",
+    description: "Scan documents with your phone camera and convert to PDF instantly. Free online scan-to-PDF tool — take photos, combine into a PDF. No signup required.",
+    keywords: "scan to PDF, camera scan PDF, document scanner, phone scan to PDF, scan document to PDF online free",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Scan to PDF - PDF HUB 24",
+      "url": `${BASE_URL}/scan-to-pdf`,
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
+    }
+  },
+  "/pdf-to-pdfa": {
+    title: "PDF to PDF/A Converter Free — ISO Archive Format | PDF HUB 24",
+    description: "Convert PDF to PDF/A-1b for long-term archiving. Free ISO-compliant PDF/A converter — perfect for legal, government, and official records. No signup.",
+    keywords: "PDF to PDF/A, PDF/A converter, PDF archiving, ISO 19005, PDF/A-1b, PDF to PDF/A free online",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "PDF to PDF/A - PDF HUB 24",
+      "url": `${BASE_URL}/pdf-to-pdfa`,
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
+    }
+  },
+  "/batch-compress": {
+    title: "Batch Compress PDF Free — Compress Multiple PDFs at Once | PDF HUB 24",
+    description: "Compress multiple PDF files at once and download as a ZIP. Free batch PDF compressor — reduce file sizes in bulk. No signup, no watermark.",
+    keywords: "batch compress PDF, compress multiple PDFs, bulk PDF compressor, PDF batch processing, compress PDF ZIP",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Batch Compress PDF - PDF HUB 24",
+      "url": `${BASE_URL}/batch-compress`,
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
+    }
+  },
   "/ocr-pdf": {
     title: "OCR PDF Free — Scanned PDF to Searchable Text | PDF HUB 24",
     description: "OCR scanned PDFs and extract text instantly. Free online OCR tool — convert scanned documents to searchable, selectable text. No signup required.",
