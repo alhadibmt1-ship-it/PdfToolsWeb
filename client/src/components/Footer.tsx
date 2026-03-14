@@ -521,8 +521,8 @@ export default function Footer() {
             </p>
             <p className="text-xs text-muted-foreground/60">
               Built by{" "}
-              <a href="/about" className="hover:text-primary transition-colors">Ahmad Malik</a>
-              {" "}· Lahore, Pakistan
+              <a href="/about" className="hover:text-primary transition-colors">Izhar Hassan</a>
+              {" "}· Burewala, Pakistan
             </p>
             <div className="flex items-center gap-3">
               <a 
