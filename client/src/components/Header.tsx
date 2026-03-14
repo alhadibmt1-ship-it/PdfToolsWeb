@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import ThemeToggle from "./ThemeToggle";
 import SettingsDialog from "./SettingsDialog";
 import MobileMenu from "./MobileMenu";
@@ -7,11 +7,18 @@ import LanguageSwitcher from "./LanguageSwitcher";
 import siteLogo from "@assets/generated_images/logo-64.webp";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { t } from "@/lib/languages";
+import { PDF_TOOLS } from "@shared/schema";
+import { ToolBreadcrumbs } from "./Breadcrumbs";
 
 export default function Header() {
   const { lang } = useLanguage();
+  const [location] = useLocation();
+
+  const cleanPath = location.replace(/^\/(es|fr|ar|hi|pt)/, "") || "/";
+  const currentTool = PDF_TOOLS.find(t => t.path === cleanPath);
 
   return (
+    <>
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex h-14 sm:h-16 items-center justify-between">
         <Link href="/" data-testid="link-home">
@@ -84,5 +91,13 @@ export default function Header() {
         </div>
       </div>
     </header>
+    {currentTool && (
+      <div className="border-b border-border/30 bg-muted/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <ToolBreadcrumbs toolName={currentTool.title} category={currentTool.category} />
+        </div>
+      </div>
+    )}
+    </>
   );
 }

@@ -73,14 +73,19 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   );
 }
 
+const CATEGORY_LABELS: Record<string, { label: string; href: string }> = {
+  "from-pdf": { label: "Convert from PDF", href: "/convert-pdf" },
+  "to-pdf":   { label: "Convert to PDF",   href: "/convert-pdf" },
+  "edit-pdf": { label: "Edit PDF",          href: "/edit-pdf-tools" },
+  "utility":  { label: "Image Tools",       href: "/image-tools" },
+};
+
 export function ToolBreadcrumbs({ toolName, category }: { toolName: string; category: string }) {
-  return (
-    <Breadcrumbs
-      items={[
-        { label: toolName }
-      ]}
-    />
-  );
+  const catInfo = CATEGORY_LABELS[category];
+  const items: BreadcrumbItem[] = catInfo
+    ? [{ label: catInfo.label, href: catInfo.href }, { label: toolName }]
+    : [{ label: toolName }];
+  return <Breadcrumbs items={items} />;
 }
 
 export function BlogBreadcrumbs({ articleTitle }: { articleTitle?: string }) {

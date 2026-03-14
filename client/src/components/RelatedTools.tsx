@@ -147,6 +147,25 @@ const relatedArticles: Record<string, { title: string; slug: string }[]> = {
     { title: "How to Extract and Copy Text from Any PDF File", slug: "extract-text-from-pdf" },
     { title: "Making PDFs Accessible: OCR, Text Extraction, and Best Practices", slug: "pdf-accessibility-guide" }
   ],
+  "translate-pdf": [
+    { title: "OCR PDF: Convert Scanned Documents to Searchable Text", slug: "ocr-scanned-pdf-to-text" },
+    { title: "How to Extract and Copy Text from Any PDF File", slug: "extract-text-from-pdf" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" }
+  ],
+  "batch-compress": [
+    { title: "How to Compress PDF for Email (Under 25MB)", slug: "how-to-compress-pdf-for-email" },
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" },
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" }
+  ],
+  "scan-to-pdf": [
+    { title: "OCR PDF: Convert Scanned Documents to Searchable Text", slug: "ocr-scanned-pdf-to-text" },
+    { title: "How to Convert Images to PDF: JPG, PNG, and More", slug: "convert-images-to-pdf" },
+    { title: "Making PDFs Accessible: OCR, Text Extraction, and Best Practices", slug: "pdf-accessibility-guide" }
+  ],
+  "pdf-to-pdfa": [
+    { title: "Best Free PDF Tools in 2026", slug: "best-free-pdf-tools-2026" },
+    { title: "Essential PDF Tools Every Student Needs", slug: "pdf-tools-for-students" }
+  ],
   "extract-images": [
     { title: "How to Convert Images to PDF: JPG, PNG, and More", slug: "convert-images-to-pdf" },
     { title: "How to Convert Multiple Images to PDF: Batch Conversion", slug: "batch-convert-images-to-pdf" },
@@ -322,10 +341,30 @@ const workflowSuggestions: Record<string, { text: string; toolId: string }[]> = 
   ],
   "ocr-pdf": [
     { text: "Extract the recognized text", toolId: "extract-text" },
+    { text: "Translate the OCR'd document into another language", toolId: "translate-pdf" },
     { text: "Convert the searchable PDF to Word", toolId: "pdf-to-word" }
   ],
+  "translate-pdf": [
+    { text: "Run OCR first if your PDF is a scanned image", toolId: "ocr-pdf" },
+    { text: "Compress the translated PDF for sharing", toolId: "compress" },
+    { text: "Convert to Word for manual editing after translation", toolId: "pdf-to-word" }
+  ],
+  "batch-compress": [
+    { text: "Merge compressed PDFs into one document", toolId: "merge" },
+    { text: "Protect the compressed files with a password", toolId: "protect-pdf" }
+  ],
+  "scan-to-pdf": [
+    { text: "Run OCR to make the scanned PDF searchable", toolId: "ocr-pdf" },
+    { text: "Compress the scanned PDF to reduce file size", toolId: "compress" },
+    { text: "Merge scanned pages into one document", toolId: "merge" }
+  ],
+  "pdf-to-pdfa": [
+    { text: "Compress the PDF/A file to reduce size", toolId: "compress" },
+    { text: "Add page numbers before archiving", toolId: "add-page-numbers" }
+  ],
   "extract-text": [
-    { text: "Try OCR if regular extraction fails", toolId: "ocr-pdf" }
+    { text: "Try OCR if regular extraction fails", toolId: "ocr-pdf" },
+    { text: "Translate the extracted content into another language", toolId: "translate-pdf" }
   ],
   "flatten-pdf": [
     { text: "Compress the flattened PDF", toolId: "compress" },
@@ -537,7 +576,7 @@ export default function RelatedTools({ currentToolId, maxTools = 6 }: RelatedToo
       <div className="mt-6 text-center">
         <Link href="/" data-testid="link-all-tools">
           <span className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline cursor-pointer">
-            View All 43+ Tools
+            View All 48+ Tools
             <ArrowRight className="w-4 h-4" />
           </span>
         </Link>

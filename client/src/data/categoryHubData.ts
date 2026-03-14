@@ -156,7 +156,11 @@ Professional document preparation often requires multiple editing steps. Our too
       { name: "Flatten PDF", path: "/flatten-pdf", description: "Merge all form fields, annotations, and layers into a static document" },
       { name: "Repair PDF", path: "/repair-pdf", description: "Fix corrupted or damaged PDF files and recover readable content" },
       { name: "Compare PDF", path: "/compare-pdf", description: "Find differences between two PDF documents side by side" },
-      { name: "Redact PDF", path: "/redact-pdf", description: "Permanently remove sensitive information by blacking out text and images" }
+      { name: "Redact PDF", path: "/redact-pdf", description: "Permanently remove sensitive information by blacking out text and images" },
+      { name: "Translate PDF", path: "/translate-pdf", description: "Translate PDF documents into 50+ languages including Spanish, French, Arabic, Hindi, and Chinese" },
+      { name: "Batch Compress", path: "/batch-compress", description: "Compress multiple PDF files at once and download all as a single ZIP archive" },
+      { name: "Scan to PDF", path: "/scan-to-pdf", description: "Capture photos with your camera and convert them directly into a PDF document" },
+      { name: "PDF to PDF/A", path: "/pdf-to-pdfa", description: "Convert PDF documents to PDF/A format for long-term archiving and legal compliance" }
     ],
     faqs: [
       { question: "Can I edit text directly in a PDF?", answer: "Yes. Our Edit PDF tool lets you add new text anywhere on the page. For editing existing text, convert the PDF to Word first, make your changes, then convert back to PDF." },

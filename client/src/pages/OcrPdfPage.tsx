@@ -185,6 +185,15 @@ export default function OcrPdfPage() {
                 >
                   Process Another PDF
                 </Button>
+                <Link href="/translate-pdf">
+                  <div className="flex items-center justify-between gap-3 p-3 rounded-lg bg-primary/5 border border-primary/20 cursor-pointer hover:bg-primary/10 transition-colors" data-testid="link-translate-next">
+                    <div className="text-sm">
+                      <span className="font-medium text-primary">Want to translate this document?</span>
+                      <span className="text-muted-foreground ml-1">Use our free Translate PDF tool — 50+ languages, no signup.</span>
+                    </div>
+                    <span className="text-xs font-semibold text-primary whitespace-nowrap">Translate PDF →</span>
+                  </div>
+                </Link>
               </div>
             )}
           </div>

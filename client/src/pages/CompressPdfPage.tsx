@@ -175,6 +175,18 @@ export default function CompressPdfPage() {
               </>
             )}
 
+            {files.length === 0 && status === "idle" && (
+              <Link href="/batch-compress">
+                <div className="flex items-center justify-between gap-3 p-3 rounded-lg bg-muted/40 border border-border/50 cursor-pointer hover:bg-muted/70 transition-colors" data-testid="link-batch-compress-tip">
+                  <span className="text-sm text-muted-foreground">
+                    <span className="font-medium text-foreground">Need to compress multiple PDFs at once?</span>
+                    {" "}Try Batch Compress — process up to 20 files, download as ZIP.
+                  </span>
+                  <span className="text-xs font-semibold text-primary whitespace-nowrap shrink-0">Try it →</span>
+                </div>
+              </Link>
+            )}
+
             {files.length > 0 && status === "idle" && (
               <Card className="p-5 sm:p-6 space-y-5">
                 <div>
