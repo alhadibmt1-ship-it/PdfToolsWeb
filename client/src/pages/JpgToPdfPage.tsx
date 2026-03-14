@@ -4,7 +4,7 @@ import { Link } from "wouter";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
-import UrlImportButton from "@/components/UrlImportButton";
+import CloudImportBar from "@/components/CloudImportBar";
 import ProcessingState from "@/components/ProcessingState";
 import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
 import { getToolSEOData } from "@/data/toolSEOData";
@@ -116,12 +116,10 @@ export default function JpgToPdfPage() {
               maxFiles={10}
               disabled={status === "processing"}
             />
-            <div className="flex justify-center">
-              <UrlImportButton
-                accept="image/*"
-                onFileImported={(file) => setFiles(prev => [...prev, file])}
-              />
-            </div>
+            <CloudImportBar
+              accept="image"
+              onFileImported={(file) => setFiles(prev => [...prev, file])}
+            />
 
             {files.length > 0 && status === "idle" && (
               <Button 

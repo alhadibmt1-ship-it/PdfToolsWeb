@@ -4,7 +4,7 @@ import { Link } from "wouter";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
-import UrlImportButton from "@/components/UrlImportButton";
+import CloudImportBar from "@/components/CloudImportBar";
 import ProcessingState from "@/components/ProcessingState";
 import SortablePdfPages from "@/components/SortablePdfPages";
 import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
@@ -187,12 +187,10 @@ export default function MergePdfPage() {
               maxFiles={10}
               disabled={status === "processing" || thumbnailsLoading}
             />
-            <div className="flex justify-center">
-              <UrlImportButton
-                accept=".pdf"
-                onFileImported={(file) => handleFilesSelected([...files, file])}
-              />
-            </div>
+            <CloudImportBar
+              accept="pdf"
+              onFileImported={(file) => handleFilesSelected([...files, file])}
+            />
 
             {thumbnailsLoading && (
               <div className="space-y-4">
