@@ -71,7 +71,7 @@ import RecentToolsSection from "@/components/RecentToolsSection";
 import SocialProofSection from "@/components/SocialProofSection";
 import { useUploadContext } from "@/contexts/UploadContext";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { t, getToolTitle } from "@/lib/languages";
+import { t, tFormat, getToolTitle } from "@/lib/languages";
 
 const iconMap: Record<string, any> = {
   merge: Combine,
@@ -600,7 +600,7 @@ export default function HomePage() {
                       </p>
                       
                       <div className="flex items-center justify-center text-[10px] sm:text-xs font-medium text-primary mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <span className="hidden sm:inline">Use Tool</span>
+                        <span className="hidden sm:inline">{t(lang, "useTool")}</span>
                         <ArrowRight className="w-3 h-3 sm:ml-1" />
                       </div>
                     </div>
@@ -620,7 +620,7 @@ export default function HomePage() {
                     data-testid="button-show-all-tools"
                   >
                     <LayoutGrid className="w-4 h-4" />
-                    Show all {filteredTools.length} tools
+                    {tFormat(lang, "showAllTools", { n: filteredTools.length })}
                   </Button>
                 ) : (
                   <Button
@@ -629,7 +629,7 @@ export default function HomePage() {
                     onClick={() => setShowAllInGrid(false)}
                     data-testid="button-show-less-tools"
                   >
-                    Show fewer tools
+                    {t(lang, "showFewerTools")}
                   </Button>
                 )}
               </div>
@@ -639,23 +639,23 @@ export default function HomePage() {
             <div className="mt-10 sm:mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
               <div className="text-center p-4 rounded-xl bg-red-500/5 border border-red-500/10">
                 <Download className="w-6 h-6 text-red-500 mx-auto mb-2" />
-                <div className="text-lg font-bold text-red-600 dark:text-red-400">8 Tools</div>
-                <div className="text-xs text-muted-foreground">Convert from PDF</div>
+                <div className="text-lg font-bold text-red-600 dark:text-red-400">9 Tools</div>
+                <div className="text-xs text-muted-foreground">{t(lang, "convertFromPdf")}</div>
               </div>
               <div className="text-center p-4 rounded-xl bg-green-500/5 border border-green-500/10">
                 <Upload className="w-6 h-6 text-green-500 mx-auto mb-2" />
                 <div className="text-lg font-bold text-green-600 dark:text-green-400">9 Tools</div>
-                <div className="text-xs text-muted-foreground">Convert to PDF</div>
+                <div className="text-xs text-muted-foreground">{t(lang, "convertToPdf")}</div>
               </div>
               <div className="text-center p-4 rounded-xl bg-blue-500/5 border border-blue-500/10">
                 <FileText className="w-6 h-6 text-blue-500 mx-auto mb-2" />
                 <div className="text-lg font-bold text-blue-600 dark:text-blue-400">19 Tools</div>
-                <div className="text-xs text-muted-foreground">Edit PDF</div>
+                <div className="text-xs text-muted-foreground">{t(lang, "editPdf")}</div>
               </div>
               <div className="text-center p-4 rounded-xl bg-purple-500/5 border border-purple-500/10">
                 <Settings className="w-6 h-6 text-purple-500 mx-auto mb-2" />
                 <div className="text-lg font-bold text-purple-600 dark:text-purple-400">7 Tools</div>
-                <div className="text-xs text-muted-foreground">Utility Tools</div>
+                <div className="text-xs text-muted-foreground">{t(lang, "utilityTools")}</div>
               </div>
             </div>
           </div>

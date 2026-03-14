@@ -114,6 +114,8 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     selectFile: "Select File",
     gdprCompliant: "GDPR Compliant",
     noRegistration: "No Registration",
+    showAllTools: "Show all {n} tools",
+    showFewerTools: "Show fewer tools",
   },
   es: {
     home: "Inicio",
@@ -184,6 +186,8 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     selectFile: "Seleccionar archivo",
     gdprCompliant: "Cumple con GDPR",
     noRegistration: "Sin registro",
+    showAllTools: "Mostrar todas las {n} herramientas",
+    showFewerTools: "Mostrar menos herramientas",
   },
   ar: {
     home: "الرئيسية",
@@ -254,6 +258,8 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     selectFile: "اختر ملفًا",
     gdprCompliant: "متوافق مع GDPR",
     noRegistration: "بدون تسجيل",
+    showAllTools: "عرض جميع الأدوات {n}",
+    showFewerTools: "عرض أدوات أقل",
   },
   hi: {
     home: "होम",
@@ -324,6 +330,8 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     selectFile: "फ़ाइल चुनें",
     gdprCompliant: "GDPR अनुपालित",
     noRegistration: "कोई पंजीकरण नहीं",
+    showAllTools: "सभी {n} टूल्स दिखाएं",
+    showFewerTools: "कम टूल्स दिखाएं",
   },
   fr: {
     home: "Accueil",
@@ -394,6 +402,8 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     selectFile: "Sélectionner un fichier",
     gdprCompliant: "Conforme au RGPD",
     noRegistration: "Sans inscription",
+    showAllTools: "Afficher tous les {n} outils",
+    showFewerTools: "Afficher moins d'outils",
   },
   pt: {
     home: "Início",
@@ -464,6 +474,8 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     selectFile: "Selecionar arquivo",
     gdprCompliant: "Conforme com GDPR",
     noRegistration: "Sem registro",
+    showAllTools: "Mostrar todas as {n} ferramentas",
+    showFewerTools: "Mostrar menos ferramentas",
   },
 };
 
