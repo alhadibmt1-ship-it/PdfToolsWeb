@@ -1,0 +1,133 @@
+Upgrade my website pdfhub24.com to support programmatic SEO page generation for PDF tools.
+
+GOAL
+Automatically generate hundreds or thousands of SEO pages targeting long-tail search keywords while using the existing PDF tools.
+
+STRUCTURE
+
+Create a new directory:
+
+/tools/
+
+Example URLs:
+
+/tools/compress-pdf-to-100kb
+/tools/compress-pdf-to-200kb
+/tools/compress-pdf-to-300kb
+/tools/compress-pdf-to-500kb
+/tools/compress-pdf-to-1mb
+/tools/compress-pdf-for-email
+/tools/merge-pdf-for-visa-application
+/tools/split-pdf-by-pages
+/tools/pdf-to-word-editable-free
+
+Each page must load the correct PDF tool automatically.
+
+PAGE TEMPLATE
+
+Every programmatic page must include:
+
+1. SEO title
+   Example:
+   Compress PDF to 100KB Online Free | PDFHub24
+
+2. Meta description
+   Example:
+   Compress PDF to 100KB easily with our free online tool. Reduce PDF file size without losing quality. Fast, secure, and free.
+
+3. H1 heading
+   Example:
+   Compress PDF to 100KB Online
+
+4. Tool interface (existing compressor tool)
+
+5. Short explanation content (150–300 words)
+
+Example sections:
+• What is Compress PDF to 100KB
+• When to use this tool
+• How to compress PDF to 100KB
+• Tips for reducing PDF file size
+
+6. Internal links to related tools:
+
+compress-pdf-to-200kb
+compress-pdf-to-500kb
+merge-pdf
+split-pdf
+pdf-to-word
+
+KEYWORD DATABASE
+
+Create a list of keywords and automatically generate pages from it.
+
+Example keyword list:
+
+compress-pdf-to-50kb
+compress-pdf-to-100kb
+compress-pdf-to-200kb
+compress-pdf-to-300kb
+compress-pdf-to-500kb
+compress-pdf-to-1mb
+compress-pdf-to-2mb
+compress-pdf-for-email
+compress-pdf-for-whatsapp
+compress-pdf-for-upload
+
+merge-pdf-for-visa
+merge-pdf-for-job-application
+merge-pdf-for-email
+
+pdf-to-word-editable
+pdf-to-word-without-losing-formatting
+pdf-to-word-for-resume
+
+split-pdf-by-pages
+split-pdf-by-size
+split-pdf-by-range
+
+AUTOMATION
+
+Use a dynamic template system so that:
+
+keyword → page automatically generated.
+
+Example:
+
+keyword: compress-pdf-to-100kb
+URL: /tools/compress-pdf-to-100kb
+Title: Compress PDF to 100KB Online Free
+
+SITEMAP
+
+Automatically add generated pages to sitemap.
+
+Example:
+
+https://pdfhub24.com/tools/compress-pdf-to-100kb
+https://pdfhub24.com/tools/compress-pdf-to-200kb
+https://pdfhub24.com/tools/merge-pdf-for-visa
+
+SEO REQUIREMENTS
+
+• Each page must have unique title and description
+• Include internal linking to main tools
+• Include canonical tags
+• Include hreflang tags for multi-language pages
+• Ensure pages load quickly
+• Avoid duplicate content
+
+SCALABILITY
+
+System should support generating:
+
+100 pages
+500 pages
+1000 pages
+5000 pages
+
+without manual coding.
+
+END RESULT
+
+The website becomes a large SEO content platform where every long-tail search query about PDF tools has a dedicated optimized page.

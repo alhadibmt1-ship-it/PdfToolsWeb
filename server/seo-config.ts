@@ -1343,15 +1343,46 @@ export const seoConfig: Record<string, PageSEO> = {
   }
 };
 
+const SUPPORTED_HREFLANG_LANGS = ["en", "es", "ar", "hi", "fr", "pt"];
+
+function stripLangPrefix(path: string): { lang: string; canonicalPath: string } {
+  const match = path.match(/^\/(es|ar|hi|fr|pt)(\/.*)?$/);
+  if (match) {
+    return { lang: match[1], canonicalPath: match[2] || "/" };
+  }
+  return { lang: "en", canonicalPath: path };
+}
+
+function generateHreflangTags(canonicalPath: string): string {
+  const canonicalUrl = `${BASE_URL}${canonicalPath === "/" ? "" : canonicalPath}`;
+  const tags = SUPPORTED_HREFLANG_LANGS.map(lang => {
+    const url = lang === "en" ? canonicalUrl : `${BASE_URL}/${lang}${canonicalPath === "/" ? "" : canonicalPath}`;
+    return `<link rel="alternate" hreflang="${lang}" href="${url}" />`;
+  });
+  tags.push(`<link rel="alternate" hreflang="x-default" href="${canonicalUrl}" />`);
+  return tags.join("\n    ");
+}
+
+function getLangAttribute(lang: string): string {
+  const langMap: Record<string, string> = { en: "en", es: "es", ar: "ar", hi: "hi", fr: "fr", pt: "pt" };
+  return langMap[lang] || "en";
+}
+
 export function generateMetaTags(path: string): string {
-  const seo = seoConfig[path] || seoConfig["/"];
-  const canonicalUrl = `${BASE_URL}${path === "/" ? "" : path}`;
+  const { lang, canonicalPath } = stripLangPrefix(path);
+  const seo = seoConfig[canonicalPath] || seoConfig["/"];
+  const canonicalUrl = `${BASE_URL}${canonicalPath === "/" ? "" : canonicalPath}`;
+  const hreflangTags = generateHreflangTags(canonicalPath);
+  const langAttr = getLangAttribute(lang);
   
   return `
     <title>${seo.title}</title>
     <meta name="description" content="${seo.description}" />
     <meta name="keywords" content="${seo.keywords}" />
     <link rel="canonical" href="${canonicalUrl}" />
+    
+    <!-- Hreflang International SEO -->
+    ${hreflangTags}
     
     <!-- Open Graph -->
     <meta property="og:title" content="${seo.title}" />
@@ -1362,6 +1393,7 @@ export function generateMetaTags(path: string): string {
     <meta property="og:image" content="${OG_IMAGE}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="${langAttr}" />
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -1536,13 +1568,17 @@ function generateCrawlableNav(currentPath: string): string {
 }
 
 export function injectSEO(html: string, path: string): string {
+  const { lang } = stripLangPrefix(path);
   const metaTags = generateMetaTags(path);
   const crawlableNav = generateCrawlableNav(path);
+  const dir = lang === "ar" ? "rtl" : "ltr";
   
   return html
+    .replace(/<html([^>]*)>/, `<html lang="${lang}" dir="${dir}">`)
     .replace(/<title>.*?<\/title>/, '')
     .replace(/<meta name="description"[^>]*\/?>/, '')
     .replace(/<link rel="canonical"[^>]*\/?>/, '')
+    .replace(/<link rel="alternate"[^>]*\/?>/, '')
     .replace(/<meta name="robots"[^>]*\/?>/, '')
     .replace(/<meta property="og:[^"]*"[^>]*\/?>/g, '')
     .replace(/<meta name="twitter:[^"]*"[^>]*\/?>/g, '')

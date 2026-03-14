@@ -1,0 +1,113 @@
+Improve the international SEO structure of my website pdfhub24.com.
+
+GOAL
+Implement a scalable multi-language system with correct hreflang tags, language routing, and SEO optimization so search engines like Google can properly index language versions of every page.
+
+LANGUAGES TO ADD (initial set)
+English (default)
+Spanish (es)
+Arabic (ar)
+Hindi (hi)
+French (fr)
+Portuguese (pt)
+
+URL STRUCTURE
+Use subfolder structure for languages:
+
+/ (English default)
+/es/
+/ar/
+/hi/
+/fr/
+/pt/
+
+Examples:
+
+/pdf-to-word
+/es/pdf-to-word
+/ar/pdf-to-word
+/hi/pdf-to-word
+/fr/pdf-to-word
+/pt/pdf-to-word
+
+SEO REQUIREMENTS
+
+1. Add hreflang tags automatically on every page.
+
+Example for /pdf-to-word:
+
+<link rel="alternate" hreflang="en" href="https://pdfhub24.com/pdf-to-word">
+<link rel="alternate" hreflang="es" href="https://pdfhub24.com/es/pdf-to-word">
+<link rel="alternate" hreflang="ar" href="https://pdfhub24.com/ar/pdf-to-word">
+<link rel="alternate" hreflang="hi" href="https://pdfhub24.com/hi/pdf-to-word">
+<link rel="alternate" hreflang="fr" href="https://pdfhub24.com/fr/pdf-to-word">
+<link rel="alternate" hreflang="pt" href="https://pdfhub24.com/pt/pdf-to-word">
+<link rel="alternate" hreflang="x-default" href="https://pdfhub24.com/pdf-to-word">
+
+2. Automatically generate hreflang links dynamically so every tool page includes its language alternatives.
+
+3. Add canonical tags for each page.
+
+Example:
+
+<link rel="canonical" href="https://pdfhub24.com/pdf-to-word">
+
+4. Detect user browser language and suggest switching language.
+
+Example:
+If browser language = Spanish → suggest /es/ version.
+
+5. Add language switcher in the header.
+
+Example menu:
+
+EN | ES | AR | HI | FR | PT
+
+6. Ensure Arabic pages use RTL layout.
+
+Add:
+
+<html lang="ar" dir="rtl">
+
+7. Update sitemap to include all language URLs.
+
+Example entries:
+
+https://pdfhub24.com/es/pdf-to-word
+https://pdfhub24.com/ar/pdf-to-word
+https://pdfhub24.com/hi/pdf-to-word
+
+8. Ensure all translated pages keep the same slug structure.
+
+Example:
+
+/pdf-to-word
+/es/pdf-to-word
+/ar/pdf-to-word
+
+9. Add language meta tag:
+
+<html lang="en">
+<html lang="es">
+<html lang="ar">
+
+10. Make the system scalable so new languages can be added easily.
+
+FUTURE LANGUAGES
+German
+Turkish
+Indonesian
+Russian
+Chinese
+Japanese
+
+PERFORMANCE REQUIREMENTS
+
+• Maintain fast loading speed
+• Do not duplicate content incorrectly
+• Ensure Google indexing works for every language page
+• All hreflang tags must be valid and reciprocal
+
+END RESULT
+
+The website should support multi-language SEO similar to major PDF tool websites, with proper hreflang implementation and scalable international expansion.

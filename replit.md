@@ -24,10 +24,19 @@ The design philosophy is "Clean Modern Utility Design" with a vibrant color sche
 Key technical features include:
 - **Performance**: WebP image optimization, code splitting, asynchronous font loading, and deferred analytics.
 - **Security**: File upload validation (magic byte, MIME type), comprehensive error handling, and Zod schema validation.
-- **SEO**: Dynamic meta tags, `sitemap.xml`, and `robots.txt` integration. Server-side SEO injection via `injectSEO()` in `server/app.ts`.
+- **SEO**: Dynamic meta tags, `sitemap.xml`, and `robots.txt` integration. Server-side SEO injection via `injectSEO()` in `server/app.ts`. Hreflang tags (6 languages + x-default) injected server-side on every page.
+- **International SEO**: 6-language support (en, es, ar, hi, fr, pt) with URL prefix routing (`/es/`, `/ar/` etc.) via Wouter's `base` prop. RTL support for Arabic via html `dir` attribute. `LanguageSwitcher` (Globe dropdown), `LanguageBanner` (browser language detection), and `LanguageContext` components. Server-side `injectSEO()` sets `html lang` and `dir` attributes.
 - **Conversion Quality**: Advanced PDF to Word conversion with intelligent formatting, high-resolution PDF to JPG output.
 - **User Settings**: Dark mode toggle and configurable compression levels.
 - **Interactive Editing**: Canvas-based editing for tools like Edit PDF, Annotate PDF, and Redact PDF, featuring real-time preview and undo functionality.
+
+### International SEO Architecture
+- **Language files**: `client/src/lib/languages.ts` — 6-language config with labels, native labels, hreflang codes, and RTL flags
+- **Context**: `client/src/contexts/LanguageContext.tsx` — reads lang from URL path, sets `html lang` and `dir` attributes reactively
+- **Components**: `client/src/components/LanguageSwitcher.tsx` (Globe dropdown, desktop + mobile), `client/src/components/LanguageBanner.tsx` (browser language detection with sessionStorage dismissal)
+- **Routing**: `client/src/App.tsx` uses `WouterRouter` with `base={/lang}` for non-English paths; English uses root router
+- **Server-side**: `server/seo-config.ts` `stripLangPrefix()` strips lang prefix before config lookup; `injectSEO()` sets `html lang/dir` and strips existing alternate links before injecting 7 hreflang tags per page
+- **Sitemap**: Language URL variants for top tools (es, fr, pt, ar, hi) added to `client/public/sitemap.xml`
 
 ## SEO Architecture
 - **Server-side meta tags**: `server/seo-config.ts` provides unique title, description, keywords, canonical, OG, Twitter, and robots tags for every page. `injectSEO()` strips existing tags and reinjects correct ones.
