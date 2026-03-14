@@ -3262,6 +3262,112 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // ─── TRANSLATE PDF ────────────────────────────────────────────────────────────
+  app.post("/api/translate-pdf", uploadPdf.single("file"), async (req, res) => {
+    if (!req.file) return res.status(400).json({ error: "No file provided" });
+
+    const sourceLang = (req.body.sourceLang || "en").trim();
+    const targetLang  = (req.body.targetLang  || "es").trim();
+
+    if (sourceLang === targetLang) {
+      return res.status(400).json({ error: "Source and target languages must be different" });
+    }
+
+    try {
+      const pdfParseLib = await loadPdfParse();
+      const pdfData = await pdfParseLib(req.file.buffer);
+      const rawText: string = pdfData.text || "";
+
+      if (!rawText.trim()) {
+        return res.status(400).json({
+          error: "No readable text found in this PDF. For scanned PDFs, please use the OCR tool first."
+        });
+      }
+
+      // Split into ≤4000-char chunks at sentence boundaries
+      function splitIntoChunks(text: string, maxSize: number): string[] {
+        const chunks: string[] = [];
+        let i = 0;
+        while (i < text.length) {
+          let end = Math.min(i + maxSize, text.length);
+          if (end < text.length) {
+            const lastDot = text.lastIndexOf(". ", end);
+            if (lastDot > i) end = lastDot + 2;
+          }
+          chunks.push(text.slice(i, end));
+          i = end;
+        }
+        return chunks;
+      }
+
+      async function translateChunk(chunk: string, from: string, to: string): Promise<string> {
+        const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(chunk)}&langpair=${encodeURIComponent(from)}|${encodeURIComponent(to)}`;
+        const resp = await fetch(url, { signal: AbortSignal.timeout(30000) });
+        if (!resp.ok) throw new Error(`Translation API HTTP ${resp.status}`);
+        const data: any = await resp.json();
+        if (data.responseStatus === 200 && data.responseData?.translatedText) {
+          return data.responseData.translatedText;
+        }
+        throw new Error(`Translation error: ${data.responseDetails || "Unknown"}`);
+      }
+
+      const chunks = splitIntoChunks(rawText, 4000);
+      const translatedChunks: string[] = [];
+      for (const chunk of chunks) {
+        translatedChunks.push(await translateChunk(chunk, sourceLang, targetLang));
+      }
+      const translatedText = translatedChunks.join("\n");
+
+      // Build output PDF
+      const pdfDoc = await PDFDocumentStandard.create();
+      const font = await pdfDoc.embedFont(StandardFontsStd.Helvetica);
+      const PAGE_W = 595, PAGE_H = 842, MARGIN = 50;
+      const FONT_SIZE = 11, LINE_H = FONT_SIZE * 1.6;
+      const MAX_W = PAGE_W - MARGIN * 2;
+
+      const paragraphs = translatedText.split(/\n+/);
+      const allLines: string[] = [];
+      for (const para of paragraphs) {
+        if (!para.trim()) { allLines.push(""); continue; }
+        const words = para.split(" ");
+        let cur = "";
+        for (const word of words) {
+          const test = cur ? `${cur} ${word}` : word;
+          if (font.widthOfTextAtSize(test, FONT_SIZE) > MAX_W && cur) {
+            allLines.push(cur);
+            cur = word;
+          } else {
+            cur = test;
+          }
+        }
+        if (cur) allLines.push(cur);
+        allLines.push("");
+      }
+
+      let page = pdfDoc.addPage([PAGE_W, PAGE_H]);
+      let y = PAGE_H - MARGIN;
+      for (const line of allLines) {
+        if (y < MARGIN + LINE_H) {
+          page = pdfDoc.addPage([PAGE_W, PAGE_H]);
+          y = PAGE_H - MARGIN;
+        }
+        if (line.trim()) {
+          page.drawText(line, { x: MARGIN, y, font, size: FONT_SIZE, color: rgbStd(0, 0, 0) });
+        }
+        y -= LINE_H;
+      }
+
+      const pdfBytes = await pdfDoc.save();
+      const baseName = req.file.originalname.replace(/\.pdf$/i, "");
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", `attachment; filename="${baseName}_${targetLang}.pdf"`);
+      res.send(Buffer.from(pdfBytes));
+    } catch (err: any) {
+      console.error("translate-pdf error:", err);
+      res.status(500).json({ error: err.message || "Translation failed" });
+    }
+  });
+
   app.use((err: any, req: any, res: any, next: any) => {
     if (err instanceof multer.MulterError) {
       return res.status(400).json({ error: `Upload error: ${err.message}` });

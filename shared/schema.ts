@@ -478,5 +478,14 @@ export const PDF_TOOLS: PDFTool[] = [
     path: "/batch-compress",
     acceptedFormats: ".pdf",
     category: "edit-pdf"
+  },
+  {
+    id: "translate-pdf",
+    title: "Translate PDF",
+    description: "Translate PDF documents into 50+ languages instantly",
+    icon: "languages",
+    path: "/translate-pdf",
+    acceptedFormats: ".pdf",
+    category: "edit-pdf"
   }
 ];

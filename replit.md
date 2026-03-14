@@ -1,7 +1,7 @@
 # PDF HUB 24
 
 ## Overview
-PDF HUB 24 is a comprehensive web-based platform designed for PDF and image manipulation, offering 47 tools across four main categories: Convert from PDF, Convert to PDF, Edit PDF, and Utility & Image Tools. The platform aims to provide professional-grade document processing, enhance user trust through robust SEO and UX, and offer a wide array of free tools for various PDF and image tasks. Key capabilities include conversion between various formats (e.g., PDF to Word, JPG to PDF), extensive PDF editing (merge, split, compress, protect, sign, annotate, redact), and general image utilities (compress, resize, crop, convert). The business vision is to be a leading, user-friendly, and SEO-optimized solution for everyday document processing needs, inspired by successful platforms like PDF24.
+PDF HUB 24 is a comprehensive web-based platform designed for PDF and image manipulation, offering 48 tools across four main categories: Convert from PDF, Convert to PDF, Edit PDF, and Utility & Image Tools. The platform aims to provide professional-grade document processing, enhance user trust through robust SEO and UX, and offer a wide array of free tools for various PDF and image tasks. Key capabilities include conversion between various formats (e.g., PDF to Word, JPG to PDF), extensive PDF editing (merge, split, compress, protect, sign, annotate, redact), and general image utilities (compress, resize, crop, convert). The business vision is to be a leading, user-friendly, and SEO-optimized solution for everyday document processing needs, inspired by successful platforms like PDF24.
 
 ## User Preferences
 Preferred communication style: Simple, everyday language.

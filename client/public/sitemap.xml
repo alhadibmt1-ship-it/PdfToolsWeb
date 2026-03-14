@@ -1018,6 +1018,7 @@
   <url><loc>https://pdfhub24.com/es/pdf-to-jpg</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/es/jpg-to-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/es/word-to-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/es/translate-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/es/rotate</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/es/protect-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/es/sign-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -1030,6 +1031,7 @@
   <url><loc>https://pdfhub24.com/fr/split</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/fr/pdf-to-jpg</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/fr/jpg-to-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/fr/translate-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/fr/word-to-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/fr/rotate</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/fr/protect-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -1043,6 +1045,7 @@
   <url><loc>https://pdfhub24.com/pt/split</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/pt/pdf-to-jpg</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/pt/jpg-to-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/pt/translate-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/pt/word-to-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/pt/rotate</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/pt/protect-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -1056,6 +1059,7 @@
   <url><loc>https://pdfhub24.com/ar/split</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ar/pdf-to-jpg</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ar/jpg-to-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/ar/translate-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/ar/word-to-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ar/rotate</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ar/protect-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -1065,6 +1069,7 @@
   <url><loc>https://pdfhub24.com/scan-to-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/pdf-to-pdfa</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/batch-compress</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pdfhub24.com/translate-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 
   <!-- Hindi (hi) -->
   <url><loc>https://pdfhub24.com/hi/</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -1074,6 +1079,7 @@
   <url><loc>https://pdfhub24.com/hi/split</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/hi/pdf-to-jpg</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/hi/jpg-to-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/hi/translate-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/hi/word-to-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/hi/rotate</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/hi/protect-pdf</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>

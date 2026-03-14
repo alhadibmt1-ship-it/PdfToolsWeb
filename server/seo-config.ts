@@ -316,6 +316,18 @@ export const seoConfig: Record<string, PageSEO> = {
       "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
+  "/translate-pdf": {
+    title: "Translate PDF Free — Translate PDF to 50+ Languages Online | PDF HUB 24",
+    description: "Translate any PDF document into 50+ languages instantly. Free online PDF translator — English to Spanish, French, Arabic, Hindi, Chinese & more. No signup required.",
+    keywords: "translate PDF, PDF translator online free, translate PDF to Spanish, translate PDF to French, translate PDF to Arabic, translate document online, PDF language translator",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Translate PDF - PDF HUB 24",
+      "url": `${BASE_URL}/translate-pdf`,
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
+    }
+  },
   "/batch-compress": {
     title: "Batch Compress PDF Free — Compress Multiple PDFs at Once | PDF HUB 24",
     description: "Compress multiple PDF files at once and download as a ZIP. Free batch PDF compressor — reduce file sizes in bulk. No signup, no watermark.",
