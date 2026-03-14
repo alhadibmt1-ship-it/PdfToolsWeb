@@ -3353,6 +3353,95 @@ export const toolSEOData: Record<string, ToolSEOData> = {
   }
 };
 
+toolSEOData["translate-pdf"] = {
+  toolId: "translate-pdf",
+  aboutTool: {
+    title: "Translate Any PDF Document into 50+ Languages",
+    description: "PDF HUB 24's Translate PDF tool instantly converts your PDF documents into over 50 languages — from English to Spanish, French, Arabic, Hindi, Chinese, Japanese, and many more. Whether you need to translate a legal contract, academic paper, business report, or personal document, our free online PDF translator handles it securely without any signup.",
+    capabilities: [
+      "Translate PDFs into 50+ languages with high accuracy",
+      "Supports major world languages including Arabic, Chinese, Hindi, Spanish, French",
+      "Preserves paragraph structure and readable text layout",
+      "Processes documents of any length, splitting into optimized chunks",
+      "No signup, no account, completely free to use",
+      "Secure processing — files deleted immediately after translation"
+    ]
+  },
+  tutorial: {
+    title: "How to Translate a PDF Document Online",
+    steps: [
+      { step: "Upload Your PDF", detail: "Click 'Select PDF File' or drag and drop your PDF document into the upload zone. You can also import from Google Drive, Dropbox, or a URL." },
+      { step: "Choose Source Language", detail: "Select the language your PDF is written in. English is set as default — change it if your document is in another language." },
+      { step: "Select Target Language", detail: "Pick the language you want to translate into. Browse 50+ options including Spanish, French, German, Arabic, Hindi, Chinese, Japanese, Korean, Russian, and more." },
+      { step: "Click Translate", detail: "Hit the 'Translate' button. The tool extracts your text, sends it to the translation engine in smart chunks, and assembles your translated PDF." },
+      { step: "Download Translated PDF", detail: "Once done, click 'Download Translated PDF' to save your translated document. The file is named with the target language for easy identification." }
+    ]
+  },
+  useCases: {
+    title: "Who Uses PDF Translation?",
+    cases: [
+      { title: "International Business", description: "Translate contracts, proposals, and reports for global clients and partners without expensive manual translation." },
+      { title: "Academic Research", description: "Access research papers and academic publications written in foreign languages." },
+      { title: "Legal & Compliance", description: "Translate legal documents, terms of service, and regulatory filings for international jurisdictions." },
+      { title: "Healthcare & Medical", description: "Translate medical records, patient documents, and clinical guidelines for international use." },
+      { title: "Education", description: "Students and educators translate study materials, textbooks, and academic content." },
+      { title: "Personal Documents", description: "Translate immigration forms, personal letters, certificates, and official documents." }
+    ]
+  },
+  whyChoose: {
+    title: "Why Use PDF HUB 24 to Translate PDFs?",
+    reasons: [
+      { title: "Truly Free", description: "No hidden fees, no subscription required, no credit card needed. Just upload and translate." },
+      { title: "50+ Languages", description: "From major world languages to regional languages — Spanish, French, Arabic, Hindi, Chinese, Japanese, Korean, Russian, and many more." },
+      { title: "Privacy First", description: "Your documents are processed securely and deleted immediately. We never read, store, or share your files." },
+      { title: "No Signup Required", description: "Unlike many translation services, you don't need to create an account. Just use the tool and go." },
+      { title: "Instant Results", description: "Most translations complete in under a minute. Large documents take only slightly longer." }
+    ]
+  },
+  troubleshooting: {
+    title: "PDF Translation — Common Issues and Solutions",
+    issues: [
+      { problem: "The tool says 'No readable text found'", solution: "Your PDF is likely a scanned image. Use our OCR PDF tool first to make the text selectable, then translate." },
+      { problem: "Some words appear untranslated or in the original language", solution: "Technical terms, product names, and proper nouns are often not translated — this is normal behavior for machine translation." },
+      { problem: "The translated PDF formatting looks different", solution: "The translation process extracts and recreates text — complex multi-column layouts and tables are linearized into a clean readable format. The content is fully translated even if the visual layout differs." },
+      { problem: "Translation failed or timed out", solution: "Very large PDFs may time out. Try splitting your PDF first using our Split PDF tool, then translate each part separately." }
+    ]
+  },
+  securitySection: {
+    title: "Your Privacy Is Protected",
+    content: "All PDF translations are handled with strict privacy and security:",
+    points: [
+      "Files are encrypted in transit with 256-bit SSL",
+      "Documents are processed in-memory and never written to disk",
+      "Automatic deletion immediately after download",
+      "No employee or third-party access to your documents",
+      "GDPR-compliant data handling",
+      "No account required — nothing to track"
+    ]
+  },
+  faqs: [
+    { question: "Is PDF translation completely free?", answer: "Yes. There are no fees, no subscriptions, and no watermarks. Translate as many PDFs as you need." },
+    { question: "Which languages can I translate to?", answer: "Over 50 languages including Spanish, French, German, Italian, Portuguese, Arabic, Hindi, Chinese, Japanese, Korean, Russian, Dutch, Turkish, Polish, and many more." },
+    { question: "Will the PDF formatting be preserved?", answer: "The text content is fully and accurately translated. Complex visual layouts are simplified into a clean, readable format. The translated document retains paragraph structure and readability." },
+    { question: "Can I translate a scanned PDF?", answer: "Scanned PDFs contain images, not text. Use our OCR PDF tool first to extract the text, then use Translate PDF to translate the result." },
+    { question: "How large a PDF can I translate?", answer: "There's no hard size limit. Very large documents (hundreds of pages) may take longer but will complete successfully." },
+    { question: "Is my document kept private?", answer: "Absolutely. Files are processed securely and deleted immediately after your download. We never store, share, or access your documents." },
+    { question: "What translation engine is used?", answer: "We use a high-quality translation API that supports 50+ language pairs with neural machine translation for natural-sounding results." }
+  ],
+  relatedWorkflows: [
+    { title: "International Document Workflow", description: "OCR then translate scanned documents for international use", tools: ["ocr-pdf", "translate-pdf", "compress-pdf"] },
+    { title: "Cross-Language Sharing Workflow", description: "Translate and protect your PDF for sharing", tools: ["translate-pdf", "protect-pdf", "compress-pdf"] }
+  ],
+  internalLinks: [
+    { text: "OCR PDF", href: "/ocr-pdf", context: "Convert scanned PDFs to text before translating" },
+    { text: "Compress PDF", href: "/compress-pdf", context: "Reduce translated PDF file size" },
+    { text: "PDF to Word", href: "/pdf-to-word", context: "Convert to editable Word format for manual editing" },
+    { text: "Merge PDF", href: "/merge-pdf", context: "Combine translated pages into one document" },
+    { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection to translated documents" },
+    { text: "Split PDF", href: "/split-pdf", context: "Split large PDFs before translating for better performance" }
+  ]
+};
+
 export function getToolSEOData(toolId: string): ToolSEOData | undefined {
   return toolSEOData[toolId];
 }

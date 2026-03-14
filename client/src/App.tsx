@@ -61,6 +61,7 @@ const RedactPdfPage = lazy(() => import("@/pages/RedactPdfPage"));
 const ScanToPdfPage = lazy(() => import("@/pages/ScanToPdfPage"));
 const PdfToAPage = lazy(() => import("@/pages/PdfToAPage"));
 const BatchCompressPage = lazy(() => import("@/pages/BatchCompressPage"));
+const TranslatePdfPage = lazy(() => import("@/pages/TranslatePdfPage"));
 
 const ResizeImagePage = lazy(() => import("@/pages/ResizeImagePage"));
 const CropImagePage = lazy(() => import("@/pages/CropImagePage"));
@@ -155,6 +156,7 @@ function AppRoutes() {
         <Route path="/scan-to-pdf" component={ScanToPdfPage} />
         <Route path="/pdf-to-pdfa" component={PdfToAPage} />
         <Route path="/batch-compress" component={BatchCompressPage} />
+        <Route path="/translate-pdf" component={TranslatePdfPage} />
         <Route path="/resize-image" component={ResizeImagePage} />
         <Route path="/crop-image" component={CropImagePage} />
         <Route path="/rotate-image" component={RotateImagePage} />
