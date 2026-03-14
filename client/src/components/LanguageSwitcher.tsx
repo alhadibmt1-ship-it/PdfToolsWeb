@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { useLocation } from "wouter";
 import { Globe, ChevronDown, Check } from "lucide-react";
 import { SUPPORTED_LANGUAGES, getLangFromPath, buildLangPath } from "@/lib/languages";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -7,7 +6,6 @@ import { useLanguage } from "@/contexts/LanguageContext";
 export default function LanguageSwitcher() {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const [location, navigate] = useLocation();
   const { lang } = useLanguage();
 
   useEffect(() => {
@@ -22,9 +20,12 @@ export default function LanguageSwitcher() {
 
   function handleSelect(code: string) {
     setOpen(false);
-    const { basePath } = getLangFromPath(location);
+    // Use window.location.pathname to get the real absolute path,
+    // since Wouter's useLocation() returns a base-relative path
+    // inside a WouterRouter with base, causing double-prefix 404s.
+    const { basePath } = getLangFromPath(window.location.pathname);
     const newPath = buildLangPath(code, basePath);
-    navigate(newPath);
+    window.location.href = newPath;
   }
 
   const current = SUPPORTED_LANGUAGES.find(l => l.code === lang) || SUPPORTED_LANGUAGES[0];

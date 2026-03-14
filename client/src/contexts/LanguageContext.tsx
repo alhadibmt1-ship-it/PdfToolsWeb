@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import { getLangFromPath, getLang, Language } from "@/lib/languages";
-import { useLocation } from "wouter";
 
 interface LanguageContextValue {
   lang: string;
@@ -15,14 +14,19 @@ const LanguageContext = createContext<LanguageContextValue>({
 });
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [location] = useLocation();
-  const { lang: detectedLang } = getLangFromPath(location);
+  // Use window.location.pathname (the real absolute path) — not Wouter's
+  // useLocation() which returns a base-relative path inside a base router.
+  const { lang: detectedLang } = getLangFromPath(window.location.pathname);
   const [lang, setLang] = useState(detectedLang);
 
   useEffect(() => {
-    const { lang: newLang } = getLangFromPath(location);
-    setLang(newLang);
-  }, [location]);
+    function onPopState() {
+      const { lang: newLang } = getLangFromPath(window.location.pathname);
+      setLang(newLang);
+    }
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
 
   useEffect(() => {
     const language = getLang(lang);

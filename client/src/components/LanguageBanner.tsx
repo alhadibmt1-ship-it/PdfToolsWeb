@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "wouter";
 import { X } from "lucide-react";
 import { detectBrowserLang, getLang, getLangFromPath, buildLangPath, SUPPORTED_LANGUAGES } from "@/lib/languages";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -9,7 +8,6 @@ const BANNER_DISMISSED_KEY = "pdfhub24_lang_banner_dismissed";
 export default function LanguageBanner() {
   const [show, setShow] = useState(false);
   const [suggestedLang, setSuggestedLang] = useState<string | null>(null);
-  const [location, navigate] = useLocation();
   const { lang: currentLang } = useLanguage();
 
   useEffect(() => {
@@ -26,8 +24,10 @@ export default function LanguageBanner() {
   function handleSwitch() {
     if (!suggestedLang) return;
     dismiss();
-    const { basePath } = getLangFromPath(location);
-    navigate(buildLangPath(suggestedLang, basePath));
+    // Use window.location.pathname for the real absolute path,
+    // not Wouter's relative location (which strips the lang base prefix).
+    const { basePath } = getLangFromPath(window.location.pathname);
+    window.location.href = buildLangPath(suggestedLang, basePath);
   }
 
   function dismiss() {
