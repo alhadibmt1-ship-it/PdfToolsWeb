@@ -3,6 +3,8 @@ import { Upload, X, FileText, Image, File, Shield, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useUploadContext } from "@/contexts/UploadContext";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, tFormat } from "@/lib/languages";
 
 interface FileUploadZoneProps {
   onFilesSelected: (files: File[]) => void;
@@ -37,6 +39,7 @@ export default function FileUploadZone({
   className,
   toolName
 }: FileUploadZoneProps) {
+  const { lang } = useLanguage();
   const [isDragging, setIsDragging] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const inputId = useId();
@@ -190,15 +193,15 @@ export default function FileUploadZone({
           </div>
           
           <h3 className="text-lg sm:text-2xl font-bold mb-1.5 sm:mb-2 tracking-tight">
-            {isDragging ? "Drop your files here!" : "Upload Your Files"}
+            {isDragging ? t(lang, "dropFilesHere") : t(lang, "uploadYourFiles")}
           </h3>
           
           <p className="text-sm sm:text-base text-muted-foreground mb-4 max-w-md">
             {isDragging 
-              ? "Release to upload" 
+              ? t(lang, "releaseToUpload")
               : multiple 
-                ? `Tap to select up to ${maxFiles} files`
-                : "Tap to select your file"
+                ? tFormat(lang, "tapToSelectFiles", { n: maxFiles })
+                : t(lang, "tapToSelectFile")
             }
           </p>
           
@@ -216,7 +219,7 @@ export default function FileUploadZone({
               aria-controls={uniqueInputId}
             >
               <Upload className="w-5 h-5" aria-hidden="true" />
-              Select {multiple ? "Files" : "File"}
+              {multiple ? t(lang, "selectFiles") : t(lang, "selectFile")}
             </Button>
           </div>
           
@@ -227,11 +230,11 @@ export default function FileUploadZone({
             </span>
             <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-muted/50">
               <Shield className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-500" aria-hidden="true" />
-              Secure
+              {t(lang, "secure")}
             </span>
             <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-muted/50">
               <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-orange-500" aria-hidden="true" />
-              Fast
+              {t(lang, "fast")}
             </span>
           </div>
         </div>
@@ -242,8 +245,8 @@ export default function FileUploadZone({
           <div className="flex items-center justify-between flex-wrap gap-2">
             <h4 className="text-sm font-semibold">
               {multiple 
-                ? `Selected Files (${selectedFiles.length}/${maxFiles})`
-                : "Selected File"
+                ? tFormat(lang, "selectedFiles", { n: selectedFiles.length, max: maxFiles })
+                : t(lang, "selectedFile")
               }
             </h4>
             <div className="flex items-center gap-2">
@@ -257,7 +260,7 @@ export default function FileUploadZone({
                   data-testid="button-add-more-files"
                 >
                   <Upload className="w-3 h-3" aria-hidden="true" />
-                  Add More
+                  {t(lang, "addMore")}
                 </Button>
               )}
               {selectedFiles.length > 1 && (
@@ -271,7 +274,7 @@ export default function FileUploadZone({
                   className="text-xs h-7"
                   data-testid="button-clear-all"
                 >
-                  Clear All
+                  {t(lang, "clearAll")}
                 </Button>
               )}
             </div>

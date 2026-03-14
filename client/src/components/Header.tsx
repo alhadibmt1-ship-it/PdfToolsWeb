@@ -5,8 +5,12 @@ import MobileMenu from "./MobileMenu";
 import ToolSearch from "./ToolSearch";
 import LanguageSwitcher from "./LanguageSwitcher";
 import siteLogo from "@assets/generated_images/logo-64.webp";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t } from "@/lib/languages";
 
 export default function Header() {
+  const { lang } = useLanguage();
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex h-14 sm:h-16 items-center justify-between">
@@ -28,33 +32,33 @@ export default function Header() {
           <nav className="hidden md:flex items-center gap-0.5 mr-2">
             <Link href="/" data-testid="link-nav-home">
               <span className="px-4 py-2 text-sm font-medium rounded-lg hover-elevate active-elevate-2 cursor-pointer transition-all">
-                Home
+                {t(lang, "home")}
               </span>
             </Link>
             <Link href="/#tools" data-testid="link-nav-tools">
               <span className="px-4 py-2 text-sm font-medium rounded-lg hover-elevate active-elevate-2 cursor-pointer transition-all">
-                All Tools
+                {t(lang, "allTools")}
               </span>
             </Link>
             <Link href="/blog" data-testid="link-nav-blog">
               <span className="px-4 py-2 text-sm font-medium rounded-lg hover-elevate active-elevate-2 cursor-pointer transition-all">
-                Blog
+                {t(lang, "blog")}
               </span>
             </Link>
             <div className="w-px h-5 bg-border/60 mx-1" aria-hidden="true" />
             <Link href="/pdf-to-word" data-testid="link-nav-pdf-to-word">
               <span className="px-3 py-2 text-sm font-semibold rounded-lg hover-elevate active-elevate-2 cursor-pointer transition-all text-primary">
-                PDF to Word
+                {t(lang, "pdfToWord")}
               </span>
             </Link>
             <Link href="/merge" data-testid="link-nav-merge">
               <span className="px-3 py-2 text-sm font-semibold rounded-lg hover-elevate active-elevate-2 cursor-pointer transition-all text-primary">
-                Merge PDF
+                {t(lang, "merge")}
               </span>
             </Link>
             <Link href="/compress" data-testid="link-nav-compress">
               <span className="px-3 py-2 text-sm font-semibold rounded-lg hover-elevate active-elevate-2 cursor-pointer transition-all text-primary">
-                Compress
+                {t(lang, "compress")}
               </span>
             </Link>
           </nav>

@@ -1,6 +1,8 @@
 import { CheckCircle, Infinity, Shield, Zap, Lock, Globe } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t } from "@/lib/languages";
 
 interface TrustBadgesProps {
   variant?: "inline" | "expanded" | "prominent";
@@ -8,6 +10,8 @@ interface TrustBadgesProps {
 }
 
 export default function TrustBadges({ variant = "inline", className }: TrustBadgesProps) {
+  const { lang } = useLanguage();
+
   if (variant === "prominent") {
     return (
       <div className={cn("rounded-xl bg-gradient-to-r from-primary/5 via-cyan-500/5 to-primary/5 border border-primary/10 p-4 sm:p-5", className)}>
@@ -17,8 +21,8 @@ export default function TrustBadges({ variant = "inline", className }: TrustBadg
               <CheckCircle className="w-5 h-5 text-green-500" aria-hidden="true" />
             </div>
             <div>
-              <div className="font-semibold text-sm">100% Free</div>
-              <div className="text-xs text-muted-foreground">No hidden costs</div>
+              <div className="font-semibold text-sm">{t(lang, "hundredFree")}</div>
+              <div className="text-xs text-muted-foreground">{t(lang, "noHiddenCosts")}</div>
             </div>
           </div>
           <div className="flex items-center gap-2.5" data-testid="trust-badge-secure">
@@ -26,8 +30,8 @@ export default function TrustBadges({ variant = "inline", className }: TrustBadg
               <Shield className="w-5 h-5 text-primary" aria-hidden="true" />
             </div>
             <div>
-              <div className="font-semibold text-sm">Secure</div>
-              <div className="text-xs text-muted-foreground">SSL encrypted</div>
+              <div className="font-semibold text-sm">{t(lang, "secure")}</div>
+              <div className="text-xs text-muted-foreground">{t(lang, "sslEncrypted")}</div>
             </div>
           </div>
           <div className="flex items-center gap-2.5" data-testid="trust-badge-fast">
@@ -35,8 +39,8 @@ export default function TrustBadges({ variant = "inline", className }: TrustBadg
               <Zap className="w-5 h-5 text-orange-500" aria-hidden="true" />
             </div>
             <div>
-              <div className="font-semibold text-sm">Fast</div>
-              <div className="text-xs text-muted-foreground">Cloud powered</div>
+              <div className="font-semibold text-sm">{t(lang, "fast")}</div>
+              <div className="text-xs text-muted-foreground">{t(lang, "cloudPowered")}</div>
             </div>
           </div>
           <div className="flex items-center gap-2.5" data-testid="trust-badge-nolimit">
@@ -44,8 +48,8 @@ export default function TrustBadges({ variant = "inline", className }: TrustBadg
               <Infinity className="w-5 h-5 text-purple-500" aria-hidden="true" />
             </div>
             <div>
-              <div className="font-semibold text-sm">No Limits</div>
-              <div className="text-xs text-muted-foreground">Unlimited use</div>
+              <div className="font-semibold text-sm">{t(lang, "noLimits")}</div>
+              <div className="text-xs text-muted-foreground">{t(lang, "unlimitedUse")}</div>
             </div>
           </div>
         </div>
@@ -58,19 +62,19 @@ export default function TrustBadges({ variant = "inline", className }: TrustBadg
       <div className={cn("grid grid-cols-2 md:grid-cols-4 gap-4 my-6", className)}>
         <div className="flex items-center gap-2 text-sm text-muted-foreground" data-testid="trust-badge-free">
           <CheckCircle className="w-5 h-5 text-green-500 shrink-0" aria-hidden="true" />
-          <span>100% Free</span>
+          <span>{t(lang, "hundredFree")}</span>
         </div>
         <div className="flex items-center gap-2 text-sm text-muted-foreground" data-testid="trust-badge-secure">
           <Shield className="w-5 h-5 text-primary shrink-0" aria-hidden="true" />
-          <span>Secure</span>
+          <span>{t(lang, "secure")}</span>
         </div>
         <div className="flex items-center gap-2 text-sm text-muted-foreground" data-testid="trust-badge-fast">
           <Zap className="w-5 h-5 text-orange-500 shrink-0" aria-hidden="true" />
-          <span>Fast</span>
+          <span>{t(lang, "fast")}</span>
         </div>
         <div className="flex items-center gap-2 text-sm text-muted-foreground" data-testid="trust-badge-nolimit">
           <Infinity className="w-5 h-5 text-primary shrink-0" aria-hidden="true" />
-          <span>No Limits</span>
+          <span>{t(lang, "noLimits")}</span>
         </div>
       </div>
     );
@@ -80,19 +84,19 @@ export default function TrustBadges({ variant = "inline", className }: TrustBadg
     <div className={cn("flex flex-wrap gap-2", className)}>
       <Badge variant="secondary" className="text-xs gap-1.5" data-testid="trust-badge-free">
         <CheckCircle className="w-3 h-3 text-green-500" aria-hidden="true" />
-        Free
+        {t(lang, "free")}
       </Badge>
       <Badge variant="secondary" className="text-xs gap-1.5" data-testid="trust-badge-secure">
         <Shield className="w-3 h-3 text-primary" aria-hidden="true" />
-        Secure
+        {t(lang, "secure")}
       </Badge>
       <Badge variant="secondary" className="text-xs gap-1.5" data-testid="trust-badge-fast">
         <Zap className="w-3 h-3 text-orange-500" aria-hidden="true" />
-        Fast
+        {t(lang, "fast")}
       </Badge>
       <Badge variant="secondary" className="text-xs gap-1.5" data-testid="trust-badge-nolimit">
         <Infinity className="w-3 h-3 text-purple-500" aria-hidden="true" />
-        No Limits
+        {t(lang, "noLimits")}
       </Badge>
     </div>
   );
