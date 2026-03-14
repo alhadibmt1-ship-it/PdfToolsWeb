@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
+import UrlImportButton from "@/components/UrlImportButton";
 import ProcessingState from "@/components/ProcessingState";
 import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
 import { getToolSEOData } from "@/data/toolSEOData";
@@ -159,13 +160,21 @@ export default function CompressPdfPage() {
 
           <div className="space-y-6">
             {status !== "success" && (
-              <FileUploadZone
-                onFilesSelected={setFiles}
-                acceptedFormats=".pdf"
-                multiple={false}
-                disabled={status === "processing"}
-                toolName="Compress PDF"
-              />
+              <>
+                <FileUploadZone
+                  onFilesSelected={setFiles}
+                  acceptedFormats=".pdf"
+                  multiple={false}
+                  disabled={status === "processing"}
+                  toolName="Compress PDF"
+                />
+                <div className="flex justify-center">
+                  <UrlImportButton
+                    accept=".pdf"
+                    onFileImported={(file) => setFiles([file])}
+                  />
+                </div>
+              </>
             )}
 
             {files.length > 0 && status === "idle" && (

@@ -451,5 +451,32 @@ export const PDF_TOOLS: PDFTool[] = [
     path: "/convert-image",
     acceptedFormats: ".jpg,.jpeg,.png,.webp,.gif,.bmp,.tiff,.tif",
     category: "utility"
+  },
+  {
+    id: "scan-to-pdf",
+    title: "Scan to PDF",
+    description: "Use your camera to scan documents and convert to PDF",
+    icon: "camera",
+    path: "/scan-to-pdf",
+    acceptedFormats: ".jpg,.jpeg,.png,.webp",
+    category: "to-pdf"
+  },
+  {
+    id: "pdf-to-pdfa",
+    title: "PDF to PDF/A",
+    description: "Convert PDF to PDF/A format for long-term archiving",
+    icon: "archive",
+    path: "/pdf-to-pdfa",
+    acceptedFormats: ".pdf",
+    category: "from-pdf"
+  },
+  {
+    id: "batch-compress",
+    title: "Batch Compress PDF",
+    description: "Compress multiple PDF files at once and download as ZIP",
+    icon: "layers",
+    path: "/batch-compress",
+    acceptedFormats: ".pdf",
+    category: "edit-pdf"
   }
 ];
