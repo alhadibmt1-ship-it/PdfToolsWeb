@@ -1567,10 +1567,74 @@ function generateCrawlableNav(currentPath: string): string {
   return `<nav aria-label="Site Navigation" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">${linkHtml}</nav>`;
 }
 
+function escJs(str: string): string {
+  return str.replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, " ").replace(/\r/g, "");
+}
+
+function generatePreRenderShell(canonicalPath: string): string {
+  const config = seoConfig[canonicalPath];
+
+  // For homepage: full hero pre-render matching actual design
+  const isHome = canonicalPath === "/";
+
+  let h1Text = "";
+  let pText = "";
+  let h1Span = "";
+
+  if (isHome) {
+    h1Text = "Professional PDF Tools";
+    h1Span = "100% Free Online";
+    pText = "Convert, merge, compress, and edit PDF files instantly. Trusted by millions of users worldwide.";
+  } else if (config?.h1) {
+    h1Text = config.h1;
+    pText = config.description || "";
+  } else if (config?.title) {
+    h1Text = config.title.split(" | ")[0];
+    pText = config.description || "";
+  } else {
+    return "";
+  }
+
+  const safeH1 = escJs(h1Text);
+  const safePText = escJs(pText);
+
+  const spanHtml = h1Span
+    ? `<span style="display:block;background:linear-gradient(135deg,#2563eb,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">${h1Span}</span>`
+    : "";
+
+  // Inline script that runs synchronously before React — populates #root
+  // Uses localStorage theme to match user preference (avoids flash)
+  return `<script>
+(function(){
+  try{
+    var r=document.getElementById('root');
+    if(!r)return;
+    var t=localStorage.getItem('theme')||'system';
+    var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;
+    var dk=t==='dark'||(t!=='light'&&mq);
+    var bg=dk?'#0a0a0a':'#ffffff';
+    var fg=dk?'#f8fafc':'#0f172a';
+    var sfg=dk?'#94a3b8':'#475569';
+    var bd=dk?'rgba(255,255,255,0.08)':'rgba(0,0,0,0.08)';
+    var d=document.createElement('div');
+    d.id='__psr';
+    d.style.cssText='min-height:100vh;background:'+bg+';display:flex;flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,Inter,"Segoe UI",Roboto,sans-serif';
+    var nav='<div style="position:sticky;top:0;z-index:50;height:56px;border-bottom:1px solid '+bd+';background:'+bg+';display:flex;align-items:center;padding:0 1.5rem"><span style="font-size:1.25rem;font-weight:700;color:#2563eb">PDF HUB 24</span></div>';
+    var h1s='<h1 style="font-size:clamp(1.75rem,6vw,3.75rem);font-weight:700;line-height:1.1;color:'+fg+';max-width:700px;margin:0 0 1rem 0">${safeH1} ${spanHtml}</h1>';
+    var ps='<p style="font-size:1rem;color:'+sfg+';max-width:580px;line-height:1.65;margin:0">${safePText}</p>';
+    var main='<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 1.5rem;text-align:center">'+h1s+ps+'</div>';
+    d.innerHTML=nav+main;
+    r.insertBefore(d,r.firstChild);
+  }catch(e){}
+})();
+</script>`;
+}
+
 export function injectSEO(html: string, path: string): string {
-  const { lang } = stripLangPrefix(path);
+  const { lang, canonicalPath } = stripLangPrefix(path);
   const metaTags = generateMetaTags(path);
   const crawlableNav = generateCrawlableNav(path);
+  const preRenderShell = generatePreRenderShell(canonicalPath);
   const dir = lang === "ar" ? "rtl" : "ltr";
   
   return html
@@ -1584,5 +1648,6 @@ export function injectSEO(html: string, path: string): string {
     .replace(/<meta name="twitter:[^"]*"[^>]*\/?>/g, '')
     .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '')
     .replace('</head>', `${metaTags}\n  </head>`)
+    .replace('<div id="root">', `<div id="root">${preRenderShell}`)
     .replace('</body>', `${crawlableNav}\n  </body>`);
 }

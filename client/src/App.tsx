@@ -12,7 +12,9 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import ScrollToTop from "@/components/ScrollToTop";
 import MobileQuickActions from "@/components/MobileQuickActions";
 import LanguageBanner from "@/components/LanguageBanner";
-import HomePage from "@/pages/HomePage";
+import HomePageFallback from "@/components/HomePageFallback";
+
+const HomePage = lazy(() => import("@/pages/HomePage"));
 
 const MergePdfPage = lazy(() => import("@/pages/MergePdfPage"));
 const SplitPdfPage = lazy(() => import("@/pages/SplitPdfPage"));
@@ -92,13 +94,21 @@ function PageLoader() {
   );
 }
 
+function HomeRoute() {
+  return (
+    <Suspense fallback={<HomePageFallback />}>
+      <HomePage />
+    </Suspense>
+  );
+}
+
 function AppRoutes() {
   return (
     <Suspense fallback={<PageLoader />}>
       <ScrollToTop />
       <LanguageBanner />
       <Switch>
-        <Route path="/" component={HomePage} />
+        <Route path="/" component={HomeRoute} />
         <Route path="/merge" component={MergePdfPage} />
         <Route path="/split" component={SplitPdfPage} />
         <Route path="/compress" component={CompressPdfPage} />
