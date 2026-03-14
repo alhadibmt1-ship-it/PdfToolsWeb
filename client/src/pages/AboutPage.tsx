@@ -219,11 +219,11 @@ export default function AboutPage() {
                   </div>
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center gap-3 mb-2">
-                      <h3 className="text-xl font-bold">Ahmad Malik</h3>
+                      <h3 className="text-xl font-bold">Izhar Hassan</h3>
                       <span className="text-xs px-2.5 py-1 rounded-full bg-primary/10 text-primary font-medium">Founder &amp; Developer</span>
                     </div>
                     <p className="text-sm text-muted-foreground mb-4">
-                      Based in Lahore, Pakistan — building tools used daily across Pakistan, the US, and worldwide.
+                      Based in Burewala, Pakistan — building tools used daily across Pakistan, the US, and worldwide.
                     </p>
                     <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
                       <p>
