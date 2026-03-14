@@ -68,7 +68,7 @@ Key technical features include:
 - **Trust pages**: /data-security (security practices), /auto-delete (file deletion policy), /pricing (free vs pro)
 - **Backlink pages**: /write-for-us (guest post guidelines), /embed (iframe widget generator), /pdf-comparison-chart (6-platform comparison), /pdf-file-formats-guide (10-format reference)
 - **Footer**: Organized by category with tool category hub links, company links including pricing/security/write-for-us/embed/comparison/formats, popular tools, utility tools, and blog articles
-- **Sitemap**: 132 URLs covering all tools, blogs, categories, trust pages, linkable assets, and programmatic SEO pages
+- **Sitemap**: 218 URLs covering all tools, blogs, categories, trust pages, linkable assets, programmatic SEO pages, and international language alternates (10 top tools × 5 languages)
 
 ### Data Files
 - `client/src/data/categoryHubData.ts` — 5 category hub configurations with tools, FAQs, blogs
