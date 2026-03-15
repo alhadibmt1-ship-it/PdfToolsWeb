@@ -256,6 +256,23 @@ export const seoConfig: Record<string, PageSEO> = {
       "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
+  "/extract-pages": {
+    title: "Extract Pages from PDF Free (Select Any Pages) | PDF HUB 24",
+    description: "Extract specific pages from any PDF instantly. Free PDF page extractor — enter page numbers or ranges like 1,3,5-8. No signup, no watermark.",
+    keywords: "extract pages from PDF, PDF page extractor, extract PDF pages online free, save specific pages PDF, pull pages from PDF",
+    canonical: `${BASE_URL}/extract-pages`,
+    ogTitle: "Extract Pages from PDF Free | PDF HUB 24",
+    ogDescription: "Extract specific pages from any PDF instantly. Enter page numbers or ranges — download in seconds. No signup required.",
+    twitterCard: "summary_large_image",
+    robots: "index, follow",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Extract Pages from PDF - PDF HUB 24",
+      "url": `${BASE_URL}/extract-pages`,
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
+    }
+  },
   "/reorder-pages": {
     title: "Reorder PDF Pages Free (Drag & Drop) | PDF HUB 24",
     description: "Reorder and rearrange PDF pages with drag & drop. Free PDF page organizer — change page sequence instantly. No signup, no watermark required.",
