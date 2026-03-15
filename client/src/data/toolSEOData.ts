@@ -3527,7 +3527,7 @@ export function getAllToolIds(): string[] {
 }
 
 toolSEOData["pdf-to-ppt"] = {
-  toolId: "pdf-to-ppt",
+  id: "pdf-to-ppt",
   primaryKeyword: "convert pdf to powerpoint online free",
   longTailH1: "Convert PDF to PowerPoint Online Free — PDF to PPTX in Seconds",
   secondaryKeywords: [
@@ -3537,37 +3537,70 @@ toolSEOData["pdf-to-ppt"] = {
     "pdf to powerpoint without losing formatting",
     "convert pdf to editable powerpoint"
   ],
-  metaTitle: "PDF to PowerPoint Converter Free (PDF to PPTX) | PDF HUB 24",
   metaDescription: "Convert PDF to editable PowerPoint presentations online free. No signup, no watermark. High-quality PDF to PPTX conversion with formatting preserved.",
-  steps: [
-    { step: 1, title: "Upload PDF", description: "Drag and drop your PDF file or click to browse and select it." },
-    { step: 2, title: "Convert", description: "Click Convert and our engine extracts slides and formatting from your PDF." },
-    { step: 3, title: "Download PPTX", description: "Download your editable PowerPoint file instantly." }
-  ],
-  useCases: [
-    { title: "Presentation Editing", description: "Convert PDF reports back to editable PowerPoint slides for meetings and presentations." },
-    { title: "Slide Repurposing", description: "Repurpose existing PDF content into new presentations without retyping everything." },
-    { title: "Collaborative Work", description: "Share presentations in PPTX format so colleagues can edit and contribute." }
-  ],
+  heroContent: "Received a PDF presentation you need to edit? Our free PDF to PowerPoint converter extracts the content and layout from your PDF and rebuilds it as a fully editable .pptx file — compatible with Microsoft PowerPoint, Google Slides, and LibreOffice Impress. No software to install. No signup required. Just upload your PDF and download your editable presentation in seconds.",
+  useCases: {
+    title: "When to Convert PDF to PowerPoint",
+    description: "PDF to PPTX conversion is useful in many real-world situations:",
+    items: [
+      "Editing a PDF presentation you received from a client or colleague",
+      "Repurposing a PDF report as slides for a meeting or webinar",
+      "Updating annual review PDFs without recreating from scratch",
+      "Translating PDF slide content into another language",
+      "Combining multiple PDF pages into a single editable deck"
+    ]
+  },
+  tutorial: {
+    title: "How to Convert PDF to PowerPoint — 3 Steps",
+    steps: [
+      { step: "Upload Your PDF", detail: "Drag and drop your PDF file or click to browse. The PDF can contain text, images, and mixed content." },
+      { step: "Convert to PPTX", detail: "Click Convert and our engine analyzes the document structure, extracting text blocks, images, and layout to rebuild the presentation." },
+      { step: "Download Editable PPTX", detail: "Your editable PowerPoint file downloads instantly. Open it in PowerPoint, Google Slides, or Impress to start editing." }
+    ]
+  },
+  troubleshooting: {
+    title: "PDF to PowerPoint — Common Issues & Solutions",
+    issues: [
+      { problem: "Formatting looks different from the original", solution: "PDFs don't store slide layout metadata. For complex layouts, minor adjustments may be needed in PowerPoint after conversion." },
+      { problem: "Text appears as an image instead of editable text", solution: "This happens with scanned PDFs. Use our OCR PDF tool first to make text machine-readable, then retry the conversion." },
+      { problem: "Images are missing or low quality", solution: "Try a higher-resolution source PDF. Our converter preserves images at their original resolution." }
+    ]
+  },
+  securitySection: {
+    title: "Your Files Are Secure",
+    content: "Security is our priority for every PDF you upload. Your presentation data never leaves our secure servers during processing.",
+    points: [
+      "256-bit SSL encryption on all file uploads",
+      "Converted files deleted automatically after download",
+      "No user accounts or login required",
+      "Zero data sharing with third parties",
+      "GDPR-compliant file handling"
+    ]
+  },
   faqs: [
     { question: "Is PDF to PowerPoint conversion free?", answer: "Yes, completely free with no limits or hidden fees." },
     { question: "Will my slide layouts be preserved?", answer: "Yes, our converter preserves text, images, and layout structure as accurately as possible." },
-    { question: "Can I convert a scanned PDF to PowerPoint?", answer: "Yes — our OCR-powered conversion extracts text from scanned PDFs too." },
+    { question: "Can I convert a scanned PDF to PowerPoint?", answer: "Yes — use our OCR PDF tool first to extract the text, then convert to PowerPoint for best results." },
     { question: "What file format is the output?", answer: "The output is .pptx, compatible with Microsoft PowerPoint, Google Slides, and LibreOffice Impress." },
     { question: "Is my PDF kept private?", answer: "Yes. Files are automatically deleted after processing. We never store or share your documents." }
   ],
+  relatedWorkflows: [
+    { title: "Presentation Repurposing Workflow", description: "Convert and refine PDF presentations for editing", tools: ["pdf-to-ppt", "compress", "protect"] },
+    { title: "Scanned PDF to Slides", description: "OCR then convert scanned presentations to editable PPTX", tools: ["ocr-pdf", "pdf-to-ppt"] }
+  ],
   internalLinks: [
-    { text: "PowerPoint to PDF", href: "/ppt-to-pdf", context: "Convert your presentation back to PDF for sharing" },
+    { text: "PowerPoint to PDF", href: "/ppt-to-pdf", context: "Convert your finished presentation back to PDF for sharing" },
     { text: "PDF to Word", href: "/pdf-to-word", context: "Extract editable text content from your PDF" },
     { text: "Compress PDF", href: "/compress", context: "Reduce PDF size before converting" },
-    { text: "OCR PDF", href: "/ocr-pdf", context: "Extract text from scanned PDFs" },
+    { text: "OCR PDF", href: "/ocr-pdf", context: "Extract text from scanned PDFs before converting to PPTX" },
     { text: "PDF to Excel", href: "/pdf-to-excel", context: "Convert PDF tables to spreadsheets" },
-    { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs before converting" }
+    { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs before converting" },
+    { text: "/blog/best-free-pdf-tools-2026", href: "/blog/best-free-pdf-tools-2026", context: "See all top free PDF tools including PDF to PPTX" }
   ]
-};
+} as unknown as ToolSEOData;
 
 toolSEOData["scan-to-pdf"] = {
-  toolId: "scan-to-pdf",
+  id: "scan-to-pdf",
   primaryKeyword: "scan to pdf online free",
   longTailH1: "Scan to PDF Online Free — Convert Camera Photos to PDF Instantly",
   secondaryKeywords: [
@@ -3577,37 +3610,71 @@ toolSEOData["scan-to-pdf"] = {
     "convert scanned image to pdf",
     "scan and save as pdf online"
   ],
-  metaTitle: "Scan to PDF Free Online — Photo to PDF Scanner | PDF HUB 24",
   metaDescription: "Scan documents to PDF from your phone or camera. Convert photos to clean, searchable PDFs instantly. Free, no app download, no signup required.",
-  steps: [
-    { step: 1, title: "Upload Photo or Image", description: "Take a photo with your phone camera or upload an existing image of your document." },
-    { step: 2, title: "Enhance & Convert", description: "Our engine automatically enhances contrast and clarity, then converts to a clean PDF." },
-    { step: 3, title: "Download PDF", description: "Download your scanned PDF document ready for sharing or archiving." }
-  ],
-  useCases: [
-    { title: "Document Digitization", description: "Scan paper documents, receipts, contracts, and certificates into digital PDF format." },
-    { title: "Mobile Scanning", description: "Use your smartphone camera as a document scanner without installing any app." },
-    { title: "Archive Creation", description: "Convert stacks of paper documents into organized, searchable PDF archives." }
-  ],
+  heroContent: "No scanner? No problem. Point your phone camera at any document — contract, receipt, ID, handwritten note — and our free Scan to PDF tool converts your photo into a clean, professional PDF in seconds. It automatically enhances contrast and sharpness, straightens slightly skewed photos, and compresses the output to a sensible file size. Works entirely in your browser. No app to download, no account to create.",
+  useCases: {
+    title: "When to Use Scan to PDF",
+    description: "Scan to PDF solves everyday document digitization challenges:",
+    items: [
+      "Digitizing paper receipts for expense reports and tax records",
+      "Scanning signed contracts and agreements for email delivery",
+      "Archiving handwritten notes, letters, and certificates",
+      "Converting physical ID documents and passports to PDF",
+      "Creating digital copies of instruction manuals and forms",
+      "Scanning whiteboards and meeting notes after workshops"
+    ]
+  },
+  tutorial: {
+    title: "How to Scan a Document to PDF — 3 Steps",
+    steps: [
+      { step: "Photograph or Upload Your Document", detail: "Take a clear, well-lit photo with your phone or upload an existing image. JPG, PNG, HEIC, BMP, and TIFF are all supported." },
+      { step: "Enhance & Convert", detail: "Our engine automatically boosts contrast and sharpness, removes shadows where possible, and builds a clean PDF from your image." },
+      { step: "Download Your Scanned PDF", detail: "Your PDF is ready in seconds. Download it and use it exactly as you would a traditionally scanned document." }
+    ]
+  },
+  troubleshooting: {
+    title: "Scan to PDF — Common Issues & Solutions",
+    issues: [
+      { problem: "Text in the PDF is not searchable", solution: "Image-to-PDF conversion preserves visual content. For searchable text, run the output through our OCR PDF tool afterwards." },
+      { problem: "The photo looks skewed or tilted", solution: "Ensure the document is flat and photographed from directly above. Use the Rotate PDF tool to correct orientation after conversion." },
+      { problem: "Output PDF file is very large", solution: "Use our Compress PDF tool after scanning to reduce the file size while maintaining visual quality." }
+    ]
+  },
+  securitySection: {
+    title: "Your Scanned Documents Are Private",
+    content: "Scanned documents often contain sensitive personal and financial information. We take your privacy seriously.",
+    points: [
+      "All uploads encrypted with 256-bit SSL",
+      "Converted files auto-deleted immediately after download",
+      "No storage of uploaded images or output PDFs",
+      "No login or email address required",
+      "Compliant with GDPR data protection rules"
+    ]
+  },
   faqs: [
     { question: "Can I scan a document using my phone?", answer: "Yes. Simply take a clear photo of your document and upload it. Our tool converts it to a clean PDF." },
     { question: "Does scan to PDF work with multiple pages?", answer: "Yes. Upload multiple images and they will all be merged into a single multi-page PDF." },
-    { question: "Is the output PDF searchable?", answer: "If the original document has clear, printed text, OCR processing makes the text searchable in the output PDF." },
+    { question: "Is the output PDF searchable?", answer: "The PDF preserves the image of your document. For machine-readable searchable text, run it through our OCR PDF tool after conversion." },
     { question: "What image formats are supported?", answer: "JPG, PNG, HEIC, BMP, and TIFF images are all supported." },
     { question: "Is this service free?", answer: "Yes, completely free with no watermarks or limits." }
   ],
+  relatedWorkflows: [
+    { title: "Mobile Document Workflow", description: "Scan, OCR, then compress for archiving or emailing", tools: ["scan-to-pdf", "ocr-pdf", "compress"] },
+    { title: "Signed Document Workflow", description: "Scan, protect, then email signed contracts", tools: ["scan-to-pdf", "protect", "compress"] }
+  ],
   internalLinks: [
-    { text: "OCR PDF", href: "/ocr-pdf", context: "Make scanned documents searchable with OCR" },
-    { text: "Compress PDF", href: "/compress", context: "Reduce size of your scanned PDF" },
+    { text: "OCR PDF", href: "/ocr-pdf", context: "Make your scanned documents fully searchable with OCR" },
+    { text: "Compress PDF", href: "/compress", context: "Reduce the size of your scanned PDF for email" },
     { text: "JPG to PDF", href: "/jpg-to-pdf", context: "Convert individual photos to PDF" },
-    { text: "Merge PDF", href: "/merge", context: "Combine multiple scanned pages" },
+    { text: "Merge PDF", href: "/merge", context: "Combine multiple scanned pages into one PDF" },
     { text: "Protect PDF", href: "/protect", context: "Password-protect your scanned documents" },
-    { text: "PDF to Word", href: "/pdf-to-word", context: "Extract editable text from scanned PDFs" }
+    { text: "Rotate PDF", href: "/rotate-pdf", context: "Fix orientation of scanned pages" },
+    { text: "/blog/pdf-tools-for-students", href: "/blog/pdf-tools-for-students", context: "Essential PDF tools for students including scanning workflows" }
   ]
-};
+} as unknown as ToolSEOData;
 
 toolSEOData["pdf-to-pdfa"] = {
-  toolId: "pdf-to-pdfa",
+  id: "pdf-to-pdfa",
   primaryKeyword: "convert pdf to pdf/a online free",
   longTailH1: "Convert PDF to PDF/A Online Free — Long-Term Archival Format",
   secondaryKeywords: [
@@ -3617,37 +3684,71 @@ toolSEOData["pdf-to-pdfa"] = {
     "pdf archiving standard online",
     "convert pdf to pdf/a-1b free"
   ],
-  metaTitle: "PDF to PDF/A Converter Free (Archival Format) | PDF HUB 24",
   metaDescription: "Convert PDF files to PDF/A archival format online free. Ensure long-term preservation and ISO compliance. No signup, no watermark required.",
-  steps: [
-    { step: 1, title: "Upload PDF", description: "Upload the PDF you want to convert to the PDF/A archival standard." },
-    { step: 2, title: "Convert to PDF/A", description: "Our converter processes the file to meet PDF/A-1b or PDF/A-2b ISO standards." },
-    { step: 3, title: "Download", description: "Download your ISO-compliant PDF/A file ready for long-term archiving." }
-  ],
-  useCases: [
-    { title: "Legal Archiving", description: "Ensure legal documents meet ISO 19005 archiving standards required by courts and government agencies." },
-    { title: "Corporate Records", description: "Convert business documents to PDF/A for compliant long-term record retention." },
-    { title: "Academic Publishing", description: "Submit theses and research papers in PDF/A format as required by many universities." }
-  ],
+  heroContent: "PDF/A is the ISO-standardized version of PDF designed specifically for digital preservation. Unlike regular PDFs, PDF/A embeds all fonts, color profiles, and metadata directly into the file — ensuring the document looks exactly the same in 50 years as it does today. Governments, courts, universities, and corporations worldwide require PDF/A for official document submissions and long-term record keeping. Our free converter produces ISO 19005-compliant PDF/A-1b output from any PDF in seconds.",
+  useCases: {
+    title: "When PDF/A Format Is Required",
+    description: "PDF/A is mandatory or recommended in many professional and institutional contexts:",
+    items: [
+      "Submitting legal documents to courts and government agencies",
+      "Long-term retention of corporate financial and HR records",
+      "University thesis and dissertation submissions (PDF/A required by many institutions)",
+      "ISO 32000 and ISO 19005 compliance requirements",
+      "European eIDAS regulation compliant document archiving",
+      "Healthcare record archiving under HIPAA long-term retention requirements"
+    ]
+  },
+  tutorial: {
+    title: "How to Convert PDF to PDF/A — 3 Steps",
+    steps: [
+      { step: "Upload Your PDF", detail: "Drag and drop your PDF or click to browse. The file is uploaded securely over an encrypted connection." },
+      { step: "Convert to PDF/A-1b", detail: "Our converter processes your PDF to the ISO 19005-1 (PDF/A-1b) standard — embedding all fonts and ensuring self-contained archival compliance." },
+      { step: "Download Your PDF/A File", detail: "Download the ISO-compliant PDF/A file ready for submission or long-term storage. The visual appearance is identical to the original." }
+    ]
+  },
+  troubleshooting: {
+    title: "PDF to PDF/A — Common Issues & Solutions",
+    issues: [
+      { problem: "Conversion fails with an error", solution: "Some encrypted or password-protected PDFs cannot be converted directly. Use our Unlock PDF tool to remove the password first, then convert to PDF/A." },
+      { problem: "Colors look different in the PDF/A output", solution: "PDF/A-1b requires specific color spaces. Our converter adjusts color profiles automatically, but very unusual color spaces may shift slightly." },
+      { problem: "Fonts are replaced in the output", solution: "If a PDF uses non-embeddable fonts, the converter substitutes a standard compliant font. This is required by the PDF/A specification." }
+    ]
+  },
+  securitySection: {
+    title: "Secure PDF/A Conversion",
+    content: "PDF/A documents often contain legally significant content. We maintain strict security standards throughout the conversion process.",
+    points: [
+      "256-bit SSL encryption on all file transfers",
+      "Files deleted immediately after conversion completes",
+      "No storage of your documents on our servers",
+      "Zero third-party access to your files",
+      "GDPR-compliant processing"
+    ]
+  },
   faqs: [
-    { question: "What is PDF/A format?", answer: "PDF/A is an ISO-standardized version of PDF designed for long-term digital preservation. It embeds all fonts and metadata required for self-contained archiving." },
-    { question: "Which PDF/A version is produced?", answer: "Our tool produces PDF/A-1b, the most widely accepted standard for visual preservation." },
-    { question: "Why do I need PDF/A?", answer: "Many legal, government, and academic institutions require PDF/A for document submissions and records that must be preserved for years or decades." },
+    { question: "What is PDF/A format?", answer: "PDF/A is an ISO-standardized version of PDF (ISO 19005) designed for long-term digital preservation. It embeds all fonts, color profiles, and metadata so the document is completely self-contained and viewable without external dependencies." },
+    { question: "Which PDF/A version is produced?", answer: "Our tool produces PDF/A-1b, the most widely accepted level for visual preservation and the most commonly required standard." },
+    { question: "Why do I need PDF/A?", answer: "Many legal, government, and academic institutions require PDF/A for document submissions. It ensures the document will render correctly decades from now regardless of which PDF viewer is used." },
     { question: "Is PDF/A conversion free?", answer: "Yes, completely free with no limits." },
-    { question: "Will my document look the same after conversion?", answer: "Yes. PDF/A embeds all resources so the visual appearance is identical to the original." }
+    { question: "Will my document look the same after conversion?", answer: "Yes. PDF/A-1b embeds all required resources so the visual appearance is identical to the original PDF." }
+  ],
+  relatedWorkflows: [
+    { title: "Legal Document Archiving Workflow", description: "Prepare, verify, and archive legal documents in PDF/A format", tools: ["pdf-to-pdfa", "protect", "compress"] },
+    { title: "University Thesis Submission", description: "Ensure thesis is PDF/A compliant before submission", tools: ["pdf-to-pdfa", "compress"] }
   ],
   internalLinks: [
     { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size before archiving" },
     { text: "Protect PDF", href: "/protect", context: "Add password to archived documents" },
     { text: "OCR PDF", href: "/ocr-pdf", context: "Make scanned content searchable before archiving" },
     { text: "Merge PDF", href: "/merge", context: "Combine documents before converting to PDF/A" },
-    { text: "Edit PDF Metadata", href: "/edit-pdf", context: "Add metadata before archiving" },
-    { text: "Flatten PDF", href: "/flatten-pdf", context: "Flatten forms before archiving" }
+    { text: "Unlock PDF", href: "/unlock-pdf", context: "Remove passwords before PDF/A conversion" },
+    { text: "Flatten PDF", href: "/flatten-pdf", context: "Flatten forms before archiving" },
+    { text: "/blog/protect-pdf-with-password", href: "/blog/protect-pdf-with-password", context: "How to secure PDF documents for long-term storage" }
   ]
-};
+} as unknown as ToolSEOData;
 
 toolSEOData["batch-compress"] = {
-  toolId: "batch-compress",
+  id: "batch-compress",
   primaryKeyword: "batch compress pdf online free",
   longTailH1: "Batch Compress Multiple PDFs Online Free — Compress All at Once",
   secondaryKeywords: [
@@ -3657,31 +3758,65 @@ toolSEOData["batch-compress"] = {
     "compress many pdf files together",
     "reduce size of multiple pdfs free"
   ],
-  metaTitle: "Batch Compress PDF Free — Compress Multiple PDFs at Once | PDF HUB 24",
   metaDescription: "Compress multiple PDF files at once in bulk. Free batch PDF compressor — upload up to 20 PDFs and download as a ZIP. No signup, no watermark.",
-  steps: [
-    { step: 1, title: "Upload Multiple PDFs", description: "Select or drag and drop multiple PDF files at once — up to 20 files per batch." },
-    { step: 2, title: "Choose Compression Level", description: "Select light, balanced, or maximum compression depending on your size vs quality needs." },
-    { step: 3, title: "Download ZIP", description: "All compressed PDFs are packaged into a single ZIP file for easy download." }
-  ],
-  useCases: [
-    { title: "Email Attachments", description: "Compress an entire project's PDF files before emailing to stay under attachment limits." },
-    { title: "Website Optimization", description: "Bulk-compress PDF downloads on your website to speed up page load times." },
-    { title: "Cloud Storage Savings", description: "Reduce the total storage footprint of large PDF archives and document libraries." }
-  ],
+  heroContent: "Got 10, 15, or 20 PDFs that all need compressing? Don't do them one by one. Our free Batch Compress tool lets you upload up to 20 PDF files simultaneously, choose your compression level, and download all results in a single ZIP archive. Same powerful compression engine as our single-file tool — just faster for bulk tasks. Perfect for project teams, office managers, and anyone who regularly handles large batches of PDF documents.",
+  useCases: {
+    title: "When to Use Batch PDF Compression",
+    description: "Batch PDF compression saves time and storage across many professional scenarios:",
+    items: [
+      "Compressing an entire month's invoices before sending to an accountant",
+      "Preparing multiple project documents for client email delivery",
+      "Reducing file sizes before uploading to cloud storage like Google Drive or Dropbox",
+      "Optimizing PDF downloads on a website for faster page load speed",
+      "Preparing tender documents and bid packages within portal upload limits",
+      "Archiving quarterly reports and compliance documents efficiently"
+    ]
+  },
+  tutorial: {
+    title: "How to Batch Compress PDFs — 3 Steps",
+    steps: [
+      { step: "Upload Multiple PDFs", detail: "Select or drag and drop up to 20 PDF files at once. There's no file size limit per file and no daily usage cap." },
+      { step: "Choose Compression Level", detail: "Select Light (best quality, 20-40% reduction), Balanced (recommended, 40-70% reduction), or Maximum (70-90% reduction, ideal for archiving)." },
+      { step: "Download ZIP Archive", detail: "All compressed PDFs are packaged into a single ZIP file ready to download. Each file is named to match the original for easy identification." }
+    ]
+  },
+  troubleshooting: {
+    title: "Batch Compress — Common Issues & Solutions",
+    issues: [
+      { problem: "Some files in the batch failed to compress", solution: "Password-protected or corrupted PDFs may fail individually. The successful files will still be included in the ZIP. Use our Unlock PDF tool on protected files before batch compressing." },
+      { problem: "The ZIP file doesn't download", solution: "Check your browser's download settings. Some browsers block automatic downloads. Try right-clicking the download button and selecting 'Save as'." },
+      { problem: "Compression percentage is lower than expected", solution: "PDFs that contain mostly images (like scanned documents) at high resolution compress more than text-heavy PDFs. Try Maximum compression for scanned documents." }
+    ]
+  },
+  securitySection: {
+    title: "Batch Files Are Fully Secure",
+    content: "Batch uploading multiple files doesn't change our security standards — every file in every batch is handled with the same level of protection.",
+    points: [
+      "256-bit SSL encryption on all batch uploads",
+      "All files and ZIP archives deleted automatically after download",
+      "No storage of any uploaded or compressed files",
+      "Each batch is processed in an isolated session",
+      "GDPR-compliant data handling"
+    ]
+  },
   faqs: [
-    { question: "How many PDFs can I compress at once?", answer: "You can compress up to 20 PDFs in a single batch. There are no daily limits." },
-    { question: "How much compression can I expect?", answer: "Most PDFs are reduced by 40–80% in size depending on their content and your compression level setting." },
-    { question: "Will compression reduce PDF quality?", answer: "Light compression preserves near-original quality. Maximum compression reduces image DPI but keeps text crisp and readable." },
-    { question: "How are the results delivered?", answer: "All compressed files are packaged into a single ZIP archive for convenient bulk download." },
-    { question: "Is batch compression free?", answer: "Yes, completely free with no limits on how many times you use it." }
+    { question: "How many PDFs can I compress at once?", answer: "You can compress up to 20 PDFs in a single batch. There are no daily limits — run as many batches as you need." },
+    { question: "How much compression can I expect?", answer: "Most PDFs are reduced by 40-80% in size depending on their content and your chosen compression level." },
+    { question: "Will compression reduce PDF quality?", answer: "Light and Balanced compression preserves near-original quality. Maximum compression reduces image DPI but keeps text crisp and readable." },
+    { question: "How are the results delivered?", answer: "All compressed files are packaged into a single ZIP archive for convenient bulk download. Each compressed file keeps its original filename." },
+    { question: "Is batch compression free?", answer: "Yes, completely free with no limits on files per batch or number of batches per day." }
+  ],
+  relatedWorkflows: [
+    { title: "Bulk Document Archiving Workflow", description: "Batch compress then merge all documents for a project archive", tools: ["batch-compress", "merge", "protect"] },
+    { title: "Email Delivery Workflow", description: "Compress multiple project files then share via email", tools: ["batch-compress", "compress"] }
   ],
   internalLinks: [
     { text: "Compress PDF", href: "/compress", context: "Compress a single PDF file" },
-    { text: "Merge PDF", href: "/merge", context: "Merge all your PDFs into one before compressing" },
-    { text: "Split PDF", href: "/split", context: "Split large PDFs into smaller files" },
+    { text: "Merge PDF", href: "/merge", context: "Merge all your PDFs into one before or after compressing" },
+    { text: "Split PDF", href: "/split", context: "Split large PDFs into smaller sections" },
     { text: "Extract Pages", href: "/extract-pages", context: "Extract only the pages you need before compressing" },
     { text: "Compress Image", href: "/compress-img", context: "Compress images before embedding in PDF" },
-    { text: "PDF to JPG", href: "/pdf-to-jpg", context: "Convert PDF pages to compressed images" }
+    { text: "Unlock PDF", href: "/unlock-pdf", context: "Remove passwords from PDFs before batch compressing" },
+    { text: "/blog/how-to-compress-pdf-for-email", href: "/blog/how-to-compress-pdf-for-email", context: "Guide to compressing PDFs for email attachments" }
   ]
-};
+} as unknown as ToolSEOData;

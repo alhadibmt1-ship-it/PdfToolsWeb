@@ -91,6 +91,7 @@ const PricingPage = lazy(() => import("@/pages/PricingPage"));
 const EmbedWidgetPage = lazy(() => import("@/pages/EmbedWidgetPage"));
 const PdfComparisonPage = lazy(() => import("@/pages/PdfComparisonPage"));
 const PdfFileFormatsPage = lazy(() => import("@/pages/PdfFileFormatsPage"));
+const PdfGlossaryPage = lazy(() => import("@/pages/PdfGlossaryPage"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 function PageLoader() {
@@ -183,6 +184,7 @@ function AppRoutes() {
         <Route path="/embed" component={EmbedWidgetPage} />
         <Route path="/pdf-comparison-chart" component={PdfComparisonPage} />
         <Route path="/pdf-file-formats-guide" component={PdfFileFormatsPage} />
+        <Route path="/pdf-glossary" component={PdfGlossaryPage} />
         <Route path="/tools/:slug" component={ProgrammaticSeoPage} />
         <Route path="/convert-pdf" component={CategoryHubPage} />
         <Route path="/compress-pdf-tools" component={CategoryHubPage} />

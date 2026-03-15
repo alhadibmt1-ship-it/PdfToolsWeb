@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Shield, Zap, Clock, HelpCircle, AlertTriangle, ArrowRight, Lock, FileText, Lightbulb, BookOpen, Newspaper } from "lucide-react";
+import { CheckCircle2, Shield, Zap, Clock, HelpCircle, AlertTriangle, ArrowRight, Lock, FileText, Lightbulb, BookOpen, Newspaper, ChevronRight, Home } from "lucide-react";
 import { Link } from "wouter";
 import { PDF_TOOLS } from "@shared/schema";
 import SocialShare from "./SocialShare";
@@ -119,7 +119,27 @@ export default function EnhancedToolSEOContent({
       "screenshot": `${BASE_URL}/og-image.png`
     };
 
-    const schemas = [breadcrumbList, softwareSchema, faqSchema].filter(Boolean);
+    const steps = seoData?.tutorial?.steps || [];
+    const howToSchema = steps.length > 0 ? {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": seoData?.tutorial?.title || `How to Use ${toolName}`,
+      "description": seoData?.metaDescription || "",
+      "tool": {
+        "@type": "HowToTool",
+        "name": `${toolName} - PDF HUB 24`,
+        "url": `${BASE_URL}${toolPath}`
+      },
+      "step": steps.map((s, i) => ({
+        "@type": "HowToStep",
+        "position": i + 1,
+        "name": s.step,
+        "text": s.detail,
+        "url": `${BASE_URL}${toolPath}#step-${i + 1}`
+      }))
+    } : null;
+
+    const schemas = [breadcrumbList, softwareSchema, faqSchema, howToSchema].filter(Boolean);
     
     schemas.forEach(schema => {
       const script = document.createElement("script");
@@ -151,6 +171,24 @@ export default function EnhancedToolSEOContent({
 
   return (
     <div className="mt-16 space-y-12" data-testid="enhanced-seo-content">
+      {/* Breadcrumb Navigation */}
+      <nav aria-label="Breadcrumb" className="flex items-center gap-1 text-sm text-muted-foreground">
+        <Link href="/" className="flex items-center gap-1 hover:text-foreground transition-colors" data-testid="breadcrumb-home">
+          <Home className="w-3.5 h-3.5" aria-hidden="true" />
+          <span>Home</span>
+        </Link>
+        <ChevronRight className="w-3.5 h-3.5 flex-shrink-0" aria-hidden="true" />
+        <Link
+          href={`/${category === "from-pdf" ? "convert-pdf" : category === "to-pdf" ? "convert-pdf" : category === "edit-pdf" ? "edit-pdf-tools" : "image-tools"}`}
+          className="hover:text-foreground transition-colors"
+          data-testid="breadcrumb-category"
+        >
+          {categoryLabels[category] || "PDF Tools"}
+        </Link>
+        <ChevronRight className="w-3.5 h-3.5 flex-shrink-0" aria-hidden="true" />
+        <span className="text-foreground font-medium truncate" aria-current="page" data-testid="breadcrumb-current">{toolName}</span>
+      </nav>
+
       <div className="flex items-center justify-between gap-4 pb-4 border-b">
         <p className="text-sm text-muted-foreground">
           Found this tool helpful? Share it with others!

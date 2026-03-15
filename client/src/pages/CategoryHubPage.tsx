@@ -89,6 +89,27 @@ export default function CategoryHubPage() {
     script2.textContent = JSON.stringify(breadcrumbSchema);
     document.head.appendChild(script2);
 
+    const itemListSchema = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": hub.h1,
+      "description": hub.description,
+      "url": `${BASE_URL}/${slug}`,
+      "numberOfItems": hub.tools.length,
+      "itemListElement": hub.tools.map((tool, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": tool.name,
+        "description": tool.description,
+        "url": `${BASE_URL}${tool.href}`
+      }))
+    };
+    const script3 = document.createElement("script");
+    script3.type = "application/ld+json";
+    script3.setAttribute("data-page-schema", "true");
+    script3.textContent = JSON.stringify(itemListSchema);
+    document.head.appendChild(script3);
+
     return () => {
       document.querySelectorAll('script[data-page-schema="true"]').forEach(s => s.remove());
     };
