@@ -29,6 +29,7 @@ const PdfToExcelPage = lazy(() => import("@/pages/PdfToExcelPage"));
 const ExcelToPdfPage = lazy(() => import("@/pages/ExcelToPdfPage"));
 const RotatePdfPage = lazy(() => import("@/pages/RotatePdfPage"));
 const DeletePagesPage = lazy(() => import("@/pages/DeletePagesPage"));
+const ExtractPagesPage = lazy(() => import("@/pages/ExtractPagesPage"));
 const ExtractTextPage = lazy(() => import("@/pages/ExtractTextPage"));
 const ProtectPdfPage = lazy(() => import("@/pages/ProtectPdfPage"));
 const UnlockPdfPage = lazy(() => import("@/pages/UnlockPdfPage"));
@@ -127,6 +128,7 @@ function AppRoutes() {
         <Route path="/excel-to-pdf" component={ExcelToPdfPage} />
         <Route path="/rotate" component={RotatePdfPage} />
         <Route path="/delete-pages" component={DeletePagesPage} />
+        <Route path="/extract-pages" component={ExtractPagesPage} />
         <Route path="/extract-text" component={ExtractTextPage} />
         <Route path="/protect-pdf" component={ProtectPdfPage} />
         <Route path="/unlock-pdf" component={UnlockPdfPage} />

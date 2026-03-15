@@ -2139,6 +2139,82 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Add Page Numbers", href: "/add-page-numbers", context: "Add new page numbers after reordering" }
     ]
   },
+  "extract-pages": {
+    id: "extract-pages",
+    primaryKeyword: "extract pages from pdf free online",
+    longTailH1: "Extract Pages from PDF Free Online - Save Specific Pages Instantly",
+    secondaryKeywords: [
+      "pdf page extractor free no signup",
+      "extract specific pages from pdf online",
+      "save pages from pdf as new file",
+      "pull pages out of pdf free",
+      "pdf extract page range online"
+    ],
+    metaDescription: "Extract pages from PDF free online. Select specific page numbers or ranges and save them as a new PDF. No signup, no watermarks. Fast and secure. Try now!",
+    heroContent: "Need to pull specific pages out of a large PDF? Our free PDF page extractor makes it simple to select any combination of pages — by number or range — and save them as a brand-new PDF document. Whether you're extracting a single page, a chapter, or a custom selection from a multi-hundred-page report, PDF HUB 24 gives you precise control over exactly which content you keep. No software required, no registration needed, and your files are never stored. Perfect for sharing only the relevant section of a contract, saving specific invoice pages, or creating targeted document subsets from long reports.",
+    useCases: {
+      title: "When to Extract Pages from PDF",
+      description: "PDF page extraction helps you create focused documents from larger files:",
+      items: [
+        "Extracting specific chapters from a long report",
+        "Saving only the relevant pages of a contract to share",
+        "Pulling individual invoice pages from combined statements",
+        "Creating a condensed version of a presentation",
+        "Extracting pages for translation or review",
+        "Saving form pages from a combined document set",
+        "Pulling selected pages for printing without reprinting everything",
+        "Creating document subsets for different audiences"
+      ]
+    },
+    tutorial: {
+      title: "How to Extract Pages from PDF Step by Step",
+      steps: [
+        { step: "Upload Your PDF", detail: "Drag and drop your PDF file onto the upload area or click to browse. Supports PDFs of all sizes." },
+        { step: "Enter Page Numbers or Ranges", detail: "Type the pages you want to keep, e.g. 1,3,5-8. Ranges use a hyphen, multiple selections use commas." },
+        { step: "Click Extract Pages", detail: "Click the Extract Pages button. A new PDF containing only your selected pages will be generated instantly." },
+        { step: "Download Your New PDF", detail: "Download the extracted PDF. Your original file is untouched. No watermarks, no signup required." }
+      ]
+    },
+    troubleshooting: {
+      title: "Extract PDF Pages — Common Issues and Solutions",
+      issues: [
+        { problem: "I entered page numbers but the download has fewer pages than expected", solution: "Page numbers must be within the valid range of your PDF. If your PDF has 20 pages and you enter 1,15,25 — page 25 is invalid and will be skipped. The tool will extract only valid page numbers and alert you if none are valid. Double-check the total page count of your document before entering ranges." },
+        { problem: "I want to extract all pages except a few — is there a faster way?", solution: "For removing a few pages and keeping the rest, use Delete Pages instead of Extract Pages. Delete Pages is faster when you want to keep most of the document. Extract Pages is faster when you only want a small subset." },
+        { problem: "The page order in my extracted PDF does not match what I expected", solution: "Extracted pages appear in the order of the page numbers you entered. If you enter 5,1,3 the output PDF will have pages in the order: page 5, then page 1, then page 3. To get pages in document order, sort your page numbers before entering them (e.g. enter 1,3,5 instead of 5,1,3)." },
+        { problem: "Links and bookmarks in the extracted PDF are broken", solution: "Internal PDF links point to specific page numbers in the original document. When you extract a subset of pages, those target page numbers no longer align with the new document's page count. This is a structural limitation of the PDF format — there is no automatic way to remap internal links during extraction. If your document has critical internal navigation, you will need Adobe Acrobat to repair links after extraction." }
+      ]
+    },
+    securitySection: {
+      title: "Safe and Private Page Extraction",
+      content: "Your documents are handled with strict privacy during extraction:",
+      points: [
+        "SSL encryption protects all file transfers",
+        "Files processed in isolated environments",
+        "Automatic deletion after each session",
+        "No access to your document content by staff",
+        "No accounts, no tracking, no data retention",
+        "GDPR-compliant privacy practices"
+      ]
+    },
+    faqs: [
+      { question: "Can I extract a range of pages like 5-10?", answer: "Yes! Enter a range using a hyphen (5-10) and all pages from 5 to 10 will be included. You can also mix ranges with single pages, like 1,3,5-10,15." },
+      { question: "What happens to my original PDF?", answer: "Your original file is never modified. We create a new PDF with only the selected pages, while your source document stays exactly as it was." },
+      { question: "Is there a limit on how many pages I can extract?", answer: "No — you can extract any number of pages, from one page to all but one. The only requirement is that you leave at least one page for the output to be a valid PDF." },
+      { question: "What's the difference between Extract Pages and Split PDF?", answer: "Extract Pages creates one new PDF with your chosen pages. Split PDF divides a document into multiple separate files by page ranges, size, or count. Use Extract for a custom single-file subset, Split for dividing into multiple outputs." },
+      { question: "Can I use Extract Pages on a scanned PDF?", answer: "Yes! Extract Pages works on all PDF types including scanned documents, since it copies whole pages without processing the content." }
+    ],
+    relatedWorkflows: [
+      { title: "Document Subset Creation", description: "Create focused documents from larger sources", tools: ["extract-pages", "compress", "add-page-numbers"] },
+      { title: "Document Cleanup Workflow", description: "Trim and organize documents for sharing", tools: ["delete-pages", "extract-pages", "reorder-pages"] }
+    ],
+    internalLinks: [
+      { text: "Delete Pages", href: "/delete-pages", context: "Remove unwanted pages from a document instead of extracting" },
+      { text: "Split PDF", href: "/split", context: "Divide a PDF into multiple separate files" },
+      { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs after extracting sections" },
+      { text: "Reorder Pages", href: "/reorder-pages", context: "Change page order after extracting" },
+      { text: "Compress PDF", href: "/compress", context: "Reduce file size after extraction" }
+    ]
+  },
   "crop-pdf": {
     id: "crop-pdf",
     primaryKeyword: "crop pdf margins online free",
