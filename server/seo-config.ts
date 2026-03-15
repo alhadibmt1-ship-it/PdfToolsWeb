@@ -1160,6 +1160,26 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "pdf tools comparison, free pdf tools, best pdf tool, pdf converter comparison, adobe vs smallpdf",
     schema: { "@context": "https://schema.org", "@type": "Article", "headline": "Free PDF Tools Comparison Chart 2026", "url": `${BASE_URL}/pdf-comparison-chart`, "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL } }
   },
+  "/pdf-glossary": {
+    title: "PDF Glossary — 60+ PDF Terms Explained A-Z | PDF HUB 24",
+    description: "Complete A-Z PDF glossary with 60+ terms. Clear definitions for PDF/A, OCR, compression, encryption, annotations, metadata, digital signatures and more. Free reference.",
+    keywords: "pdf glossary, pdf terms, pdf definitions, what is pdf/a, pdf compression terms, pdf encryption glossary, pdf metadata, pdf annotations, ocr pdf definition",
+    canonical: `${BASE_URL}/pdf-glossary`,
+    ogTitle: "PDF Glossary — Complete A-Z Reference | PDF HUB 24",
+    ogDescription: "60+ PDF terms explained clearly. Covers PDF standards, compression, security, OCR, structured data, and more. Free reference for students and professionals.",
+    twitterCard: "summary_large_image",
+    robots: "index, follow",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "PDF Glossary — Complete A-Z Reference of PDF Terms",
+      "description": "Comprehensive glossary of PDF terms covering format specifications, compression, security, accessibility, and PDF processing concepts.",
+      "url": `${BASE_URL}/pdf-glossary`,
+      "author": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
+    }
+  },
   "/pdf-file-formats-guide": {
     title: "File Formats Guide 2026 — PDF & Documents | PDF HUB 24",
     description: "Complete guide to PDF, DOCX, XLSX, PPTX, JPG, PNG, WebP, TIFF, GIF file formats. Specs, use cases, compression types, and conversion options.",

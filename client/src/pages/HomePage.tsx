@@ -333,7 +333,12 @@ export default function HomePage() {
     "@type": "Organization",
     "name": "PDF HUB 24",
     "url": "https://pdfhub24.com",
-    "logo": "https://pdfhub24.com/og-image.png",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pdfhub24.com/og-image.png",
+      "width": 1200,
+      "height": 630
+    },
     "description": "Free online PDF tools - Convert, merge, split, compress PDF files. No registration required.",
     "sameAs": [
       "https://www.facebook.com/pdfhub24",
@@ -342,17 +347,50 @@ export default function HomePage() {
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "customer support",
-      "availableLanguage": "English"
+      "availableLanguage": ["English", "Spanish", "Arabic", "Hindi", "French", "Portuguese", "German", "Chinese", "Japanese", "Indonesian", "Russian", "Italian", "Urdu"]
+    },
+    "foundingDate": "2024",
+    "numberOfEmployees": { "@type": "QuantitativeValue", "value": 5 }
+  };
+
+  const webSiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "PDF HUB 24",
+    "url": "https://pdfhub24.com",
+    "description": "49+ free online PDF tools. Convert, merge, split, compress, edit and protect PDFs. No signup, no watermarks.",
+    "inLanguage": ["en", "es", "ar", "hi", "fr", "pt", "de", "zh", "ja", "id", "ru", "it", "ur"],
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://pdfhub24.com/?search={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
     }
   };
 
   useSEO({
-    title: "PDF HUB 24 - 43+ Free PDF Tools | Convert, Edit",
+    title: "PDF HUB 24 - 49+ Free PDF Tools | Convert, Edit, Compress",
     description: "100% free PDF tools. Convert PDF to Word, JPG, Excel. Merge, split, compress PDFs instantly. Best free PDF converter - no signup, no watermarks.",
     keywords: "free pdf tools, pdf converter free, pdf to word free, merge pdf free, compress pdf free, pdf editor free, convert pdf online, pdf to jpg, split pdf",
     canonicalPath: "/",
     structuredData: organizationSchema
   });
+
+  useEffect(() => {
+    const existingWebsite = document.querySelector('script[data-schema="website"]');
+    if (existingWebsite) existingWebsite.remove();
+    const websiteScript = document.createElement("script");
+    websiteScript.setAttribute("type", "application/ld+json");
+    websiteScript.setAttribute("data-schema", "website");
+    websiteScript.textContent = JSON.stringify(webSiteSchema);
+    document.head.appendChild(websiteScript);
+    return () => {
+      const s = document.querySelector('script[data-schema="website"]');
+      if (s) s.remove();
+    };
+  }, []);
 
   useEffect(() => {
     const faqScript = document.createElement("script");
