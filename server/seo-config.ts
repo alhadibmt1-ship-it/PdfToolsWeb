@@ -1391,10 +1391,10 @@ export const seoConfig: Record<string, PageSEO> = {
   }
 };
 
-const SUPPORTED_HREFLANG_LANGS = ["en", "es", "ar", "hi", "fr", "pt", "de", "zh", "ja", "id", "ru", "it"];
+const SUPPORTED_HREFLANG_LANGS = ["en", "es", "ar", "hi", "fr", "pt", "de", "zh", "ja", "id", "ru", "it", "ur"];
 
 function stripLangPrefix(path: string): { lang: string; canonicalPath: string } {
-  const match = path.match(/^\/(es|ar|hi|fr|pt|de|zh|ja|id|ru|it)(\/.*)?$/);
+  const match = path.match(/^\/(es|ar|hi|fr|pt|de|zh|ja|id|ru|it|ur)(\/.*)?$/);
   if (match) {
     return { lang: match[1], canonicalPath: match[2] || "/" };
   }
@@ -1412,7 +1412,7 @@ function generateHreflangTags(canonicalPath: string): string {
 }
 
 function getLangAttribute(lang: string): string {
-  const langMap: Record<string, string> = { en: "en", es: "es", ar: "ar", hi: "hi", fr: "fr", pt: "pt", de: "de", zh: "zh", ja: "ja", id: "id", ru: "ru", it: "it" };
+  const langMap: Record<string, string> = { en: "en", es: "es", ar: "ar", hi: "hi", fr: "fr", pt: "pt", de: "de", zh: "zh", ja: "ja", id: "id", ru: "ru", it: "it", ur: "ur" };
   return langMap[lang] || "en";
 }
 

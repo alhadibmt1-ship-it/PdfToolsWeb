@@ -24,8 +24,8 @@ The design philosophy is "Clean Modern Utility Design" with a vibrant color sche
 Key technical features include:
 - **Performance**: WebP image optimization, code splitting, asynchronous font loading, and deferred analytics.
 - **Security**: File upload validation (magic byte, MIME type), comprehensive error handling, and Zod schema validation.
-- **SEO**: Dynamic meta tags, `sitemap.xml`, and `robots.txt` integration. Server-side SEO injection via `injectSEO()` in `server/app.ts`. Hreflang tags (12 languages + x-default) injected server-side on every page.
-- **International SEO**: 12-language support (en, es, ar, hi, fr, pt, de, zh, ja, id, ru, it) with URL prefix routing (`/es/`, `/ar/`, `/de/` etc.) via Wouter's `base` prop. RTL support for Arabic via html `dir` attribute. `LanguageSwitcher` (Globe dropdown), `LanguageBanner` (browser language detection), and `LanguageContext` components. Server-side `injectSEO()` sets `html lang` and `dir` attributes.
+- **SEO**: Dynamic meta tags, `sitemap.xml`, and `robots.txt` integration. Server-side SEO injection via `injectSEO()` in `server/app.ts`. Hreflang tags (13 languages + x-default) injected server-side on every page.
+- **International SEO**: 13-language support (en, es, ar, hi, fr, pt, de, zh, ja, id, ru, it, ur) with URL prefix routing (`/es/`, `/ar/`, `/de/`, `/ur/` etc.) via Wouter's `base` prop. RTL support for Arabic and Urdu via html `dir` attribute. `LanguageSwitcher` (Globe dropdown), `LanguageBanner` (browser language detection), and `LanguageContext` components. Server-side `injectSEO()` sets `html lang` and `dir` attributes.
 - **Conversion Quality**: Advanced PDF to Word conversion with intelligent formatting, high-resolution PDF to JPG output.
 - **User Settings**: Dark mode toggle and configurable compression levels.
 - **Interactive Editing**: Canvas-based editing for tools like Edit PDF, Annotate PDF, and Redact PDF, featuring real-time preview and undo functionality.
