@@ -9,6 +9,7 @@ import { SettingsProvider } from "@/contexts/SettingsContext";
 import { RecentToolsProvider } from "@/contexts/RecentToolsContext";
 import { UploadProvider } from "@/contexts/UploadContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { NON_DEFAULT_LANG_CODES } from "@/lib/languages";
 import ScrollToTop from "@/components/ScrollToTop";
 import MobileQuickActions from "@/components/MobileQuickActions";
 import LanguageBanner from "@/components/LanguageBanner";
@@ -194,11 +195,11 @@ function AppRoutes() {
   );
 }
 
-const LANG_CODES = ["es", "ar", "hi", "fr", "pt"];
+const LANG_PATTERN = new RegExp(`^\\/(${NON_DEFAULT_LANG_CODES.join("|")})(\\/.*)?\$`);
 
 function Router() {
   const [location] = useLocation();
-  const langMatch = location.match(/^\/(es|ar|hi|fr|pt)(\/.*)?$/);
+  const langMatch = location.match(LANG_PATTERN);
   const activeLang = langMatch ? langMatch[1] : "en";
 
   if (activeLang !== "en") {
