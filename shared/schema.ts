@@ -48,6 +48,11 @@ export const reorderPagesOptionsSchema = z.object({
 });
 export type ReorderPagesOptions = z.infer<typeof reorderPagesOptionsSchema>;
 
+export const extractPagesOptionsSchema = z.object({
+  pagesToExtract: z.array(z.number().min(1)).min(1, "At least one page is required"),
+});
+export type ExtractPagesOptions = z.infer<typeof extractPagesOptionsSchema>;
+
 export interface PDFTool {
   id: string;
   title: string;
@@ -230,6 +235,15 @@ export const PDF_TOOLS: PDFTool[] = [
     description: "Rearrange page order in your PDF",
     icon: "move",
     path: "/reorder-pages",
+    acceptedFormats: ".pdf",
+    category: "edit-pdf"
+  },
+  {
+    id: "extract-pages",
+    title: "Extract Pages",
+    description: "Extract specific pages from PDF as a new file",
+    icon: "scissors",
+    path: "/extract-pages",
     acceptedFormats: ".pdf",
     category: "edit-pdf"
   },

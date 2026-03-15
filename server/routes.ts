@@ -18,7 +18,8 @@ import {
   unlockPdfOptionsSchema,
   pageNumberOptionsSchema,
   watermarkOptionsSchema,
-  reorderPagesOptionsSchema
+  reorderPagesOptionsSchema,
+  extractPagesOptionsSchema
 } from "@shared/schema";
 import { z } from "zod";
 import CloudConvert from "cloudconvert";
@@ -1412,6 +1413,55 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Reorder pages error:", error);
       res.status(500).json({ error: "Failed to reorder pages" });
+    }
+  });
+
+  // Extract Pages - Keep only selected pages as a new PDF
+  app.post("/api/extract-pages", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) return res.status(400).json({ error: "PDF file is required" });
+      if (!isPdfFile(file.buffer)) return res.status(400).json({ error: "Invalid PDF file detected" });
+
+      let pagesToExtract: number[];
+      try {
+        pagesToExtract = JSON.parse(req.body.pages);
+      } catch {
+        return res.status(400).json({ error: "Invalid pages format. Expected JSON array." });
+      }
+
+      const validated = extractPagesOptionsSchema.safeParse({ pagesToExtract });
+      if (!validated.success) {
+        return res.status(400).json({ error: "Pages must be a non-empty array of positive integers" });
+      }
+
+      let sourcePdf;
+      try {
+        sourcePdf = await PDFDocument.load(file.buffer);
+      } catch {
+        return res.status(400).json({ error: "Invalid or corrupted PDF file" });
+      }
+
+      const totalPages = sourcePdf.getPageCount();
+      const validPages = validated.data.pagesToExtract.filter(p => p >= 1 && p <= totalPages);
+
+      if (validPages.length === 0) {
+        return res.status(400).json({ error: `No valid pages found. PDF has ${totalPages} pages.` });
+      }
+
+      const newPdf = await PDFDocument.create();
+      for (const pageNum of validPages) {
+        const [copied] = await newPdf.copyPages(sourcePdf, [pageNum - 1]);
+        newPdf.addPage(copied);
+      }
+
+      const pdfBytes = await newPdf.save({ useObjectStreams: false });
+      res.setHeader("Content-Type", "application/pdf");
+      res.setHeader("Content-Disposition", "attachment; filename=extracted-pages.pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (error) {
+      console.error("Extract pages error:", error);
+      res.status(500).json({ error: "Failed to extract pages" });
     }
   });
 

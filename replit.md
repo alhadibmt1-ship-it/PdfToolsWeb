@@ -1,7 +1,7 @@
 # PDF HUB 24
 
 ## Overview
-PDF HUB 24 is a comprehensive web-based platform designed for PDF and image manipulation, offering 48 tools across four main categories: Convert from PDF, Convert to PDF, Edit PDF, and Utility & Image Tools. The platform aims to provide professional-grade document processing, enhance user trust through robust SEO and UX, and offer a wide array of free tools for various PDF and image tasks. Key capabilities include conversion between various formats (e.g., PDF to Word, JPG to PDF), extensive PDF editing (merge, split, compress, protect, sign, annotate, redact), and general image utilities (compress, resize, crop, convert). The business vision is to be a leading, user-friendly, and SEO-optimized solution for everyday document processing needs, inspired by successful platforms like PDF24.
+PDF HUB 24 is a comprehensive web-based platform designed for PDF and image manipulation, offering 49 tools across four main categories: Convert from PDF, Convert to PDF, Edit PDF, and Utility & Image Tools. The platform aims to provide professional-grade document processing, enhance user trust through robust SEO and UX, and offer a wide array of free tools for various PDF and image tasks. Key capabilities include conversion between various formats (e.g., PDF to Word, JPG to PDF), extensive PDF editing (merge, split, compress, protect, sign, annotate, redact), and general image utilities (compress, resize, crop, convert). The business vision is to be a leading, user-friendly, and SEO-optimized solution for everyday document processing needs, inspired by successful platforms like PDF24.
 
 ## User Preferences
 Preferred communication style: Simple, everyday language.
@@ -24,8 +24,8 @@ The design philosophy is "Clean Modern Utility Design" with a vibrant color sche
 Key technical features include:
 - **Performance**: WebP image optimization, code splitting, asynchronous font loading, and deferred analytics.
 - **Security**: File upload validation (magic byte, MIME type), comprehensive error handling, and Zod schema validation.
-- **SEO**: Dynamic meta tags, `sitemap.xml`, and `robots.txt` integration. Server-side SEO injection via `injectSEO()` in `server/app.ts`. Hreflang tags (6 languages + x-default) injected server-side on every page.
-- **International SEO**: 6-language support (en, es, ar, hi, fr, pt) with URL prefix routing (`/es/`, `/ar/` etc.) via Wouter's `base` prop. RTL support for Arabic via html `dir` attribute. `LanguageSwitcher` (Globe dropdown), `LanguageBanner` (browser language detection), and `LanguageContext` components. Server-side `injectSEO()` sets `html lang` and `dir` attributes.
+- **SEO**: Dynamic meta tags, `sitemap.xml`, and `robots.txt` integration. Server-side SEO injection via `injectSEO()` in `server/app.ts`. Hreflang tags (12 languages + x-default) injected server-side on every page.
+- **International SEO**: 12-language support (en, es, ar, hi, fr, pt, de, zh, ja, id, ru, it) with URL prefix routing (`/es/`, `/ar/`, `/de/` etc.) via Wouter's `base` prop. RTL support for Arabic via html `dir` attribute. `LanguageSwitcher` (Globe dropdown), `LanguageBanner` (browser language detection), and `LanguageContext` components. Server-side `injectSEO()` sets `html lang` and `dir` attributes.
 - **Conversion Quality**: Advanced PDF to Word conversion with intelligent formatting, high-resolution PDF to JPG output.
 - **User Settings**: Dark mode toggle and configurable compression levels.
 - **Interactive Editing**: Canvas-based editing for tools like Edit PDF, Annotate PDF, and Redact PDF, featuring real-time preview and undo functionality.
