@@ -29,6 +29,8 @@ Key technical features include:
 - **Conversion Quality**: Advanced PDF to Word conversion with intelligent formatting, high-resolution PDF to JPG output.
 - **User Settings**: Dark mode toggle and configurable compression levels.
 - **Interactive Editing**: Canvas-based editing for tools like Edit PDF, Annotate PDF, and Redact PDF, featuring real-time preview and undo functionality.
+- **Full-spectrum pre-render shell**: `generatePreRenderShell()` in `server/seo-config.ts` now serves rich static HTML for ALL page types — tool pages (use cases + tutorial + FAQs + internal links), blog articles (full markdown rendered as H1-H4 + paragraphs + lists + related tools), programmatic pages (intro + use cases + FAQs), and category hubs (intro + tool list + FAQs). A `markdownToHtml()` helper converts markdown to proper HTML tags (H2/H3/H4, ul/li, ol, strong, p) for crawlers. The function is wrapped in try-catch to prevent crashes from propagating to the page response. This ensures every page type delivers 500–2000 words of unique, keyword-rich content to Google's first-wave crawl before JavaScript executes.
+- **Noscript deduplication**: The `<noscript>` fallback in `client/index.html` had a generic H1 "PDF HUB 24 - 43+ Free PDF Tools Online" on every page (duplicate content). Removed that H1; the noscript now serves only as a navigation menu for JS-disabled browsers.
 
 ### International SEO Architecture
 - **Language files**: `client/src/lib/languages.ts` — 13-language config with labels, native labels, hreflang codes, and RTL flags

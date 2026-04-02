@@ -1,4 +1,7 @@
 import { toolSEOData } from "../client/src/data/toolSEOData";
+import { blogPosts } from "../client/src/data/blogData";
+import { programmaticPages } from "../client/src/data/programmaticSeoData";
+import { categoryHubs } from "../client/src/data/categoryHubData";
 
 export interface PageSEO {
   title: string;
@@ -1712,7 +1715,60 @@ function escHtml(str: string): string {
   return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
+// Convert markdown text to plain HTML for crawler visibility
+function markdownToHtml(md: string, maxWords = 600): string {
+  const lines = md.split("\n");
+  const parts: string[] = [];
+  let wordCount = 0;
+  let ulOpen = false;
+
+  const closeUl = () => { if (ulOpen) { parts.push("</ul>"); ulOpen = false; } };
+  const countWords = (s: string) => s.trim().split(/\s+/).filter(Boolean).length;
+
+  for (const rawLine of lines) {
+    if (wordCount >= maxWords) break;
+    const line = rawLine.trim();
+
+    if (!line) { closeUl(); continue; }
+
+    if (line.startsWith("#### ")) {
+      closeUl();
+      const text = escHtml(line.slice(5));
+      parts.push(`<h4 style="font-size:0.95rem;font-weight:600;margin:1rem 0 0.4rem">${text}</h4>`);
+      wordCount += countWords(line.slice(5));
+    } else if (line.startsWith("### ")) {
+      closeUl();
+      const text = escHtml(line.slice(4));
+      parts.push(`<h3 style="font-size:1.05rem;font-weight:700;margin:1.25rem 0 0.5rem">${text}</h3>`);
+      wordCount += countWords(line.slice(4));
+    } else if (line.startsWith("## ")) {
+      closeUl();
+      const text = escHtml(line.slice(3));
+      parts.push(`<h2 style="font-size:1.2rem;font-weight:700;margin:1.5rem 0 0.6rem">${text}</h2>`);
+      wordCount += countWords(line.slice(3));
+    } else if (line.startsWith("- ") || line.startsWith("* ")) {
+      if (!ulOpen) { parts.push('<ul style="padding-left:1.5rem;line-height:1.8;margin:0.5rem 0">'); ulOpen = true; }
+      const text = escHtml(line.slice(2)).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+      parts.push(`<li>${text}</li>`);
+      wordCount += countWords(line.slice(2));
+    } else if (/^\d+\.\s/.test(line)) {
+      closeUl();
+      const text = escHtml(line.replace(/^\d+\.\s/, "")).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+      parts.push(`<p style="margin:0.3rem 0;padding-left:1.2rem">${text}</p>`);
+      wordCount += countWords(text);
+    } else {
+      closeUl();
+      const text = escHtml(line).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+      parts.push(`<p style="line-height:1.75;margin:0.6rem 0">${text}</p>`);
+      wordCount += countWords(line);
+    }
+  }
+  closeUl();
+  return parts.join("\n");
+}
+
 function generatePreRenderShell(canonicalPath: string): string {
+  try {
   const config = seoConfig[canonicalPath];
   const isHome = canonicalPath === "/";
 
@@ -1720,12 +1776,32 @@ function generatePreRenderShell(canonicalPath: string): string {
   const toolId = canonicalPath.replace(/^\//, "");
   const toolData = toolSEOData[toolId as keyof typeof toolSEOData];
 
+  // Blog article: /blog/:slug
+  const blogSlugMatch = canonicalPath.match(/^\/blog\/([^/]+)$/);
+  const blogPost = blogSlugMatch ? blogPosts.find(p => p.slug === blogSlugMatch[1]) : null;
+
+  // Programmatic page: /tools/:slug
+  const progSlugMatch = canonicalPath.match(/^\/tools\/([^/]+)$/);
+  const progPage = progSlugMatch ? programmaticPages.find(p => p.slug === progSlugMatch[1]) : null;
+
+  // Category hub: /convert-pdf, /edit-pdf-tools, etc.
+  const categoryHub = categoryHubs.find(h => `/${h.slug}` === canonicalPath);
+
   let h1Text = "";
   let descText = "";
 
   if (isHome) {
     h1Text = "Professional PDF Tools — 100% Free Online";
     descText = "Convert, merge, compress, edit, sign, and secure PDF files instantly. 49 free tools with no registration, no watermarks, and no file size tricks. Trusted by users worldwide.";
+  } else if (blogPost) {
+    h1Text = blogPost.title || "";
+    descText = blogPost.excerpt || "";
+  } else if (progPage) {
+    h1Text = (progPage.title || "").split(" | ")[0];
+    descText = progPage.description || "";
+  } else if (categoryHub) {
+    h1Text = categoryHub.h1 || "";
+    descText = categoryHub.description || "";
   } else if (toolData) {
     h1Text = toolData.longTailH1 || config?.title?.split(" | ")[0] || "";
     descText = toolData.metaDescription || config?.description || "";
@@ -1739,10 +1815,77 @@ function generatePreRenderShell(canonicalPath: string): string {
     return "";
   }
 
-  // Build rich content sections from toolSEOData for tool pages
+  // Build rich content sections
   let richContent = "";
-  if (toolData) {
-    // Use cases section
+
+  // ── BLOG ARTICLE ────────────────────────────────────────────────────────────
+  if (blogPost) {
+    const meta = `<p style="font-size:0.875rem;color:#64748b;margin-bottom:1.5rem">
+      ${escHtml(blogPost.publishDate || "")} &bull; ${escHtml(blogPost.readTime || "")} &bull; ${escHtml(blogPost.category || "")}
+    </p>`;
+    richContent += meta;
+    richContent += `<article style="text-align:left;max-width:800px;width:100%;line-height:1.75">
+      ${markdownToHtml(blogPost.content, 800)}
+    </article>`;
+    if (blogPost.relatedTools?.length) {
+      const links = blogPost.relatedTools.map(t =>
+        `<a href="${escHtml(t.path)}" style="color:#2563eb;text-decoration:none">${escHtml(t.name)} — ${escHtml(t.description)}</a>`
+      ).join("<br>");
+      richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+        <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">Related PDF Tools</h2>
+        <div style="display:flex;flex-direction:column;gap:0.5rem">${links}</div>
+      </section>`;
+    }
+  }
+
+  // ── PROGRAMMATIC PAGE ────────────────────────────────────────────────────────
+  else if (progPage) {
+    richContent += `<p style="line-height:1.75;max-width:800px;margin-bottom:1.5rem">${escHtml(progPage.content)}</p>`;
+    if (progPage.useCases?.length) {
+      const items = progPage.useCases.map(u => `<li style="margin-bottom:0.4rem">${escHtml(u)}</li>`).join("");
+      richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+        <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">Common Use Cases</h2>
+        <ul style="padding-left:1.5rem;line-height:1.8">${items}</ul>
+      </section>`;
+    }
+    if (progPage.faqs?.length) {
+      const faqs = progPage.faqs.map(f =>
+        `<div style="margin-bottom:1rem"><h3 style="font-size:1rem;font-weight:600;margin-bottom:0.25rem">${escHtml(f.question)}</h3><p style="line-height:1.7">${escHtml(f.answer)}</p></div>`
+      ).join("");
+      richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+        <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">Frequently Asked Questions</h2>
+        ${faqs}
+      </section>`;
+    }
+  }
+
+  // ── CATEGORY HUB ─────────────────────────────────────────────────────────────
+  else if (categoryHub) {
+    richContent += `<div style="text-align:left;max-width:800px;width:100%;line-height:1.75;margin-bottom:1.5rem">
+      ${markdownToHtml(categoryHub.intro, 400)}
+    </div>`;
+    if (categoryHub.tools?.length) {
+      const toolLinks = categoryHub.tools.map(t =>
+        `<li style="margin-bottom:0.5rem"><a href="${escHtml(t.path)}" style="color:#2563eb;text-decoration:none;font-weight:600">${escHtml(t.name)}</a> — ${escHtml(t.description)}</li>`
+      ).join("");
+      richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+        <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">Available Tools</h2>
+        <ul style="padding-left:1.5rem;line-height:1.9">${toolLinks}</ul>
+      </section>`;
+    }
+    if (categoryHub.faqs?.length) {
+      const faqs = categoryHub.faqs.map(f =>
+        `<div style="margin-bottom:1rem"><h3 style="font-size:1rem;font-weight:600;margin-bottom:0.25rem">${escHtml(f.question)}</h3><p style="line-height:1.7">${escHtml(f.answer)}</p></div>`
+      ).join("");
+      richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+        <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">Frequently Asked Questions</h2>
+        ${faqs}
+      </section>`;
+    }
+  }
+
+  // ── TOOL PAGE ─────────────────────────────────────────────────────────────────
+  else if (toolData) {
     if (toolData.useCases?.items?.length) {
       const items = toolData.useCases.items.map(i => `<li>${escHtml(i)}</li>`).join("");
       richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
@@ -1751,10 +1894,8 @@ function generatePreRenderShell(canonicalPath: string): string {
         <ul style="padding-left:1.5rem;line-height:1.8">${items}</ul>
       </section>`;
     }
-
-    // Tutorial steps
     if (toolData.tutorial?.steps?.length) {
-      const steps = toolData.tutorial.steps.map((s, i) =>
+      const steps = toolData.tutorial.steps.map((s) =>
         `<li style="margin-bottom:0.75rem"><strong>${escHtml(s.step)}:</strong> ${escHtml(s.detail)}</li>`
       ).join("");
       richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
@@ -1762,8 +1903,6 @@ function generatePreRenderShell(canonicalPath: string): string {
         <ol style="padding-left:1.5rem;line-height:1.8">${steps}</ol>
       </section>`;
     }
-
-    // FAQs
     if (toolData.faqs?.length) {
       const faqs = toolData.faqs.map(f =>
         `<div style="margin-bottom:1rem"><h3 style="font-size:1rem;font-weight:600;margin-bottom:0.25rem">${escHtml(f.question)}</h3><p style="line-height:1.7">${escHtml(f.answer)}</p></div>`
@@ -1773,8 +1912,6 @@ function generatePreRenderShell(canonicalPath: string): string {
         ${faqs}
       </section>`;
     }
-
-    // Internal links
     const realLinks = toolData.internalLinks?.filter(l => !l.href.startsWith("/blog/")) || [];
     if (realLinks.length) {
       const links = realLinks.map(l =>
@@ -1797,6 +1934,10 @@ function generatePreRenderShell(canonicalPath: string): string {
   </main>
 </div>
 <script>(function(){try{var e=document.getElementById('__psr');if(!e)return;var t=localStorage.getItem('theme')||'system';var dk=t==='dark'||(t!=='light'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);if(dk){e.style.background='#0a0a0a';e.style.color='#f8fafc';}}catch(err){}})();</script>`;
+  } catch (err) {
+    console.error("[SEO] generatePreRenderShell error for", canonicalPath, err);
+    return "";
+  }
 }
 
 export function injectSEO(html: string, path: string): string {
