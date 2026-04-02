@@ -334,8 +334,8 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/translate-pdf": {
-    title: "Translate PDF Free — Translate PDF to 50+ Languages Online | PDF HUB 24",
-    description: "Translate any PDF document into 50+ languages instantly. Free online PDF translator — English to Spanish, French, Arabic, Hindi, Chinese & more. No signup required.",
+    title: "Translate PDF Free — 50+ Languages Online | PDF HUB 24",
+    description: "Translate any PDF document into 50+ languages instantly. Free online PDF translator — English, Spanish, French, Arabic, Hindi, Chinese & more. No signup.",
     keywords: "translate PDF, PDF translator online free, translate PDF to Spanish, translate PDF to French, translate PDF to Arabic, translate document online, PDF language translator",
     schema: {
       "@context": "https://schema.org",
@@ -1162,7 +1162,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/pdf-glossary": {
     title: "PDF Glossary — 60+ PDF Terms Explained A-Z | PDF HUB 24",
-    description: "Complete A-Z PDF glossary with 60+ terms. Clear definitions for PDF/A, OCR, compression, encryption, annotations, metadata, digital signatures and more. Free reference.",
+    description: "Complete A-Z PDF glossary with 60+ terms. Definitions for PDF/A, OCR, compression, encryption, annotations, metadata, digital signatures & more.",
     keywords: "pdf glossary, pdf terms, pdf definitions, what is pdf/a, pdf compression terms, pdf encryption glossary, pdf metadata, pdf annotations, ocr pdf definition",
     canonical: `${BASE_URL}/pdf-glossary`,
     ogTitle: "PDF Glossary — Complete A-Z Reference | PDF HUB 24",
@@ -1248,7 +1248,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/tools/compress-pdf-without-losing-quality": {
     title: "Compress PDF Without Losing Quality Free | PDF HUB 24",
-    description: "Reduce PDF file size without visible quality loss. Free lossless-like compression preserves text, images, and formatting. Choose from 3 adjustable quality levels.",
+    description: "Reduce PDF file size without visible quality loss. Free lossless compression preserves text, images & formatting. Choose from 3 adjustable quality levels.",
     keywords: "compress pdf without losing quality, lossless pdf compression, reduce pdf keep quality",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Compress PDF Without Losing Quality", "url": `${BASE_URL}/tools/compress-pdf-without-losing-quality`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
@@ -1456,7 +1456,9 @@ function getLangAttribute(lang: string): string {
 export function generateMetaTags(path: string): string {
   const { lang, canonicalPath } = stripLangPrefix(path);
   const seo = seoConfig[canonicalPath] || seoConfig["/"];
-  const canonicalUrl = `${BASE_URL}${canonicalPath === "/" ? "" : canonicalPath}`;
+  const canonicalUrl = lang === "en"
+    ? `${BASE_URL}${canonicalPath === "/" ? "" : canonicalPath}`
+    : `${BASE_URL}/${lang}${canonicalPath === "/" ? "" : canonicalPath}`;
   const hreflangTags = generateHreflangTags(canonicalPath);
   const langAttr = getLangAttribute(lang);
   
@@ -1720,7 +1722,7 @@ export function injectSEO(html: string, path: string): string {
   const metaTags = generateMetaTags(path);
   const crawlableNav = generateCrawlableNav(path);
   const preRenderShell = generatePreRenderShell(canonicalPath);
-  const dir = lang === "ar" ? "rtl" : "ltr";
+  const dir = (lang === "ar" || lang === "ur") ? "rtl" : "ltr";
   
   return html
     .replace(/<html([^>]*)>/, `<html lang="${lang}" dir="${dir}">`)

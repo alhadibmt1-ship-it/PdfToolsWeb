@@ -1022,7 +1022,7 @@
   <!-- Total language pages: 814 -->
 
   <!-- Spanish (es) — 49 tools + 25 blogs -->
-  <url><loc>https://pdfhub24.com/es/</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/es</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/es/merge</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/es/split</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/es/compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -1032,10 +1032,10 @@
   <url><loc>https://pdfhub24.com/es/word-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/es/translate-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/es/edit-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://pdfhub24.com/es/sign</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/es/sign-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/es/ocr-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/es/protect</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/es/unlock</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/es/protect-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/es/unlock-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/es/extract-pages</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/es/batch-compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/es/scan-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -1047,8 +1047,8 @@
   <url><loc>https://pdfhub24.com/es/excel-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/es/ppt-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/es/rotate</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/es/watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/es/grayscale</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/es/add-watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/es/grayscale-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/es/image-compressor</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/es/image-resize</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/es/image-crop</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -1099,7 +1099,7 @@
   <url><loc>https://pdfhub24.com/es/blog/image-compression-guide</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
 
   <!-- French (fr) — 49 tools + 25 blogs -->
-  <url><loc>https://pdfhub24.com/fr/</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/fr</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/fr/merge</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/fr/split</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/fr/compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -1109,10 +1109,10 @@
   <url><loc>https://pdfhub24.com/fr/word-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/fr/translate-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/fr/edit-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://pdfhub24.com/fr/sign</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/fr/sign-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/fr/ocr-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/fr/protect</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/fr/unlock</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/fr/protect-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/fr/unlock-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/fr/extract-pages</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/fr/batch-compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/fr/scan-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -1124,8 +1124,8 @@
   <url><loc>https://pdfhub24.com/fr/excel-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/fr/ppt-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/fr/rotate</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/fr/watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/fr/grayscale</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/fr/add-watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/fr/grayscale-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/fr/image-compressor</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/fr/image-resize</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/fr/image-crop</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -1176,7 +1176,7 @@
   <url><loc>https://pdfhub24.com/fr/blog/image-compression-guide</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
 
   <!-- Portuguese (pt) — 49 tools + 25 blogs -->
-  <url><loc>https://pdfhub24.com/pt/</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/pt</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/pt/merge</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/pt/split</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/pt/compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -1186,10 +1186,10 @@
   <url><loc>https://pdfhub24.com/pt/word-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/pt/translate-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/pt/edit-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://pdfhub24.com/pt/sign</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/pt/sign-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/pt/ocr-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/pt/protect</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/pt/unlock</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/pt/protect-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/pt/unlock-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/pt/extract-pages</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/pt/batch-compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/pt/scan-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -1201,8 +1201,8 @@
   <url><loc>https://pdfhub24.com/pt/excel-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/pt/ppt-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/pt/rotate</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/pt/watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/pt/grayscale</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/pt/add-watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/pt/grayscale-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/pt/image-compressor</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/pt/image-resize</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/pt/image-crop</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -1253,7 +1253,7 @@
   <url><loc>https://pdfhub24.com/pt/blog/image-compression-guide</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
 
   <!-- Arabic (ar) — 49 tools + 25 blogs -->
-  <url><loc>https://pdfhub24.com/ar/</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/ar</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ar/merge</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/ar/split</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/ar/compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -1263,10 +1263,10 @@
   <url><loc>https://pdfhub24.com/ar/word-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/ar/translate-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/ar/edit-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://pdfhub24.com/ar/sign</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/ar/sign-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ar/ocr-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/ar/protect</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/ar/unlock</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/ar/protect-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/ar/unlock-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ar/extract-pages</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ar/batch-compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ar/scan-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -1278,8 +1278,8 @@
   <url><loc>https://pdfhub24.com/ar/excel-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ar/ppt-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ar/rotate</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/ar/watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/ar/grayscale</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/ar/add-watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/ar/grayscale-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ar/image-compressor</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ar/image-resize</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ar/image-crop</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -1330,7 +1330,7 @@
   <url><loc>https://pdfhub24.com/ar/blog/image-compression-guide</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
 
   <!-- Hindi (hi) — 49 tools + 25 blogs -->
-  <url><loc>https://pdfhub24.com/hi/</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/hi</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/hi/merge</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/hi/split</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/hi/compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -1340,10 +1340,10 @@
   <url><loc>https://pdfhub24.com/hi/word-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/hi/translate-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/hi/edit-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://pdfhub24.com/hi/sign</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/hi/sign-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/hi/ocr-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/hi/protect</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/hi/unlock</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/hi/protect-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/hi/unlock-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/hi/extract-pages</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/hi/batch-compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/hi/scan-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -1355,8 +1355,8 @@
   <url><loc>https://pdfhub24.com/hi/excel-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/hi/ppt-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/hi/rotate</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/hi/watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/hi/grayscale</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/hi/add-watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/hi/grayscale-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/hi/image-compressor</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/hi/image-resize</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/hi/image-crop</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -1407,7 +1407,7 @@
   <url><loc>https://pdfhub24.com/hi/blog/image-compression-guide</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
 
   <!-- German (de) — 49 tools + 25 blogs -->
-  <url><loc>https://pdfhub24.com/de/</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/de</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/de/merge</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/de/split</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/de/compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -1417,10 +1417,10 @@
   <url><loc>https://pdfhub24.com/de/word-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/de/translate-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/de/edit-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://pdfhub24.com/de/sign</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/de/sign-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/de/ocr-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/de/protect</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/de/unlock</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/de/protect-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/de/unlock-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/de/extract-pages</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/de/batch-compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/de/scan-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -1432,8 +1432,8 @@
   <url><loc>https://pdfhub24.com/de/excel-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/de/ppt-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/de/rotate</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/de/watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/de/grayscale</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/de/add-watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/de/grayscale-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/de/image-compressor</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/de/image-resize</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/de/image-crop</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -1484,7 +1484,7 @@
   <url><loc>https://pdfhub24.com/de/blog/image-compression-guide</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
 
   <!-- Chinese Simplified (zh) — 49 tools + 25 blogs -->
-  <url><loc>https://pdfhub24.com/zh/</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/zh</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/zh/merge</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/zh/split</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/zh/compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -1494,10 +1494,10 @@
   <url><loc>https://pdfhub24.com/zh/word-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/zh/translate-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/zh/edit-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://pdfhub24.com/zh/sign</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/zh/sign-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/zh/ocr-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/zh/protect</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/zh/unlock</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/zh/protect-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/zh/unlock-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/zh/extract-pages</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/zh/batch-compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/zh/scan-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -1509,8 +1509,8 @@
   <url><loc>https://pdfhub24.com/zh/excel-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/zh/ppt-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/zh/rotate</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/zh/watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/zh/grayscale</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/zh/add-watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/zh/grayscale-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/zh/image-compressor</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/zh/image-resize</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/zh/image-crop</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -1561,7 +1561,7 @@
   <url><loc>https://pdfhub24.com/zh/blog/image-compression-guide</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
 
   <!-- Japanese (ja) — 49 tools + 25 blogs -->
-  <url><loc>https://pdfhub24.com/ja/</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/ja</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ja/merge</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/ja/split</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/ja/compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -1571,10 +1571,10 @@
   <url><loc>https://pdfhub24.com/ja/word-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/ja/translate-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/ja/edit-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://pdfhub24.com/ja/sign</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/ja/sign-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ja/ocr-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/ja/protect</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/ja/unlock</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/ja/protect-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/ja/unlock-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ja/extract-pages</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ja/batch-compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ja/scan-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -1586,8 +1586,8 @@
   <url><loc>https://pdfhub24.com/ja/excel-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ja/ppt-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ja/rotate</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/ja/watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/ja/grayscale</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/ja/add-watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/ja/grayscale-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ja/image-compressor</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ja/image-resize</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ja/image-crop</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -1638,7 +1638,7 @@
   <url><loc>https://pdfhub24.com/ja/blog/image-compression-guide</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
 
   <!-- Indonesian (id) — 49 tools + 25 blogs -->
-  <url><loc>https://pdfhub24.com/id/</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/id</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/id/merge</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/id/split</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/id/compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -1648,10 +1648,10 @@
   <url><loc>https://pdfhub24.com/id/word-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/id/translate-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/id/edit-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://pdfhub24.com/id/sign</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/id/sign-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/id/ocr-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/id/protect</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/id/unlock</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/id/protect-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/id/unlock-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/id/extract-pages</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/id/batch-compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/id/scan-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -1663,8 +1663,8 @@
   <url><loc>https://pdfhub24.com/id/excel-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/id/ppt-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/id/rotate</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/id/watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/id/grayscale</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/id/add-watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/id/grayscale-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/id/image-compressor</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/id/image-resize</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/id/image-crop</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -1715,7 +1715,7 @@
   <url><loc>https://pdfhub24.com/id/blog/image-compression-guide</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
 
   <!-- Russian (ru) — 49 tools + 25 blogs -->
-  <url><loc>https://pdfhub24.com/ru/</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/ru</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ru/merge</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/ru/split</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/ru/compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -1725,10 +1725,10 @@
   <url><loc>https://pdfhub24.com/ru/word-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/ru/translate-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/ru/edit-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://pdfhub24.com/ru/sign</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/ru/sign-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ru/ocr-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/ru/protect</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/ru/unlock</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/ru/protect-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/ru/unlock-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ru/extract-pages</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ru/batch-compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ru/scan-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -1740,8 +1740,8 @@
   <url><loc>https://pdfhub24.com/ru/excel-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ru/ppt-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ru/rotate</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/ru/watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/ru/grayscale</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/ru/add-watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/ru/grayscale-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ru/image-compressor</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ru/image-resize</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ru/image-crop</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -1792,7 +1792,7 @@
   <url><loc>https://pdfhub24.com/ru/blog/image-compression-guide</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
 
   <!-- Italian (it) — 49 tools + 25 blogs -->
-  <url><loc>https://pdfhub24.com/it/</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/it</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/it/merge</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/it/split</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/it/compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -1802,10 +1802,10 @@
   <url><loc>https://pdfhub24.com/it/word-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/it/translate-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/it/edit-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://pdfhub24.com/it/sign</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/it/sign-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/it/ocr-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/it/protect</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/it/unlock</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/it/protect-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/it/unlock-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/it/extract-pages</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/it/batch-compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/it/scan-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -1817,8 +1817,8 @@
   <url><loc>https://pdfhub24.com/it/excel-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/it/ppt-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/it/rotate</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/it/watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/it/grayscale</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/it/add-watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/it/grayscale-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/it/image-compressor</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/it/image-resize</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/it/image-crop</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -1927,7 +1927,7 @@
   <url><loc>https://pdfhub24.com/it/compress-pdf-tools</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
   <!-- Urdu (ur) — 49 tools + 25 blogs + 5 categories -->
-  <url><loc>https://pdfhub24.com/ur/</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/ur</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ur/merge</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/ur/split</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/ur/compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -1937,10 +1937,10 @@
   <url><loc>https://pdfhub24.com/ur/word-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/ur/translate-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://pdfhub24.com/ur/edit-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://pdfhub24.com/ur/sign</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/ur/sign-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ur/ocr-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/ur/protect</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://pdfhub24.com/ur/unlock</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/ur/protect-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pdfhub24.com/ur/unlock-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ur/extract-pages</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ur/batch-compress</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pdfhub24.com/ur/scan-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -1953,8 +1953,8 @@
   <url><loc>https://pdfhub24.com/ur/excel-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ur/ppt-to-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ur/rotate</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/ur/watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://pdfhub24.com/ur/grayscale</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/ur/add-watermark</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pdfhub24.com/ur/grayscale-pdf</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ur/image-compressor</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ur/image-resize</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pdfhub24.com/ur/image-crop</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>

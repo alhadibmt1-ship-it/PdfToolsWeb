@@ -25,18 +25,18 @@ Key technical features include:
 - **Performance**: WebP image optimization, code splitting, asynchronous font loading (media=print trick), deferred analytics, and `preconnect` hints for Google Fonts (googleapis.com + gstatic.com with crossorigin) to reduce LCP latency.
 - **Security**: File upload validation (magic byte, MIME type), comprehensive error handling, and Zod schema validation.
 - **SEO**: Dynamic meta tags, `sitemap.xml`, and `robots.txt` integration. Server-side SEO injection via `injectSEO()` in `server/app.ts`. Hreflang tags (13 languages + x-default) injected server-side on every page.
-- **International SEO**: 13-language support (en, es, ar, hi, fr, pt, de, zh, ja, id, ru, it, ur) with URL prefix routing (`/es/`, `/ar/`, `/de/`, `/ur/` etc.) via Wouter's `base` prop. RTL support for Arabic and Urdu via html `dir` attribute. `LanguageSwitcher` (Globe dropdown), `LanguageBanner` (browser language detection), and `LanguageContext` components. Server-side `injectSEO()` sets `html lang` and `dir` attributes.
+- **International SEO**: 13-language support (en, es, ar, hi, fr, pt, de, zh, ja, id, ru, it, ur) with URL prefix routing (`/es/`, `/ar/`, `/de/`, `/ur/` etc.) via Wouter's `base` prop. RTL support for Arabic and Urdu via html `dir` attribute. `LanguageSwitcher` (Globe dropdown), `LanguageBanner` (browser language detection), and `LanguageContext` components. Server-side `injectSEO()` sets `html lang/dir` and uses **self-canonical URLs** for language pages (e.g., `/es/merge` canonical = `pdfhub24.com/es/merge`, not the English URL). `og:url` also self-canonical for language pages.
 - **Conversion Quality**: Advanced PDF to Word conversion with intelligent formatting, high-resolution PDF to JPG output.
 - **User Settings**: Dark mode toggle and configurable compression levels.
 - **Interactive Editing**: Canvas-based editing for tools like Edit PDF, Annotate PDF, and Redact PDF, featuring real-time preview and undo functionality.
 
 ### International SEO Architecture
-- **Language files**: `client/src/lib/languages.ts` — 6-language config with labels, native labels, hreflang codes, and RTL flags
+- **Language files**: `client/src/lib/languages.ts` — 13-language config with labels, native labels, hreflang codes, and RTL flags
 - **Context**: `client/src/contexts/LanguageContext.tsx` — reads lang from URL path, sets `html lang` and `dir` attributes reactively
 - **Components**: `client/src/components/LanguageSwitcher.tsx` (Globe dropdown, desktop + mobile), `client/src/components/LanguageBanner.tsx` (browser language detection with sessionStorage dismissal)
 - **Routing**: `client/src/App.tsx` uses `WouterRouter` with `base={/lang}` for non-English paths; English uses root router
-- **Server-side**: `server/seo-config.ts` `stripLangPrefix()` strips lang prefix before config lookup; `injectSEO()` sets `html lang/dir` and strips existing alternate links before injecting 7 hreflang tags per page
-- **Sitemap**: Language URL variants for top tools (es, fr, pt, ar, hi) added to `client/public/sitemap.xml`
+- **Server-side**: `server/seo-config.ts` `stripLangPrefix()` strips lang prefix before config lookup; `generateMetaTags()` uses **self-canonical** for language pages (lang !== "en" → canonical = `/${lang}${canonicalPath}`); `injectSEO()` sets `html lang/dir` (RTL for both Arabic AND Urdu) and injects 13 hreflang tags per page
+- **Sitemap**: `client/public/sitemap.xml` — 1,129 URLs covering all 49 tools, 25 blogs, 5 category hubs, 40 programmatic pages, misc pages, + 12 language sections (49 tools + 25 blogs per language). Language homepages use no trailing slash (e.g., `/es` not `/es/`). All tool URLs match App.tsx routes (sign-pdf, protect-pdf, unlock-pdf, add-watermark, grayscale-pdf).
 
 ## SEO Architecture
 - **Server-side meta tags**: `server/seo-config.ts` provides unique title, description, keywords, canonical, OG, Twitter, and robots tags for every page. `injectSEO()` strips existing tags and reinjects correct ones.
