@@ -80,6 +80,9 @@ const BlogPostPage = lazy(() => import("@/pages/BlogPostPage"));
 const PdfStatisticsPage = lazy(() => import("@/pages/PdfStatisticsPage"));
 const PressKitPage = lazy(() => import("@/pages/PressKitPage"));
 const AllToolsPage = lazy(() => import("@/pages/AllToolsPage"));
+const HtmlSitemapPage = lazy(() => import("@/pages/HtmlSitemapPage"));
+const BestFreeToolsPage = lazy(() => import("@/pages/BestFreeToolsPage"));
+const SeoAuditPage = lazy(() => import("@/pages/SeoAuditPage"));
 const FreePdfConverterPage = lazy(() => import("@/pages/FreePdfConverterPage"));
 const FreePdfEditorPage = lazy(() => import("@/pages/FreePdfEditorPage"));
 const CategoryHubPage = lazy(() => import("@/pages/CategoryHubPage"));
@@ -175,6 +178,9 @@ function AppRoutes() {
         <Route path="/pdf-statistics" component={PdfStatisticsPage} />
         <Route path="/press" component={PressKitPage} />
         <Route path="/all-tools" component={AllToolsPage} />
+        <Route path="/html-sitemap" component={HtmlSitemapPage} />
+        <Route path="/best-free-tools" component={BestFreeToolsPage} />
+        <Route path="/seo-audit" component={SeoAuditPage} />
         <Route path="/free-pdf-converter" component={FreePdfConverterPage} />
         <Route path="/free-pdf-editor" component={FreePdfEditorPage} />
         <Route path="/write-for-us" component={WriteForUsPage} />

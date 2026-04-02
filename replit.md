@@ -36,13 +36,13 @@ Key technical features include:
 - **Components**: `client/src/components/LanguageSwitcher.tsx` (Globe dropdown, desktop + mobile), `client/src/components/LanguageBanner.tsx` (browser language detection with sessionStorage dismissal)
 - **Routing**: `client/src/App.tsx` uses `WouterRouter` with `base={/lang}` for non-English paths; English uses root router
 - **Server-side**: `server/seo-config.ts` `stripLangPrefix()` strips lang prefix before config lookup; `generateMetaTags()` uses **self-canonical** for language pages (lang !== "en" → canonical = `/${lang}${canonicalPath}`); `injectSEO()` sets `html lang/dir` (RTL for both Arabic AND Urdu) and injects 13 hreflang tags per page
-- **Sitemap**: `client/public/sitemap.xml` — 1,129 URLs covering all 49 tools, 25 blogs, 5 category hubs, 40 programmatic pages, misc pages, + 12 language sections (49 tools + 25 blogs per language). Language homepages use no trailing slash (e.g., `/es` not `/es/`). All tool URLs match App.tsx routes (sign-pdf, protect-pdf, unlock-pdf, add-watermark, grayscale-pdf).
+- **Sitemap**: `client/public/sitemap.xml` — 1,131 URLs covering all 49 tools, 25 blogs, 5 category hubs, 40 programmatic pages, misc pages, + 12 language sections (49 tools + 25 blogs per language). Language homepages use no trailing slash (e.g., `/es` not `/es/`). All tool URLs match App.tsx routes (sign-pdf, protect-pdf, unlock-pdf, add-watermark, grayscale-pdf).
 
 ## SEO Architecture
 - **Server-side meta tags**: `server/seo-config.ts` provides unique title, description, keywords, canonical, OG, Twitter, and robots tags for every page. `injectSEO()` strips existing tags and reinjects correct ones.
 - **Structured data**: WebApplication + FAQPage + BreadcrumbList schemas on all 43 tool pages (client-side via `EnhancedToolSEOContent`). WebPage schema server-side. Organization + FAQ schemas on homepage. Article + FAQ schemas on blog pages.
 - **Internal linking**: Each tool page links to 8+ related tools and 2+ blog articles via `toolSEOData.ts`. Blog articles contain 3-15+ internal links to tools.
-- **Sitemap**: `client/public/sitemap.xml` covers 132 URLs — all tools, blogs, categories, programmatic pages, and information pages.
+- **Sitemap**: `client/public/sitemap.xml` covers 1,131 URLs — all tools, blogs, categories, programmatic pages, information pages, and international language alternates.
 - **Heading hierarchy**: All pages follow H1→H2→H3 structure with long-tail keyword H1s from `toolSEOData.ts`.
 - **AdSense placeholders**: `data-ad-slot` divs on tool pages (top, mid, bottom), blog pages (top, mid, bottom), and homepage (hero, mid, bottom).
 - **CTA blocks**: "Start Now - It's Free" buttons on tool pages after tutorial steps and at bottom. Blog pages have mid-article and bottom CTAs.
@@ -68,7 +68,7 @@ Key technical features include:
 - **Trust pages**: /data-security (security practices), /auto-delete (file deletion policy), /pricing (free vs pro)
 - **Backlink pages**: /write-for-us (guest post guidelines), /embed (iframe widget generator), /pdf-comparison-chart (6-platform comparison), /pdf-file-formats-guide (10-format reference)
 - **Footer**: Organized by category with tool category hub links, company links including pricing/security/write-for-us/embed/comparison/formats, popular tools, utility tools, and blog articles
-- **Sitemap**: 218 URLs covering all tools, blogs, categories, trust pages, linkable assets, programmatic SEO pages, and international language alternates (10 top tools × 5 languages)
+- **Sitemap**: 1,131 URLs covering all tools, blogs, categories, trust pages, linkable assets, programmatic SEO pages, and international language alternates
 
 ### Data Files
 - `client/src/data/categoryHubData.ts` — 5 category hub configurations with tools, FAQs, blogs

@@ -3418,6 +3418,46 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // SEO Audit routes
+  app.get("/api/seo/audit", async (req, res) => {
+    try {
+      const { runSitemapAudit } = await import("./seo-audit.js");
+      const { seoConfig } = await import("./seo-config.js");
+      const seoConfigKeys = Object.keys(seoConfig);
+      const report = runSitemapAudit(seoConfigKeys);
+      res.json(report);
+    } catch (err: any) {
+      console.error("SEO audit error:", err);
+      res.status(500).json({ error: err.message || "Audit failed" });
+    }
+  });
+
+  app.post("/api/seo/fix", async (req, res) => {
+    try {
+      const { path: urlPath } = req.body as { path: string };
+      if (!urlPath || typeof urlPath !== "string") {
+        return res.status(400).json({ error: "path is required" });
+      }
+      const { removePathFromSitemap } = await import("./seo-audit.js");
+      const result = removePathFromSitemap(urlPath);
+      res.json(result);
+    } catch (err: any) {
+      console.error("SEO fix error:", err);
+      res.status(500).json({ error: err.message || "Fix failed" });
+    }
+  });
+
+  app.get("/api/seo/content-quality", async (req, res) => {
+    try {
+      const { runContentQualityAudit } = await import("./seo-audit.js");
+      const items = runContentQualityAudit();
+      res.json(items);
+    } catch (err: any) {
+      console.error("Content quality error:", err);
+      res.status(500).json({ error: err.message || "Content quality check failed" });
+    }
+  });
+
   app.use((err: any, req: any, res: any, next: any) => {
     if (err instanceof multer.MulterError) {
       return res.status(400).json({ error: `Upload error: ${err.message}` });
