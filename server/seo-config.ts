@@ -3,6 +3,15 @@ export interface PageSEO {
   description: string;
   keywords: string;
   schema: object;
+  h1?: string;
+  canonical?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogUrl?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterCard?: string;
+  robots?: string;
 }
 
 const BASE_URL = "https://pdfhub24.com";
@@ -1186,6 +1195,37 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "file formats guide, pdf format, docx format, image formats, document formats, file format comparison",
     schema: { "@context": "https://schema.org", "@type": "Article", "headline": "Ultimate Guide to PDF & Document File Formats 2026", "url": `${BASE_URL}/pdf-file-formats-guide`, "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL } }
   },
+  "/html-sitemap": {
+    title: "HTML Sitemap — All PDF Tools & Pages | PDF HUB 24",
+    description: "Complete HTML sitemap for PDF HUB 24. Find all 49 PDF tools, 25 blog articles, category hubs, and information pages in one organized directory.",
+    keywords: "sitemap, pdf tools list, all pdf tools, site map, pdf hub 24 pages",
+    canonical: `${BASE_URL}/html-sitemap`,
+    ogTitle: "HTML Sitemap — All PDF Tools & Pages | PDF HUB 24",
+    ogDescription: "Navigate all 49 PDF tools, 25 blog articles, and information pages on PDF HUB 24.",
+    ogUrl: `${BASE_URL}/html-sitemap`,
+    twitterTitle: "HTML Sitemap — All PDF Tools & Pages",
+    twitterDescription: "Find every tool and page on PDF HUB 24 in one organized directory.",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "HTML Sitemap", "url": `${BASE_URL}/html-sitemap`, "description": "Complete directory of all pages on PDF HUB 24.", "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/best-free-tools": {
+    title: "Best Free PDF Tools 2026 — No Signup, No Watermarks | PDF HUB 24",
+    description: "Discover the best free PDF tools of 2026. Merge, compress, convert, sign, and edit PDFs online — no signup, no watermarks, no file size limits. Compared against iLovePDF, Smallpdf, and PDF24.",
+    keywords: "best free pdf tools, free pdf tools 2026, pdf tools no signup, free pdf merger, best online pdf tools, free pdf converter",
+    canonical: `${BASE_URL}/best-free-tools`,
+    ogTitle: "Best Free PDF Tools 2026 — No Signup, No Watermarks",
+    ogDescription: "Handpicked free PDF tools you can use right now. No account, no watermarks, no hidden fees. 49 tools compared.",
+    ogUrl: `${BASE_URL}/best-free-tools`,
+    twitterTitle: "Best Free PDF Tools 2026",
+    twitterDescription: "49 free PDF tools — no signup, no watermarks. Merge, compress, convert, sign and more.",
+    schema: { "@context": "https://schema.org", "@type": "Article", "headline": "Best Free PDF Tools 2026 — No Signup, No Watermarks", "url": `${BASE_URL}/best-free-tools`, "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }, "datePublished": "2026-01-01" }
+  },
+  "/seo-audit": {
+    title: "SEO Audit Dashboard | PDF HUB 24",
+    description: "Internal SEO audit dashboard for PDF HUB 24. Validates sitemap URLs and checks content quality.",
+    keywords: "seo audit, sitemap validation, content quality",
+    robots: "noindex, nofollow",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "SEO Audit Dashboard", "url": `${BASE_URL}/seo-audit` }
+  },
   "/tools/compress-pdf-under-100kb": {
     title: "Compress PDF Under 100KB Free Online | PDF HUB 24",
     description: "Reduce PDF file size to under 100KB free online. Perfect for form submissions, online applications, and strict upload limits. No signup required.",
@@ -1462,6 +1502,13 @@ export function generateMetaTags(path: string): string {
   const hreflangTags = generateHreflangTags(canonicalPath);
   const langAttr = getLangAttribute(lang);
   
+  const ogTitle = seo.ogTitle || seo.title;
+  const ogDescription = seo.ogDescription || seo.description;
+  const ogUrl = seo.ogUrl || canonicalUrl;
+  const twitterTitle = seo.twitterTitle || ogTitle;
+  const twitterDescription = seo.twitterDescription || ogDescription;
+  const robotsContent = seo.robots || "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
+
   return `
     <title>${seo.title}</title>
     <meta name="description" content="${seo.description}" />
@@ -1472,9 +1519,9 @@ export function generateMetaTags(path: string): string {
     ${hreflangTags}
     
     <!-- Open Graph -->
-    <meta property="og:title" content="${seo.title}" />
-    <meta property="og:description" content="${seo.description}" />
-    <meta property="og:url" content="${canonicalUrl}" />
+    <meta property="og:title" content="${ogTitle}" />
+    <meta property="og:description" content="${ogDescription}" />
+    <meta property="og:url" content="${ogUrl}" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="PDF HUB 24" />
     <meta property="og:image" content="${OG_IMAGE}" />
@@ -1484,12 +1531,12 @@ export function generateMetaTags(path: string): string {
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="${seo.title}" />
-    <meta name="twitter:description" content="${seo.description}" />
+    <meta name="twitter:title" content="${twitterTitle}" />
+    <meta name="twitter:description" content="${twitterDescription}" />
     <meta name="twitter:image" content="${OG_IMAGE}" />
     
     <!-- Robots -->
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="robots" content="${robotsContent}" />
     
     <!-- Structured Data -->
     <script type="application/ld+json">${JSON.stringify(seo.schema)}</script>

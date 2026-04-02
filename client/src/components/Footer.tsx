@@ -337,6 +337,12 @@ export default function Footer() {
                   <FooterLink href="/pdf-glossary" testId="link-footer-glossary" isVisible={isCompanyVisible}>
                     PDF Glossary A-Z
                   </FooterLink>
+                  <FooterLink href="/best-free-tools" testId="link-footer-best-tools" isVisible={isCompanyVisible}>
+                    Best Free PDF Tools
+                  </FooterLink>
+                  <FooterLink href="/html-sitemap" testId="link-footer-html-sitemap" isVisible={isCompanyVisible}>
+                    HTML Sitemap
+                  </FooterLink>
                   <FooterLink href="/sitemap.xml" testId="link-footer-sitemap" isVisible={isCompanyVisible}>
                     Sitemap
                   </FooterLink>
