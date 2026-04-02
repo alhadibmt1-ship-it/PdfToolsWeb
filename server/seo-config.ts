@@ -643,7 +643,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/terms": {
     title: "Terms of Service - PDF HUB 24",
-    description: "Read our terms of service. Learn about the usage terms for PDF HUB 24's free online PDF tools.",
+    description: "Read our terms of service. Learn about the usage terms for PDF HUB 24's free online PDF and image tools. Your rights and responsibilities.",
     keywords: "terms of service, PDF HUB 24 terms",
     schema: {
       "@context": "https://schema.org",
@@ -1209,7 +1209,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/best-free-tools": {
     title: "Best Free PDF Tools 2026 — No Signup, No Watermarks | PDF HUB 24",
-    description: "Discover the best free PDF tools of 2026. Merge, compress, convert, sign, and edit PDFs online — no signup, no watermarks, no file size limits. Compared against iLovePDF, Smallpdf, and PDF24.",
+    description: "Best free PDF tools of 2026: merge, compress, convert, sign, and edit PDFs online — no signup, no watermarks. Compare vs iLovePDF, Smallpdf, PDF24.",
     keywords: "best free pdf tools, free pdf tools 2026, pdf tools no signup, free pdf merger, best online pdf tools, free pdf converter",
     canonical: `${BASE_URL}/best-free-tools`,
     ogTitle: "Best Free PDF Tools 2026 — No Signup, No Watermarks",
@@ -1502,9 +1502,12 @@ export function generateMetaTags(path: string): string {
   const hreflangTags = generateHreflangTags(canonicalPath);
   const langAttr = getLangAttribute(lang);
   
+  const isNoindex = !!(seo.robots && seo.robots.includes("noindex"));
+  const hreflangBlock = isNoindex ? "" : `\n    <!-- Hreflang International SEO -->\n    ${hreflangTags}`;
+
   const ogTitle = seo.ogTitle || seo.title;
   const ogDescription = seo.ogDescription || seo.description;
-  const ogUrl = seo.ogUrl || canonicalUrl;
+  const ogUrl = isNoindex ? "" : (seo.ogUrl || canonicalUrl);
   const twitterTitle = seo.twitterTitle || ogTitle;
   const twitterDescription = seo.twitterDescription || ogDescription;
   const robotsContent = seo.robots || "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
@@ -1514,14 +1517,12 @@ export function generateMetaTags(path: string): string {
     <meta name="description" content="${seo.description}" />
     <meta name="keywords" content="${seo.keywords}" />
     <link rel="canonical" href="${canonicalUrl}" />
-    
-    <!-- Hreflang International SEO -->
-    ${hreflangTags}
+    ${hreflangBlock}
     
     <!-- Open Graph -->
     <meta property="og:title" content="${ogTitle}" />
     <meta property="og:description" content="${ogDescription}" />
-    <meta property="og:url" content="${ogUrl}" />
+    ${ogUrl ? `<meta property="og:url" content="${ogUrl}" />` : ""}
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="PDF HUB 24" />
     <meta property="og:image" content="${OG_IMAGE}" />
