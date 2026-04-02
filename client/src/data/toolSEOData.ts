@@ -3430,19 +3430,18 @@ export const toolSEOData: Record<string, ToolSEOData> = {
 };
 
 toolSEOData["translate-pdf"] = {
-  toolId: "translate-pdf",
-  aboutTool: {
-    title: "Translate Any PDF Document into 50+ Languages",
-    description: "PDF HUB 24's Translate PDF tool instantly converts your PDF documents into over 50 languages — from English to Spanish, French, Arabic, Hindi, Chinese, Japanese, and many more. Whether you need to translate a legal contract, academic paper, business report, or personal document, our free online PDF translator handles it securely without any signup.",
-    capabilities: [
-      "Translate PDFs into 50+ languages with high accuracy",
-      "Supports major world languages including Arabic, Chinese, Hindi, Spanish, French",
-      "Preserves paragraph structure and readable text layout",
-      "Processes documents of any length, splitting into optimized chunks",
-      "No signup, no account, completely free to use",
-      "Secure processing — files deleted immediately after translation"
-    ]
-  },
+  id: "translate-pdf",
+  primaryKeyword: "translate pdf online free",
+  longTailH1: "Translate PDF Online Free — Convert PDF to Any Language Instantly",
+  secondaryKeywords: [
+    "pdf translator online free",
+    "translate pdf document to spanish",
+    "pdf to french translation free",
+    "online pdf language converter",
+    "convert pdf text to another language free"
+  ],
+  metaDescription: "Translate PDF documents into 50+ languages online free. No signup, no watermark. Fast, accurate PDF translation for any language — completely free.",
+  heroContent: "Need your PDF in Spanish, French, Arabic, Hindi, Chinese, or Japanese? Our free online PDF translator handles it instantly — no signup, no fees, no software. Upload your PDF, choose the target language from 50+ options, and download a clean translated document in seconds. We support legal contracts, academic papers, business reports, user manuals, and personal documents of any length. Text is processed securely and deleted immediately after your download — your content stays private.",
   tutorial: {
     title: "How to Translate a PDF Document Online",
     steps: [
@@ -3455,23 +3454,14 @@ toolSEOData["translate-pdf"] = {
   },
   useCases: {
     title: "Who Uses PDF Translation?",
-    cases: [
-      { title: "International Business", description: "Translate contracts, proposals, and reports for global clients and partners without expensive manual translation." },
-      { title: "Academic Research", description: "Access research papers and academic publications written in foreign languages." },
-      { title: "Legal & Compliance", description: "Translate legal documents, terms of service, and regulatory filings for international jurisdictions." },
-      { title: "Healthcare & Medical", description: "Translate medical records, patient documents, and clinical guidelines for international use." },
-      { title: "Education", description: "Students and educators translate study materials, textbooks, and academic content." },
-      { title: "Personal Documents", description: "Translate immigration forms, personal letters, certificates, and official documents." }
-    ]
-  },
-  whyChoose: {
-    title: "Why Use PDF HUB 24 to Translate PDFs?",
-    reasons: [
-      { title: "Truly Free", description: "No hidden fees, no subscription required, no credit card needed. Just upload and translate." },
-      { title: "50+ Languages", description: "From major world languages to regional languages — Spanish, French, Arabic, Hindi, Chinese, Japanese, Korean, Russian, and many more." },
-      { title: "Privacy First", description: "Your documents are processed securely and deleted immediately. We never read, store, or share your files." },
-      { title: "No Signup Required", description: "Unlike many translation services, you don't need to create an account. Just use the tool and go." },
-      { title: "Instant Results", description: "Most translations complete in under a minute. Large documents take only slightly longer." }
+    description: "PDF translation helps businesses and individuals communicate across language barriers without expensive manual translation services:",
+    items: [
+      "International businesses translating contracts, proposals, and reports for global clients and partners",
+      "Academic researchers accessing foreign-language papers and publications",
+      "Legal and compliance teams translating filings and regulatory documents for international jurisdictions",
+      "Healthcare professionals translating medical records and clinical guidelines",
+      "Students and educators translating study materials and textbooks",
+      "Individuals translating immigration forms, personal letters, and official documents"
     ]
   },
   troubleshooting: {

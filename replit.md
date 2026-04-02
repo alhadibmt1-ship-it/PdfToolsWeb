@@ -22,7 +22,7 @@ The design philosophy is "Clean Modern Utility Design" with a vibrant color sche
 
 ### Technical Implementations
 Key technical features include:
-- **Performance**: WebP image optimization, code splitting, asynchronous font loading, and deferred analytics.
+- **Performance**: WebP image optimization, code splitting, asynchronous font loading (media=print trick), deferred analytics, and `preconnect` hints for Google Fonts (googleapis.com + gstatic.com with crossorigin) to reduce LCP latency.
 - **Security**: File upload validation (magic byte, MIME type), comprehensive error handling, and Zod schema validation.
 - **SEO**: Dynamic meta tags, `sitemap.xml`, and `robots.txt` integration. Server-side SEO injection via `injectSEO()` in `server/app.ts`. Hreflang tags (13 languages + x-default) injected server-side on every page.
 - **International SEO**: 13-language support (en, es, ar, hi, fr, pt, de, zh, ja, id, ru, it, ur) with URL prefix routing (`/es/`, `/ar/`, `/de/`, `/ur/` etc.) via Wouter's `base` prop. RTL support for Arabic and Urdu via html `dir` attribute. `LanguageSwitcher` (Globe dropdown), `LanguageBanner` (browser language detection), and `LanguageContext` components. Server-side `injectSEO()` sets `html lang` and `dir` attributes.
