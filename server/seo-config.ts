@@ -1,3 +1,5 @@
+import { toolSEOData } from "../client/src/data/toolSEOData";
+
 export interface PageSEO {
   title: string;
   description: string;
@@ -1706,63 +1708,95 @@ function escJs(str: string): string {
   return str.replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, " ").replace(/\r/g, "");
 }
 
+function escHtml(str: string): string {
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
 function generatePreRenderShell(canonicalPath: string): string {
   const config = seoConfig[canonicalPath];
-
-  // For homepage: full hero pre-render matching actual design
   const isHome = canonicalPath === "/";
 
+  // Derive tool id from path (e.g. "/merge" → "merge")
+  const toolId = canonicalPath.replace(/^\//, "");
+  const toolData = toolSEOData[toolId as keyof typeof toolSEOData];
+
   let h1Text = "";
-  let pText = "";
-  let h1Span = "";
+  let descText = "";
 
   if (isHome) {
-    h1Text = "Professional PDF Tools";
-    h1Span = "100% Free Online";
-    pText = "Convert, merge, compress, and edit PDF files instantly. Trusted by millions of users worldwide.";
+    h1Text = "Professional PDF Tools — 100% Free Online";
+    descText = "Convert, merge, compress, edit, sign, and secure PDF files instantly. 49 free tools with no registration, no watermarks, and no file size tricks. Trusted by users worldwide.";
+  } else if (toolData) {
+    h1Text = toolData.longTailH1 || config?.title?.split(" | ")[0] || "";
+    descText = toolData.metaDescription || config?.description || "";
   } else if (config?.h1) {
     h1Text = config.h1;
-    pText = config.description || "";
+    descText = config.description || "";
   } else if (config?.title) {
     h1Text = config.title.split(" | ")[0];
-    pText = config.description || "";
+    descText = config.description || "";
   } else {
     return "";
   }
 
-  const safeH1 = escJs(h1Text);
-  const safePText = escJs(pText);
+  // Build rich content sections from toolSEOData for tool pages
+  let richContent = "";
+  if (toolData) {
+    // Use cases section
+    if (toolData.useCases?.items?.length) {
+      const items = toolData.useCases.items.map(i => `<li>${escHtml(i)}</li>`).join("");
+      richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+        <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">${escHtml(toolData.useCases.title)}</h2>
+        <p style="margin-bottom:0.75rem">${escHtml(toolData.useCases.description)}</p>
+        <ul style="padding-left:1.5rem;line-height:1.8">${items}</ul>
+      </section>`;
+    }
 
-  const spanHtml = h1Span
-    ? `<span style="display:block;background:linear-gradient(135deg,#2563eb,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">${h1Span}</span>`
-    : "";
+    // Tutorial steps
+    if (toolData.tutorial?.steps?.length) {
+      const steps = toolData.tutorial.steps.map((s, i) =>
+        `<li style="margin-bottom:0.75rem"><strong>${escHtml(s.step)}:</strong> ${escHtml(s.detail)}</li>`
+      ).join("");
+      richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+        <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">${escHtml(toolData.tutorial.title)}</h2>
+        <ol style="padding-left:1.5rem;line-height:1.8">${steps}</ol>
+      </section>`;
+    }
 
-  // Inline script that runs synchronously before React — populates #root
-  // Uses localStorage theme to match user preference (avoids flash)
-  return `<script>
-(function(){
-  try{
-    var r=document.getElementById('root');
-    if(!r)return;
-    var t=localStorage.getItem('theme')||'system';
-    var mq=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;
-    var dk=t==='dark'||(t!=='light'&&mq);
-    var bg=dk?'#0a0a0a':'#ffffff';
-    var fg=dk?'#f8fafc':'#0f172a';
-    var sfg=dk?'#94a3b8':'#475569';
-    var bd=dk?'rgba(255,255,255,0.08)':'rgba(0,0,0,0.08)';
-    var d=document.createElement('div');
-    d.id='__psr';
-    d.style.cssText='min-height:100vh;background:'+bg+';display:flex;flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,Inter,"Segoe UI",Roboto,sans-serif';
-    var nav='<div style="position:sticky;top:0;z-index:50;height:56px;border-bottom:1px solid '+bd+';background:'+bg+';display:flex;align-items:center;padding:0 1.5rem"><span style="font-size:1.25rem;font-weight:700;color:#2563eb">PDF HUB 24</span></div>';
-    var h1s='<h1 style="font-size:clamp(1.75rem,6vw,3.75rem);font-weight:700;line-height:1.1;color:'+fg+';max-width:700px;margin:0 0 1rem 0">${safeH1} ${spanHtml}</h1>';
-    var ps='<p style="font-size:1rem;color:'+sfg+';max-width:580px;line-height:1.65;margin:0">${safePText}</p>';
-    var main='<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 1.5rem;text-align:center">'+h1s+ps+'</div>';
-    d.innerHTML=nav+main;
-    r.insertBefore(d,r.firstChild);
-  }catch(e){}
-})();
-</script>`;
+    // FAQs
+    if (toolData.faqs?.length) {
+      const faqs = toolData.faqs.map(f =>
+        `<div style="margin-bottom:1rem"><h3 style="font-size:1rem;font-weight:600;margin-bottom:0.25rem">${escHtml(f.question)}</h3><p style="line-height:1.7">${escHtml(f.answer)}</p></div>`
+      ).join("");
+      richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+        <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">Frequently Asked Questions</h2>
+        ${faqs}
+      </section>`;
+    }
+
+    // Internal links
+    const realLinks = toolData.internalLinks?.filter(l => !l.href.startsWith("/blog/")) || [];
+    if (realLinks.length) {
+      const links = realLinks.map(l =>
+        `<a href="${escHtml(l.href)}" style="color:#2563eb;text-decoration:none;margin-right:1.5rem">${escHtml(l.text)}</a>`
+      ).join("");
+      richContent += `<nav style="margin:1.5rem 0;text-align:left;max-width:800px;width:100%;flex-wrap:wrap;display:flex;gap:0.5rem">${links}</nav>`;
+    }
+  }
+
+  // Static HTML pre-render — visible to Google on first-wave crawl
+  // Small inline script only applies theme colors (no DOM creation)
+  return `<div id="__psr" style="min-height:100vh;display:flex;flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,Inter,sans-serif;background:#ffffff;color:#0f172a">
+  <div style="height:56px;border-bottom:1px solid rgba(0,0,0,0.08);display:flex;align-items:center;padding:0 1.5rem">
+    <a href="/" style="font-size:1.25rem;font-weight:700;color:#2563eb;text-decoration:none">PDF HUB 24</a>
+  </div>
+  <main style="flex:1;max-width:1024px;margin:0 auto;padding:2.5rem 1.5rem;width:100%">
+    <h1 style="font-size:clamp(1.5rem,5vw,2.75rem);font-weight:700;line-height:1.15;margin-bottom:1rem">${escHtml(h1Text)}</h1>
+    <p style="font-size:1.05rem;line-height:1.7;margin-bottom:1.5rem;max-width:700px">${escHtml(descText)}</p>
+    ${richContent}
+  </main>
+</div>
+<script>(function(){try{var e=document.getElementById('__psr');if(!e)return;var t=localStorage.getItem('theme')||'system';var dk=t==='dark'||(t!=='light'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);if(dk){e.style.background='#0a0a0a';e.style.color='#f8fafc';}}catch(err){}})();</script>`;
 }
 
 export function injectSEO(html: string, path: string): string {
