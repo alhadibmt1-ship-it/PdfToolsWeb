@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useRecentTools } from "@/contexts/RecentToolsContext";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
 
 function formatBytes(bytes: number) {
   if (bytes < 1024) return `${bytes} B`;
@@ -238,7 +239,7 @@ export default function BatchCompressPage() {
           </div>
         )}
 
-        <RelatedTools currentToolId="batch-compress" />
+        <EnhancedToolSEOContent toolId="batch-compress" />
       </div>
     </div>
   );

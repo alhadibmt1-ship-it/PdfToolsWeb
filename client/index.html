@@ -61,9 +61,10 @@
       h1{font-weight:700;letter-spacing:-0.02em}
       .container{width:100%;max-width:1280px;margin:0 auto;padding:0 1.5rem}
     </style>
-    <!-- DNS prefetch for external resources (preconnect only for origins used in critical path) -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <!-- Preconnect to font origins (establishes TCP+TLS early, reduces font FOUT) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- DNS prefetch for analytics (not on critical path, prefetch is sufficient) -->
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
     <!-- Non-render-blocking font loading — fires after initial paint -->

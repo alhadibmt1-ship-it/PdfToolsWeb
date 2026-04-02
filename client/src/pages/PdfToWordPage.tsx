@@ -8,6 +8,7 @@ import CloudImportBar from "@/components/CloudImportBar";
 import ProcessingState from "@/components/ProcessingState";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
@@ -465,7 +466,7 @@ export default function PdfToWordPage() {
           {/* AdSense Bottom */}
           <div className="mb-10" data-ad-slot="bottom" />
 
-          <RelatedTools currentToolId="pdf-to-word" />
+          <EnhancedToolSEOContent toolId="pdf-to-word" />
         </div>
       </main>
 

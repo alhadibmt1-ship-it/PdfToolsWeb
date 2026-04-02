@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useRecentTools } from "@/contexts/RecentToolsContext";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
 
 function formatBytes(bytes: number) {
   if (bytes < 1024) return `${bytes} B`;
@@ -221,7 +222,7 @@ export default function PdfToAPage() {
           </CardContent>
         </Card>
 
-        <RelatedTools currentToolId="pdf-to-pdfa" />
+        <EnhancedToolSEOContent toolId="pdf-to-pdfa" />
       </div>
     </div>
   );

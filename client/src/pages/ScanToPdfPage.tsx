@@ -6,6 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useRecentTools } from "@/contexts/RecentToolsContext";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
+import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
 
 interface CapturedImage {
   id: string;
@@ -279,7 +280,7 @@ export default function ScanToPdfPage() {
           </CardContent>
         </Card>
 
-        <RelatedTools currentToolId="scan-to-pdf" />
+        <EnhancedToolSEOContent toolId="scan-to-pdf" />
       </div>
     </div>
   );
