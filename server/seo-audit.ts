@@ -98,7 +98,7 @@ export function runContentQualityAudit(): ContentQualityItem[] {
     const block = content.slice(blockStart, blockEnd + 1);
 
     const hasH1 = /longTailH1:\s*["']/.test(block);
-    const metaMatch = block.match(/metaDescription:\s*["']([^"']+)["']/);
+    const metaMatch = block.match(/metaDescription:\s*"([^"]+)"/) || block.match(/metaDescription:\s*'([^']+)'/);
     const hasMetaDesc = !!(metaMatch && metaMatch[1].length >= 100);
     const faqMatch = block.match(/faqs:\s*\[/);
     const faqCount = faqMatch ? (block.match(/question:/g) || []).length : 0;
@@ -107,8 +107,8 @@ export function runContentQualityAudit(): ContentQualityItem[] {
     const linkCount = linkMatch ? (block.match(/href:/g) || []).length : 0;
     const hasInternalLinks = linkCount >= 5;
     const hasUseCases = /useCases:\s*\{/.test(block);
-    const tutorialMatch = block.match(/tutorial:\s*\[/);
-    const tutorialSteps = tutorialMatch ? (block.match(/"[A-Z]/g) || []).length : 0;
+    const tutorialMatch = block.match(/tutorial:\s*[\[{]/);
+    const tutorialSteps = tutorialMatch ? (block.match(/\bstep:/g) || []).length : 0;
     const hasTutorial = tutorialSteps >= 3;
 
     const issues: string[] = [];

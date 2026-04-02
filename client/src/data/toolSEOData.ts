@@ -615,7 +615,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Merge PDF", href: "/merge", context: "Combine documents before adding page numbers" },
       { text: "Add Watermark", href: "/add-watermark", context: "Add branding along with page numbers" },
       { text: "Reorder Pages", href: "/reorder-pages", context: "Arrange pages before numbering" },
-      { text: "Delete Pages", href: "/delete-pages", context: "Remove unwanted pages before numbering" }
+      { text: "Delete Pages", href: "/delete-pages", context: "Remove unwanted pages before numbering" },
+      { text: "Compress PDF", href: "/compress", context: "Reduce file size after adding page numbers" }
     ]
   },
   "pdf-to-png": {
@@ -690,7 +691,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "PDF to JPG", href: "/pdf-to-jpg", context: "Convert to JPG for smaller file sizes" },
       { text: "Split PDF", href: "/split", context: "Extract specific pages before converting" },
       { text: "Image Compressor", href: "/image-compressor", context: "Reduce PNG file sizes after conversion" },
-      { text: "Extract Images", href: "/extract-images", context: "Extract embedded images from PDF instead" }
+      { text: "Extract Images", href: "/extract-images", context: "Extract embedded images from PDF instead" },
+      { text: "Resize Image", href: "/resize-image", context: "Resize extracted PNG images for web or print" }
     ]
   },
   "pdf-to-excel": {
@@ -765,7 +767,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "OCR PDF", href: "/ocr-pdf", context: "Extract text from scanned PDFs before converting to Excel" },
       { text: "Extract Text", href: "/extract-text", context: "Get plain text if you don't need spreadsheet format" },
       { text: "PDF to Word", href: "/pdf-to-word", context: "Convert to Word if document has mixed content" },
-      { text: "Excel to PDF", href: "/excel-to-pdf", context: "Convert your Excel back to PDF when done editing" }
+      { text: "Excel to PDF", href: "/excel-to-pdf", context: "Convert your Excel back to PDF when done editing" },
+      { text: "Split PDF", href: "/split", context: "Split PDF into sections before converting" }
     ]
   },
   "pdf-to-powerpoint": {
@@ -840,7 +843,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "PowerPoint to PDF", href: "/ppt-to-pdf", context: "Convert your edited presentation back to PDF" },
       { text: "PDF to Word", href: "/pdf-to-word", context: "Convert to Word if document is text-heavy" },
       { text: "Extract Images", href: "/extract-images", context: "Extract images from PDF separately" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce PDF size before converting" }
+      { text: "Compress PDF", href: "/compress", context: "Reduce PDF size before converting" },
+      { text: "OCR PDF", href: "/ocr-pdf", context: "Extract text from scanned presentation slides" }
     ]
   },
   "extract-text": {
@@ -992,7 +996,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "PDF to PNG", href: "/pdf-to-png", context: "Convert entire pages to images instead" },
       { text: "PDF to JPG", href: "/pdf-to-jpg", context: "Save pages as JPG images" },
       { text: "Extract Text", href: "/extract-text", context: "Extract text content along with images" },
-      { text: "Image Compressor", href: "/image-compressor", context: "Reduce extracted image file sizes" }
+      { text: "Image Compressor", href: "/image-compressor", context: "Reduce extracted image file sizes" },
+      { text: "Resize Image", href: "/resize-image", context: "Resize extracted images for your needs" }
     ]
   },
   "ocr-pdf": {
@@ -1224,7 +1229,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "PDF to JPG", href: "/pdf-to-jpg", context: "Convert PDF pages back to JPG images" },
       { text: "PNG to PDF", href: "/png-to-pdf", context: "Convert PNG images with transparency to PDF" },
       { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size after converting images" },
-      { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs from different image batches" }
+      { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs from different image batches" },
+      { text: "Protect PDF", href: "/protect-pdf", context: "Password-protect your converted PDF" }
     ]
   },
   "png-to-pdf": {
@@ -1300,7 +1306,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "PDF to PNG", href: "/pdf-to-png", context: "Convert PDF pages back to PNG images" },
       { text: "JPG to PDF", href: "/jpg-to-pdf", context: "Convert JPG photos to PDF format" },
       { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size after conversion" },
-      { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs into one document" }
+      { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs into one document" },
+      { text: "Protect PDF", href: "/protect-pdf", context: "Secure your converted PNG document" }
     ]
   },
   "excel-to-pdf": {
@@ -1453,7 +1460,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "PDF to PPT", href: "/pdf-to-ppt", context: "Convert PDF back to editable PowerPoint format" },
       { text: "Word to PDF", href: "/word-to-pdf", context: "Convert Word documents to PDF format" },
       { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size for email sharing" },
-      { text: "Add Watermark", href: "/add-watermark", context: "Add branding or confidential stamps to presentations" }
+      { text: "Add Watermark", href: "/add-watermark", context: "Add branding or confidential stamps to presentations" },
+      { text: "Merge PDF", href: "/merge", context: "Combine multiple converted presentation PDFs" }
     ]
   },
   "tiff-to-pdf": {
@@ -1529,7 +1537,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "JPG to PDF", href: "/jpg-to-pdf", context: "Convert JPG images to PDF format" },
       { text: "PNG to PDF", href: "/png-to-pdf", context: "Convert PNG images to PDF format" },
       { text: "OCR PDF", href: "/ocr-pdf", context: "Make scanned TIFF-to-PDF documents searchable" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size after TIFF conversion" }
+      { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size after TIFF conversion" },
+      { text: "Merge PDF", href: "/merge", context: "Merge multiple TIFF-to-PDF conversions" }
     ]
   },
   "gif-to-pdf": {
@@ -1605,7 +1614,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "PNG to PDF", href: "/png-to-pdf", context: "Convert PNG images with better quality and transparency" },
       { text: "JPG to PDF", href: "/jpg-to-pdf", context: "Convert JPG photographs to PDF format" },
       { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs into one document" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size after conversion" }
+      { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size after conversion" },
+      { text: "Split PDF", href: "/split", context: "Split converted GIF document into pages" }
     ]
   },
   "html-to-pdf": {
@@ -1681,7 +1691,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Word to PDF", href: "/word-to-pdf", context: "Convert Word documents to PDF format" },
       { text: "Merge PDF", href: "/merge", context: "Combine multiple HTML-to-PDF conversions" },
       { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size after conversion" },
-      { text: "Add Watermark", href: "/add-watermark", context: "Add branding to converted web content" }
+      { text: "Add Watermark", href: "/add-watermark", context: "Add branding to converted web content" },
+      { text: "Protect PDF", href: "/protect-pdf", context: "Secure your converted HTML document" }
     ]
   },
   "webp-to-pdf": {
@@ -1757,7 +1768,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "PNG to PDF", href: "/png-to-pdf", context: "Convert PNG images to PDF format" },
       { text: "JPG to PDF", href: "/jpg-to-pdf", context: "Convert JPG photographs to PDF format" },
       { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs into one document" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size after conversion" }
+      { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size after conversion" },
+      { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection to your converted PDF" }
     ]
   },
   "rotate": {
@@ -2136,7 +2148,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Merge PDF", href: "/merge", context: "Combine PDFs before or after reordering" },
       { text: "Split PDF", href: "/split", context: "Extract sections before reordering" },
       { text: "Delete Pages", href: "/delete-pages", context: "Remove unwanted pages while reorganizing" },
-      { text: "Add Page Numbers", href: "/add-page-numbers", context: "Add new page numbers after reordering" }
+      { text: "Add Page Numbers", href: "/add-page-numbers", context: "Add new page numbers after reordering" },
+      { text: "Extract Pages", href: "/extract-pages", context: "Extract specific pages before reordering" }
     ]
   },
   "extract-pages": {
@@ -2597,7 +2610,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Compress PDF", href: "/compress", context: "Further reduce file size after grayscale conversion" },
       { text: "Split PDF", href: "/split", context: "Extract specific pages to convert to grayscale" },
       { text: "Merge PDF", href: "/merge", context: "Combine grayscale and color pages" },
-      { text: "Add Watermark", href: "/add-watermark", context: "Add DRAFT watermark to grayscale review copies" }
+      { text: "Add Watermark", href: "/add-watermark", context: "Add DRAFT watermark to grayscale review copies" },
+      { text: "Protect PDF", href: "/protect-pdf", context: "Secure your grayscale PDF after conversion" }
     ]
   },
   "repair-pdf": {
@@ -2672,7 +2686,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Compress PDF", href: "/compress", context: "Optimize repaired PDFs for storage" },
       { text: "OCR PDF", href: "/ocr-pdf", context: "Extract text if repair recovers scanned content" },
       { text: "Flatten PDF", href: "/flatten-pdf", context: "Stabilize repaired documents with complex elements" },
-      { text: "Merge PDF", href: "/merge", context: "Combine recovered pages into complete documents" }
+      { text: "Merge PDF", href: "/merge", context: "Combine recovered pages into complete documents" },
+      { text: "Protect PDF", href: "/protect-pdf", context: "Secure your repaired PDF with a password" }
     ]
   },
   "edit-pdf": {
@@ -2824,7 +2839,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Flatten PDF", href: "/flatten-pdf", context: "Lock annotations permanently after review" },
       { text: "OCR PDF", href: "/ocr-pdf", context: "Make scanned PDFs highlightable" },
       { text: "Extract Text", href: "/extract-text", context: "Extract highlighted content as text" },
-      { text: "Merge PDF", href: "/merge", context: "Combine annotated documents for comprehensive review" }
+      { text: "Merge PDF", href: "/merge", context: "Combine annotated documents for comprehensive review" },
+      { text: "Compress PDF", href: "/compress", context: "Reduce file size of your annotated document" }
     ]
   },
   "redact-pdf": {
@@ -2899,7 +2915,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Flatten PDF", href: "/flatten-pdf", context: "Lock redacted document to prevent any modifications" },
       { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection to redacted documents" },
       { text: "Compress PDF", href: "/compress", context: "Reduce file size of redacted documents for sharing" },
-      { text: "Split PDF", href: "/split", context: "Extract specific pages for targeted redaction" }
+      { text: "Split PDF", href: "/split", context: "Extract specific pages for targeted redaction" },
+      { text: "Annotate PDF", href: "/annotate-pdf", context: "Add annotations before redacting sensitive content" }
     ]
   },
   "pdf-viewer": {
@@ -2974,7 +2991,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Annotate PDF", href: "/annotate-pdf", context: "Add highlights and comments after reviewing" },
       { text: "OCR PDF", href: "/ocr-pdf", context: "Make scanned PDFs searchable" },
       { text: "Compress PDF", href: "/compress", context: "Reduce file size before sharing" },
-      { text: "PDF to Word", href: "/pdf-to-word", context: "Convert to editable format after review" }
+      { text: "PDF to Word", href: "/pdf-to-word", context: "Convert to editable format after review" },
+      { text: "Split PDF", href: "/split", context: "Split PDF into sections while reviewing" }
     ]
   },
   "compare-pdf": {
@@ -3049,7 +3067,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "OCR PDF", href: "/ocr-pdf", context: "Extract text from scanned PDFs before comparing" },
       { text: "Annotate PDF", href: "/annotate-pdf", context: "Add comments to differences found" },
       { text: "Flatten PDF", href: "/flatten-pdf", context: "Lock document after approving changes" },
-      { text: "Protect PDF", href: "/protect-pdf", context: "Secure the final approved version" }
+      { text: "Protect PDF", href: "/protect-pdf", context: "Secure the final approved version" },
+      { text: "Merge PDF", href: "/merge", context: "Merge documents after comparison" }
     ]
   },
   "image-compressor": {
@@ -3124,7 +3143,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Resize Image", href: "/resize-image", context: "Reduce dimensions before compressing for maximum size savings" },
       { text: "Convert Image", href: "/convert-image", context: "Change to WebP format for best web compression" },
       { text: "Crop Image", href: "/crop-image", context: "Remove unnecessary areas before compressing" },
-      { text: "PDF to JPG", href: "/pdf-to-jpg", context: "Convert PDF pages to images for compression" }
+      { text: "PDF to JPG", href: "/pdf-to-jpg", context: "Convert PDF pages to images for compression" },
+      { text: "Rotate Image", href: "/rotate-image", context: "Rotate images before compressing" }
     ]
   },
   "resize-image": {
@@ -3199,7 +3219,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Crop Image", href: "/crop-image", context: "Crop to aspect ratio before resizing for best results" },
       { text: "Image Compressor", href: "/image-compressor", context: "Reduce file size after resizing" },
       { text: "Convert Image", href: "/convert-image", context: "Change format while resizing" },
-      { text: "Rotate Image", href: "/rotate-image", context: "Fix orientation before resizing" }
+      { text: "Rotate Image", href: "/rotate-image", context: "Fix orientation before resizing" },
+      { text: "JPG to PDF", href: "/jpg-to-pdf", context: "Convert resized images into a PDF document" }
     ]
   },
   "crop-image": {
@@ -3274,7 +3295,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Resize Image", href: "/resize-image", context: "Resize after cropping to exact dimensions" },
       { text: "Image Compressor", href: "/image-compressor", context: "Optimize cropped images for web use" },
       { text: "Rotate Image", href: "/rotate-image", context: "Fix orientation before cropping" },
-      { text: "Convert Image", href: "/convert-image", context: "Change format after cropping" }
+      { text: "Convert Image", href: "/convert-image", context: "Change format after cropping" },
+      { text: "JPG to PDF", href: "/jpg-to-pdf", context: "Convert cropped image into a PDF" }
     ]
   },
   "rotate-image": {
@@ -3349,7 +3371,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Crop Image", href: "/crop-image", context: "Crop after rotating to remove blank corners" },
       { text: "Resize Image", href: "/resize-image", context: "Adjust dimensions after correcting orientation" },
       { text: "Image Compressor", href: "/image-compressor", context: "Optimize rotated images for sharing" },
-      { text: "Rotate PDF", href: "/rotate-pdf", context: "Rotate PDF pages instead of images" }
+      { text: "Rotate PDF", href: "/rotate-pdf", context: "Rotate PDF pages instead of images" },
+      { text: "JPG to PDF", href: "/jpg-to-pdf", context: "Convert rotated images to a PDF document" }
     ]
   },
   "convert-image": {
@@ -3425,7 +3448,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Resize Image", href: "/resize-image", context: "Adjust dimensions while changing format" },
       { text: "Crop Image", href: "/crop-image", context: "Crop before converting to final format" },
       { text: "JPG to PDF", href: "/jpg-to-pdf", context: "Convert images to PDF documents" }
-    ]
+    ,
+      { text: "PNG to PDF", href: "/png-to-pdf", context: "Convert PNG images directly to PDF" }]
   }
 };
 
