@@ -1506,7 +1506,7 @@ export function generateMetaTags(path: string): string {
     : `${BASE_URL}/${lang}${canonicalPath === "/" ? "" : canonicalPath}`;
   const hreflangTags = generateHreflangTags(canonicalPath);
   const langAttr = getLangAttribute(lang);
-  
+
   const isNoindex = !!(seo.robots && seo.robots.includes("noindex"));
   const hreflangBlock = isNoindex ? "" : `\n    <!-- Hreflang International SEO -->\n    ${hreflangTags}`;
 
@@ -1516,6 +1516,153 @@ export function generateMetaTags(path: string): string {
   const twitterTitle = seo.twitterTitle || ogTitle;
   const twitterDescription = seo.twitterDescription || ogDescription;
   const robotsContent = seo.robots || "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
+
+  // ── Detect page type ──────────────────────────────────────────────────────
+  const blogSlugMatch = canonicalPath.match(/^\/blog\/([^/]+)$/);
+  const blogPost = blogSlugMatch ? blogPosts.find(p => p.slug === blogSlugMatch[1]) : null;
+  const progSlugMatch = canonicalPath.match(/^\/tools\/([^/]+)$/);
+  const progPage = progSlugMatch ? programmaticPages.find(p => p.slug === progSlugMatch[1]) : null;
+  const toolId = canonicalPath.replace(/^\//, "");
+  const toolData = toolSEOData[toolId as keyof typeof toolSEOData] || null;
+
+  // ── og:type + article-specific OG tags ───────────────────────────────────
+  const ogType = blogPost ? "article" : "website";
+  const articleOgTags = blogPost ? `
+    <meta property="article:published_time" content="${blogPost.publishDate || ""}" />
+    <meta property="article:author" content="PDF HUB 24" />
+    <meta property="article:section" content="${blogPost.category || "Tutorials"}" />
+    ${(blogPost.tags || []).slice(0, 5).map(t => `<meta property="article:tag" content="${t}" />`).join("\n    ")}` : "";
+
+  // ── Build JSON-LD schema array ────────────────────────────────────────────
+  const schemas: object[] = [];
+
+  if (blogPost) {
+    // Full Article schema with all recommended fields
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": blogPost.title || "",
+      "description": blogPost.excerpt || "",
+      "author": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "publisher": {
+        "@type": "Organization",
+        "name": "PDF HUB 24",
+        "url": BASE_URL,
+        "logo": { "@type": "ImageObject", "url": `${BASE_URL}/og-image.png` }
+      },
+      "datePublished": blogPost.publishDate || "",
+      "dateModified": blogPost.publishDate || "",
+      "url": `${BASE_URL}/blog/${blogPost.slug}`,
+      "mainEntityOfPage": { "@type": "WebPage", "@id": `${BASE_URL}/blog/${blogPost.slug}` },
+      "keywords": (blogPost.tags || []).join(", "),
+      "articleSection": blogPost.category || "Tutorials",
+      "image": { "@type": "ImageObject", "url": `${BASE_URL}/og-image.png`, "width": 1200, "height": 630 }
+    });
+    // BreadcrumbList for blog article
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${BASE_URL}/blog` },
+        { "@type": "ListItem", "position": 3, "name": blogPost.title || "", "item": `${BASE_URL}/blog/${blogPost.slug}` }
+      ]
+    });
+
+  } else if (toolData) {
+    // SoftwareApplication schema for tool pages
+    const toolName = (toolData as any).pageTitle || seo.title.split(" | ")[0];
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": toolName,
+      "description": (toolData as any).metaDescription || seo.description,
+      "url": `${BASE_URL}${canonicalPath}`,
+      "applicationCategory": "Utilities",
+      "operatingSystem": "Web Browser",
+      "browserRequirements": "Requires JavaScript",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
+      "author": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }
+    });
+    // FAQPage schema if FAQs exist
+    if ((toolData as any).faqs?.length) {
+      schemas.push({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": (toolData as any).faqs.map((f: any) => ({
+          "@type": "Question",
+          "name": f.question,
+          "acceptedAnswer": { "@type": "Answer", "text": f.answer }
+        }))
+      });
+    }
+    // BreadcrumbList for tool pages
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
+        { "@type": "ListItem", "position": 2, "name": toolName, "item": `${BASE_URL}${canonicalPath}` }
+      ]
+    });
+
+  } else if (progPage) {
+    // SoftwareApplication + FAQPage for programmatic/long-tail pages
+    const pageName = (progPage.title || "").split(" | ")[0];
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": pageName,
+      "description": progPage.description || "",
+      "url": `${BASE_URL}${canonicalPath}`,
+      "applicationCategory": "Utilities",
+      "operatingSystem": "Web Browser",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }
+    });
+    if (progPage.faqs?.length) {
+      schemas.push({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": progPage.faqs.map((f: any) => ({
+          "@type": "Question",
+          "name": f.question,
+          "acceptedAnswer": { "@type": "Answer", "text": f.answer }
+        }))
+      });
+    }
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
+        { "@type": "ListItem", "position": 2, "name": "PDF Tools", "item": `${BASE_URL}/all-tools` },
+        { "@type": "ListItem", "position": 3, "name": pageName, "item": `${BASE_URL}${canonicalPath}` }
+      ]
+    });
+
+  } else {
+    // Default: use hardcoded schema from seoConfig
+    if (seo.schema) schemas.push(seo.schema);
+    // Add BreadcrumbList for non-home pages
+    if (canonicalPath !== "/" && canonicalPath !== "") {
+      const pageName = seo.title ? seo.title.split(" | ")[0] : "";
+      schemas.push({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
+          { "@type": "ListItem", "position": 2, "name": pageName, "item": `${BASE_URL}${canonicalPath}` }
+        ]
+      });
+    }
+  }
+
+  const schemaBlocks = schemas
+    .filter(Boolean)
+    .map(s => `<script type="application/ld+json">${JSON.stringify(s)}</script>`)
+    .join("\n    ");
 
   return `
     <title>${seo.title}</title>
@@ -1528,12 +1675,12 @@ export function generateMetaTags(path: string): string {
     <meta property="og:title" content="${ogTitle}" />
     <meta property="og:description" content="${ogDescription}" />
     ${ogUrl ? `<meta property="og:url" content="${ogUrl}" />` : ""}
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="${ogType}" />
     <meta property="og:site_name" content="PDF HUB 24" />
     <meta property="og:image" content="${OG_IMAGE}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="${langAttr}" />
+    <meta property="og:locale" content="${langAttr}" />${articleOgTags}
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -1545,7 +1692,7 @@ export function generateMetaTags(path: string): string {
     <meta name="robots" content="${robotsContent}" />
     
     <!-- Structured Data -->
-    <script type="application/ld+json">${JSON.stringify(seo.schema)}</script>
+    ${schemaBlocks}
   `;
 }
 
