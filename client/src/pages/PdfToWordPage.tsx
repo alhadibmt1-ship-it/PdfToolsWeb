@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ChevronLeft, Download, FileText, ArrowRight, Shield, Lock, Trash2, Eye, Scale, Zap, CheckCircle2, RefreshCw, FileDown } from "lucide-react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
@@ -87,37 +87,6 @@ export default function PdfToWordPage() {
   };
 
   const seoData = getToolSEOData("pdf-to-word");
-
-  useEffect(() => {
-    const existingScripts = document.querySelectorAll('script[data-pdf-to-word-faq]');
-    existingScripts.forEach(s => s.remove());
-
-    if (seoData?.faqs && seoData.faqs.length > 0) {
-      const faqSchema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": seoData.faqs.map(faq => ({
-          "@type": "Question",
-          "name": faq.question,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": faq.answer
-          }
-        }))
-      };
-
-      const script = document.createElement("script");
-      script.type = "application/ld+json";
-      script.setAttribute("data-pdf-to-word-faq", "true");
-      script.textContent = JSON.stringify(faqSchema);
-      document.head.appendChild(script);
-    }
-
-    return () => {
-      const scripts = document.querySelectorAll('script[data-pdf-to-word-faq]');
-      scripts.forEach(s => s.remove());
-    };
-  }, [seoData]);
 
   return (
     <div className="min-h-screen flex flex-col">

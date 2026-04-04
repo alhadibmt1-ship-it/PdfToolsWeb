@@ -296,7 +296,6 @@ export default function BlogPostPage() {
 
   const faqs = useMemo(() => post ? parseFAQsFromContent(post.content) : [], [post]);
 
-  const articleSchema = useMemo(() => post ? buildArticleSchema(post) : null, [post]);
   const faqSchema = useMemo(() => buildFAQSchema(faqs), [faqs]);
 
   useSEO({
@@ -306,28 +305,24 @@ export default function BlogPostPage() {
   });
 
   useEffect(() => {
-    if (!post) return;
-
-    const schemas: object[] = [];
-    if (articleSchema) schemas.push(articleSchema);
-    if (faqSchema) schemas.push(faqSchema);
+    // Server-side already injects Article + BreadcrumbList for blog posts.
+    // Only inject FAQPage here — it's parsed from markdown client-side and not server-side.
+    if (!post || !faqSchema) return;
 
     const existingScripts = document.querySelectorAll('script[data-blog-schema]');
     existingScripts.forEach(s => s.remove());
 
-    schemas.forEach((schema, idx) => {
-      const script = document.createElement('script');
-      script.type = 'application/ld+json';
-      script.setAttribute('data-blog-schema', `blog-${idx}`);
-      script.textContent = JSON.stringify(schema);
-      document.head.appendChild(script);
-    });
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.setAttribute('data-blog-schema', 'blog-faq');
+    script.textContent = JSON.stringify(faqSchema);
+    document.head.appendChild(script);
 
     return () => {
       const scripts = document.querySelectorAll('script[data-blog-schema]');
       scripts.forEach(s => s.remove());
     };
-  }, [post, articleSchema, faqSchema]);
+  }, [post, faqSchema]);
 
   if (!post) {
     return <NotFound />;
