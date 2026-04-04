@@ -54,30 +54,7 @@ export default function ProgrammaticSeoPage() {
     } : undefined
   });
 
-  useEffect(() => {
-    if (!page) return;
-    const existingScripts = document.querySelectorAll('script[data-page-schema="true"]');
-    existingScripts.forEach(s => s.remove());
-
-    const faqSchema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": page.faqs.map(faq => ({
-        "@type": "Question",
-        "name": faq.question,
-        "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
-      }))
-    };
-    const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.setAttribute("data-page-schema", "true");
-    script.textContent = JSON.stringify(faqSchema);
-    document.head.appendChild(script);
-
-    return () => {
-      document.querySelectorAll('script[data-page-schema="true"]').forEach(s => s.remove());
-    };
-  }, [page, slug]);
+  // FAQPage + SoftwareApplication + BreadcrumbList are already injected server-side for programmatic pages.
 
   if (!page) {
     return (

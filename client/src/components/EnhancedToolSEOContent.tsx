@@ -139,8 +139,10 @@ export default function EnhancedToolSEOContent({
       }))
     } : null;
 
-    const schemas = [breadcrumbList, softwareSchema, faqSchema, howToSchema].filter(Boolean);
-    
+    // Server-side already injects SoftwareApplication + FAQPage + BreadcrumbList for tool pages.
+    // Only inject HowTo here — it's unique and not duplicated server-side.
+    const schemas = [howToSchema].filter(Boolean);
+
     schemas.forEach(schema => {
       const script = document.createElement("script");
       script.setAttribute("type", "application/ld+json");
