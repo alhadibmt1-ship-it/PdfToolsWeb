@@ -2068,6 +2068,39 @@ function generatePreRenderShell(canonicalPath: string): string {
     }
   }
 
+  // Visible "Explore More Tools" section — always appended so Google sees cross-site links on every page
+  const quickToolLinks = [
+    { href: "/merge", text: "Merge PDF" },
+    { href: "/split", text: "Split PDF" },
+    { href: "/compress", text: "Compress PDF" },
+    { href: "/pdf-to-word", text: "PDF to Word" },
+    { href: "/pdf-to-jpg", text: "PDF to JPG" },
+    { href: "/word-to-pdf", text: "Word to PDF" },
+    { href: "/jpg-to-pdf", text: "JPG to PDF" },
+    { href: "/protect-pdf", text: "Protect PDF" },
+    { href: "/sign-pdf", text: "Sign PDF" },
+    { href: "/ocr-pdf", text: "OCR PDF" },
+    { href: "/extract-pages", text: "Extract Pages" },
+    { href: "/delete-pages", text: "Delete Pages" },
+    { href: "/rotate", text: "Rotate PDF" },
+    { href: "/add-watermark", text: "Add Watermark" },
+    { href: "/add-page-numbers", text: "Add Page Numbers" },
+    { href: "/grayscale-pdf", text: "PDF to Grayscale" },
+    { href: "/edit-pdf", text: "Edit PDF" },
+    { href: "/annotate-pdf", text: "Annotate PDF" },
+    { href: "/all-tools", text: "All 49 PDF Tools →" },
+    { href: "/blog", text: "PDF Blog & Guides" },
+  ].filter(l => l.href !== canonicalPath);
+
+  const quickLinkHtml = quickToolLinks.map(l =>
+    `<a href="${escHtml(l.href)}" style="display:inline-block;padding:0.35rem 0.75rem;background:#f1f5f9;color:#1e40af;text-decoration:none;border-radius:4px;font-size:0.875rem;font-weight:500;margin:0.2rem">${escHtml(l.text)}</a>`
+  ).join("");
+
+  richContent += `<section style="margin:2.5rem 0 1rem;padding:1.5rem;background:#f8fafc;border-radius:8px;text-align:left;max-width:800px;width:100%">
+    <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;color:#0f172a">Explore More Free PDF Tools</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:0.35rem">${quickLinkHtml}</div>
+  </section>`;
+
   // Static HTML pre-render — visible to Google on first-wave crawl
   // Small inline script only applies theme colors (no DOM creation)
   return `<div id="__psr" style="min-height:100vh;display:flex;flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,Inter,sans-serif;background:#ffffff;color:#0f172a">
@@ -2090,7 +2123,6 @@ function generatePreRenderShell(canonicalPath: string): string {
 export function injectSEO(html: string, path: string): string {
   const { lang, canonicalPath } = stripLangPrefix(path);
   const metaTags = generateMetaTags(path);
-  const crawlableNav = generateCrawlableNav(path);
   const preRenderShell = generatePreRenderShell(canonicalPath);
   const dir = (lang === "ar" || lang === "ur") ? "rtl" : "ltr";
   
@@ -2105,6 +2137,5 @@ export function injectSEO(html: string, path: string): string {
     .replace(/<meta name="twitter:[^"]*"[^>]*\/?>/g, '')
     .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '')
     .replace('</head>', `${metaTags}\n  </head>`)
-    .replace('<div id="root">', `<div id="root">${preRenderShell}`)
-    .replace('</body>', `${crawlableNav}\n  </body>`);
+    .replace('<div id="root">', `<div id="root">${preRenderShell}`);
 }
