@@ -90,7 +90,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/pdf-to-word": {
-    title: "PDF to Word Free (No Email, No Watermark, 100% Secure) | PDF HUB 24",
+    title: "PDF to Word Free — No Email, No Watermark | PDF HUB 24",
     description: "Convert PDF to editable Word (DOCX) in seconds. Free PDF to Word converter — no email, no watermark, keeps formatting. Works on all devices.",
     keywords: "pdf to word converter free, convert pdf to word online, pdf to docx free, editable word from pdf, free pdf converter no email, secure pdf to word tool",
     schema: {
@@ -360,7 +360,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/batch-compress": {
-    title: "Batch Compress PDF Free — Compress Multiple PDFs at Once | PDF HUB 24",
+    title: "Batch Compress PDF Free — Multiple PDFs at Once | PDF HUB 24",
     description: "Compress multiple PDF files at once and download as a ZIP. Free batch PDF compressor — reduce file sizes in bulk. No signup, no watermark.",
     keywords: "batch compress PDF, compress multiple PDFs, bulk PDF compressor, PDF batch processing, compress PDF ZIP",
     schema: {
@@ -564,7 +564,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/image-compressor": {
-    title: "Image Compressor Free (JPG PNG WebP — No Quality Loss) | PDF HUB 24",
+    title: "Image Compressor Free — JPG PNG WebP (No Loss) | PDF HUB 24",
     description: "Compress images (JPG, PNG, WebP) and reduce file size up to 80%. Free image compressor — maintain quality while saving space. No signup.",
     keywords: "compress image, image compressor, reduce image size, compress JPG PNG, image compressor online free",
     schema: {
@@ -635,7 +635,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/privacy": {
-    title: "Privacy Policy - PDF HUB 24",
+    title: "Privacy Policy — How We Protect Your Files | PDF HUB 24",
     description: "Read our privacy policy. PDF HUB 24 respects your privacy - files are processed securely and deleted automatically.",
     keywords: "privacy policy, PDF HUB 24 privacy",
     schema: {
@@ -647,7 +647,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/terms": {
-    title: "Terms of Service - PDF HUB 24",
+    title: "Terms of Service — Usage Agreement | PDF HUB 24",
     description: "Read our terms of service. Learn about the usage terms for PDF HUB 24's free online PDF and image tools. Your rights and responsibilities.",
     keywords: "terms of service, PDF HUB 24 terms",
     schema: {
@@ -659,7 +659,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/contact": {
-    title: "Contact Us - PDF HUB 24",
+    title: "Contact Us — Get Help With PDF Tools | PDF HUB 24",
     description: "Get in touch with PDF HUB 24. Contact our support team for questions, feedback, or assistance with our PDF tools.",
     keywords: "contact PDF HUB 24, PDF tools support, contact us",
     schema: {
@@ -682,7 +682,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/how-to-compress-pdf-for-email": {
-    title: "Compress PDF for Email — Under 25MB (Free, No Signup) | PDF HUB 24",
+    title: "Compress PDF for Email Under 25MB — Free Guide | PDF HUB 24",
     description: "Compress PDF for email in seconds. Reduce under 25MB, 10MB, or 1MB while keeping quality. Free step-by-step guide with 3 compression levels.",
     keywords: "compress PDF for email, reduce PDF size, PDF email attachment, shrink PDF",
     schema: {
@@ -766,7 +766,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/edit-pdf-text-images": {
-    title: "Edit PDF Free — Add Text, Images & Shapes (No Install) | PDF HUB 24",
+    title: "Edit PDF Free — Add Text, Images & Shapes | PDF HUB 24",
     description: "Edit PDF files online for free — add text, images, shapes, and annotations. No software install. Step-by-step guide with tips for 2026.",
     keywords: "edit PDF free, add text to PDF, edit PDF online, modify PDF document",
     schema: {
@@ -808,7 +808,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/redact-sensitive-pdf-information": {
-    title: "Redact PDF Free — Remove Sensitive Info (100% Secure) | PDF HUB 24",
+    title: "Redact PDF Free — Remove Sensitive Info Securely | PDF HUB 24",
     description: "Permanently redact sensitive information from PDFs. Black out text, images, and personal data securely. Free step-by-step guide for GDPR and HIPAA.",
     keywords: "redact PDF, black out PDF text, remove sensitive info PDF, PDF redaction free",
     schema: {
@@ -874,7 +874,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/dmca": {
-    title: "DMCA Policy - PDF HUB 24",
+    title: "DMCA Policy — Copyright Compliance | PDF HUB 24",
     description: "DMCA policy for PDF HUB 24. Learn about our copyright compliance procedures and how to report infringing content.",
     keywords: "DMCA policy, copyright, PDF HUB 24 DMCA",
     schema: {
@@ -886,7 +886,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/how-to-split-pdf-pages": {
-    title: "Split PDF Free — Extract Pages in Seconds (No Signup) | PDF HUB 24",
+    title: "Split PDF Free — Extract Pages in Seconds | PDF HUB 24",
     description: "Split PDF pages and extract sections from large PDFs. Free PDF splitter — select page ranges or single pages. No software install, no signup.",
     keywords: "split PDF pages, extract PDF pages, separate PDF sections, PDF splitter free",
     schema: {
@@ -900,7 +900,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/add-page-numbers-to-pdf": {
-    title: "Add Page Numbers to PDF Free (Custom Position & Style) | PDF HUB 24",
+    title: "Add Page Numbers to PDF Free — Custom Style | PDF HUB 24",
     description: "Add page numbers to PDF free. Customize position, style, starting number. Best free PDF numbering tool for reports and theses. No signup.",
     keywords: "add page numbers PDF, PDF page numbering, number PDF pages free",
     schema: {
@@ -942,7 +942,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/rotate-pdf-pages": {
-    title: "Rotate PDF Pages Free — Fix Orientation (90° 180° 270°) | PDF HUB 24",
+    title: "Rotate PDF Pages Free — Fix Orientation (90°–270°) | PDF HUB 24",
     description: "Rotate PDF pages free. Fix upside-down or sideways PDFs — rotate 90°, 180°, 270°. Best free PDF rotation tool for all or specific pages.",
     keywords: "rotate PDF pages, fix PDF orientation, rotate PDF free, turn PDF pages",
     schema: {
@@ -1026,7 +1026,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/extract-text-from-pdf": {
-    title: "Extract Text from PDF Free (Works with Scans via OCR) | PDF HUB 24",
+    title: "Extract Text from PDF Free (Scans + OCR) | PDF HUB 24",
     description: "Extract and copy text from PDF files easily. Works with scanned PDFs using OCR. Free online tool — no signup, instant results.",
     keywords: "extract text from PDF, copy text from PDF, PDF text extractor, PDF to text free",
     schema: {
@@ -1121,7 +1121,7 @@ export const seoConfig: Record<string, PageSEO> = {
     schema: { "@context": "https://schema.org", "@type": "CollectionPage", "name": "Compress PDF Tools", "url": `${BASE_URL}/compress-pdf-tools`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/edit-pdf-tools": {
-    title: "Edit PDF Online Free — 15+ Editing Tools (No Install) | PDF HUB 24",
+    title: "Edit PDF Online Free — 15+ Tools, No Install | PDF HUB 24",
     description: "Edit, merge, split, rotate, sign, annotate, and redact PDF documents free online. 15+ PDF editing tools with no software install and no watermarks.",
     keywords: "edit PDF, PDF editor, merge PDF, split PDF, sign PDF, annotate PDF",
     schema: { "@context": "https://schema.org", "@type": "CollectionPage", "name": "Edit PDF Tools", "url": `${BASE_URL}/edit-pdf-tools`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
@@ -1163,7 +1163,7 @@ export const seoConfig: Record<string, PageSEO> = {
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Pricing", "url": `${BASE_URL}/pricing`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/embed": {
-    title: "Embed PDF Tools on Your Website Free — Widget Generator | PDF HUB 24",
+    title: "Embed Free PDF Tools on Your Website | PDF HUB 24",
     description: "Embed free PDF tools on your website with our widget generator. Get iframe code for merge, compress, convert, and 40+ PDF tools.",
     keywords: "embed pdf tools, pdf widget, iframe pdf converter, embed pdf merger, website pdf tools",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Embed Widget Generator", "url": `${BASE_URL}/embed`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
@@ -1645,8 +1645,32 @@ export function generateMetaTags(path: string): string {
   } else {
     // Default: use hardcoded schema from seoConfig
     if (seo.schema) schemas.push(seo.schema);
-    // Add BreadcrumbList for non-home pages
-    if (canonicalPath !== "/" && canonicalPath !== "") {
+
+    if (canonicalPath === "/" || canonicalPath === "") {
+      // Homepage: add Organization + FAQPage schemas
+      schemas.push({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "PDF HUB 24",
+        "url": BASE_URL,
+        "logo": { "@type": "ImageObject", "url": `${BASE_URL}/og-image.png`, "width": 1200, "height": 630 },
+        "sameAs": [],
+        "contactPoint": { "@type": "ContactPoint", "contactType": "customer support", "url": `${BASE_URL}/contact` },
+        "description": "Free online PDF tools — merge, split, compress, convert, and edit PDF files with no signup."
+      });
+      schemas.push({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Are all PDF HUB 24 tools completely free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All 49+ PDF and image tools on PDF HUB 24 are 100% free with no signup, no watermarks, and no hidden limits." } },
+          { "@type": "Question", "name": "Is it safe to upload my files to PDF HUB 24?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All uploads use SSL encryption. Files are processed in memory and automatically deleted within 1 hour. We never access or share your files." } },
+          { "@type": "Question", "name": "Do I need to create an account to use the tools?", "acceptedAnswer": { "@type": "Answer", "text": "No account is required. All tools work instantly without registration — just upload your file and download the result." } },
+          { "@type": "Question", "name": "What file formats does PDF HUB 24 support?", "acceptedAnswer": { "@type": "Answer", "text": "PDF HUB 24 supports PDF, Word (DOCX), Excel (XLSX), PowerPoint (PPTX), JPG, PNG, WebP, GIF, TIFF, and more." } },
+          { "@type": "Question", "name": "Can I use PDF HUB 24 on mobile devices?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. PDF HUB 24 is fully responsive and works on all devices — desktop, tablet, and mobile browsers." } }
+        ]
+      });
+    } else {
+      // Add BreadcrumbList for non-home pages
       const pageName = seo.title ? seo.title.split(" | ")[0] : "";
       schemas.push({
         "@context": "https://schema.org",
