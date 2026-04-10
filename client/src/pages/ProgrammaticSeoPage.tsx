@@ -9,7 +9,7 @@ import {
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
-import { getProgrammaticPage, programmaticPages } from "@/data/programmaticSeoData";
+import { getProgrammaticPage, getAllProgrammaticPages } from "@/data/programmaticSeoData";
 
 const BASE_URL = "https://pdfhub24.com";
 
@@ -68,7 +68,7 @@ export default function ProgrammaticSeoPage() {
     );
   }
 
-  const relatedPages = programmaticPages
+  const relatedPages = getAllProgrammaticPages()
     .filter(p => p.slug !== slug && p.toolPath === page.toolPath)
     .slice(0, 4);
 

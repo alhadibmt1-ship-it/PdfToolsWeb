@@ -2013,6 +2013,16 @@ After watermarking, the PDF is ready for distribution. Recipients can view the d
   }
 ];
 
+import { getAllGeneratedPages, getGeneratedPage, getAllGeneratedSlugs } from "./programmaticSeoEngine";
+
+export { getAllGeneratedSlugs };
+
+let _combinedPages: ProgrammaticPage[] | null = null;
+export function getAllProgrammaticPages(): ProgrammaticPage[] {
+  if (!_combinedPages) _combinedPages = [...programmaticPages, ...getAllGeneratedPages()];
+  return _combinedPages;
+}
+
 export function getProgrammaticPage(slug: string): ProgrammaticPage | undefined {
-  return programmaticPages.find(page => page.slug === slug);
+  return programmaticPages.find(page => page.slug === slug) || getGeneratedPage(slug);
 }

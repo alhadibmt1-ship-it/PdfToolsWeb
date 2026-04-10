@@ -1,0 +1,165 @@
+Update existing PDF tools website (pdfhub24.com).
+
+IMPORTANT:
+The website already has core tools:
+- compress pdf
+- merge pdf
+- split pdf
+- convert (word, excel, ppt, images to pdf)
+- edit pdf
+- watermark
+- password protect/unlock
+- extract text
+- rotate pages
+
+DO NOT recreate or duplicate these tools.
+
+GOAL:
+Expand the website by generating 1000+ NEW SEO tool pages using long-tail and programmatic keywords.
+
+-------------------------------------
+
+1. CREATE ONLY NEW TOOL TYPES (MISSING FEATURES)
+
+Add new advanced tools:
+
+- compress-pdf-to-specific-size
+- batch pdf tools
+- pdf comparison tool
+- pdf repair tool
+- pdf metadata editor
+- remove metadata
+- pdf to grayscale / black & white
+- extract images from pdf
+- convert scanned pdf (OCR)
+- pdf to html / html to pdf advanced
+- pdf page size resizer
+- add header/footer to pdf
+- pdf page numbering advanced
+- pdf form filler & creator
+
+-------------------------------------
+
+2. PROGRAMMATIC SEO PAGE GENERATION
+
+Generate dynamic pages using combinations:
+
+A. SIZE-BASED PAGES (HIGH TRAFFIC)
+
+Create pages:
+- compress-pdf-to-50kb
+- compress-pdf-to-100kb
+- compress-pdf-to-200kb
+- compress-pdf-to-500kb
+- compress-pdf-to-1mb
+
+Also:
+- reduce-pdf-size-to-{size}
+
+-------------------------------------
+
+B. USE-CASE PAGES (VERY IMPORTANT)
+
+- compress-pdf-for-email
+- compress-pdf-for-whatsapp
+- compress-pdf-for-upload
+- compress-pdf-for-government-forms
+- compress-pdf-for-job-application
+
+-------------------------------------
+
+C. QUALITY VARIATIONS
+
+- compress-pdf-without-losing-quality
+- compress-pdf-high-quality
+- convert-pdf-to-word-editable
+- pdf-to-jpg-high-quality
+
+-------------------------------------
+
+D. ACTION-BASED PAGES
+
+- merge-2-pdf-files
+- merge-3-pdf-files
+- split-pdf-every-2-pages
+- split-pdf-by-range
+- extract-specific-pages-from-pdf
+
+-------------------------------------
+
+E. ADVANCED USER INTENT PAGES
+
+- scanned-pdf-to-word-ocr
+- extract-table-from-pdf-to-excel
+- pdf-to-searchable-pdf
+- fix-corrupted-pdf
+- repair-damaged-pdf
+
+-------------------------------------
+
+TARGET:
+Generate 1000+ unique pages by combining:
+tool + size + use-case + quality + action
+
+-------------------------------------
+
+3. DYNAMIC ROUTING
+
+Use:
+ /tools/[slug]
+
+Each slug auto-generates page content.
+
+-------------------------------------
+
+4. SEO CONTENT SYSTEM
+
+Each page must auto-generate:
+
+- Title:
+  "{Tool Name} Online Free | Fast & Secure"
+
+- Meta Description:
+  "Use our {tool} tool to process PDF files online for free without signup."
+
+- H1:
+  Tool name
+
+- 300–500 words dynamic content:
+  - what tool does
+  - how to use
+  - benefits
+  - use cases
+
+-------------------------------------
+
+5. INTERNAL LINKING
+
+Each page:
+- link to 3 related tools
+- link to main tool page (existing one)
+
+-------------------------------------
+
+6. SITEMAP
+
+Auto generate sitemap including all new pages (1000+ URLs)
+
+-------------------------------------
+
+7. IMPORTANT RULES
+
+- Avoid duplicate pages
+- Avoid keyword cannibalization
+- Do not recreate existing tools
+- Focus only on long-tail SEO expansion
+- Keep clean UI same as current website
+
+-------------------------------------
+
+FINAL OUTPUT:
+
+- Only new tool pages added
+- Existing tools untouched
+- 1000+ SEO pages generated programmatically
+- Fully scalable structure
