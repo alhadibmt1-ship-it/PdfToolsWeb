@@ -3180,6 +3180,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.send(rss);
   });
 
+  // Dynamic sitemap for generated /tools/:slug pages
+  app.get("/sitemap-tools.xml", async (req, res) => {
+    try {
+      const { getAllGeneratedSlugs } = await import("../client/src/data/programmaticSeoData.js");
+      const baseUrl = "https://pdfhub24.com";
+      const slugs: string[] = getAllGeneratedSlugs();
+      const urlEntries = slugs.map(slug => `
+  <url>
+    <loc>${baseUrl}/tools/${slug}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>`).join("");
+      const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urlEntries}
+</urlset>`;
+      res.set('Content-Type', 'application/xml; charset=utf-8');
+      res.set('Cache-Control', 'public, max-age=86400');
+      res.send(xml);
+    } catch (err) {
+      console.error("sitemap-tools.xml error:", err);
+      res.status(500).send("<?xml version=\"1.0\"?><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"></urlset>");
+    }
+  });
+
   // PDF to PDF/A conversion
   app.post("/api/pdf-to-pdfa", uploadPdf.single("file"), async (req, res) => {
     try {

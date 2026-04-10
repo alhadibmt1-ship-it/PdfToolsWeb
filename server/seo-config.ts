@@ -1,6 +1,6 @@
 import { toolSEOData } from "../client/src/data/toolSEOData";
 import { blogPosts } from "../client/src/data/blogData";
-import { programmaticPages } from "../client/src/data/programmaticSeoData";
+import { getProgrammaticPage } from "../client/src/data/programmaticSeoData";
 import { categoryHubs } from "../client/src/data/categoryHubData";
 
 export interface PageSEO {
@@ -1510,20 +1510,25 @@ export function generateMetaTags(path: string): string {
   const isNoindex = !!(seo.robots && seo.robots.includes("noindex"));
   const hreflangBlock = isNoindex ? "" : `\n    <!-- Hreflang International SEO -->\n    ${hreflangTags}`;
 
-  const ogTitle = seo.ogTitle || seo.title;
-  const ogDescription = seo.ogDescription || seo.description;
-  const ogUrl = isNoindex ? "" : (seo.ogUrl || canonicalUrl);
-  const twitterTitle = seo.twitterTitle || ogTitle;
-  const twitterDescription = seo.twitterDescription || ogDescription;
-  const robotsContent = seo.robots || "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
-
   // ── Detect page type ──────────────────────────────────────────────────────
   const blogSlugMatch = canonicalPath.match(/^\/blog\/([^/]+)$/);
   const blogPost = blogSlugMatch ? blogPosts.find(p => p.slug === blogSlugMatch[1]) : null;
   const progSlugMatch = canonicalPath.match(/^\/tools\/([^/]+)$/);
-  const progPage = progSlugMatch ? programmaticPages.find(p => p.slug === progSlugMatch[1]) : null;
+  const progPage = progSlugMatch ? (getProgrammaticPage(progSlugMatch[1]) ?? null) : null;
   const toolId = canonicalPath.replace(/^\//, "");
   const toolData = toolSEOData[toolId as keyof typeof toolSEOData] || null;
+
+  // ── Override seo title/description from progPage for generated pages ──────
+  const effectiveTitle = progPage ? progPage.title : seo.title;
+  const effectiveDescription = progPage ? progPage.description : seo.description;
+  const effectiveKeywords = seo.keywords || "";
+
+  const ogTitle = seo.ogTitle || effectiveTitle;
+  const ogDescription = seo.ogDescription || effectiveDescription;
+  const ogUrl = isNoindex ? "" : (seo.ogUrl || canonicalUrl);
+  const twitterTitle = seo.twitterTitle || ogTitle;
+  const twitterDescription = seo.twitterDescription || ogDescription;
+  const robotsContent = seo.robots || "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 
   // ── og:type + article-specific OG tags ───────────────────────────────────
   const ogType = blogPost ? "article" : "website";
@@ -1689,9 +1694,9 @@ export function generateMetaTags(path: string): string {
     .join("\n    ");
 
   return `
-    <title>${seo.title}</title>
-    <meta name="description" content="${seo.description}" />
-    <meta name="keywords" content="${seo.keywords}" />
+    <title>${effectiveTitle}</title>
+    <meta name="description" content="${effectiveDescription}" />
+    <meta name="keywords" content="${effectiveKeywords}" />
     <link rel="canonical" href="${canonicalUrl}" />
     ${hreflangBlock}
     
@@ -1953,7 +1958,7 @@ function generatePreRenderShell(canonicalPath: string): string {
 
   // Programmatic page: /tools/:slug
   const progSlugMatch = canonicalPath.match(/^\/tools\/([^/]+)$/);
-  const progPage = progSlugMatch ? programmaticPages.find(p => p.slug === progSlugMatch[1]) : null;
+  const progPage = progSlugMatch ? (getProgrammaticPage(progSlugMatch[1]) ?? null) : null;
 
   // Category hub: /convert-pdf, /edit-pdf-tools, etc.
   const categoryHub = categoryHubs.find(h => `/${h.slug}` === canonicalPath);

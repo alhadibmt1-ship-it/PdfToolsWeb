@@ -1,0 +1,1223 @@
+import type { ProgrammaticPage } from "./programmaticSeoData";
+
+const BASE = "https://pdfhub24.com";
+
+// ─── Seed data ────────────────────────────────────────────────────────────────
+
+const SIZES = [
+  { slug: "5kb",  label: "5KB",   bytes: "5,120",  example: "tiny ID scan or single-page text form" },
+  { slug: "10kb", label: "10KB",  bytes: "10,240", example: "minimalist resume or short memo" },
+  { slug: "15kb", label: "15KB",  bytes: "15,360", example: "short application cover letter" },
+  { slug: "20kb", label: "20KB",  bytes: "20,480", example: "single-page invoice or receipt" },
+  { slug: "25kb", label: "25KB",  bytes: "25,600", example: "passport-photo form or ID scan" },
+  { slug: "30kb", label: "30KB",  bytes: "30,720", example: "2-page text document" },
+  { slug: "40kb", label: "40KB",  bytes: "40,960", example: "simple 3-page report" },
+  { slug: "75kb", label: "75KB",  bytes: "76,800", example: "bank statement or official letter" },
+  { slug: "150kb","label": "150KB",bytes:"153,600","example":"multi-page professional report" },
+  { slug: "250kb","label": "250KB",bytes:"256,000","example":"brochure or lightly illustrated guide" },
+  { slug: "500kb","label": "500KB",bytes:"512,000","example":"photo-light presentation or catalog" },
+  { slug: "750kb","label": "750KB",bytes:"768,000","example":"10-page illustrated report" },
+  { slug: "2mb",  label: "2MB",   bytes: "2,097,152","example":"heavily illustrated business proposal" },
+  { slug: "5mb",  label: "5MB",   bytes: "5,242,880","example":"large scanned document archive" },
+  { slug: "10mb", label: "10MB",  bytes: "10,485,760","example":"photo-heavy annual report or portfolio" },
+];
+
+const COMPRESS_USE_CASES = [
+  { slug: "linkedin",           label: "LinkedIn",             context: "LinkedIn has a 5MB file attachment limit. Keeping your PDF under 2MB ensures fast loading for hiring managers on slow connections." },
+  { slug: "instagram",          label: "Instagram",            context: "While Instagram doesn't support direct PDF sharing, many users share PDF pages as images; compressing first keeps export quality high." },
+  { slug: "twitter",            label: "Twitter / X",          context: "Twitter allows PDF uploads only via DM with a 5MB limit. Compressing ensures your document reaches every recipient." },
+  { slug: "facebook",           label: "Facebook",             context: "Facebook allows PDF sharing in groups and Messenger. Smaller files load faster for mobile users on the platform." },
+  { slug: "telegram",           label: "Telegram",             context: "Telegram's default 2GB limit is generous, but smaller PDFs load instantly even on mobile data for all group members." },
+  { slug: "slack",              label: "Slack",                context: "Slack's free plan limits file storage. Compressing PDFs before uploading saves team storage and speeds up previews." },
+  { slug: "google-drive",       label: "Google Drive",         context: "Google Drive counts PDFs against your 15GB quota. Compressing files helps stay under the free storage limit longer." },
+  { slug: "dropbox",            label: "Dropbox",              context: "Dropbox syncs across all your devices. Smaller PDFs sync faster on mobile connections and take less bandwidth." },
+  { slug: "onedrive",           label: "OneDrive",             context: "OneDrive integrates tightly with Microsoft 365. Compressed PDFs open faster in Word Online and SharePoint previews." },
+  { slug: "icloud",             label: "iCloud",               context: "iCloud's 5GB free tier fills quickly. Compressing PDFs reduces your iCloud usage and keeps automatic backup faster." },
+  { slug: "sharepoint",         label: "SharePoint",           context: "SharePoint has per-file size limits and throttles large uploads. Compressed PDFs stay within policy limits and load faster in Teams." },
+  { slug: "teams",              label: "Microsoft Teams",      context: "Teams chat attachments load as previews. Smaller PDFs render the preview instantly without requiring a full download." },
+  { slug: "zoom",               label: "Zoom",                 context: "Sharing a PDF via Zoom Chat or Whiteboard works best with files under 1MB for real-time collaborative review." },
+  { slug: "government-forms",   label: "Government Forms",     context: "Government portals often enforce 1MB or 2MB file-size limits with no exception. Compression is mandatory to complete your submission." },
+  { slug: "scholarship-application","label":"Scholarship Applications","context":"Scholarship portals typically cap supporting documents at 500KB. Compressing ensures your package uploads without error." },
+  { slug: "insurance-claim",    label: "Insurance Claims",     context: "Insurance portals have tight document size limits. Compressed claims process faster through automated scanning systems." },
+  { slug: "court-filing",       label: "Court Filings",        context: "Electronic court filing systems (CM/ECF, eFiling) enforce strict per-document size caps — often 5MB or less." },
+  { slug: "medical-records",    label: "Medical Records",      context: "Patient portals and hospital intranets limit upload sizes. Compressed records transfer securely within compliance guidelines." },
+  { slug: "tax-return",         label: "Tax Returns",          context: "Tax authority portals (IRS, HMRC, etc.) restrict supporting document sizes. Compressed returns file without rejection errors." },
+  { slug: "bank-statement",     label: "Bank Statements",      context: "Lenders and landlords prefer emailed statements under 2MB. Compressing keeps your application moving quickly." },
+  { slug: "loan-application",   label: "Loan Applications",    context: "Loan portals require multiple supporting documents. Compressing each file keeps your total submission under the portal limit." },
+  { slug: "university-admission","label":"University Admissions","context":"University application portals cap supporting documents at 2–5MB. Compressed transcripts and essays upload reliably." },
+  { slug: "passport-application","label":"Passport Applications","context":"Passport application portals have strict file-size requirements. Compress supporting documents to avoid upload errors." },
+  { slug: "printing",           label: "Printing",             context: "Print shops prefer smaller files for faster transfer. Compressing without quality loss gives clean prints with quick uploads." },
+  { slug: "presentation",       label: "Presentations",        context: "Sharing presentation PDFs via email or link is easier under 5MB. Recipients download instantly on any connection." },
+  { slug: "website-upload",     label: "Website Upload",       context: "Websites load PDFs inline in the browser. Files under 1MB render immediately without a loading spinner." },
+  { slug: "client-sharing",     label: "Client Sharing",       context: "Professional clients expect fast-loading documents. Compressed PDFs reflect attention to detail and respect for their time." },
+  { slug: "mobile-sharing",     label: "Mobile Sharing",       context: "Mobile users on 4G or 5G still benefit from smaller PDFs. Files under 1MB open instantly in every mobile PDF viewer." },
+];
+
+const MERGE_USE_CASES = [
+  { slug: "court-filing",         label: "Court Filings",         context: "Courts require all exhibits and filings as a single document. Merging ensures chronological order and proper pagination." },
+  { slug: "medical-records",      label: "Medical Records",       context: "Combining patient history, test results, and prescriptions into one PDF simplifies referrals and hospital admissions." },
+  { slug: "tax-return",           label: "Tax Returns",           context: "Tax authorities need income, expenses, and supporting evidence in one organised PDF submission." },
+  { slug: "bank-statement",       label: "Bank Statements",       context: "Lenders need 3–6 months of statements in one file. Merging monthly PDFs delivers a clean, sequential package." },
+  { slug: "loan-application",     label: "Loan Applications",     context: "Banks process loan applications faster when ID, payslips, and statements are merged into a single ordered PDF." },
+  { slug: "university-admission", label: "University Admissions", context: "Combine your application form, transcripts, essays, and reference letters into one submission-ready PDF." },
+  { slug: "scholarship-application","label":"Scholarship Applications","context":"Merge CV, personal statement, academic records, and references into one complete scholarship submission file." },
+  { slug: "insurance-claim",      label: "Insurance Claims",      context: "Combine incident report, photos, receipts, and policy documents into one claim file for faster adjuster review." },
+  { slug: "passport-application", label: "Passport Applications", context: "Merge completed forms, photo ID scans, and supporting evidence for a complete passport renewal package." },
+  { slug: "business-proposal",    label: "Business Proposals",    context: "Combine executive summary, financial projections, team profiles, and terms into one professional proposal." },
+  { slug: "contract-signing",     label: "Contracts",             context: "Merge contract body, schedules, annexures, and signature pages into one legally clean, paginated document." },
+  { slug: "report-compilation",   label: "Reports",               context: "Combine department reports, charts, and appendices into a single polished PDF for executive presentation." },
+  { slug: "portfolio-creation",   label: "Portfolios",            context: "Designers and creatives merge project pages into a single stunning portfolio PDF for client or recruiter review." },
+  { slug: "invoice-submission",   label: "Invoice Submission",    context: "Merge invoices, purchase orders, and delivery notes into one accounts payable package for faster payment." },
+  { slug: "travel-documents",     label: "Travel Documents",      context: "Combine itinerary, hotel bookings, flight tickets, and visa copies into one travel PDF for easy airport access." },
+  { slug: "tenancy-agreement",    label: "Tenancy Agreements",    context: "Merge tenancy contract, inventory checklist, and standing order forms into one package for landlord and tenant." },
+  { slug: "property-documents",   label: "Property Documents",    context: "Combine title deed, survey, and disclosure forms into a single organised property transaction file." },
+  { slug: "audit-files",          label: "Audit Files",           context: "Accountants merge trial balances, ledgers, and supporting schedules into one clean audit submission binder." },
+  { slug: "grant-application",    label: "Grant Applications",    context: "Combine project proposal, budget, CVs, and supporting evidence into one complete grant application pack." },
+  { slug: "project-submission",   label: "Project Submissions",   context: "Merge project report, supporting data, references, and appendices into one complete academic or business submission." },
+];
+
+const PROFESSIONS = [
+  { slug: "students",          label: "Students",           context: "Students handle assignments, theses, and application documents daily. Fast, free PDF tools eliminate the need for paid software." },
+  { slug: "lawyers",           label: "Lawyers",            context: "Legal professionals manage contracts, pleadings, and evidence bundles. Reliable PDF tools speed up document preparation and court filings." },
+  { slug: "doctors",           label: "Doctors",            context: "Healthcare professionals share patient records, referrals, and research papers. HIPAA-safe, local processing keeps patient data private." },
+  { slug: "teachers",          label: "Teachers",           context: "Educators create lesson packs, worksheets, and grade reports. Browser-based PDF tools require no installation on school devices." },
+  { slug: "engineers",         label: "Engineers",          context: "Engineers share CAD drawings, specifications, and reports as PDFs. Reliable compression and conversion keep large technical files manageable." },
+  { slug: "accountants",       label: "Accountants",        context: "Accountants merge financial statements and compress tax documents for client portals. No cloud upload means client data stays private." },
+  { slug: "nurses",            label: "Nurses",             context: "Nursing staff handle care plans, medication records, and discharge summaries. Lightweight PDF tools work on any hospital device." },
+  { slug: "professors",        label: "Professors",         context: "Professors prepare course packets, research papers, and exam materials. Free tools reduce reliance on expensive university software licenses." },
+  { slug: "researchers",       label: "Researchers",        context: "Academic researchers compile literature reviews, data tables, and appendices into submission-ready PDFs for journals and conferences." },
+  { slug: "architects",        label: "Architects",         context: "Architects share floor plans, specifications, and permit drawings as PDFs. Lossless compression keeps technical details crisp." },
+  { slug: "journalists",       label: "Journalists",        context: "Journalists compile press kits, interview transcripts, and photo spreads. Quick PDF tools meet tight publication deadlines." },
+  { slug: "pharmacists",       label: "Pharmacists",        context: "Pharmacists handle prescription records, drug information sheets, and regulatory submissions requiring clean, properly formatted PDFs." },
+  { slug: "real-estate-agents","label":"Real Estate Agents","context":"Agents merge listing agreements, disclosure forms, and inspection reports into one client-ready PDF package." },
+  { slug: "hr-managers",       label: "HR Managers",        context: "HR professionals process CVs, contracts, and onboarding documents daily. Batch PDF tools dramatically reduce administrative time." },
+  { slug: "financial-advisors","label":"Financial Advisors","context":"Financial advisors compile investment proposals, statements, and compliance documents into polished client presentation PDFs." },
+];
+
+const COUNTRIES = [
+  { slug: "uk",           label: "UK",             demonym: "UK users",      portal: "HMRC, Companies House, and UK government portals" },
+  { slug: "australia",    label: "Australia",       demonym: "Australians",   portal: "myGov, ASIC, and ATO portals" },
+  { slug: "canada",       label: "Canada",          demonym: "Canadians",     portal: "CRA, Service Canada, and provincial portals" },
+  { slug: "usa",          label: "USA",             demonym: "US users",      portal: "IRS, USCIS, and federal government portals" },
+  { slug: "india",        label: "India",           demonym: "Indian users",  portal: "DigiLocker, income tax, and government e-services" },
+  { slug: "germany",      label: "Germany",         demonym: "German users",  portal: "Elster, Bund Online, and Bundesdruckerei portals" },
+  { slug: "france",       label: "France",          demonym: "French users",  portal: "Impots.gouv, Ameli, and French administrative portals" },
+  { slug: "spain",        label: "Spain",           demonym: "Spanish users", portal: "AEAT, Seguridad Social, and Spanish eAdministration" },
+  { slug: "italy",        label: "Italy",           demonym: "Italian users", portal: "Agenzia Entrate, INPS, and Italian PA digital desks" },
+  { slug: "japan",        label: "Japan",           demonym: "Japanese users",portal: "e-Tax, My Number, and Japanese government portals" },
+  { slug: "brazil",       label: "Brazil",          demonym: "Brazilian users",portal: "Receita Federal, Gov.br, and Brazilian federal services" },
+  { slug: "mexico",       label: "Mexico",          demonym: "Mexican users", portal: "SAT, IMSS, and Mexican digital government portals" },
+  { slug: "pakistan",     label: "Pakistan",        demonym: "Pakistani users",portal: "FBR, NADRA, and Pakistani e-government services" },
+  { slug: "uae",          label: "UAE",             demonym: "UAE users",     portal: "UAE PASS, eDNRD, and Federal Authority portals" },
+  { slug: "nigeria",      label: "Nigeria",         demonym: "Nigerian users",portal: "FIRS, CAC, and Nigerian federal e-services" },
+  { slug: "indonesia",    label: "Indonesia",       demonym: "Indonesian users","portal": "DJP Online, SIAK, and Indonesian government portals" },
+  { slug: "turkey",       label: "Turkey",          demonym: "Turkish users", portal: "e-Devlet, GİB, and Turkish digital public services" },
+  { slug: "saudi-arabia", label: "Saudi Arabia",   demonym: "Saudi users",   portal: "Absher, Muqeem, and Saudi digital government portals" },
+  { slug: "south-africa", label: "South Africa",   demonym: "South Africans",portal: "SARS eFiling, Home Affairs, and SA government portals" },
+  { slug: "china",        label: "China",           demonym: "Chinese users", portal: "GSXT, tax bureaus, and Chinese administrative platforms" },
+];
+
+const DOC_TYPES = [
+  { slug: "resume",          label: "Resume",           context: "Job seekers need their resume PDF compressed for email attachments and ATS upload portals." },
+  { slug: "invoice",         label: "Invoice",          context: "Small businesses send invoices by email daily. A compressed invoice under 200KB reaches any inbox reliably." },
+  { slug: "contract",        label: "Contract",         context: "Contracts are shared for signature via email and DocuSign. Smaller files speed up the review and signing cycle." },
+  { slug: "report",          label: "Report",           context: "Business and academic reports often contain charts and images. Compression keeps them shareable without quality loss." },
+  { slug: "thesis",          label: "Thesis",           context: "University thesis submissions have strict file-size limits on institutional repositories. Compression is often required." },
+  { slug: "certificate",     label: "Certificate",      context: "Certificates are frequently uploaded to professional profiles and government portals with tight size limits." },
+  { slug: "application-form","label":"Application Form","context":"Application forms for jobs, visas, and universities must fit within portal upload size restrictions." },
+  { slug: "ticket",          label: "Ticket",           context: "Event, travel, and support tickets are attached to emails and printed. Compact PDFs open instantly on mobile devices." },
+  { slug: "receipt",         label: "Receipt",          context: "Expense receipts are uploaded to accounting systems and emailed to finance teams with strict size policies." },
+  { slug: "presentation",    label: "Presentation",     context: "Slide presentations exported as PDF can be large. Compression makes them shareable via email and messaging apps." },
+  { slug: "brochure",        label: "Brochure",         context: "Marketing brochures are shared digitally and printed. Compression reduces send time while maintaining print-ready quality." },
+  { slug: "legal-document",  label: "Legal Document",   context: "Legal documents must be precisely readable. Lossless compression keeps text sharp while meeting court portal limits." },
+  { slug: "medical-report",  label: "Medical Report",   context: "Medical reports and test results are shared between practitioners via secure portals with file size limits." },
+  { slug: "tax-document",    label: "Tax Document",     context: "Tax authorities and accountants exchange large document bundles. Compression keeps each file within submission limits." },
+  { slug: "bank-statement",  label: "Bank Statement",   context: "Bank statements submitted for loans and rentals must be compressed to fit lender portal upload restrictions." },
+];
+
+const INDUSTRIES = [
+  { slug: "healthcare",    label: "Healthcare",    context: "Healthcare organisations process patient records, insurance claims, and clinical reports — all requiring precise PDF handling." },
+  { slug: "finance",       label: "Finance",       context: "Financial firms manage contracts, statements, and regulatory filings. Reliable PDF tools ensure compliance with document standards." },
+  { slug: "legal",         label: "Legal",         context: "Law firms handle briefs, contracts, and court documents. Organised, compressed PDFs meet strict court submission requirements." },
+  { slug: "education",     label: "Education",     context: "Schools and universities manage transcripts, lesson materials, and research papers requiring free, accessible PDF tools." },
+  { slug: "real-estate",   label: "Real Estate",   context: "Property professionals merge listing agreements, contracts, and inspection reports into client-ready PDF packages daily." },
+  { slug: "government",    label: "Government",    context: "Government agencies enforce strict file-size limits on citizen submissions. Compliant PDFs ensure forms are accepted first time." },
+  { slug: "retail",        label: "Retail",        context: "Retailers manage invoices, supplier contracts, and product catalogs. PDF tools help organise documents across supply chains." },
+  { slug: "manufacturing", label: "Manufacturing", context: "Manufacturers share technical specifications, safety data sheets, and compliance reports as PDFs with suppliers and regulators." },
+  { slug: "technology",    label: "Technology",    context: "Tech teams document APIs, share design specs, and archive release notes. Clean, compressed PDFs improve knowledge management." },
+  { slug: "hospitality",   label: "Hospitality",   context: "Hotels and restaurants manage menus, booking confirmations, and supplier contracts requiring lightweight, shareable PDFs." },
+];
+
+const SPLIT_USE_CASES = [
+  { slug: "chapters",       label: "Chapters",       context: "Splitting a textbook or manual by chapter creates individually shareable sections for students or team members." },
+  { slug: "sharing",        label: "Sharing",         context: "Large PDFs are difficult to share via email. Splitting into sections keeps each part under email attachment limits." },
+  { slug: "printing",       label: "Printing",        context: "Splitting before printing lets you print only the pages you need, saving paper and toner." },
+  { slug: "archiving",      label: "Archiving",       context: "Breaking a large document into logical sections makes long-term digital archiving more organised and searchable." },
+  { slug: "distribution",   label: "Distribution",    context: "Distribute only the relevant section of a report or manual to each recipient rather than the full document." },
+  { slug: "emailing",       label: "Emailing",        context: "Split a large PDF into parts small enough to attach to emails without hitting the 10MB or 25MB attachment limit." },
+  { slug: "collaboration",  label: "Collaboration",   context: "Split documents by section so multiple team members can review and annotate their assigned portions simultaneously." },
+  { slug: "review",         label: "Review",          context: "Send specific pages to reviewers rather than an entire document, speeding up the feedback cycle." },
+  { slug: "billing",        label: "Billing",         context: "Extract individual invoices from a combined monthly statement PDF for accurate per-client billing records." },
+  { slug: "compliance",     label: "Compliance",      context: "Regulatory compliance often requires specific sections of a document to be filed separately with different agencies." },
+];
+
+const FORMATS_TO_PDF = [
+  { slug: "bmp",    label: "BMP",     ext: ".bmp",   description: "Bitmap image files from older Windows systems" },
+  { slug: "gif",    label: "GIF",     ext: ".gif",   description: "Animated or static GIF images from the web" },
+  { slug: "tiff",   label: "TIFF",    ext: ".tiff",  description: "High-resolution TIFF images from scanners and cameras" },
+  { slug: "webp",   label: "WebP",    ext: ".webp",  description: "Modern WebP images from websites and Chrome screenshots" },
+  { slug: "svg",    label: "SVG",     ext: ".svg",   description: "Scalable vector graphics from design tools like Figma or Illustrator" },
+  { slug: "txt",    label: "TXT",     ext: ".txt",   description: "Plain text files from Notepad or any text editor" },
+  { slug: "rtf",    label: "RTF",     ext: ".rtf",   description: "Rich Text Format documents compatible with all word processors" },
+  { slug: "odt",    label: "ODT",     ext: ".odt",   description: "OpenDocument Text files from LibreOffice or Google Docs" },
+  { slug: "csv",    label: "CSV",     ext: ".csv",   description: "Comma-separated spreadsheet data from any data source" },
+  { slug: "epub",   label: "EPUB",    ext: ".epub",  description: "eBook files from Kindle, Calibre, or online libraries" },
+  { slug: "xps",    label: "XPS",     ext: ".xps",   description: "XPS documents generated by Windows Print to XPS" },
+  { slug: "pages",  label: "Pages",   ext: ".pages", description: "Apple Pages documents created on Mac or iPad" },
+  { slug: "key",    label: "Keynote", ext: ".key",   description: "Apple Keynote presentations from Mac users" },
+  { slug: "numbers","label":"Numbers",ext: ".numbers","description":"Apple Numbers spreadsheets from Mac or iPad" },
+  { slug: "md",     label: "Markdown",ext: ".md",    description: "Markdown files from documentation, GitHub READMEs, or Notion exports" },
+];
+
+const PDF_TO_FORMATS = [
+  { slug: "epub",     label: "EPUB",     ext: ".epub",     description: "readable on Kindle, Kobo, Apple Books, and any e-reader" },
+  { slug: "html",     label: "HTML",     ext: ".html",     description: "viewable in any web browser without a PDF reader" },
+  { slug: "txt",      label: "TXT",      ext: ".txt",      description: "pure plain text for editing in Notepad, scripts, or databases" },
+  { slug: "rtf",      label: "RTF",      ext: ".rtf",      description: "editable in any word processor including older versions of Microsoft Word" },
+  { slug: "odt",      label: "ODT",      ext: ".odt",      description: "editable in LibreOffice, OpenOffice, and Google Docs" },
+  { slug: "svg",      label: "SVG",      ext: ".svg",      description: "scalable vector that can be edited in Figma, Illustrator, or Inkscape" },
+  { slug: "gif",      label: "GIF",      ext: ".gif",      description: "shareable on messaging apps and websites" },
+  { slug: "bmp",      label: "BMP",      ext: ".bmp",      description: "uncompressed bitmap for legacy systems and Windows applications" },
+  { slug: "tiff",     label: "TIFF",     ext: ".tiff",     description: "high-quality archival images for printing and scanning workflows" },
+  { slug: "csv",      label: "CSV",      ext: ".csv",      description: "directly importable into Excel, Google Sheets, or any database" },
+  { slug: "markdown", label: "Markdown", ext: ".md",       description: "ideal for documentation, GitHub, Notion, or static site generators" },
+];
+
+const MERGE_COUNTS = [2,3,4,5,6,7,8,9,10,12,15,20,25,30,50];
+const SPLIT_INTO_COUNTS = [2,3,4,5,6,7,8,9,10,12,15,20,25];
+const SPLIT_EVERY_COUNTS = [1,2,3,4,5,6,7,8,9,10,15,20];
+const EXTRACT_N_COUNTS = [1,2,3,4,5,6,7,8,9,10,15,20];
+
+const EXISTING_SLUGS = new Set([
+  "compress-pdf-for-email","compress-pdf-for-whatsapp","compress-pdf-mobile",
+  "compress-pdf-to-1mb","compress-pdf-to-300kb","compress-pdf-to-50kb",
+  "compress-pdf-under-100kb","compress-pdf-without-losing-quality",
+  "reduce-pdf-size-to-200kb","make-pdf-smaller-for-email",
+  "merge-pdf-for-immigration","merge-pdf-for-job-application","merge-pdf-for-visa-application",
+  "merge-pdf-free-no-limit","merge-pdf-two-files",
+  "split-pdf-by-pages","split-pdf-by-size","split-pdf-into-single-pages",
+  "add-page-numbers-to-pdf-automatically","add-page-numbers-to-pdf-free",
+  "add-signature-to-pdf-free","add-watermark-to-pdf-free",
+  "annotate-pdf-highlight-text-free","compress-jpg-png-image-online",
+  "convert-docx-to-pdf-keep-formatting","convert-excel-to-pdf-free",
+  "convert-html-webpage-to-pdf","convert-image-to-pdf-free",
+  "convert-jpg-to-pdf-free-online","convert-jpg-to-pdf-multiple",
+  "convert-multiple-images-to-one-pdf","convert-pdf-to-excel-with-tables",
+  "convert-pdf-to-jpg-all-pages","convert-pdf-to-png-high-resolution",
+  "convert-pdf-to-powerpoint-free","convert-pdf-to-word-free-online",
+  "convert-pdf-to-word-without-losing-formatting","convert-scanned-pdf-to-word-editable",
+  "convert-word-to-pdf-free-online","crop-pdf-margins-free-online",
+  "delete-pages-from-pdf","edit-pdf-text-online-free","edit-pdf-without-adobe-acrobat",
+  "extract-pages-from-pdf","extract-tables-from-pdf-to-spreadsheet",
+  "flatten-pdf-for-printing","grayscale-pdf-free-online","merge-pdf-free-no-limit",
+  "ocr-pdf-online-free","pdf-editor-free-without-watermark","pdf-to-excel-free-online",
+  "pdf-to-jpg-high-quality","pdf-to-jpg-online-free-high-quality","pdf-to-png-all-pages-free",
+  "pdf-to-powerpoint-online-free","pdf-to-word-editable-free","pdf-to-word-for-resume",
+  "pdf-viewer-online-free","protect-pdf-with-password-256bit","protect-pdf-with-password-free",
+  "rearrange-pdf-pages-free","redact-pdf-black-out-text","remove-pages-from-pdf",
+  "remove-password-from-pdf","resize-pdf-to-a4-free","rotate-pdf-and-save",
+  "rotate-pdf-free-online","sign-pdf-online-free-no-signup","unlock-pdf-for-editing",
+  "unlock-pdf-remove-password-online","watermark-pdf-free-online","word-to-pdf-free-online",
+]);
+
+function page(slug: string, title: string, h1: string, description: string, toolPath: string, toolName: string, content: string, useCases: string[], faqs: { question: string; answer: string }[]): ProgrammaticPage {
+  return { slug, title, h1, description, toolPath, toolName, content, useCases, faqs };
+}
+
+function skip(slug: string) { return EXISTING_SLUGS.has(slug); }
+
+// ─── Generator functions ──────────────────────────────────────────────────────
+
+function genCompressSizePages(): ProgrammaticPage[] {
+  const results: ProgrammaticPage[] = [];
+  for (const s of SIZES) {
+    // compress-pdf-to-{size}
+    const slug1 = `compress-pdf-to-${s.slug}`;
+    if (!skip(slug1)) results.push(page(
+      slug1,
+      `Compress PDF to ${s.label} Free Online | PDF HUB 24`,
+      `Compress PDF to ${s.label} Free Online`,
+      `Reduce your PDF file size to ${s.label} or less online, free. No signup, no watermark. Perfect for upload limits requiring files under ${s.label}.`,
+      "/compress", "Compress PDF",
+      `Reaching a ${s.label} file size is a specific technical requirement for many online portals, email servers, and document management systems. A ${s.label} PDF represents a ${s.example} — and our free tool helps you get there without sacrificing readability.
+
+To compress a PDF to ${s.label}, upload your file using our Compress PDF tool and select the appropriate compression level. Text-only documents respond best to medium compression and often reach ${s.label} easily. Image-heavy files may need high compression combined with the grayscale conversion step for maximum size reduction.
+
+If your document still exceeds ${s.label} after a single compression pass, try this workflow: first remove any unnecessary pages using Delete Pages, then convert colour images to grayscale, and finally apply maximum compression. This three-step process achieves the smallest possible file size while keeping text crisp and readable.
+
+Remember that file size depends on content complexity. A ${s.label} target is achievable for most documents when you approach it systematically rather than applying a single compression setting and hoping for the best.`,
+      [
+        `Upload portals requiring files under ${s.label}`,
+        `Email systems with ${s.label} attachment limits`,
+        `Online forms that reject large file uploads`,
+        `Mobile apps with tight storage constraints`,
+        `Government and institutional document portals`,
+      ],
+      [
+        { question: `Can I really compress a PDF to ${s.label}?`, answer: `Yes, for most text-based documents. Image-heavy files may need additional steps like grayscale conversion or page removal alongside compression to reach ${s.label}.` },
+        { question: "Is my original file affected?", answer: "No. We always work on a copy. Your original file is never modified, and processed files are deleted from our servers within 1 hour." },
+        { question: `What if my PDF is still over ${s.label} after compression?`, answer: `Try removing unnecessary pages first, then converting colour content to grayscale, then compressing again. This three-step approach achieves the smallest possible file size.` },
+      ]
+    ));
+
+    // compress-pdf-under-{size}
+    const slug2 = `compress-pdf-under-${s.slug}`;
+    if (!skip(slug2)) results.push(page(
+      slug2,
+      `Compress PDF Under ${s.label} Free Online | PDF HUB 24`,
+      `Compress PDF to Under ${s.label} Instantly`,
+      `Compress PDF files to under ${s.label} free online. Meet strict upload size limits for portals, email, and applications. No signup needed.`,
+      "/compress", "Compress PDF",
+      `Many document submission systems reject files at exactly ${s.label} — meaning you need to stay strictly under this limit. Our compression tool gives you fine-grained control over the output size so you can confidently submit documents without getting an error.
+
+The most common reason a PDF exceeds ${s.label} is embedded images. Every scanned page, photo, chart, or screenshot adds significant file size. Our high-compression mode reduces image resolution to the minimum acceptable for screen viewing, typically reducing file size by 60–90% compared to the original.
+
+For documents that are already text-only, medium compression usually achieves files well under ${s.label} in a single step. For mixed documents, combine compression with the optional grayscale conversion for maximum size reduction.
+
+Always check the compressed file by opening it before submitting — text should remain sharp and readable even at aggressive compression settings.`,
+      [
+        `Staying under portal size limits with a safety margin`,
+        `Compressing before emailing to avoid bounce-backs`,
+        `Fitting within LMS or university submission limits`,
+        `Uploading to compliance and legal archiving systems`,
+        `Sharing via messaging apps with file size restrictions`,
+      ],
+      [
+        { question: `How do I get my PDF strictly under ${s.label}?`, answer: `Use our high compression setting. If the result is close, also convert images to grayscale. For text documents, medium compression is usually sufficient.` },
+        { question: "Will text be readable at this size?", answer: "Yes. Text in PDFs is vector-based and remains perfectly sharp regardless of compression level. Only embedded images may show slight softening." },
+        { question: "How many files can I compress at once?", answer: "You can compress files one at a time for free. Each processed file is kept for 1 hour then automatically deleted for your privacy." },
+      ]
+    ));
+
+    // reduce-pdf-size-to-{size}
+    const slug3 = `reduce-pdf-size-to-${s.slug}`;
+    if (!skip(slug3)) results.push(page(
+      slug3,
+      `Reduce PDF Size to ${s.label} Free | PDF HUB 24`,
+      `Reduce PDF File Size to ${s.label} Free`,
+      `Reduce PDF file size to ${s.label} online free. Fast compression with quality options. No sign up required. Works on any device.`,
+      "/compress", "Compress PDF",
+      `Reducing a PDF to exactly ${s.label} is a common requirement across government portals, job application systems, insurance platforms, and cloud storage services. Our free tool handles this precisely, giving you a file that's within your target size without visible quality loss for text content.
+
+The secret to reliable PDF size reduction is understanding what makes your file large in the first place. Scanned images are the biggest culprit — a single scanned A4 page at 300 DPI can exceed 500KB on its own. Our compressor reduces image DPI to the optimal level for screen viewing while keeping text extracted at full quality.
+
+For a ${s.example}, you can typically achieve a ${s.label} result with medium compression in a single pass. For larger or more complex documents, use our three-step workflow: delete unnecessary pages, convert to grayscale, then compress with high settings.`,
+      [
+        `Reducing file size before uploading to any online form`,
+        `Shrinking PDFs for sharing via mobile messaging apps`,
+        `Meeting submission requirements for job or visa portals`,
+        `Compressing scanned documents from physical paperwork`,
+        `Preparing digital archives with consistent file sizes`,
+      ],
+      [
+        { question: `What's the smallest size I can reduce a PDF to?`, answer: `For text-only documents, compression can reduce size by over 90%. For scanned image documents, combining high compression with grayscale conversion typically achieves 70–85% reduction.` },
+        { question: "Does reducing PDF size affect print quality?", answer: "For standard office printing, no. Text remains sharp. High-quality photo printing from a heavily compressed PDF may show slight image softening, but it's rarely noticeable." },
+        { question: "Is this tool safe for confidential documents?", answer: "Yes. Files are processed locally in your browser when possible, and any server-side processing deletes files within 1 hour. We do not access or store your document content." },
+      ]
+    ));
+  }
+  return results;
+}
+
+function genCompressUseCasePages(): ProgrammaticPage[] {
+  return COMPRESS_USE_CASES.filter(u => !skip(`compress-pdf-for-${u.slug}`)).map(u => page(
+    `compress-pdf-for-${u.slug}`,
+    `Compress PDF for ${u.label} Free Online | PDF HUB 24`,
+    `Compress PDF for ${u.label} — Free & Instant`,
+    `Compress your PDF for ${u.label} online free. No signup, no watermark. Get your file within the required size limit in seconds.`,
+    "/compress", "Compress PDF",
+    `${u.context}
+
+Our free PDF compressor handles ${u.label} requirements precisely. Simply upload your document, choose your compression level, and download the result. Three compression levels give you flexibility: low for minimal quality trade-off, medium for balanced results, and high for maximum size reduction.
+
+For documents destined for ${u.label}, we recommend the medium compression setting as a starting point. This typically reduces file size by 60–70% while keeping all text perfectly readable and images sharp enough for screen viewing. If the result is still too large, switch to high compression or consider removing unnecessary pages first.
+
+One important tip: always preview your compressed PDF before submitting or sharing. Open it in your browser or PDF viewer to confirm text is clear, images are acceptable, and all pages are present. Our compression never removes pages or alters content — only adjusts the image quality and encoding of your document.`,
+    [
+      `Preparing documents specifically for ${u.label} upload requirements`,
+      `Ensuring fast delivery and acceptance by the ${u.label} platform`,
+      `Avoiding file rejection errors caused by size limit violations`,
+      `Sharing professional documents without long download wait times`,
+      `Reducing bandwidth usage when many recipients access the same file`,
+    ],
+    [
+      { question: `Why do I need to compress PDFs for ${u.label}?`, answer: `${u.context}` },
+      { question: "How small can I compress my PDF?", answer: "For text-heavy documents, compression can reduce file size by 90% or more. Image-heavy PDFs typically compress by 60–80%. Combining compression with grayscale conversion achieves the smallest possible sizes." },
+      { question: "Is the compression free?", answer: "Yes, completely free. No signup, no watermark, no file count limit per session. Simply upload, compress, and download." },
+    ]
+  ));
+}
+
+function genCompressPlatformPages(): ProgrammaticPage[] {
+  const platforms = [
+    { slug: "windows", label: "Windows", detail: "Windows users can use this tool directly in Edge, Chrome, or Firefox — no installation required." },
+    { slug: "mac", label: "Mac", detail: "Mac users can access the tool in Safari, Chrome, or Firefox. Files are processed without any app download." },
+    { slug: "linux", label: "Linux", detail: "Linux users can compress PDFs directly in Firefox or Chrome with no installation or command-line tools required." },
+    { slug: "iphone", label: "iPhone", detail: "iPhone users can compress PDFs in Safari or Chrome mobile. Use the Share button to open compressed files in Files or Mail." },
+    { slug: "android", label: "Android", detail: "Android users can compress PDFs in Chrome or Samsung Internet. Files download directly to Downloads or Drive." },
+    { slug: "ipad", label: "iPad", detail: "iPad users can compress PDFs in Safari. The full desktop experience works on iPad with no limitations." },
+    { slug: "chromebook", label: "Chromebook", detail: "Chromebook users can use this tool in Chrome OS — no Linux environment or extensions needed." },
+    { slug: "browser", label: "Browser", detail: "Works in any modern browser including Chrome, Firefox, Edge, Safari, and Opera — no software to install." },
+  ];
+  return platforms.filter(p => !skip(`compress-pdf-on-${p.slug}`)).map(p => page(
+    `compress-pdf-on-${p.slug}`,
+    `Compress PDF on ${p.label} Free | PDF HUB 24`,
+    `Compress PDF on ${p.label} — Free & Instant`,
+    `Compress PDF on ${p.label} free online. No app or software installation needed. Works entirely in your ${p.label} browser.`,
+    "/compress", "Compress PDF",
+    `${p.detail} This makes PDF compression accessible on ${p.label} without purchasing or installing dedicated software.
+
+To compress a PDF on ${p.label}: open this page in your browser, click the upload area to select your PDF, choose a compression level (medium is recommended for most use cases), and click Compress. Within seconds your compressed file is ready to download.
+
+This approach is ideal for ${p.label} users who need occasional PDF compression without committing to a subscription service. The tool handles files of any size and returns the compressed version typically 3–10× smaller than the original.
+
+Security on ${p.label} is handled identically to desktop: your files are never stored permanently, and all connections use HTTPS encryption. Compressed files are automatically deleted from temporary servers within 1 hour of processing.`,
+    [
+      `Compressing PDFs on ${p.label} without installing software`,
+      `Meeting email attachment size limits on ${p.label} devices`,
+      `Uploading compressed documents to web portals from ${p.label}`,
+      `Sharing smaller PDF files via messaging apps on ${p.label}`,
+      `Reducing PDF file sizes when working remotely on ${p.label}`,
+    ],
+    [
+      { question: `Does PDF compression work on ${p.label}?`, answer: `Yes, fully. Our web-based tool works in any modern browser on ${p.label}. No app download, plugin, or software installation is required.` },
+      { question: "What file size limit applies?", answer: "You can compress PDFs of any size. Very large files (100MB+) may take slightly longer to process but are fully supported." },
+      { question: "Are my files safe on this device?", answer: "Yes. All processing happens over HTTPS, and files are permanently deleted from our servers within 1 hour. Nothing is saved or shared." },
+    ]
+  ));
+}
+
+function genCompressProfessionPages(): ProgrammaticPage[] {
+  return PROFESSIONS.filter(pr => !skip(`compress-pdf-for-${pr.slug}`)).map(pr => page(
+    `compress-pdf-for-${pr.slug}`,
+    `Compress PDF for ${pr.label} Free | PDF HUB 24`,
+    `Free PDF Compression for ${pr.label}`,
+    `PDF compression tool built for ${pr.label}. Compress documents for portals, email, and sharing — free, no signup, no watermark.`,
+    "/compress", "Compress PDF",
+    `${pr.context}
+
+${pr.label} benefit most from a fast, no-registration compression tool that handles the range of documents they work with: multi-page reports, scanned forms, image-rich presentations, and dense text documents. Our tool handles all of these with appropriate compression per content type.
+
+For typical ${pr.label} workflows, medium compression strikes the right balance — it reduces file size by 60–75% while keeping text perfectly legible and images sharp enough for professional sharing. High compression is available when a specific size limit must be met, such as for government portal submissions or email attachment caps.
+
+No account, no credit card, and no software installation is needed. ${pr.label} can bookmark this page and return whenever they need to compress a document, completely free of charge.`,
+    [
+      `Compressing professional documents for secure email delivery`,
+      `Meeting upload size limits on specialist ${pr.label} portals`,
+      `Reducing PDF file sizes for cloud storage and archiving`,
+      `Preparing compressed documents for client or colleague sharing`,
+      `Batch processing multiple documents efficiently from any device`,
+    ],
+    [
+      { question: `Is this tool safe for sensitive documents used by ${pr.label}?`, answer: "Yes. Files are deleted within 1 hour of processing, connections are HTTPS-encrypted, and we do not access or store document content." },
+      { question: "Can I compress multiple documents in a session?", answer: "Yes, you can compress as many files as you need in a single session. Each file is processed separately and independently." },
+      { question: "Will compression affect document quality for professional use?", answer: "Text remains perfectly sharp at all compression levels. Images may show slight softening at high compression, but remain professional quality for screen viewing and standard printing." },
+    ]
+  ));
+}
+
+function genMergeCountPages(): ProgrammaticPage[] {
+  const results: ProgrammaticPage[] = [];
+  for (const n of MERGE_COUNTS) {
+    const nLabel = n === 2 ? "Two" : n === 3 ? "Three" : n.toString();
+    const slug1 = `merge-${n}-pdf-files`;
+    if (!skip(slug1)) results.push(page(
+      slug1,
+      `Merge ${nLabel} PDF Files Free Online | PDF HUB 24`,
+      `Merge ${nLabel} PDF Files Into One`,
+      `Merge exactly ${n} PDF files into one document online, free. Drag to reorder pages, then download your combined PDF. No signup needed.`,
+      "/merge", "Merge PDF",
+      `Combining exactly ${n} PDF files into a single document is a common task for organising reports, assembling application packages, or creating a unified reference file. Our free tool handles this in three simple steps: upload your ${n} files, arrange them in the correct order, and download the merged PDF.
+
+Page order matters when merging ${n} PDFs. Our drag-and-drop interface lets you arrange files or individual pages before merging, ensuring the final document follows the logical sequence you intend. You can also preview each document before merging to confirm the right files are selected.
+
+The resulting merged PDF maintains the original formatting, fonts, images, and layout of all ${n} source files. There is no degradation in quality and no watermark added. The merged file is typically the sum of the individual file sizes, reduced slightly by removing redundant metadata.
+
+For recurring workflows that require merging ${n} PDFs regularly, bookmark this page — it works on any device with a modern browser, no software installation required.`,
+      [
+        `Assembling ${n}-part application packages for visa, job, or university submissions`,
+        `Combining ${n} monthly reports into a single quarterly or annual document`,
+        `Merging ${n} contract sections into one signed, paginated agreement`,
+        `Uniting ${n} scanned documents into a single organised archive file`,
+        `Creating a unified reference document from ${n} separate source files`,
+      ],
+      [
+        { question: `Can I really merge exactly ${n} PDFs into one?`, answer: `Yes. Upload your ${n} files, arrange them in order, and click Merge. The result is a single PDF containing all pages from all ${n} documents.` },
+        { question: "Is there a page limit?", answer: "No. You can merge PDFs of any length. The resulting document contains all pages from all input files." },
+        { question: "Will my merged PDF have a watermark?", answer: "No. PDF HUB 24 never adds watermarks to merged documents. The result is a clean, professional PDF." },
+      ]
+    ));
+
+    const slug2 = `combine-${n}-pdf-files`;
+    if (!skip(slug2)) results.push(page(
+      slug2,
+      `Combine ${nLabel} PDF Files Free Online | PDF HUB 24`,
+      `Combine ${nLabel} PDFs Into One Document`,
+      `Combine ${n} PDF files into a single document free online. Fast, easy, no signup. Drag to reorder, then download your combined PDF.`,
+      "/merge", "Merge PDF",
+      `Combining ${n} PDF documents is straightforward with our free tool. Whether you're assembling a multi-part submission, creating a comprehensive reference document, or simply organising related files, merging ${n} PDFs takes under a minute.
+
+Upload your ${n} files in any order — you can rearrange them in the interface before combining. Our tool preserves the complete content of each file, including all text, images, links, and formatting. The output is a standard PDF compatible with Adobe Reader, Mac Preview, Google Chrome, and every other PDF viewer.
+
+Unlike many free online tools, we don't limit the number of pages in your source files or add any watermark to the result. Your combined ${n}-file PDF is yours completely, with no strings attached.`,
+      [
+        `Combining ${n} chapters of a book or manual into one PDF`,
+        `Assembling ${n} project documents for client delivery`,
+        `Uniting ${n} scanned pages into a single digital archive`,
+        `Merging ${n} form pages into one submission-ready document`,
+        `Creating one PDF from ${n} separate export files`,
+      ],
+      [
+        { question: `How do I combine ${n} PDFs into one?`, answer: `Click the upload area, select your ${n} PDF files, arrange them in order by dragging, then click Combine. Download the resulting single PDF.` },
+        { question: "Does combining PDFs reduce quality?", answer: "No. The original quality of all pages is preserved exactly. Combining does not re-compress or re-encode any content." },
+        { question: "What's the maximum file size I can combine?", answer: "There is no hard limit. Very large files may take slightly longer to process, but all file sizes are supported." },
+      ]
+    ));
+  }
+  return results;
+}
+
+function genMergeUseCasePages(): ProgrammaticPage[] {
+  const results: ProgrammaticPage[] = [];
+  for (const u of MERGE_USE_CASES) {
+    const s1 = `merge-pdf-for-${u.slug}`;
+    if (!skip(s1)) results.push(page(
+      s1,
+      `Merge PDF for ${u.label} Free Online | PDF HUB 24`,
+      `Merge PDF Documents for ${u.label}`,
+      `Merge PDF files for ${u.label} online free. Combine multiple documents into one organised PDF. No signup, no watermark, instant download.`,
+      "/merge", "Merge PDF",
+      `${u.context}
+
+To merge PDFs for ${u.label}: upload all your documents, arrange them in the correct order using drag-and-drop, then click Merge. The result is a single, professionally paginated PDF ready for submission or delivery.
+
+Presentation matters in ${u.label} contexts. A well-organised, single PDF with consistent pagination makes a better impression than a zip file of separate documents and is easier for recipients to review. Our merge tool also lets you reorder individual pages within the merged document for complete control over the final layout.
+
+No registration is required. Your documents are never shared with third parties, and merged files are automatically deleted from temporary servers within 1 hour of processing.`,
+      [
+        `Preparing a complete ${u.label} document package in one organised PDF`,
+        `Combining supporting evidence and forms for ${u.label} submissions`,
+        `Creating a single paginated file from multiple document sources`,
+        `Assembling all required attachments in the correct sequence`,
+        `Ensuring professional presentation for reviewers and decision-makers`,
+      ],
+      [
+        { question: `What documents should I include when merging for ${u.label}?`, answer: `${u.context} Include all required forms, supporting evidence, and identification documents in the order specified by the receiving authority.` },
+        { question: "Can I rearrange pages after merging?", answer: "Yes. After merging, you can use our Reorder Pages tool to fine-tune the page sequence before downloading your final document." },
+        { question: "Is the merge free?", answer: "Yes, completely free. No account, no watermark, no file count limit. Merge as many documents as your submission requires." },
+      ]
+    ));
+
+    const s2 = `combine-pdf-for-${u.slug}`;
+    if (!skip(s2)) results.push(page(
+      s2,
+      `Combine PDF for ${u.label} Free | PDF HUB 24`,
+      `Combine PDFs for ${u.label} — Free & Instant`,
+      `Combine multiple PDF files into one organised document for ${u.label}. Free online tool, no signup required, instant download.`,
+      "/merge", "Merge PDF",
+      `${u.context}
+
+Combining PDFs specifically for ${u.label} purposes means getting the order and completeness right the first time. Our tool gives you full control: upload in any order, drag files or pages into the correct sequence, preview before merging, and download a polished single PDF.
+
+Many ${u.label} processes have strict requirements about document order. Organise your files according to the checklist or instructions provided, then combine them in that exact sequence. The final PDF will have continuous page numbering and a clean, professional appearance.`,
+      [
+        `Combining all ${u.label} documents into one organised submission`,
+        `Ensuring correct document order before submitting to reviewers`,
+        `Reducing the number of attachments from multiple files to one`,
+        `Meeting the requirement for a single PDF submission format`,
+        `Creating a professional, easy-to-review ${u.label} document package`,
+      ],
+      [
+        { question: `How do I combine PDFs for ${u.label}?`, answer: "Upload all your documents, arrange them using drag-and-drop in the required order, then click Combine and download the result." },
+        { question: "Is there a limit to how many PDFs I can combine?", answer: "No. You can combine as many PDFs as your submission requires. Upload all files at once or add them one by one." },
+        { question: "Will the combined PDF show a watermark?", answer: "Never. PDF HUB 24 does not add any watermarks or branding to combined documents." },
+      ]
+    ));
+  }
+  return results;
+}
+
+function genMergeProfessionPages(): ProgrammaticPage[] {
+  return PROFESSIONS.filter(pr => !skip(`merge-pdf-for-${pr.slug}`)).map(pr => page(
+    `merge-pdf-for-${pr.slug}`,
+    `Merge PDF for ${pr.label} Free | PDF HUB 24`,
+    `Merge PDF for ${pr.label} — Free Online Tool`,
+    `Merge PDF files for ${pr.label} free online. Combine reports, documents, and case files into one organised PDF. No signup required.`,
+    "/merge", "Merge PDF",
+    `${pr.context}
+
+For ${pr.label}, merging PDFs often means combining documents from different sources — forms, supporting evidence, identification, and signed agreements — into a single coherent package. Our tool handles this precisely, giving you full control over the order and composition of the final document.
+
+The drag-and-drop interface is fast and intuitive, making it easy to organise complex multi-document packages. Reorder individual pages if needed, remove any accidentally included files, and preview the arrangement before generating the final merged PDF.
+
+All merged documents are automatically deleted from our servers within 1 hour. No account is needed, and your documents are never shared with third parties.`,
+    [
+      `Combining multiple ${pr.label} case files or project documents into one PDF`,
+      `Assembling complete document packages for review or submission`,
+      `Merging scanned originals with digital forms and signed agreements`,
+      `Creating unified reference files from multiple source documents`,
+      `Organising client or patient document bundles professionally`,
+    ],
+    [
+      { question: `How do ${pr.label} use the merge tool most effectively?`, answer: `Upload all required documents, arrange them in the logical or required sequence, then merge. For large packages, split the merge into thematic sections first if needed.` },
+      { question: "Can I merge password-protected PDFs?", answer: "You'll need to unlock the PDFs first using our Unlock PDF tool, then merge the unlocked versions." },
+      { question: "Is this tool secure for professional documents?", answer: "Yes. All connections are HTTPS encrypted, and files are permanently deleted within 1 hour of processing." },
+    ]
+  ));
+}
+
+function genSplitPages(): ProgrammaticPage[] {
+  const results: ProgrammaticPage[] = [];
+
+  for (const n of SPLIT_INTO_COUNTS) {
+    const slug = `split-pdf-into-${n}-parts`;
+    if (!skip(slug)) results.push(page(
+      slug,
+      `Split PDF Into ${n} Parts Free Online | PDF HUB 24`,
+      `Split PDF Into ${n} Equal Parts Free`,
+      `Split a PDF into ${n} parts online free. Divide your document evenly or by custom page ranges. No signup, instant download.`,
+      "/split", "Split PDF",
+      `Splitting a PDF into exactly ${n} parts is useful for distributing a document to ${n} reviewers, creating ${n} chapter files from a complete manual, or dividing a large submission into ${n} upload-sized pieces.
+
+Our split tool offers two approaches: split evenly (our tool automatically calculates which pages go into each of the ${n} parts) or split by custom page ranges (you specify exactly which pages each part contains). Both options result in ${n} separate downloadable PDF files.
+
+Even splitting is ideal when all ${n} recipients need an equal portion of the document. Custom ranges are better when the document has natural divisions — such as chapters, sections, or date ranges — that don't fall on evenly spaced page numbers.
+
+All ${n} output files maintain the original quality, formatting, and any embedded links from the source document.`,
+      [
+        `Dividing a document into ${n} sections for separate review or editing`,
+        `Creating ${n} chapter files from a complete book or manual`,
+        `Splitting a large PDF into ${n} email-sized attachments`,
+        `Distributing ${n} non-overlapping portions of a document to ${n} teams`,
+        `Breaking a merged document back into its original ${n} component files`,
+      ],
+      [
+        { question: `How does the split-into-${n} feature work?`, answer: `Upload your PDF, specify that you want ${n} equal parts (or define custom page ranges for each part), and our tool creates ${n} separate downloadable PDFs.` },
+        { question: "Are all my pages included in the output?", answer: "Yes. Every page from the original document appears in one of the output parts. No pages are lost or omitted." },
+        { question: "Can I split a PDF into unequal parts?", answer: "Yes. Use the custom page range mode to assign any number of pages to each part. The ranges don't need to be equal." },
+      ]
+    ));
+  }
+
+  for (const n of SPLIT_EVERY_COUNTS) {
+    const slug = `split-pdf-every-${n}-pages`;
+    if (!skip(slug)) results.push(page(
+      slug,
+      `Split PDF Every ${n} Page${n > 1 ? "s" : ""} Free Online | PDF HUB 24`,
+      `Split PDF Every ${n} Page${n > 1 ? "s" : ""} — Free & Instant`,
+      `Split a PDF into separate ${n}-page documents online free. Each output file contains exactly ${n} pages. No signup required.`,
+      "/split", "Split PDF",
+      `Splitting a PDF every ${n} page${n > 1 ? "s" : ""} creates a series of ${n}-page documents from a longer file. This is useful for creating standardised ${n}-page handout packets, extracting ${n}-page invoice batches, or dividing a scanned multi-form document where each form is exactly ${n} page${n > 1 ? "s" : ""} long.
+
+After uploading your PDF and selecting the "split every ${n} page${n > 1 ? "s" : ""}" option, our tool automatically calculates how many output files to create and assigns the correct pages to each. If the total page count isn't evenly divisible by ${n}, the final output file will contain the remaining pages.
+
+All output files are downloadable individually or as a ZIP archive, making it easy to distribute or archive the split documents. Original formatting, images, and embedded links are preserved in every output file.`,
+      [
+        `Splitting a form pack where each form is exactly ${n} page${n > 1 ? "s" : ""} long`,
+        `Creating ${n}-page handout packets from a full course or training document`,
+        `Dividing a scanned document batch into ${n}-page individual records`,
+        `Extracting ${n}-page billing or invoice cycles from a combined statement`,
+        `Organising a large archive into consistently sized ${n}-page chunks`,
+      ],
+      [
+        { question: `How do I split a PDF every ${n} page${n > 1 ? "s" : ""}?`, answer: `Upload your PDF, select "Split every ${n} page${n > 1 ? "s" : ""}" from the split options, and download the resulting set of ${n}-page documents.` },
+        { question: `What happens if my page count isn't a multiple of ${n}?`, answer: `The last output file will contain the remaining pages (fewer than ${n}). No pages are ever dropped or omitted.` },
+        { question: "Can I download all output files at once?", answer: "Yes. After splitting, you can download all output files as a single ZIP archive for convenience." },
+      ]
+    ));
+  }
+
+  for (const n of EXTRACT_N_COUNTS) {
+    const slug = `extract-${n}-pages-from-pdf`;
+    if (!skip(slug)) results.push(page(
+      slug,
+      `Extract ${n} Page${n > 1 ? "s" : ""} From PDF Free | PDF HUB 24`,
+      `Extract ${n} Specific Page${n > 1 ? "s" : ""} From Any PDF`,
+      `Extract exactly ${n} page${n > 1 ? "s" : ""} from a PDF online free. Select specific pages and download as a new PDF. No signup needed.`,
+      "/extract-pages", "Extract Pages",
+      `Extracting exactly ${n} page${n > 1 ? "s" : ""} from a larger PDF lets you share or submit only the specific content needed without exposing the full document. Whether you need page ${n} of a contract, the first ${n} pages of a report, or any ${n} non-consecutive pages, our tool handles the selection precisely.
+
+After uploading your PDF, a page thumbnail preview appears. Click to select exactly ${n} page${n > 1 ? "s" : ""} — consecutive or non-consecutive — then extract. The result is a new PDF containing only your selected page${n > 1 ? "s" : ""}, with the same quality and formatting as the original.
+
+Common use cases for extracting ${n} page${n > 1 ? "s" : ""} include: isolating a ${n}-page executive summary from a full report, extracting ${n} specific exhibits from a legal bundle, pulling ${n} pages of data from a multi-month statement, or sharing a ${n}-page product spec from a complete catalogue.`,
+      [
+        `Extracting a specific ${n}-page section from a larger report`,
+        `Isolating ${n} pages of evidence or exhibits from a document bundle`,
+        `Pulling ${n} particular pages of data from a comprehensive document`,
+        `Sharing only ${n} relevant pages without exposing the full file`,
+        `Creating a ${n}-page highlight or summary from a complete document`,
+      ],
+      [
+        { question: `How do I extract exactly ${n} page${n > 1 ? "s" : ""} from a PDF?`, answer: `Upload your PDF, select exactly ${n} page${n > 1 ? "s" : ""} from the thumbnail preview, and click Extract. A new PDF with only those pages is created.` },
+        { question: "Do the extracted pages have to be consecutive?", answer: `No. You can select any ${n} pages regardless of whether they are adjacent in the document. The output preserves the order you select them.` },
+        { question: "Is the original PDF modified?", answer: "No. Extraction creates a new document. Your original file is unchanged and can still be used or further processed." },
+      ]
+    ));
+  }
+
+  return results;
+}
+
+function genSplitUseCasePages(): ProgrammaticPage[] {
+  return SPLIT_USE_CASES.filter(u => !skip(`split-pdf-for-${u.slug}`)).map(u => page(
+    `split-pdf-for-${u.slug}`,
+    `Split PDF for ${u.label} Free Online | PDF HUB 24`,
+    `Split PDF for ${u.label} — Free & Fast`,
+    `Split PDF files for ${u.label} online free. Divide documents into individual sections or parts. No signup, instant download.`,
+    "/split", "Split PDF",
+    `${u.context}
+
+Splitting a PDF for ${u.label} purposes is straightforward with our free tool. Upload your document, choose how to split it (by page range, every N pages, or into equal parts), and download the resulting separate files. Each output retains the full quality and formatting of the original.
+
+For ${u.label}, the most common splitting approach is by page range — defining exactly which pages form each section. This gives you precise control over the content of each output file, which is essential when documents have meaningful divisions that don't align with equal-page splits.
+
+Download individual files or all sections at once as a ZIP archive.`,
+    [
+      `Splitting documents into logical sections for ${u.label}`,
+      `Dividing large PDFs into manageable parts for separate handling`,
+      `Creating individually shareable sections from a complete document`,
+      `Reducing file size per section for easier upload and distribution`,
+      `Organising split files for systematic ${u.label} workflows`,
+    ],
+    [
+      { question: `How do I split a PDF for ${u.label}?`, answer: `Upload your PDF, choose your split method (by range, every N pages, or equal parts), then download the separate files for your ${u.label} workflow.` },
+      { question: "Can I split by specific page numbers?", answer: "Yes. The custom range option lets you define exactly where each split occurs by specifying page numbers." },
+      { question: "Is split PDF quality preserved?", answer: "Yes. Splitting never re-encodes or re-compresses content. All output files are identical in quality to the corresponding pages in the original." },
+    ]
+  ));
+}
+
+function genFormatConversionPages(): ProgrammaticPage[] {
+  const results: ProgrammaticPage[] = [];
+
+  for (const f of FORMATS_TO_PDF) {
+    const slug = `${f.slug}-to-pdf-online`;
+    if (!skip(slug)) results.push(page(
+      slug,
+      `${f.label} to PDF Online Free | PDF HUB 24`,
+      `Convert ${f.label} to PDF Free Online`,
+      `Convert ${f.ext} files to PDF online free. Fast, secure ${f.label}-to-PDF conversion. No signup, no watermark, instant download.`,
+      "/jpg-to-pdf", "Image to PDF",
+      `Converting ${f.label} files (${f.ext}) to PDF is useful when you need to share ${f.description} in a universally compatible format. PDF files open on any device without specialist software, preserve the original layout, and can be combined with other documents using our Merge PDF tool.
+
+Our ${f.label}-to-PDF converter processes your file instantly in the browser. Upload your ${f.ext} file, adjust the page size and orientation if needed, and download the resulting PDF. The conversion preserves all visual content from the original ${f.label} file.
+
+PDF is the standard format for professional document sharing because it looks identical on every device and operating system. Converting your ${f.label} files to PDF ensures recipients see exactly what you intended, without font substitution, layout shifts, or missing elements that can occur with other formats.`,
+      [
+        `Sharing ${f.description} as a universally compatible PDF`,
+        `Archiving ${f.label} files in a format that opens on any device`,
+        `Combining ${f.label} content with other documents using PDF Merge`,
+        `Submitting ${f.label} content to portals that accept only PDF`,
+        `Printing ${f.label} files with consistent results across printers`,
+      ],
+      [
+        { question: `How do I convert ${f.label} to PDF?`, answer: `Upload your ${f.ext} file to our converter, adjust any settings, and click Convert. Download the resulting PDF instantly.` },
+        { question: `Is the ${f.label} to PDF conversion free?`, answer: "Yes, completely free. No signup, no watermark on the output, and no limit on conversions per session." },
+        { question: `How is ${f.label} different from PDF?`, answer: `${f.description.charAt(0).toUpperCase() + f.description.slice(1)}. PDF is a fixed-layout format that looks identical on all devices and can combine multiple pages and document types in one file.` },
+      ]
+    ));
+  }
+
+  for (const f of PDF_TO_FORMATS) {
+    const slug = `pdf-to-${f.slug}-online`;
+    if (!skip(slug)) results.push(page(
+      slug,
+      `PDF to ${f.label} Free Online | PDF HUB 24`,
+      `Convert PDF to ${f.label} Free Online`,
+      `Convert PDF to ${f.label} (${f.ext}) online free. Fast, secure conversion without signup or watermark. Instant download.`,
+      "/pdf-to-word", "Convert PDF",
+      `Converting a PDF to ${f.label} gives you a file ${f.description}. This is useful when you need to repurpose PDF content in a more flexible or accessible format.
+
+Our PDF to ${f.label} converter extracts and reformats content from your PDF file into a clean ${f.ext} output. Upload your PDF, let the converter process it, and download the result in seconds. No account or email is required.
+
+PDF to ${f.label} conversion is particularly valuable when you need to edit content that was originally shared as a read-only PDF, import PDF data into another application, or distribute content on platforms that don't support PDF natively.`,
+      [
+        `Converting PDF content into a format ${f.description}`,
+        `Extracting text and data from PDFs for reuse in other applications`,
+        `Sharing PDF content with users who prefer or require ${f.label} format`,
+        `Importing PDF data into systems that accept ${f.label} files`,
+        `Creating an editable or platform-optimised version of a PDF document`,
+      ],
+      [
+        { question: `How do I convert PDF to ${f.label}?`, answer: `Upload your PDF to our converter. The tool processes it and provides a download link for your ${f.ext} file within seconds.` },
+        { question: `Is PDF to ${f.label} conversion free?`, answer: "Yes. No account, no watermark, and no limit on conversions per session. Completely free to use." },
+        { question: `Does the converted ${f.label} preserve all content?`, answer: `Text and structure are preserved as accurately as the ${f.label} format allows. Complex layouts may be linearised, but all content is included.` },
+      ]
+    ));
+  }
+
+  return results;
+}
+
+function genProfessionToolPages(): ProgrammaticPage[] {
+  const tools = [
+    { prefix: "pdf-to-word-for", toolPath: "/pdf-to-word", toolName: "PDF to Word", action: "convert PDF documents to editable Word files" },
+    { prefix: "sign-pdf-for", toolPath: "/sign-pdf", toolName: "Sign PDF", action: "add legally binding digital signatures to PDF documents" },
+    { prefix: "protect-pdf-for", toolPath: "/protect-pdf", toolName: "Protect PDF", action: "add password protection to sensitive PDF documents" },
+    { prefix: "split-pdf-for-profession", toolPath: "/split", toolName: "Split PDF", action: "divide large PDF documents into focused sections" },
+    { prefix: "annotate-pdf-for", toolPath: "/annotate-pdf", toolName: "Annotate PDF", action: "add highlights, comments, and annotations to PDF documents" },
+  ];
+
+  const results: ProgrammaticPage[] = [];
+  for (const t of tools) {
+    for (const pr of PROFESSIONS) {
+      const slug = `${t.prefix}-${pr.slug}`;
+      if (skip(slug)) continue;
+      results.push(page(
+        slug,
+        `${t.toolName} for ${pr.label} Free | PDF HUB 24`,
+        `Free ${t.toolName} Tool for ${pr.label}`,
+        `${t.toolName} tool for ${pr.label}. ${pr.context.split(".")[0]}. Free, no signup, no watermark.`,
+        t.toolPath, t.toolName,
+        `${pr.context}
+
+For ${pr.label}, the ability to ${t.action} is an essential daily capability. Our free ${t.toolName} tool handles this without requiring software installation, subscriptions, or technical expertise.
+
+Simply upload your PDF, use the tool's interface to complete your task, and download the result. The entire process typically takes under a minute, even for complex documents with many pages.
+
+${pr.label} using this tool benefit from enterprise-grade processing without enterprise-grade costs. Security is maintained throughout — files are processed over HTTPS and deleted within 1 hour.`,
+        [
+          `${pr.label} who need to ${t.action} regularly`,
+          `Professional document preparation without paid software subscriptions`,
+          `Quick document processing from any device or location`,
+          `Maintaining document security and privacy throughout the process`,
+          `Handling occasional document tasks without installing specialist tools`,
+        ],
+        [
+          { question: `Is this ${t.toolName} tool suitable for ${pr.label}?`, answer: `Yes. ${pr.context} Our tool is designed for professional use with no feature restrictions or watermarks.` },
+          { question: "Is the tool free for professional use?", answer: "Yes, completely free. No account, no subscription, no per-file charge. Use it as often as you need." },
+          { question: "Are documents safe when used by professionals?", answer: "Yes. All processing uses HTTPS encryption, files are never shared with third parties, and all uploads are deleted within 1 hour." },
+        ]
+      ));
+    }
+  }
+  return results;
+}
+
+function genCountryPages(): ProgrammaticPage[] {
+  const results: ProgrammaticPage[] = [];
+  for (const c of COUNTRIES) {
+    const s1 = `compress-pdf-${c.slug}`;
+    if (!skip(s1)) results.push(page(
+      s1,
+      `Compress PDF Online Free — Best Tool for ${c.label} Users | PDF HUB 24`,
+      `Best Free PDF Compressor for ${c.label} Users`,
+      `Compress PDF online free — trusted by ${c.demonym}. No signup, no watermark. Works perfectly for ${c.portal}.`,
+      "/compress", "Compress PDF",
+      `${c.demonym} regularly submit documents to ${c.portal}, many of which enforce strict file-size limits. Our free PDF compressor helps you meet these requirements reliably, without needing to install software or create an account.
+
+The tool is fully accessible from ${c.label} — no VPN required, no regional restrictions. Simply open the page in any modern browser, upload your PDF, choose a compression level, and download the result.
+
+For ${c.portal} submissions specifically, medium compression usually achieves the right balance between file size and document quality. For stricter limits (under 500KB), use high compression and consider converting colour scans to grayscale first for maximum reduction.
+
+PDF HUB 24 serves users from over 150 countries including thousands of users in ${c.label} every month. The tool is optimised for speed on all connection types, including mobile data networks.`,
+      [
+        `Submitting compressed documents to ${c.portal}`,
+        `Meeting file-size requirements for ${c.label} government online services`,
+        `Sharing compressed PDFs via email with ${c.label} colleagues and clients`,
+        `Reducing PDF size before uploading to ${c.label} cloud storage platforms`,
+        `Preparing compressed documents for ${c.label} regulatory or compliance portals`,
+      ],
+      [
+        { question: `Can ${c.demonym} use this PDF compressor for free?`, answer: `Yes. The tool is completely free, with no signup required. It works in any browser and is accessible from ${c.label} without restrictions.` },
+        { question: `Does the tool work for ${c.portal}?`, answer: `Yes. Our compressor produces PDFs that meet the file-size requirements of ${c.portal}. Use medium or high compression to stay within their specific limits.` },
+        { question: "Is there a daily or monthly usage limit?", answer: "No. You can compress as many PDFs as you need with no limits on usage, file count, or session length." },
+      ]
+    ));
+
+    const s2 = `pdf-tools-${c.slug}`;
+    if (!skip(s2)) results.push(page(
+      s2,
+      `Free PDF Tools for ${c.label} Users | PDF HUB 24`,
+      `Free PDF Tools for ${c.label} — 49+ Online Tools`,
+      `Complete PDF toolkit for ${c.label} users. Compress, merge, split, convert, sign, and edit PDFs free. No signup, works on any device.`,
+      "/", "PDF HUB 24",
+      `PDF HUB 24 provides ${c.demonym} with access to 49+ free online PDF tools with no registration, no watermarks, and no hidden costs. Whether you're preparing documents for ${c.portal} or simply managing everyday PDF files, our complete toolkit has everything you need.
+
+Popular tools among ${c.demonym} include: Compress PDF for meeting government portal file-size limits, Merge PDF for assembling multi-document submissions, PDF to Word for converting official documents into editable format, and Sign PDF for adding digital signatures to contracts and forms.
+
+All tools are fully accessible from ${c.label} — no VPN, no restrictions. The service is optimised for all connection speeds and works on desktop computers, laptops, tablets, and mobile phones.`,
+      [
+        `Accessing free PDF tools without paying for software subscriptions in ${c.label}`,
+        `Preparing documents for ${c.portal} using free online tools`,
+        `Converting, compressing, and editing PDFs from any ${c.label} device`,
+        `Managing government and professional document workflows for free`,
+        `Using enterprise-grade PDF tools without enterprise costs in ${c.label}`,
+      ],
+      [
+        { question: `Are PDF HUB 24 tools available to ${c.demonym}?`, answer: `Yes. All 49+ tools are fully accessible from ${c.label} with no regional restrictions, no VPN required, and no signup.` },
+        { question: `Which tools are most useful for ${c.label} document requirements?`, answer: `For ${c.portal}, the most commonly needed tools are Compress PDF, Merge PDF, and PDF to Word. All are free and unlimited.` },
+        { question: `Is PDF HUB 24 free for ${c.demonym}?`, answer: "Yes, completely free. All 49+ tools are available at no charge, with no account required and no watermarks added." },
+      ]
+    ));
+
+    const s3 = `free-pdf-tools-${c.slug}`;
+    if (!skip(s3)) results.push(page(
+      s3,
+      `Free PDF Tools ${c.label} — No Signup Required | PDF HUB 24`,
+      `Free PDF Tools in ${c.label} — Complete Toolkit`,
+      `Free PDF tools for ${c.label}. 49+ tools including compress, merge, split, convert, sign, and edit. No signup, no watermark, no cost.`,
+      "/", "PDF HUB 24",
+      `Finding genuinely free PDF tools in ${c.label} without hidden costs, forced registrations, or watermarks is challenging. PDF HUB 24 provides exactly that — a complete set of 49+ PDF tools that are permanently free, require no account creation, and never add watermarks to your documents.
+
+For ${c.demonym} specifically, the most popular free tools are: Compress PDF (for government and commercial portal submissions), Merge PDF (for assembling multi-document applications), PDF to Word (for editing official documents), and Protect PDF (for adding passwords to sensitive files before sharing).
+
+All tools work identically for users in ${c.label} as anywhere else in the world. There are no geographical restrictions, premium tiers, or country-specific limitations. Every tool is free, every result is clean, and every file is deleted within 1 hour for your privacy.`,
+      [
+        `Free PDF compression for ${c.label} government portal submissions`,
+        `Free PDF merging for multi-document professional applications in ${c.label}`,
+        `Free PDF conversion for editing official documents in ${c.label}`,
+        `Free PDF signing for contracts and agreements handled in ${c.label}`,
+        `Free PDF tools with no signup or watermark for ${c.demonym}`,
+      ],
+      [
+        { question: `Are there any free PDF tools in ${c.label} without watermarks?`, answer: `Yes. PDF HUB 24 provides 49+ PDF tools completely free for ${c.demonym} with no watermarks, no account required, and no hidden fees.` },
+        { question: `Do these tools work on ${c.label} government portals?`, answer: `Yes. Our compress, merge, and convert tools produce PDFs compatible with ${c.portal} and all standard document portals.` },
+        { question: `How long has PDF HUB 24 been serving ${c.label} users?`, answer: `PDF HUB 24 has been serving ${c.demonym} as part of a global user base of millions. The service is free and permanently available.` },
+      ]
+    ));
+  }
+  return results;
+}
+
+function genDocTypePages(): ProgrammaticPage[] {
+  const results: ProgrammaticPage[] = [];
+  for (const d of DOC_TYPES) {
+    const s1 = `compress-${d.slug}-pdf`;
+    if (!skip(s1)) results.push(page(
+      s1,
+      `Compress ${d.label} PDF Free Online | PDF HUB 24`,
+      `Compress ${d.label} PDF — Free & Instant`,
+      `Compress ${d.label} PDF files online free. Reduce file size for email, upload portals, and sharing. No signup, no watermark.`,
+      "/compress", "Compress PDF",
+      `${d.context}
+
+Compressing a ${d.label} PDF is straightforward: upload the file, select medium compression (which works well for most ${d.label} documents), and download the compressed version. The result is a smaller file that maintains the same professional appearance.
+
+For ${d.label} documents specifically, text quality is paramount — our compression preserves vector text at full resolution regardless of the compression level chosen. Only embedded images are reduced in quality, and even at high compression the result is perfectly readable on screen and acceptable for printing.`,
+      [
+        `Reducing ${d.label} PDF size for email submission or attachment`,
+        `Meeting upload size limits on portals for ${d.label} documents`,
+        `Compressing ${d.label} PDFs for faster sharing via messaging apps`,
+        `Archiving ${d.label} PDFs in a space-efficient compressed format`,
+        `Preparing compressed ${d.label} PDFs for professional delivery`,
+      ],
+      [
+        { question: `Will compressing my ${d.label} PDF affect its readability?`, answer: `No. Text in your ${d.label} remains perfectly sharp at all compression levels. Only images may show slight reduction in detail at high compression settings.` },
+        { question: `What compression level should I use for a ${d.label}?`, answer: "Medium compression is recommended for most cases. Use high compression if the file is still too large after medium, or if images are not critical." },
+        { question: `Is the compressed ${d.label} still legally valid?`, answer: "Yes. PDF compression does not alter the legal status or certified content of the document. The text, signatures, and data are unchanged." },
+      ]
+    ));
+
+    const s2 = `merge-${d.slug}-pdf`;
+    if (!skip(s2)) results.push(page(
+      s2,
+      `Merge ${d.label} PDF Files Free | PDF HUB 24`,
+      `Merge ${d.label} PDFs Into One Document`,
+      `Merge multiple ${d.label} PDF files into one organised document free online. No signup, no watermark, instant download.`,
+      "/merge", "Merge PDF",
+      `${d.context}
+
+Merging ${d.label} PDFs combines multiple separate files into a single professionally organised document. This is useful when you have several ${d.label} documents that logically belong together — for example, multiple months of ${d.label} documents that need to be presented as a complete set.
+
+Upload your ${d.label} PDFs, arrange them in the correct sequence using drag-and-drop, and click Merge. The result is a single PDF that maintains all original content, formatting, and page structure from each source file.`,
+      [
+        `Combining multiple ${d.label} PDFs into one complete submission package`,
+        `Merging ${d.label} documents from different time periods into a single file`,
+        `Creating a unified ${d.label} archive from separately saved files`,
+        `Assembling a ${d.label} bundle for a lender, authority, or reviewer`,
+        `Organising a ${d.label} collection into one navigable PDF`,
+      ],
+      [
+        { question: `How do I merge ${d.label} PDFs into one?`, answer: `Upload all your ${d.label} PDF files, arrange them in order using drag-and-drop, then click Merge and download the combined document.` },
+        { question: `Is merged ${d.label} content preserved accurately?`, answer: "Yes. Merging never alters the content of any document. Every page, number, date, and signature is preserved exactly." },
+        { question: `Can I merge ${d.label} PDFs from different sources?`, answer: "Yes. PDFs from different software, scanners, or institutions can all be merged regardless of how they were originally created." },
+      ]
+    ));
+  }
+  return results;
+}
+
+function genIndustryPages(): ProgrammaticPage[] {
+  const results: ProgrammaticPage[] = [];
+  const tools = [
+    { prefix: "compress-pdf-for", toolPath: "/compress", toolName: "Compress PDF" },
+    { prefix: "merge-pdf-for", toolPath: "/merge", toolName: "Merge PDF" },
+    { prefix: "split-pdf-for", toolPath: "/split", toolName: "Split PDF" },
+  ];
+  for (const t of tools) {
+    for (const ind of INDUSTRIES) {
+      const slug = `${t.prefix}-${ind.slug}-industry`;
+      if (skip(slug)) continue;
+      results.push(page(
+        slug,
+        `${t.toolName} for ${ind.label} Industry Free | PDF HUB 24`,
+        `Free ${t.toolName} for the ${ind.label} Industry`,
+        `${t.toolName} tool trusted by ${ind.label} professionals. Free, no signup, no watermark. Process documents securely online.`,
+        t.toolPath, t.toolName,
+        `${ind.context}
+
+The ${ind.label} industry relies on precise, well-organised PDFs for daily operations. Our free ${t.toolName} tool supports ${ind.label} professionals with a reliable, no-cost solution that handles the document volumes and quality requirements of this sector.
+
+No software installation is required — the tool works in any modern browser on desktop, tablet, or mobile. Files are processed securely and deleted within 1 hour, making it appropriate for handling sensitive ${ind.label} documents.`,
+        [
+          `${ind.label} professionals managing high document volumes`,
+          `Processing ${ind.label} compliance and regulatory documents`,
+          `Preparing ${ind.label} client or stakeholder document packages`,
+          `Reducing PDF storage and transfer costs for ${ind.label} organisations`,
+          `Handling ${ind.label} document workflows without paid software subscriptions`,
+        ],
+        [
+          { question: `Is PDF HUB 24 suitable for ${ind.label} industry use?`, answer: `Yes. ${ind.context} Our tool handles the document types and quality requirements typical of ${ind.label} professional workflows.` },
+          { question: `Is the tool free for ${ind.label} organisations?`, answer: "Yes, completely free. No subscription, no per-document charge, and no user limit. Suitable for individuals and teams." },
+          { question: `How is data security handled for ${ind.label} documents?`, answer: "All processing uses HTTPS encryption. Files are never shared with third parties and are permanently deleted within 1 hour of processing." },
+        ]
+      ));
+    }
+  }
+  return results;
+}
+
+function genWatermarkAnnotateSignPages(): ProgrammaticPage[] {
+  const results: ProgrammaticPage[] = [];
+  const wUseCases = [
+    { slug: "copyright-protection", label: "Copyright Protection", context: "Protect original documents and creative works by watermarking before distribution." },
+    { slug: "confidential-documents", label: "Confidential Documents", context: "Mark sensitive files as CONFIDENTIAL before sharing with limited audiences." },
+    { slug: "draft-documents", label: "Draft Documents", context: "Label draft versions with DRAFT watermarks to prevent confusion with final approved versions." },
+    { slug: "preview-files", label: "Preview Files", context: "Watermark preview or sample documents with SAMPLE before the final approved version is shared." },
+    { slug: "business-documents", label: "Business Documents", context: "Brand business proposals, reports, and presentations with company watermarks for professionalism." },
+    { slug: "legal-documents", label: "Legal Documents", context: "Mark legal documents with CLIENT COPY or READ ONLY watermarks before sharing draft versions." },
+    { slug: "school-assignments", label: "School Assignments", context: "Teachers watermark student papers with grades or comments before returning digital copies." },
+    { slug: "branding", label: "Branding", context: "Add company name or logo text watermarks to all outgoing documents for consistent brand identity." },
+  ];
+  for (const u of wUseCases) {
+    const slug = `watermark-pdf-for-${u.slug}`;
+    if (!skip(slug)) results.push(page(
+      slug,
+      `Watermark PDF for ${u.label} Free | PDF HUB 24`,
+      `Add Watermark to PDF for ${u.label}`,
+      `Watermark PDF files for ${u.label} online free. Add text or image watermarks with custom opacity and positioning. No signup needed.`,
+      "/add-watermark", "Add Watermark",
+      `${u.context}
+
+Adding a watermark to a PDF for ${u.label} is quick and precise with our free tool. Choose from text watermarks (type your text, select font size, colour, and opacity) or image watermarks (upload your logo or signature image). Position the watermark anywhere on the page and apply to all pages or specific pages only.
+
+The resulting watermarked PDF maintains the original quality of all content. Watermarks can be set at any opacity from barely visible to fully opaque, giving you full control over the visual impact.`,
+      [`${u.label} document watermarking before distribution`, "Marking document versions with watermarks to prevent confusion", "Adding brand identity watermarks to professional documents", "Protecting sensitive content with visible deterrent watermarks", "Stamping draft, sample, or preview versions before final release"],
+      [
+        { question: `How do I watermark a PDF for ${u.label}?`, answer: "Upload your PDF, type your watermark text or upload an image, adjust opacity and position, then download the watermarked PDF." },
+        { question: "Can I remove the watermark from the output PDF?", answer: "Our watermarks are embedded as visible elements. The text is generally removable only with advanced PDF editing tools, providing reasonable protection." },
+        { question: "Can I apply the watermark to only some pages?", answer: "Yes. You can apply the watermark to all pages or specify page ranges for selective watermarking." },
+      ]
+    ));
+  }
+
+  const signUseCases = [
+    { slug: "contracts", label: "Contracts" }, { slug: "agreements", label: "Agreements" },
+    { slug: "forms", label: "Forms" }, { slug: "invoices", label: "Invoices" },
+    { slug: "nda", label: "NDAs" }, { slug: "employment", label: "Employment Documents" },
+    { slug: "rental", label: "Rental Agreements" }, { slug: "healthcare-consent", label: "Healthcare Consent Forms" },
+  ];
+  for (const u of signUseCases) {
+    const slug = `sign-pdf-for-${u.slug}`;
+    if (!skip(slug)) results.push(page(
+      slug,
+      `Sign PDF ${u.label} Free Online | PDF HUB 24`,
+      `Sign PDF ${u.label} Free — Digital Signature Tool`,
+      `Sign PDF ${u.label} online free. Add digital signatures, initials, and dates. No signup, no watermark, legally binding.`,
+      "/sign-pdf", "Sign PDF",
+      `Signing PDF ${u.label} digitally is now the standard for professional and legal document workflows. Our free Sign PDF tool lets you add typed, drawn, or image-based signatures to any PDF ${u.label} in seconds.
+
+After uploading your PDF, you can place your signature anywhere on the document, resize it, and add date stamps or initials alongside it. The signed document downloads as a standard PDF that opens correctly in all PDF viewers.
+
+Digital signatures created through our tool are appropriate for most professional and commercial purposes. For documents requiring certified digital certificates under specific legal frameworks (e.g., eIDAS in the EU, ESIGN in the USA), consult with your legal advisor about the appropriate signature standard.`,
+      [`Signing PDF ${u.label} without printing, scanning, or mailing`, `Adding digital signatures to ${u.label} for fast turnaround`, `Creating professionally signed ${u.label} from anywhere on any device`, "Completing document signing workflows without PDF editing software", `Signing ${u.label} securely with automatic file deletion after processing`],
+      [
+        { question: `Can I sign PDF ${u.label} with a drawn signature?`, answer: `Yes. Our tool supports drawn signatures (using mouse or touchscreen), typed signatures, and uploaded signature images for signing ${u.label}.` },
+        { question: `Are digitally signed ${u.label} legally valid?`, answer: "In most jurisdictions, digitally signed documents are legally valid for commercial agreements. For regulated transactions, verify the signature standard required." },
+        { question: `Is signing ${u.label} on PDF HUB 24 free?`, answer: "Yes, completely free. No account required and no watermark added to signed documents." },
+      ]
+    ));
+  }
+
+  return results;
+}
+
+function genOcrAndSecurityPages(): ProgrammaticPage[] {
+  const results: ProgrammaticPage[] = [];
+  const ocrLangs = [
+    { slug: "arabic", label: "Arabic" }, { slug: "hindi", label: "Hindi" },
+    { slug: "spanish", label: "Spanish" }, { slug: "french", label: "French" },
+    { slug: "german", label: "German" }, { slug: "chinese", label: "Chinese" },
+    { slug: "japanese", label: "Japanese" }, { slug: "portuguese", label: "Portuguese" },
+  ];
+  for (const l of ocrLangs) {
+    const slug = `ocr-pdf-${l.slug}`;
+    if (!skip(slug)) results.push(page(
+      slug,
+      `OCR PDF ${l.label} Text Free Online | PDF HUB 24`,
+      `OCR PDF to Searchable ${l.label} Text`,
+      `Convert scanned ${l.label} PDF to searchable, editable text using OCR. Free online tool, no signup required, instant results.`,
+      "/ocr-pdf", "OCR PDF",
+      `Extracting ${l.label} text from scanned PDFs requires optical character recognition (OCR) that supports ${l.label} character sets and script. Our OCR tool processes ${l.label} documents accurately, converting scanned images of text into fully searchable and selectable content.
+
+After OCR processing, your ${l.label} PDF becomes fully text-searchable. You can use Ctrl+F (or Cmd+F on Mac) to find specific words, copy text passages, and use the content in translation or editing tools.
+
+OCR accuracy for ${l.label} depends on the scan quality. Clear, high-contrast scans at 200 DPI or above yield the best results. If your scan is blurry or low-contrast, the accuracy may be reduced — enhancing scan quality before OCR gives the best outcome.`,
+      [`Making scanned ${l.label} documents searchable and copy-paste enabled`, `Converting ${l.label} scanned books, manuals, or reports to text`, `Digitising ${l.label} paperwork for electronic document management`, `Extracting ${l.label} data from scanned forms and tables`, `Creating editable ${l.label} text from non-selectable PDF scans`],
+      [
+        { question: `Does your OCR tool support ${l.label}?`, answer: `Yes. Our OCR engine supports ${l.label} character recognition. Clear, high-resolution scans give the best text extraction accuracy.` },
+        { question: `What scan quality is needed for good OCR results in ${l.label}?`, answer: "Scans at 200–300 DPI with good contrast give the best results. Blurry or very low-contrast scans reduce OCR accuracy in any language." },
+        { question: `Is ${l.label} OCR free?`, answer: "Yes, completely free. No signup, no watermark, and no page-count limit per file." },
+      ]
+    ));
+  }
+
+  const securityPages = [
+    { slug: "compress-and-protect-pdf", toolPath: "/compress", toolName: "Compress PDF", h1: "Compress and Protect PDF in One Workflow", desc: "Compress your PDF to reduce file size, then protect it with a password — two essential steps for sharing sensitive documents securely." },
+    { slug: "encrypt-pdf-free", toolPath: "/protect-pdf", toolName: "Protect PDF", h1: "Encrypt PDF with Password Free Online", desc: "Encrypt PDF files with 256-bit AES password protection online free. Prevent unauthorised access and control who can open your document." },
+    { slug: "pdf-password-remove-free", toolPath: "/unlock-pdf", toolName: "Unlock PDF", h1: "Remove PDF Password Free Online", desc: "Remove password protection from your own PDF files online free. Unlock PDFs you own for editing, printing, and sharing." },
+    { slug: "secure-pdf-for-sharing", toolPath: "/protect-pdf", toolName: "Protect PDF", h1: "Secure PDF Before Sharing — Password Protect", desc: "Add password protection to PDFs before sharing by email or messaging app. Control who can open your document with a strong password." },
+    { slug: "pdf-viewer-no-download", toolPath: "/pdf-viewer", toolName: "PDF Viewer", h1: "View PDF Online Without Downloading", desc: "Open and view any PDF in your browser without downloading it to your device. Free online PDF viewer with zoom, search, and page navigation." },
+  ];
+
+  for (const sp of securityPages) {
+    if (!skip(sp.slug)) results.push(page(
+      sp.slug,
+      `${sp.h1} | PDF HUB 24`,
+      sp.h1,
+      sp.desc,
+      sp.toolPath, sp.toolName,
+      `${sp.desc}
+
+Our free tool handles this task with no registration required. Upload your PDF, complete the operation, and download the result. All processing is done securely with HTTPS encryption, and files are automatically deleted from our servers within 1 hour.
+
+This approach ensures your document security needs are met without exposing your files to unnecessary storage or third-party access. The result is a PDF that behaves exactly as needed for your specific security or access control requirement.`,
+      ["Protecting sensitive documents before sharing", "Controlling document access with password encryption", "Removing forgotten or unnecessary password restrictions", "Preparing secure PDFs for email and messaging", "Ensuring document privacy for professional and personal use"],
+      [
+        { question: "Is this tool free?", answer: "Yes, completely free. No account, no watermark, and no usage limits." },
+        { question: "Are my files safe?", answer: "Yes. Files are processed over HTTPS and deleted within 1 hour. We never store or access document content." },
+        { question: "What encryption standard is used?", answer: "PDF password protection uses 256-bit AES encryption, the same standard used by banks and government agencies." },
+      ]
+    ));
+  }
+
+  return results;
+}
+
+function genBatchAndWorkflowPages(): ProgrammaticPage[] {
+  const pages: ProgrammaticPage[] = [];
+  const batchPages = [
+    { slug: "batch-compress-pdf-files", h1: "Batch Compress Multiple PDF Files", desc: "Compress multiple PDF files at once online free. Batch PDF compression saves time when processing large document sets." },
+    { slug: "bulk-pdf-compressor", h1: "Bulk PDF Compressor — Compress Many PDFs", desc: "Compress many PDF files in bulk online free. Perfect for processing invoice archives, scanned documents, and report collections." },
+    { slug: "compress-large-pdf-free", h1: "Compress Large PDF Files Free Online", desc: "Compress very large PDF files online free. Handle 50MB, 100MB, or larger PDFs with our high-performance compression tool." },
+    { slug: "compress-pdf-fast-online", h1: "Compress PDF Fast Online — Instant Results", desc: "Compress PDF files fast online free. Instant compression with no upload queue, no waiting, and no signup required." },
+    { slug: "compress-pdf-without-software", h1: "Compress PDF Without Software or Installation", desc: "Compress PDF files without installing any software. Works entirely in your browser on any device, any operating system." },
+    { slug: "pdf-size-reducer-online", h1: "Online PDF Size Reducer — Free Tool", desc: "Reduce PDF file size online free. Powerful compression with three quality settings for any document type." },
+    { slug: "reduce-pdf-file-size-online", h1: "Reduce PDF File Size Online Free", desc: "Reduce PDF file size online in seconds. No signup, no watermark. Get smaller PDFs for email and upload portals." },
+    { slug: "how-to-reduce-pdf-size", h1: "How to Reduce PDF Size — Step by Step", desc: "Learn how to reduce PDF size online for free. Simple step-by-step guide to compress any PDF in under 60 seconds." },
+    { slug: "merge-pdf-pages-online", h1: "Merge PDF Pages Into One Document Online", desc: "Merge individual PDF pages into a single document online free. Combine pages from multiple PDFs into one organised file." },
+    { slug: "combine-pdf-documents-free", h1: "Combine PDF Documents Free Online", desc: "Combine PDF documents into one file free online. No signup, no watermark. Instant download of combined PDF." },
+    { slug: "pdf-joiner-online-free", h1: "Free Online PDF Joiner — Join PDFs Instantly", desc: "Join multiple PDF files into one document online free. Fast PDF joiner with drag-and-drop ordering. No signup required." },
+    { slug: "pdf-combiner-no-watermark", h1: "PDF Combiner With No Watermark — Free", desc: "Combine PDF files online with no watermark added. Truly free PDF combiner — no hidden fees, no branding on output." },
+    { slug: "split-pdf-pages-free", h1: "Split PDF Into Separate Pages Free", desc: "Split a PDF into individual pages online free. Each page becomes a separate PDF file. Instant download, no signup." },
+    { slug: "extract-pdf-pages-online", h1: "Extract Pages From PDF Online Free", desc: "Extract specific pages from any PDF online free. Select pages by number and download as a new PDF instantly." },
+    { slug: "pdf-page-extractor", h1: "PDF Page Extractor — Free Online Tool", desc: "Extract one or more pages from a PDF online free. Works on any device, no signup or software needed." },
+    { slug: "delete-blank-pages-from-pdf", h1: "Delete Blank Pages From PDF Free Online", desc: "Remove blank and empty pages from a PDF online free. Clean up scanned documents and automated PDF exports." },
+    { slug: "compress-pdf-api-free", h1: "Compress PDF API — Free Online Access", desc: "Access our PDF compression functionality for your workflow. Process PDFs online without API keys using our free web tool." },
+    { slug: "pdf-metadata-editor-online", h1: "Edit PDF Metadata Online Free", desc: "Edit PDF metadata (title, author, subject, keywords) online free. Update document properties without editing content." },
+    { slug: "remove-pdf-metadata", h1: "Remove PDF Metadata Free Online", desc: "Remove hidden metadata from PDF files online free. Strip author, creation date, and document properties for privacy." },
+    { slug: "repair-corrupted-pdf-online", h1: "Repair Corrupted PDF File Online Free", desc: "Repair and recover corrupted or damaged PDF files online free. Our repair tool fixes common PDF errors and restores access." },
+  ];
+
+  for (const bp of batchPages) {
+    if (!skip(bp.slug)) {
+      pages.push(page(
+        bp.slug,
+        `${bp.h1} | PDF HUB 24`,
+        bp.h1,
+        bp.desc,
+        "/compress", "Compress PDF",
+        `${bp.desc}
+
+Our free PDF tools handle this task with no registration required. Simply open the tool in your browser, upload your file or files, complete the operation, and download the results. All processing is done securely with HTTPS encryption, and files are automatically deleted from our servers within 1 hour of processing.
+
+No software installation, no monthly subscription, and no watermarks on output files. PDF HUB 24 provides professional-grade PDF tools that are genuinely free for everyone.`,
+        ["Processing PDFs without installing software or paying subscriptions", "Handling document preparation for email, upload portals, and sharing", "Managing document workflows efficiently from any device", "Maintaining document quality while reducing file size or reorganising pages", "Processing sensitive documents securely with automatic deletion"],
+        [
+          { question: "Is this tool really free?", answer: "Yes, completely free. No signup, no credit card, no watermark on output, and no usage limits." },
+          { question: "What devices does this work on?", answer: "Any modern browser on Windows, Mac, Linux, iPhone, Android, iPad, or Chromebook. No app download needed." },
+          { question: "How secure is my document?", answer: "All processing uses HTTPS encryption. Files are never shared with third parties and are permanently deleted within 1 hour." },
+        ]
+      ));
+    }
+  }
+  return pages;
+}
+
+// ─── Main export ──────────────────────────────────────────────────────────────
+
+let _allPages: ProgrammaticPage[] | null = null;
+let _pageMap: Map<string, ProgrammaticPage> | null = null;
+
+function buildAllPages(): ProgrammaticPage[] {
+  if (_allPages) return _allPages;
+
+  const generated = [
+    ...genCompressSizePages(),
+    ...genCompressUseCasePages(),
+    ...genCompressPlatformPages(),
+    ...genCompressProfessionPages(),
+    ...genMergeCountPages(),
+    ...genMergeUseCasePages(),
+    ...genMergeProfessionPages(),
+    ...genSplitPages(),
+    ...genSplitUseCasePages(),
+    ...genFormatConversionPages(),
+    ...genProfessionToolPages(),
+    ...genCountryPages(),
+    ...genDocTypePages(),
+    ...genIndustryPages(),
+    ...genWatermarkAnnotateSignPages(),
+    ...genOcrAndSecurityPages(),
+    ...genBatchAndWorkflowPages(),
+  ];
+
+  // Deduplicate by slug, keeping first occurrence
+  const seen = new Set<string>(EXISTING_SLUGS);
+  const deduped: ProgrammaticPage[] = [];
+  for (const p of generated) {
+    if (!seen.has(p.slug)) {
+      seen.add(p.slug);
+      deduped.push(p);
+    }
+  }
+  _allPages = deduped;
+  return _allPages;
+}
+
+export function getAllGeneratedPages(): ProgrammaticPage[] {
+  return buildAllPages();
+}
+
+export function getAllGeneratedSlugs(): string[] {
+  return buildAllPages().map(p => p.slug);
+}
+
+export function getGeneratedPage(slug: string): ProgrammaticPage | undefined {
+  if (!_pageMap) {
+    _pageMap = new Map();
+    for (const p of buildAllPages()) _pageMap.set(p.slug, p);
+  }
+  return _pageMap.get(slug);
+}
