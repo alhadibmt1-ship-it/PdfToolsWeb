@@ -3,3 +3,4 @@ Allow: /
 Disallow: /api/
 
 Sitemap: https://pdfhub24.com/sitemap.xml
+Sitemap: https://pdfhub24.com/sitemap-tools.xml
