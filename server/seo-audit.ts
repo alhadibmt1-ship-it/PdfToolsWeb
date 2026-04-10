@@ -40,7 +40,7 @@ function readFile(relPath: string): string {
 }
 
 function extractEnglishPaths(): { total: number; paths: string[]; langCount: number } {
-  const content = readFile("client/public/sitemap.xml");
+  const content = readFile("client/public/sitemap-main.xml");
   const allPaths: string[] = Array.from(
     content.matchAll(/<loc>https:\/\/pdfhub24\.com([^<]*)<\/loc>/g),
     (m) => m[1] || "/"
@@ -185,7 +185,7 @@ export function runSitemapAudit(seoConfigKeys: string[]): AuditReport {
 }
 
 export function removePathFromSitemap(urlPath: string): { success: boolean; removed: number; newCount: number } {
-  const sitemapPath = path.join(ROOT, "client/public/sitemap.xml");
+  const sitemapPath = path.join(ROOT, "client/public/sitemap-main.xml");
   let content = fs.readFileSync(sitemapPath, "utf8");
 
   const escapedPath = urlPath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
