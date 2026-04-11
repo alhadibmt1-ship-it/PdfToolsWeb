@@ -1167,6 +1167,102 @@ No software installation, no monthly subscription, and no watermarks on output f
 
 // ─── Main export ──────────────────────────────────────────────────────────────
 
+function genImageToolPages(): ProgrammaticPage[] {
+  const pages: ProgrammaticPage[] = [];
+  const tools = [
+    { tool: "compress", label: "Compress Image", path: "/compress-img", verb: "compress" },
+    { tool: "resize", label: "Resize Image", path: "/resize-image", verb: "resize" },
+    { tool: "crop", label: "Crop Image", path: "/crop-image", verb: "crop" },
+    { tool: "remove-background", label: "Remove Background", path: "/remove-bg", verb: "remove the background from" },
+    { tool: "convert-to-webp", label: "Convert to WebP", path: "/convert-image", verb: "convert to WebP" },
+  ];
+  const useCases = [
+    { slug: "for-website", label: "for Website", context: "web performance and page speed" },
+    { slug: "for-ecommerce", label: "for eCommerce", context: "product listings and online stores" },
+    { slug: "for-social-media", label: "for Social Media", context: "Instagram, Twitter, and LinkedIn posts" },
+    { slug: "for-email", label: "for Email", context: "email attachments and campaigns" },
+    { slug: "for-wordpress", label: "for WordPress", context: "WordPress blogs and websites" },
+    { slug: "bulk-batch", label: "in Bulk", context: "batch processing multiple files at once" },
+    { slug: "on-iphone", label: "on iPhone", context: "iOS devices and Safari browser" },
+    { slug: "on-android", label: "on Android", context: "Android devices and Chrome browser" },
+  ];
+  for (const t of tools) {
+    for (const uc of useCases) {
+      const slug = `${t.tool}-image-${uc.slug}`;
+      const title = `${t.label} ${uc.label} Free — Online Image Tool | PDF HUB 24`;
+      const desc = `${t.label} ${uc.label.toLowerCase()} free online. Optimized for ${uc.context}. No software, no signup.`;
+      pages.push({
+        slug,
+        title,
+        description: desc,
+        h1: `${t.label} ${uc.label} — Free Online Tool`,
+        toolName: t.label,
+        toolPath: t.path,
+        content: `Use our free ${t.label.toLowerCase()} tool to ${t.verb} images ${uc.label.toLowerCase()}. Perfect for ${uc.context}. Upload your image, apply the transformation, and download instantly. Works in any browser on desktop and mobile — no software installation needed. Completely free with no signup, no watermark, and no file limit.`,
+        useCases: [
+          `${t.label.replace("Image", "images")} ${uc.label.toLowerCase()} for ${uc.context}`,
+          `Batch ${t.verb} multiple images ${uc.label.toLowerCase()}`,
+          `Free online alternative to expensive desktop software`,
+          `Fast, secure processing — files deleted within 1 hour`,
+        ],
+        faqs: [
+          { question: `Is this ${t.label.toLowerCase()} tool really free?`, answer: `Yes, completely free. No subscription, no hidden fees, no watermark on output.` },
+          { question: `Does it work on mobile?`, answer: `Yes, the tool works on iPhone, Android, and any modern browser without installing apps.` },
+          { question: `How long are my files stored?`, answer: `Files are automatically deleted within 1 hour of upload. We do not retain your images.` },
+        ],
+      });
+    }
+  }
+  return pages;
+}
+
+function genConversionQualityPages(): ProgrammaticPage[] {
+  const pages: ProgrammaticPage[] = [];
+  const qualities = [
+    { slug: "high-quality", label: "High Quality", desc: "with maximum quality preservation" },
+    { slug: "small-size", label: "Small File Size", desc: "with minimum file size output" },
+    { slug: "lossless", label: "Lossless", desc: "without any quality loss" },
+    { slug: "300dpi", label: "300 DPI", desc: "at 300 DPI print resolution" },
+    { slug: "150dpi", label: "150 DPI", desc: "at 150 DPI screen resolution" },
+  ];
+  const conversions = [
+    { slug: "pdf-to-jpg", label: "PDF to JPG", from: "PDF", to: "JPG", path: "/pdf-to-jpg" },
+    { slug: "pdf-to-png", label: "PDF to PNG", from: "PDF", to: "PNG", path: "/pdf-to-png" },
+    { slug: "jpg-to-pdf", label: "JPG to PDF", from: "JPG", to: "PDF", path: "/jpg-to-pdf" },
+    { slug: "png-to-pdf", label: "PNG to PDF", from: "PNG", to: "PDF", path: "/png-to-pdf" },
+    { slug: "word-to-pdf", label: "Word to PDF", from: "Word", to: "PDF", path: "/word-to-pdf" },
+    { slug: "pdf-to-word", label: "PDF to Word", from: "PDF", to: "Word", path: "/pdf-to-word" },
+  ];
+  for (const c of conversions) {
+    for (const q of qualities) {
+      const slug = `${c.slug}-${q.slug}`;
+      const title = `${c.label} ${q.label} Free Online | PDF HUB 24`;
+      const desc = `Convert ${c.from} to ${c.to} ${q.desc} free online. No signup required, instant download.`;
+      pages.push({
+        slug,
+        title,
+        description: desc,
+        h1: `${c.label} ${q.label} — Free Online Converter`,
+        toolName: `${c.label} Converter`,
+        toolPath: c.path,
+        content: `Convert ${c.from} files to ${c.to} ${q.desc}. Our free online converter handles the conversion instantly in your browser. Upload your ${c.from} file, convert, and download the ${c.to} result. No software to install, no account to create, and no watermarks on output.`,
+        useCases: [
+          `Convert ${c.from} to ${c.to} ${q.desc} for professional documents`,
+          `Batch convert multiple ${c.from} files at once`,
+          `${c.from} to ${c.to} for email, web, and print`,
+          `Free alternative to Adobe Acrobat conversion`,
+        ],
+        faqs: [
+          { question: `Is the ${c.label} ${q.label} converter free?`, answer: `Yes, completely free with no signup, no watermark, and no file size tricks.` },
+          { question: `How many files can I convert?`, answer: `Convert as many files as you need — there is no daily limit or subscription required.` },
+          { question: `Is my file secure?`, answer: `Yes. Files are processed securely and automatically deleted within 1 hour.` },
+        ],
+      });
+    }
+  }
+  return pages;
+}
+
 let _allPages: ProgrammaticPage[] | null = null;
 let _pageMap: Map<string, ProgrammaticPage> | null = null;
 
@@ -1191,6 +1287,8 @@ function buildAllPages(): ProgrammaticPage[] {
     ...genWatermarkAnnotateSignPages(),
     ...genOcrAndSecurityPages(),
     ...genBatchAndWorkflowPages(),
+    ...genImageToolPages(),
+    ...genConversionQualityPages(),
   ];
 
   // Deduplicate by slug, keeping first occurrence

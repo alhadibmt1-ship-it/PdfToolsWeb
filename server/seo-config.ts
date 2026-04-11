@@ -1095,6 +1095,66 @@ export const seoConfig: Record<string, PageSEO> = {
       "url": `${BASE_URL}/blog/unlock-pdf-remove-password`
     }
   },
+  "/blog/annotate-pdf-comments": {
+    title: "How to Annotate PDF: Add Comments, Highlights, Notes | PDF HUB 24",
+    description: "Learn how to annotate PDF files online free. Add comments, highlights, sticky notes, arrows, and text boxes to any PDF without software.",
+    keywords: "annotate PDF, PDF comments, highlight PDF, PDF sticky notes, PDF markup",
+    schema: { "@context": "https://schema.org", "@type": "Article", "headline": "How to Annotate PDF: Add Comments, Highlights, and Notes", "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }, "datePublished": "2026-03-05", "url": `${BASE_URL}/blog/annotate-pdf-comments` }
+  },
+  "/blog/translate-pdf-documents": {
+    title: "How to Translate a PDF to Any Language Free | PDF HUB 24",
+    description: "Translate PDF documents to Spanish, French, German, Arabic, Chinese, and 100+ languages free. No signup. Download translated PDF instantly.",
+    keywords: "translate PDF, PDF translation, PDF to Spanish, PDF to French, multilingual PDF",
+    schema: { "@context": "https://schema.org", "@type": "Article", "headline": "How to Translate a PDF to Any Language", "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }, "datePublished": "2026-03-08", "url": `${BASE_URL}/blog/translate-pdf-documents` }
+  },
+  "/blog/repair-corrupted-pdf": {
+    title: "How to Repair a Corrupted PDF File Free Online | PDF HUB 24",
+    description: "Fix corrupted, damaged, or unreadable PDF files free online. Repair PDFs that won't open, show errors, or have missing content. No signup.",
+    keywords: "repair PDF, corrupted PDF, damaged PDF, fix PDF, PDF recovery",
+    schema: { "@context": "https://schema.org", "@type": "Article", "headline": "How to Repair a Corrupted or Damaged PDF File", "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }, "datePublished": "2026-03-10", "url": `${BASE_URL}/blog/repair-corrupted-pdf` }
+  },
+  "/blog/pdf-to-powerpoint-guide": {
+    title: "Convert PDF to PowerPoint Free Online (2026) | PDF HUB 24",
+    description: "Convert PDF to PowerPoint (PPT/PPTX) free online. Extract slides, preserve layout and text. No software needed. Download editable presentation instantly.",
+    keywords: "PDF to PowerPoint, PDF to PPT, convert PDF presentation, PDF to PPTX free",
+    schema: { "@context": "https://schema.org", "@type": "Article", "headline": "How to Convert PDF to PowerPoint Free Online", "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }, "datePublished": "2026-03-12", "url": `${BASE_URL}/blog/pdf-to-powerpoint-guide` }
+  },
+  "/blog/jpg-to-pdf-guide": {
+    title: "How to Convert JPG to PDF Free Online (2026) | PDF HUB 24",
+    description: "Convert JPG images to PDF free online. Combine multiple JPG photos into one PDF. No signup, no watermark. Download PDF instantly.",
+    keywords: "JPG to PDF, convert image to PDF, photo to PDF, JPEG to PDF free",
+    schema: { "@context": "https://schema.org", "@type": "Article", "headline": "How to Convert JPG to PDF: Complete Guide", "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }, "datePublished": "2026-03-15", "url": `${BASE_URL}/blog/jpg-to-pdf-guide` }
+  },
+  "/blog/compress-images-online": {
+    title: "How to Compress Images Without Losing Quality (2026) | PDF HUB 24",
+    description: "Compress JPEG, PNG, WebP images free online. Reduce image file size by up to 80% without visible quality loss. No signup, instant download.",
+    keywords: "compress images, reduce image size, image optimizer, compress JPEG PNG free",
+    schema: { "@context": "https://schema.org", "@type": "Article", "headline": "How to Compress Images Without Losing Quality", "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }, "datePublished": "2026-03-18", "url": `${BASE_URL}/blog/compress-images-online` }
+  },
+  "/blog/reorder-pdf-pages": {
+    title: "How to Reorder PDF Pages: Rearrange and Organize | PDF HUB 24",
+    description: "Reorder, rearrange, and reorganize PDF pages free online. Drag and drop pages into any order. No software, no signup. Download instantly.",
+    keywords: "reorder PDF pages, rearrange PDF, organize PDF pages, move PDF pages",
+    schema: { "@context": "https://schema.org", "@type": "Article", "headline": "How to Reorder PDF Pages: Rearrange, Move, and Organize", "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }, "datePublished": "2026-03-20", "url": `${BASE_URL}/blog/reorder-pdf-pages` }
+  },
+  "/blog/remove-background-from-image": {
+    title: "Remove Background from Image Free — Transparent PNG | PDF HUB 24",
+    description: "Remove image backgrounds free online. Get transparent PNG instantly. Works on photos, logos, product images. No signup, no watermark.",
+    keywords: "remove background, transparent PNG, background remover, cut out image free",
+    schema: { "@context": "https://schema.org", "@type": "Article", "headline": "How to Remove Background from Any Image", "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }, "datePublished": "2026-03-22", "url": `${BASE_URL}/blog/remove-background-from-image` }
+  },
+  "/blog/convert-pdf-to-png": {
+    title: "Convert PDF to PNG Free Online — High Quality | PDF HUB 24",
+    description: "Convert PDF pages to high-quality PNG images free online. Extract PDF as transparent PNG with no quality loss. No signup, instant download.",
+    keywords: "PDF to PNG, convert PDF to image, PDF to transparent PNG, extract PDF pages as PNG",
+    schema: { "@context": "https://schema.org", "@type": "Article", "headline": "How to Convert PDF to PNG: High Quality Image Extraction", "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }, "datePublished": "2026-03-25", "url": `${BASE_URL}/blog/convert-pdf-to-png` }
+  },
+  "/blog/excel-to-pdf": {
+    title: "Convert Excel to PDF Free — Spreadsheets & Tables | PDF HUB 24",
+    description: "Convert Excel (XLS/XLSX) to PDF free online. Preserve tables, formatting, and formulas as values. No signup. Works with all Excel versions.",
+    keywords: "Excel to PDF, XLSX to PDF, convert spreadsheet to PDF, Excel PDF converter",
+    schema: { "@context": "https://schema.org", "@type": "Article", "headline": "How to Convert Excel to PDF: Spreadsheets, Tables, and Formatting", "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }, "datePublished": "2026-03-28", "url": `${BASE_URL}/blog/excel-to-pdf` }
+  },
   "/free-pdf-editor": {
     title: "Free PDF Editor Online — 43+ Tools (No Install) | PDF HUB 24",
     description: "Best free PDF editor online. Edit, merge, split, compress, rotate, sign, annotate, and redact PDFs. 43+ tools, no download, no registration needed.",
@@ -2175,6 +2235,16 @@ function generatePreRenderShell(canonicalPath: string): string {
     { href: "/blog/pdf-accessibility-guide", text: "Making PDFs Accessible" },
     { href: "/blog/batch-convert-images-to-pdf", text: "Batch Convert Images to PDF" },
     { href: "/blog/unlock-pdf-remove-password", text: "How to Unlock a PDF" },
+    { href: "/blog/annotate-pdf-comments", text: "How to Annotate PDF" },
+    { href: "/blog/translate-pdf-documents", text: "How to Translate a PDF" },
+    { href: "/blog/repair-corrupted-pdf", text: "How to Repair a Corrupted PDF" },
+    { href: "/blog/pdf-to-powerpoint-guide", text: "PDF to PowerPoint Guide" },
+    { href: "/blog/jpg-to-pdf-guide", text: "How to Convert JPG to PDF" },
+    { href: "/blog/compress-images-online", text: "How to Compress Images" },
+    { href: "/blog/reorder-pdf-pages", text: "How to Reorder PDF Pages" },
+    { href: "/blog/remove-background-from-image", text: "Remove Image Background" },
+    { href: "/blog/convert-pdf-to-png", text: "PDF to PNG Guide" },
+    { href: "/blog/excel-to-pdf", text: "How to Convert Excel to PDF" },
   ];
 
   const lnkStyle = `display:inline-block;padding:0.35rem 0.75rem;background:#f1f5f9;color:#1e40af;text-decoration:none;border-radius:4px;font-size:0.875rem;font-weight:500;margin:0.2rem`;
