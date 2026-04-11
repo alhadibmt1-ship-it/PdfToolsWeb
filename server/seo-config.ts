@@ -2097,38 +2097,150 @@ function generatePreRenderShell(canonicalPath: string): string {
     }
   }
 
-  // Visible "Explore More Tools" section — always appended so Google sees cross-site links on every page
-  const quickToolLinks = [
-    { href: "/merge", text: "Merge PDF" },
-    { href: "/split", text: "Split PDF" },
-    { href: "/compress", text: "Compress PDF" },
-    { href: "/pdf-to-word", text: "PDF to Word" },
-    { href: "/pdf-to-jpg", text: "PDF to JPG" },
-    { href: "/word-to-pdf", text: "Word to PDF" },
-    { href: "/jpg-to-pdf", text: "JPG to PDF" },
-    { href: "/protect-pdf", text: "Protect PDF" },
-    { href: "/sign-pdf", text: "Sign PDF" },
-    { href: "/ocr-pdf", text: "OCR PDF" },
-    { href: "/extract-pages", text: "Extract Pages" },
-    { href: "/delete-pages", text: "Delete Pages" },
-    { href: "/rotate", text: "Rotate PDF" },
-    { href: "/add-watermark", text: "Add Watermark" },
-    { href: "/add-page-numbers", text: "Add Page Numbers" },
-    { href: "/grayscale-pdf", text: "PDF to Grayscale" },
-    { href: "/edit-pdf", text: "Edit PDF" },
-    { href: "/annotate-pdf", text: "Annotate PDF" },
-    { href: "/all-tools", text: "All 49 PDF Tools →" },
-    { href: "/blog", text: "PDF Blog & Guides" },
-  ].filter(l => l.href !== canonicalPath);
+  // Comprehensive internal link sections — visible to crawlers on ALL pages
+  const ALL_TOOLS = [
+    { href: "/pdf-to-word", text: "PDF to Word", cat: "Convert from PDF" },
+    { href: "/pdf-to-jpg", text: "PDF to JPG", cat: "Convert from PDF" },
+    { href: "/pdf-to-png", text: "PDF to PNG", cat: "Convert from PDF" },
+    { href: "/pdf-to-excel", text: "PDF to Excel", cat: "Convert from PDF" },
+    { href: "/pdf-to-ppt", text: "PDF to PowerPoint", cat: "Convert from PDF" },
+    { href: "/word-to-pdf", text: "Word to PDF", cat: "Convert to PDF" },
+    { href: "/jpg-to-pdf", text: "JPG to PDF", cat: "Convert to PDF" },
+    { href: "/png-to-pdf", text: "PNG to PDF", cat: "Convert to PDF" },
+    { href: "/excel-to-pdf", text: "Excel to PDF", cat: "Convert to PDF" },
+    { href: "/ppt-to-pdf", text: "PowerPoint to PDF", cat: "Convert to PDF" },
+    { href: "/html-to-pdf", text: "HTML to PDF", cat: "Convert to PDF" },
+    { href: "/tiff-to-pdf", text: "TIFF to PDF", cat: "Convert to PDF" },
+    { href: "/webp-to-pdf", text: "WebP to PDF", cat: "Convert to PDF" },
+    { href: "/merge", text: "Merge PDF", cat: "Edit PDF" },
+    { href: "/split", text: "Split PDF", cat: "Edit PDF" },
+    { href: "/compress", text: "Compress PDF", cat: "Edit PDF" },
+    { href: "/rotate", text: "Rotate PDF", cat: "Edit PDF" },
+    { href: "/edit-pdf", text: "Edit PDF Text", cat: "Edit PDF" },
+    { href: "/annotate-pdf", text: "Annotate PDF", cat: "Edit PDF" },
+    { href: "/redact-pdf", text: "Redact PDF", cat: "Edit PDF" },
+    { href: "/add-watermark", text: "Add Watermark", cat: "Edit PDF" },
+    { href: "/add-page-numbers", text: "Add Page Numbers", cat: "Edit PDF" },
+    { href: "/extract-pages", text: "Extract Pages", cat: "Edit PDF" },
+    { href: "/delete-pages", text: "Delete Pages", cat: "Edit PDF" },
+    { href: "/reorder-pages", text: "Reorder Pages", cat: "Edit PDF" },
+    { href: "/resize-pdf", text: "Resize PDF", cat: "Edit PDF" },
+    { href: "/crop-pdf", text: "Crop PDF", cat: "Edit PDF" },
+    { href: "/flatten-pdf", text: "Flatten PDF", cat: "Edit PDF" },
+    { href: "/repair-pdf", text: "Repair PDF", cat: "Edit PDF" },
+    { href: "/grayscale-pdf", text: "PDF to Grayscale", cat: "Edit PDF" },
+    { href: "/protect-pdf", text: "Protect PDF", cat: "Secure PDF" },
+    { href: "/unlock-pdf", text: "Unlock PDF", cat: "Secure PDF" },
+    { href: "/sign-pdf", text: "Sign PDF", cat: "Secure PDF" },
+    { href: "/ocr-pdf", text: "OCR PDF", cat: "Utility" },
+    { href: "/translate-pdf", text: "Translate PDF", cat: "Utility" },
+    { href: "/compare-pdf", text: "Compare PDFs", cat: "Utility" },
+    { href: "/batch-compress", text: "Batch Compress", cat: "Utility" },
+    { href: "/scan-to-pdf", text: "Scan to PDF", cat: "Utility" },
+    { href: "/pdf-to-pdfa", text: "PDF to PDF/A", cat: "Utility" },
+    { href: "/compress-img", text: "Compress Image", cat: "Image Tools" },
+    { href: "/resize-image", text: "Resize Image", cat: "Image Tools" },
+    { href: "/crop-image", text: "Crop Image", cat: "Image Tools" },
+    { href: "/convert-image", text: "Convert Image", cat: "Image Tools" },
+    { href: "/rotate-image", text: "Rotate Image", cat: "Image Tools" },
+    { href: "/remove-bg", text: "Remove Background", cat: "Image Tools" },
+    { href: "/jpg-to-png", text: "JPG to PNG", cat: "Image Tools" },
+    { href: "/png-to-jpg", text: "PNG to JPG", cat: "Image Tools" },
+    { href: "/image-to-text", text: "Image to Text", cat: "Image Tools" },
+  ];
 
-  const quickLinkHtml = quickToolLinks.map(l =>
-    `<a href="${escHtml(l.href)}" style="display:inline-block;padding:0.35rem 0.75rem;background:#f1f5f9;color:#1e40af;text-decoration:none;border-radius:4px;font-size:0.875rem;font-weight:500;margin:0.2rem">${escHtml(l.text)}</a>`
-  ).join("");
+  const ALL_BLOGS = [
+    { href: "/blog/how-to-compress-pdf-for-email", text: "How to Compress PDF for Email" },
+    { href: "/blog/convert-pdf-to-word-without-losing-formatting", text: "Convert PDF to Word Without Losing Formatting" },
+    { href: "/blog/merge-pdf-files-guide", text: "How to Merge PDF Files Online for Free" },
+    { href: "/blog/protect-pdf-with-password", text: "How to Password Protect a PDF" },
+    { href: "/blog/pdf-tools-for-students", text: "Essential PDF Tools Every Student Needs" },
+    { href: "/blog/how-to-split-pdf-pages", text: "How to Split PDF Pages" },
+    { href: "/blog/add-page-numbers-to-pdf", text: "How to Add Page Numbers to PDF" },
+    { href: "/blog/convert-images-to-pdf", text: "How to Convert Images to PDF" },
+    { href: "/blog/ocr-scanned-pdf-to-text", text: "OCR PDF: Convert Scanned Documents to Text" },
+    { href: "/blog/rotate-pdf-pages", text: "How to Rotate PDF Pages" },
+    { href: "/blog/sign-pdf-electronically", text: "How to Sign a PDF Electronically" },
+    { href: "/blog/edit-pdf-text-images", text: "How to Edit a PDF" },
+    { href: "/blog/watermark-pdf-documents", text: "How to Add Watermark to PDF" },
+    { href: "/blog/pdf-to-excel-convert-tables", text: "Convert PDF Tables to Excel" },
+    { href: "/blog/redact-sensitive-pdf-information", text: "How to Redact Sensitive Information in PDF" },
+    { href: "/blog/how-to-flatten-pdf", text: "How to Flatten a PDF" },
+    { href: "/blog/crop-pdf-pages-guide", text: "How to Crop PDF Pages" },
+    { href: "/blog/resize-pdf-to-a4", text: "How to Resize PDF to A4" },
+    { href: "/blog/compare-two-pdf-files", text: "How to Compare Two PDF Files" },
+    { href: "/blog/html-to-pdf-conversion", text: "How to Convert HTML to PDF" },
+    { href: "/blog/extract-text-from-pdf", text: "How to Extract Text from PDF" },
+    { href: "/blog/best-free-pdf-tools-2026", text: "Best Free PDF Tools in 2026" },
+    { href: "/blog/pdf-accessibility-guide", text: "Making PDFs Accessible" },
+    { href: "/blog/batch-convert-images-to-pdf", text: "Batch Convert Images to PDF" },
+    { href: "/blog/unlock-pdf-remove-password", text: "How to Unlock a PDF" },
+  ];
 
-  richContent += `<section style="margin:2.5rem 0 1rem;padding:1.5rem;background:#f8fafc;border-radius:8px;text-align:left;max-width:800px;width:100%">
-    <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;color:#0f172a">Explore More Free PDF Tools</h2>
-    <div style="display:flex;flex-wrap:wrap;gap:0.35rem">${quickLinkHtml}</div>
-  </section>`;
+  const lnkStyle = `display:inline-block;padding:0.35rem 0.75rem;background:#f1f5f9;color:#1e40af;text-decoration:none;border-radius:4px;font-size:0.875rem;font-weight:500;margin:0.2rem`;
+
+  if (isHome) {
+    const toolsByCategory: Record<string, typeof ALL_TOOLS> = {};
+    ALL_TOOLS.forEach(t => {
+      if (!toolsByCategory[t.cat]) toolsByCategory[t.cat] = [];
+      toolsByCategory[t.cat].push(t);
+    });
+    let homeToolSections = "";
+    for (const [cat, tools] of Object.entries(toolsByCategory)) {
+      const toolLinks = tools.map(t => `<a href="${escHtml(t.href)}" style="${lnkStyle}">${escHtml(t.text)}</a>`).join("");
+      homeToolSections += `<div style="margin-bottom:1.25rem">
+        <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:0.5rem;color:#334155;text-transform:uppercase;letter-spacing:0.05em">${escHtml(cat)}</h3>
+        <div style="display:flex;flex-wrap:wrap">${toolLinks}</div>
+      </div>`;
+    }
+    const catHubLinks = [
+      { href: "/convert-pdf", text: "Convert PDF Tools" },
+      { href: "/edit-pdf-tools", text: "Edit PDF Tools" },
+      { href: "/compress-pdf-tools", text: "Compress PDF Tools" },
+      { href: "/secure-pdf", text: "Secure PDF Tools" },
+      { href: "/image-tools", text: "Image Tools" },
+    ].map(c => `<a href="${escHtml(c.href)}" style="${lnkStyle}">${escHtml(c.text)}</a>`).join("");
+    const blogLinks = ALL_BLOGS.map(b => `<a href="${escHtml(b.href)}" style="${lnkStyle}">${escHtml(b.text)}</a>`).join("");
+    const footerLinks = [
+      { href: "/all-tools", text: "All PDF Tools" },
+      { href: "/blog", text: "Blog & Guides" },
+      { href: "/about", text: "About Us" },
+      { href: "/contact", text: "Contact" },
+      { href: "/pricing", text: "Pricing" },
+      { href: "/data-security", text: "Data Security" },
+      { href: "/auto-delete", text: "Auto Delete Policy" },
+      { href: "/privacy", text: "Privacy Policy" },
+      { href: "/terms", text: "Terms of Service" },
+      { href: "/write-for-us", text: "Write for Us" },
+      { href: "/embed", text: "Embed Widget" },
+      { href: "/pdf-comparison-chart", text: "PDF Tool Comparison" },
+      { href: "/pdf-file-formats-guide", text: "PDF Formats Guide" },
+    ].map(f => `<a href="${escHtml(f.href)}" style="${lnkStyle}">${escHtml(f.text)}</a>`).join("");
+
+    richContent += `<section style="margin:2.5rem 0 1rem;text-align:left;max-width:900px;width:100%">
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:#0f172a">All Free PDF &amp; Image Tools</h2>
+      ${homeToolSections}
+    </section>
+    <section style="margin:2rem 0;text-align:left;max-width:900px;width:100%">
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:#0f172a">Tool Categories</h2>
+      <div style="display:flex;flex-wrap:wrap">${catHubLinks}</div>
+    </section>
+    <section style="margin:2rem 0;text-align:left;max-width:900px;width:100%">
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:#0f172a">PDF Guides &amp; Tutorials</h2>
+      <div style="display:flex;flex-wrap:wrap">${blogLinks}</div>
+    </section>
+    <nav style="margin:2rem 0;text-align:left;max-width:900px;width:100%">
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:#0f172a">Company</h2>
+      <div style="display:flex;flex-wrap:wrap">${footerLinks}</div>
+    </nav>`;
+  } else {
+    const allToolLinks = ALL_TOOLS.filter(t => t.href !== canonicalPath)
+      .map(t => `<a href="${escHtml(t.href)}" style="${lnkStyle}">${escHtml(t.text)}</a>`).join("");
+    richContent += `<section style="margin:2.5rem 0 1rem;padding:1.5rem;background:#f8fafc;border-radius:8px;text-align:left;max-width:800px;width:100%">
+      <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;color:#0f172a">Explore All Free PDF &amp; Image Tools</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:0.35rem">${allToolLinks}</div>
+    </section>`;
+  }
 
   // Static HTML pre-render — visible to Google on first-wave crawl
   // Small inline script only applies theme colors (no DOM creation)
