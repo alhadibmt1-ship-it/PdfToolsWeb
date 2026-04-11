@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
   Code, Copy, CheckCircle, ArrowRight, ExternalLink, Settings,
-  Monitor, Smartphone, Zap
+  Monitor, Smartphone, Zap, Shield
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
