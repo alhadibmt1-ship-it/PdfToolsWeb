@@ -3349,7 +3349,7 @@ ${urlEntries}
     }
 
     try {
-      const pdfParseLib = await loadPdfParse();
+      const pdfParseLib = await getPdfParse();
       const pdfData = await pdfParseLib(req.file.buffer);
       const rawText: string = pdfData.text || "";
 
@@ -3360,7 +3360,7 @@ ${urlEntries}
       }
 
       // Split into ≤4000-char chunks at sentence boundaries
-      function splitIntoChunks(text: string, maxSize: number): string[] {
+      const splitIntoChunks = (text: string, maxSize: number): string[] => {
         const chunks: string[] = [];
         let i = 0;
         while (i < text.length) {
@@ -3373,9 +3373,9 @@ ${urlEntries}
           i = end;
         }
         return chunks;
-      }
+      };
 
-      async function translateChunk(chunk: string, from: string, to: string): Promise<string> {
+      const translateChunk = async (chunk: string, from: string, to: string): Promise<string> => {
         const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(chunk)}&langpair=${encodeURIComponent(from)}|${encodeURIComponent(to)}`;
         const resp = await fetch(url, { signal: AbortSignal.timeout(30000) });
         if (!resp.ok) throw new Error(`Translation API HTTP ${resp.status}`);
@@ -3384,7 +3384,7 @@ ${urlEntries}
           return data.responseData.translatedText;
         }
         throw new Error(`Translation error: ${data.responseDetails || "Unknown"}`);
-      }
+      };
 
       const chunks = splitIntoChunks(rawText, 4000);
       const translatedChunks: string[] = [];

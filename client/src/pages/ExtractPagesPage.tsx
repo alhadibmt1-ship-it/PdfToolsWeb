@@ -116,7 +116,7 @@ export default function ExtractPagesPage() {
       <Header />
       <main className="flex-1">
         <div className="max-w-2xl mx-auto px-4 py-8 space-y-6">
-          <ToolBreadcrumbs />
+          <ToolBreadcrumbs toolName="Extract PDF Pages" category="edit-pdf" />
           <Link href="/">
             <Button variant="ghost" size="sm" className="gap-1 text-muted-foreground -ml-2">
               <ChevronLeft className="w-4 h-4" /> Back
@@ -143,7 +143,6 @@ export default function ExtractPagesPage() {
                 onFilesSelected={setFiles}
                 acceptedFormats=".pdf"
                 maxFiles={1}
-                maxSizeMB={100}
               />
             )}
 

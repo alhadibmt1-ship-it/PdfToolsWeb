@@ -101,7 +101,7 @@ export default function CategoryHubPage() {
         "position": index + 1,
         "name": tool.name,
         "description": tool.description,
-        "url": `${BASE_URL}${tool.href}`
+        "url": `${BASE_URL}${tool.path}`
       }))
     };
     const script3 = document.createElement("script");
