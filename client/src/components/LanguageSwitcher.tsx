@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Globe, ChevronDown, Check } from "lucide-react";
 import { SUPPORTED_LANGUAGES, getLangFromPath, buildLangPath } from "@/lib/languages";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { resolveToEnglishPath, getTranslatedPath } from "@/lib/translatedSlugs";
 
 export default function LanguageSwitcher() {
   const [open, setOpen] = useState(false);
@@ -24,7 +25,13 @@ export default function LanguageSwitcher() {
     // since Wouter's useLocation() returns a base-relative path
     // inside a WouterRouter with base, causing double-prefix 404s.
     const { basePath } = getLangFromPath(window.location.pathname);
-    const newPath = buildLangPath(code, basePath);
+
+    // Resolve any translated slug to English first, then get the
+    // translated slug for the target language
+    const englishPath = resolveToEnglishPath(basePath);
+    const targetPath = code === "en" ? englishPath : getTranslatedPath(code, englishPath);
+
+    const newPath = buildLangPath(code, targetPath);
     window.location.href = newPath;
   }
 
