@@ -1,11 +1,45 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { PDF_TOOLS } from "@shared/schema";
-import { blogPosts } from "@/data/blogData";
-import { programmaticPages } from "@/data/programmaticSeoData";
 import { ChevronDown, Shield, Lock, Zap, Globe } from "lucide-react";
 import { SiFacebook, SiYoutube } from "react-icons/si";
 import siteLogo from "@assets/generated_images/logo-64.webp";
+
+const FOOTER_BLOG_POSTS = [
+  { slug: "how-to-compress-pdf-for-email", title: "How to Compress PDF for Email" },
+  { slug: "convert-pdf-to-word-without-losing-formatting", title: "Convert PDF to Word Without Losing Formatting" },
+  { slug: "merge-pdf-files-guide", title: "How to Merge PDF Files Online" },
+  { slug: "protect-pdf-with-password", title: "How to Password Protect a PDF" },
+  { slug: "pdf-tools-for-students", title: "Essential PDF Tools for Students" },
+  { slug: "how-to-split-pdf-pages", title: "How to Split PDF Pages" },
+  { slug: "add-page-numbers-to-pdf", title: "How to Add Page Numbers to PDF" },
+  { slug: "convert-images-to-pdf", title: "How to Convert Images to PDF" },
+  { slug: "ocr-scanned-pdf-to-text", title: "OCR: Scanned PDF to Searchable Text" },
+  { slug: "sign-pdf-electronically", title: "How to Sign a PDF Electronically" },
+  { slug: "edit-pdf-text-images", title: "How to Edit a PDF: Text and Images" },
+  { slug: "watermark-pdf-documents", title: "How to Add Watermark to PDF" },
+  { slug: "pdf-to-excel-convert-tables", title: "Convert PDF Tables to Excel" },
+  { slug: "redact-sensitive-pdf-information", title: "How to Redact PDF Information" },
+  { slug: "annotate-pdf-comments", title: "How to Annotate PDF with Comments" },
+];
+
+const FOOTER_HOWTO_GUIDES = [
+  { slug: "compress-pdf-under-100kb", label: "Compress PDF to Under 100KB" },
+  { slug: "merge-pdf-for-visa-application", label: "Merge PDF for Visa Application" },
+  { slug: "convert-scanned-pdf-to-word-editable", label: "Scanned PDF to Editable Word" },
+  { slug: "make-pdf-smaller-for-email", label: "Make PDF Smaller for Email" },
+  { slug: "pdf-to-jpg-high-quality", label: "PDF to High Quality JPG" },
+  { slug: "add-signature-to-pdf-free", label: "Add Signature to PDF Free" },
+  { slug: "compress-pdf-without-losing-quality", label: "Compress PDF Without Losing Quality" },
+  { slug: "split-pdf-by-pages", label: "Split PDF by Page Number" },
+  { slug: "protect-pdf-with-password-free", label: "Protect PDF with Password" },
+  { slug: "add-page-numbers-to-pdf-free", label: "Add Page Numbers to PDF" },
+  { slug: "convert-jpg-to-pdf-free-online", label: "Convert JPG to PDF Free" },
+  { slug: "edit-pdf-text-online-free", label: "Edit PDF Text Online" },
+  { slug: "redact-pdf-black-out-text", label: "Redact PDF Black Out Text" },
+  { slug: "annotate-pdf-highlight-text-free", label: "Annotate & Highlight PDF" },
+  { slug: "rearrange-pdf-pages-free", label: "Rearrange PDF Pages Free" },
+];
 
 interface FooterLinkProps {
   href: string;
@@ -434,14 +468,14 @@ export default function Footer() {
             className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isHowToVisible ? 'max-h-[600px] mt-4' : 'max-h-0'}`}
           >
             <div className="flex flex-wrap gap-x-6 gap-y-2">
-              {programmaticPages.map((page) => (
+              {FOOTER_HOWTO_GUIDES.map((page) => (
                 <FooterLink 
                   key={page.slug} 
                   href={`/tools/${page.slug}`} 
                   testId={`link-footer-guide-${page.slug}`}
                   isVisible={isHowToVisible}
                 >
-                  {page.h1.replace(/ — .*$/, '').replace(/ Free$/, '')}
+                  {page.label}
                 </FooterLink>
               ))}
             </div>
@@ -469,7 +503,7 @@ export default function Footer() {
             className={`overflow-hidden transition-all duration-300 md:overflow-visible ${isBlogVisible ? 'max-h-[600px] mt-4' : 'max-h-0'}`}
           >
             <div className="flex flex-wrap gap-x-6 gap-y-2">
-              {blogPosts.map((post) => (
+              {FOOTER_BLOG_POSTS.map((post) => (
                 <FooterLink 
                   key={post.slug} 
                   href={`/blog/${post.slug}`} 
