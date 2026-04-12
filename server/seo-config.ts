@@ -32,12 +32,7 @@ export const seoConfig: Record<string, PageSEO> = {
       "@type": "WebSite",
       "name": "PDF HUB 24",
       "url": BASE_URL,
-      "description": "Free online PDF tools - 43+ tools for converting, editing, and managing PDF files",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": `${BASE_URL}/search?q={search_term_string}`,
-        "query-input": "required name=search_term_string"
-      }
+      "description": "Free online PDF tools - 43+ tools for converting, editing, and managing PDF files"
     }
   },
   "/merge": {
@@ -1720,7 +1715,6 @@ export function generateMetaTags(path: string): string {
         "url": BASE_URL,
         "logo": { "@type": "ImageObject", "url": `${BASE_URL}/og-image.png`, "width": 1200, "height": 630 },
         "sameAs": [],
-        "contactPoint": { "@type": "ContactPoint", "contactType": "customer support", "url": `${BASE_URL}/contact` },
         "description": "Free online PDF tools — merge, split, compress, convert, and edit PDF files with no signup."
       });
       schemas.push({
