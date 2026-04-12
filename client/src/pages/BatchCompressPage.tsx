@@ -8,7 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useRecentTools } from "@/contexts/RecentToolsContext";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
-import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import EnhancedToolSEOContent from "@/components/LazyEnhancedSEO";
 
 function formatBytes(bytes: number) {
   if (bytes < 1024) return `${bytes} B`;
