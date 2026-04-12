@@ -66,11 +66,11 @@ Key technical features include:
 - **35 blog articles** covering tutorials, guides, and tool roundups with internal linking (25 original + 10 new: annotate-pdf-comments, translate-pdf-documents, repair-corrupted-pdf, pdf-to-powerpoint-guide, jpg-to-pdf-guide, compress-images-online, reorder-pdf-pages, remove-background-from-image, convert-pdf-to-png, excel-to-pdf)
 - **43 tool pages** each with EnhancedToolSEOContent (About, Tutorial, Use Cases, Why Choose, Troubleshooting, Security, FAQs, Internal Links, Blog Links, Workflows)
 - **5 category hub pages** (/convert-pdf, /compress-pdf-tools, /edit-pdf-tools, /secure-pdf, /image-tools) — 800+ word intros, tool listings, FAQs, blog links, structured data
-- **570+ programmatic SEO landing pages** (/tools/:slug) — 19 generators: compress size, compress use-case, compress platform, compress profession, merge count, merge use-case, merge profession, split, split use-case, format conversion, profession tool, country, doc type, industry, watermark/annotate/sign, OCR+security, batch+workflow, image tools (5×8=40), conversion quality (6×5=30)
+- **900+ programmatic SEO landing pages** (/tools/:slug) — 20 generators: compress size, compress use-case, compress platform, compress profession, merge count, merge use-case, merge profession, split, split use-case, format conversion, profession tool, country (45 countries × 3 base types = 135), country tools (45 countries × 6 tool types = 270), doc type, industry, watermark/annotate/sign, OCR+security, batch+workflow, image tools (5×8=40), conversion quality (6×5=30)
 - **Trust pages**: /data-security (security practices), /auto-delete (file deletion policy), /pricing (free vs pro)
 - **Backlink pages**: /write-for-us (guest post guidelines), /embed (iframe widget generator), /pdf-comparison-chart (6-platform comparison), /pdf-file-formats-guide (10-format reference)
 - **Footer**: Organized by category with tool category hub links, company links including pricing/security/write-for-us/embed/comparison/formats, popular tools, utility tools, and blog articles
-- **Sitemap**: 1,759 URLs covering all tools, blogs (35), categories, trust pages, linkable assets, programmatic SEO pages, and international language alternates (13 languages)
+- **Sitemap**: 2,104 URLs covering all tools, blogs (35), categories, trust pages, linkable assets, programmatic SEO pages (including 345 new country-specific tool pages), and international language alternates (13 languages)
 
 ### Data Files
 - `client/src/data/categoryHubData.ts` — 5 category hub configurations with tools, FAQs, blogs
