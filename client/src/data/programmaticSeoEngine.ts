@@ -244,7 +244,7 @@ const EXISTING_SLUGS = new Set([
   "convert-word-to-pdf-free-online","crop-pdf-margins-free-online",
   "delete-pages-from-pdf","edit-pdf-text-online-free","edit-pdf-without-adobe-acrobat",
   "extract-pages-from-pdf","extract-tables-from-pdf-to-spreadsheet",
-  "flatten-pdf-for-printing","grayscale-pdf-free-online","merge-pdf-free-no-limit",
+  "flatten-pdf-for-printing","grayscale-pdf-free-online",
   "ocr-pdf-online-free","pdf-editor-free-without-watermark","pdf-to-excel-free-online",
   "pdf-to-jpg-high-quality","pdf-to-jpg-online-free-high-quality","pdf-to-png-all-pages-free",
   "pdf-to-powerpoint-online-free","pdf-to-word-editable-free","pdf-to-word-for-resume",
