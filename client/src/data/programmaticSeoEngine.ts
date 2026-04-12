@@ -1471,6 +1471,121 @@ function genCountryToolPages(): ProgrammaticPage[] {
         { question: `Is PDF compression free for ${c.demonym}?`, answer: `Yes, completely free. No account needed, no watermarks added, no daily limits. Compress as many PDFs as you need.` },
       ],
     },
+    {
+      id: "edit-pdf",
+      slug: (c: string) => `edit-pdf-${c}`,
+      title: (label: string) => `Edit PDF Free Online in ${label} | PDF HUB 24`,
+      h1: (label: string) => `Edit PDF Online in ${label} — Free PDF Editor`,
+      desc: (label: string, demonym: string) => `Edit PDF files free online in ${label}. Add text, annotations, and signatures. Trusted by ${demonym}. No signup, instant results.`,
+      toolPath: "/edit-pdf",
+      toolName: "Edit PDF",
+      content: (c: { label: string; demonym: string; portal: string }) =>
+        `${c.demonym} regularly need to make quick edits to PDF files — adding text notes, highlighting important sections, inserting comments, or marking up documents before sharing. Our free online PDF editor handles all of these tasks without installing software or creating an account.\n\nThe editor works directly in your browser in ${c.label}. Open any PDF, click to add text annotations, use highlighting tools to mark key sections, and download the edited PDF instantly. All edits are embedded into the PDF file and visible in any standard PDF viewer.\n\nFor documents from ${c.portal} and other ${c.label} sources, our editor handles standard PDFs reliably. Files are processed securely over HTTPS and deleted from our servers within 1 hour — your document content is never stored or accessed by us.`,
+      useCases: (c: { label: string; demonym: string; portal: string }) => [
+        `Adding text annotations to official PDF documents from ${c.portal}`,
+        `Marking up PDF reports and contracts for ${c.label} colleagues`,
+        `Inserting comments and notes into PDF documents in ${c.label}`,
+        `Editing PDF forms and applications for ${c.label} submissions`,
+        `Annotating scanned documents from ${c.label} government offices`,
+      ],
+      faqs: (c: { label: string; demonym: string; portal: string }) => [
+        { question: `Can ${c.demonym} edit PDFs for free online?`, answer: `Yes. Our PDF editor is completely free for ${c.demonym} — no signup, no watermark, and no usage limits.` },
+        { question: `What editing features are available for ${c.label} users?`, answer: `Add text, highlight sections, insert annotations, and draw shapes. All edits are embedded into the PDF and compatible with all standard PDF viewers.` },
+        { question: `Is edited PDF compatible with ${c.portal}?`, answer: `Yes. Our edited PDFs are standard PDF files accepted by all major document portals and email systems used in ${c.label}.` },
+      ],
+    },
+    {
+      id: "jpg-to-pdf",
+      slug: (c: string) => `jpg-to-pdf-${c}`,
+      title: (label: string) => `JPG to PDF Free Online in ${label} | PDF HUB 24`,
+      h1: (label: string) => `Convert JPG to PDF in ${label} — Free Online Tool`,
+      desc: (label: string, demonym: string) => `Convert JPG images to PDF free online in ${label}. Trusted by ${demonym}. Combine multiple images into one PDF. No signup required.`,
+      toolPath: "/jpg-to-pdf",
+      toolName: "JPG to PDF",
+      content: (c: { label: string; demonym: string; portal: string }) =>
+        `Converting JPG images to PDF is one of the most common document tasks for ${c.demonym} — scanning ID cards, photographs, receipts, and handwritten forms into a single PDF document for submission to ${c.portal} or sharing with colleagues.\n\nOur free JPG to PDF converter lets you upload one or multiple JPG images and combine them into a single PDF in seconds. Images are arranged in the order you upload them, and the output PDF maintains the full resolution of your original photos.\n\nThe tool works from any browser in ${c.label} on any device — smartphone, tablet, or desktop. No app download, no account, no watermark. Simply select your images, click Convert, and download your PDF. Files are automatically deleted within 1 hour.`,
+      useCases: (c: { label: string; demonym: string; portal: string }) => [
+        `Converting ID card and passport photos to PDF for ${c.portal} submissions`,
+        `Creating PDF documents from scanned receipts and invoices in ${c.label}`,
+        `Combining multiple JPG images into a single PDF for ${c.label} applications`,
+        `Converting smartphone photos of documents to PDF format in ${c.label}`,
+        `Creating PDF portfolios from JPG images for ${c.label} institutions`,
+      ],
+      faqs: (c: { label: string; demonym: string; portal: string }) => [
+        { question: `Can ${c.demonym} convert JPG to PDF for free?`, answer: `Yes. JPG to PDF conversion is completely free for ${c.demonym} — no signup, no watermark, and no limit on image count.` },
+        { question: `Can I combine multiple JPG images into one PDF in ${c.label}?`, answer: `Yes. Upload multiple JPG images and they will be combined into a single PDF in the order you upload them.` },
+        { question: `Does the JPG to PDF output work with ${c.portal}?`, answer: `Yes. Our PDFs are standard format accepted by all major document portals and submission systems used in ${c.label}.` },
+      ],
+    },
+    {
+      id: "pdf-to-jpg",
+      slug: (c: string) => `pdf-to-jpg-${c}`,
+      title: (label: string) => `PDF to JPG Free Online in ${label} | PDF HUB 24`,
+      h1: (label: string) => `Convert PDF to JPG in ${label} — Free High-Quality Tool`,
+      desc: (label: string, demonym: string) => `Convert PDF to JPG images free online in ${label}. Trusted by ${demonym}. High-resolution output, instant download. No signup.`,
+      toolPath: "/pdf-to-jpg",
+      toolName: "PDF to JPG",
+      content: (c: { label: string; demonym: string; portal: string }) =>
+        `${c.demonym} frequently need to convert PDF pages into JPG images — for sharing on messaging apps, inserting into presentations, uploading to websites, or attaching to email when PDF format isn't accepted.\n\nOur free PDF to JPG converter extracts pages from any PDF as high-resolution JPG images. You can convert a single page or all pages at once. The output images are optimised for clarity and detail, making them suitable for both screen display and printing.\n\nThe tool is fully accessible from ${c.label} with no regional restrictions. Upload your PDF, select the pages or convert all, and download your JPG images. For documents obtained from ${c.portal} or other ${c.label} sources, our converter handles all standard PDF formats reliably.`,
+      useCases: (c: { label: string; demonym: string; portal: string }) => [
+        `Converting PDF pages from ${c.portal} to JPG images for sharing in ${c.label}`,
+        `Extracting PDF content as images for presentations in ${c.label}`,
+        `Converting PDF certificates and documents to JPG for upload portals`,
+        `Sharing PDF pages via WhatsApp and messaging apps commonly used in ${c.label}`,
+        `Converting scanned PDF documents to JPG images for editing in ${c.label}`,
+      ],
+      faqs: (c: { label: string; demonym: string; portal: string }) => [
+        { question: `Can ${c.demonym} convert PDF to JPG for free?`, answer: `Yes. PDF to JPG conversion is completely free for ${c.demonym} — no signup, no watermark, and high-quality output.` },
+        { question: `What resolution are the JPG images output for ${c.label} users?`, answer: `Images are output at high resolution suitable for printing, presentations, and digital sharing. Quality is maintained from the original PDF.` },
+        { question: `Can I convert multiple PDF pages to JPG at once in ${c.label}?`, answer: `Yes. Convert all pages of a PDF to individual JPG images in one operation and download them as a ZIP archive.` },
+      ],
+    },
+    {
+      id: "protect-pdf",
+      slug: (c: string) => `protect-pdf-${c}`,
+      title: (label: string) => `Password Protect PDF Free in ${label} | PDF HUB 24`,
+      h1: (label: string) => `Protect PDF with Password in ${label} — Free Online Tool`,
+      desc: (label: string, demonym: string) => `Add password protection to PDF free online in ${label}. Trusted by ${demonym}. 256-bit AES encryption. No signup required.`,
+      toolPath: "/protect-pdf",
+      toolName: "Protect PDF",
+      content: (c: { label: string; demonym: string; portal: string }) =>
+        `Protecting sensitive PDF documents with a password is essential for ${c.demonym} sharing confidential files — from personal ID documents and bank statements to business contracts and legal filings. Our free PDF password protection tool adds 256-bit AES encryption to any PDF in seconds.\n\nSimply upload your PDF, set your chosen password, and download the protected file. The password-protected PDF requires the correct password to open in any PDF viewer. This is the same encryption standard used by banks and government agencies worldwide, including those in ${c.label}.\n\nFor sensitive documents related to ${c.portal} or other ${c.label} institutions, adding password protection before sharing by email or cloud storage significantly reduces the risk of unauthorised access. The tool is free, instant, and requires no account.`,
+      useCases: (c: { label: string; demonym: string; portal: string }) => [
+        `Password protecting sensitive documents before emailing in ${c.label}`,
+        `Encrypting PDF files containing personal information for ${c.demonym}`,
+        `Securing business contracts and legal documents shared in ${c.label}`,
+        `Protecting confidential reports before sharing via cloud storage in ${c.label}`,
+        `Adding password protection to PDF applications sent to ${c.portal}`,
+      ],
+      faqs: (c: { label: string; demonym: string; portal: string }) => [
+        { question: `Can ${c.demonym} password protect PDFs for free?`, answer: `Yes. PDF password protection is completely free for ${c.demonym} — no signup, no watermark, with 256-bit AES encryption.` },
+        { question: `What encryption level is used for ${c.label} users?`, answer: `256-bit AES encryption — the highest standard available for PDF protection, used by banks and government agencies worldwide.` },
+        { question: `Can I open the protected PDF with ${c.portal} systems?`, answer: `Yes. Password-protected PDFs are standard format compatible with all PDF viewers. The recipient simply needs the password to open the file.` },
+      ],
+    },
+    {
+      id: "rotate-pdf",
+      slug: (c: string) => `rotate-pdf-${c}`,
+      title: (label: string) => `Rotate PDF Free Online in ${label} | PDF HUB 24`,
+      h1: (label: string) => `Rotate PDF Pages in ${label} — Free Online Tool`,
+      desc: (label: string, demonym: string) => `Rotate PDF pages free online in ${label}. Fix sideways or upside-down pages instantly. Trusted by ${demonym}. No signup required.`,
+      toolPath: "/rotate-pdf",
+      toolName: "Rotate PDF",
+      content: (c: { label: string; demonym: string; portal: string }) =>
+        `Scanned documents and PDFs from ${c.portal} sometimes arrive with pages in the wrong orientation — sideways or upside down. Our free PDF rotation tool lets ${c.demonym} fix page orientation instantly without any software installation.\n\nRotate individual pages or all pages at once by 90°, 180°, or 270° in either direction. The corrected orientation is permanently saved into the PDF file, so it displays correctly in all PDF viewers and when printed. This is especially useful for mobile phone scans and documents generated by older scanning equipment.\n\nThe tool is fully accessible from ${c.label} on any browser and any device. Upload your PDF, select the rotation you need, and download the corrected file in seconds. All files are deleted within 1 hour and your documents are never accessed or stored.`,
+      useCases: (c: { label: string; demonym: string; portal: string }) => [
+        `Fixing sideways scanned documents before submitting to ${c.portal}`,
+        `Correcting page orientation in PDFs created by ${c.label} mobile phone scans`,
+        `Rotating upside-down pages in PDF reports and presentations in ${c.label}`,
+        `Fixing orientation of bank statements and official letters in ${c.label}`,
+        `Correcting PDF page rotation before email or cloud sharing in ${c.label}`,
+      ],
+      faqs: (c: { label: string; demonym: string; portal: string }) => [
+        { question: `Can ${c.demonym} rotate PDF pages for free?`, answer: `Yes. PDF page rotation is completely free for ${c.demonym} — no signup, no watermark, and no limit on page count.` },
+        { question: `Can I rotate only specific pages in my PDF in ${c.label}?`, answer: `Yes. Choose to rotate individual pages or apply rotation to all pages at once. Rotate 90°, 180°, or 270° in either direction.` },
+        { question: `Will the rotated PDF work with ${c.portal}?`, answer: `Yes. Rotated PDFs are standard format accepted by all PDF viewers and document portals used in ${c.label}.` },
+      ],
+    },
   ];
 
   for (const t of tools) {
