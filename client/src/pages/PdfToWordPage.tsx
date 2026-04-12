@@ -8,7 +8,7 @@ import CloudImportBar from "@/components/CloudImportBar";
 import ProcessingState from "@/components/ProcessingState";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
-import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import EnhancedToolSEOContent from "@/components/LazyEnhancedSEO";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";

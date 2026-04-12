@@ -8,7 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import EnhancedToolSEOContent from "@/components/LazyEnhancedSEO";
 import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";

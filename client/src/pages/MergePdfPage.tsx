@@ -7,7 +7,7 @@ import FileUploadZone from "@/components/FileUploadZone";
 import CloudImportBar from "@/components/CloudImportBar";
 import ProcessingState from "@/components/ProcessingState";
 import SortablePdfPages from "@/components/SortablePdfPages";
-import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import EnhancedToolSEOContent from "@/components/LazyEnhancedSEO";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import StepIndicator from "@/components/StepIndicator";

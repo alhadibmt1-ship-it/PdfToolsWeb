@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
-import EnhancedToolSEOContent from "@/components/EnhancedToolSEOContent";
+import EnhancedToolSEOContent from "@/components/LazyEnhancedSEO";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { ToolBreadcrumbs } from "@/components/Breadcrumbs";
