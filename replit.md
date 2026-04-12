@@ -70,7 +70,7 @@ Key technical features include:
 - **Trust pages**: /data-security (security practices), /auto-delete (file deletion policy), /pricing (free vs pro)
 - **Backlink pages**: /write-for-us (guest post guidelines), /embed (iframe widget generator), /pdf-comparison-chart (6-platform comparison), /pdf-file-formats-guide (10-format reference)
 - **Footer**: Organized by category with tool category hub links, company links including pricing/security/write-for-us/embed/comparison/formats, popular tools, utility tools, and blog articles
-- **Sitemap**: 2,104 URLs covering all tools, blogs (35), categories, trust pages, linkable assets, programmatic SEO pages (including 345 new country-specific tool pages), and international language alternates (13 languages)
+- **Sitemap**: 2,416 URLs — English static (110) + language-prefixed pages (1,392) + programmatic /tools/ pages (914). All 50+ tool routes, 35 blogs, 5 category hubs, 11 supporting pages now have all 12 language alternates. 345 new country-specific tool pages added.
 
 ### Data Files
 - `client/src/data/categoryHubData.ts` — 5 category hub configurations with tools, FAQs, blogs
