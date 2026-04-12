@@ -95,26 +95,51 @@ const PROFESSIONS = [
 ];
 
 const COUNTRIES = [
-  { slug: "uk",           label: "UK",             demonym: "UK users",      portal: "HMRC, Companies House, and UK government portals" },
-  { slug: "australia",    label: "Australia",       demonym: "Australians",   portal: "myGov, ASIC, and ATO portals" },
-  { slug: "canada",       label: "Canada",          demonym: "Canadians",     portal: "CRA, Service Canada, and provincial portals" },
-  { slug: "usa",          label: "USA",             demonym: "US users",      portal: "IRS, USCIS, and federal government portals" },
-  { slug: "india",        label: "India",           demonym: "Indian users",  portal: "DigiLocker, income tax, and government e-services" },
-  { slug: "germany",      label: "Germany",         demonym: "German users",  portal: "Elster, Bund Online, and Bundesdruckerei portals" },
-  { slug: "france",       label: "France",          demonym: "French users",  portal: "Impots.gouv, Ameli, and French administrative portals" },
-  { slug: "spain",        label: "Spain",           demonym: "Spanish users", portal: "AEAT, Seguridad Social, and Spanish eAdministration" },
-  { slug: "italy",        label: "Italy",           demonym: "Italian users", portal: "Agenzia Entrate, INPS, and Italian PA digital desks" },
-  { slug: "japan",        label: "Japan",           demonym: "Japanese users",portal: "e-Tax, My Number, and Japanese government portals" },
-  { slug: "brazil",       label: "Brazil",          demonym: "Brazilian users",portal: "Receita Federal, Gov.br, and Brazilian federal services" },
-  { slug: "mexico",       label: "Mexico",          demonym: "Mexican users", portal: "SAT, IMSS, and Mexican digital government portals" },
-  { slug: "pakistan",     label: "Pakistan",        demonym: "Pakistani users",portal: "FBR, NADRA, and Pakistani e-government services" },
-  { slug: "uae",          label: "UAE",             demonym: "UAE users",     portal: "UAE PASS, eDNRD, and Federal Authority portals" },
-  { slug: "nigeria",      label: "Nigeria",         demonym: "Nigerian users",portal: "FIRS, CAC, and Nigerian federal e-services" },
-  { slug: "indonesia",    label: "Indonesia",       demonym: "Indonesian users","portal": "DJP Online, SIAK, and Indonesian government portals" },
-  { slug: "turkey",       label: "Turkey",          demonym: "Turkish users", portal: "e-Devlet, GİB, and Turkish digital public services" },
-  { slug: "saudi-arabia", label: "Saudi Arabia",   demonym: "Saudi users",   portal: "Absher, Muqeem, and Saudi digital government portals" },
-  { slug: "south-africa", label: "South Africa",   demonym: "South Africans",portal: "SARS eFiling, Home Affairs, and SA government portals" },
-  { slug: "china",        label: "China",           demonym: "Chinese users", portal: "GSXT, tax bureaus, and Chinese administrative platforms" },
+  { slug: "uk",           label: "UK",             demonym: "UK users",           portal: "HMRC, Companies House, and UK government portals" },
+  { slug: "australia",    label: "Australia",       demonym: "Australians",        portal: "myGov, ASIC, and ATO portals" },
+  { slug: "canada",       label: "Canada",          demonym: "Canadians",          portal: "CRA, Service Canada, and provincial portals" },
+  { slug: "usa",          label: "USA",             demonym: "US users",           portal: "IRS, USCIS, and federal government portals" },
+  { slug: "india",        label: "India",           demonym: "Indian users",       portal: "DigiLocker, income tax, and government e-services" },
+  { slug: "germany",      label: "Germany",         demonym: "German users",       portal: "Elster, Bund Online, and Bundesdruckerei portals" },
+  { slug: "france",       label: "France",          demonym: "French users",       portal: "Impots.gouv, Ameli, and French administrative portals" },
+  { slug: "spain",        label: "Spain",           demonym: "Spanish users",      portal: "AEAT, Seguridad Social, and Spanish eAdministration" },
+  { slug: "italy",        label: "Italy",           demonym: "Italian users",      portal: "Agenzia Entrate, INPS, and Italian PA digital desks" },
+  { slug: "japan",        label: "Japan",           demonym: "Japanese users",     portal: "e-Tax, My Number, and Japanese government portals" },
+  { slug: "brazil",       label: "Brazil",          demonym: "Brazilian users",    portal: "Receita Federal, Gov.br, and Brazilian federal services" },
+  { slug: "mexico",       label: "Mexico",          demonym: "Mexican users",      portal: "SAT, IMSS, and Mexican digital government portals" },
+  { slug: "pakistan",     label: "Pakistan",        demonym: "Pakistani users",    portal: "FBR, NADRA, and Pakistani e-government services" },
+  { slug: "uae",          label: "UAE",             demonym: "UAE users",          portal: "UAE PASS, eDNRD, and Federal Authority portals" },
+  { slug: "nigeria",      label: "Nigeria",         demonym: "Nigerian users",     portal: "FIRS, CAC, and Nigerian federal e-services" },
+  { slug: "indonesia",    label: "Indonesia",       demonym: "Indonesian users",   portal: "DJP Online, SIAK, and Indonesian government portals" },
+  { slug: "turkey",       label: "Turkey",          demonym: "Turkish users",      portal: "e-Devlet, GİB, and Turkish digital public services" },
+  { slug: "saudi-arabia", label: "Saudi Arabia",   demonym: "Saudi users",        portal: "Absher, Muqeem, and Saudi digital government portals" },
+  { slug: "south-africa", label: "South Africa",   demonym: "South Africans",     portal: "SARS eFiling, Home Affairs, and SA government portals" },
+  { slug: "china",        label: "China",           demonym: "Chinese users",      portal: "GSXT, tax bureaus, and Chinese administrative platforms" },
+  { slug: "philippines",  label: "Philippines",     demonym: "Filipino users",     portal: "BIR eFPS, PSA, and Philippine e-government portals" },
+  { slug: "bangladesh",   label: "Bangladesh",      demonym: "Bangladeshi users",  portal: "NBR eTax, BRTA, and Bangladesh e-service portals" },
+  { slug: "sri-lanka",    label: "Sri Lanka",       demonym: "Sri Lankan users",   portal: "IRD Sri Lanka, BRTA, and government e-services" },
+  { slug: "nepal",        label: "Nepal",           demonym: "Nepali users",       portal: "IRD Nepal, DoTM, and national government portals" },
+  { slug: "malaysia",     label: "Malaysia",        demonym: "Malaysian users",    portal: "MyTax, MyEG, and Malaysian government portals" },
+  { slug: "singapore",    label: "Singapore",       demonym: "Singapore users",    portal: "Singpass, IRAS, and Singapore government portals" },
+  { slug: "thailand",     label: "Thailand",        demonym: "Thai users",         portal: "RD Thailand, DLT, and Thai government e-services" },
+  { slug: "vietnam",      label: "Vietnam",         demonym: "Vietnamese users",   portal: "eTax VN, DRVN, and Vietnam e-government portals" },
+  { slug: "egypt",        label: "Egypt",           demonym: "Egyptian users",     portal: "ETA, Nafeza, and Egyptian e-government portals" },
+  { slug: "morocco",      label: "Morocco",         demonym: "Moroccan users",     portal: "DGI, CNSS, and Moroccan e-administration portals" },
+  { slug: "kenya",        label: "Kenya",           demonym: "Kenyan users",       portal: "iTax, eCitizen, and Kenyan government portals" },
+  { slug: "ghana",        label: "Ghana",           demonym: "Ghanaian users",     portal: "GRA, Ghana.gov.gh, and government e-services" },
+  { slug: "ethiopia",     label: "Ethiopia",        demonym: "Ethiopian users",    portal: "ERCA, MoR, and Ethiopian e-government portals" },
+  { slug: "argentina",    label: "Argentina",       demonym: "Argentine users",    portal: "AFIP, ANSES, and Argentine digital government portals" },
+  { slug: "colombia",     label: "Colombia",        demonym: "Colombian users",    portal: "DIAN, Cancillería, and Colombian digital portals" },
+  { slug: "chile",        label: "Chile",           demonym: "Chilean users",      portal: "SII, ChileAtiende, and Chilean e-government portals" },
+  { slug: "peru",         label: "Peru",            demonym: "Peruvian users",     portal: "SUNAT, Gob.pe, and Peruvian government portals" },
+  { slug: "poland",       label: "Poland",          demonym: "Polish users",       portal: "e-Urząd, ZUS PUE, and Polish digital government portals" },
+  { slug: "netherlands",  label: "Netherlands",     demonym: "Dutch users",        portal: "Belastingdienst, DigiD, and Dutch government portals" },
+  { slug: "romania",      label: "Romania",         demonym: "Romanian users",     portal: "ANAF, Romania.gov.ro, and digital government portals" },
+  { slug: "ukraine",      label: "Ukraine",         demonym: "Ukrainian users",    portal: "Diia, tax.gov.ua, and Ukrainian e-government portals" },
+  { slug: "greece",       label: "Greece",          demonym: "Greek users",        portal: "AADE, gov.gr, and Greek digital government portals" },
+  { slug: "portugal",     label: "Portugal",        demonym: "Portuguese users",   portal: "Portal das Finanças, SNS24, and Portuguese e-government" },
+  { slug: "qatar",        label: "Qatar",           demonym: "Qatar users",        portal: "Hukoomi, Metrash2, and Qatar government portals" },
+  { slug: "kuwait",       label: "Kuwait",          demonym: "Kuwait users",       portal: "MOI eServices, PACI, and Kuwait government portals" },
 ];
 
 const DOC_TYPES = [
@@ -1167,6 +1192,170 @@ No software installation, no monthly subscription, and no watermarks on output f
 
 // ─── Main export ──────────────────────────────────────────────────────────────
 
+function genCountryToolPages(): ProgrammaticPage[] {
+  const results: ProgrammaticPage[] = [];
+  const tools = [
+    {
+      id: "merge",
+      slug: (c: string) => `merge-pdf-${c}`,
+      title: (label: string) => `Merge PDF Free Online in ${label} | PDF HUB 24`,
+      h1: (label: string) => `Merge PDF in ${label} — Free Online Tool`,
+      desc: (label: string, demonym: string) => `Merge PDF files free online — trusted by ${demonym}. Combine multiple PDFs into one. No signup, no watermark, instant download.`,
+      toolPath: "/merge",
+      toolName: "Merge PDF",
+      content: (c: { label: string; demonym: string; portal: string }) =>
+        `${c.demonym} regularly need to combine multiple PDF files — from multi-part government applications and multi-page contracts to bundled financial documents. Our free PDF merger lets you upload multiple PDFs, arrange them in any order, and download a single combined file in seconds.\n\nThe tool works directly from any browser in ${c.label} — no app to install, no account to create. Whether you are using a desktop computer, laptop, or mobile phone, the experience is identical. Simply drag and drop your files, order them as needed, and click Merge.\n\nFor ${c.portal}, bundling all required documents into a single PDF is often the most convenient submission format. Our merge tool makes this a one-step process, free for all ${c.demonym}.`,
+      useCases: (c: { label: string; demonym: string; portal: string }) => [
+        `Merging multiple PDF documents for submission to ${c.portal}`,
+        `Combining contracts, invoices, and supporting files into one PDF in ${c.label}`,
+        `Assembling multi-part applications as a single document for ${c.label} authorities`,
+        `Bundling PDF reports for sharing with ${c.label} colleagues and clients`,
+        `Creating unified document packages for ${c.label} regulatory submissions`,
+      ],
+      faqs: (c: { label: string; demonym: string; portal: string }) => [
+        { question: `Can ${c.demonym} merge PDFs for free?`, answer: `Yes. PDF merging is completely free for all ${c.demonym} with no signup, no watermark, and no file count limit.` },
+        { question: `How many PDFs can I merge in ${c.label}?`, answer: `There is no limit on the number of PDFs you can merge. Upload as many files as your document requires.` },
+        { question: `Does the merged PDF work with ${c.portal}?`, answer: `Yes. Our merged PDFs are fully compatible with all major document portals and comply with standard PDF specifications.` },
+      ],
+    },
+    {
+      id: "pdf-to-word",
+      slug: (c: string) => `pdf-to-word-${c}`,
+      title: (label: string) => `PDF to Word Free Online in ${label} | PDF HUB 24`,
+      h1: (label: string) => `Convert PDF to Word in ${label} — Free`,
+      desc: (label: string, demonym: string) => `Convert PDF to editable Word document free online in ${label}. Trusted by ${demonym}. No signup, instant DOCX download.`,
+      toolPath: "/pdf-to-word",
+      toolName: "PDF to Word",
+      content: (c: { label: string; demonym: string; portal: string }) =>
+        `Converting PDF documents to editable Word files is an everyday need for ${c.demonym} — whether editing scanned forms from ${c.portal}, updating contracts, revising academic documents, or repurposing official letters.\n\nOur free PDF to Word converter accurately extracts text, tables, and formatting from any PDF and delivers an editable DOCX file in seconds. The conversion uses intelligent layout analysis to preserve paragraph structure, headings, and table rows as closely as possible.\n\nThe tool is fully accessible in ${c.label} from any browser on any device. No Microsoft Word subscription is required to use the converter — the output DOCX can be opened in any word processor including LibreOffice, Google Docs, and WPS Office.`,
+      useCases: (c: { label: string; demonym: string; portal: string }) => [
+        `Converting official PDF documents from ${c.portal} into editable Word format`,
+        `Editing scanned government forms and certificates in ${c.label}`,
+        `Extracting text from PDF contracts for revision by ${c.label} legal teams`,
+        `Converting PDF academic papers and reports for editing in ${c.label}`,
+        `Repurposing PDF templates from ${c.label} institutions into editable documents`,
+      ],
+      faqs: (c: { label: string; demonym: string; portal: string }) => [
+        { question: `Can ${c.demonym} convert PDF to Word for free?`, answer: `Yes. The PDF to Word converter is completely free for ${c.demonym} — no signup, no watermark, and no file size tricks.` },
+        { question: `Does PDF to Word conversion work for documents from ${c.portal}?`, answer: `Yes. Our converter handles standard PDFs from any source including government portals, banks, and institutions in ${c.label}.` },
+        { question: `What Word format does the conversion produce?`, answer: `The output is a standard DOCX file compatible with Microsoft Word 2010+, LibreOffice, Google Docs, and all modern word processors.` },
+      ],
+    },
+    {
+      id: "sign-pdf",
+      slug: (c: string) => `sign-pdf-${c}`,
+      title: (label: string) => `Sign PDF Free Online in ${label} | PDF HUB 24`,
+      h1: (label: string) => `Sign PDF Online in ${label} — Free Digital Signature`,
+      desc: (label: string, demonym: string) => `Sign PDF documents free online in ${label}. Trusted by ${demonym}. Draw, type, or upload your signature. No signup required.`,
+      toolPath: "/sign-pdf",
+      toolName: "Sign PDF",
+      content: (c: { label: string; demonym: string; portal: string }) =>
+        `${c.demonym} sign contracts, agreements, consent forms, and official documents regularly. Our free online PDF signature tool lets you add a legally recognised handwritten-style signature to any PDF without printing, scanning, or paying for specialised software.\n\nThree signature methods are available: draw your signature with your mouse or finger, type your name and choose a handwriting-style font, or upload an image of your actual signature. The signature is embedded directly into the PDF and is visible in all standard PDF viewers.\n\nFor everyday use in ${c.label} — signing rental agreements, employment contracts, consent forms, or documents submitted to ${c.portal} — this free tool handles everything quickly and securely. Files are deleted within 1 hour.`,
+      useCases: (c: { label: string; demonym: string; portal: string }) => [
+        `Signing contracts and agreements digitally in ${c.label}`,
+        `Adding handwritten signatures to documents for ${c.portal}`,
+        `Signing consent forms, applications, and official letters in ${c.label}`,
+        `Signing rental, employment, and service contracts as a ${c.label} resident`,
+        `Adding digital signatures to PDFs without expensive software in ${c.label}`,
+      ],
+      faqs: (c: { label: string; demonym: string; portal: string }) => [
+        { question: `Can ${c.demonym} sign PDFs for free?`, answer: `Yes. PDF signing is completely free for ${c.demonym} — draw, type, or upload your signature with no account required.` },
+        { question: `Is a digital signature valid in ${c.label}?`, answer: `Electronic signatures are widely accepted for personal and commercial documents. For legally certified signatures on court or regulatory documents, consult a qualified professional in ${c.label}.` },
+        { question: `Does the signature work with ${c.portal}?`, answer: `Yes. Our signed PDFs are standard PDF files accepted by all major document portals and email systems.` },
+      ],
+    },
+    {
+      id: "split-pdf",
+      slug: (c: string) => `split-pdf-${c}`,
+      title: (label: string) => `Split PDF Free Online in ${label} | PDF HUB 24`,
+      h1: (label: string) => `Split PDF Online in ${label} — Extract Any Pages Free`,
+      desc: (label: string, demonym: string) => `Split PDF documents free online in ${label}. Extract specific pages or split by page range. Trusted by ${demonym}. No signup.`,
+      toolPath: "/split",
+      toolName: "Split PDF",
+      content: (c: { label: string; demonym: string; portal: string }) =>
+        `Splitting a PDF is useful whenever you need to share only part of a document — a single section of a report, specific pages from a scanned document, or selected pages from a multi-chapter PDF from ${c.portal}.\n\nOur free PDF splitter lets ${c.demonym} extract any page or range of pages from a PDF document in seconds. Simply upload your PDF, specify the pages you need (e.g., "pages 3-7" or "pages 1, 5, 12"), and download the result as a new, smaller PDF.\n\nThe tool is fully accessible from ${c.label} with no restrictions. Works on desktop and mobile browsers without any software installation. Extracted pages maintain their original quality, formatting, and any embedded content.`,
+      useCases: (c: { label: string; demonym: string; portal: string }) => [
+        `Extracting specific pages from ${c.portal} PDF documents in ${c.label}`,
+        `Splitting large PDF reports into individual sections for ${c.label} colleagues`,
+        `Separating a multi-document scan into individual files in ${c.label}`,
+        `Extracting a single page certificate or form from a larger PDF package`,
+        `Creating a smaller PDF excerpt to share with ${c.label} contacts`,
+      ],
+      faqs: (c: { label: string; demonym: string; portal: string }) => [
+        { question: `Can ${c.demonym} split PDFs for free?`, answer: `Yes. PDF splitting is completely free for all ${c.demonym} — no signup, no watermark, and no page count limit.` },
+        { question: `How do I extract specific pages in ${c.label}?`, answer: `Upload your PDF, type the page numbers or ranges you want to extract (e.g., 1-3, 5, 8-10), and download the new PDF with only those pages.` },
+        { question: `Does splitting reduce the quality of my PDF?`, answer: `No. Splitting only separates pages — it does not compress or alter the quality of text, images, or any other content.` },
+      ],
+    },
+    {
+      id: "convert-pdf",
+      slug: (c: string) => `convert-pdf-${c}`,
+      title: (label: string) => `Convert PDF Free Online in ${label} | PDF HUB 24`,
+      h1: (label: string) => `Convert PDF Online in ${label} — All Formats Free`,
+      desc: (label: string, demonym: string) => `Convert PDF to Word, Excel, JPG, PNG, PowerPoint free online in ${label}. Trusted by ${demonym}. No signup, instant download.`,
+      toolPath: "/convert-pdf",
+      toolName: "PDF Converter",
+      content: (c: { label: string; demonym: string; portal: string }) =>
+        `${c.demonym} frequently need to convert PDFs into different formats — Word for editing, Excel for data extraction, JPG for image sharing, or PNG for high-quality images. Our free PDF conversion suite covers all major formats in one place.\n\nAll conversion tools are accessible from ${c.label} without restriction. Choose from PDF to Word, PDF to Excel, PDF to JPG, PDF to PNG, PDF to PowerPoint, and more. Each converter produces high-quality output that accurately preserves the layout and content of your original PDF.\n\nFor documents from ${c.portal} and other ${c.label} sources, our converters handle standard PDF formats reliably. No software to install, no account to create — just upload, convert, and download.`,
+      useCases: (c: { label: string; demonym: string; portal: string }) => [
+        `Converting PDF documents from ${c.portal} to editable Word or Excel format`,
+        `Converting PDF reports and presentations to JPG or PNG images in ${c.label}`,
+        `Transforming PDF data tables into Excel spreadsheets for ${c.label} businesses`,
+        `Converting PDF slides to PowerPoint for ${c.label} presentations`,
+        `Converting scanned documents from ${c.label} offices to editable text formats`,
+      ],
+      faqs: (c: { label: string; demonym: string; portal: string }) => [
+        { question: `What PDF conversion formats are available for ${c.demonym}?`, answer: `Convert PDF to Word, Excel, JPG, PNG, PowerPoint, and more — all free for ${c.demonym} with no signup or watermark.` },
+        { question: `Does PDF conversion work for ${c.portal} documents?`, answer: `Yes. Our converters handle standard PDFs from all sources including government portals, banks, and institutions in ${c.label}.` },
+        { question: `How long does PDF conversion take in ${c.label}?`, answer: `Most conversions complete in 10-30 seconds. The tool works on all connection speeds including mobile data networks.` },
+      ],
+    },
+    {
+      id: "compress-pdf-online",
+      slug: (c: string) => `compress-pdf-online-${c}`,
+      title: (label: string) => `Compress PDF Online in ${label} — Best Free Tool | PDF HUB 24`,
+      h1: (label: string) => `Best PDF Compressor Online in ${label} — 100% Free`,
+      desc: (label: string, demonym: string) => `Best free PDF compressor online for ${label}. Trusted by ${demonym}. Reduce PDF size by 90% instantly. No signup, no watermark.`,
+      toolPath: "/compress",
+      toolName: "Compress PDF",
+      content: (c: { label: string; demonym: string; portal: string }) =>
+        `The best free PDF compressor online for ${c.label} — no software, no subscription, no watermark. ${c.demonym} use our tool daily to reduce PDF file sizes for email, WhatsApp, government portal uploads, and cloud storage.\n\nChoose from three compression levels: low compression for maximum quality retention, medium compression for the best balance (recommended for ${c.portal} submissions), and high compression for the smallest possible file size. All levels preserve text at full sharpness — only embedded images are reduced.\n\nThe compressor is optimised for speed on all connection types available in ${c.label} including mobile data. Files are processed instantly and deleted within 1 hour of upload. Completely free, with no restrictions on how many PDFs you compress.`,
+      useCases: (c: { label: string; demonym: string; portal: string }) => [
+        `Best free PDF compression for ${c.label} government portal submissions`,
+        `Compressing PDFs for WhatsApp and email sharing in ${c.label}`,
+        `Reducing PDF file size for ${c.portal} upload limits`,
+        `Free PDF compressor for students and professionals in ${c.label}`,
+        `Compressing PDF without watermark online in ${c.label}`,
+      ],
+      faqs: (c: { label: string; demonym: string; portal: string }) => [
+        { question: `What is the best free PDF compressor in ${c.label}?`, answer: `PDF HUB 24 is trusted by thousands of ${c.demonym} for free PDF compression with no signup, no watermark, and no hidden costs.` },
+        { question: `How much can I compress a PDF in ${c.label}?`, answer: `Typically 60-90% file size reduction depending on content. Image-heavy PDFs compress the most; text-only PDFs typically compress 30-60%.` },
+        { question: `Is PDF compression free for ${c.demonym}?`, answer: `Yes, completely free. No account needed, no watermarks added, no daily limits. Compress as many PDFs as you need.` },
+      ],
+    },
+  ];
+
+  for (const t of tools) {
+    for (const c of COUNTRIES) {
+      const slug = t.slug(c.slug);
+      if (!skip(slug)) {
+        results.push({
+          slug,
+          title: t.title(c.label),
+          h1: t.h1(c.label),
+          description: t.desc(c.label, c.demonym),
+          toolName: t.toolName,
+          toolPath: t.toolPath,
+          content: t.content(c),
+          useCases: t.useCases(c),
+          faqs: t.faqs(c),
+        });
+      }
+    }
+  }
+  return results;
+}
+
 function genImageToolPages(): ProgrammaticPage[] {
   const pages: ProgrammaticPage[] = [];
   const tools = [
@@ -1287,6 +1476,7 @@ function buildAllPages(): ProgrammaticPage[] {
     ...genWatermarkAnnotateSignPages(),
     ...genOcrAndSecurityPages(),
     ...genBatchAndWorkflowPages(),
+    ...genCountryToolPages(),
     ...genImageToolPages(),
     ...genConversionQualityPages(),
   ];
