@@ -2,6 +2,7 @@ import { toolSEOData } from "../client/src/data/toolSEOData";
 import { blogPosts } from "../client/src/data/blogData";
 import { getProgrammaticPage } from "../client/src/data/programmaticSeoData";
 import { categoryHubs } from "../client/src/data/categoryHubData";
+import { TOOL_SLUG_TRANSLATIONS, TRANSLATED_TO_ENGLISH } from "../client/src/lib/translatedSlugs";
 
 export interface PageSEO {
   title: string;
@@ -1530,18 +1531,33 @@ export const seoConfig: Record<string, PageSEO> = {
 
 const SUPPORTED_HREFLANG_LANGS = ["en", "es", "ar", "hi", "fr", "pt", "de", "zh", "ja", "id", "ru", "it", "ur"];
 
-function stripLangPrefix(path: string): { lang: string; canonicalPath: string } {
+function stripLangPrefix(path: string): { lang: string; canonicalPath: string; localPath: string } {
   const match = path.match(/^\/(es|ar|hi|fr|pt|de|zh|ja|id|ru|it|ur)(\/.*)?$/);
   if (match) {
-    return { lang: match[1], canonicalPath: match[2] || "/" };
+    const lang = match[1];
+    const rawPath = match[2] || "/";
+    // Resolve translated slug to English path for config lookup
+    const slug = rawPath.replace(/^\//, "");
+    const englishSlug = TRANSLATED_TO_ENGLISH[slug];
+    const canonicalPath = englishSlug ? `/${englishSlug}` : rawPath;
+    return { lang, canonicalPath, localPath: rawPath };
   }
-  return { lang: "en", canonicalPath: path };
+  return { lang: "en", canonicalPath: path, localPath: path };
+}
+
+/** Get the translated slug path for a given language and English tool path */
+function getTranslatedPathForLang(lang: string, englishPath: string): string {
+  const englishSlug = englishPath.replace(/^\//, "");
+  const translated = TOOL_SLUG_TRANSLATIONS[englishSlug]?.[lang];
+  return translated ? `/${translated}` : englishPath;
 }
 
 function generateHreflangTags(canonicalPath: string): string {
   const canonicalUrl = `${BASE_URL}${canonicalPath === "/" ? "" : canonicalPath}`;
   const tags = SUPPORTED_HREFLANG_LANGS.map(lang => {
-    const url = lang === "en" ? canonicalUrl : `${BASE_URL}/${lang}${canonicalPath === "/" ? "" : canonicalPath}`;
+    if (lang === "en") return `<link rel="alternate" hreflang="en" href="${canonicalUrl}" />`;
+    const langPath = getTranslatedPathForLang(lang, canonicalPath);
+    const url = `${BASE_URL}/${lang}${langPath === "/" ? "" : langPath}`;
     return `<link rel="alternate" hreflang="${lang}" href="${url}" />`;
   });
   tags.push(`<link rel="alternate" hreflang="x-default" href="${canonicalUrl}" />`);
@@ -1554,11 +1570,12 @@ function getLangAttribute(lang: string): string {
 }
 
 export function generateMetaTags(path: string): string {
-  const { lang, canonicalPath } = stripLangPrefix(path);
+  const { lang, canonicalPath, localPath } = stripLangPrefix(path);
   const seo = seoConfig[canonicalPath] || seoConfig["/"];
+  // canonical uses the localPath (translated slug) so Google indexes the translated URL
   const canonicalUrl = lang === "en"
     ? `${BASE_URL}${canonicalPath === "/" ? "" : canonicalPath}`
-    : `${BASE_URL}/${lang}${canonicalPath === "/" ? "" : canonicalPath}`;
+    : `${BASE_URL}/${lang}${localPath === "/" ? "" : localPath}`;
   const hreflangTags = generateHreflangTags(canonicalPath);
   const langAttr = getLangAttribute(lang);
 

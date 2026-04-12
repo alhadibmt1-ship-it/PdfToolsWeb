@@ -1,5 +1,5 @@
 import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, type LazyExoticComponent } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -10,6 +10,7 @@ import { RecentToolsProvider } from "@/contexts/RecentToolsContext";
 import { UploadProvider } from "@/contexts/UploadContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { NON_DEFAULT_LANG_CODES } from "@/lib/languages";
+import { TOOL_SLUG_TRANSLATIONS } from "@/lib/translatedSlugs";
 import ScrollToTop from "@/components/ScrollToTop";
 import MobileQuickActions from "@/components/MobileQuickActions";
 import LanguageBanner from "@/components/LanguageBanner";
@@ -96,6 +97,53 @@ const PdfComparisonPage = lazy(() => import("@/pages/PdfComparisonPage"));
 const PdfFileFormatsPage = lazy(() => import("@/pages/PdfFileFormatsPage"));
 const PdfGlossaryPage = lazy(() => import("@/pages/PdfGlossaryPage"));
 const NotFound = lazy(() => import("@/pages/not-found"));
+
+// Map english slug → lazy component (used to register translated slug routes)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const ENGLISH_SLUG_TO_COMPONENT: Record<string, LazyExoticComponent<any>> = {};
+function _initSlugMap() {
+  const m = ENGLISH_SLUG_TO_COMPONENT;
+  m["merge"] = MergePdfPage; m["split"] = SplitPdfPage; m["compress"] = CompressPdfPage;
+  m["pdf-to-jpg"] = PdfToJpgPage; m["jpg-to-pdf"] = JpgToPdfPage;
+  m["pdf-to-word"] = PdfToWordPage; m["word-to-pdf"] = WordToPdfPage;
+  m["pdf-to-png"] = PdfToPngPage; m["png-to-pdf"] = PngToPdfPage;
+  m["pdf-to-excel"] = PdfToExcelPage; m["excel-to-pdf"] = ExcelToPdfPage;
+  m["rotate"] = RotatePdfPage; m["delete-pages"] = DeletePagesPage;
+  m["extract-pages"] = ExtractPagesPage; m["extract-text"] = ExtractTextPage;
+  m["protect-pdf"] = ProtectPdfPage; m["unlock-pdf"] = UnlockPdfPage;
+  m["add-page-numbers"] = AddPageNumbersPage; m["add-watermark"] = AddWatermarkPage;
+  m["reorder-pages"] = ReorderPagesPage; m["html-to-pdf"] = HtmlToPdfPage;
+  m["image-compressor"] = ImageCompressorPage; m["webp-to-pdf"] = WebpToPdfPage;
+  m["crop-pdf"] = CropPdfPage; m["pdf-viewer"] = PdfViewerPage;
+  m["extract-images"] = ExtractImagesPage; m["resize-pdf"] = ResizePdfPage;
+  m["grayscale-pdf"] = GrayscalePdfPage; m["flatten-pdf"] = FlattenPdfPage;
+  m["repair-pdf"] = RepairPdfPage; m["sign-pdf"] = SignPdfPage;
+  m["ocr-pdf"] = OcrPdfPage; m["compare-pdf"] = ComparePdfPage;
+  m["pdf-to-ppt"] = PdfToPptPage; m["ppt-to-pdf"] = PptToPdfPage;
+  m["tiff-to-pdf"] = TiffToPdfPage; m["gif-to-pdf"] = GifToPdfPage;
+  m["edit-pdf"] = EditPdfPage; m["annotate-pdf"] = AnnotatePdfPage;
+  m["redact-pdf"] = RedactPdfPage; m["scan-to-pdf"] = ScanToPdfPage;
+  m["pdf-to-pdfa"] = PdfToAPage; m["batch-compress"] = BatchCompressPage;
+  m["translate-pdf"] = TranslatePdfPage;
+  m["resize-image"] = ResizeImagePage; m["crop-image"] = CropImagePage;
+  m["rotate-image"] = RotateImagePage; m["convert-image"] = ConvertImagePage;
+}
+_initSlugMap();
+
+// Dynamically generate <Route> entries for every translated slug alias
+function TranslatedSlugRoutes() {
+  const routes: JSX.Element[] = [];
+  for (const [englishSlug, langs] of Object.entries(TOOL_SLUG_TRANSLATIONS)) {
+    const Component = ENGLISH_SLUG_TO_COMPONENT[englishSlug];
+    if (!Component) continue;
+    for (const translatedSlug of Object.values(langs)) {
+      if (translatedSlug && translatedSlug !== englishSlug) {
+        routes.push(<Route key={translatedSlug} path={`/${translatedSlug}`} component={Component} />);
+      }
+    }
+  }
+  return <>{routes}</>;
+}
 
 function PageLoader() {
   return (
@@ -197,6 +245,7 @@ function AppRoutes() {
         <Route path="/edit-pdf-tools" component={CategoryHubPage} />
         <Route path="/secure-pdf" component={CategoryHubPage} />
         <Route path="/image-tools" component={CategoryHubPage} />
+        <TranslatedSlugRoutes />
         <Route component={NotFound} />
       </Switch>
     </Suspense>
