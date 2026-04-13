@@ -3,6 +3,22 @@ import { blogPosts } from "../client/src/data/blogData";
 import { getProgrammaticPage } from "../client/src/data/programmaticSeoData";
 import { categoryHubs } from "../client/src/data/categoryHubData";
 import { TOOL_SLUG_TRANSLATIONS, TRANSLATED_TO_ENGLISH } from "../client/src/lib/translatedSlugs";
+import { COUNTRIES, COUNTRY_MAP, TOOL_CONFIGS } from "../client/src/data/countryData";
+
+function detectCountryPage(slug: string): { countryLabel: string; countryHreflang: string; toolPath: string } | null {
+  const sorted = [...COUNTRIES].sort((a, b) => b.slug.length - a.slug.length);
+  for (const country of sorted) {
+    const suffix = "-" + country.slug;
+    if (slug.endsWith(suffix)) {
+      const toolSlug = slug.slice(0, slug.length - suffix.length);
+      const toolConfig = TOOL_CONFIGS[toolSlug];
+      if (toolConfig) {
+        return { countryLabel: country.label, countryHreflang: country.hreflang, toolPath: toolConfig.toolPath };
+      }
+    }
+  }
+  return null;
+}
 
 export interface PageSEO {
   title: string;
@@ -1590,10 +1606,35 @@ export function generateMetaTags(path: string): string {
   const toolId = canonicalPath.replace(/^\//, "");
   const toolData = toolSEOData[toolId as keyof typeof toolSEOData] || null;
 
+  // ── Country page detection ─────────────────────────────────────────────────
+  const countryInfo = progSlugMatch ? detectCountryPage(progSlugMatch[1]) : null;
+  const effectiveCanonicalUrl = countryInfo
+    ? `${BASE_URL}${countryInfo.toolPath === "/" ? "" : countryInfo.toolPath}`
+    : canonicalUrl;
+  const effectiveHreflangBlock = countryInfo
+    ? `\n    <!-- Geo Hreflang for Country-Targeted Page -->\n    <link rel="alternate" hreflang="${countryInfo.countryHreflang}" href="${canonicalUrl}" />\n    <link rel="alternate" hreflang="x-default" href="${effectiveCanonicalUrl}" />`
+    : hreflangBlock;
+
   // ── Override seo title/description from progPage for generated pages ──────
   const effectiveTitle = progPage ? progPage.title : seo.title;
   const effectiveDescription = progPage ? progPage.description : seo.description;
-  const effectiveKeywords = seo.keywords || "";
+
+  // ── Country-specific keywords ─────────────────────────────────────────────
+  const countryKeywords = (() => {
+    if (!countryInfo || !progSlugMatch) return "";
+    const slug = progSlugMatch[1];
+    const suffix = "-" + COUNTRIES.find(c => countryInfo.countryLabel === c.label)?.slug;
+    const toolSlug = suffix ? slug.slice(0, slug.length - suffix.length) : slug;
+    const tc = TOOL_CONFIGS[toolSlug];
+    const n = tc ? tc.name : toolSlug.replace(/-/g, " ");
+    const co = countryInfo.countryLabel;
+    return [
+      `${n} ${co}`, `${n} in ${co}`, `free ${n} ${co}`,
+      `${n} online ${co}`, `${n} for ${co} users`, `best ${n} ${co}`,
+      `${n} ${co} free`, `online ${n} ${co}`, `${n} tool ${co}`,
+    ].join(", ");
+  })();
+  const effectiveKeywords = countryKeywords || seo.keywords || "";
 
   const ogTitle = seo.ogTitle || effectiveTitle;
   const ogDescription = seo.ogDescription || effectiveDescription;
@@ -1687,6 +1728,9 @@ export function generateMetaTags(path: string): string {
   } else if (progPage) {
     // SoftwareApplication + FAQPage for programmatic/long-tail pages
     const pageName = (progPage.title || "").split(" | ")[0];
+    const countrySchema: Record<string, unknown> = countryInfo
+      ? { "areaServed": { "@type": "Country", "name": countryInfo.countryLabel } }
+      : {};
     schemas.push({
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
@@ -1696,7 +1740,8 @@ export function generateMetaTags(path: string): string {
       "applicationCategory": "Utilities",
       "operatingSystem": "Web Browser",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "author": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }
+      "author": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      ...countrySchema
     });
     if (progPage.faqs?.length) {
       schemas.push({
@@ -1768,8 +1813,8 @@ export function generateMetaTags(path: string): string {
     <title>${effectiveTitle}</title>
     <meta name="description" content="${effectiveDescription}" />
     <meta name="keywords" content="${effectiveKeywords}" />
-    <link rel="canonical" href="${canonicalUrl}" />
-    ${hreflangBlock}
+    <link rel="canonical" href="${effectiveCanonicalUrl}" />
+    ${effectiveHreflangBlock}
     
     <!-- Open Graph -->
     <meta property="og:title" content="${ogTitle}" />
