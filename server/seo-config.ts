@@ -1611,9 +1611,9 @@ export function generateMetaTags(path: string): string {
   const effectiveCanonicalUrl = countryInfo
     ? `${BASE_URL}${countryInfo.toolPath === "/" ? "" : countryInfo.toolPath}`
     : canonicalUrl;
-  const effectiveHreflangBlock = countryInfo
-    ? `\n    <!-- Geo Hreflang for Country-Targeted Page -->\n    <link rel="alternate" hreflang="${countryInfo.countryHreflang}" href="${canonicalUrl}" />\n    <link rel="alternate" hreflang="x-default" href="${effectiveCanonicalUrl}" />`
-    : hreflangBlock;
+  // Country pages: NO hreflang (canonical → main tool is sufficient signal for Google)
+  // Language pages: full 13-language hreflang set
+  const effectiveHreflangBlock = countryInfo ? "" : hreflangBlock;
 
   // ── Override seo title/description from progPage for generated pages ──────
   const effectiveTitle = progPage ? progPage.title : seo.title;
