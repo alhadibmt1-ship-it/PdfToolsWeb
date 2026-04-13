@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { Layers, Upload, X, Download, FileText, CheckCircle, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { useRecentTools } from "@/contexts/RecentToolsContext";
+import { useSettings } from "@/contexts/SettingsContext";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import EnhancedToolSEOContent from "@/components/LazyEnhancedSEO";
@@ -19,8 +20,9 @@ function formatBytes(bytes: number) {
 type CompressionLevel = "low" | "medium" | "high";
 
 export default function BatchCompressPage() {
+  const { settings } = useSettings();
   const [files, setFiles] = useState<File[]>([]);
-  const [level, setLevel] = useState<CompressionLevel>("medium");
+  const [level, setLevel] = useState<CompressionLevel>(settings.defaultCompressionLevel);
   const [isCompressing, setIsCompressing] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -74,6 +76,15 @@ export default function BatchCompressPage() {
       setIsCompressing(false);
     }
   };
+
+  useEffect(() => {
+    if (downloadUrl && settings.autoDownload) {
+      const a = document.createElement("a");
+      a.href = downloadUrl;
+      a.download = `compressed_${files.length}_pdfs.zip`;
+      a.click();
+    }
+  }, [downloadUrl, settings.autoDownload, files.length]);
 
   const download = () => {
     if (!downloadUrl) return;

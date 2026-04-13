@@ -15,6 +15,7 @@ import { Slider } from "@/components/ui/slider";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
+import { useSettings } from "@/contexts/SettingsContext";
 
 export default function ImageCompressorPage() {
   useSEO({
@@ -24,8 +25,9 @@ export default function ImageCompressorPage() {
     canonicalPath: "/image-compressor"
   });
 
+  const { settings } = useSettings();
   const [files, setFiles] = useState<File[]>([]);
-  const [quality, setQuality] = useState([80]);
+  const [quality, setQuality] = useState([settings.defaultImageQuality]);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);
   const [originalSize, setOriginalSize] = useState<number>(0);
@@ -73,6 +75,14 @@ export default function ImageCompressorPage() {
         title: "Success!",
         description: "Image compressed successfully",
       });
+
+      if (settings.autoDownload) {
+        const a = document.createElement("a");
+        a.href = url;
+        const ext = files[0]?.name.split('.').pop() || 'jpg';
+        a.download = `compressed.${ext}`;
+        a.click();
+      }
     } catch (error) {
       setStatus("error");
       toast({

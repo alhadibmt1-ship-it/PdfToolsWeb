@@ -1,0 +1,159 @@
+You are an expert SEO engineer and web developer.
+
+Audit and improve my entire website to fix:
+1) Thin content issues
+2) Duplicate content issues
+3) Incorrect mixing of language-based and country-based pages
+
+GOAL:
+Ensure every page is UNIQUE, SEO-optimized, and properly structured so Google does NOT treat pages as duplicates.
+
+--------------------------------------------------
+
+1. DETECT THIN CONTENT
+
+Scan all pages and identify pages with:
+- Less than 150 words of content
+- No meaningful description
+- Only tool UI without SEO text
+
+For each thin page:
+- Add 200–400 words of useful content
+- Include:
+  - What the tool does
+  - How to use it (steps)
+  - Benefits
+- Keep content human-readable (NOT AI spam)
+
+--------------------------------------------------
+
+2. DETECT DUPLICATE CONTENT
+
+Identify pages where:
+- Content is identical or 90% similar
+- Only URL is changed (like -usa, -india, etc.)
+- Same meta title/description reused
+
+For such pages:
+- DO NOT keep identical content
+- Rewrite dynamically using variables:
+  - {Language}
+  - {Country}
+
+Ensure:
+- Title is different
+- Meta description is different
+- First paragraph is different
+
+--------------------------------------------------
+
+3. DO NOT MIX LANGUAGE & COUNTRY STRUCTURE
+
+STRICT RULE:
+
+Language pages:
+✔ /en/tool-name
+✔ /ru/tool-name
+✔ /es/tool-name
+
+Country pages:
+✔ /tools/tool-name-usa
+✔ /tools/tool-name-india
+
+❌ NEVER create:
+- /ru/tool-name-usa
+- /es/tool-name-india
+
+Reason:
+This creates duplicate/confusing signals for Google.
+
+--------------------------------------------------
+
+4. ENFORCE UNIQUE CONTENT PER PAGE
+
+Each page must include:
+
+A. Unique Title:
+Example:
+"Convert JPG to PDF Online in USA – Free Tool"
+
+B. Unique Meta Description:
+Mention country OR language (not both mixed)
+
+C. Unique Intro Paragraph (MANDATORY):
+- 150–200 words
+- Include country OR language naturally (2–3 times max)
+
+D. Shared Content Allowed:
+- Steps
+- Features
+- Tool UI
+
+--------------------------------------------------
+
+5. CANONICAL TAG RULE
+
+- Country pages → canonical to main tool page
+- Language pages → self canonical
+
+Example:
+
+Country page:
+<link rel="canonical" href="https://pdfhub24.com/tools/jpg-to-pdf">
+
+Language page:
+<link rel="canonical" href="https://pdfhub24.com/ru/jpg-to-pdf">
+
+--------------------------------------------------
+
+6. HREFLANG IMPLEMENTATION
+
+Only for LANGUAGE pages (NOT country pages)
+
+Example:
+<link rel="alternate" hreflang="en" href="/en/jpg-to-pdf" />
+<link rel="alternate" hreflang="ru" href="/ru/jpg-to-pdf" />
+
+--------------------------------------------------
+
+7. INTERNAL LINKING FIX
+
+Each page must include:
+- Link to main tool page
+- Link to 2–3 related tools
+
+Example:
+<a href="/tools/jpg-to-pdf">Main Tool</a>
+<a href="/tools/compress-pdf">Compress PDF</a>
+
+--------------------------------------------------
+
+8. REMOVE OR FIX BAD PAGES
+
+If page:
+- Has no content
+- Is duplicate
+- Has no SEO value
+
+Then:
+- Either improve it
+- OR mark noindex
+
+--------------------------------------------------
+
+9. PERFORMANCE RULE
+
+- Use dynamic templates
+- Avoid generating 1000 static duplicate pages
+- Keep pages lightweight
+
+--------------------------------------------------
+
+FINAL RESULT:
+
+- No thin content pages
+- No duplicate pages
+- Clean separation:
+  Language ≠ Country
+- All pages SEO optimized
+- Google-friendly structure

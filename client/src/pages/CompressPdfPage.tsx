@@ -54,6 +54,15 @@ export default function CompressPdfPage() {
     }
   }, [settings.defaultCompressionLevel, hasManuallyChanged]);
 
+  useEffect(() => {
+    if (status === "success" && resultUrl && settings.autoDownload) {
+      const a = document.createElement("a");
+      a.href = resultUrl;
+      a.download = "compressed.pdf";
+      a.click();
+    }
+  }, [status, resultUrl, settings.autoDownload]);
+
   const currentStep = status === "idle" && files.length === 0 ? 1 
     : status === "idle" && files.length > 0 ? 2 
     : status === "processing" ? 2 
