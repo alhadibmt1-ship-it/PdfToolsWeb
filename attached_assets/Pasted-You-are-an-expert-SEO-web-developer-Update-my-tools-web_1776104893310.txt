@@ -1,0 +1,135 @@
+You are an expert SEO web developer.
+
+Update my tools website to create SEO-optimized country-based pages for each tool WITHOUT creating duplicate/thin content issues.
+
+GOAL:
+Create dynamic country pages like:
+/tools/jpg-to-pdf-usa
+/tools/jpg-to-pdf-india
+/tools/jpg-to-pdf-uae
+
+IMPORTANT RULES:
+- Do NOT create identical pages
+- Each page must have slight localized variation
+- Keep performance fast
+- SEO optimized structure
+
+------------------------------------
+
+1. URL HANDLING
+
+Detect country slug from URL.
+
+Example:
+- /tools/jpg-to-pdf-usa → country = USA
+- /tools/jpg-to-pdf-india → country = India
+
+Extract:
+- toolName = jpg-to-pdf
+- countryName = USA
+
+------------------------------------
+
+2. DYNAMIC SEO META TAGS
+
+Generate dynamic meta tags:
+
+<title>
+Convert JPG to PDF Online Free in {Country} – Fast & Secure Tool
+</title>
+
+<meta name="description" content="
+Use this free JPG to PDF converter in {Country}. Fast, secure, and easy to use tool to convert images to PDF online.
+">
+
+------------------------------------
+
+3. H1 + CONTENT VARIATION
+
+<h1>
+Convert JPG to PDF Online in {Country}
+</h1>
+
+Add 150–300 words content:
+
+Example:
+"This free JPG to PDF tool is available for users in {Country}. You can easily convert images into PDF files without installing any software. It works smoothly on mobile and desktop devices in {Country} with fast processing and secure file handling."
+
+Rules:
+- Mention {Country} 2–3 times ONLY
+- Keep natural language
+- No keyword stuffing
+
+------------------------------------
+
+4. ADD GENERIC GLOBAL CONTENT
+
+Below localized intro, add general content:
+
+- How to use tool (steps)
+- Features
+- Benefits
+
+(This remains same for all pages)
+
+------------------------------------
+
+5. INTERNAL LINKING (IMPORTANT)
+
+Add links:
+
+<a href="/tools/jpg-to-pdf">Global Tool</a>
+
+<a href="/tools/jpg-to-pdf-india">India Version</a>
+<a href="/tools/jpg-to-pdf-uk">UK Version</a>
+
+------------------------------------
+
+6. CANONICAL TAG (VERY IMPORTANT)
+
+Set canonical to MAIN page:
+
+<link rel="canonical" href="https://pdfhub24.com/tools/jpg-to-pdf">
+
+------------------------------------
+
+7. HREFLANG IMPLEMENTATION
+
+Add hreflang tags:
+
+<link rel="alternate" hreflang="en-us" href="/tools/jpg-to-pdf-usa" />
+<link rel="alternate" hreflang="en-in" href="/tools/jpg-to-pdf-india" />
+<link rel="alternate" hreflang="x-default" href="/tools/jpg-to-pdf" />
+
+------------------------------------
+
+8. STRUCTURED DATA (SCHEMA)
+
+Add SoftwareApplication schema with dynamic country:
+
+"applicationCategory": "Utility",
+"operatingSystem": "Web",
+"areaServed": "{Country}"
+
+------------------------------------
+
+9. PERFORMANCE RULE
+
+- Do NOT duplicate full HTML pages
+- Use dynamic rendering/template
+- Keep page lightweight
+
+------------------------------------
+
+10. FALLBACK
+
+If no country slug:
+→ Load main global page
+
+------------------------------------
+
+FINAL OUTPUT:
+- Clean dynamic country pages
+- SEO optimized
+- No duplicate penalty
+- Scalable for 100+ countries

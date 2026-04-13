@@ -1,17 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useRoute } from "wouter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight, ChevronDown, ChevronUp, Shield, Zap, CheckCircle,
-  HelpCircle, Target, Upload
+  HelpCircle, Target, Upload, Globe
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 import { getProgrammaticPage, getAllProgrammaticPages } from "@/data/programmaticSeoData";
+import { COUNTRIES, TOOL_CONFIGS } from "@/data/countryData";
 
 const BASE_URL = "https://pdfhub24.com";
+
+function detectCountryInfo(slug: string): { countryLabel: string; toolSlug: string; toolPath: string } | null {
+  const sorted = [...COUNTRIES].sort((a, b) => b.slug.length - a.slug.length);
+  for (const country of sorted) {
+    const suffix = "-" + country.slug;
+    if (slug.endsWith(suffix)) {
+      const toolSlug = slug.slice(0, slug.length - suffix.length);
+      const tc = TOOL_CONFIGS[toolSlug];
+      if (tc) return { countryLabel: country.label, toolSlug, toolPath: tc.toolPath };
+    }
+  }
+  return null;
+}
 
 function FAQItem({ question, answer, isOpen, onClick, id }: { question: string; answer: string; isOpen: boolean; onClick: () => void; id: string }) {
   return (
@@ -40,10 +54,34 @@ export default function ProgrammaticSeoPage() {
   const page = getProgrammaticPage(slug);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
+  const countryInfo = detectCountryInfo(slug);
+
+  const countryKeywords = (() => {
+    if (!countryInfo) return "";
+    const tc = TOOL_CONFIGS[countryInfo.toolSlug];
+    const n = tc ? tc.name : countryInfo.toolSlug.replace(/-/g, " ");
+    const co = countryInfo.countryLabel;
+    return [
+      `${n} ${co}`, `${n} in ${co}`, `free ${n} ${co}`,
+      `${n} online ${co}`, `${n} for ${co} users`, `best ${n} ${co}`,
+      `${n} ${co} free`, `online ${n} ${co}`, `${n} tool ${co}`,
+    ].join(", ");
+  })();
+
+  const siblingCountries = (() => {
+    if (!countryInfo) return [];
+    return COUNTRIES
+      .filter(c => c.label !== countryInfo.countryLabel)
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 8)
+      .map(c => ({ label: c.label, slug: `${countryInfo.toolSlug}-${c.slug}` }));
+  })();
+
   useSEO({
     title: page?.title || "PDF Tool | PDF HUB 24",
     description: page?.description || "",
-    canonicalPath: `/tools/${slug}`,
+    keywords: countryKeywords || undefined,
+    canonicalPath: countryInfo ? countryInfo.toolPath : `/tools/${slug}`,
     structuredData: page ? {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -177,6 +215,31 @@ export default function ProgrammaticSeoPage() {
               ))}
             </div>
           </section>
+
+          {countryInfo && (
+            <section className="mb-10">
+              <h2 className="text-xl font-bold mb-1 flex items-center gap-2">
+                <Globe className="w-5 h-5 text-primary" />
+                Also Available For Other Countries
+              </h2>
+              <p className="text-sm text-muted-foreground mb-4">
+                Use{" "}
+                <Link href={countryInfo.toolPath} className="text-primary underline underline-offset-2">
+                  {TOOL_CONFIGS[countryInfo.toolSlug]?.name || countryInfo.toolSlug.replace(/-/g, " ")}
+                </Link>{" "}
+                tailored for your region.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {siblingCountries.map(c => (
+                  <Link key={c.slug} href={`/tools/${c.slug}`}>
+                    <Button variant="outline" size="sm" data-testid={`link-country-${c.slug}`}>
+                      {c.label}
+                    </Button>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
 
           {relatedPages.length > 0 && (
             <section className="mb-10">
