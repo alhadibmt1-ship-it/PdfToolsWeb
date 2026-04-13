@@ -78,7 +78,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/compress": {
-    title: "Compress PDF Free Online — Reduce Size 90% (Fast) | PDF HUB 24",
+    title: "Compress PDF Free — Reduce PDF Size 90% | PDF HUB 24",
     description: "Compress PDF files and reduce size by up to 90%. Free online PDF compressor — 3 quality levels. Perfect for email under 25MB. No signup required.",
     keywords: "compress PDF, reduce PDF size, PDF compressor, optimize PDF, shrink PDF online free",
     schema: {
@@ -90,7 +90,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/rotate": {
-    title: "Rotate PDF Free Online — Fix Orientation (Instant) | PDF HUB 24",
+    title: "Rotate PDF Free — Fix Orientation Instantly | PDF HUB 24",
     description: "Rotate PDF pages 90°, 180°, or 270° clockwise. Free online PDF rotator — fix orientation issues instantly. No watermarks, no signup required.",
     keywords: "rotate PDF, turn PDF pages, PDF rotator, flip PDF, rotate PDF online free",
     schema: {
@@ -115,7 +115,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/pdf-to-jpg": {
-    title: "PDF to JPG Free Online (High Quality, No Signup) | PDF HUB 24",
+    title: "PDF to JPG Free (High Quality, No Signup) | PDF HUB 24",
     description: "Convert PDF pages to high-quality JPG images instantly. Free PDF to JPG converter — extract all pages as images. No registration, no watermark.",
     keywords: "PDF to JPG, PDF to image, convert PDF to JPG, PDF to JPEG, PDF to JPG online free",
     schema: {
@@ -127,7 +127,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/pdf-to-png": {
-    title: "PDF to PNG Free Online (Transparent, High Quality) | PDF HUB 24",
+    title: "PDF to PNG Free (Transparent, High Quality) | PDF HUB 24",
     description: "Convert PDF pages to high-quality PNG images with transparency. Free PDF to PNG converter — perfect for graphics and presentations. No signup.",
     keywords: "PDF to PNG, convert PDF to PNG, PDF to image, PDF to PNG online free",
     schema: {
@@ -175,7 +175,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/jpg-to-pdf": {
-    title: "JPG to PDF Free Online (Combine Multiple Images) | PDF HUB 24",
+    title: "JPG to PDF Free (Combine Multiple Images) | PDF HUB 24",
     description: "Convert JPG images to PDF in seconds. Free JPG to PDF converter — combine multiple photos into one PDF. No signup, no watermark, high quality.",
     keywords: "JPG to PDF, image to PDF, convert JPG to PDF, JPEG to PDF, JPG to PDF online free",
     schema: {
@@ -199,7 +199,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/excel-to-pdf": {
-    title: "Excel to PDF Free Online (Keeps Tables & Format) | PDF HUB 24",
+    title: "Excel to PDF Free (Keeps Tables & Format) | PDF HUB 24",
     description: "Convert Excel spreadsheets (XLS/XLSX) to PDF in seconds. Free Excel to PDF converter — preserves tables and formatting perfectly. No signup.",
     keywords: "Excel to PDF, XLS to PDF, convert Excel to PDF, XLSX to PDF, Excel to PDF online free",
     schema: {
@@ -223,7 +223,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/protect-pdf": {
-    title: "Protect PDF Free — Add Password (AES-256 Encryption) | PDF HUB 24",
+    title: "Protect PDF Free — AES-256 Encryption | PDF HUB 24",
     description: "Add password protection to PDF files in seconds. Free PDF encryption tool — AES-256 security, set permissions. No signup, no watermark required.",
     keywords: "protect PDF, encrypt PDF, password protect PDF, secure PDF, PDF encryption online free",
     schema: {
@@ -235,7 +235,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/unlock-pdf": {
-    title: "Unlock PDF Free Online (Remove Password Instantly) | PDF HUB 24",
+    title: "Unlock PDF Free (Remove Password Instantly) | PDF HUB 24",
     description: "Remove password protection from PDF files in seconds. Free PDF unlocker — unlock PDFs for editing and printing. Requires your password. No signup.",
     keywords: "unlock PDF, remove PDF password, PDF unlocker, decrypt PDF, unlock PDF online free",
     schema: {
@@ -348,7 +348,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/pdf-to-pdfa": {
-    title: "PDF to PDF/A Converter Free — ISO Archive Format | PDF HUB 24",
+    title: "PDF to PDF/A Free — ISO Archive Format | PDF HUB 24",
     description: "Convert PDF to PDF/A-1b for long-term archiving. Free ISO-compliant PDF/A converter — perfect for legal, government, and official records. No signup.",
     keywords: "PDF to PDF/A, PDF/A converter, PDF archiving, ISO 19005, PDF/A-1b, PDF to PDF/A free online",
     schema: {
@@ -468,7 +468,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/edit-pdf": {
-    title: "Edit PDF Free Online (Add Text, Images & Shapes) | PDF HUB 24",
+    title: "Edit PDF Free (Add Text, Images & Shapes) | PDF HUB 24",
     description: "Edit PDF documents online — add text, images, shapes, and annotations. Free PDF editor with drawing tools. No signup, no watermark required.",
     keywords: "edit PDF, PDF editor, add text to PDF, modify PDF, edit PDF online free",
     schema: {
@@ -480,7 +480,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/annotate-pdf": {
-    title: "Annotate PDF Free (Highlight, Underline & Notes) | PDF HUB 24",
+    title: "Annotate PDF Free — Highlight & Add Notes | PDF HUB 24",
     description: "Annotate PDF documents with highlights, underlines, and notes. Free PDF annotation tool — mark up any PDF. No signup, no watermark required.",
     keywords: "annotate PDF, highlight PDF, PDF markup, PDF annotation, annotate PDF online free",
     schema: {
@@ -492,7 +492,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/redact-pdf": {
-    title: "Redact PDF Free (Permanently Remove Sensitive Info) | PDF HUB 24",
+    title: "Redact PDF Free — Remove Sensitive Info | PDF HUB 24",
     description: "Redact sensitive information from PDF documents. Free PDF redaction tool — permanently black out text and images. No signup, 100% secure.",
     keywords: "redact PDF, black out PDF, censor PDF, PDF redaction, redact PDF online free",
     schema: {
@@ -722,7 +722,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/merge-pdf-files-guide": {
-    title: "Merge PDF Files Free — Combine 2+ PDFs (No Signup) | PDF HUB 24",
+    title: "Merge PDF Files Free — Combine 2+ PDFs | PDF HUB 24",
     description: "Merge multiple PDF files into one document for free. Step-by-step guide to combining PDFs online — drag, drop, reorder pages. No signup or watermark.",
     keywords: "merge PDF files, combine PDF, join PDF, PDF merger guide",
     schema: {
@@ -736,7 +736,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/protect-pdf-with-password": {
-    title: "Password Protect PDF Free (AES-256, Step-by-Step) | PDF HUB 24",
+    title: "Password Protect PDF Free (AES-256 Guide) | PDF HUB 24",
     description: "Add password protection to PDF files with AES-256 encryption. Free step-by-step guide to encrypting PDFs, setting permissions, and securing documents.",
     keywords: "password protect PDF, encrypt PDF, secure PDF, PDF password",
     schema: {
@@ -806,7 +806,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/pdf-to-excel-convert-tables": {
-    title: "PDF to Excel Free — Convert Tables (Keep Format) | PDF HUB 24",
+    title: "PDF to Excel Free — Convert Tables | PDF HUB 24",
     description: "Convert PDF tables to Excel spreadsheets accurately. Extract data to XLS/XLSX while preserving table structure. Free step-by-step guide for 2026.",
     keywords: "PDF to Excel, convert PDF tables, extract data PDF Excel, PDF to spreadsheet",
     schema: {
@@ -820,7 +820,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/redact-sensitive-pdf-information": {
-    title: "Redact PDF Free — Remove Sensitive Info Securely | PDF HUB 24",
+    title: "Redact PDF Free — Remove Sensitive Info | PDF HUB 24",
     description: "Permanently redact sensitive information from PDFs. Black out text, images, and personal data securely. Free step-by-step guide for GDPR and HIPAA.",
     keywords: "redact PDF, black out PDF text, remove sensitive info PDF, PDF redaction free",
     schema: {
@@ -940,7 +940,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/ocr-scanned-pdf-to-text": {
-    title: "OCR PDF Free — Scanned to Searchable Text (Fast) | PDF HUB 24",
+    title: "OCR PDF Free — Scanned to Searchable Text | PDF HUB 24",
     description: "OCR PDF free online. Convert scanned documents to searchable text. Best free OCR tool — extract text from images and scanned pages instantly.",
     keywords: "OCR PDF, scanned PDF to text, optical character recognition, OCR free online",
     schema: {
@@ -954,7 +954,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/rotate-pdf-pages": {
-    title: "Rotate PDF Pages Free — Fix Orientation (90°–270°) | PDF HUB 24",
+    title: "Rotate PDF Pages Free — Fix Orientation | PDF HUB 24",
     description: "Rotate PDF pages free. Fix upside-down or sideways PDFs — rotate 90°, 180°, 270°. Best free PDF rotation tool for all or specific pages.",
     keywords: "rotate PDF pages, fix PDF orientation, rotate PDF free, turn PDF pages",
     schema: {
@@ -982,7 +982,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/crop-pdf-pages-guide": {
-    title: "Crop PDF Pages Free (Remove Margins & Whitespace) | PDF HUB 24",
+    title: "Crop PDF Pages Free (Remove Margins) | PDF HUB 24",
     description: "Crop PDF pages and remove unwanted margins or whitespace in seconds. Free online PDF cropper — no registration, no watermark needed.",
     keywords: "crop PDF, remove PDF margins, trim PDF pages, PDF cropper free online",
     schema: {
@@ -1052,7 +1052,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/best-free-pdf-tools-2026": {
-    title: "12 Best Free PDF Tools Online in 2026 (No Signup) | PDF HUB 24",
+    title: "12 Best Free PDF Tools Online in 2026 | PDF HUB 24",
     description: "Complete guide to the best free online PDF tools in 2026. Convert, edit, merge, compress, sign, and more — no signup, no watermark, 100% free.",
     keywords: "best free PDF tools 2026, free PDF editor online, best PDF converter, free PDF tools",
     schema: {
@@ -1066,7 +1066,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/pdf-accessibility-guide": {
-    title: "PDF Accessibility Guide 2026 — OCR, Tags & ADA Tips | PDF HUB 24",
+    title: "PDF Accessibility Guide 2026 — OCR, Tags & ADA | PDF HUB 24",
     description: "Make PDFs accessible with OCR, text extraction, and proper formatting. Complete guide to ADA-compliant, inclusive PDF documents for 2026.",
     keywords: "PDF accessibility, accessible PDF, OCR PDF, PDF screen reader, ADA PDF compliance",
     schema: {
@@ -1187,7 +1187,7 @@ export const seoConfig: Record<string, PageSEO> = {
     schema: { "@context": "https://schema.org", "@type": "CollectionPage", "name": "Convert PDF Tools", "url": `${BASE_URL}/convert-pdf`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/compress-pdf-tools": {
-    title: "Compress PDF Online Free — Reduce Size Up to 90% | PDF HUB 24",
+    title: "Compress PDF Online Free — Reduce Size 90% | PDF HUB 24",
     description: "Reduce PDF file size by up to 90% without losing quality. Free PDF compressor with 3 compression levels. Perfect for email, upload, and storage.",
     keywords: "compress PDF, reduce PDF size, PDF compressor, shrink PDF, optimize PDF",
     schema: { "@context": "https://schema.org", "@type": "CollectionPage", "name": "Compress PDF Tools", "url": `${BASE_URL}/compress-pdf-tools`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
@@ -1199,7 +1199,7 @@ export const seoConfig: Record<string, PageSEO> = {
     schema: { "@context": "https://schema.org", "@type": "CollectionPage", "name": "Edit PDF Tools", "url": `${BASE_URL}/edit-pdf-tools`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/secure-pdf": {
-    title: "Secure PDF Online Free — Encrypt, Redact & Protect | PDF HUB 24",
+    title: "Secure PDF Free — Encrypt, Redact & Protect | PDF HUB 24",
     description: "Password protect, encrypt, redact, and secure PDF documents free online. AES-256 encryption, permanent redaction, and file privacy tools.",
     keywords: "secure PDF, protect PDF, encrypt PDF, redact PDF, password protect PDF",
     schema: { "@context": "https://schema.org", "@type": "CollectionPage", "name": "Secure PDF Tools", "url": `${BASE_URL}/secure-pdf`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
@@ -1217,7 +1217,7 @@ export const seoConfig: Record<string, PageSEO> = {
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Write for Us", "url": `${BASE_URL}/write-for-us`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/data-security": {
-    title: "Data Security & Privacy — How We Protect Your Files | PDF HUB 24",
+    title: "Data Security & Privacy — How We Protect Files | PDF HUB 24",
     description: "Learn how PDF HUB 24 protects your files. SSL encryption, automatic deletion within 1 hour, zero-access policy, GDPR compliance.",
     keywords: "data security, file privacy, PDF security, GDPR, file encryption, auto delete",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Data Security", "url": `${BASE_URL}/data-security`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
@@ -1285,7 +1285,7 @@ export const seoConfig: Record<string, PageSEO> = {
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "HTML Sitemap", "url": `${BASE_URL}/html-sitemap`, "description": "Complete directory of all pages on PDF HUB 24.", "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/best-free-tools": {
-    title: "Best Free PDF Tools 2026 — No Signup, No Watermarks | PDF HUB 24",
+    title: "Best Free PDF Tools 2026 — No Signup | PDF HUB 24",
     description: "Best free PDF tools of 2026: merge, compress, convert, sign, and edit PDFs online — no signup, no watermarks. Compare vs iLovePDF, Smallpdf, PDF24.",
     keywords: "best free pdf tools, free pdf tools 2026, pdf tools no signup, free pdf merger, best online pdf tools, free pdf converter",
     canonical: `${BASE_URL}/best-free-tools`,
@@ -1613,7 +1613,9 @@ export function generateMetaTags(path: string): string {
     : canonicalUrl;
   // Country pages: NO hreflang (canonical → main tool is sufficient signal for Google)
   // Language pages: full 13-language hreflang set
-  const effectiveHreflangBlock = countryInfo ? "" : hreflangBlock;
+  // ALL /tools/* pages: NO hreflang (country pages and non-country programmatic pages alike
+  // have no language-prefixed equivalents, so hreflang would point to non-existent URLs)
+  const effectiveHreflangBlock = progSlugMatch ? "" : hreflangBlock;
 
   // ── Override seo title/description from progPage for generated pages ──────
   const effectiveTitle = progPage ? progPage.title : seo.title;
