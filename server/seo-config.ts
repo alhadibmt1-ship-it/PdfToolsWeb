@@ -4,6 +4,84 @@ import { getProgrammaticPage } from "../client/src/data/programmaticSeoData";
 import { categoryHubs } from "../client/src/data/categoryHubData";
 import { TOOL_SLUG_TRANSLATIONS, TRANSLATED_TO_ENGLISH } from "../client/src/lib/translatedSlugs";
 import { COUNTRIES, COUNTRY_MAP, TOOL_CONFIGS } from "../client/src/data/countryData";
+import { TOOL_TITLE_TRANSLATIONS } from "../client/src/lib/languages";
+
+// ── Per-language "Free Online" suffix for translated SEO titles ───────────────
+const LANG_FREE_SUFFIX: Record<string, string> = {
+  es: "Gratis en Línea",
+  ar: "مجانًا عبر الإنترنت",
+  hi: "मुफ़्त ऑनलाइन",
+  fr: "Gratuit en Ligne",
+  pt: "Grátis Online",
+  de: "Kostenlos Online",
+  zh: "免费在线",
+  ja: "無料オンライン",
+  id: "Gratis Online",
+  ru: "Бесплатно Онлайн",
+  it: "Gratis Online",
+  ur: "مفت آن لائن",
+};
+
+// ── Per-language short description suffix ─────────────────────────────────────
+const LANG_DESC_SUFFIX: Record<string, string> = {
+  es: "Herramienta gratuita en línea — sin registro, sin marca de agua. Rápido y seguro.",
+  ar: "أداة مجانية عبر الإنترنت — بدون تسجيل، بدون علامة مائية. سريعة وآمنة.",
+  hi: "मुफ़्त ऑनलाइन टूल — बिना साइनअप, बिना वॉटरमार्क। तेज़ और सुरक्षित।",
+  fr: "Outil gratuit en ligne — sans inscription, sans filigrane. Rapide et sécurisé.",
+  pt: "Ferramenta gratuita online — sem registro, sem marca d'água. Rápido e seguro.",
+  de: "Kostenloses Online-Tool — ohne Registrierung, ohne Wasserzeichen. Schnell und sicher.",
+  zh: "免费在线工具 — 无需注册，无水印。快速安全。",
+  ja: "無料オンラインツール — 登録不要、透かしなし。高速・安全。",
+  id: "Alat gratis online — tanpa pendaftaran, tanpa watermark. Cepat dan aman.",
+  ru: "Бесплатный онлайн-инструмент — без регистрации, без водяных знаков. Быстро и безопасно.",
+  it: "Strumento gratuito online — senza registrazione, senza filigrana. Veloce e sicuro.",
+  ur: "مفت آن لائن ٹول — بغیر رجسٹریشن، بغیر واٹر مارک۔ تیز اور محفوظ۔",
+};
+
+// ── Canonical path → TOOL_TITLE_TRANSLATIONS key ─────────────────────────────
+const PATH_TO_TOOL_KEY: Record<string, string> = {
+  "/merge":            "merge",
+  "/split":            "split",
+  "/compress":         "compress",
+  "/pdf-to-word":      "pdf-to-word",
+  "/pdf-to-jpg":       "pdf-to-jpg",
+  "/pdf-to-png":       "pdf-to-png",
+  "/pdf-to-excel":     "pdf-to-excel",
+  "/pdf-to-ppt":       "pdf-to-ppt",
+  "/jpg-to-pdf":       "jpg-to-pdf",
+  "/png-to-pdf":       "png-to-pdf",
+  "/word-to-pdf":      "word-to-pdf",
+  "/excel-to-pdf":     "excel-to-pdf",
+  "/ppt-to-pdf":       "ppt-to-pdf",
+  "/protect-pdf":      "protect",
+  "/unlock-pdf":       "unlock",
+  "/sign-pdf":         "sign",
+  "/rotate":           "rotate",
+  "/add-watermark":    "watermark",
+  "/grayscale-pdf":    "grayscale",
+  "/ocr-pdf":          "ocr-pdf",
+  "/image-compressor": "image-compressor",
+  "/resize-image":     "image-resize",
+  "/crop-image":       "image-crop",
+  "/convert-image":    "image-convert",
+  "/edit-pdf":         "edit-pdf",
+  "/annotate-pdf":     "annotate",
+  "/redact-pdf":       "redact",
+  "/add-page-numbers": "add-page-numbers",
+  "/delete-pages":     "remove-pages",
+  "/extract-pages":    "extract-pages",
+  "/reorder-pages":    "reorder-pages",
+  "/translate-pdf":    "translate-pdf",
+  "/batch-compress":   "batch-compress",
+  "/scan-to-pdf":      "scan-to-pdf",
+  "/pdf-to-pdfa":      "pdf-to-pdfa",
+  "/crop-pdf":         "crop-pdf",
+  "/flatten-pdf":      "flatten-pdf",
+  "/compress-img":     "compress-img",
+  "/compare-pdf":      "edit-pdf",
+  "/pdf-viewer":       "edit-pdf",
+  "/repair-pdf":       "edit-pdf",
+};
 
 function detectCountryPage(slug: string): { countryLabel: string; countryHreflang: string; toolPath: string } | null {
   const sorted = [...COUNTRIES].sort((a, b) => b.slug.length - a.slug.length);
@@ -1618,8 +1696,24 @@ export function generateMetaTags(path: string): string {
   const effectiveHreflangBlock = progSlugMatch ? "" : hreflangBlock;
 
   // ── Override seo title/description from progPage for generated pages ──────
-  const effectiveTitle = progPage ? progPage.title : seo.title;
-  const effectiveDescription = progPage ? progPage.description : seo.description;
+  let effectiveTitle = progPage ? progPage.title : seo.title;
+  let effectiveDescription = progPage ? progPage.description : seo.description;
+
+  // ── Translate title + description for language pages ──────────────────────
+  // All 1,380 language pages get native-language meta tags so Google serves
+  // the correct language in SERPs (e.g. /es/compress → Spanish title/desc)
+  if (lang !== "en" && !progSlugMatch) {
+    const toolKey = PATH_TO_TOOL_KEY[canonicalPath];
+    const translatedName = toolKey
+      ? (TOOL_TITLE_TRANSLATIONS[toolKey] as Record<string, string>)?.[lang]
+      : null;
+    if (translatedName) {
+      const freeSuffix = LANG_FREE_SUFFIX[lang] || "Free Online";
+      const descSuffix = LANG_DESC_SUFFIX[lang];
+      effectiveTitle = `${translatedName} ${freeSuffix} | PDF HUB 24`;
+      if (descSuffix) effectiveDescription = `${translatedName} — ${descSuffix}`;
+    }
+  }
 
   // ── Country-specific keywords ─────────────────────────────────────────────
   const countryKeywords = (() => {
