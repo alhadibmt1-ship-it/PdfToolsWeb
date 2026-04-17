@@ -40,7 +40,9 @@ Key technical features include:
 - **Components**: `client/src/components/LanguageSwitcher.tsx` (Globe dropdown, desktop + mobile), `client/src/components/LanguageBanner.tsx` (browser language detection with sessionStorage dismissal)
 - **Routing**: `client/src/App.tsx` uses `WouterRouter` with `base={/lang}` for non-English paths; English uses root router
 - **Server-side**: `server/seo-config.ts` `stripLangPrefix()` strips lang prefix before config lookup; `generateMetaTags()` uses **self-canonical** for language pages (lang !== "en" → canonical = `/${lang}${canonicalPath}`); `injectSEO()` sets `html lang/dir` (RTL for both Arabic AND Urdu) and injects 13 hreflang tags per page
-- **Sitemap**: `client/public/sitemap.xml` — 1,131 URLs covering all 49 tools, 25 blogs, 5 category hubs, 40 programmatic pages, misc pages, + 12 language sections (49 tools + 25 blogs per language). Language homepages use no trailing slash (e.g., `/es` not `/es/`). All tool URLs match App.tsx routes (sign-pdf, protect-pdf, unlock-pdf, add-watermark, grayscale-pdf).
+- **Sitemap**: `client/public/sitemap.xml` — 4,053 URLs (Google-clean). Removed 338 duplicate/low-value URLs: 138 utility pages under language prefixes, 1 /html-sitemap, 170 compress-pdf-online-{country} variants (301→ compress-pdf-{country}), 32 compress-pdf-under-*/reduce-pdf-size-to-* variants (301→ compress-pdf-to-*). Language homepages use no trailing slash (e.g., `/es` not `/es/`).
+- **robots.txt**: Disallows /api/, /seo-audit, /html-sitemap. Allows all other pages.
+- **301 redirect middleware** (server/app.ts): Three redirect layers — (1) Latin lang English slugs → translated slugs, (2) size variant duplicates → primary, (3) online-country → direct-country.
 
 ## SEO Architecture
 - **Server-side meta tags**: `server/seo-config.ts` provides unique title, description, keywords, canonical, OG, Twitter, and robots tags for every page. `injectSEO()` strips existing tags and reinjects correct ones.
