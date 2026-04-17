@@ -10,6 +10,7 @@ import express, {
 import rateLimit from "express-rate-limit";
 
 import { registerRoutes } from "./routes";
+import { TOOL_SLUG_TRANSLATIONS } from "../client/src/lib/translatedSlugs";
 
 export function log(message: string, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {
@@ -128,6 +129,21 @@ app.use((req, res, next) => {
   } else {
     next();
   }
+});
+
+// 301 redirect English slugs under Latin-script language prefixes to translated slugs
+// e.g. /es/compress → /es/comprimir-pdf, /de/merge → /de/pdf-zusammenfuehren
+const LATIN_LANGS = new Set(['es', 'fr', 'pt', 'de', 'it', 'id']);
+app.use((req, res, next) => {
+  const parts = req.path.split('/').filter(Boolean);
+  if (parts.length === 2 && LATIN_LANGS.has(parts[0])) {
+    const [lang, slug] = parts;
+    const translatedSlug = TOOL_SLUG_TRANSLATIONS[slug]?.[lang];
+    if (translatedSlug && translatedSlug !== slug) {
+      return res.redirect(301, `/${lang}/${translatedSlug}`);
+    }
+  }
+  next();
 });
 
 declare module 'http' {
