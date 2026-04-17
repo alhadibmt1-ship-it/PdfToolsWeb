@@ -1553,6 +1553,7 @@ export const seoConfig: Record<string, PageSEO> = {
     title: "HTML Sitemap — All PDF Tools & Pages | PDF HUB 24",
     description: "Complete HTML sitemap for PDF HUB 24. Find all 49 PDF tools, 25 blog articles, category hubs, and information pages in one organized directory.",
     keywords: "sitemap, pdf tools list, all pdf tools, site map, pdf hub 24 pages",
+    robots: "noindex, nofollow",
     canonical: `${BASE_URL}/html-sitemap`,
     ogTitle: "HTML Sitemap — All PDF Tools & Pages | PDF HUB 24",
     ogDescription: "Navigate all 49 PDF tools, 25 blog articles, and information pages on PDF HUB 24.",
