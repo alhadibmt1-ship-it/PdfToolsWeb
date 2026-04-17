@@ -15,6 +15,8 @@ import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
 import { useRecentTools } from "@/contexts/RecentToolsContext";
 import SuccessCelebration from "@/components/SuccessCelebration";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 export default function PptToPdfPage() {
   useSEO({
@@ -23,6 +25,11 @@ export default function PptToPdfPage() {
     keywords: "powerpoint to pdf free, ppt to pdf, pptx to pdf free, convert slides to pdf, presentation to pdf free",
     canonicalPath: "/ppt-to-pdf"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("powerpoint-to-pdf", lang, getToolSEOData("powerpoint-to-pdf")?.longTailH1 || "PowerPoint to PDF");
+  const toolDesc = getToolDesc("powerpoint-to-pdf", lang, "Convert your PowerPoint presentations (PPT/PPTX) to PDF format. Perfect for sharing slides as documents.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
@@ -99,14 +106,14 @@ export default function PptToPdfPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("powerpoint-to-pdf")?.longTailH1 || "PowerPoint to PDF"}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{toolTitle}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Convert your PowerPoint presentations (PPT/PPTX) to PDF format. Perfect for sharing slides as documents.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

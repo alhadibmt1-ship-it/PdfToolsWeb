@@ -15,6 +15,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 export default function ConvertImagePage() {
   useSEO({
@@ -23,6 +25,11 @@ export default function ConvertImagePage() {
     keywords: "convert image free, image converter online, jpg to png free, png to jpg, webp to jpg, change image format free",
     canonicalPath: "/convert-image"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("convert-image", lang, getToolSEOData("convert-image")?.longTailH1 || "Convert Image");
+  const toolDesc = getToolDesc("convert-image", lang, "Convert images between JPG, PNG, WebP, GIF, BMP, and TIFF formats with adjustable quality.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [outputFormat, setOutputFormat] = useState<string>("png");
@@ -106,14 +113,14 @@ export default function ConvertImagePage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("convert-image")?.longTailH1 || "Convert Image"}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{toolTitle}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Convert images between JPG, PNG, WebP, GIF, BMP, and TIFF formats with adjustable quality.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

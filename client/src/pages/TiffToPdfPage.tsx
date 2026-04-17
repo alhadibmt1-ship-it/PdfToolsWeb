@@ -15,6 +15,8 @@ import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
 import { useRecentTools } from "@/contexts/RecentToolsContext";
 import SuccessCelebration from "@/components/SuccessCelebration";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 export default function TiffToPdfPage() {
   useSEO({
@@ -23,6 +25,11 @@ export default function TiffToPdfPage() {
     keywords: "tiff to pdf free, convert tiff to pdf, tif to pdf free, tiff to pdf converter free, image to pdf",
     canonicalPath: "/tiff-to-pdf"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("tiff-to-pdf", lang, getToolSEOData("tiff-to-pdf")?.longTailH1 || "TIFF to PDF");
+  const toolDesc = getToolDesc("tiff-to-pdf", lang, "Convert TIFF images to PDF documents. Upload multiple TIFF files to combine them into a single PDF.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
@@ -101,14 +108,14 @@ export default function TiffToPdfPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("tiff-to-pdf")?.longTailH1 || "TIFF to PDF"}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{toolTitle}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Convert TIFF images to PDF documents. Upload multiple TIFF files to combine them into a single PDF.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

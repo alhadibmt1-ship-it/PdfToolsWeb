@@ -58,7 +58,7 @@ export default function TrustBadges({ variant = "inline", className }: TrustBadg
             </div>
             <div>
               <div className="font-semibold text-sm">{t(lang, "gdprCompliant")}</div>
-              <div className="text-xs text-muted-foreground">EU Privacy Law</div>
+              <div className="text-xs text-muted-foreground">{t(lang, "euPrivacyLaw")}</div>
             </div>
           </div>
           <div className="flex items-center gap-2.5" data-testid="trust-badge-noreg">
@@ -67,7 +67,7 @@ export default function TrustBadges({ variant = "inline", className }: TrustBadg
             </div>
             <div>
               <div className="font-semibold text-sm">{t(lang, "noRegistration")}</div>
-              <div className="text-xs text-muted-foreground">No account needed</div>
+              <div className="text-xs text-muted-foreground">{t(lang, "noAccountNeeded")}</div>
             </div>
           </div>
         </div>

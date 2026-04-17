@@ -15,6 +15,8 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 export default function UnlockPdfPage() {
   useSEO({
@@ -23,6 +25,11 @@ export default function UnlockPdfPage() {
     keywords: "unlock pdf free, remove pdf password, pdf unlocker free, decrypt pdf, remove password from pdf, unlock protected pdf",
     canonicalPath: "/unlock-pdf"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("unlock-pdf", lang, getToolSEOData("unlock-pdf")?.longTailH1 || "Unlock PDF");
+  const toolDesc = getToolDesc("unlock-pdf", lang, "Remove password protection from your PDF file when you know the password.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [password, setPassword] = useState("");
@@ -107,14 +114,14 @@ export default function UnlockPdfPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("unlock-pdf")?.longTailH1 || "Unlock PDF"}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{toolTitle}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Remove password protection from your PDF file when you know the password.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

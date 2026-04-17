@@ -15,6 +15,8 @@ import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
 import { useRecentTools } from "@/contexts/RecentToolsContext";
 import SuccessCelebration from "@/components/SuccessCelebration";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 export default function PdfToPptPage() {
   useSEO({
@@ -23,6 +25,11 @@ export default function PdfToPptPage() {
     keywords: "pdf to powerpoint free, convert pdf to ppt, pdf to pptx free, pdf to slides, pdf to presentation free, pdf to ppt converter free",
     canonicalPath: "/pdf-to-ppt"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("pdf-to-powerpoint", lang, getToolSEOData("pdf-to-powerpoint")?.longTailH1 || "PDF to PowerPoint");
+  const toolDesc = getToolDesc("pdf-to-powerpoint", lang, "Convert your PDF document to an editable PowerPoint (PPTX) presentation. Perfect for creating slides from PDF content.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
@@ -99,14 +106,14 @@ export default function PdfToPptPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("pdf-to-powerpoint")?.longTailH1 || "PDF to PowerPoint"}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{toolTitle}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Convert your PDF document to an editable PowerPoint (PPTX) presentation. Perfect for creating slides from PDF content.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

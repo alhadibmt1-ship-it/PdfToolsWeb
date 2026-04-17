@@ -20,6 +20,8 @@ import { useToast } from "@/hooks/use-toast";
 import { useSettings } from "@/contexts/SettingsContext";
 import { useRecentTools } from "@/contexts/RecentToolsContext";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 import type { CompressionLevel } from "@shared/schema";
 import { useSEO } from "@/hooks/useSEO";
 
@@ -31,6 +33,7 @@ export default function CompressPdfPage() {
     canonicalPath: "/compress"
   });
 
+  const { lang } = useLanguage();
   const { settings } = useSettings();
   const { addRecentTool } = useRecentTools();
   const [files, setFiles] = useState<File[]>([]);
@@ -43,6 +46,9 @@ export default function CompressPdfPage() {
   const [showCelebration, setShowCelebration] = useState(false);
   const { toast } = useToast();
   const { progress, runWithProgress } = useConversionProgress();
+
+  const toolTitle = getToolTitle("compress", lang, getToolSEOData("compress")?.longTailH1 || "Compress PDF");
+  const toolDesc = getToolDesc("compress", lang, "Reduce your PDF file size while maintaining quality. Choose your compression level based on your needs.");
 
   useEffect(() => {
     addRecentTool("compress");
@@ -151,16 +157,16 @@ export default function CompressPdfPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-4 sm:mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" aria-hidden="true" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="text-center mb-6 sm:mb-8">
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 tracking-tight">
-              {getToolSEOData("compress")?.longTailH1 || "Compress PDF"}
+              {toolTitle}
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto mb-5">
-              Reduce your PDF file size while maintaining quality. Choose your compression level based on your needs.
+              {toolDesc}
             </p>
             <TrustBadges variant="prominent" className="max-w-2xl mx-auto" />
           </div>
@@ -175,7 +181,7 @@ export default function CompressPdfPage() {
                   acceptedFormats=".pdf"
                   multiple={false}
                   disabled={status === "processing"}
-                  toolName="Compress PDF"
+                  toolName={t(lang, "compressPdfBtn")}
                 />
                 <CloudImportBar
                   accept="pdf"
@@ -188,8 +194,8 @@ export default function CompressPdfPage() {
               <Link href="/batch-compress">
                 <div className="flex items-center justify-between gap-3 p-3 rounded-lg bg-muted/40 border border-border/50 cursor-pointer hover:bg-muted/70 transition-colors" data-testid="link-batch-compress-tip">
                   <span className="text-sm text-muted-foreground">
-                    <span className="font-medium text-foreground">Need to compress multiple PDFs at once?</span>
-                    {" "}Try Batch Compress — process up to 20 files, download as ZIP.
+                    <span className="font-medium text-foreground">{t(lang, "batchCompressTip")}</span>
+                    {" "}{t(lang, "tryBatchCompress")} — process up to 20 files, download as ZIP.
                   </span>
                   <span className="text-xs font-semibold text-primary whitespace-nowrap shrink-0">Try it →</span>
                 </div>
@@ -199,8 +205,8 @@ export default function CompressPdfPage() {
             {files.length > 0 && status === "idle" && (
               <Card className="p-5 sm:p-6 space-y-5">
                 <div>
-                  <h3 className="font-semibold text-lg mb-1">Choose Compression Level</h3>
-                  <p className="text-sm text-muted-foreground">Select the level that best fits your needs</p>
+                  <h3 className="font-semibold text-lg mb-1">{t(lang, "compressionLevelTitle")}</h3>
+                  <p className="text-sm text-muted-foreground">{t(lang, "compressionLevelDesc")}</p>
                 </div>
                 
                 <RadioGroup 
@@ -217,11 +223,11 @@ export default function CompressPdfPage() {
                   >
                     <RadioGroupItem value="low" id="low" data-testid="radio-low" className="mt-0.5" />
                     <div className="flex-1">
-                      <div className="font-medium">Low Compression</div>
-                      <div className="text-sm text-muted-foreground">Best quality, slightly smaller file size</div>
+                      <div className="font-medium">{t(lang, "lowCompression")}</div>
+                      <div className="text-sm text-muted-foreground">{t(lang, "lowCompressionDesc")}</div>
                     </div>
                     <span className="text-xs px-2 py-1 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 font-medium">
-                      Quality
+                      {t(lang, "qualityBadge")}
                     </span>
                   </label>
                   
@@ -232,12 +238,12 @@ export default function CompressPdfPage() {
                     <RadioGroupItem value="medium" id="medium" data-testid="radio-medium" className="mt-0.5" />
                     <div className="flex-1">
                       <div className="font-medium flex items-center gap-2">
-                        Medium Compression
+                        {t(lang, "mediumCompression")}
                         <span className="text-xs px-2 py-0.5 rounded-full bg-primary text-primary-foreground">
-                          Recommended
+                          {t(lang, "recommended")}
                         </span>
                       </div>
-                      <div className="text-sm text-muted-foreground">Balanced quality and file size</div>
+                      <div className="text-sm text-muted-foreground">{t(lang, "mediumCompressionDesc")}</div>
                     </div>
                   </label>
                   
@@ -247,11 +253,11 @@ export default function CompressPdfPage() {
                   >
                     <RadioGroupItem value="high" id="high" data-testid="radio-high" className="mt-0.5" />
                     <div className="flex-1">
-                      <div className="font-medium">High Compression</div>
-                      <div className="text-sm text-muted-foreground">Smallest file size, reduced image quality</div>
+                      <div className="font-medium">{t(lang, "highCompression")}</div>
+                      <div className="text-sm text-muted-foreground">{t(lang, "highCompressionDesc")}</div>
                     </div>
                     <span className="text-xs px-2 py-1 rounded-full bg-orange-500/10 text-orange-600 dark:text-orange-400 font-medium">
-                      Smallest
+                      {t(lang, "smallestBadge")}
                     </span>
                   </label>
                 </RadioGroup>
@@ -263,7 +269,7 @@ export default function CompressPdfPage() {
                   data-testid="button-compress"
                 >
                   <Sparkles className="w-4 h-4" aria-hidden="true" />
-                  Compress PDF
+                  {t(lang, "compressPdfBtn")}
                 </Button>
               </Card>
             )}
@@ -272,7 +278,7 @@ export default function CompressPdfPage() {
               <ProcessingState
                 status={status}
                 progress={progress}
-                message="Compressing your PDF..."
+                message={t(lang, "processingFile")}
               />
             )}
 
@@ -285,23 +291,23 @@ export default function CompressPdfPage() {
                   
                   <div>
                     <h3 className="text-xl font-bold text-green-600 dark:text-green-400 mb-2">
-                      Compression Complete!
+                      {t(lang, "compressCompleteTitle")}
                     </h3>
-                    <p className="text-muted-foreground">Your PDF has been optimized and is ready for download</p>
+                    <p className="text-muted-foreground">{t(lang, "compressReadyDesc")}</p>
                   </div>
 
                   {savings > 0 && (
                     <div className="grid grid-cols-3 gap-4 max-w-md mx-auto">
                       <div className="text-center p-3 rounded-lg bg-muted/50">
-                        <div className="text-xs text-muted-foreground mb-1">Original</div>
+                        <div className="text-xs text-muted-foreground mb-1">{t(lang, "originalSizeLabel")}</div>
                         <div className="font-semibold">{formatBytes(originalSize)}</div>
                       </div>
                       <div className="text-center p-3 rounded-lg bg-green-500/10">
-                        <div className="text-xs text-green-600 dark:text-green-400 mb-1">Saved</div>
+                        <div className="text-xs text-green-600 dark:text-green-400 mb-1">{t(lang, "savedLabel")}</div>
                         <div className="font-bold text-green-600 dark:text-green-400 text-lg">{savings}%</div>
                       </div>
                       <div className="text-center p-3 rounded-lg bg-muted/50">
-                        <div className="text-xs text-muted-foreground mb-1">New Size</div>
+                        <div className="text-xs text-muted-foreground mb-1">{t(lang, "newSizeLabel")}</div>
                         <div className="font-semibold">{formatBytes(compressedSize)}</div>
                       </div>
                     </div>
@@ -315,7 +321,7 @@ export default function CompressPdfPage() {
                       data-testid="button-download"
                     >
                       <Download className="w-4 h-4" aria-hidden="true" />
-                      Download Compressed PDF
+                      {t(lang, "downloadCompressedBtn")}
                     </Button>
                     <Button 
                       onClick={handleReset}
@@ -323,7 +329,7 @@ export default function CompressPdfPage() {
                       size="lg"
                       data-testid="button-compress-another"
                     >
-                      Compress Another File
+                      {t(lang, "compressAnotherBtn")}
                     </Button>
                   </div>
                 </div>
@@ -348,7 +354,7 @@ export default function CompressPdfPage() {
 
       <SuccessCelebration
         isVisible={showCelebration}
-        toolName="Compress PDF"
+        toolName={t(lang, "compressPdfBtn")}
         fileName={files[0]?.name}
         originalSize={originalSize}
         newSize={compressedSize}

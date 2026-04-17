@@ -13,6 +13,8 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 export default function RepairPdfPage() {
   useSEO({
@@ -21,6 +23,11 @@ export default function RepairPdfPage() {
     keywords: "repair pdf free, fix corrupted pdf, damaged pdf repair, pdf repair online free, fix broken pdf, recover pdf file",
     canonicalPath: "/repair-pdf"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("repair-pdf", lang, getToolSEOData("repair-pdf")?.longTailH1 || "Repair PDF");
+  const toolDesc = getToolDesc("repair-pdf", lang, "Attempt to repair corrupted or damaged PDF files. Fix documents that won't open or display incorrectly.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
@@ -93,14 +100,14 @@ export default function RepairPdfPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("repair-pdf")?.longTailH1 || "Repair PDF"}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{toolTitle}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Attempt to repair corrupted or damaged PDF files. Fix documents that won't open or display incorrectly.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

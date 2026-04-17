@@ -15,6 +15,8 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 export default function CropPdfPage() {
   useSEO({
@@ -23,6 +25,11 @@ export default function CropPdfPage() {
     keywords: "crop pdf free, trim pdf, remove pdf margins, pdf cropper free, cut pdf borders, resize pdf pages free",
     canonicalPath: "/crop-pdf"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("crop-pdf", lang, getToolSEOData("crop-pdf")?.longTailH1 || "Crop PDF");
+  const toolDesc = getToolDesc("crop-pdf", lang, "Remove unwanted margins or trim your PDF pages to specific dimensions. Perfect for removing white space.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [margins, setMargins] = useState({ top: 0, right: 0, bottom: 0, left: 0 });
@@ -100,14 +107,14 @@ export default function CropPdfPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("crop-pdf")?.longTailH1 || "Crop PDF"}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{toolTitle}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Remove unwanted margins or trim your PDF pages to specific dimensions. Perfect for removing white space.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

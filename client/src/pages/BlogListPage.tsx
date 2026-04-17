@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t } from "@/lib/languages";
 
 const BASE_URL = "https://pdfhub24.com";
 
@@ -17,6 +19,8 @@ export default function BlogListPage() {
     description: "Free PDF guides and tutorials. Learn to compress, merge, convert, edit PDFs. Step-by-step instructions for PDF tasks. Best free tips.",
     canonicalPath: "/blog"
   });
+
+  const { lang } = useLanguage();
 
   useEffect(() => {
     const itemListSchema = {
@@ -57,7 +61,7 @@ export default function BlogListPage() {
             <Link href="/#tools">
               <Button variant="ghost" size="sm" data-testid="button-back-tools">
                 <ArrowLeft className="h-4 w-4 mr-2" />
-                Back to Tools
+                {t(lang, "backToTools")}
               </Button>
             </Link>
           </div>

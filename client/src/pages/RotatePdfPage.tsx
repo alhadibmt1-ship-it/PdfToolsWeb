@@ -16,6 +16,8 @@ import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import type { RotationAngle } from "@shared/schema";
 import { useSEO } from "@/hooks/useSEO";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 export default function RotatePdfPage() {
   useSEO({
@@ -24,6 +26,11 @@ export default function RotatePdfPage() {
     keywords: "rotate pdf free, rotate pdf pages, turn pdf, flip pdf, rotate pdf online, pdf rotator free, rotate scanned pdf",
     canonicalPath: "/rotate"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("rotate", lang, getToolSEOData("rotate")?.longTailH1 || "Rotate PDF");
+  const toolDesc = getToolDesc("rotate", lang, "Rotate all pages in your PDF document by 90°, 180°, or 270° clockwise.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [angle, setAngle] = useState<RotationAngle>("90");
@@ -98,14 +105,14 @@ export default function RotatePdfPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("rotate")?.longTailH1 || "Rotate PDF"}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{toolTitle}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Rotate all pages in your PDF document by 90°, 180°, or 270° clockwise.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

@@ -16,6 +16,8 @@ import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
 import { getToolSEOData } from "@/data/toolSEOData";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 type Position = "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right";
 
@@ -26,6 +28,11 @@ export default function AddPageNumbersPage() {
     keywords: "add page numbers to pdf free, pdf page numbers, number pdf pages free, insert page numbers pdf, pdf pagination free",
     canonicalPath: "/add-page-numbers"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("add-page-numbers", lang, getToolSEOData("add-page-numbers")?.longTailH1 || "Add Page Numbers");
+  const toolDesc = getToolDesc("add-page-numbers", lang, "Add page numbers to every page of your PDF document.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [position, setPosition] = useState<Position>("bottom-center");
@@ -104,16 +111,16 @@ export default function AddPageNumbersPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">
-              {getToolSEOData("add-page-numbers")?.longTailH1 || "Add Page Numbers"}
+              {toolTitle}
             </h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Add page numbers to every page of your PDF document.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>
