@@ -1,5 +1,5 @@
 import { useParams, Link } from "wouter";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Calendar, Clock, ArrowLeft, User, Tag, Zap, FileText } from "lucide-react";
 import { getBlogPost, blogPosts, type BlogPost } from "@/data/blogData";
 import { useSEO } from "@/hooks/useSEO";
@@ -11,6 +11,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { t } from "@/lib/languages";
+import { getBlogTranslation, type BlogTranslation } from "@/data/blogTranslations/index";
 
 const BASE_URL = "https://pdfhub24.com";
 
@@ -295,18 +296,36 @@ function MarkdownContent({ content }: { content: string }) {
 export default function BlogPostPage() {
   const params = useParams<{ slug: string }>();
   const post = getBlogPost(params.slug || '');
+  const { lang } = useLanguage();
 
-  const faqs = useMemo(() => post ? parseFAQsFromContent(post.content) : [], [post]);
+  const [translation, setTranslation] = useState<BlogTranslation | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    if (lang !== "en" && params.slug) {
+      getBlogTranslation(lang, params.slug).then((tr) => {
+        if (!cancelled) setTranslation(tr);
+      });
+    } else {
+      setTranslation(null);
+    }
+    return () => { cancelled = true; };
+  }, [lang, params.slug]);
+
+  const displayTitle = translation?.title || post?.title || "";
+  const displayContent = translation?.content || post?.content || "";
+  const displayMetaTitle = translation?.metaTitle || post?.metaTitle || "Blog | PDF HUB 24";
+  const displayMetaDesc = translation?.metaDescription || post?.metaDescription || "Free PDF tips, tutorials, and guides.";
+
+  const faqs = useMemo(() => post ? parseFAQsFromContent(displayContent) : [], [post, displayContent]);
 
   const faqSchema = useMemo(() => buildFAQSchema(faqs), [faqs]);
 
   useSEO({
-    title: post?.metaTitle || "Blog | PDF HUB 24",
-    description: post?.metaDescription || "Free PDF tips, tutorials, and guides. Learn how to work with PDF files effectively using our free online tools.",
+    title: displayMetaTitle,
+    description: displayMetaDesc,
     canonicalPath: `/blog/${params.slug}`
   });
-
-  const { lang } = useLanguage();
 
   useEffect(() => {
     // Server-side already injects Article + BreadcrumbList for blog posts.
@@ -369,7 +388,7 @@ export default function BlogPostPage() {
                 {post.category}
               </Badge>
               <h1 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-post-title">
-                {post.title}
+                {displayTitle}
               </h1>
               <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
                 <span className="flex items-center gap-1.5">
@@ -392,7 +411,7 @@ export default function BlogPostPage() {
             </header>
 
             <div className="border-t pt-8">
-              <MarkdownContent content={post.content} />
+              <MarkdownContent content={displayContent} />
             </div>
 
             <AdPlaceholder position="blog-mid" />

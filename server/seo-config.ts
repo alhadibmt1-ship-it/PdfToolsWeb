@@ -1757,18 +1757,17 @@ export function generateMetaTags(path: string): string {
   const ogTitle = seo.ogTitle || effectiveTitle;
   const ogDescription = seo.ogDescription || effectiveDescription;
   const isLangBlogPage = lang !== "en" && canonicalPath.startsWith("/blog/");
-  const isEffectivelyNoindex = isNoindex || isLangBlogPage;
+  const isEffectivelyNoindex = isNoindex;
   const ogUrl = isEffectivelyNoindex ? "" : (seo.ogUrl || canonicalUrl);
   const twitterTitle = seo.twitterTitle || ogTitle;
   const twitterDescription = seo.twitterDescription || ogDescription;
 
   // ── Robots directive logic ──────────────────────────────────────────────────
-  // Language blog pages: NOINDEX — English content at non-English URL = duplicate content risk
+  // Language blog pages: INDEXED — each has unique fully-translated content per language
   // All country pages: INDEXED — each has unique locally-enriched content
   // All other pages: standard index,follow with full preview directives
   const robotsContent = seo.robots
-    || (isLangBlogPage ? "noindex, follow"
-      : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
+    || "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 
   // ── og:type + article-specific OG tags ───────────────────────────────────
   const ogType = blogPost ? "article" : "website";
