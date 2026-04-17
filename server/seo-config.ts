@@ -40,6 +40,38 @@ const LANG_DESC_TEMPLATE: Record<string, string> = {
   ur: "{name} کو آن لائن مفت استعمال کریں۔ ✓ کوئی حد نہیں، کوئی واٹر مارک نہیں۔ ✓ کوئی انسٹالیشن یا رجسٹریشن نہیں۔",
 };
 
+// ── Translated homepage titles for language homepages (e.g. /de, /ja) ─────────
+const LANG_HOME_TITLE: Record<string, string> = {
+  es: "PDF HUB 24 — 49+ herramientas PDF gratuitas (Sin Registro, Sin Marca de Agua)",
+  ar: "PDF HUB 24 — 49+ أداة PDF مجانية عبر الإنترنت (بدون تسجيل، بدون علامات مائية)",
+  hi: "PDF HUB 24 — 49+ मुफ़्त PDF टूल ऑनलाइन (बिना साइनअप, बिना वॉटरमार्क)",
+  fr: "PDF HUB 24 — 49+ outils PDF gratuits en ligne (Sans Inscription, Sans Filigrane)",
+  pt: "PDF HUB 24 — 49+ ferramentas PDF gratuitas online (Sem Cadastro, Sem Marca d'Água)",
+  de: "PDF HUB 24 — 49+ kostenlose PDF-Tools online (Ohne Anmeldung, Ohne Wasserzeichen)",
+  zh: "PDF HUB 24 — 49+ 免费在线PDF工具（无需注册，无水印）",
+  ja: "PDF HUB 24 — 49+ 無料オンラインPDFツール（登録不要、透かしなし）",
+  id: "PDF HUB 24 — 49+ Alat PDF Gratis Online (Tanpa Daftar, Tanpa Watermark)",
+  ru: "PDF HUB 24 — 49+ бесплатных PDF-инструментов онлайн (Без регистрации, Без водяных знаков)",
+  it: "PDF HUB 24 — 49+ strumenti PDF gratuiti online (Senza Registrazione, Senza Filigrana)",
+  ur: "PDF HUB 24 — 49+ مفت آن لائن PDF ٹولز (بغیر سائن اپ، بغیر واٹر مارک)",
+};
+
+// ── Translated homepage descriptions ──────────────────────────────────────────
+const LANG_HOME_DESC: Record<string, string> = {
+  es: "49+ herramientas PDF gratuitas: unir, dividir, comprimir, PDF a Word, JPG a PDF y más. Sin registro, sin marcas de agua, 100% seguro. Funciona en cualquier dispositivo.",
+  ar: "49+ أداة PDF مجانية: دمج، تقسيم، ضغط، PDF إلى Word، JPG إلى PDF والمزيد. بدون تسجيل، بدون علامات مائية، آمن 100%.",
+  hi: "49+ मुफ़्त PDF टूल: मर्ज, स्प्लिट, कम्प्रेस, PDF से Word, JPG से PDF और बहुत कुछ। बिना रजिस्ट्रेशन, बिना वॉटरमार्क, 100% सुरक्षित।",
+  fr: "49+ outils PDF gratuits : fusionner, diviser, compresser, PDF en Word, JPG en PDF et plus. Sans inscription, sans filigrane, 100% sécurisé.",
+  pt: "49+ ferramentas PDF gratuitas: unir, dividir, comprimir, PDF para Word, JPG para PDF e mais. Sem cadastro, sem marcas d'água, 100% seguro.",
+  de: "49+ kostenlose PDF-Tools: zusammenführen, teilen, komprimieren, PDF in Word, JPG in PDF und mehr. Ohne Anmeldung, ohne Wasserzeichen, 100% sicher.",
+  zh: "49+ 免费PDF工具：合并、拆分、压缩、PDF转Word、JPG转PDF等。无需注册，无水印，100%安全。",
+  ja: "49+ 無料PDFツール：結合、分割、圧縮、PDFをWord変換、JPGをPDF変換など。登録不要、透かしなし、100%安全。",
+  id: "49+ alat PDF gratis: gabungkan, pisahkan, kompres, PDF ke Word, JPG ke PDF dan lainnya. Tanpa pendaftaran, tanpa watermark, 100% aman.",
+  ru: "49+ бесплатных PDF-инструментов: объединять, разделять, сжимать, PDF в Word, JPG в PDF и многое другое. Без регистрации, без водяных знаков, 100% безопасно.",
+  it: "49+ strumenti PDF gratuiti: unire, dividere, comprimere, PDF in Word, JPG in PDF e altro. Senza registrazione, senza filigrana, 100% sicuro.",
+  ur: "49+ مفت PDF ٹولز: ملائیں، تقسیم کریں، کمپریس کریں، PDF سے Word، JPG سے PDF اور مزید۔ بغیر رجسٹریشن، بغیر واٹر مارک، 100% محفوظ۔",
+};
+
 // ── Canonical path → TOOL_TITLE_TRANSLATIONS key ─────────────────────────────
 const PATH_TO_TOOL_KEY: Record<string, string> = {
   "/merge":            "merge",
@@ -1715,15 +1747,21 @@ export function generateMetaTags(path: string): string {
   //   Title: "{Native Tool Name} - 100% {free phrase} - PDF HUB 24"
   //   Desc:  "{action} {name}. ✓ No limits/watermarks. ✓ No install/signup."
   if (lang !== "en" && !progSlugMatch) {
-    const toolKey = PATH_TO_TOOL_KEY[canonicalPath];
-    const translatedName = toolKey
-      ? (TOOL_TITLE_TRANSLATIONS[toolKey] as Record<string, string>)?.[lang]
-      : null;
-    if (translatedName) {
-      const free100 = LANG_100_FREE[lang] || "free online";
-      const descTpl = LANG_DESC_TEMPLATE[lang];
-      effectiveTitle = `${translatedName} - 100% ${free100} - PDF HUB 24`;
-      if (descTpl) effectiveDescription = descTpl.replace("{name}", translatedName);
+    if (canonicalPath === "/") {
+      // Language homepage (e.g. /de, /ja) — serve native-language title + description
+      if (LANG_HOME_TITLE[lang]) effectiveTitle = LANG_HOME_TITLE[lang];
+      if (LANG_HOME_DESC[lang]) effectiveDescription = LANG_HOME_DESC[lang];
+    } else {
+      const toolKey = PATH_TO_TOOL_KEY[canonicalPath];
+      const translatedName = toolKey
+        ? (TOOL_TITLE_TRANSLATIONS[toolKey] as Record<string, string>)?.[lang]
+        : null;
+      if (translatedName) {
+        const free100 = LANG_100_FREE[lang] || "free online";
+        const descTpl = LANG_DESC_TEMPLATE[lang];
+        effectiveTitle = `${translatedName} - 100% ${free100} - PDF HUB 24`;
+        if (descTpl) effectiveDescription = descTpl.replace("{name}", translatedName);
+      }
     }
   }
 
