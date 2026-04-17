@@ -5,6 +5,7 @@ import { categoryHubs } from "../client/src/data/categoryHubData";
 import { TOOL_SLUG_TRANSLATIONS, TRANSLATED_TO_ENGLISH } from "../client/src/lib/translatedSlugs";
 import { COUNTRIES, COUNTRY_MAP, TOOL_CONFIGS } from "../client/src/data/countryData";
 import { TOOL_TITLE_TRANSLATIONS } from "../client/src/lib/languages";
+import { getBlogMeta } from "./blog-meta-translations";
 
 // ── PDF24-style: "100% {free phrase}" for title middle section ───────────────
 // Format: "{Tool Name} - 100% {LANG_100_FREE} - PDF HUB 24"
@@ -70,6 +71,168 @@ const LANG_HOME_DESC: Record<string, string> = {
   ru: "49+ бесплатных PDF-инструментов: объединять, разделять, сжимать, PDF в Word, JPG в PDF и многое другое. Без регистрации, без водяных знаков, 100% безопасно.",
   it: "49+ strumenti PDF gratuiti: unire, dividere, comprimere, PDF in Word, JPG in PDF e altro. Senza registrazione, senza filigrana, 100% sicuro.",
   ur: "49+ مفت PDF ٹولز: ملائیں، تقسیم کریں، کمپریس کریں، PDF سے Word، JPG سے PDF اور مزید۔ بغیر رجسٹریشن، بغیر واٹر مارک، 100% محفوظ۔",
+};
+
+// ── Translated category hub titles/descriptions [title, description] ──────────
+const LANG_CATEGORY: Record<string, Record<string, [string, string]>> = {
+  "/convert-pdf": {
+    es: ["Convertir PDF en línea gratis — Todos los formatos | PDF HUB 24", "Convierte PDF a Word, Excel, JPG, PNG, PowerPoint y más. Convierte imágenes y documentos a PDF. Gratis, sin registro."],
+    ar: ["تحويل PDF عبر الإنترنت مجانًا — جميع التنسيقات | PDF HUB 24", "تحويل PDF إلى Word وExcel وJPG وPNG وPowerPoint والمزيد. تحويل الصور والمستندات إلى PDF. مجاني، بدون تسجيل."],
+    hi: ["PDF ऑनलाइन कन्वर्ट करें मुफ़्त — सभी फ़ॉर्मेट | PDF HUB 24", "PDF को Word, Excel, JPG, PNG, PowerPoint में बदलें। मुफ़्त, बिना साइनअप के।"],
+    fr: ["Convertir PDF en ligne gratuitement — Tous les formats | PDF HUB 24", "Convertissez PDF en Word, Excel, JPG, PNG, PowerPoint et plus. Convertissez images et documents en PDF. Gratuit, sans inscription."],
+    pt: ["Converter PDF online grátis — Todos os formatos | PDF HUB 24", "Converta PDF para Word, Excel, JPG, PNG, PowerPoint e mais. Converta imagens e documentos para PDF. Grátis, sem cadastro."],
+    de: ["PDF online kostenlos konvertieren — Alle Formate | PDF HUB 24", "PDF in Word, Excel, JPG, PNG, PowerPoint und mehr konvertieren. Bilder und Dokumente in PDF umwandeln. Kostenlos, ohne Anmeldung."],
+    zh: ["在线免费转换PDF — 支持所有格式 | PDF HUB 24", "将PDF转换为Word、Excel、JPG、PNG、PowerPoint等。将图像和文档转换为PDF。免费，无需注册。"],
+    ja: ["PDFをオンラインで無料変換 — 全フォーマット対応 | PDF HUB 24", "PDFをWord、Excel、JPG、PNG、PowerPointなどに変換。画像やドキュメントをPDFに変換。無料、登録不要。"],
+    id: ["Konversi PDF Online Gratis — Semua Format Didukung | PDF HUB 24", "Konversi PDF ke Word, Excel, JPG, PNG, PowerPoint dan lainnya. Konversi gambar dan dokumen ke PDF. Gratis, tanpa daftar."],
+    ru: ["Конвертировать PDF онлайн бесплатно — Все форматы | PDF HUB 24", "Конвертируйте PDF в Word, Excel, JPG, PNG, PowerPoint и другие форматы. Бесплатно, без регистрации."],
+    it: ["Convertire PDF online gratis — Tutti i formati | PDF HUB 24", "Converti PDF in Word, Excel, JPG, PNG, PowerPoint e altro. Converti immagini e documenti in PDF. Gratis, senza registrazione."],
+    ur: ["PDF آن لائن مفت تبدیل کریں — تمام فارمیٹس | PDF HUB 24", "PDF کو Word، Excel، JPG، PNG، PowerPoint میں تبدیل کریں۔ مفت، بغیر رجسٹریشن۔"],
+  },
+  "/compress-pdf-tools": {
+    es: ["Comprimir PDF en línea gratis — Reducir tamaño 90% | PDF HUB 24", "Reduce el tamaño del PDF hasta un 90% sin perder calidad. Compresor PDF gratuito con 3 niveles de compresión. Sin registro."],
+    ar: ["ضغط PDF عبر الإنترنت مجانًا — تقليل الحجم 90% | PDF HUB 24", "قلل حجم PDF بنسبة 90% دون فقدان الجودة. ضاغط PDF مجاني بثلاثة مستويات. بدون تسجيل."],
+    hi: ["PDF कम्प्रेस करें ऑनलाइन मुफ़्त — 90% साइज़ घटाएं | PDF HUB 24", "गुणवत्ता खोए बिना PDF का आकार 90% तक कम करें। मुफ़्त, बिना साइनअप के।"],
+    fr: ["Compresser PDF en ligne gratuitement — Réduire la taille 90% | PDF HUB 24", "Réduisez la taille de votre PDF jusqu'à 90% sans perte de qualité. Compresseur PDF gratuit avec 3 niveaux. Sans inscription."],
+    pt: ["Comprimir PDF online grátis — Reduzir tamanho 90% | PDF HUB 24", "Reduza o tamanho do PDF em até 90% sem perder qualidade. Compressor PDF gratuito com 3 níveis. Sem cadastro."],
+    de: ["PDF online kostenlos komprimieren — Größe 90% reduzieren | PDF HUB 24", "PDF-Dateigröße um bis zu 90% ohne Qualitätsverlust reduzieren. Kostenloser PDF-Kompressor mit 3 Stufen. Ohne Anmeldung."],
+    zh: ["在线免费压缩PDF — 减小90%大小 | PDF HUB 24", "在不损失质量的情况下将PDF文件大小减小90%。免费PDF压缩器，3个压缩级别。无需注册。"],
+    ja: ["PDFをオンラインで無料圧縮 — サイズ90%削減 | PDF HUB 24", "品質を失わずにPDFファイルサイズを90%削減。無料PDFコンプレッサー、3段階の圧縮レベル。登録不要。"],
+    id: ["Kompres PDF Online Gratis — Kurangi Ukuran 90% | PDF HUB 24", "Kurangi ukuran file PDF hingga 90% tanpa kehilangan kualitas. Kompressor PDF gratis dengan 3 level. Tanpa daftar."],
+    ru: ["Сжать PDF онлайн бесплатно — Уменьшить размер на 90% | PDF HUB 24", "Уменьшите размер PDF до 90% без потери качества. Бесплатный компрессор с 3 уровнями. Без регистрации."],
+    it: ["Comprimere PDF online gratis — Ridurre dimensione 90% | PDF HUB 24", "Riduci la dimensione del PDF fino al 90% senza perdere qualità. Compressore PDF gratuito con 3 livelli. Senza registrazione."],
+    ur: ["PDF آن لائن مفت کمپریس کریں — سائز 90% کم کریں | PDF HUB 24", "بغیر معیار کھوئے PDF کا سائز 90% تک کم کریں۔ مفت، بغیر رجسٹریشن۔"],
+  },
+  "/edit-pdf-tools": {
+    es: ["Editar PDF en línea gratis — 15+ herramientas | PDF HUB 24", "Edita, une, divide, rota, firma, anota y redacta documentos PDF gratis en línea. 15+ herramientas sin instalación ni marcas de agua."],
+    ar: ["تحرير PDF عبر الإنترنت مجانًا — 15+ أداة | PDF HUB 24", "تحرير، دمج، تقسيم، تدوير، توقيع، تعليق وحجب مستندات PDF مجانًا. 15+ أداة بدون تثبيت."],
+    hi: ["PDF ऑनलाइन एडिट करें मुफ़्त — 15+ टूल | PDF HUB 24", "PDF दस्तावेज़ों को मर्ज, स्प्लिट, रोटेट, साइन, एनोटेट करें। 15+ टूल, बिना इंस्टॉलेशन के।"],
+    fr: ["Éditer PDF en ligne gratuitement — 15+ outils | PDF HUB 24", "Modifiez, fusionnez, divisez, faites pivoter, signez, annotez et masquez des PDF. 15+ outils sans installation ni filigrane."],
+    pt: ["Editar PDF online grátis — 15+ ferramentas | PDF HUB 24", "Edite, mescle, divida, gire, assine, anote e redija documentos PDF grátis. 15+ ferramentas sem instalação."],
+    de: ["PDF online kostenlos bearbeiten — 15+ Tools | PDF HUB 24", "PDF-Dokumente bearbeiten, zusammenführen, teilen, drehen, signieren, kommentieren. 15+ Tools ohne Installation."],
+    zh: ["在线免费编辑PDF — 15+工具 | PDF HUB 24", "在线免费编辑、合并、拆分、旋转、签署、注释和编辑PDF文档。15+工具，无需安装。"],
+    ja: ["PDFをオンラインで無料編集 — 15+ツール | PDF HUB 24", "PDFドキュメントを結合、分割、回転、署名、注釈、編集。15+ツール、インストール不要。"],
+    id: ["Edit PDF Online Gratis — 15+ Alat | PDF HUB 24", "Edit, gabungkan, pisahkan, putar, tandatangani, anotasi dokumen PDF gratis online. 15+ alat tanpa instalasi."],
+    ru: ["Редактировать PDF онлайн бесплатно — 15+ инструментов | PDF HUB 24", "Редактируйте, объединяйте, разделяйте, подписывайте PDF-документы онлайн. 15+ инструментов без установки."],
+    it: ["Modificare PDF online gratis — 15+ strumenti | PDF HUB 24", "Modifica, unisci, dividi, ruota, firma, annota documenti PDF gratis online. 15+ strumenti senza installazione."],
+    ur: ["PDF آن لائن مفت ایڈٹ کریں — 15+ ٹولز | PDF HUB 24", "PDF دستاویزات کو ملائیں، تقسیم کریں، گھمائیں، دستخط کریں۔ 15+ ٹولز، بغیر انسٹالیشن۔"],
+  },
+  "/secure-pdf": {
+    es: ["Seguridad PDF gratis — Encriptar, Redactar y Proteger | PDF HUB 24", "Protege con contraseña, encripta, redacta y asegura documentos PDF gratis. Cifrado AES-256, redacción permanente."],
+    ar: ["حماية PDF مجانًا — تشفير، حجب وحماية | PDF HUB 24", "حماية بكلمة مرور، تشفير، حجب وتأمين مستندات PDF مجانًا. تشفير AES-256، حجب دائم."],
+    hi: ["PDF सुरक्षा मुफ़्त — एन्क्रिप्ट, रिडैक्ट और सुरक्षित करें | PDF HUB 24", "PDF को पासवर्ड से सुरक्षित करें, एन्क्रिप्ट और रिडैक्ट करें। AES-256 एन्क्रिप्शन। मुफ़्त।"],
+    fr: ["Sécurité PDF gratuite — Chiffrer, Caviarder et Protéger | PDF HUB 24", "Protégez par mot de passe, chiffrez, caviardez et sécurisez des PDF. Chiffrement AES-256, caviardage permanent. Gratuit."],
+    pt: ["Segurança PDF grátis — Criptografar, Redigir e Proteger | PDF HUB 24", "Proteja com senha, criptografe, redija e proteja PDFs. Criptografia AES-256, redação permanente. Sem cadastro."],
+    de: ["PDF-Sicherheit kostenlos — Verschlüsseln, Schwärzen & Schützen | PDF HUB 24", "PDFs mit Passwort schützen, verschlüsseln, schwärzen. AES-256-Verschlüsselung, permanente Schwärzung. Kostenlos."],
+    zh: ["免费PDF安全 — 加密、编辑和保护 | PDF HUB 24", "免费为PDF添加密码保护、加密、编辑和保护。AES-256加密，永久编辑。无需注册。"],
+    ja: ["PDF セキュリティ無料 — 暗号化、編集＆保護 | PDF HUB 24", "PDFをパスワード保護、暗号化、編集。AES-256暗号化、永続的な編集。登録不要。"],
+    id: ["Keamanan PDF Gratis — Enkripsi, Redaksi & Lindungi | PDF HUB 24", "Lindungi dengan kata sandi, enkripsi, redaksi dan amankan PDF. Enkripsi AES-256, redaksi permanen. Tanpa daftar."],
+    ru: ["Безопасность PDF бесплатно — Шифрование, Редактирование и Защита | PDF HUB 24", "Защита паролем, шифрование, редактирование PDF. AES-256 шифрование. Без регистрации."],
+    it: ["Sicurezza PDF gratis — Crittografare, Oscurare e Proteggere | PDF HUB 24", "Proteggi con password, crittografa, oscura e metti al sicuro PDF. Crittografia AES-256, oscuramento permanente. Gratis."],
+    ur: ["PDF سیکیورٹی مفت — انکرپٹ، ریڈیکٹ اور محفوظ کریں | PDF HUB 24", "PDF کو پاسورڈ سے محفوظ کریں، انکرپٹ کریں۔ AES-256 انکرپشن۔ مفت۔"],
+  },
+  "/image-tools": {
+    es: ["Herramientas de imagen gratis — Comprimir, Redimensionar y Convertir | PDF HUB 24", "Herramientas de imagen en línea para compresión, redimensionado, recorte y conversión de formato. Admite JPG, PNG, WebP. Gratis."],
+    ar: ["أدوات الصور مجانًا — ضغط وتغيير الحجم والتحويل | PDF HUB 24", "أدوات صور مجانية على الإنترنت للضغط وتغيير الحجم والقص وتحويل التنسيق. يدعم JPG وPNG وWebP."],
+    hi: ["मुफ़्त इमेज टूल — कम्प्रेस, रीसाइज़ और कन्वर्ट | PDF HUB 24", "ऑनलाइन इमेज टूल — कम्प्रेशन, रीसाइज़िंग, क्रॉपिंग और फ़ॉर्मेट कन्वर्जन के लिए। मुफ़्त।"],
+    fr: ["Outils d'image gratuits — Compresser, Redimensionner et Convertir | PDF HUB 24", "Outils d'image en ligne pour compression, redimensionnement, recadrage et conversion de format. Supporte JPG, PNG, WebP. Gratuit."],
+    pt: ["Ferramentas de imagem grátis — Comprimir, Redimensionar e Converter | PDF HUB 24", "Ferramentas de imagem online para compressão, redimensionamento, recorte e conversão de formato. Suporta JPG, PNG, WebP. Grátis."],
+    de: ["Kostenlose Bild-Tools — Komprimieren, Skalieren und Konvertieren | PDF HUB 24", "Online-Bild-Tools für Komprimierung, Skalierung, Zuschneiden und Formatkonvertierung. Unterstützt JPG, PNG, WebP. Kostenlos."],
+    zh: ["免费图像工具 — 压缩、调整大小和转换 | PDF HUB 24", "在线免费图像工具，用于压缩、调整大小、裁剪和格式转换。支持JPG、PNG、WebP。"],
+    ja: ["無料画像ツール — 圧縮、リサイズ＆変換 | PDF HUB 24", "オンライン無料画像ツール — 圧縮、リサイズ、トリミング、フォーマット変換。JPG、PNG、WebP対応。"],
+    id: ["Alat Gambar Gratis — Kompres, Ubah Ukuran & Konversi | PDF HUB 24", "Alat gambar online gratis untuk kompresi, pengubahan ukuran, pemotongan dan konversi format. Mendukung JPG, PNG, WebP."],
+    ru: ["Бесплатные инструменты для изображений — Сжать, Изменить размер и Конвертировать | PDF HUB 24", "Онлайн-инструменты для сжатия, изменения размера, обрезки и конвертации изображений. JPG, PNG, WebP. Бесплатно."],
+    it: ["Strumenti immagine gratis — Comprimi, Ridimensiona e Converti | PDF HUB 24", "Strumenti immagine online per compressione, ridimensionamento, ritaglio e conversione formato. Supporta JPG, PNG, WebP. Gratis."],
+    ur: ["مفت امیج ٹولز — کمپریس، ری سائز اور کنورٹ | PDF HUB 24", "آن لائن امیج ٹولز — کمپریشن، ری سائزنگ، کراپنگ اور فارمیٹ کنورژن کے لیے۔ JPG، PNG، WebP۔ مفت۔"],
+  },
+};
+
+// ── Translated static page titles/descriptions [title, description] ───────────
+const LANG_STATIC: Record<string, Record<string, [string, string]>> = {
+  "/about": {
+    es: ["Acerca de PDF HUB 24 - Herramientas PDF gratuitas en línea", "Conoce PDF HUB 24, tu fuente de confianza para herramientas PDF gratuitas en línea. 49+ herramientas para convertir, editar y gestionar archivos PDF."],
+    ar: ["حول PDF HUB 24 - أدوات PDF مجانية عبر الإنترنت", "تعرف على PDF HUB 24، مصدرك الموثوق لأدوات PDF المجانية. 49+ أداة لتحويل ملفات PDF وتحريرها وإدارتها."],
+    hi: ["PDF HUB 24 के बारे में - मुफ़्त ऑनलाइन PDF टूल", "PDF HUB 24 के बारे में जानें — मुफ़्त ऑनलाइन PDF टूल का विश्वसनीय स्रोत। 49+ टूल।"],
+    fr: ["À propos de PDF HUB 24 - Outils PDF gratuits en ligne", "Découvrez PDF HUB 24, votre source de confiance pour des outils PDF gratuits en ligne. 49+ outils pour convertir, éditer et gérer des PDF."],
+    pt: ["Sobre o PDF HUB 24 - Ferramentas PDF gratuitas online", "Conheça o PDF HUB 24, sua fonte confiável de ferramentas PDF gratuitas online. 49+ ferramentas para converter, editar e gerenciar PDFs."],
+    de: ["Über PDF HUB 24 - Kostenlose Online-PDF-Tools", "Erfahren Sie mehr über PDF HUB 24, Ihre vertrauenswürdige Quelle für kostenlose Online-PDF-Tools. 49+ Tools zum Konvertieren, Bearbeiten und Verwalten von PDFs."],
+    zh: ["关于 PDF HUB 24 - 免费在线PDF工具", "了解PDF HUB 24，您值得信赖的免费在线PDF工具来源。49+工具，用于转换、编辑和管理PDF文件。"],
+    ja: ["PDF HUB 24 について - 無料オンラインPDFツール", "PDF HUB 24について — 無料オンラインPDFツールの信頼できるソース。PDFの変換、編集、管理のための49+ツール。"],
+    id: ["Tentang PDF HUB 24 - Alat PDF Gratis Online", "Pelajari tentang PDF HUB 24, sumber terpercaya Anda untuk alat PDF gratis online. 49+ alat untuk mengonversi, mengedit, dan mengelola file PDF."],
+    ru: ["О PDF HUB 24 - Бесплатные онлайн PDF-инструменты", "Узнайте о PDF HUB 24 — вашем надёжном источнике бесплатных PDF-инструментов. 49+ инструментов для конвертации, редактирования и управления PDF."],
+    it: ["Informazioni su PDF HUB 24 - Strumenti PDF gratuiti online", "Scopri PDF HUB 24, la tua fonte affidabile per strumenti PDF gratuiti online. 49+ strumenti per convertire, modificare e gestire PDF."],
+    ur: ["PDF HUB 24 کے بارے میں - مفت آن لائن PDF ٹولز", "PDF HUB 24 کے بارے میں جانیں — مفت آن لائن PDF ٹولز کا قابل اعتماد ذریعہ۔ 49+ ٹولز۔"],
+  },
+  "/pricing": {
+    es: ["Precios de PDF HUB 24 — Gratis vs Pro | PDF HUB 24", "Compara los planes gratuito y pro de PDF HUB 24. Todas las herramientas PDF son gratuitas. Sin suscripción requerida."],
+    ar: ["أسعار PDF HUB 24 — مجاني مقابل Pro | PDF HUB 24", "قارن بين الخطة المجانية والمدفوعة في PDF HUB 24. جميع أدوات PDF مجانية. لا يلزم اشتراك."],
+    hi: ["PDF HUB 24 की कीमतें — मुफ़्त बनाम Pro | PDF HUB 24", "PDF HUB 24 के मुफ़्त और प्रो प्लान की तुलना करें। सभी PDF टूल मुफ़्त हैं।"],
+    fr: ["Tarifs de PDF HUB 24 — Gratuit vs Pro | PDF HUB 24", "Comparez les plans gratuit et pro de PDF HUB 24. Tous les outils PDF sont gratuits. Aucun abonnement requis."],
+    pt: ["Preços do PDF HUB 24 — Grátis vs Pro | PDF HUB 24", "Compare os planos gratuito e pro do PDF HUB 24. Todas as ferramentas PDF são gratuitas. Sem assinatura necessária."],
+    de: ["PDF HUB 24 Preise — Kostenlos vs Pro | PDF HUB 24", "Vergleichen Sie die kostenlosen und Pro-Pläne von PDF HUB 24. Alle PDF-Tools sind kostenlos. Kein Abonnement erforderlich."],
+    zh: ["PDF HUB 24 价格 — 免费版与专业版 | PDF HUB 24", "比较PDF HUB 24的免费和专业版计划。所有PDF工具均免费。无需订阅。"],
+    ja: ["PDF HUB 24 の料金 — 無料版 vs プロ版 | PDF HUB 24", "PDF HUB 24の無料プランとプロプランを比較。すべてのPDFツールは無料。サブスクリプション不要。"],
+    id: ["Harga PDF HUB 24 — Gratis vs Pro | PDF HUB 24", "Bandingkan paket gratis dan pro PDF HUB 24. Semua alat PDF gratis. Tidak perlu berlangganan."],
+    ru: ["Цены PDF HUB 24 — Бесплатно vs Pro | PDF HUB 24", "Сравните бесплатный и профессиональный планы PDF HUB 24. Все PDF-инструменты бесплатны. Подписка не требуется."],
+    it: ["Prezzi di PDF HUB 24 — Gratuito vs Pro | PDF HUB 24", "Confronta i piani gratuito e pro di PDF HUB 24. Tutti gli strumenti PDF sono gratuiti. Nessun abbonamento richiesto."],
+    ur: ["PDF HUB 24 کی قیمتیں — مفت بنام Pro | PDF HUB 24", "PDF HUB 24 کے مفت اور پرو پلان کا موازنہ کریں۔ تمام PDF ٹولز مفت ہیں۔"],
+  },
+  "/data-security": {
+    es: ["Seguridad de datos y privacidad — PDF HUB 24", "Descubre cómo PDF HUB 24 protege tus archivos. Cifrado SSL, eliminación automática en 1 hora, política de acceso cero, cumplimiento GDPR."],
+    ar: ["أمان البيانات والخصوصية — PDF HUB 24", "تعرف على كيفية حماية PDF HUB 24 لملفاتك. تشفير SSL، حذف تلقائي خلال ساعة، سياسة عدم الوصول، امتثال GDPR."],
+    hi: ["डेटा सुरक्षा और गोपनीयता — PDF HUB 24", "जानें कि PDF HUB 24 आपकी फ़ाइलें कैसे सुरक्षित करता है। SSL एन्क्रिप्शन, 1 घंटे में स्वत: हटाना, GDPR अनुपालन।"],
+    fr: ["Sécurité des données et confidentialité — PDF HUB 24", "Découvrez comment PDF HUB 24 protège vos fichiers. Chiffrement SSL, suppression automatique en 1 heure, conformité RGPD."],
+    pt: ["Segurança de dados e privacidade — PDF HUB 24", "Saiba como o PDF HUB 24 protege seus arquivos. Criptografia SSL, exclusão automática em 1 hora, conformidade GDPR."],
+    de: ["Datensicherheit und Datenschutz — PDF HUB 24", "Erfahren Sie, wie PDF HUB 24 Ihre Dateien schützt. SSL-Verschlüsselung, automatische Löschung nach 1 Stunde, DSGVO-Konformität."],
+    zh: ["数据安全与隐私 — PDF HUB 24", "了解PDF HUB 24如何保护您的文件。SSL加密，1小时内自动删除，零访问政策，GDPR合规。"],
+    ja: ["データセキュリティとプライバシー — PDF HUB 24", "PDF HUB 24がファイルをどのように保護するかをご確認ください。SSL暗号化、1時間以内に自動削除、GDPRコンプライアンス。"],
+    id: ["Keamanan Data & Privasi — PDF HUB 24", "Pelajari bagaimana PDF HUB 24 melindungi file Anda. Enkripsi SSL, penghapusan otomatis dalam 1 jam, kebijakan akses nol, kepatuhan GDPR."],
+    ru: ["Безопасность данных и конфиденциальность — PDF HUB 24", "Узнайте, как PDF HUB 24 защищает ваши файлы. SSL-шифрование, автоматическое удаление через 1 час, соответствие GDPR."],
+    it: ["Sicurezza dei dati e privacy — PDF HUB 24", "Scopri come PDF HUB 24 protegge i tuoi file. Crittografia SSL, eliminazione automatica entro 1 ora, conformità GDPR."],
+    ur: ["ڈیٹا سیکیورٹی اور رازداری — PDF HUB 24", "جانیں کہ PDF HUB 24 آپ کی فائلیں کیسے محفوظ کرتا ہے۔ SSL انکرپشن، 1 گھنٹے میں خودکار حذف، GDPR کی تعمیل۔"],
+  },
+  "/privacy": {
+    es: ["Política de privacidad — PDF HUB 24", "Lee nuestra política de privacidad. PDF HUB 24 respeta tu privacidad: los archivos se procesan de forma segura y se eliminan automáticamente."],
+    ar: ["سياسة الخصوصية — PDF HUB 24", "اقرأ سياسة الخصوصية الخاصة بنا. PDF HUB 24 يحترم خصوصيتك — تُعالج الملفات بأمان وتُحذف تلقائيًا."],
+    hi: ["गोपनीयता नीति — PDF HUB 24", "हमारी गोपनीयता नीति पढ़ें। PDF HUB 24 आपकी गोपनीयता का सम्मान करता है — फ़ाइलें सुरक्षित रूप से संसाधित होती हैं और स्वत: हटाई जाती हैं।"],
+    fr: ["Politique de confidentialité — PDF HUB 24", "Lisez notre politique de confidentialité. PDF HUB 24 respecte votre vie privée — les fichiers sont traités en sécurité et supprimés automatiquement."],
+    pt: ["Política de privacidade — PDF HUB 24", "Leia nossa política de privacidade. O PDF HUB 24 respeita sua privacidade — os arquivos são processados com segurança e excluídos automaticamente."],
+    de: ["Datenschutzrichtlinie — PDF HUB 24", "Lesen Sie unsere Datenschutzrichtlinie. PDF HUB 24 respektiert Ihre Privatsphäre — Dateien werden sicher verarbeitet und automatisch gelöscht."],
+    zh: ["隐私政策 — PDF HUB 24", "阅读我们的隐私政策。PDF HUB 24尊重您的隐私 — 文件安全处理并自动删除。"],
+    ja: ["プライバシーポリシー — PDF HUB 24", "プライバシーポリシーをお読みください。PDF HUB 24はプライバシーを尊重します — ファイルは安全に処理され、自動的に削除されます。"],
+    id: ["Kebijakan Privasi — PDF HUB 24", "Baca kebijakan privasi kami. PDF HUB 24 menghormati privasi Anda — file diproses dengan aman dan dihapus secara otomatis."],
+    ru: ["Политика конфиденциальности — PDF HUB 24", "Прочитайте нашу политику конфиденциальности. PDF HUB 24 уважает вашу конфиденциальность — файлы обрабатываются безопасно и удаляются автоматически."],
+    it: ["Informativa sulla privacy — PDF HUB 24", "Leggi la nostra informativa sulla privacy. PDF HUB 24 rispetta la tua privacy — i file vengono elaborati in modo sicuro ed eliminati automaticamente."],
+    ur: ["رازداری کی پالیسی — PDF HUB 24", "ہماری رازداری کی پالیسی پڑھیں۔ PDF HUB 24 آپ کی رازداری کا احترام کرتا ہے — فائلیں محفوظ طریقے سے پروسیس کی جاتی ہیں اور خودکار حذف ہو جاتی ہیں۔"],
+  },
+  "/terms": {
+    es: ["Términos de servicio — PDF HUB 24", "Lee nuestros términos de servicio. Directrices de uso para las herramientas PDF en línea de PDF HUB 24."],
+    ar: ["شروط الخدمة — PDF HUB 24", "اقرأ شروط الخدمة الخاصة بنا. إرشادات الاستخدام لأدوات PDF عبر الإنترنت من PDF HUB 24."],
+    hi: ["सेवा की शर्तें — PDF HUB 24", "हमारी सेवा की शर्तें पढ़ें। PDF HUB 24 के ऑनलाइन PDF टूल के उपयोग दिशानिर्देश।"],
+    fr: ["Conditions d'utilisation — PDF HUB 24", "Lisez nos conditions d'utilisation. Directives d'utilisation pour les outils PDF en ligne de PDF HUB 24."],
+    pt: ["Termos de serviço — PDF HUB 24", "Leia nossos termos de serviço. Diretrizes de uso para as ferramentas PDF online do PDF HUB 24."],
+    de: ["Nutzungsbedingungen — PDF HUB 24", "Lesen Sie unsere Nutzungsbedingungen. Nutzungsrichtlinien für die Online-PDF-Tools von PDF HUB 24."],
+    zh: ["服务条款 — PDF HUB 24", "阅读我们的服务条款。PDF HUB 24在线PDF工具的使用指南。"],
+    ja: ["利用規約 — PDF HUB 24", "利用規約をお読みください。PDF HUB 24のオンラインPDFツールの使用ガイドライン。"],
+    id: ["Syarat Layanan — PDF HUB 24", "Baca syarat layanan kami. Panduan penggunaan untuk alat PDF online PDF HUB 24."],
+    ru: ["Условия использования — PDF HUB 24", "Прочитайте наши условия использования. Руководство по использованию онлайн PDF-инструментов PDF HUB 24."],
+    it: ["Termini di servizio — PDF HUB 24", "Leggi i nostri termini di servizio. Linee guida per l'utilizzo degli strumenti PDF online di PDF HUB 24."],
+    ur: ["سروس کی شرائط — PDF HUB 24", "ہماری سروس کی شرائط پڑھیں۔ PDF HUB 24 کے آن لائن PDF ٹولز کے استعمال کے رہنما اصول۔"],
+  },
+  "/write-for-us": {
+    es: ["Escribe para nosotros — Contribuye al blog de PDF HUB 24", "Contribuye con artículos invitados a PDF HUB 24. Escribe sobre herramientas PDF, gestión de documentos y productividad."],
+    ar: ["اكتب لنا — ساهم في مدونة PDF HUB 24", "ساهم بمقالات ضيف في PDF HUB 24. اكتب عن أدوات PDF وإدارة المستندات والإنتاجية."],
+    hi: ["हमारे लिए लिखें — PDF HUB 24 ब्लॉग में योगदान दें", "PDF HUB 24 में गेस्ट पोस्ट लिखें। PDF टूल, दस्तावेज़ प्रबंधन और उत्पादकता पर लिखें।"],
+    fr: ["Écrivez pour nous — Contribuez au blog de PDF HUB 24", "Contribuez avec des articles invités à PDF HUB 24. Écrivez sur les outils PDF, la gestion documentaire et la productivité."],
+    pt: ["Escreva para nós — Contribua com o blog do PDF HUB 24", "Contribua com artigos para o PDF HUB 24. Escreva sobre ferramentas PDF, gestão de documentos e produtividade."],
+    de: ["Für uns schreiben — Zum PDF HUB 24 Blog beitragen", "Gastbeiträge für PDF HUB 24 verfassen. Über PDF-Tools, Dokumentenmanagement und Produktivität schreiben."],
+    zh: ["为我们撰稿 — 为PDF HUB 24博客贡献内容", "为PDF HUB 24投稿。撰写有关PDF工具、文档管理和生产力的文章。"],
+    ja: ["私たちのために書く — PDF HUB 24ブログに貢献する", "PDF HUB 24にゲスト投稿を寄稿してください。PDFツール、ドキュメント管理、生産性について書いてください。"],
+    id: ["Tulis untuk Kami — Kontribusi ke Blog PDF HUB 24", "Kontribusi artikel tamu ke PDF HUB 24. Tulis tentang alat PDF, manajemen dokumen, dan produktivitas."],
+    ru: ["Пишите для нас — Вносите вклад в блог PDF HUB 24", "Публикуйте гостевые статьи на PDF HUB 24. Пишите об инструментах PDF, управлении документами и производительности."],
+    it: ["Scrivi per noi — Contribuisci al blog di PDF HUB 24", "Contribuisci con articoli ospiti a PDF HUB 24. Scrivi di strumenti PDF, gestione documenti e produttività."],
+    ur: ["ہمارے لیے لکھیں — PDF HUB 24 بلاگ میں حصہ ڈالیں", "PDF HUB 24 کے لیے گیسٹ پوسٹ لکھیں۔ PDF ٹولز، دستاویز انتظام اور پیداواریت کے بارے میں لکھیں۔"],
+  },
 };
 
 // ── Canonical path → TOOL_TITLE_TRANSLATIONS key ─────────────────────────────
@@ -1751,7 +1914,26 @@ export function generateMetaTags(path: string): string {
       // Language homepage (e.g. /de, /ja) — serve native-language title + description
       if (LANG_HOME_TITLE[lang]) effectiveTitle = LANG_HOME_TITLE[lang];
       if (LANG_HOME_DESC[lang]) effectiveDescription = LANG_HOME_DESC[lang];
+    } else if (blogSlugMatch) {
+      // Language blog page — use pre-translated metaTitle + metaDescription
+      const blogSlug = blogSlugMatch[1];
+      const blogMeta = getBlogMeta(lang, blogSlug);
+      if (blogMeta) {
+        effectiveTitle = blogMeta[0];
+        effectiveDescription = blogMeta[1];
+      }
+    } else if (LANG_CATEGORY[canonicalPath]?.[lang]) {
+      // Language category hub page — use translated title + description
+      const [catTitle, catDesc] = LANG_CATEGORY[canonicalPath][lang];
+      effectiveTitle = catTitle;
+      effectiveDescription = catDesc;
+    } else if (LANG_STATIC[canonicalPath]?.[lang]) {
+      // Language static page (about, pricing, etc.) — use translated title + description
+      const [stTitle, stDesc] = LANG_STATIC[canonicalPath][lang];
+      effectiveTitle = stTitle;
+      effectiveDescription = stDesc;
     } else {
+      // Tool pages — use translated tool name with PDF24-style format
       const toolKey = PATH_TO_TOOL_KEY[canonicalPath];
       const translatedName = toolKey
         ? (TOOL_TITLE_TRANSLATIONS[toolKey] as Record<string, string>)?.[lang]
