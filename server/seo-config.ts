@@ -85,6 +85,8 @@ const PATH_TO_TOOL_KEY: Record<string, string> = {
   "/repair-pdf":       "edit-pdf",
 };
 
+// All country pages get indexed with unique, locally-enriched content — no tier/noindex system.
+
 function detectCountryPage(slug: string): { countryLabel: string; countryHreflang: string; toolPath: string } | null {
   const sorted = [...COUNTRIES].sort((a, b) => b.slug.length - a.slug.length);
   for (const country of sorted) {
@@ -121,9 +123,9 @@ const OG_IMAGE = "https://pdfhub24.com/og-image.png";
 
 export const seoConfig: Record<string, PageSEO> = {
   "/": {
-    title: "43+ Free Online PDF Tools (Fast & Secure) | PDF HUB 24",
-    description: "43+ free PDF tools online — merge, split, compress, convert PDF to Word & more. No signup, no watermark, 100% secure. Trusted by millions in 2026.",
-    keywords: "PDF tools, PDF converter, merge PDF, split PDF, compress PDF, PDF to Word, free PDF editor",
+    title: "PDF HUB 24 — 49+ Free PDF Tools Online (No Signup, No Watermark)",
+    description: "49+ free PDF tools: merge, split, compress, PDF to Word, JPG to PDF & more. No signup required, no watermarks, 100% secure. Works on any device in 2026.",
+    keywords: "free PDF tools, PDF converter online, merge PDF, split PDF, compress PDF, PDF to Word, edit PDF free",
     schema: {
       "@context": "https://schema.org",
       "@type": "WebSite",
@@ -133,9 +135,9 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/merge": {
-    title: "Merge PDF Free Online (No Watermark, No Signup) | PDF HUB 24",
-    description: "Merge multiple PDF files into one document in seconds. Free online PDF merger — no registration, no watermarks. Drag & drop to combine PDFs instantly.",
-    keywords: "merge PDF, combine PDF, join PDF files, PDF merger, merge PDF online free",
+    title: "Merge PDF Free Online — Combine Multiple PDFs Instantly | PDF HUB 24",
+    description: "Merge multiple PDF files into one in seconds. Free online PDF merger — drag & drop to combine PDFs. No registration, no watermarks, no file limits.",
+    keywords: "merge PDF, combine PDF, join PDF files, PDF merger online, merge multiple PDFs free, combine PDF files",
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -1687,14 +1689,13 @@ export function generateMetaTags(path: string): string {
   const toolData = toolSEOData[toolId as keyof typeof toolSEOData] || null;
 
   // ── Country page detection ─────────────────────────────────────────────────
+  // All country pages are indexed with self-canonical + unique enriched content.
   const countryInfo = progSlugMatch ? detectCountryPage(progSlugMatch[1]) : null;
-  const effectiveCanonicalUrl = countryInfo
-    ? `${BASE_URL}${countryInfo.toolPath === "/" ? "" : countryInfo.toolPath}`
-    : canonicalUrl;
-  // Country pages: NO hreflang (canonical → main tool is sufficient signal for Google)
+  const effectiveCanonicalUrl = canonicalUrl;
+
+  // Country pages: NO hreflang (no translated equivalents exist for /tools/ pages)
   // Language pages: full 13-language hreflang set
-  // ALL /tools/* pages: NO hreflang (country pages and non-country programmatic pages alike
-  // have no language-prefixed equivalents, so hreflang would point to non-existent URLs)
+  // ALL /tools/* pages: NO hreflang
   const effectiveHreflangBlock = progSlugMatch ? "" : hreflangBlock;
 
   // ── Override seo title/description from progPage for generated pages ──────
@@ -1719,29 +1720,55 @@ export function generateMetaTags(path: string): string {
     }
   }
 
-  // ── Country-specific keywords ─────────────────────────────────────────────
-  const countryKeywords = (() => {
-    if (!countryInfo || !progSlugMatch) return "";
+  // ── Country-specific title/description/keywords for Tier 1 countries ────────
+  const countryPageData = (() => {
+    if (!countryInfo || !progSlugMatch) return null;
     const slug = progSlugMatch[1];
-    const suffix = "-" + COUNTRIES.find(c => countryInfo.countryLabel === c.label)?.slug;
+    const countryObj = COUNTRIES.find(c => c.label === countryInfo.countryLabel);
+    const suffix = countryObj ? "-" + countryObj.slug : "";
     const toolSlug = suffix ? slug.slice(0, slug.length - suffix.length) : slug;
     const tc = TOOL_CONFIGS[toolSlug];
-    const n = tc ? tc.name : toolSlug.replace(/-/g, " ");
+    const n = tc ? tc.name : toolSlug.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
     const co = countryInfo.countryLabel;
+    const portal = countryObj?.portal || "government portals";
+    const demonym = countryObj?.demonym || `${co} users`;
+    return { n, co, portal, demonym, toolSlug, tc };
+  })();
+
+  // Every country page gets a unique, locally-enriched title + description
+  if (countryPageData) {
+    const { n, co, portal, demonym } = countryPageData;
+    effectiveTitle = `${n} Free Online for ${co} Users (No Signup) | PDF HUB 24`;
+    effectiveDescription = `Free ${n} tool for ${demonym}. Works instantly online — no signup, no watermark. Trusted for ${portal}. 100% secure with SSL encryption.`;
+  }
+
+  const countryKeywords = (() => {
+    if (!countryPageData) return "";
+    const { n, co, demonym } = countryPageData;
     return [
       `${n} ${co}`, `${n} in ${co}`, `free ${n} ${co}`,
       `${n} online ${co}`, `${n} for ${co} users`, `best ${n} ${co}`,
       `${n} ${co} free`, `online ${n} ${co}`, `${n} tool ${co}`,
+      `${demonym} ${n}`,
     ].join(", ");
   })();
   const effectiveKeywords = countryKeywords || seo.keywords || "";
 
   const ogTitle = seo.ogTitle || effectiveTitle;
   const ogDescription = seo.ogDescription || effectiveDescription;
-  const ogUrl = isNoindex ? "" : (seo.ogUrl || canonicalUrl);
+  const isLangBlogPage = lang !== "en" && canonicalPath.startsWith("/blog/");
+  const isEffectivelyNoindex = isNoindex || isLangBlogPage;
+  const ogUrl = isEffectivelyNoindex ? "" : (seo.ogUrl || canonicalUrl);
   const twitterTitle = seo.twitterTitle || ogTitle;
   const twitterDescription = seo.twitterDescription || ogDescription;
-  const robotsContent = seo.robots || "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
+
+  // ── Robots directive logic ──────────────────────────────────────────────────
+  // Language blog pages: NOINDEX — English content at non-English URL = duplicate content risk
+  // All country pages: INDEXED — each has unique locally-enriched content
+  // All other pages: standard index,follow with full preview directives
+  const robotsContent = seo.robots
+    || (isLangBlogPage ? "noindex, follow"
+      : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
 
   // ── og:type + article-specific OG tags ───────────────────────────────────
   const ogType = blogPost ? "article" : "website";
