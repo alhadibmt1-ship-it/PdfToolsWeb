@@ -146,6 +146,22 @@ app.use((req, res, next) => {
   next();
 });
 
+// 301 redirect duplicate-intent size-variant programmatic pages to primary
+// "compress-pdf-under-Xkb" and "reduce-pdf-size-to-Xkb" → "compress-pdf-to-Xkb"
+// "compress-pdf-online-{country}" → "compress-pdf-{country}"
+app.use((req, res, next) => {
+  const m1 = req.path.match(/^\/tools\/compress-pdf-under-(.+)$/);
+  if (m1) return res.redirect(301, `/tools/compress-pdf-to-${m1[1]}`);
+
+  const m2 = req.path.match(/^\/tools\/reduce-pdf-size-to-(.+)$/);
+  if (m2) return res.redirect(301, `/tools/compress-pdf-to-${m2[1]}`);
+
+  const m3 = req.path.match(/^\/tools\/compress-pdf-online-(.+)$/);
+  if (m3) return res.redirect(301, `/tools/compress-pdf-${m3[1]}`);
+
+  next();
+});
+
 declare module 'http' {
   interface IncomingMessage {
     rawBody: unknown
