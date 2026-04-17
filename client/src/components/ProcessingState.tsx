@@ -2,6 +2,8 @@ import { Loader2, CheckCircle2, XCircle, Sparkles, Download } from "lucide-react
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, tFormat } from "@/lib/languages";
 
 interface ProcessingStateProps {
   status: "idle" | "processing" | "success" | "error";
@@ -20,11 +22,17 @@ export default function ProcessingState({
   progress = 0,
   className,
   onDownload,
-  downloadLabel = "Download",
+  downloadLabel,
   resultInfo,
   fileCount
 }: ProcessingStateProps) {
+  const { lang } = useLanguage();
+
   if (status === "idle") return null;
+
+  const processingTitle = fileCount && fileCount > 1
+    ? tFormat(lang, "processingFiles", { n: fileCount })
+    : t(lang, "processingYourFile");
 
   return (
     <div 
@@ -50,18 +58,18 @@ export default function ProcessingState({
               
               <div className="w-full max-w-sm space-y-3 text-center">
                 <h3 className="text-lg font-semibold">
-                  {fileCount && fileCount > 1 ? `Processing ${fileCount} Files` : "Processing Your File"}
+                  {processingTitle}
                 </h3>
                 <Progress value={progress} className="h-2.5" data-testid="progress-bar" />
                 <div className="flex items-center justify-between text-sm text-muted-foreground">
-                  <span>{message || "Please wait..."}</span>
+                  <span>{message || t(lang, "processingFile")}</span>
                   {progress > 0 && <span className="font-medium">{progress}%</span>}
                 </div>
               </div>
               
               <p className="text-xs text-muted-foreground flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
-                Your file is being processed securely
+                {t(lang, "processedSecurely")}
               </p>
             </>
           )}
@@ -77,10 +85,10 @@ export default function ProcessingState({
               
               <div className="text-center space-y-2">
                 <h3 className="text-xl font-bold text-green-600 dark:text-green-400">
-                  Success!
+                  {t(lang, "successTitle")}
                 </h3>
                 <p className="text-muted-foreground">
-                  {message || "Your file is ready for download"}
+                  {message || t(lang, "fileReadyDownload")}
                 </p>
                 {resultInfo && (
                   <p className="text-sm font-medium text-green-600 dark:text-green-400">
@@ -97,7 +105,7 @@ export default function ProcessingState({
                   data-testid="button-download"
                 >
                   <Download className="w-4 h-4" aria-hidden="true" />
-                  {downloadLabel}
+                  {downloadLabel || t(lang, "downloadBtn")}
                 </Button>
               )}
             </>
@@ -114,10 +122,10 @@ export default function ProcessingState({
               
               <div className="text-center space-y-2">
                 <h3 className="text-xl font-bold text-destructive">
-                  Oops! Something went wrong
+                  {t(lang, "errorTitle")}
                 </h3>
                 <p className="text-muted-foreground max-w-sm">
-                  {message || "An error occurred while processing your file. Please try again."}
+                  {message || t(lang, "errorMessage")}
                 </p>
               </div>
             </>

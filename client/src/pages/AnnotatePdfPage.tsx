@@ -17,6 +17,8 @@ import { useToast } from "@/hooks/use-toast";
 import { useSEO } from "@/hooks/useSEO";
 import { useRecentTools } from "@/contexts/RecentToolsContext";
 import SuccessCelebration from "@/components/SuccessCelebration";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 interface Annotation {
   id: string;
@@ -36,6 +38,11 @@ export default function AnnotatePdfPage() {
     keywords: "annotate pdf free, highlight pdf, underline pdf free, pdf notes, pdf markup free, add comments to pdf",
     canonicalPath: "/annotate-pdf"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("annotate-pdf", lang, getToolSEOData("annotate-pdf")?.longTailH1 || "Annotate PDF");
+  const toolDesc = getToolDesc("annotate-pdf", lang, "Highlight, underline, and add notes to your PDF documents. Perfect for reviewing and marking up documents.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
@@ -145,14 +152,14 @@ export default function AnnotatePdfPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("annotate-pdf")?.longTailH1 || "Annotate PDF"}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{toolTitle}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Highlight, underline, and add notes to your PDF documents. Perfect for reviewing and marking up documents.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

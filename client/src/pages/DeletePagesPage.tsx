@@ -16,6 +16,8 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 const DELETE_FAQS = [
   { question: "How do I delete pages from PDF for free?", answer: "Upload your PDF file, enter the page numbers you want to remove (separated by commas), click Delete Pages, and download your modified PDF. It's 100% free with no registration required." },
@@ -38,6 +40,11 @@ export default function DeletePagesPage() {
     keywords: "delete pages from pdf free, delete pdf pages, remove pages from pdf, pdf page remover, remove pdf pages, delete pdf pages online, pdf delete pages",
     canonicalPath: "/delete-pages"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("delete-pages", lang, getToolSEOData("delete-pages")?.longTailH1 || "Delete Pages from PDF Free");
+  const toolDesc = getToolDesc("delete-pages", lang, "Remove unwanted pages from your PDF instantly. Free PDF page remover - no signup, no watermarks.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [pagesToDelete, setPagesToDelete] = useState("");
@@ -134,14 +141,14 @@ export default function DeletePagesPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("delete-pages")?.longTailH1 || "Delete Pages from PDF Free"}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{toolTitle}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Remove unwanted pages from your PDF instantly. Free PDF page remover - no signup, no watermarks.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

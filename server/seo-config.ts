@@ -6,36 +6,38 @@ import { TOOL_SLUG_TRANSLATIONS, TRANSLATED_TO_ENGLISH } from "../client/src/lib
 import { COUNTRIES, COUNTRY_MAP, TOOL_CONFIGS } from "../client/src/data/countryData";
 import { TOOL_TITLE_TRANSLATIONS } from "../client/src/lib/languages";
 
-// ── Per-language "Free Online" suffix for translated SEO titles ───────────────
-const LANG_FREE_SUFFIX: Record<string, string> = {
-  es: "Gratis en Línea",
-  ar: "مجانًا عبر الإنترنت",
-  hi: "मुफ़्त ऑनलाइन",
-  fr: "Gratuit en Ligne",
-  pt: "Grátis Online",
-  de: "Kostenlos Online",
-  zh: "免费在线",
-  ja: "無料オンライン",
-  id: "Gratis Online",
-  ru: "Бесплатно Онлайн",
-  it: "Gratis Online",
-  ur: "مفت آن لائن",
+// ── PDF24-style: "100% {free phrase}" for title middle section ───────────────
+// Format: "{Tool Name} - 100% {LANG_100_FREE} - PDF HUB 24"
+const LANG_100_FREE: Record<string, string> = {
+  es: "gratis y online",
+  ar: "مجاني وعبر الإنترنت",
+  hi: "मुफ्त और ऑनलाइन",
+  fr: "gratuit et en ligne",
+  pt: "grátis e online",
+  de: "kostenlos & online",
+  zh: "免费且在线",
+  ja: "無料＆オンライン",
+  id: "gratis & online",
+  ru: "бесплатно и онлайн",
+  it: "gratis e online",
+  ur: "مفت اور آن لائن",
 };
 
-// ── Per-language short description suffix ─────────────────────────────────────
-const LANG_DESC_SUFFIX: Record<string, string> = {
-  es: "Herramienta gratuita en línea — sin registro, sin marca de agua. Rápido y seguro.",
-  ar: "أداة مجانية عبر الإنترنت — بدون تسجيل، بدون علامة مائية. سريعة وآمنة.",
-  hi: "मुफ़्त ऑनलाइन टूल — बिना साइनअप, बिना वॉटरमार्क। तेज़ और सुरक्षित।",
-  fr: "Outil gratuit en ligne — sans inscription, sans filigrane. Rapide et sécurisé.",
-  pt: "Ferramenta gratuita online — sem registro, sem marca d'água. Rápido e seguro.",
-  de: "Kostenloses Online-Tool — ohne Registrierung, ohne Wasserzeichen. Schnell und sicher.",
-  zh: "免费在线工具 — 无需注册，无水印。快速安全。",
-  ja: "無料オンラインツール — 登録不要、透かしなし。高速・安全。",
-  id: "Alat gratis online — tanpa pendaftaran, tanpa watermark. Cepat dan aman.",
-  ru: "Бесплатный онлайн-инструмент — без регистрации, без водяных знаков. Быстро и безопасно.",
-  it: "Strumento gratuito online — senza registrazione, senza filigrana. Veloce e sicuro.",
-  ur: "مفت آن لائن ٹول — بغیر رجسٹریشن، بغیر واٹر مارک۔ تیز اور محفوظ۔",
+// ── PDF24-style: full description template with {name} placeholder ────────────
+// Format: "{action} {name} {free}. ✓ No limits/watermarks. ✓ No install/signup."
+const LANG_DESC_TEMPLATE: Record<string, string> = {
+  es: "Usa {name} gratis. ✓ Sin límites y sin marcas de agua. ✓ Sin instalación ni registro.",
+  ar: "استخدم {name} مجانًا. ✓ بدون حدود وبدون علامات مائية. ✓ بدون تثبيت أو تسجيل.",
+  hi: "{name} को मुफ़्त इस्तेमाल करें। ✓ कोई सीमा नहीं, कोई वॉटरमार्क नहीं। ✓ कोई इंस्टॉलेशन या पंजीकरण नहीं।",
+  fr: "Utilisez {name} gratuitement en ligne. ✓ Sans limites et sans filigrane. ✓ Aucune installation ni inscription requise.",
+  pt: "Use {name} gratuitamente online. ✓ Sem limites e sem marcas d'água. ✓ Sem instalação ou registro.",
+  de: "{name} kostenlos online nutzen. ✓ Keine Limits und keine Wasserzeichen. ✓ Keine Installation oder Registrierung erforderlich.",
+  zh: "在线免费使用{name}。✓ 无任何限制且无水印。✓ 无需安装或注册。",
+  ja: "{name}をオンラインで無料使用。✓ 制限なし、透かしなし。✓ インストールも登録も不要。",
+  id: "Gunakan {name} gratis secara online. ✓ Tanpa batasan dan tanpa watermark. ✓ Tanpa instalasi atau pendaftaran.",
+  ru: "Используйте {name} бесплатно онлайн. ✓ Без ограничений и без водяных знаков. ✓ Без установки и регистрации.",
+  it: "Usa {name} gratis online. ✓ Nessun limite e nessuna filigrana. ✓ Nessuna installazione o registrazione richiesta.",
+  ur: "{name} کو آن لائن مفت استعمال کریں۔ ✓ کوئی حد نہیں، کوئی واٹر مارک نہیں۔ ✓ کوئی انسٹالیشن یا رجسٹریشن نہیں۔",
 };
 
 // ── Canonical path → TOOL_TITLE_TRANSLATIONS key ─────────────────────────────
@@ -1699,19 +1701,21 @@ export function generateMetaTags(path: string): string {
   let effectiveTitle = progPage ? progPage.title : seo.title;
   let effectiveDescription = progPage ? progPage.description : seo.description;
 
-  // ── Translate title + description for language pages ──────────────────────
-  // All 1,380 language pages get native-language meta tags so Google serves
-  // the correct language in SERPs (e.g. /es/compress → Spanish title/desc)
+  // ── Translate title + description for language pages (PDF24-style) ───────
+  // All 1,380 language pages get native-language meta tags matching the
+  // industry standard used by PDF24, iLovePDF, and Smallpdf:
+  //   Title: "{Native Tool Name} - 100% {free phrase} - PDF HUB 24"
+  //   Desc:  "{action} {name}. ✓ No limits/watermarks. ✓ No install/signup."
   if (lang !== "en" && !progSlugMatch) {
     const toolKey = PATH_TO_TOOL_KEY[canonicalPath];
     const translatedName = toolKey
       ? (TOOL_TITLE_TRANSLATIONS[toolKey] as Record<string, string>)?.[lang]
       : null;
     if (translatedName) {
-      const freeSuffix = LANG_FREE_SUFFIX[lang] || "Free Online";
-      const descSuffix = LANG_DESC_SUFFIX[lang];
-      effectiveTitle = `${translatedName} ${freeSuffix} | PDF HUB 24`;
-      if (descSuffix) effectiveDescription = `${translatedName} — ${descSuffix}`;
+      const free100 = LANG_100_FREE[lang] || "free online";
+      const descTpl = LANG_DESC_TEMPLATE[lang];
+      effectiveTitle = `${translatedName} - 100% ${free100} - PDF HUB 24`;
+      if (descTpl) effectiveDescription = descTpl.replace("{name}", translatedName);
     }
   }
 

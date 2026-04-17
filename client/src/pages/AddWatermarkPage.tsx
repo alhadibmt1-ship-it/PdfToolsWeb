@@ -16,6 +16,8 @@ import { Slider } from "@/components/ui/slider";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 export default function AddWatermarkPage() {
   useSEO({
@@ -24,6 +26,11 @@ export default function AddWatermarkPage() {
     keywords: "add watermark to pdf free, pdf watermark, stamp pdf, watermark pdf online free, insert text on pdf, brand pdf",
     canonicalPath: "/add-watermark"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("add-watermark", lang, getToolSEOData("add-watermark")?.longTailH1 || "Add Watermark");
+  const toolDesc = getToolDesc("add-watermark", lang, "Add a text watermark to every page of your PDF document.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [watermarkText, setWatermarkText] = useState("CONFIDENTIAL");
@@ -113,14 +120,14 @@ export default function AddWatermarkPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("add-watermark")?.longTailH1 || "Add Watermark"}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{toolTitle}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Add a text watermark to every page of your PDF document.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

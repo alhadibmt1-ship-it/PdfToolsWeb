@@ -10,6 +10,8 @@ import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
 import { useSEO } from "@/hooks/useSEO";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 export default function PdfViewerPage() {
   useSEO({
@@ -18,6 +20,11 @@ export default function PdfViewerPage() {
     keywords: "pdf viewer free, view pdf online, open pdf free, read pdf online, pdf reader free, view pdf in browser",
     canonicalPath: "/pdf-viewer"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("pdf-viewer", lang, getToolSEOData("pdf-viewer")?.longTailH1 || "PDF Viewer");
+  const toolDesc = getToolDesc("pdf-viewer", lang, "View PDF documents directly in your browser. No software installation needed.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
@@ -45,14 +52,14 @@ export default function PdfViewerPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("pdf-viewer")?.longTailH1 || "PDF Viewer"}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{toolTitle}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              View PDF documents directly in your browser. No software installation needed.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

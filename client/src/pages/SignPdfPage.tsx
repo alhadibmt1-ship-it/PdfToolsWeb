@@ -16,6 +16,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 export default function SignPdfPage() {
   useSEO({
@@ -24,6 +26,11 @@ export default function SignPdfPage() {
     keywords: "sign pdf free, add signature to pdf, pdf signature free, esign pdf online, electronic signature free, sign document online free",
     canonicalPath: "/sign-pdf"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("sign-pdf", lang, getToolSEOData("sign-pdf")?.longTailH1 || "Sign PDF");
+  const toolDesc = getToolDesc("sign-pdf", lang, "Add your signature to PDF documents. Draw, type, or upload your signature image.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [signatureType, setSignatureType] = useState<"draw" | "type" | "upload">("type");
@@ -180,14 +187,14 @@ export default function SignPdfPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("sign-pdf")?.longTailH1 || "Sign PDF"}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{toolTitle}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Add your signature to PDF documents. Draw, type, or upload your signature image.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

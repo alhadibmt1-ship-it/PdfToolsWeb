@@ -15,6 +15,8 @@ import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
 import { getToolSEOData } from "@/data/toolSEOData";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 export default function ProtectPdfPage() {
   useSEO({
@@ -23,6 +25,11 @@ export default function ProtectPdfPage() {
     keywords: "password protect pdf free, lock pdf, encrypt pdf free, add password to pdf, secure pdf, pdf password protection free",
     canonicalPath: "/protect-pdf"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("protect-pdf", lang, getToolSEOData("protect-pdf")?.longTailH1 || "Protect PDF");
+  const toolDesc = getToolDesc("protect-pdf", lang, "Add password protection to your PDF file to prevent unauthorized access.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [password, setPassword] = useState("");
@@ -125,16 +132,16 @@ export default function ProtectPdfPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">
-              {getToolSEOData("protect-pdf")?.longTailH1 || "Protect PDF"}
+              {toolTitle}
             </h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Add password protection to your PDF file to prevent unauthorized access.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

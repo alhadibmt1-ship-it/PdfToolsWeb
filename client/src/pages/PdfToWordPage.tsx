@@ -15,6 +15,8 @@ import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
 import { getToolSEOData } from "@/data/toolSEOData";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t } from "@/lib/languages";
 
 export default function PdfToWordPage() {
   useSEO({
@@ -23,6 +25,8 @@ export default function PdfToWordPage() {
     keywords: "pdf to word converter free, convert pdf to word online, pdf to docx free, editable word from pdf, free pdf converter no email, secure pdf to word tool",
     canonicalPath: "/pdf-to-word"
   });
+
+  const { lang } = useLanguage();
 
   const [files, setFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
@@ -97,7 +101,7 @@ export default function PdfToWordPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 

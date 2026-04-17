@@ -15,6 +15,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 const PAGE_SIZES = [
   { value: "a4", label: "A4 (210 × 297 mm)", width: 595, height: 842 },
@@ -32,6 +34,11 @@ export default function ResizePdfPage() {
     keywords: "resize pdf free, change pdf size, pdf to a4 size, resize pdf pages free, pdf page size changer, scale pdf",
     canonicalPath: "/resize-pdf"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("resize-pdf", lang, getToolSEOData("resize-pdf")?.longTailH1 || "Resize PDF");
+  const toolDesc = getToolDesc("resize-pdf", lang, "Change your PDF page size to standard paper sizes like A4, Letter, Legal, and more.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [pageSize, setPageSize] = useState("a4");
@@ -108,14 +115,14 @@ export default function ResizePdfPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("resize-pdf")?.longTailH1 || "Resize PDF"}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{toolTitle}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Change your PDF page size to standard paper sizes like A4, Letter, Legal, and more.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

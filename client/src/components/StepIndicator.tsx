@@ -1,30 +1,28 @@
 import { Upload, Settings, Download, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-interface Step {
-  id: number;
-  label: string;
-  icon: "upload" | "settings" | "download";
-}
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t } from "@/lib/languages";
 
 interface StepIndicatorProps {
   currentStep: number;
   className?: string;
 }
 
-const steps: Step[] = [
-  { id: 1, label: "Upload", icon: "upload" },
-  { id: 2, label: "Configure", icon: "settings" },
-  { id: 3, label: "Download", icon: "download" },
-];
-
-const iconMap = {
-  upload: Upload,
-  settings: Settings,
-  download: Download,
-};
-
 export default function StepIndicator({ currentStep, className }: StepIndicatorProps) {
+  const { lang } = useLanguage();
+
+  const steps = [
+    { id: 1, labelKey: "uploadStep", icon: "upload" as const },
+    { id: 2, labelKey: "configureStep", icon: "settings" as const },
+    { id: 3, labelKey: "downloadStep", icon: "download" as const },
+  ];
+
+  const iconMap = {
+    upload: Upload,
+    settings: Settings,
+    download: Download,
+  };
+
   return (
     <div className={cn("w-full", className)}>
       <div className="flex items-center justify-between max-w-md mx-auto">
@@ -60,7 +58,7 @@ export default function StepIndicator({ currentStep, className }: StepIndicatorP
                     isUpcoming && "text-muted-foreground"
                   )}
                 >
-                  {step.label}
+                  {t(lang, step.labelKey)}
                 </span>
               </div>
               

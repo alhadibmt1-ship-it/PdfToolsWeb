@@ -13,6 +13,8 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 export default function PngToPdfPage() {
   useSEO({
@@ -21,6 +23,11 @@ export default function PngToPdfPage() {
     keywords: "png to pdf free, convert png to pdf, image to pdf free, png to pdf converter free, combine png files, transparent image to pdf",
     canonicalPath: "/png-to-pdf"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("png-to-pdf", lang, getToolSEOData("png-to-pdf")?.longTailH1 || "PNG to PDF");
+  const toolDesc = getToolDesc("png-to-pdf", lang, "Convert multiple PNG images into a single PDF document. Images will appear in the order you upload them. Perfect for creating photo albums or document archives.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
@@ -95,14 +102,14 @@ export default function PngToPdfPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("png-to-pdf")?.longTailH1 || "PNG to PDF"}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{toolTitle}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Convert multiple PNG images into a single PDF document. Images will appear in the order you upload them. Perfect for creating photo albums or document archives.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

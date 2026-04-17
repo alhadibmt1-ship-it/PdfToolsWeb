@@ -13,6 +13,8 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 export default function GrayscalePdfPage() {
   useSEO({
@@ -21,6 +23,11 @@ export default function GrayscalePdfPage() {
     keywords: "pdf to grayscale free, black and white pdf, convert pdf grayscale free, pdf to bw, grayscale pdf converter free",
     canonicalPath: "/grayscale-pdf"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("grayscale-pdf", lang, getToolSEOData("grayscale-pdf")?.longTailH1 || "PDF to Grayscale");
+  const toolDesc = getToolDesc("grayscale-pdf", lang, "Convert your color PDF documents to grayscale (black and white). Perfect for saving ink when printing.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
@@ -93,14 +100,14 @@ export default function GrayscalePdfPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("grayscale-pdf")?.longTailH1 || "PDF to Grayscale"}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{toolTitle}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Convert your color PDF documents to grayscale (black and white). Perfect for saving ink when printing.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

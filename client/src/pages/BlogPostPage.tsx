@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import NotFound from "./not-found";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t } from "@/lib/languages";
 
 const BASE_URL = "https://pdfhub24.com";
 
@@ -304,6 +306,8 @@ export default function BlogPostPage() {
     canonicalPath: `/blog/${params.slug}`
   });
 
+  const { lang } = useLanguage();
+
   useEffect(() => {
     // Server-side already injects Article + BreadcrumbList for blog posts.
     // Only inject FAQPage here — it's parsed from markdown client-side and not server-side.
@@ -346,7 +350,7 @@ export default function BlogPostPage() {
             <Link href="/#tools">
               <Button variant="ghost" size="sm" data-testid="button-back-tools">
                 <ArrowLeft className="h-4 w-4 mr-2" />
-                Back to Tools
+                {t(lang, "backToTools")}
               </Button>
             </Link>
             <span className="text-muted-foreground">|</span>

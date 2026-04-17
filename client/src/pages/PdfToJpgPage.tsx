@@ -14,6 +14,8 @@ import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
 import { getToolSEOData } from "@/data/toolSEOData";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 export default function PdfToJpgPage() {
   useSEO({
@@ -22,6 +24,11 @@ export default function PdfToJpgPage() {
     keywords: "pdf to jpg free, convert pdf to image, pdf to jpeg, pdf to jpg converter free, save pdf as image, pdf to picture",
     canonicalPath: "/pdf-to-jpg"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("pdf-to-jpg", lang, getToolSEOData("pdf-to-jpg")?.longTailH1 || "PDF to JPG");
+  const toolDesc = getToolDesc("pdf-to-jpg", lang, "Convert each page of your PDF into high-quality JPG images. Single-page PDFs download directly as a JPG file, multi-page PDFs as a ZIP file containing all pages.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
@@ -105,16 +112,16 @@ export default function PdfToJpgPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">
-              {getToolSEOData("pdf-to-jpg")?.longTailH1 || "PDF to JPG"}
+              {toolTitle}
             </h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Convert each page of your PDF into high-quality JPG images. Single-page PDFs download directly as a JPG file, multi-page PDFs as a ZIP file containing all pages.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

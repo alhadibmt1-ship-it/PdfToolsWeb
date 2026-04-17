@@ -14,6 +14,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 export default function ExtractTextPage() {
   useSEO({
@@ -22,6 +24,11 @@ export default function ExtractTextPage() {
     keywords: "extract text from pdf free, pdf to text, copy text from pdf, pdf text extractor free, get text from pdf online",
     canonicalPath: "/extract-text"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("extract-text", lang, getToolSEOData("extract-text")?.longTailH1 || "Extract Text from PDF");
+  const toolDesc = getToolDesc("extract-text", lang, "Extract all text content from your PDF document. The text will be displayed here and can be downloaded as a .txt file.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [extractedText, setExtractedText] = useState("");
@@ -102,14 +109,14 @@ export default function ExtractTextPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("extract-text")?.longTailH1 || "Extract Text from PDF"}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{toolTitle}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Extract all text content from your PDF document. The text will be displayed here and can be downloaded as a .txt file.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

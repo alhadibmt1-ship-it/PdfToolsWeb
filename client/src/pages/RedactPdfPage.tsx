@@ -17,6 +17,8 @@ import { useSEO } from "@/hooks/useSEO";
 import { useRecentTools } from "@/contexts/RecentToolsContext";
 import SuccessCelebration from "@/components/SuccessCelebration";
 import { Card } from "@/components/ui/card";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 interface RedactionArea {
   id: string;
@@ -33,6 +35,11 @@ export default function RedactPdfPage() {
     keywords: "redact pdf free, black out pdf, censor pdf free, remove sensitive info pdf, pdf privacy tool, hide text in pdf",
     canonicalPath: "/redact-pdf"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("redact-pdf", lang, getToolSEOData("redact-pdf")?.longTailH1 || "Redact PDF");
+  const toolDesc = getToolDesc("redact-pdf", lang, "Permanently black out sensitive information in your PDF documents. Protect privacy by redacting personal data.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
@@ -167,14 +174,14 @@ export default function RedactPdfPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("redact-pdf")?.longTailH1 || "Redact PDF"}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{toolTitle}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Permanently black out sensitive information in your PDF documents. Protect privacy by redacting personal data.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>

@@ -22,6 +22,8 @@ import { usePdfThumbnails, type PdfPage } from "@/hooks/usePdfThumbnails";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useSEO } from "@/hooks/useSEO";
 import { getToolSEOData } from "@/data/toolSEOData";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 const MERGE_FAQS = [
   { question: "How do I merge multiple PDF files into one?", answer: "Upload your PDF files, arrange them in your preferred order using drag-and-drop, then click Merge. Your combined PDF will be ready to download instantly." },
@@ -44,6 +46,11 @@ export default function MergePdfPage() {
     keywords: "merge pdf free, combine pdf files, join pdf, merge pdf online, pdf merger free, combine multiple pdfs, merge pdfs into one",
     canonicalPath: "/merge"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("merge", lang, getToolSEOData("merge")?.longTailH1 || "Merge PDF Files");
+  const toolDesc = getToolDesc("merge", lang, "Combine multiple PDF documents into a single file. Preview pages, reorder them by dragging, and remove unwanted pages.");
 
   const { addRecentTool } = useRecentTools();
   const [files, setFiles] = useState<File[]>([]);
@@ -163,16 +170,16 @@ export default function MergePdfPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-4 sm:mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" aria-hidden="true" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="text-center mb-6 sm:mb-8">
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 tracking-tight">
-              {getToolSEOData("merge")?.longTailH1 || "Merge PDF Files"}
+              {toolTitle}
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto mb-5">
-              Combine multiple PDF documents into a single file. Preview pages, reorder them by dragging, and remove unwanted pages.
+              {toolDesc}
             </p>
             <TrustBadges variant="prominent" className="max-w-2xl mx-auto" />
           </div>

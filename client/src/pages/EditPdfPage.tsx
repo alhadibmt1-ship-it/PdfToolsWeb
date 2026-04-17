@@ -17,6 +17,8 @@ import { useToast } from "@/hooks/use-toast";
 import { useSEO } from "@/hooks/useSEO";
 import { useRecentTools } from "@/contexts/RecentToolsContext";
 import SuccessCelebration from "@/components/SuccessCelebration";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
 interface TextAnnotation {
   id: string;
@@ -48,6 +50,11 @@ export default function EditPdfPage() {
     keywords: "edit pdf free, pdf editor free, add text to pdf, modify pdf online, free pdf editor online, edit pdf online free",
     canonicalPath: "/edit-pdf"
   });
+
+  const { lang } = useLanguage();
+
+  const toolTitle = getToolTitle("edit-pdf", lang, getToolSEOData("edit-pdf")?.longTailH1 || "Edit PDF");
+  const toolDesc = getToolDesc("edit-pdf", lang, "Add text, shapes, and annotations to your PDF documents. Simple and powerful PDF editing online.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
@@ -171,14 +178,14 @@ export default function EditPdfPage() {
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />
-              Back to Tools
+              {t(lang, "backToTools")}
             </div>
           </Link>
 
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{getToolSEOData("edit-pdf")?.longTailH1 || "Edit PDF"}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{toolTitle}</h1>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Add text, shapes, and annotations to your PDF documents. Simple and powerful PDF editing online.
+              {toolDesc}
             </p>
             <TrustBadges />
           </div>
