@@ -1670,10 +1670,17 @@ function getLangAttribute(lang: string): string {
 export function generateMetaTags(path: string): string {
   const { lang, canonicalPath, localPath } = stripLangPrefix(path);
   const seo = seoConfig[canonicalPath] || seoConfig["/"];
-  // canonical uses the localPath (translated slug) so Google indexes the translated URL
+  // canonical uses the translated slug so Google indexes the correct language URL.
+  // For non-English pages: prefer translated slug (e.g. /es/comprimir-pdf) over
+  // the English slug path (e.g. /es/compress) so canonical always matches hreflang.
   const canonicalUrl = lang === "en"
     ? `${BASE_URL}${canonicalPath === "/" ? "" : canonicalPath}`
-    : `${BASE_URL}/${lang}${localPath === "/" ? "" : localPath}`;
+    : (() => {
+        const translatedPath = getTranslatedPathForLang(lang, canonicalPath);
+        // If a translated slug exists (different from English), use it; else fall back to localPath
+        const slugPath = translatedPath !== canonicalPath ? translatedPath : (localPath === "/" ? "" : localPath);
+        return `${BASE_URL}/${lang}${slugPath === "/" ? "" : slugPath}`;
+      })();
   const hreflangTags = generateHreflangTags(canonicalPath);
   const langAttr = getLangAttribute(lang);
 
