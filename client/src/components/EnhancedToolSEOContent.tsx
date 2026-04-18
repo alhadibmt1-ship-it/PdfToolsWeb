@@ -52,7 +52,8 @@ export default function EnhancedToolSEOContent({
 
   const tool = PDF_TOOLS.find(tool => tool.id === toolId);
   const seoData = getToolSEOData(toolId);
-  
+  if (!seoData) return null;
+
   const toolName = tool?.title || fallbackToolName || "PDF Tool";
   const toolPath = tool?.path || "/";
   const category = tool?.category || "edit-pdf";

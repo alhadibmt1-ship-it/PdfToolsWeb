@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import * as pdfjsLib from "pdfjs-dist/build/pdf";
+import * as pdfjsLib from "pdfjs-dist";
 import workerSrc from "pdfjs-dist/build/pdf.worker.mjs?url";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = workerSrc;
@@ -66,6 +66,7 @@ export function usePdfThumbnails(files: File[]) {
 
                 await page.render({
                   canvasContext: context,
+                  canvas: canvas,
                   viewport: viewport,
                 }).promise;
 

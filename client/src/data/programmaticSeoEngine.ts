@@ -534,6 +534,8 @@ const TOOL_INDUSTRY_VERB: Record<string, string> = {
   "rotate-pdf":  "rotate PDF pages",
 };
 
+type CC = { label: string; demonym: string; portal: string; slug: string };
+
 function industryAngleContent(toolId: string, c: CC): string {
   const rd = getRich(c.slug);
   const inds = COUNTRY_INDUSTRIES[c.slug] || ["business", "finance", "public sector"];
@@ -607,6 +609,7 @@ const COUNTRY_SPECIFIC_FAQS: Record<string, Array<{ question: string; answer: st
   "brazil": [
     { question: "Preciso compactar meu IRPF antes de enviar para a Receita Federal?", answer: "Sim — o portal da Receita Federal tem limites de tamanho de arquivo para declarações e documentos de suporte. Compactar sua declaração IRPF, comprovantes CPF e documentos CNPJ para menos de 2 MB evita erros de envio no portal da Receita Federal." },
     { question: "Posso unir minha declaração IRPF, CPF e comprovantes em um único PDF?", answer: "Sim — carregue todos os documentos em nossa ferramenta gratuita de mesclagem de PDF, organize-os na ordem correta e baixe um único PDF pronto para envio à Receita Federal. Funciona no desktop e no celular via WhatsApp ou mobile." },
+    { question: "Posso comprimir meu IRPF e documentos da Receita Federal antes de enviar pelo Gov.br?", answer: "Sim — a Receita Federal e o Gov.br têm limites de tamanho para anexos de documentos fiscais. Comprimir sua declaração de IRPF, contracheques e documentos CPF para menos de 2 MB evita erros de envio e garante que sua declaração fiscal brasileira seja aceita sem problemas." },
   ],
   "france": [
     { question: "Dois-je compresser ma déclaration de revenus avant de la télécharger sur impots.gouv.fr ?", answer: "Oui — les portails gouvernementaux français ont des limites de taille de fichier pour les pièces jointes fiscales. Compressez vos formulaires CERFA et documents de revenus à moins de 2 Mo pour éviter les erreurs d'envoi sur impots.gouv.fr." },
@@ -643,10 +646,12 @@ const COUNTRY_SPECIFIC_FAQS: Record<string, Array<{ question: string; answer: st
   "south-africa": [
     { question: "Do I need to compress my SARS documents before submitting via eFiling?", answer: "Yes — SARS eFiling has document size limits for tax return attachments. Compressing your IRP5 certificates, income tax return, and supporting documents to under 2 MB prevents upload errors and ensures your SARS submission is processed without delays." },
     { question: "Can I merge my IRP5, payslips, and CIPC documents for my SARS accountant?", answer: "Yes — combining your IRP5 certificates, SARS income tax return, and CIPC company forms into a single PDF is standard practice for South African tax submissions. Our free merger handles multiple files instantly from Johannesburg, Cape Town, or Durban." },
+    { question: "Can I compress my SARS eFiling documents before uploading my ITR12 in South Africa?", answer: "Yes — the SARS eFiling portal and Home Affairs digital services in South Africa enforce file size limits for tax return attachments. Compressing your ITR12, IRP5 certificates, and medical aid tax certificates to under 2 MB prevents upload errors and ensures your South African tax submission is accepted on the first attempt." },
   ],
   "kenya": [
     { question: "Can I compress my KRA documents before filing on iTax?", answer: "Yes — the iTax portal has file size limits for supporting documents. Compressing your KRA PIN certificate, national ID scan, and business registration documents to under 1 MB ensures smooth upload on iTax and eCitizen, especially on M-Pesa mobile data connections in Nairobi, Mombasa, or Kisumu." },
     { question: "How do I combine KRA and eCitizen documents on my phone in Kenya?", answer: "Open our free PDF merger in your mobile browser — it works over mobile data on any Kenyan network. Upload your KRA PIN certificate, national ID copies, and business registration forms, merge them, and download a single PDF for iTax or eCitizen submission." },
+    { question: "Can I compress my KRA iTax documents before uploading to the eCitizen portal in Kenya?", answer: "Yes — the KRA iTax portal and eCitizen digital services in Kenya enforce file size limits for tax return attachments. Compressing your P9 forms, KRA PIN certificates, and income tax returns to under 2 MB prevents upload errors and ensures your Kenyan tax submission is accepted from Nairobi, Mombasa, or Kisumu." },
   ],
   "nigeria": [
     { question: "Can I compress my TIN certificate and FIRS documents for Nigerian tax filing?", answer: "Yes — the FIRS portal has file size restrictions for submitted documents. Compressing your TIN certificate, CAC registration forms, and FIRS tax documents to under 2 MB prevents upload failures when filing your returns or registering a business in Lagos, Abuja, or Port Harcourt." },
@@ -680,9 +685,6 @@ const COUNTRY_SPECIFIC_FAQS: Record<string, Array<{ question: string; answer: st
   // ── Americas ──────────────────────────────────────────────────────────────
   "usa": [
     { question: "Can I compress my W-2 and IRS tax documents before uploading to IRS Direct File or state portals?", answer: "Yes — IRS portals, USCIS immigration services, and federal government portals enforce file size limits on PDF attachments. Compressing your W-2 forms, 1099 documents, and supporting schedules to under 2 MB prevents upload errors and ensures your federal tax submission is accepted on the first attempt." },
-  ],
-  "brazil": [
-    { question: "Posso comprimir meu IRPF e documentos da Receita Federal antes de enviar pelo Gov.br?", answer: "Sim — a Receita Federal e o Gov.br têm limites de tamanho para anexos de documentos fiscais. Comprimir sua declaração de IRPF, contracheques e documentos CPF para menos de 2 MB evita erros de envio e garante que sua declaração fiscal brasileira seja aceita sem problemas." },
   ],
   "colombia": [
     { question: "Can I compress my DIAN tax return documents for online submission in Colombia?", answer: "Yes — the DIAN portal and Cancillería digital services in Colombia enforce upload size limits on tax return attachments. Compressing your Declaración de Renta, RUT documents, and DIAN forms to under 2 MB prevents submission errors and ensures your Colombian tax filing is processed promptly." },
@@ -925,17 +927,11 @@ const COUNTRY_SPECIFIC_FAQS: Record<string, Array<{ question: string; answer: st
   "morocco": [
     { question: "Dois-je compresser ma Déclaration de revenus avant de la soumettre sur le portail DGI du Maroc?", answer: "Oui — le portail DGI et la CNSS au Maroc imposent des limites de taille de fichier pour les pièces jointes de déclaration de revenus. Compresser votre déclaration d'IR, les copies de votre CIN et les justificatifs à moins de 2 Mo évite les erreurs d'envoi et garantit l'acceptation de votre déclaration fiscale marocaine." },
   ],
-  "kenya": [
-    { question: "Can I compress my KRA iTax documents before uploading to the eCitizen portal in Kenya?", answer: "Yes — the KRA iTax portal and eCitizen digital services in Kenya enforce file size limits for tax return attachments. Compressing your P9 forms, KRA PIN certificates, and income tax returns to under 2 MB prevents upload errors and ensures your Kenyan tax submission is accepted from Nairobi, Mombasa, or Kisumu." },
-  ],
   "ghana": [
     { question: "Can I compress my GRA tax documents before uploading to the Ghana government portal?", answer: "Yes — the GRA and Ghana.gov.gh digital portals enforce file size limits for income tax return attachments. Compressing your Annual Income Tax Returns, Ghana Card scans, and TIN documents to under 2 MB prevents upload errors and ensures your Ghanaian tax submission is processed correctly." },
   ],
   "ethiopia": [
     { question: "Can I compress my ERCA tax documents before uploading to the Ethiopian government portal?", answer: "Yes — the ERCA and MoR digital portals in Ethiopia have file size limits for income tax declaration attachments. Compressing your income tax returns, Kebele ID scans, and TIN documents to under 2 MB prevents upload errors and ensures your Ethiopian government submission is accepted." },
-  ],
-  "south-africa": [
-    { question: "Can I compress my SARS eFiling documents before uploading my ITR12 in South Africa?", answer: "Yes — the SARS eFiling portal and Home Affairs digital services in South Africa enforce file size limits for tax return attachments. Compressing your ITR12, IRP5 certificates, and medical aid tax certificates to under 2 MB prevents upload errors and ensures your South African tax submission is accepted on the first attempt." },
   ],
   "tanzania": [
     { question: "Can I compress my TRA tax documents before uploading to the Tanzania government portal?", answer: "Yes — the TRA and BRELA digital portals in Tanzania enforce file size limits for income tax return attachments. Compressing your ITR forms, NIDA national ID documents, and TIN certificates to under 2 MB prevents upload errors and ensures your Tanzanian government submission is accepted." },
@@ -1989,7 +1985,7 @@ function genCountryPages(): ProgrammaticPage[] {
         // Variant 0 — Tool directory angle
         `From ${rd.cities} to every corner of ${c.label}, PDF HUB 24 gives ${c.demonym} access to ${tc} — no registration, no watermarks, no hidden costs. Whether you are preparing ${rd.docs} for ${c.portal} or handling routine document tasks, the complete toolkit is permanently free.\n\nThe most-used tools among ${c.demonym}: Compress PDF (portal upload limits), Merge PDF (multi-document submissions), PDF to Word (editing official ${c.label} documents), Sign PDF (digital signatures without printing), and Protect PDF (256-bit AES encryption for sensitive ${rd.compliance}-regulated files before sharing).\n\nEvery tool runs in your browser — smartphone, tablet, or desktop — with no app download and no VPN required. ${secPara(s2, rd.compliance, c.label)}`,
         // Variant 1 — Cost-saving angle
-        `An Adobe Acrobat subscription costs ${c.currency === "GBP" ? "£" : c.currency === "EUR" ? "€" : c.currency === "JPY" ? "¥" : "$"}20+ per month for ${c.demonym}. PDF HUB 24 provides ${tc} — compress, merge, split, convert, sign, edit, protect — completely free, with no account required.\n\nFor ${c.portal} document workflows, the most valuable tools are Compress PDF (meeting portal upload limits), Merge PDF (combining ${rd.docs} into one submission package), and PDF to Word (turning official PDFs into editable files). Permanently free for all ${c.label} residents.\n\n${secPara(s2, rd.compliance, c.label)}`,
+        `An Adobe Acrobat subscription costs ${rd.currency === "GBP" ? "£" : rd.currency === "EUR" ? "€" : rd.currency === "JPY" ? "¥" : "$"}20+ per month for ${c.demonym}. PDF HUB 24 provides ${tc} — compress, merge, split, convert, sign, edit, protect — completely free, with no account required.\n\nFor ${c.portal} document workflows, the most valuable tools are Compress PDF (meeting portal upload limits), Merge PDF (combining ${rd.docs} into one submission package), and PDF to Word (turning official PDFs into editable files). Permanently free for all ${c.label} residents.\n\n${secPara(s2, rd.compliance, c.label)}`,
         // Variant 2 — Workflow angle
         `${c.label}'s document workflow — from ${rd.docs} to signed contracts and compressed portal submissions — requires a versatile PDF toolkit. ${c.demonym} handle a wide range of document tasks daily, and PDF HUB 24 provides every tool needed across ${tc}, all permanently free.\n\nUsers in ${rd.cities} and across ${c.label} consistently rely on: Compress PDF for reducing file sizes before uploading to ${c.portal}, Merge PDF for bundling multi-part applications, PDF to Word for editing scanned official documents, and Sign PDF for legally-accepted digital signatures.\n\n${secPara(s2, rd.compliance, c.label)}`,
         // Variant 3 — Speed and access angle
@@ -2339,7 +2335,6 @@ No software installation, no monthly subscription, and no watermarks on output f
 
 function genCountryToolPages(): ProgrammaticPage[] {
   const results: ProgrammaticPage[] = [];
-  type CC = { label: string; demonym: string; portal: string; slug: string };
   const tools = [
     {
       id: "merge",
