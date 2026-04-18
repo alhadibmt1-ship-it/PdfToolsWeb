@@ -466,6 +466,41 @@ function slugVariant(slug: string): number {
   return Math.abs(h) % 4;
 }
 
+function slugVariant6(slug: string): number {
+  let h = 0;
+  for (let i = 0; i < slug.length; i++) h = ((h << 5) - h + slug.charCodeAt(i) * 31) | 0;
+  return Math.abs(h) % 6;
+}
+
+// 5 structurally distinct data-security closing paragraphs
+function secPara(slug: string, compliance: string, label: string): string {
+  const v = slugVariant6(slug + "sec") % 5;
+  return [
+    `All files are processed over an encrypted HTTPS connection and permanently deleted within 1 hour of upload. No data is retained on our servers, no content is ever accessed by staff, and no information is shared with third parties — fully consistent with ${compliance} data minimisation principles.`,
+    `Your ${compliance} rights are protected by design. ${label} users benefit from HTTPS encryption on every file transfer and an automated 1-hour deletion policy that ensures no document lingers on our infrastructure after processing is complete. We never read, analyse, or share your files.`,
+    `Unlike cloud-storage tools that retain files indefinitely, PDF HUB 24 deletes every processed document within 1 hour. HTTPS encryption protects all data in transit, and no third-party script has access to your file contents — an important consideration for ${label} users handling ${compliance}-regulated personal data.`,
+    `${compliance} requires processors to retain personal data only as long as strictly necessary. We go further: files are automatically and permanently deleted within 1 hour, HTTPS transport encrypts every byte in transit, and our servers never log document content. Safe for even the most sensitive ${label} documents.`,
+    `Once processing completes, an automated deletion timer starts. Your file is permanently removed within 1 hour — not archived, not analysed, not shared. All traffic uses HTTPS encryption. This workflow is designed to meet the data-minimisation expectations of ${compliance} for ${label} residents sharing sensitive official documents.`,
+  ][v];
+}
+
+// Varied FAQ answer openers that avoid the uniform "Yes." start
+const FAQ_OPENERS = ["Absolutely —", "Correct —", "Completely free —", "There are no restrictions —", "All tools are free —", "No cost at all —"];
+function faqYes(i: number): string { return FAQ_OPENERS[i % FAQ_OPENERS.length]; }
+
+// Countries with near-zero PDF tool search volume — skip from output
+const NOINDEX_COUNTRY_SLUGS = new Set([
+  "tonga","solomon-islands","samoa","vanuatu","east-timor","bhutan","maldives",
+  "eritrea","djibouti","south-sudan","central-african-republic","chad",
+  "lesotho","eswatini","gambia","cuba","haiti","yemen","syria","somalia",
+  "guinea","guinea-bissau","sierra-leone","liberia","togo","benin","burkina-faso",
+  "niger","mali","cape-verde","comoros","sao-tome","seychelles","kiribati","nauru","palau",
+]);
+
+// Tool-count phrasing variants to avoid "49+ free tools" repetition
+const TOOL_COUNT = ["49+ free PDF tools","more than 49 online tools","a full suite of 49+ tools","over four dozen free tools","49+ PDF utilities","a complete toolkit of 49+ tools"];
+function toolCount(slug: string): string { return TOOL_COUNT[slugVariant6(slug) % TOOL_COUNT.length]; }
+
 const DOC_TYPES = [
   { slug: "resume",          label: "Resume",           context: "Job seekers need their resume PDF compressed for email attachments and ATS upload portals." },
   { slug: "invoice",         label: "Invoice",          context: "Small businesses send invoices by email daily. A compressed invoice under 200KB reaches any inbox reliably." },
@@ -613,7 +648,7 @@ Remember that file size depends on content complexity. A ${s.label} target is ac
         `Government and institutional document portals`,
       ],
       [
-        { question: `Can I really compress a PDF to ${s.label}?`, answer: `Yes, for most text-based documents. Image-heavy files may need additional steps like grayscale conversion or page removal alongside compression to reach ${s.label}.` },
+        { question: `Can I really compress a PDF to ${s.label}?`, answer: `For most text-based documents, ${s.label} is achievable. Image-heavy files may need additional steps like grayscale conversion or page removal alongside compression to reach ${s.label}.` },
         { question: "Is my original file affected?", answer: "No. We always work on a copy. Your original file is never modified, and processed files are deleted from our servers within 1 hour." },
         { question: `What if my PDF is still over ${s.label} after compression?`, answer: `Try removing unnecessary pages first, then converting colour content to grayscale, then compressing again. This three-step approach achieves the smallest possible file size.` },
       ]
@@ -643,7 +678,7 @@ Always check the compressed file by opening it before submitting — text should
       ],
       [
         { question: `How do I get my PDF strictly under ${s.label}?`, answer: `Use our high compression setting. If the result is close, also convert images to grayscale. For text documents, medium compression is usually sufficient.` },
-        { question: "Will text be readable at this size?", answer: "Yes. Text in PDFs is vector-based and remains perfectly sharp regardless of compression level. Only embedded images may show slight softening." },
+        { question: "Will text be readable at this size?", answer: "Text in PDFs is vector-based and remains perfectly sharp regardless of compression level. Only embedded images may show slight softening." },
         { question: "How many files can I compress at once?", answer: "You can compress files one at a time for free. Each processed file is kept for 1 hour then automatically deleted for your privacy." },
       ]
     ));
@@ -671,7 +706,7 @@ For a ${s.example}, you can typically achieve a ${s.label} result with medium co
       [
         { question: `What's the smallest size I can reduce a PDF to?`, answer: `For text-only documents, compression can reduce size by over 90%. For scanned image documents, combining high compression with grayscale conversion typically achieves 70–85% reduction.` },
         { question: "Does reducing PDF size affect print quality?", answer: "For standard office printing, no. Text remains sharp. High-quality photo printing from a heavily compressed PDF may show slight image softening, but it's rarely noticeable." },
-        { question: "Is this tool safe for confidential documents?", answer: "Yes. Files are processed locally in your browser when possible, and any server-side processing deletes files within 1 hour. We do not access or store your document content." },
+        { question: "Is this tool safe for confidential documents?", answer: "Files are processed locally in your browser when possible, and any server-side processing deletes files within 1 hour. We do not access or store your document content." },
       ]
     ));
   }
@@ -702,7 +737,7 @@ One important tip: always preview your compressed PDF before submitting or shari
     [
       { question: `Why do I need to compress PDFs for ${u.label}?`, answer: `${u.context}` },
       { question: "How small can I compress my PDF?", answer: "For text-heavy documents, compression can reduce file size by 90% or more. Image-heavy PDFs typically compress by 60–80%. Combining compression with grayscale conversion achieves the smallest possible sizes." },
-      { question: "Is the compression free?", answer: "Yes, completely free. No signup, no watermark, no file count limit per session. Simply upload, compress, and download." },
+      { question: "Is the compression free?", answer: "Completely free — no signup, no watermark, no file count limit per session. Simply upload, compress, and download." },
     ]
   ));
 }
@@ -739,9 +774,9 @@ Security on ${p.label} is handled identically to desktop: your files are never s
       `Reducing PDF file sizes when working remotely on ${p.label}`,
     ],
     [
-      { question: `Does PDF compression work on ${p.label}?`, answer: `Yes, fully. Our web-based tool works in any modern browser on ${p.label}. No app download, plugin, or software installation is required.` },
+      { question: `Does PDF compression work on ${p.label}?`, answer: `Our web-based tool works fully in any modern browser on ${p.label}. No app download, plugin, or software installation is required.` },
       { question: "What file size limit applies?", answer: "You can compress PDFs of any size. Very large files (100MB+) may take slightly longer to process but are fully supported." },
-      { question: "Are my files safe on this device?", answer: "Yes. All processing happens over HTTPS, and files are permanently deleted from our servers within 1 hour. Nothing is saved or shared." },
+      { question: "Are my files safe on this device?", answer: "All processing happens over HTTPS, and files are permanently deleted from our servers within 1 hour. Nothing is saved or shared." },
     ]
   ));
 }
@@ -768,8 +803,8 @@ No account, no credit card, and no software installation is needed. ${pr.label} 
       `Batch processing multiple documents efficiently from any device`,
     ],
     [
-      { question: `Is this tool safe for sensitive documents used by ${pr.label}?`, answer: "Yes. Files are deleted within 1 hour of processing, connections are HTTPS-encrypted, and we do not access or store document content." },
-      { question: "Can I compress multiple documents in a session?", answer: "Yes, you can compress as many files as you need in a single session. Each file is processed separately and independently." },
+      { question: `Is this tool safe for sensitive documents used by ${pr.label}?`, answer: "Files are deleted within 1 hour of processing, connections are HTTPS-encrypted, and we do not access or store document content." },
+      { question: "Can I compress multiple documents in a session?", answer: "You can compress as many files as you need in a single session. Each file is processed separately and independently." },
       { question: "Will compression affect document quality for professional use?", answer: "Text remains perfectly sharp at all compression levels. Images may show slight softening at high compression, but remain professional quality for screen viewing and standard printing." },
     ]
   ));
@@ -801,7 +836,7 @@ For recurring workflows that require merging ${n} PDFs regularly, bookmark this 
         `Creating a unified reference document from ${n} separate source files`,
       ],
       [
-        { question: `Can I really merge exactly ${n} PDFs into one?`, answer: `Yes. Upload your ${n} files, arrange them in order, and click Merge. The result is a single PDF containing all pages from all ${n} documents.` },
+        { question: `Can I really merge exactly ${n} PDFs into one?`, answer: `${faqYes(n % 6)} upload your ${n} files, arrange them in order, and click Merge. The result is a single PDF containing all pages from all ${n} documents.` },
         { question: "Is there a page limit?", answer: "No. You can merge PDFs of any length. The resulting document contains all pages from all input files." },
         { question: "Will my merged PDF have a watermark?", answer: "No. PDF HUB 24 never adds watermarks to merged documents. The result is a clean, professional PDF." },
       ]
@@ -862,8 +897,8 @@ No registration is required. Your documents are never shared with third parties,
       ],
       [
         { question: `What documents should I include when merging for ${u.label}?`, answer: `${u.context} Include all required forms, supporting evidence, and identification documents in the order specified by the receiving authority.` },
-        { question: "Can I rearrange pages after merging?", answer: "Yes. After merging, you can use our Reorder Pages tool to fine-tune the page sequence before downloading your final document." },
-        { question: "Is the merge free?", answer: "Yes, completely free. No account, no watermark, no file count limit. Merge as many documents as your submission requires." },
+        { question: "Can I rearrange pages after merging?", answer: "After merging, you can use our Reorder Pages tool to fine-tune the page sequence before downloading your final document." },
+        { question: "Is the merge free?", answer: "Completely free — no account, no watermark, no file count limit. Merge as many documents as your submission requires." },
       ]
     ));
 
@@ -920,7 +955,7 @@ All merged documents are automatically deleted from our servers within 1 hour. N
     [
       { question: `How do ${pr.label} use the merge tool most effectively?`, answer: `Upload all required documents, arrange them in the logical or required sequence, then merge. For large packages, split the merge into thematic sections first if needed.` },
       { question: "Can I merge password-protected PDFs?", answer: "You'll need to unlock the PDFs first using our Unlock PDF tool, then merge the unlocked versions." },
-      { question: "Is this tool secure for professional documents?", answer: "Yes. All connections are HTTPS encrypted, and files are permanently deleted within 1 hour of processing." },
+      { question: "Is this tool secure for professional documents?", answer: "All connections are HTTPS encrypted, and files are permanently deleted within 1 hour of processing." },
     ]
   ));
 }
@@ -952,8 +987,8 @@ All ${n} output files maintain the original quality, formatting, and any embedde
       ],
       [
         { question: `How does the split-into-${n} feature work?`, answer: `Upload your PDF, specify that you want ${n} equal parts (or define custom page ranges for each part), and our tool creates ${n} separate downloadable PDFs.` },
-        { question: "Are all my pages included in the output?", answer: "Yes. Every page from the original document appears in one of the output parts. No pages are lost or omitted." },
-        { question: "Can I split a PDF into unequal parts?", answer: "Yes. Use the custom page range mode to assign any number of pages to each part. The ranges don't need to be equal." },
+        { question: "Are all my pages included in the output?", answer: "Every page from the original document appears in one of the output parts. No pages are lost or omitted." },
+        { question: "Can I split a PDF into unequal parts?", answer: "The custom page range mode lets you assign any number of pages to each part. The ranges don't need to be equal." },
       ]
     ));
   }
@@ -981,7 +1016,7 @@ All output files are downloadable individually or as a ZIP archive, making it ea
       [
         { question: `How do I split a PDF every ${n} page${n > 1 ? "s" : ""}?`, answer: `Upload your PDF, select "Split every ${n} page${n > 1 ? "s" : ""}" from the split options, and download the resulting set of ${n}-page documents.` },
         { question: `What happens if my page count isn't a multiple of ${n}?`, answer: `The last output file will contain the remaining pages (fewer than ${n}). No pages are ever dropped or omitted.` },
-        { question: "Can I download all output files at once?", answer: "Yes. After splitting, you can download all output files as a single ZIP archive for convenience." },
+        { question: "Can I download all output files at once?", answer: "After splitting, you can download all output files as a single ZIP archive for convenience." },
       ]
     ));
   }
@@ -1040,8 +1075,8 @@ Download individual files or all sections at once as a ZIP archive.`,
     ],
     [
       { question: `How do I split a PDF for ${u.label}?`, answer: `Upload your PDF, choose your split method (by range, every N pages, or equal parts), then download the separate files for your ${u.label} workflow.` },
-      { question: "Can I split by specific page numbers?", answer: "Yes. The custom range option lets you define exactly where each split occurs by specifying page numbers." },
-      { question: "Is split PDF quality preserved?", answer: "Yes. Splitting never re-encodes or re-compresses content. All output files are identical in quality to the corresponding pages in the original." },
+      { question: "Can I split by specific page numbers?", answer: "The custom range option lets you define exactly where each split occurs by specifying page numbers." },
+      { question: "Is split PDF quality preserved?", answer: "Splitting never re-encodes or re-compresses content. All output files are identical in quality to the corresponding pages in the original." },
     ]
   ));
 }
@@ -1071,7 +1106,7 @@ PDF is the standard format for professional document sharing because it looks id
       ],
       [
         { question: `How do I convert ${f.label} to PDF?`, answer: `Upload your ${f.ext} file to our converter, adjust any settings, and click Convert. Download the resulting PDF instantly.` },
-        { question: `Is the ${f.label} to PDF conversion free?`, answer: "Yes, completely free. No signup, no watermark on the output, and no limit on conversions per session." },
+        { question: `Is the ${f.label} to PDF conversion free?`, answer: "Completely free — no signup, no watermark on the output, and no limit on conversions per session." },
         { question: `How is ${f.label} different from PDF?`, answer: `${f.description.charAt(0).toUpperCase() + f.description.slice(1)}. PDF is a fixed-layout format that looks identical on all devices and can combine multiple pages and document types in one file.` },
       ]
     ));
@@ -1099,7 +1134,7 @@ PDF to ${f.label} conversion is particularly valuable when you need to edit cont
       ],
       [
         { question: `How do I convert PDF to ${f.label}?`, answer: `Upload your PDF to our converter. The tool processes it and provides a download link for your ${f.ext} file within seconds.` },
-        { question: `Is PDF to ${f.label} conversion free?`, answer: "Yes. No account, no watermark, and no limit on conversions per session. Completely free to use." },
+        { question: `Is PDF to ${f.label} conversion free?`, answer: "No account, no watermark, and no limit on conversions per session. Completely free to use." },
         { question: `Does the converted ${f.label} preserve all content?`, answer: `Text and structure are preserved as accurately as the ${f.label} format allows. Complex layouts may be linearised, but all content is included.` },
       ]
     ));
@@ -1143,9 +1178,9 @@ ${pr.label} using this tool benefit from enterprise-grade processing without ent
           `Handling occasional document tasks without installing specialist tools`,
         ],
         [
-          { question: `Is this ${t.toolName} tool suitable for ${pr.label}?`, answer: `Yes. ${pr.context} Our tool is designed for professional use with no feature restrictions or watermarks.` },
-          { question: "Is the tool free for professional use?", answer: "Yes, completely free. No account, no subscription, no per-file charge. Use it as often as you need." },
-          { question: "Are documents safe when used by professionals?", answer: "Yes. All processing uses HTTPS encryption, files are never shared with third parties, and all uploads are deleted within 1 hour." },
+          { question: `Is this ${t.toolName} tool suitable for ${pr.label}?`, answer: `${faqYes(pr.label.length % 6)} ${pr.context} Our tool is designed for professional use with no feature restrictions or watermarks.` },
+          { question: "Is the tool free for professional use?", answer: "Completely free — no account, no subscription, no per-file charge. Use it as often as you need." },
+          { question: "Are documents safe when used by professionals?", answer: "All processing uses HTTPS encryption, files are never shared with third parties, and all uploads are deleted within 1 hour." },
         ]
       ));
     }
@@ -1157,21 +1192,24 @@ function genCountryPages(): ProgrammaticPage[] {
   const results: ProgrammaticPage[] = [];
 
   for (const c of COUNTRIES) {
+    // Skip countries with near-zero PDF tool search volume
+    if (NOINDEX_COUNTRY_SLUGS.has(c.slug)) continue;
+
     const rd = getRich(c.slug);
     const vr = slugVariant(c.slug);
 
-    // ── compress-pdf-{country} ─────────────────────────────────────────────
+    // ── compress-pdf-{country} — Portal/submission focus ───────────────────
     const s1 = `compress-pdf-${c.slug}`;
     if (!skip(s1)) {
       const compressContent = [
         // Variant 0 — Document-first
-        `In ${c.label}, common document submissions — including ${rd.docs} — often require PDFs under 1–5 MB. Residents of ${rd.cities} rely on our free PDF compressor daily to meet portal upload limits without installing software or paying for a subscription.\n\nFor ${c.portal} submissions, medium compression achieves the right balance between file size and document clarity. For stricter limits under 500 KB, high compression combined with grayscale conversion reduces file sizes by up to 90% while keeping text sharp and readable.\n\nAll files are processed securely with HTTPS encryption and deleted within 1 hour — aligned with ${rd.compliance} data minimisation principles. No account needed. Compress as many PDFs as you need, completely free.`,
+        `In ${c.label}, official submissions — including ${rd.docs} — often require PDFs under 1–5 MB. Residents of ${rd.cities} rely on our free PDF compressor daily to meet portal upload limits before submitting to ${c.portal}, without installing software or paying a subscription fee.\n\nMedium compression achieves the right balance for most government document submissions. For stricter portal limits under 500 KB, high compression combined with grayscale conversion can reduce file sizes by up to 90% while keeping text perfectly sharp and readable for reviewers.\n\n${secPara(s1, rd.compliance, c.label)}`,
         // Variant 1 — Portal-first
-        `${c.portal} and other ${c.label} government platforms typically enforce file-size limits of 1–5 MB per document. Failing to meet these limits means rejected submissions — a frustrating delay when you are handling ${rd.docs} or other time-sensitive paperwork.\n\nOur free PDF compressor solves this reliably. Upload your PDF, choose a compression level, and download a smaller file ready for any ${c.label} portal. Medium compression works for most documents; high compression tackles image-heavy files. No software installation, no watermark, no signup.\n\nProcessing happens directly in your browser. Files are deleted within 1 hour, meeting the data minimisation requirements of ${rd.compliance}. Fully accessible from ${rd.cities} and across all of ${c.label} — no VPN needed.`,
+        `${c.portal} and other ${c.label} government platforms enforce file-size limits of 1–5 MB per document. A rejected upload means resubmission delays — a real problem when handling time-sensitive ${rd.docs}.\n\nOur free PDF compressor solves this without any software installation. Upload your document, choose a compression level, download a portal-ready file. Medium compression works for most ${c.label} document types; high compression tackles image-heavy scans. No watermark, no account, no cost.\n\n${secPara(s1, rd.compliance, c.label)}`,
         // Variant 2 — Problem-first
-        `The challenge of ${rd.useCase} is familiar to anyone who has tried uploading a large PDF to a government or commercial portal in ${c.label}. Many portals reject files over 1–2 MB, sending you back to square one.\n\nPDF HUB 24 solves this in seconds. Upload your document — whether it is a ${rd.docs.split(",")[0].trim()} or a multi-page scanned report — choose your compression level, and download a portal-ready PDF. No registration, no software, no cost.\n\nThe tool is fully accessible from ${rd.cities} and all of ${c.label} on any device. Files are processed securely and permanently deleted within 1 hour, consistent with ${rd.compliance} requirements for data security.`,
+        `The frustration of ${rd.useCase} — only to have the portal reject your PDF for exceeding the file-size limit — is familiar to many ${c.label} residents. Our free compressor eliminates that obstacle.\n\nUpload your document — a ${rd.docs.split(",")[0].trim()} or a multi-page scanned file — choose a compression level, and download a portal-ready PDF in seconds. Three levels give you full control. Works on any device across ${rd.cities} and all of ${c.label}, no account needed.\n\n${secPara(s1, rd.compliance, c.label)}`,
         // Variant 3 — Mobile-first
-        `${c.demonym} increasingly manage documents ${rd.mobile} — including ${rd.docs} — and large PDFs slow everything down. Our free PDF compressor is optimised for ${c.label} connection speeds, compressing files to a fraction of their original size without quality loss.\n\nOpen any browser on your smartphone or desktop, upload your PDF, and get a compressed file ready for ${c.portal} or any other ${c.label} platform. Three compression levels give you full control: low for maximum quality, medium for the best balance, high for the smallest file size.\n\nData security is built in: all files use HTTPS encryption and are deleted within 1 hour — meeting ${rd.compliance} standards. No account required, no watermark added. Completely free for all ${c.demonym}.`,
+        `${c.demonym} increasingly manage ${rd.docs} and other documents ${rd.mobile}, and large PDFs create real problems — slow uploads, rejected submissions, failed shares. Our free compressor is optimised for ${c.label} mobile connection speeds.\n\nOpen the tool in any browser, upload your PDF, and download a compressed file ready for ${c.portal} or any other ${c.label} platform. Three compression levels — low for maximum quality, medium for the best balance, high for the smallest file size — give you full control without installing anything.\n\n${secPara(s1, rd.compliance, c.label)}`,
       ][vr];
 
       results.push(page(
@@ -1189,25 +1227,26 @@ function genCountryPages(): ProgrammaticPage[] {
           `Preparing ${rd.compliance}-compliant compressed documents for ${c.label} submissions`,
         ],
         [
-          { question: `Can ${c.demonym} use this PDF compressor for free?`, answer: `Yes. The tool is completely free for ${c.demonym} — no signup, no watermark, and no usage limits. Accessible from ${rd.cities} and all of ${c.label}.` },
-          { question: `Does the tool work for ${c.portal}?`, answer: `Yes. Our compressor produces PDFs that meet the file-size requirements of ${c.portal}. Use medium or high compression and download your portal-ready document instantly.` },
-          { question: `Is my data protected under ${rd.compliance}?`, answer: `Yes. Files are processed using HTTPS encryption and permanently deleted within 1 hour. No data is stored or shared — consistent with ${rd.compliance} requirements.` },
+          { question: `Can ${c.demonym} use this PDF compressor for free?`, answer: `${faqYes(0)} the tool is completely free for ${c.demonym} — no signup, no watermark, and no usage limits. Accessible from ${rd.cities} and all of ${c.label}.` },
+          { question: `Does the tool produce PDFs accepted by ${c.portal}?`, answer: `${faqYes(1)} our compressor outputs standard PDFs that meet the size requirements of ${c.portal}. Medium compression covers most ${c.label} portal limits; high compression handles stricter thresholds.` },
+          { question: `How does PDF HUB 24 handle ${rd.compliance} data obligations?`, answer: `${faqYes(2)} files are encrypted in transit with HTTPS and permanently deleted within 1 hour. No content is retained, analysed, or shared — consistent with ${rd.compliance} requirements.` },
         ]
       ));
     }
 
-    // ── pdf-tools-{country} ────────────────────────────────────────────────
+    // ── pdf-tools-{country} — Full tool-directory focus ────────────────────
     const s2 = `pdf-tools-${c.slug}`;
     if (!skip(s2)) {
+      const tc = toolCount(s2);
       const toolsContent = [
-        // Variant 0
-        `From ${rd.cities} to every corner of ${c.label}, PDF HUB 24 gives ${c.demonym} access to 49+ free PDF tools — no registration, no watermarks, no hidden costs. Whether you are preparing ${rd.docs} for ${c.portal} or handling day-to-day document tasks, our complete toolkit covers every need.\n\nThe most-used tools among ${c.demonym} include: Compress PDF (for meeting portal upload limits), Merge PDF (for bundling multi-document submissions), PDF to Word (for editing official ${c.label} documents), Sign PDF (for adding digital signatures without printing), and Protect PDF (for securing sensitive files with ${rd.currency}-transaction-level 256-bit AES encryption before sharing).\n\nEvery tool runs in your browser — smartphone, tablet, or desktop. No app download, no VPN. Files are processed securely and deleted within 1 hour, aligned with ${rd.compliance}.`,
-        // Variant 1
-        `Paying for Adobe Acrobat or similar software is unnecessary for ${c.demonym}. PDF HUB 24 provides all the PDF tools you need — compress, merge, split, convert, sign, edit, protect, and more — completely free, with no account required.\n\nFor ${c.portal} document workflows, the most important tools are Compress PDF (meeting strict upload size limits), Merge PDF (combining ${rd.docs} into a single submission), and PDF to Word (converting official PDFs into editable files). All are available at no cost for ${c.label} residents.\n\nFiles are deleted within 1 hour and never stored on our servers — a key consideration for ${c.demonym} handling sensitive ${rd.compliance}-regulated documents. The service works equally fast from ${rd.cities} and rural areas of ${c.label}.`,
-        // Variant 2
-        `${c.label}'s document landscape requires a versatile PDF toolkit. From ${rd.docs} to signed contracts and compressed government submissions, ${c.demonym} handle a wide variety of PDF tasks daily. PDF HUB 24 provides every tool needed — 49+ utilities — all permanently free.\n\nUsers in ${rd.cities} and across ${c.label} consistently rely on: Compress PDF for reducing file sizes before uploading to ${c.portal}, Merge PDF for combining multi-part applications, PDF to Word for editing scanned or digital official documents, and Sign PDF for legally-valid digital signatures.\n\nSecurity matters when handling official ${c.label} documents. All processing uses HTTPS and files are permanently deleted within 1 hour — meeting ${rd.compliance} data protection expectations. Free, unlimited, no watermarks.`,
-        // Variant 3
-        `The best free PDF tools for ${c.label} — all in one place. PDF HUB 24 gives ${c.demonym} access to 49+ tools covering everything from compression and merging to signing, protecting, and converting PDFs. No subscription fee, no watermarks, no signup.\n\nDocuments commonly handled by ${c.label} residents — including ${rd.docs} — often need compression before uploading to ${c.portal}. Our toolkit makes this workflow fast: compress, merge, sign, and download in minutes, entirely in your browser.\n\nWhether you are accessing the tools from ${rd.cities} on a desktop or from a smartphone ${rd.mobile}, the experience is identical. Files are deleted within 1 hour and processing complies with ${rd.compliance} data protection standards.`,
+        // Variant 0 — Tool directory angle
+        `From ${rd.cities} to every corner of ${c.label}, PDF HUB 24 gives ${c.demonym} access to ${tc} — no registration, no watermarks, no hidden costs. Whether you are preparing ${rd.docs} for ${c.portal} or handling routine document tasks, the complete toolkit is permanently free.\n\nThe most-used tools among ${c.demonym}: Compress PDF (portal upload limits), Merge PDF (multi-document submissions), PDF to Word (editing official ${c.label} documents), Sign PDF (digital signatures without printing), and Protect PDF (256-bit AES encryption for sensitive ${rd.compliance}-regulated files before sharing).\n\nEvery tool runs in your browser — smartphone, tablet, or desktop — with no app download and no VPN required. ${secPara(s2, rd.compliance, c.label)}`,
+        // Variant 1 — Cost-saving angle
+        `An Adobe Acrobat subscription costs ${c.currency === "GBP" ? "£" : c.currency === "EUR" ? "€" : c.currency === "JPY" ? "¥" : "$"}20+ per month for ${c.demonym}. PDF HUB 24 provides ${tc} — compress, merge, split, convert, sign, edit, protect — completely free, with no account required.\n\nFor ${c.portal} document workflows, the most valuable tools are Compress PDF (meeting portal upload limits), Merge PDF (combining ${rd.docs} into one submission package), and PDF to Word (turning official PDFs into editable files). Permanently free for all ${c.label} residents.\n\n${secPara(s2, rd.compliance, c.label)}`,
+        // Variant 2 — Workflow angle
+        `${c.label}'s document workflow — from ${rd.docs} to signed contracts and compressed portal submissions — requires a versatile PDF toolkit. ${c.demonym} handle a wide range of document tasks daily, and PDF HUB 24 provides every tool needed across ${tc}, all permanently free.\n\nUsers in ${rd.cities} and across ${c.label} consistently rely on: Compress PDF for reducing file sizes before uploading to ${c.portal}, Merge PDF for bundling multi-part applications, PDF to Word for editing scanned official documents, and Sign PDF for legally-accepted digital signatures.\n\n${secPara(s2, rd.compliance, c.label)}`,
+        // Variant 3 — Speed and access angle
+        `The best free PDF tools for ${c.label} — all in one place. ${tc.charAt(0).toUpperCase() + tc.slice(1)} covering everything from compression and merging to signing, protecting, and converting PDFs — no subscription, no watermarks, no signup.\n\nDocuments handled by ${c.label} residents — including ${rd.docs} — often need compression before uploading to ${c.portal}. The complete workflow — compress, merge, sign, download — takes minutes in any browser, from ${rd.cities} or anywhere in ${c.label}, on any device ${rd.mobile}.\n\n${secPara(s2, rd.compliance, c.label)}`,
       ][vr];
 
       results.push(page(
@@ -1218,32 +1257,33 @@ function genCountryPages(): ProgrammaticPage[] {
         "/", "PDF HUB 24",
         toolsContent,
         [
-          `Accessing free PDF tools for ${rd.docs} without software subscriptions in ${c.label}`,
+          `Accessing ${tc} for ${rd.docs} without software subscriptions in ${c.label}`,
           `Preparing ${c.portal} submissions using free online PDF tools from ${c.label}`,
           `Converting, compressing, and editing PDFs from ${rd.cities} and across ${c.label}`,
           `Handling ${rd.compliance}-compliant document workflows free of charge`,
           `Using enterprise-grade PDF tools for ${c.label} residents at no cost`,
         ],
         [
-          { question: `Are PDF HUB 24 tools available to ${c.demonym}?`, answer: `Yes. All 49+ tools are fully accessible from ${c.label} — including ${rd.cities} — with no regional restrictions, no VPN, and no signup required.` },
-          { question: `Which tools are most useful for ${c.label} document requirements?`, answer: `For ${c.portal} and other ${c.label} portals, the most commonly needed tools are Compress PDF, Merge PDF, and PDF to Word. All handle ${rd.docs} and similar documents reliably.` },
-          { question: `Is my data safe under ${rd.compliance} when using PDF HUB 24?`, answer: `Yes. Files are processed over HTTPS and permanently deleted within 1 hour. No data is stored or shared — fully consistent with ${rd.compliance} expectations.` },
+          { question: `Are all ${tc} really free for ${c.demonym}?`, answer: `${faqYes(3)} every tool is permanently free for ${c.demonym} in ${rd.cities} and across ${c.label} — no regional restrictions, no VPN, and no account required.` },
+          { question: `Which PDF tools are most useful for ${c.label} government submissions?`, answer: `For ${c.portal} and other ${c.label} portals, Compress PDF, Merge PDF, and PDF to Word handle ${rd.docs} and similar documents most reliably. All are free with no usage limits.` },
+          { question: `How does PDF HUB 24 protect ${rd.compliance}-regulated documents?`, answer: `${faqYes(4)} files are processed over HTTPS and permanently deleted within 1 hour — no data stored, no data shared, fully consistent with ${rd.compliance} expectations.` },
         ]
       ));
     }
 
-    // ── free-pdf-tools-{country} ───────────────────────────────────────────
+    // ── free-pdf-tools-{country} — Cost-comparison vs paid tools ──────────
     const s3 = `free-pdf-tools-${c.slug}`;
     if (!skip(s3)) {
+      const tc3 = toolCount(s3);
       const freeToolsContent = [
-        // Variant 0
-        `Finding truly free PDF tools in ${c.label} — without hidden subscription fees, forced account creation, or watermarked output — is harder than it should be. PDF HUB 24 provides exactly that: 49+ permanently free tools that handle every PDF task ${c.demonym} encounter, from compressing ${rd.docs} for ${c.portal} to signing contracts and converting files to Word.\n\nResidents of ${rd.cities} and all of ${c.label} can use every tool without registration. The interface works identically on all devices and all connection types, including mobile data. Output is always watermark-free and download-ready.\n\nPrivacy is protected by design: all files are deleted within 1 hour of upload, meeting ${rd.compliance} data minimisation standards. There are no premium tiers — every tool is free for every user.`,
-        // Variant 1
-        `${c.demonym} deserve free PDF tools that actually work — without surprise paywalls, low upload limits, or watermarks on the output. PDF HUB 24 delivers: 49+ tools covering compression, merging, splitting, conversion, signing, and more, all permanently free with no account required.\n\nFor the most common ${c.label} document tasks — compressing ${rd.docs.split(",")[0].trim()} for ${c.portal}, merging multi-page applications, and converting scanned PDFs to Word — our tools handle everything reliably. Users from ${rd.cities} report fast processing even on mobile data connections.\n\nAll processing complies with ${rd.compliance}: files use HTTPS encryption and are deleted within 1 hour. No data is ever sold, shared, or retained. Free, unlimited, and permanently available.`,
-        // Variant 2
-        `For ${c.label} residents juggling ${rd.docs} and day-to-day PDF needs, the cost of PDF software adds up quickly. PDF HUB 24 eliminates that cost entirely — 49+ free tools, no subscription, no account, no watermarks.\n\nThe tools most valued by ${c.demonym} are: Compress PDF (reducing file sizes before uploading to ${c.portal}), Merge PDF (bundling multiple documents into one submission), PDF to Word (editing official ${c.label} PDFs), and Protect PDF (securing sensitive files with 256-bit AES encryption before sharing ${rd.mobile}).\n\nAll tools are accessible from ${rd.cities} and across ${c.label} in any browser. Files are deleted within 1 hour — ensuring compliance with ${rd.compliance}. Every tool, every time, completely free.`,
-        // Variant 3
-        `The search for genuinely free PDF tools in ${c.label} ends here. PDF HUB 24 provides 49+ free online tools — compress, merge, split, convert, sign, edit, protect — with no cost, no watermark, and no registration for ${c.demonym}.\n\nFor ${rd.useCase} and other common ${c.label} document workflows, our tools streamline the entire process. ${rd.docs.split(",")[0].trim()} and similar documents compress quickly, merge cleanly, and download ready for ${c.portal} without a single paid feature unlocked.\n\nFrom ${rd.cities} to every region of ${c.label}, the service works on any device ${rd.mobile}. Files are processed with HTTPS encryption and deleted within 1 hour — consistent with ${rd.compliance} and your right to data privacy.`,
+        // Variant 0 — Comparison vs paid tools
+        `Adobe Acrobat, Smallpdf, and iLovePDF all offer free tiers — but each imposes daily file limits, file-size caps, or watermarked output that make them impractical for regular ${c.label} document workflows. PDF HUB 24 provides ${tc3} with no limits, no watermarks, and no account needed — permanently free for ${c.demonym}.\n\nFrom compressing ${rd.docs} before submitting to ${c.portal}, to merging multi-part applications and converting scanned PDFs to editable Word format — every tool produces clean, watermark-free output every time. Residents of ${rd.cities} and across ${c.label} use these tools on desktop and mobile with equal reliability.\n\n${secPara(s3, rd.compliance, c.label)}`,
+        // Variant 1 — Anti-paywall angle
+        `${c.demonym} searching for free PDF tools online encounter the same pattern repeatedly: a free tier that limits you to 2 files per day, requires account creation, or adds watermarks to output. PDF HUB 24 is different — ${tc3} with none of those restrictions, permanently free.\n\nFor ${rd.useCase} and other common ${c.label} document tasks — including compressing ${rd.docs.split(",")[0].trim()} for ${c.portal}, merging applications, and converting scanned files — our tools deliver clean output with no artificial limits. Users in ${rd.cities} report fast processing on any connection speed.\n\n${secPara(s3, rd.compliance, c.label)}`,
+        // Variant 2 — Cost-savings calculation angle
+        `At ${rd.currency} 20–30 per month for Adobe Acrobat, ${c.label} residents and small businesses spend hundreds of ${rd.currency} annually on PDF software they could replace entirely with ${tc3} — all free, all browser-based, no installation required.\n\nThe tools most valued by ${c.demonym}: Compress PDF (eliminating portal rejection of ${rd.docs} due to file-size limits), Merge PDF (bundling multi-document submissions into one file), PDF to Word (editing official ${c.label} PDFs without a paid licence), and Protect PDF (256-bit AES encryption before sharing ${rd.mobile}).\n\n${secPara(s3, rd.compliance, c.label)}`,
+        // Variant 3 — Permanence and trust angle
+        `Free tools come and go — some become paywalled, some add watermarks after a promotional period. PDF HUB 24's ${tc3} have been free since launch and remain free. No bait-and-switch, no degraded free tier, no ${rd.currency} charges for ${c.demonym}.\n\nFor ${rd.useCase} and other ${c.label} document workflows, ${rd.docs.split(",")[0].trim()} and similar documents compress, merge, split, and convert reliably — portal-ready output every time, accessible from ${rd.cities} and all of ${c.label} on any device ${rd.mobile}.\n\n${secPara(s3, rd.compliance, c.label)}`,
       ][vr];
 
       results.push(page(
@@ -1261,8 +1301,8 @@ function genCountryPages(): ProgrammaticPage[] {
           `Free PDF tools with no signup or watermark for ${c.demonym}`,
         ],
         [
-          { question: `Are there any free PDF tools in ${c.label} without watermarks?`, answer: `Yes. PDF HUB 24 provides 49+ free tools for ${c.demonym} — no watermarks, no account required, no hidden fees. Accessible from ${rd.cities} and all of ${c.label}.` },
-          { question: `Do these tools work for ${c.portal} document requirements?`, answer: `Yes. Our compress, merge, and convert tools produce PDFs accepted by ${c.portal} and all standard ${c.label} document portals. They handle ${rd.docs} and similar files reliably.` },
+          { question: `Are there any free PDF tools in ${c.label} without watermarks?`, answer: `${faqYes(3)} PDF HUB 24 provides 49+ free tools for ${c.demonym} — no watermarks, no account required, no hidden fees. Accessible from ${rd.cities} and all of ${c.label}.` },
+          { question: `Do these tools work for ${c.portal} document requirements?`, answer: `${faqYes(5)} our compress, merge, and convert tools produce PDFs accepted by ${c.portal} and all standard ${c.label} document portals. They handle ${rd.docs} and similar files reliably.` },
           { question: `How does PDF HUB 24 protect my ${rd.compliance}-regulated documents?`, answer: `All files are processed via HTTPS and permanently deleted within 1 hour. No data is stored, shared, or accessed — consistent with ${rd.compliance} data protection requirements.` },
         ]
       ));
@@ -1296,7 +1336,7 @@ For ${d.label} documents specifically, text quality is paramount — our compres
       [
         { question: `Will compressing my ${d.label} PDF affect its readability?`, answer: `No. Text in your ${d.label} remains perfectly sharp at all compression levels. Only images may show slight reduction in detail at high compression settings.` },
         { question: `What compression level should I use for a ${d.label}?`, answer: "Medium compression is recommended for most cases. Use high compression if the file is still too large after medium, or if images are not critical." },
-        { question: `Is the compressed ${d.label} still legally valid?`, answer: "Yes. PDF compression does not alter the legal status or certified content of the document. The text, signatures, and data are unchanged." },
+        { question: `Is the compressed ${d.label} still legally valid?`, answer: "PDF compression does not alter the legal status or certified content of the document. The text, signatures, and data are unchanged." },
       ]
     ));
 
@@ -1321,8 +1361,8 @@ Upload your ${d.label} PDFs, arrange them in the correct sequence using drag-and
       ],
       [
         { question: `How do I merge ${d.label} PDFs into one?`, answer: `Upload all your ${d.label} PDF files, arrange them in order using drag-and-drop, then click Merge and download the combined document.` },
-        { question: `Is merged ${d.label} content preserved accurately?`, answer: "Yes. Merging never alters the content of any document. Every page, number, date, and signature is preserved exactly." },
-        { question: `Can I merge ${d.label} PDFs from different sources?`, answer: "Yes. PDFs from different software, scanners, or institutions can all be merged regardless of how they were originally created." },
+        { question: `Is merged ${d.label} content preserved accurately?`, answer: "Merging never alters the content of any document. Every page, number, date, and signature is preserved exactly." },
+        { question: `Can I merge ${d.label} PDFs from different sources?`, answer: "PDFs from different software, scanners, or institutions can all be merged regardless of how they were originally created." },
       ]
     ));
   }
@@ -1359,8 +1399,8 @@ No software installation is required — the tool works in any modern browser on
           `Handling ${ind.label} document workflows without paid software subscriptions`,
         ],
         [
-          { question: `Is PDF HUB 24 suitable for ${ind.label} industry use?`, answer: `Yes. ${ind.context} Our tool handles the document types and quality requirements typical of ${ind.label} professional workflows.` },
-          { question: `Is the tool free for ${ind.label} organisations?`, answer: "Yes, completely free. No subscription, no per-document charge, and no user limit. Suitable for individuals and teams." },
+          { question: `Is PDF HUB 24 suitable for ${ind.label} industry use?`, answer: `${faqYes(ind.label.length % 6)} ${ind.context} Our tool handles the document types and quality requirements typical of ${ind.label} professional workflows.` },
+          { question: `Is the tool free for ${ind.label} organisations?`, answer: "Completely free — no subscription, no per-document charge, and no user limit. Suitable for individuals and teams." },
           { question: `How is data security handled for ${ind.label} documents?`, answer: "All processing uses HTTPS encryption. Files are never shared with third parties and are permanently deleted within 1 hour of processing." },
         ]
       ));
@@ -1398,7 +1438,7 @@ The resulting watermarked PDF maintains the original quality of all content. Wat
       [
         { question: `How do I watermark a PDF for ${u.label}?`, answer: "Upload your PDF, type your watermark text or upload an image, adjust opacity and position, then download the watermarked PDF." },
         { question: "Can I remove the watermark from the output PDF?", answer: "Our watermarks are embedded as visible elements. The text is generally removable only with advanced PDF editing tools, providing reasonable protection." },
-        { question: "Can I apply the watermark to only some pages?", answer: "Yes. You can apply the watermark to all pages or specify page ranges for selective watermarking." },
+        { question: "Can I apply the watermark to only some pages?", answer: "Apply the watermark to all pages or specify page ranges for selective watermarking." },
       ]
     ));
   }
@@ -1424,9 +1464,9 @@ After uploading your PDF, you can place your signature anywhere on the document,
 Digital signatures created through our tool are appropriate for most professional and commercial purposes. For documents requiring certified digital certificates under specific legal frameworks (e.g., eIDAS in the EU, ESIGN in the USA), consult with your legal advisor about the appropriate signature standard.`,
       [`Signing PDF ${u.label} without printing, scanning, or mailing`, `Adding digital signatures to ${u.label} for fast turnaround`, `Creating professionally signed ${u.label} from anywhere on any device`, "Completing document signing workflows without PDF editing software", `Signing ${u.label} securely with automatic file deletion after processing`],
       [
-        { question: `Can I sign PDF ${u.label} with a drawn signature?`, answer: `Yes. Our tool supports drawn signatures (using mouse or touchscreen), typed signatures, and uploaded signature images for signing ${u.label}.` },
+        { question: `Can I sign PDF ${u.label} with a drawn signature?`, answer: `${faqYes(u.slug.length % 6)} our tool supports drawn signatures (using mouse or touchscreen), typed signatures, and uploaded signature images for signing ${u.label}.` },
         { question: `Are digitally signed ${u.label} legally valid?`, answer: "In most jurisdictions, digitally signed documents are legally valid for commercial agreements. For regulated transactions, verify the signature standard required." },
-        { question: `Is signing ${u.label} on PDF HUB 24 free?`, answer: "Yes, completely free. No account required and no watermark added to signed documents." },
+        { question: `Is signing ${u.label} on PDF HUB 24 free?`, answer: "Completely free — no account required and no watermark added to signed documents." },
       ]
     ));
   }
@@ -1457,9 +1497,9 @@ After OCR processing, your ${l.label} PDF becomes fully text-searchable. You can
 OCR accuracy for ${l.label} depends on the scan quality. Clear, high-contrast scans at 200 DPI or above yield the best results. If your scan is blurry or low-contrast, the accuracy may be reduced — enhancing scan quality before OCR gives the best outcome.`,
       [`Making scanned ${l.label} documents searchable and copy-paste enabled`, `Converting ${l.label} scanned books, manuals, or reports to text`, `Digitising ${l.label} paperwork for electronic document management`, `Extracting ${l.label} data from scanned forms and tables`, `Creating editable ${l.label} text from non-selectable PDF scans`],
       [
-        { question: `Does your OCR tool support ${l.label}?`, answer: `Yes. Our OCR engine supports ${l.label} character recognition. Clear, high-resolution scans give the best text extraction accuracy.` },
+        { question: `Does your OCR tool support ${l.label}?`, answer: `${faqYes(l.label.length % 6)} our OCR engine supports ${l.label} character recognition. Clear, high-resolution scans give the best text extraction accuracy.` },
         { question: `What scan quality is needed for good OCR results in ${l.label}?`, answer: "Scans at 200–300 DPI with good contrast give the best results. Blurry or very low-contrast scans reduce OCR accuracy in any language." },
-        { question: `Is ${l.label} OCR free?`, answer: "Yes, completely free. No signup, no watermark, and no page-count limit per file." },
+        { question: `Is ${l.label} OCR free?`, answer: "Completely free — no signup, no watermark, and no page-count limit per file." },
       ]
     ));
   }
@@ -1486,8 +1526,8 @@ Our free tool handles this task with no registration required. Upload your PDF, 
 This approach ensures your document security needs are met without exposing your files to unnecessary storage or third-party access. The result is a PDF that behaves exactly as needed for your specific security or access control requirement.`,
       ["Protecting sensitive documents before sharing", "Controlling document access with password encryption", "Removing forgotten or unnecessary password restrictions", "Preparing secure PDFs for email and messaging", "Ensuring document privacy for professional and personal use"],
       [
-        { question: "Is this tool free?", answer: "Yes, completely free. No account, no watermark, and no usage limits." },
-        { question: "Are my files safe?", answer: "Yes. Files are processed over HTTPS and deleted within 1 hour. We never store or access document content." },
+        { question: "Is this tool free?", answer: "Completely free — no account, no watermark, and no usage limits." },
+        { question: "Are my files safe?", answer: "Files are processed over HTTPS and deleted within 1 hour. We never store or access document content." },
         { question: "What encryption standard is used?", answer: "PDF password protection uses 256-bit AES encryption, the same standard used by banks and government agencies." },
       ]
     ));
@@ -1536,7 +1576,7 @@ Our free PDF tools handle this task with no registration required. Simply open t
 No software installation, no monthly subscription, and no watermarks on output files. PDF HUB 24 provides professional-grade PDF tools that are genuinely free for everyone.`,
         ["Processing PDFs without installing software or paying subscriptions", "Handling document preparation for email, upload portals, and sharing", "Managing document workflows efficiently from any device", "Maintaining document quality while reducing file size or reorganising pages", "Processing sensitive documents securely with automatic deletion"],
         [
-          { question: "Is this tool really free?", answer: "Yes, completely free. No signup, no credit card, no watermark on output, and no usage limits." },
+          { question: "Is this tool really free?", answer: "Completely free — no signup, no credit card, no watermark on output, and no usage limits." },
           { question: "What devices does this work on?", answer: "Any modern browser on Windows, Mac, Linux, iPhone, Android, iPad, or Chromebook. No app download needed." },
           { question: "How secure is my document?", answer: "All processing uses HTTPS encryption. Files are never shared with third parties and are permanently deleted within 1 hour." },
         ]
@@ -1577,9 +1617,9 @@ function genCountryToolPages(): ProgrammaticPage[] {
         `Creating unified document packages for ${c.label} regulatory submissions`,
       ],
       faqs: (c: { label: string; demonym: string; portal: string }) => [
-        { question: `Can ${c.demonym} merge PDFs for free?`, answer: `Yes. PDF merging is completely free for all ${c.demonym} with no signup, no watermark, and no file count limit.` },
+        { question: `Can ${c.demonym} merge PDFs for free?`, answer: `${faqYes(0)} PDF merging is completely free for all ${c.demonym} with no signup, no watermark, and no file count limit.` },
         { question: `How many PDFs can I merge in ${c.label}?`, answer: `There is no limit on the number of PDFs you can merge. Upload as many files as your document requires.` },
-        { question: `Does the merged PDF work with ${c.portal}?`, answer: `Yes. Our merged PDFs are fully compatible with all major document portals and comply with standard PDF specifications.` },
+        { question: `Does the merged PDF work with ${c.portal}?`, answer: `${faqYes(2)} our merged PDFs are fully compatible with all major document portals and comply with standard PDF specifications.` },
       ],
     },
     {
@@ -1612,8 +1652,8 @@ function genCountryToolPages(): ProgrammaticPage[] {
       faqs: (c: CC) => {
         const rd = getRich(c.slug);
         return [
-          { question: `Can ${c.demonym} convert PDF to Word for free?`, answer: `Yes. The converter is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, no file size limits.` },
-          { question: `Does it work for ${rd.docs.split(",")[0].trim()} and other ${c.portal} documents?`, answer: `Yes. Our converter handles standard PDFs from any ${c.label} source including government portals, banks, and official institutions.` },
+          { question: `Can ${c.demonym} convert PDF to Word for free?`, answer: `${faqYes(1)} the converter is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, no file size limits.` },
+          { question: `Does it work for ${rd.docs.split(",")[0].trim()} and other ${c.portal} documents?`, answer: `${faqYes(3)} our converter handles standard PDFs from any ${c.label} source including government portals, banks, and official institutions.` },
           { question: `What Word format does the conversion produce?`, answer: `A standard DOCX file compatible with Microsoft Word 2010+, LibreOffice, Google Docs, and all modern word processors.` },
         ];
       },
@@ -1648,9 +1688,9 @@ function genCountryToolPages(): ProgrammaticPage[] {
       faqs: (c: CC) => {
         const rd = getRich(c.slug);
         return [
-          { question: `Can ${c.demonym} sign PDFs for free?`, answer: `Yes. PDF signing is completely free for ${c.demonym} — draw, type, or upload your signature with no account required, accessible from ${rd.cities} and all of ${c.label}.` },
+          { question: `Can ${c.demonym} sign PDFs for free?`, answer: `${faqYes(4)} PDF signing is completely free for ${c.demonym} — draw, type, or upload your signature with no account required, accessible from ${rd.cities} and all of ${c.label}.` },
           { question: `Is a digital signature valid in ${c.label}?`, answer: `Electronic signatures are widely accepted for personal and commercial documents in ${c.label}. For court or notarised documents, check with a qualified ${c.label} professional.` },
-          { question: `Does the signed PDF work with ${c.portal}?`, answer: `Yes. Our signed PDFs are standard format accepted by ${c.portal} and all major document systems used in ${c.label}.` },
+          { question: `Does the signed PDF work with ${c.portal}?`, answer: `${faqYes(5)} our signed PDFs are standard format accepted by ${c.portal} and all major document systems used in ${c.label}.` },
         ];
       },
     },
@@ -1684,7 +1724,7 @@ function genCountryToolPages(): ProgrammaticPage[] {
       faqs: (c: CC) => {
         const rd = getRich(c.slug);
         return [
-          { question: `Can ${c.demonym} split PDFs for free?`, answer: `Yes. PDF splitting is completely free for all ${c.demonym} — no signup, no watermark, and no page count limit. Accessible from ${rd.cities} and all of ${c.label}.` },
+          { question: `Can ${c.demonym} split PDFs for free?`, answer: `${faqYes(0)} PDF splitting is completely free for all ${c.demonym} — no signup, no watermark, and no page count limit. Accessible from ${rd.cities} and all of ${c.label}.` },
           { question: `How do I extract specific pages from a ${c.label} PDF?`, answer: `Upload your PDF, type the page numbers or ranges you want (e.g., 1-3, 5, 8-10), and download a new PDF with only those pages. Handles ${rd.docs.split(",")[0].trim()} and all standard ${c.label} document formats.` },
           { question: `Does splitting reduce the quality of my PDF?`, answer: `No. Splitting only separates pages — text, images, and formatting are preserved exactly from the original.` },
         ];
@@ -1721,7 +1761,7 @@ function genCountryToolPages(): ProgrammaticPage[] {
         const rd = getRich(c.slug);
         return [
           { question: `What PDF conversion formats are available for ${c.demonym}?`, answer: `Convert PDF to Word, Excel, JPG, PNG, PowerPoint, and more — all free for ${c.demonym} in ${rd.cities} and across ${c.label}. No signup or watermark.` },
-          { question: `Does PDF conversion work for ${rd.docs.split(",")[0].trim()} and other ${c.portal} documents?`, answer: `Yes. Our converters handle standard PDFs from all ${c.label} sources including government portals, banks, and institutions.` },
+          { question: `Does PDF conversion work for ${rd.docs.split(",")[0].trim()} and other ${c.portal} documents?`, answer: `${faqYes(2)} our converters handle standard PDFs from all ${c.label} sources including government portals, banks, and institutions.` },
           { question: `How long does PDF conversion take in ${c.label}?`, answer: `Most conversions complete in 10-30 seconds. The tool works on all ${c.label} connection speeds including mobile data.` },
         ];
       },
@@ -1729,36 +1769,40 @@ function genCountryToolPages(): ProgrammaticPage[] {
     {
       id: "compress-pdf-online",
       slug: (c: string) => `compress-pdf-online-${c}`,
-      title: (label: string) => `Compress PDF Online in ${label} — Best Free Tool | PDF HUB 24`,
-      h1: (label: string) => `Best PDF Compressor Online in ${label} — 100% Free`,
-      desc: (label: string, demonym: string) => `Best free PDF compressor online for ${label}. Trusted by ${demonym}. Reduce PDF size by 90% instantly. No signup, no watermark.`,
+      title: (label: string) => `Compress PDF Online Free in ${label} — No Software Needed | PDF HUB 24`,
+      h1: (label: string) => `Compress PDF Online in ${label} — No Install, No Account`,
+      desc: (label: string, demonym: string) => `Compress PDF online free in ${label} — no software installation, no Adobe Acrobat licence. Trusted by ${demonym}. Works on any browser.`,
       toolPath: "/compress",
       toolName: "Compress PDF",
       content: (c: CC) => {
         const rd = getRich(c.slug); const vr = slugVariant(c.slug);
         return [
-          `The best free PDF compressor for ${c.label} — no software, no subscription, no watermark. ${c.demonym} in ${rd.cities} use our tool daily to reduce file sizes for email, ${rd.mobile.replace("via ", "")}, ${c.portal} uploads, and cloud storage.\n\nThree compression levels: low for maximum quality retention, medium for the ideal balance (recommended for ${c.portal} submissions), and high for the smallest possible file size. Text is always preserved at full sharpness — only embedded images are reduced.\n\nProcessing complies with ${rd.compliance}: HTTPS encryption throughout, files deleted within 1 hour. Compress as many ${rd.docs.split(",")[0].trim()} and other PDFs as you need — completely free.`,
-          `${c.portal} and other ${c.label} platforms cap document uploads at 1–5 MB. ${c.demonym} from ${rd.cities} rely on our free online compressor to meet these limits reliably — compressing ${rd.docs.split(",")[0].trim()} and other documents without watermarks or registration.\n\nMedium compression is the recommended setting for most ${c.label} government submissions. High compression with grayscale conversion achieves the maximum reduction for image-heavy files. All text remains perfectly sharp at every compression level.\n\nFiles are deleted within 1 hour — meeting ${rd.compliance} standards. Free, unlimited, accessible across all of ${c.label}.`,
-          `When ${rd.useCase} in ${c.label}, one of the most common obstacles is a file-size rejection from the portal. Our free PDF compressor solves this in seconds — upload your document, compress, and download a portal-ready file smaller than the limit.\n\nFrom ${rd.cities} and across all of ${c.label}, the tool works on any browser and device. No software, no account, no watermark. Medium compression handles most ${c.label} government document requirements; high compression tackles larger files.\n\nAll data is processed under ${rd.compliance} protections: HTTPS encryption and deletion within 1 hour.`,
-          `${c.demonym} sharing documents ${rd.mobile} need compressed PDFs that load instantly. Our free compressor reduces ${rd.docs.split(",")[0].trim()} and other files by up to 90% without quality loss — the result opens instantly on any ${c.label} mobile device.\n\nThree compression levels give full control for every use case: from a quick compress before emailing a ${c.label} colleague, to maximum compression for a strict ${c.portal} upload limit. All text stays sharp.\n\nData security: HTTPS encryption + deletion within 1 hour, meeting ${rd.compliance} standards. Completely free for all ${c.demonym}.`,
+          // Variant 0 — Software-replacement angle
+          `Adobe Acrobat Pro costs over ${rd.currency} 200 per year. ${c.demonym} in ${rd.cities} use PDF HUB 24 to compress PDFs online — free, in any browser, with zero installation required. The result is the same as desktop software: a smaller PDF with sharp text and acceptable image quality.\n\nThe key advantage of online compression over installing software: it works on every device you own — home computer, work laptop, shared office PC, smartphone — without licence management or per-device installation. Upload, compress, download, done.\n\n${secPara(`compress-pdf-online-${c.slug}`, rd.compliance, c.label)}`,
+          // Variant 1 — Any-device angle
+          `Compressing a PDF used to require installing Acrobat, Smallpdf Desktop, or a similar programme. ${c.demonym} no longer need to do that — PDF HUB 24 runs entirely in the browser, on any operating system (Windows, macOS, Linux, ChromeOS) and any device (desktop, laptop, tablet, smartphone).\n\nFor ${c.label} users who share a work computer or access documents from multiple devices in ${rd.cities}, online compression removes the friction of managing software licences. No installation, no subscription, no watermark on the output — just upload and compress.\n\n${secPara(`compress-pdf-online-${c.slug}`, rd.compliance, c.label)}`,
+          // Variant 2 — IT-restriction angle
+          `Many ${c.label} workplaces and schools restrict software installations on their computers. ${c.demonym} in ${rd.cities} who cannot install Adobe Acrobat on a work or shared device rely on browser-based PDF compression as the practical alternative — no admin rights required, no IT approval needed.\n\nPDF HUB 24 works in Chrome, Firefox, Safari, and Edge without any plugin or extension. Compress ${rd.docs.split(",")[0].trim()} and other documents at up to 90% size reduction, then download the result instantly. The compressed file is standard PDF — no DRM, no proprietary format.\n\n${secPara(`compress-pdf-online-${c.slug}`, rd.compliance, c.label)}`,
+          // Variant 3 — Frequent-use angle
+          `${c.demonym} who occasionally need to compress a PDF — perhaps once a week before sending ${rd.docs.split(",")[0].trim()} or uploading to a ${c.label} portal — have no reason to pay for desktop software. A browser-based tool handles the task in the same time and produces an identical result.\n\nPDF HUB 24 is that browser-based tool, free for ${c.label} residents and accessible from any device in ${rd.cities} and across ${c.label}. No account to maintain, no subscription to cancel — just open a tab, compress, and download. The tool is always up to date and never asks for a software update.\n\n${secPara(`compress-pdf-online-${c.slug}`, rd.compliance, c.label)}`,
         ][vr];
       },
       useCases: (c: CC) => {
         const rd = getRich(c.slug);
         return [
-          `Best free PDF compression for ${c.label} government portal submissions`,
-          `Compressing ${rd.docs.split(",")[0].trim()} for ${rd.mobile.replace("via ", "")} sharing in ${c.label}`,
-          `Reducing PDF file size for ${c.portal} strict upload limits`,
-          `Free PDF compressor for students and professionals in ${rd.cities}`,
-          `Compressing PDF without watermark for ${rd.compliance}-compliant ${c.label} workflows`,
+          `Compressing PDFs online without installing Adobe Acrobat on a ${c.label} work computer`,
+          `Free PDF compression on any device for ${c.demonym} in ${rd.cities}`,
+          `Browser-based PDF compression for ${c.label} students and shared-device users`,
+          `Replacing Smallpdf or iLovePDF paid tier with a permanently free online alternative`,
+          `Compressing ${rd.docs.split(",")[0].trim()} and official PDFs without software licences in ${c.label}`,
         ];
       },
       faqs: (c: CC) => {
         const rd = getRich(c.slug);
         return [
-          { question: `What is the best free PDF compressor in ${c.label}?`, answer: `PDF HUB 24 is trusted by thousands of ${c.demonym} in ${rd.cities} and across ${c.label} for free PDF compression — no signup, no watermark, no hidden costs.` },
-        { question: `How much can I compress a PDF in ${c.label}?`, answer: `Typically 60-90% file size reduction depending on content. Image-heavy PDFs compress the most; text-only PDFs typically compress 30-60%.` },
-        { question: `Is PDF compression free for ${c.demonym}?`, answer: `Yes, completely free. No account needed, no watermarks added, no daily limits. Compress as many PDFs as you need.` },
+          { question: `Do I need to install software to compress a PDF in ${c.label}?`, answer: `Not at all — PDF HUB 24 runs entirely in your browser. No Adobe Acrobat, no Smallpdf Desktop, no plugin required. Works on any device in ${rd.cities} and across ${c.label}.` },
+          { question: `Is browser-based PDF compression as good as desktop software?`, answer: `For most use cases, yes. The compression algorithms produce equivalent results to desktop software. Text quality is preserved at all compression levels; only embedded images are reduced.` },
+          { question: `How is my data protected under ${rd.compliance}?`, answer: `Your ${rd.compliance} rights are protected — files are encrypted in transit using HTTPS and permanently deleted within 1 hour. No content is retained, analysed, or shared.` },
         ];
       },
     },
@@ -1792,9 +1836,9 @@ function genCountryToolPages(): ProgrammaticPage[] {
       faqs: (c: CC) => {
         const rd = getRich(c.slug);
         return [
-          { question: `Can ${c.demonym} edit PDFs for free online?`, answer: `Yes. Our PDF editor is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, and no usage limits.` },
+          { question: `Can ${c.demonym} edit PDFs for free online?`, answer: `${faqYes(1)} our PDF editor is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, and no usage limits.` },
           { question: `What editing features are available for ${c.label} users?`, answer: `Add text, highlight sections, insert annotations, and draw shapes. All edits are embedded into the PDF and compatible with ${c.portal} and all standard PDF viewers.` },
-          { question: `Is the edited PDF compatible with ${rd.compliance} requirements?`, answer: `Yes. Our edited PDFs are standard format accepted by all major ${c.label} portals and document systems, with processing that meets ${rd.compliance} data protection standards.` },
+          { question: `Is the edited PDF compatible with ${rd.compliance} requirements?`, answer: `${faqYes(3)} our edited PDFs are standard format accepted by all major ${c.label} portals and document systems, with processing that meets ${rd.compliance} data protection standards.` },
         ];
       },
     },
@@ -1828,9 +1872,9 @@ function genCountryToolPages(): ProgrammaticPage[] {
       faqs: (c: CC) => {
         const rd = getRich(c.slug);
         return [
-          { question: `Can ${c.demonym} convert JPG to PDF for free?`, answer: `Yes. JPG to PDF conversion is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, no image count limit.` },
-          { question: `Can I combine multiple JPG photos into one PDF in ${c.label}?`, answer: `Yes. Upload multiple JPG images and they are combined into a single PDF in the order you upload them — perfect for multi-page ${rd.docs.split(",")[0].trim()} submissions.` },
-          { question: `Does the JPG to PDF output work with ${c.portal}?`, answer: `Yes. Our PDFs are standard format accepted by ${c.portal} and all major document systems in ${c.label}.` },
+          { question: `Can ${c.demonym} convert JPG to PDF for free?`, answer: `${faqYes(0)} JPG to PDF conversion is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, no image count limit.` },
+          { question: `Can I combine multiple JPG photos into one PDF in ${c.label}?`, answer: `${faqYes(4)} upload multiple JPG images and they are combined into a single PDF in the order you upload them — perfect for multi-page ${rd.docs.split(",")[0].trim()} submissions.` },
+          { question: `Does the JPG to PDF output work with ${c.portal}?`, answer: `${faqYes(2)} our PDFs are standard format accepted by ${c.portal} and all major document systems in ${c.label}.` },
         ];
       },
     },
@@ -1864,9 +1908,9 @@ function genCountryToolPages(): ProgrammaticPage[] {
       faqs: (c: CC) => {
         const rd = getRich(c.slug);
         return [
-          { question: `Can ${c.demonym} convert PDF to JPG for free?`, answer: `Yes. PDF to JPG conversion is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, high-quality output.` },
+          { question: `Can ${c.demonym} convert PDF to JPG for free?`, answer: `${faqYes(5)} PDF to JPG conversion is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, high-quality output.` },
           { question: `What resolution are the JPG images for ${c.label} users?`, answer: `High resolution suitable for printing, presentations, and digital sharing. Quality is maintained from the original PDF including ${c.portal} and other ${c.label} official documents.` },
-          { question: `Can I convert multiple PDF pages to JPG at once in ${c.label}?`, answer: `Yes. Convert all pages in one operation and download as a ZIP archive — handles ${rd.docs.split(",")[0].trim()} and all standard ${c.label} PDF formats.` },
+          { question: `Can I convert multiple PDF pages to JPG at once in ${c.label}?`, answer: `${faqYes(1)} convert all pages in one operation and download as a ZIP archive — handles ${rd.docs.split(",")[0].trim()} and all standard ${c.label} PDF formats.` },
         ];
       },
     },
@@ -1900,9 +1944,9 @@ function genCountryToolPages(): ProgrammaticPage[] {
       faqs: (c: CC) => {
         const rd = getRich(c.slug);
         return [
-          { question: `Can ${c.demonym} password protect PDFs for free?`, answer: `Yes. PDF password protection is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, with 256-bit AES encryption.` },
+          { question: `Can ${c.demonym} password protect PDFs for free?`, answer: `${faqYes(3)} PDF password protection is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, with 256-bit AES encryption.` },
           { question: `Does password protection meet ${rd.compliance} requirements in ${c.label}?`, answer: `256-bit AES encryption is the highest standard for PDF security and is recognised by banks, government agencies, and data protection authorities worldwide, including in ${c.label}.` },
-          { question: `Can I open the protected PDF with ${c.portal} systems?`, answer: `Yes. Password-protected PDFs are standard format compatible with all PDF viewers. The recipient needs only the correct password to open the file.` },
+          { question: `Can I open the protected PDF with ${c.portal} systems?`, answer: `${faqYes(0)} password-protected PDFs are standard format compatible with all PDF viewers. The recipient needs only the correct password to open the file.` },
         ];
       },
     },
@@ -1936,9 +1980,9 @@ function genCountryToolPages(): ProgrammaticPage[] {
       faqs: (c: CC) => {
         const rd = getRich(c.slug);
         return [
-          { question: `Can ${c.demonym} rotate PDF pages for free?`, answer: `Yes. PDF page rotation is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, no page count limit.` },
-          { question: `Can I rotate only specific pages in my ${c.label} PDF?`, answer: `Yes. Rotate individual pages or apply rotation to all pages at once. Choose 90°, 180°, or 270° in either direction. Works for ${rd.docs.split(",")[0].trim()} and all standard PDF formats.` },
-          { question: `Will the rotated PDF work with ${c.portal}?`, answer: `Yes. Rotated PDFs are standard format accepted by ${c.portal} and all PDF viewers and document portals used in ${c.label}.` },
+          { question: `Can ${c.demonym} rotate PDF pages for free?`, answer: `${faqYes(4)} PDF page rotation is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, no page count limit.` },
+          { question: `Can I rotate only specific pages in my ${c.label} PDF?`, answer: `${faqYes(2)} rotate individual pages or apply rotation to all pages at once. Choose 90°, 180°, or 270° in either direction. Works for ${rd.docs.split(",")[0].trim()} and all standard PDF formats.` },
+          { question: `Will the rotated PDF work with ${c.portal}?`, answer: `${faqYes(5)} rotated PDFs are standard format accepted by ${c.portal} and all PDF viewers and document portals used in ${c.label}.` },
         ];
       },
     },
@@ -1946,6 +1990,8 @@ function genCountryToolPages(): ProgrammaticPage[] {
 
   for (const t of tools) {
     for (const c of COUNTRIES) {
+      // Skip countries with near-zero PDF tool search volume
+      if (NOINDEX_COUNTRY_SLUGS.has(c.slug)) continue;
       const slug = t.slug(c.slug);
       if (!skip(slug)) {
         results.push({
@@ -2004,8 +2050,8 @@ function genImageToolPages(): ProgrammaticPage[] {
           `Fast, secure processing — files deleted within 1 hour`,
         ],
         faqs: [
-          { question: `Is this ${t.label.toLowerCase()} tool really free?`, answer: `Yes, completely free. No subscription, no hidden fees, no watermark on output.` },
-          { question: `Does it work on mobile?`, answer: `Yes, the tool works on iPhone, Android, and any modern browser without installing apps.` },
+          { question: `Is this ${t.label.toLowerCase()} tool really free?`, answer: `Completely free — no subscription, no hidden fees, no watermark on output.` },
+          { question: `Does it work on mobile?`, answer: `The tool works on iPhone, Android, and any modern browser without installing apps.` },
           { question: `How long are my files stored?`, answer: `Files are automatically deleted within 1 hour of upload. We do not retain your images.` },
         ],
       });
@@ -2051,9 +2097,9 @@ function genConversionQualityPages(): ProgrammaticPage[] {
           `Free alternative to Adobe Acrobat conversion`,
         ],
         faqs: [
-          { question: `Is the ${c.label} ${q.label} converter free?`, answer: `Yes, completely free with no signup, no watermark, and no file size tricks.` },
+          { question: `Is the ${c.label} ${q.label} converter free?`, answer: `${faqYes((c.label.length + q.label.length) % 6)} completely free — no signup, no watermark, and no file size tricks.` },
           { question: `How many files can I convert?`, answer: `Convert as many files as you need — there is no daily limit or subscription required.` },
-          { question: `Is my file secure?`, answer: `Yes. Files are processed securely and automatically deleted within 1 hour.` },
+          { question: `Is my file secure?`, answer: `${faqYes(1)} files are processed securely and automatically deleted within 1 hour.` },
         ],
       });
     }
