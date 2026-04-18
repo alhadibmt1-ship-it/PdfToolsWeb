@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
 import EnhancedToolSEOContent from "@/components/LazyEnhancedSEO";
+import CountrySpotlight from "@/components/CountrySpotlight";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import { Button } from "@/components/ui/button";
@@ -225,6 +226,8 @@ export default function ProtectPdfPage() {
           </div>
 
           <EnhancedToolSEOContent toolId="protect-pdf" />
+
+          <CountrySpotlight toolCountrySlug="protect-pdf" />
           
           <RelatedTools currentToolId="protect-pdf" />
         </div>

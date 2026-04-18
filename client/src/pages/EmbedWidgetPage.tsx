@@ -59,14 +59,7 @@ export default function EmbedWidgetPage() {
     description: "Embed free PDF tools on your website with our widget generator. Get iframe code for merge, compress, convert, and 40+ PDF tools. Easy copy-paste integration.",
     keywords: "embed pdf tools, pdf widget, iframe pdf converter, embed pdf merger, website pdf tools",
     canonicalPath: "/embed",
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Embed PDF Tools Widget Generator",
-      "description": "Generate embed code to add PDF tools to your website",
-      "url": `${BASE_URL}/embed`,
-      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
-    }
+    noindex: true,
   });
 
   return (

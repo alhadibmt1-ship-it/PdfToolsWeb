@@ -610,6 +610,35 @@ const COUNTRY_SPECIFIC_FAQS: Record<string, Array<{ question: string; answer: st
   ],
   "france": [
     { question: "Dois-je compresser ma déclaration de revenus avant de la télécharger sur impots.gouv.fr ?", answer: "Oui — les portails gouvernementaux français ont des limites de taille de fichier pour les pièces jointes fiscales. Compressez vos formulaires CERFA et documents de revenus à moins de 2 Mo pour éviter les erreurs d'envoi sur impots.gouv.fr." },
+    { question: "La compression d'un PDF est-elle conforme au RGPD en France ?", answer: "Oui — notre outil compresse vos PDF entièrement dans votre navigateur. Vos documents (déclaration de revenus, justificatifs d'identité, contrats) ne sont jamais transmis à nos serveurs, ce qui garantit la conformité au RGPD et à la loi Informatique et Libertés. Vos données restent sur votre appareil à Paris, Lyon ou Marseille." },
+  ],
+  "spain": [
+    { question: "¿Necesito comprimir mis documentos antes de enviarlos a la Agencia Tributaria (AEAT)?", answer: "Sí — el portal de la Agencia Tributaria tiene límites de tamaño para los anexos de la declaración de la renta. Comprime tu IRPF, copia del DNI y documentos del Modelo 303 a menos de 2 MB para evitar errores de envío en la sede electrónica de la AEAT." },
+    { question: "¿Es la compresión de PDF conforme a la LOPDGDD en España?", answer: "Sí — nuestro compresor de PDF funciona completamente en tu navegador sin enviar tus documentos a ningún servidor. Esto garantiza el cumplimiento de la LOPDGDD (Ley Orgánica de Protección de Datos) y el RGPD. Tus documentos de la Seguridad Social, DNI y declaraciones de hacienda permanecen en tu dispositivo en Madrid, Barcelona o Valencia." },
+  ],
+  "italy": [
+    { question: "Devo comprimere il mio 730 prima di inviarlo ad Agenzia delle Entrate?", answer: "Sì — il portale di Agenzia delle Entrate ha limiti di dimensione per gli allegati della dichiarazione dei redditi. Comprimi il Modello 730, il Codice Fiscale e i documenti INPS a meno di 2 MB per evitare errori di invio tramite SPID o CIE." },
+    { question: "La compressione PDF è conforme al Codice Privacy (GDPR) in Italia?", answer: "Sì — il nostro strumento comprime i PDF interamente nel tuo browser senza inviare documenti a server esterni. Questo garantisce la conformità al Codice Privacy italiano e al GDPR europeo. I tuoi documenti fiscali, i dati del Codice Fiscale e i file INPS rimangono sul tuo dispositivo a Roma, Milano o Napoli." },
+  ],
+  "south-korea": [
+    { question: "국세청 홈택스에 PDF를 업로드하기 전에 압축해야 하나요?", answer: "예 — 홈택스 포털은 첨부 파일 크기에 제한이 있습니다. 종합소득세 신고서, 주민등록증 사본, 원천징수영수증을 2MB 이하로 압축하면 서울, 부산, 인천에서도 오류 없이 홈택스에 제출할 수 있습니다." },
+    { question: "PDF 압축이 한국 개인정보보호법(PIPA)을 준수하나요?", answer: "예 — 당사의 PDF 압축 도구는 브라우저 내에서 완전히 작동하며 서버로 문서를 전송하지 않습니다. 이는 개인정보보호법(PIPA, 개인정보보호법) 및 카카오페이·공동인증서 관련 데이터 보안 요건을 준수합니다. 귀하의 세금 서류와 주민등록번호 관련 문서는 귀하의 기기에 안전하게 보관됩니다." },
+  ],
+  "poland": [
+    { question: "Czy muszę skompresować PIT-37 przed wysłaniem do e-Urzędu Skarbowego?", answer: "Tak — portal e-Urząd Skarbowy ma limity rozmiaru plików dla załączników do deklaracji podatkowych. Skompresuj swój PIT-37, kopię dowodu osobistego (PESEL) i dokumenty ZUS do poniżej 2 MB, aby uniknąć błędów przesyłania w Warszawie, Krakowie lub Wrocławiu." },
+    { question: "Czy kompresja PDF jest zgodna z RODO w Polsce?", answer: "Tak — nasz kompresor PDF działa całkowicie w Twojej przeglądarce i nie przesyła dokumentów na żadne serwery. Zapewnia to zgodność z RODO (Rozporządzenie o Ochronie Danych Osobowych) i polską ustawą o ochronie danych osobowych. Twoje zeznania podatkowe, numer PESEL i dokumenty ZUS pozostają na Twoim urządzeniu." },
+  ],
+  "argentina": [
+    { question: "¿Necesito comprimir mis documentos antes de enviarlos a AFIP?", answer: "Sí — el portal de AFIP tiene límites de tamaño para los archivos adjuntos de declaraciones juradas. Comprime tu Ganancias, copias de DNI y documentos CUIL/CUIT a menos de 2 MB para evitar errores de envío en el sistema AFIP desde Buenos Aires, Córdoba o Rosario." },
+    { question: "¿El compresor de PDF cumple con la Ley 25.326 de Protección de Datos en Argentina?", answer: "Sí — nuestro compresor funciona completamente en tu navegador sin enviar tus documentos a ningún servidor. Esto garantiza el cumplimiento de la Ley 25.326 de Protección de los Datos Personales de Argentina. Tus declaraciones de AFIP, datos del CUIL y documentos de ANSES permanecen en tu dispositivo." },
+  ],
+  "turkey": [
+    { question: "e-Devlet'e yüklemeden önce PDF'mi sıkıştırmam gerekiyor mu?", answer: "Evet — e-Devlet ve GIB portalları vergi beyannameleri için dosya boyutu sınırlarına sahiptir. e-Beyanname formlarınızı, TC Kimlik kopyalarınızı ve vergi levhası belgelerinizi 2 MB'ın altına sıkıştırmak, İstanbul, Ankara veya İzmir'den e-Devlet'e gönderi hatalarını önler." },
+    { question: "PDF sıkıştırma Türkiye'de KVKK'ya uygun mu?", answer: "Evet — PDF sıkıştırma aracımız tamamen tarayıcınızda çalışır ve belgeleriniz hiçbir sunucuya gönderilmez. Bu, Kişisel Verilerin Korunması Kanunu (KVKK) gerekliliklerine tam uyumu garanti eder. Vergi beyannameleriniz, TC Kimlik bilgileriniz ve e-Devlet belgeleri yalnızca cihazınızda kalır." },
+  ],
+  "thailand": [
+    { question: "แบบ ภ.ง.ด. ต้องบีบอัดก่อนอัปโหลดไปยังกรมสรรพากรหรือไม่?", answer: "ใช่ — พอร์ทัลกรมสรรพากร (RD Thailand) มีขีดจำกัดขนาดไฟล์สำหรับเอกสารแนบการยื่นภาษี บีบอัดแบบ ภ.ง.ด. สำเนาบัตรประชาชน และเอกสารทะเบียนธุรกิจให้ต่ำกว่า 2 MB เพื่อป้องกันข้อผิดพลาดในการอัปโหลดจากกรุงเทพฯ เชียงใหม่ หรือภูเก็ต" },
+    { question: "การบีบอัด PDF สอดคล้องกับ PDPA ของประเทศไทยหรือไม่?", answer: "ใช่ — เครื่องมือบีบอัด PDF ของเราทำงานในเบราว์เซอร์โดยสมบูรณ์โดยไม่ส่งเอกสารไปยังเซิร์ฟเวอร์ใดๆ ซึ่งรับประกันการปฏิบัติตาม พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล (PDPA) ของไทย เอกสารภาษี หมายเลขบัตรประชาชน และไฟล์ทะเบียนธุรกิจของคุณจะอยู่ในอุปกรณ์ของคุณเท่านั้น" },
   ],
   "south-africa": [
     { question: "Do I need to compress my SARS documents before submitting via eFiling?", answer: "Yes — SARS eFiling has document size limits for tax return attachments. Compressing your IRP5 certificates, income tax return, and supporting documents to under 2 MB prevents upload errors and ensures your SARS submission is processed without delays." },

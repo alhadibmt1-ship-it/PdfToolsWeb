@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import FileUploadZone from "@/components/FileUploadZone";
 import ProcessingState from "@/components/ProcessingState";
 import EnhancedToolSEOContent from "@/components/LazyEnhancedSEO";
+import CountrySpotlight from "@/components/CountrySpotlight";
 import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
@@ -341,6 +342,32 @@ export default function SignPdfPage() {
           </div>
 
           <EnhancedToolSEOContent toolId="sign-pdf" />
+
+          <section className="rounded-lg border bg-card p-6 space-y-4 mt-4">
+            <h2 className="text-base font-semibold">Is an Electronic Signature Legally Valid?</h2>
+            <p className="text-sm text-muted-foreground">
+              Electronic signatures created with PDF HUB 24 are recognised under three major international frameworks. Understanding your jurisdiction helps you sign with confidence.
+            </p>
+            <div className="grid gap-4 sm:grid-cols-3">
+              <div className="rounded-md border p-4 space-y-1">
+                <h3 className="text-sm font-medium">🇺🇸 United States — ESIGN Act</h3>
+                <p className="text-xs text-muted-foreground">The federal E-SIGN Act (2000) and UETA give electronic signatures the same legal weight as handwritten signatures for contracts, agreements, and business documents. Click-to-sign, drawn signatures, and typed signatures all qualify as valid electronic signatures under US law.</p>
+              </div>
+              <div className="rounded-md border p-4 space-y-1">
+                <h3 className="text-sm font-medium">🇪🇺 European Union — eIDAS</h3>
+                <p className="text-xs text-muted-foreground">The EU eIDAS Regulation (No 910/2014) establishes three tiers: Simple Electronic Signature (SES), Advanced (AES), and Qualified (QES). Signatures created here are SES — legally valid for most commercial contracts, NDAs, and internal business documents across all EU member states including France, Germany, and Spain.</p>
+              </div>
+              <div className="rounded-md border p-4 space-y-1">
+                <h3 className="text-sm font-medium">🇬🇧 United Kingdom — UK eIDAS</h3>
+                <p className="text-xs text-muted-foreground">After Brexit, the UK retained eIDAS principles under the Electronic Identification and Trust Services Regulation 2018. Electronic signatures are valid for contracts, employment agreements, and business documents throughout England, Wales, Scotland, and Northern Ireland. Witnessed signatures for deeds still require physical presence.</p>
+              </div>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              For high-stakes legal documents — property deeds, wills, or notarised contracts — always consult a qualified solicitor or attorney in your jurisdiction. This information is general guidance, not legal advice.
+            </p>
+          </section>
+
+          <CountrySpotlight toolCountrySlug="sign-pdf" />
           
           <RelatedTools currentToolId="sign-pdf" />
         </div>

@@ -1,5 +1,5 @@
 import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
-import { lazy, Suspense, type LazyExoticComponent } from "react";
+import { lazy, Suspense, useEffect, type LazyExoticComponent } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -229,8 +229,8 @@ function AppRoutes() {
         <Route path="/html-sitemap" component={HtmlSitemapPage} />
         <Route path="/best-free-tools" component={BestFreeToolsPage} />
         <Route path="/seo-audit" component={SeoAuditPage} />
-        <Route path="/free-pdf-converter" component={FreePdfConverterPage} />
-        <Route path="/free-pdf-editor" component={FreePdfEditorPage} />
+        <Route path="/free-pdf-converter" component={() => { const [, setLoc] = useLocation(); useEffect(() => { setLoc("/convert-pdf"); }, []); return null; }} />
+        <Route path="/free-pdf-editor" component={() => { const [, setLoc] = useLocation(); useEffect(() => { setLoc("/edit-pdf"); }, []); return null; }} />
         <Route path="/write-for-us" component={WriteForUsPage} />
         <Route path="/data-security" component={DataSecurityPage} />
         <Route path="/auto-delete" component={AutoDeletePage} />

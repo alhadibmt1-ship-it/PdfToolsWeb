@@ -9,6 +9,7 @@ import ProcessingState from "@/components/ProcessingState";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import EnhancedToolSEOContent from "@/components/LazyEnhancedSEO";
+import CountrySpotlight from "@/components/CountrySpotlight";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
@@ -440,6 +441,8 @@ export default function PdfToWordPage() {
           <div className="mb-10" data-ad-slot="bottom" />
 
           <EnhancedToolSEOContent toolId="pdf-to-word" />
+
+          <CountrySpotlight toolCountrySlug="pdf-to-word" />
         </div>
       </main>
 

@@ -7,6 +7,7 @@ import FileUploadZone from "@/components/FileUploadZone";
 import CloudImportBar from "@/components/CloudImportBar";
 import ProcessingState from "@/components/ProcessingState";
 import EnhancedToolSEOContent from "@/components/LazyEnhancedSEO";
+import CountrySpotlight from "@/components/CountrySpotlight";
 import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
@@ -345,6 +346,8 @@ export default function CompressPdfPage() {
           </div>
 
           <EnhancedToolSEOContent toolId="compress" />
+
+          <CountrySpotlight toolCountrySlug="compress-pdf-online" />
           
           <RelatedTools currentToolId="compress" />
         </div>

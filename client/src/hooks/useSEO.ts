@@ -7,12 +7,13 @@ interface SEOProps {
   keywords?: string;
   canonicalPath?: string;
   structuredData?: object;
+  noindex?: boolean;
 }
 
 const BASE_URL = "https://pdfhub24.com";
 const OG_IMAGE = "https://pdfhub24.com/og-image.png";
 
-export function useSEO({ title, description, keywords, canonicalPath, structuredData }: SEOProps) {
+export function useSEO({ title, description, keywords, canonicalPath, structuredData, noindex }: SEOProps) {
   const [location] = useLocation();
   
   useEffect(() => {
@@ -151,7 +152,9 @@ export function useSEO({ title, description, keywords, canonicalPath, structured
       robots.setAttribute("name", "robots");
       document.head.appendChild(robots);
     }
-    robots.setAttribute("content", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
+    robots.setAttribute("content", noindex
+      ? "noindex, nofollow"
+      : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
 
     const defaultStructuredData = {
       "@context": "https://schema.org",
@@ -179,5 +182,5 @@ export function useSEO({ title, description, keywords, canonicalPath, structured
     }
     jsonLd.textContent = JSON.stringify(structuredData || defaultStructuredData);
 
-  }, [title, description, keywords, canonicalPath, location, structuredData]);
+  }, [title, description, keywords, canonicalPath, location, structuredData, noindex]);
 }
