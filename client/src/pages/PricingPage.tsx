@@ -13,7 +13,7 @@ import { useSEO } from "@/hooks/useSEO";
 const BASE_URL = "https://pdfhub24.com";
 
 const freeFeatures = [
-  { feature: "All 43+ PDF & Image Tools", included: true },
+  { feature: "All 49+ PDF & Image Tools", included: true },
   { feature: "No Registration Required", included: true },
   { feature: "No Watermarks on Output", included: true },
   { feature: "SSL Encrypted File Transfer", included: true },
@@ -45,7 +45,7 @@ const proFeatures = [
 ];
 
 const faqs = [
-  { question: "Are the free tools really unlimited?", answer: "Yes. All 43+ tools are completely free with no daily limits, no file count restrictions, and no feature limitations. You can use any tool as many times as you need, every day." },
+  { question: "Are the free tools really unlimited?", answer: "Yes. All 49+ tools are completely free with no daily limits, no file count restrictions, and no feature limitations. You can use any tool as many times as you need, every day." },
   { question: "Do free tools add watermarks?", answer: "No. Our free tools never add watermarks, branding, or any marks to your processed files. The output is clean and professional." },
   { question: "Do I need to create an account?", answer: "No. All free tools work without any registration, email verification, or account creation. Just upload your file and get your result." },
   { question: "What is the file size limit?", answer: "The free plan supports files up to 50MB, which covers the vast majority of PDF documents. The Pro plan (coming soon) will support files up to 500MB." },
@@ -57,8 +57,8 @@ export default function PricingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useSEO({
-    title: "Pricing — 43+ Free PDF Tools (No Hidden Costs) | PDF HUB 24",
-    description: "All 43+ PDF tools are 100% free. No signup, no watermarks, no limits. See our free plan features and upcoming Pro plan details.",
+    title: "Pricing — 49+ Free PDF Tools (No Hidden Costs) | PDF HUB 24",
+    description: "All 49+ PDF tools are 100% free. No signup, no watermarks, no limits. See our free plan features and upcoming Pro plan details.",
     keywords: "free pdf tools, pdf tool pricing, free pdf converter, free pdf editor, pdf hub pricing",
     canonicalPath: "/pricing",
     structuredData: {
@@ -85,7 +85,7 @@ export default function PricingPage() {
           <div className="text-center mb-10">
             <h1 className="text-3xl sm:text-4xl font-bold mb-4" data-testid="text-h1">Simple, Transparent Pricing</h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              All 43+ PDF and image tools are completely free. No hidden costs, no signup walls, no watermarks. Use every tool, every day, without limits.
+              All 49+ PDF and image tools are completely free. No hidden costs, no signup walls, no watermarks. Use every tool, every day, without limits.
             </p>
           </div>
 
@@ -164,7 +164,7 @@ export default function PricingPage() {
                     </thead>
                     <tbody>
                       {[
-                        ["Number of Tools", "43+", "43+"],
+                        ["Number of Tools", "49+", "49+"],
                         ["Daily Usage Limit", "Unlimited", "Unlimited"],
                         ["Max File Size", "50MB", "500MB"],
                         ["Watermarks", "None", "None"],

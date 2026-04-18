@@ -51,7 +51,7 @@ export default function AboutPage() {
                 limited your file size, or plastered a watermark across your document.
               </p>
               <p>
-                That's the problem we set out to solve. PDF HUB 24 offers <strong className="text-foreground">43+ PDF and image tools</strong>, 
+                That's the problem we set out to solve. PDF HUB 24 offers <strong className="text-foreground">49+ PDF and image tools</strong>, 
                 all completely free. Students editing lecture notes, freelancers sending polished proposals, 
                 small business owners handling invoices, HR teams processing applications — these are the 
                 people we built this for.
@@ -131,7 +131,7 @@ export default function AboutPage() {
                 {
                   icon: <Zap className="w-6 h-6 text-yellow-500" />,
                   title: "Always Free",
-                  desc: "Every one of our 43+ tools is 100% free. No subscriptions, no hidden charges — ever."
+                  desc: "Every one of our 49+ tools is 100% free. No subscriptions, no hidden charges — ever."
                 },
                 {
                   icon: <Shield className="w-6 h-6 text-green-500" />,
@@ -168,7 +168,7 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
               {[
-                { number: "43+", label: "Free Tools" },
+                { number: "49+", label: "Free Tools" },
                 { number: "100%", label: "Free Forever" },
                 { number: "0", label: "Files Stored" },
                 { number: "24/7", label: "Available" }
@@ -263,7 +263,7 @@ export default function AboutPage() {
               <Link href="/">
                 <Button size="lg" className="gap-2" data-testid="button-about-start">
                   <FileText className="w-4 h-4" />
-                  Browse All 43+ Tools
+                  Browse All 49+ Tools
                 </Button>
               </Link>
               <Link href="/contact">

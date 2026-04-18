@@ -22,7 +22,7 @@ const popularTools = [
 export default function NotFound() {
   useSEO({
     title: "Page Not Found - PDF HUB 24",
-    description: "The page you're looking for doesn't exist. Explore our 43+ free PDF tools for converting, merging, compressing, and editing PDF files.",
+    description: "The page you're looking for doesn't exist. Explore our 49+ free PDF tools for converting, merging, compressing, and editing PDF files.",
     keywords: "404, page not found, PDF tools, PDF HUB 24"
   });
 

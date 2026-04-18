@@ -281,7 +281,7 @@ export default function EnhancedToolSEOContent({
               <CheckCircle2 className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
               <div>
                 <h3 className="font-semibold mb-2">100% Free Forever</h3>
-                <p className="text-sm text-muted-foreground">All 43+ tools are completely free. No registration, no hidden fees, no watermarks, no file limits.</p>
+                <p className="text-sm text-muted-foreground">All 49+ tools are completely free. No registration, no hidden fees, no watermarks, no file limits.</p>
               </div>
             </CardContent>
           </Card>

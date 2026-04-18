@@ -159,7 +159,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-4">
               <div className="text-center">
-                <div className="text-xl font-bold text-primary">43+</div>
+                <div className="text-xl font-bold text-primary">49+</div>
                 <div className="text-xs text-muted-foreground">Tools</div>
               </div>
               <div className="w-px h-8 bg-border" />
@@ -341,10 +341,10 @@ export default function Footer() {
                   <FooterLink href="/all-tools" testId="link-footer-all-tools" isVisible={isCompanyVisible}>
                     All PDF Tools
                   </FooterLink>
-                  <FooterLink href="/free-pdf-converter" testId="link-footer-converter" isVisible={isCompanyVisible}>
+                  <FooterLink href="/convert-pdf" testId="link-footer-converter" isVisible={isCompanyVisible}>
                     Free PDF Converter
                   </FooterLink>
-                  <FooterLink href="/free-pdf-editor" testId="link-footer-editor" isVisible={isCompanyVisible}>
+                  <FooterLink href="/edit-pdf" testId="link-footer-editor" isVisible={isCompanyVisible}>
                     Free PDF Editor
                   </FooterLink>
                   <FooterLink href="/pricing" testId="link-footer-pricing" isVisible={isCompanyVisible}>

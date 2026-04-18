@@ -41,12 +41,12 @@ export default function FreePdfEditorPage() {
     title: "Free PDF Editor Online - Edit PDF Files Free | PDF HUB 24",
     description: "Best free online PDF editor. Edit, merge, split, compress, rotate, sign, annotate, and redact PDF files. No software download or registration needed.",
     keywords: "free pdf editor, pdf editor online, edit pdf free, merge pdf, split pdf, compress pdf, sign pdf, annotate pdf, redact pdf, online pdf editor free, best free pdf editor",
-    canonicalPath: "/free-pdf-editor",
+    canonicalPath: "/edit-pdf",
     structuredData: {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "PDF HUB 24 Free PDF Editor",
-      "url": `${BASE_URL}/free-pdf-editor`,
+      "url": `${BASE_URL}/edit-pdf`,
       "applicationCategory": "UtilityApplication",
       "operatingSystem": "Any",
       "description": "Best free online PDF editor. Edit, merge, split, compress, rotate, sign, annotate, and redact PDF files.",
@@ -63,7 +63,7 @@ export default function FreePdfEditorPage() {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Free PDF Editor", "item": `${BASE_URL}/free-pdf-editor` }
+        { "@type": "ListItem", "position": 2, "name": "Free PDF Editor", "item": `${BASE_URL}/edit-pdf` }
       ]
     });
     document.head.appendChild(script);
@@ -284,7 +284,7 @@ export default function FreePdfEditorPage() {
               <p>
                 Need to convert files instead? Check out our <Link href="/free-pdf-converter" className="text-primary hover:underline">free PDF converter</Link> for 
                 converting between PDF, Word, Excel, JPG, and more. Or browse our 
-                <Link href="/all-tools" className="text-primary hover:underline"> complete list of 43+ PDF tools</Link> to find exactly what you need.
+                <Link href="/all-tools" className="text-primary hover:underline"> complete list of 49+ PDF tools</Link> to find exactly what you need.
               </p>
             </div>
           </section>
@@ -316,7 +316,7 @@ export default function FreePdfEditorPage() {
             <div className="flex flex-wrap justify-center gap-3">
               <Link href="/all-tools">
                 <Button variant="outline" className="gap-2" data-testid="link-all-tools-from-editor">
-                  View All 43+ Tools
+                  View All 49+ Tools
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>

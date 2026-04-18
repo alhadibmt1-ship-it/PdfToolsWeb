@@ -41,12 +41,12 @@ export default function FreePdfConverterPage() {
     title: "Free PDF Converter Online - Convert PDF Files Free | PDF HUB 24",
     description: "Best free PDF converter online. Convert PDF to Word, Excel, JPG, PNG, PowerPoint and more. Convert images and documents to PDF. No signup required.",
     keywords: "free pdf converter, pdf converter online, convert pdf free, pdf to word converter, pdf to jpg converter, word to pdf, image to pdf, convert pdf online free, best pdf converter",
-    canonicalPath: "/free-pdf-converter",
+    canonicalPath: "/convert-pdf",
     structuredData: {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "PDF HUB 24 Free PDF Converter",
-      "url": `${BASE_URL}/free-pdf-converter`,
+      "url": `${BASE_URL}/convert-pdf`,
       "applicationCategory": "UtilityApplication",
       "operatingSystem": "Any",
       "description": "Best free PDF converter online. Convert PDF to Word, Excel, JPG, PNG, PowerPoint and more.",
@@ -63,7 +63,7 @@ export default function FreePdfConverterPage() {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Free PDF Converter", "item": `${BASE_URL}/free-pdf-converter` }
+        { "@type": "ListItem", "position": 2, "name": "Free PDF Converter", "item": `${BASE_URL}/convert-pdf` }
       ]
     });
     document.head.appendChild(script);
@@ -277,7 +277,7 @@ export default function FreePdfConverterPage() {
               <p>
                 Looking for more than just conversion? Check out our <Link href="/free-pdf-editor" className="text-primary hover:underline">free PDF editor</Link> for 
                 tools to merge, split, compress, sign, and annotate your PDFs. Or browse our 
-                <Link href="/all-tools" className="text-primary hover:underline"> complete list of 43+ PDF tools</Link> for every PDF need imaginable.
+                <Link href="/all-tools" className="text-primary hover:underline"> complete list of 49+ PDF tools</Link> for every PDF need imaginable.
               </p>
             </div>
           </section>
@@ -309,7 +309,7 @@ export default function FreePdfConverterPage() {
             <div className="flex flex-wrap justify-center gap-3">
               <Link href="/all-tools">
                 <Button variant="outline" className="gap-2" data-testid="link-all-tools-from-converter">
-                  View All 43+ Tools
+                  View All 49+ Tools
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>

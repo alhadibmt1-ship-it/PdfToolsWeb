@@ -295,7 +295,7 @@ export default function HomePage() {
   const faqs = [
     {
       question: "Is PDF HUB 24 free to use?",
-      answer: "Yes, all 43+ tools are completely free with no hidden fees or signups. You can use every feature without any limitations, as many times as you need."
+      answer: "Yes, all 49+ tools are completely free with no hidden fees or signups. You can use every feature without any limitations, as many times as you need."
     },
     {
       question: "How secure are my files?",
@@ -719,7 +719,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="font-semibold text-lg mb-2">{t(lang, "step1Title")}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Select from 43+ free PDF tools including converters, editors, and utilities
+                  Select from 49+ free PDF tools including converters, editors, and utilities
                 </p>
                 <div className="hidden md:block absolute top-10 right-0 w-[calc(50%-2rem)] h-0.5 bg-gradient-to-r from-primary/30 to-transparent translate-x-full" />
               </div>

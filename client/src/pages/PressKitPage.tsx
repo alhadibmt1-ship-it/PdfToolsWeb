@@ -54,7 +54,7 @@ export default function PressKitPage() {
             <Card>
               <CardContent className="p-6 space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  <strong className="text-foreground">PDF HUB 24</strong> is a comprehensive, free online platform offering 43+ professional PDF and image manipulation tools. 
+                  <strong className="text-foreground">PDF HUB 24</strong> is a comprehensive, free online platform offering 49+ professional PDF and image manipulation tools. 
                   Launched to make document processing accessible to everyone, PDF HUB 24 requires no registration, no software downloads, 
                   and no hidden fees.
                 </p>
@@ -69,7 +69,7 @@ export default function PressKitPage() {
           <section>
             <h2 className="text-2xl font-bold mb-4">Quick Facts</h2>
             <div className="grid sm:grid-cols-2 gap-4">
-              <FactCard icon={<FileText className="w-5 h-5 text-primary" />} label="Tools Available" value="43+ PDF & Image Tools" />
+              <FactCard icon={<FileText className="w-5 h-5 text-primary" />} label="Tools Available" value="49+ PDF & Image Tools" />
               <FactCard icon={<Globe className="w-5 h-5 text-primary" />} label="Website" value="pdfhub24.com" />
               <FactCard icon={<Users className="w-5 h-5 text-primary" />} label="Target Users" value="Professionals, Students, Everyone" />
               <FactCard icon={<Shield className="w-5 h-5 text-primary" />} label="Security" value="AES-256 Encryption, Auto-Delete" />
@@ -120,7 +120,7 @@ export default function PressKitPage() {
             <h2 className="text-2xl font-bold mb-4">Key Differentiators</h2>
             <div className="space-y-3">
               {[
-                "43+ tools in one platform - no need to visit multiple sites",
+                "49+ tools in one platform - no need to visit multiple sites",
                 "Completely free with no usage limits or watermarks",
                 "No account creation or email signup required",
                 "Files are automatically deleted after processing for privacy",
