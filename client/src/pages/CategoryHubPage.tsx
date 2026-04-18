@@ -247,7 +247,7 @@ export default function CategoryHubPage() {
               ))}
               <Link href="/all-tools">
                 <Button variant="outline" data-testid="link-all-tools">
-                  All 43+ Tools
+                  All 49+ Tools
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
@@ -259,7 +259,7 @@ export default function CategoryHubPage() {
             <p className="text-muted-foreground mb-4">No registration, no watermarks, no limits. Choose a tool above and get started in seconds.</p>
             <Link href="/all-tools">
               <Button data-testid="button-cta-all-tools">
-                View All 43+ Tools
+                View All 49+ Tools
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>

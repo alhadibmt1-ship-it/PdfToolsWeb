@@ -56,7 +56,7 @@ export default function EmbedWidgetPage() {
 
   useSEO({
     title: "Embed PDF Tools on Your Website Free — Widget Generator | PDF HUB 24",
-    description: "Embed free PDF tools on your website with our widget generator. Get iframe code for merge, compress, convert, and 40+ PDF tools. Easy copy-paste integration.",
+    description: "Embed free PDF tools on your website with our widget generator. Get iframe code for merge, compress, convert, and 49+ PDF tools. Easy copy-paste integration.",
     keywords: "embed pdf tools, pdf widget, iframe pdf converter, embed pdf merger, website pdf tools",
     canonicalPath: "/embed",
     noindex: true,
@@ -275,7 +275,7 @@ export default function EmbedWidgetPage() {
           <div className="text-center">
             <Link href="/all-tools">
               <Button variant="outline" data-testid="button-view-all-tools">
-                View All 43+ Tools
+                View All 49+ Tools
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>

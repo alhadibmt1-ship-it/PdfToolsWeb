@@ -3,5 +3,6 @@ Allow: /
 Disallow: /api/
 Disallow: /seo-audit
 Disallow: /html-sitemap
+Disallow: /embed
 
 Sitemap: https://pdfhub24.com/sitemap.xml

@@ -86,7 +86,7 @@ export default function WriteForUsPage() {
             <Card className="text-center overflow-visible">
               <CardContent className="p-5">
                 <Target className="w-8 h-8 text-primary mx-auto mb-2" />
-                <p className="font-bold text-2xl">43+</p>
+                <p className="font-bold text-2xl">49+</p>
                 <p className="text-sm text-muted-foreground">Free Tools</p>
               </CardContent>
             </Card>

@@ -49,8 +49,8 @@ export default function AllToolsPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useSEO({
-    title: "All 43+ Free PDF Tools Online - Complete Tool List | PDF HUB 24",
-    description: "Browse all 43+ free online PDF tools. Convert, edit, merge, split, compress PDF files and more. Complete list of PDF HUB 24 tools - no registration required.",
+    title: "All 49+ Free PDF Tools Online - Complete Tool List | PDF HUB 24",
+    description: "Browse all 49+ free online PDF tools. Convert, edit, merge, split, compress PDF files and more. Complete list of PDF HUB 24 tools - no registration required.",
     keywords: "free pdf tools, all pdf tools, pdf converter, pdf editor, merge pdf, split pdf, compress pdf, pdf to word, pdf tools list, online pdf tools",
     canonicalPath: "/all-tools",
     structuredData: [
@@ -69,7 +69,7 @@ export default function AllToolsPage() {
         "url": `${BASE_URL}/all-tools`,
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "Any",
-        "description": "Browse all 43+ free online PDF tools. Convert, edit, merge, split, compress PDF files.",
+        "description": "Browse all 49+ free online PDF tools. Convert, edit, merge, split, compress PDF files.",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
       }
     ]
@@ -105,10 +105,10 @@ export default function AllToolsPage() {
   const categoryLabels: Record<string, string> = { all: "All Tools", ...Object.fromEntries(Object.entries(categoryConfig).map(([k, v]) => [k, v.label])) };
 
   const faqs = [
-    { question: "Are all PDF HUB 24 tools completely free?", answer: "Yes, every single one of our 43+ tools is 100% free to use. There are no hidden fees, no premium tiers, and no usage limits. You can convert, edit, merge, split, compress, and perform any operation without paying anything." },
+    { question: "Are all PDF HUB 24 tools completely free?", answer: "Yes, every single one of our 49+ tools is 100% free to use. There are no hidden fees, no premium tiers, and no usage limits. You can convert, edit, merge, split, compress, and perform any operation without paying anything." },
     { question: "Do I need to create an account to use the tools?", answer: "No registration or account creation is required. Simply visit any tool page, upload your file, and get your result instantly. We believe in making PDF tools accessible to everyone without barriers." },
     { question: "Are my files safe and private?", answer: "Absolutely. All file transfers use SSL/TLS encryption. Your uploaded files are processed securely and automatically deleted after processing. We never store, share, or access your documents. Your privacy is our top priority." },
-    { question: "Can I use these tools on my phone or tablet?", answer: "Yes! All 43+ tools are fully responsive and work perfectly on smartphones, tablets, and desktops. Whether you're using an iPhone, Android, iPad, or any other device, you'll have full access to every feature." },
+    { question: "Can I use these tools on my phone or tablet?", answer: "Yes! All 49+ tools are fully responsive and work perfectly on smartphones, tablets, and desktops. Whether you're using an iPhone, Android, iPad, or any other device, you'll have full access to every feature." },
     { question: "What file formats does PDF HUB 24 support?", answer: "We support a comprehensive range of formats including PDF, Word (DOCX), Excel (XLSX), PowerPoint (PPTX), JPG, PNG, TIFF, GIF, WebP, HTML, and more. Check individual tool pages for specific format support." },
     { question: "How does PDF HUB 24 compare to Adobe Acrobat?", answer: "While Adobe Acrobat is excellent desktop software, PDF HUB 24 offers similar core functionality entirely free and online. You don't need to download or install anything. For most everyday PDF tasks like converting, merging, splitting, and compressing, our tools provide professional results at zero cost." }
   ];
@@ -120,7 +120,7 @@ export default function AllToolsPage() {
         <div className="text-center mb-10">
           <div className="flex items-center justify-center gap-3 mb-4">
             <LayoutGrid className="w-8 h-8 text-primary" />
-            <h1 className="text-3xl sm:text-4xl font-bold">All 43+ Free PDF Tools Online</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold">All 49+ Free PDF Tools Online</h1>
           </div>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Browse our complete collection of free online PDF tools. Convert, edit, merge, split, compress PDF files and much more. 
@@ -298,13 +298,13 @@ export default function AllToolsPage() {
             No downloads, no signups, no fees. Choose any tool above and get started in seconds.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/free-pdf-converter">
+            <Link href="/convert-pdf">
               <Button className="gap-2" data-testid="link-free-converter">
                 <FileOutput className="w-4 h-4" />
                 PDF Converter
               </Button>
             </Link>
-            <Link href="/free-pdf-editor">
+            <Link href="/edit-pdf">
               <Button variant="outline" className="gap-2" data-testid="link-free-editor">
                 <FileEdit className="w-4 h-4" />
                 PDF Editor

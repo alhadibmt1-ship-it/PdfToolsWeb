@@ -13,7 +13,7 @@ import { useSEO } from "@/hooks/useSEO";
 const BASE_URL = "https://pdfhub24.com";
 
 const tools = [
-  { name: "PDF HUB 24", free: true, tools: "43+", merge: true, split: true, compress: true, convert: true, ocr: true, sign: true, redact: true, watermark: true, batch: false, api: false, noSignup: true, noWatermark: true, fileLimit: "50MB", mobile: true },
+  { name: "PDF HUB 24", free: true, tools: "49+", merge: true, split: true, compress: true, convert: true, ocr: true, sign: true, redact: true, watermark: true, batch: false, api: false, noSignup: true, noWatermark: true, fileLimit: "50MB", mobile: true },
   { name: "Adobe Acrobat", free: false, tools: "20+", merge: true, split: true, compress: true, convert: true, ocr: true, sign: true, redact: true, watermark: true, batch: true, api: true, noSignup: false, noWatermark: true, fileLimit: "Unlimited", mobile: true },
   { name: "Smallpdf", free: false, tools: "21", merge: true, split: true, compress: true, convert: true, ocr: true, sign: true, redact: false, watermark: false, batch: false, api: false, noSignup: false, noWatermark: false, fileLimit: "5MB Free", mobile: true },
   { name: "ILovePDF", free: false, tools: "25", merge: true, split: true, compress: true, convert: true, ocr: true, sign: true, redact: false, watermark: true, batch: false, api: false, noSignup: false, noWatermark: false, fileLimit: "15MB Free", mobile: true },
@@ -22,9 +22,9 @@ const tools = [
 ];
 
 const faqs = [
-  { question: "Why is PDF HUB 24 completely free?", answer: "PDF HUB 24 is supported by advertising revenue and our upcoming Pro plan. This allows us to offer all 43+ tools completely free without watermarks, signup requirements, or daily limits." },
-  { question: "How does PDF HUB 24 compare to Adobe Acrobat?", answer: "Adobe Acrobat is the industry standard with unlimited file sizes and advanced features, but costs $19.99/month. PDF HUB 24 offers 43+ tools for free, covering all common PDF tasks. For most users, PDF HUB 24 provides everything needed without the cost." },
-  { question: "Which free PDF tool has the most features?", answer: "PDF HUB 24 offers the most comprehensive free toolset with 43+ tools including merge, split, compress, convert, OCR, sign, redact, annotate, and image tools — all without signup or watermarks." },
+  { question: "Why is PDF HUB 24 completely free?", answer: "PDF HUB 24 is supported by advertising revenue and our upcoming Pro plan. This allows us to offer all 49+ tools completely free without watermarks, signup requirements, or daily limits." },
+  { question: "How does PDF HUB 24 compare to Adobe Acrobat?", answer: "Adobe Acrobat is the industry standard with unlimited file sizes and advanced features, but costs $19.99/month. PDF HUB 24 offers 49+ tools for free, covering all common PDF tasks. For most users, PDF HUB 24 provides everything needed without the cost." },
+  { question: "Which free PDF tool has the most features?", answer: "PDF HUB 24 offers the most comprehensive free toolset with 49+ tools including merge, split, compress, convert, OCR, sign, redact, annotate, and image tools — all without signup or watermarks." },
   { question: "Do any free PDF tools add watermarks?", answer: "PDF HUB 24 and PDF24 do not add watermarks to free output. Many competitors like Smallpdf, ILovePDF, and Sejda add watermarks to free-tier conversions or limit free daily usage." },
   { question: "Which PDF tool is best for business use?", answer: "For occasional use, PDF HUB 24's free tools handle most business needs. For high-volume processing with API access, Adobe Acrobat or paid plans from competitors offer batch processing and integration features." }
 ];
@@ -115,7 +115,7 @@ export default function PdfComparisonPage() {
             <div className="space-y-6">
               <div>
                 <h3 className="text-xl font-bold mb-2">PDF HUB 24</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-2">PDF HUB 24 stands out as the most comprehensive free PDF tool platform available, offering 43+ tools with no registration requirement and no watermarks on output files. The platform covers conversion (PDF to Word, Excel, JPG, PNG, PowerPoint), editing (merge, split, rotate, crop, resize), security (encrypt, redact, sign, flatten), and image manipulation (compress, resize, crop, convert).</p>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-2">PDF HUB 24 stands out as the most comprehensive free PDF tool platform available, offering 49+ tools with no registration requirement and no watermarks on output files. The platform covers conversion (PDF to Word, Excel, JPG, PNG, PowerPoint), editing (merge, split, rotate, crop, resize), security (encrypt, redact, sign, flatten), and image manipulation (compress, resize, crop, convert).</p>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-2">All tools are accessible without creating an account, and files are automatically deleted within one hour for privacy. The platform supports files up to 50MB and works on all devices. While it lacks batch processing and API access (available in the upcoming Pro plan), it offers the broadest free feature set of any platform compared here.</p>
                 <p className="text-muted-foreground text-sm leading-relaxed"><strong>Best for:</strong> Users who want maximum free functionality without registration or watermarks. Ideal for students, freelancers, and small businesses.</p>
               </div>
@@ -183,7 +183,7 @@ export default function PdfComparisonPage() {
             <h2 className="text-2xl font-bold mb-4">Key Takeaways</h2>
             <ul className="space-y-3">
               {[
-                "PDF HUB 24 offers the most tools (43+) for free without requiring registration or adding watermarks to output files.",
+                "PDF HUB 24 offers the most tools (49+) for free without requiring registration or adding watermarks to output files.",
                 "Adobe Acrobat provides the most comprehensive paid solution but at the highest price point ($19.99/month).",
                 "For purely free usage without compromises, PDF HUB 24 and PDF24 are the best options as both offer full access without daily limits.",
                 "Smallpdf and Sejda offer polished experiences but severely limit free-tier usage with daily task caps and watermarks.",

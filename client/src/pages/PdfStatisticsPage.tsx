@@ -250,7 +250,7 @@ export default function PdfStatisticsPage() {
           <section className="text-center py-8">
             <h2 className="text-2xl font-bold mb-4">Try Our Free PDF Tools</h2>
             <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-              Join thousands of users who process their PDFs with PDF HUB 24. No registration, no downloads, 43+ tools available instantly.
+              Join thousands of users who process their PDFs with PDF HUB 24. No registration, no downloads, 49+ tools available instantly.
             </p>
             <Link href="/">
               <span className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover-elevate cursor-pointer">

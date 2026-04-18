@@ -309,7 +309,7 @@ export default function PdfFileFormatsPage() {
 
           <div className="text-center">
             <h2 className="text-xl font-bold mb-3">Convert Between Any Format Free</h2>
-            <p className="text-muted-foreground text-sm mb-4">Use our 43+ free tools to convert, compress, and edit any of these file formats.</p>
+            <p className="text-muted-foreground text-sm mb-4">Use our 49+ free tools to convert, compress, and edit any of these file formats.</p>
             <div className="flex flex-wrap justify-center gap-3">
               <Link href="/convert-pdf">
                 <Button variant="outline" data-testid="link-convert-tools">
@@ -319,7 +319,7 @@ export default function PdfFileFormatsPage() {
               </Link>
               <Link href="/all-tools">
                 <Button data-testid="link-all-tools">
-                  All 43+ Tools
+                  All 49+ Tools
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>

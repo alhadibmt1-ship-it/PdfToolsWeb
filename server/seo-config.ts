@@ -326,7 +326,7 @@ export const seoConfig: Record<string, PageSEO> = {
       "@type": "WebSite",
       "name": "PDF HUB 24",
       "url": BASE_URL,
-      "description": "Free online PDF tools - 43+ tools for converting, editing, and managing PDF files"
+      "description": "Free online PDF tools — 49+ tools for converting, editing, merging, compressing, and managing PDF files"
     }
   },
   "/merge": {
@@ -914,7 +914,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/about": {
     title: "About PDF HUB 24 - Free Online PDF Tools",
-    description: "Learn about PDF HUB 24 - your trusted source for free online PDF tools. 43+ tools for converting, editing, and managing PDF files.",
+    description: "Learn about PDF HUB 24 - your trusted source for free online PDF tools. 49+ tools for converting, editing, and managing PDF files.",
     keywords: "about PDF HUB 24, PDF tools, free PDF converter",
     schema: {
       "@context": "https://schema.org",
@@ -1106,9 +1106,9 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog/redact-sensitive-pdf-information": {
-    title: "Redact PDF Free — Remove Sensitive Info | PDF HUB 24",
-    description: "Permanently redact sensitive information from PDFs. Black out text, images, and personal data securely. Free step-by-step guide for GDPR and HIPAA.",
-    keywords: "redact PDF, black out PDF text, remove sensitive info PDF, PDF redaction free",
+    title: "How to Redact a PDF: Black Out Sensitive Text & Images (GDPR Guide)",
+    description: "Step-by-step guide to permanently redacting sensitive data from PDFs. Covers GDPR, HIPAA, and CCPA compliance — black out text, images, and personal data. Free tool, no signup.",
+    keywords: "how to redact PDF, black out PDF text, GDPR PDF redaction, HIPAA redaction guide, remove sensitive info PDF, PDF redaction tutorial",
     schema: {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -1148,15 +1148,15 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/all-tools": {
-    title: "All 43+ Free PDF Tools — Complete List 2026 | PDF HUB 24",
-    description: "Browse all 43+ free online PDF tools. Convert, edit, merge, split, compress PDFs and more. Complete tool directory — no signup, no watermark.",
+    title: "All 49+ Free PDF Tools — Complete List 2026 | PDF HUB 24",
+    description: "Browse all 49+ free online PDF tools. Convert, edit, merge, split, compress PDFs and more. Complete tool directory — no signup, no watermark.",
     keywords: "all PDF tools, free PDF tools list, online PDF tools, PDF converter tools, PDF editor tools",
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "PDF HUB 24 - All Tools",
       "url": `${BASE_URL}/all-tools`,
-      "description": "Complete collection of 43+ free online PDF tools",
+      "description": "Complete collection of 49+ free online PDF tools",
       "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
@@ -1481,8 +1481,8 @@ export const seoConfig: Record<string, PageSEO> = {
       "dateModified": "2026-04-18", "url": `${BASE_URL}/blog/excel-to-pdf` }
   },
   "/free-pdf-editor": {
-    title: "Free PDF Editor Online — 43+ Tools (No Install) | PDF HUB 24",
-    description: "Best free PDF editor online. Edit, merge, split, compress, rotate, sign, annotate, and redact PDFs. 43+ tools, no download, no registration needed.",
+    title: "Free PDF Editor Online — 49+ Tools (No Install) | PDF HUB 24",
+    description: "Best free PDF editor online. Edit, merge, split, compress, rotate, sign, annotate, and redact PDFs. 49+ tools, no download, no registration needed.",
     keywords: "free PDF editor, edit PDF online, PDF editor free, online PDF editor, modify PDF free",
     schema: {
       "@context": "https://schema.org",
@@ -1542,14 +1542,14 @@ export const seoConfig: Record<string, PageSEO> = {
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Automatic File Deletion", "url": `${BASE_URL}/auto-delete`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/pricing": {
-    title: "Pricing — 43+ Free PDF Tools (No Hidden Costs) | PDF HUB 24",
-    description: "All 43+ PDF tools are 100% free. No signup, no watermarks, no limits. See our free plan features and upcoming Pro plan details.",
+    title: "Pricing — 49+ Free PDF Tools (No Hidden Costs) | PDF HUB 24",
+    description: "All 49+ PDF tools are 100% free. No signup, no watermarks, no limits. See our free plan features and upcoming Pro plan details.",
     keywords: "free pdf tools, pdf tool pricing, free pdf converter, free pdf editor, pdf hub pricing",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Pricing", "url": `${BASE_URL}/pricing`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/embed": {
     title: "Embed Free PDF Tools on Your Website | PDF HUB 24",
-    description: "Embed free PDF tools on your website with our widget generator. Get iframe code for merge, compress, convert, and 40+ PDF tools.",
+    description: "Embed free PDF tools on your website with our widget generator. Get iframe code for merge, compress, convert, and 49+ PDF tools.",
     keywords: "embed pdf tools, pdf widget, iframe pdf converter, embed pdf merger, website pdf tools",
     robots: "noindex, nofollow",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Embed Widget Generator", "url": `${BASE_URL}/embed`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
@@ -1613,7 +1613,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/seo-audit": {
     title: "SEO Audit Dashboard | PDF HUB 24",
-    description: "Internal SEO audit dashboard for PDF HUB 24. Validates sitemap URLs and checks content quality.",
+    description: "Internal SEO audit dashboard for PDF HUB 24. Validates sitemap URLs, checks structured data quality, and surfaces technical SEO issues across 4,000+ pages.",
     keywords: "seo audit, sitemap validation, content quality",
     robots: "noindex, nofollow",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "SEO Audit Dashboard", "url": `${BASE_URL}/seo-audit` }
@@ -1924,19 +1924,28 @@ export function generateMetaTags(path: string): string {
   const blogSlugMatch = canonicalPath.match(/^\/blog\/([^/]+)$/);
   const blogPost = blogSlugMatch ? blogPosts.find(p => p.slug === blogSlugMatch[1]) : null;
   const progSlugMatch = canonicalPath.match(/^\/tools\/([^/]+)$/);
-  const progPage = progSlugMatch ? (getProgrammaticPage(progSlugMatch[1]) ?? null) : null;
+  // Also detect programmatic pages at root level (e.g. /compress-pdf-online-us)
+  const directSlug = canonicalPath.slice(1);
+  const isDefinedStaticPage = !!(seoConfig as Record<string, PageSEO>)[canonicalPath];
+  const directProgPage = (!progSlugMatch && !blogSlugMatch && !isDefinedStaticPage)
+    ? (getProgrammaticPage(directSlug) ?? null)
+    : null;
+  const progPage = progSlugMatch
+    ? (getProgrammaticPage(progSlugMatch[1]) ?? null)
+    : directProgPage;
   const toolId = canonicalPath.replace(/^\//, "");
   const toolData = toolSEOData[toolId as keyof typeof toolSEOData] || null;
 
   // ── Country page detection ─────────────────────────────────────────────────
   // All country pages are indexed with self-canonical + unique enriched content.
-  const countryInfo = progSlugMatch ? detectCountryPage(progSlugMatch[1]) : null;
+  const countryInfo = progSlugMatch
+    ? detectCountryPage(progSlugMatch[1])
+    : (directProgPage ? detectCountryPage(directSlug) : null);
   const effectiveCanonicalUrl = canonicalUrl;
 
-  // Country pages: NO hreflang (no translated equivalents exist for /tools/ pages)
+  // Country pages: NO hreflang (no translated equivalents exist for /tools/ or country pages)
   // Language pages: full 13-language hreflang set
-  // ALL /tools/* pages: NO hreflang
-  const effectiveHreflangBlock = progSlugMatch ? "" : hreflangBlock;
+  const effectiveHreflangBlock = (progSlugMatch || directProgPage) ? "" : hreflangBlock;
 
   // ── Override seo title/description from progPage for generated pages ──────
   let effectiveTitle = progPage ? progPage.title : seo.title;
@@ -2670,9 +2679,15 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
   const blogSlugMatch = canonicalPath.match(/^\/blog\/([^/]+)$/);
   const blogPost = blogSlugMatch ? blogPosts.find(p => p.slug === blogSlugMatch[1]) : null;
 
-  // Programmatic page: /tools/:slug
+  // Programmatic page: /tools/:slug or root-level country pages (e.g. /compress-pdf-online-us)
   const progSlugMatch = canonicalPath.match(/^\/tools\/([^/]+)$/);
-  const progPage = progSlugMatch ? (getProgrammaticPage(progSlugMatch[1]) ?? null) : null;
+  const directSlugShell = canonicalPath.slice(1);
+  const directProgPageShell = (!progSlugMatch && !blogSlugMatch && !config)
+    ? (getProgrammaticPage(directSlugShell) ?? null)
+    : null;
+  const progPage = progSlugMatch
+    ? (getProgrammaticPage(progSlugMatch[1]) ?? null)
+    : directProgPageShell;
 
   // Category hub: /convert-pdf, /edit-pdf-tools, etc.
   const categoryHub = categoryHubs.find(h => `/${h.slug}` === canonicalPath);

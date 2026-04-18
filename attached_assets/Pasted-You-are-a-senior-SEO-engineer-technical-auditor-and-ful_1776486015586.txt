@@ -1,0 +1,166 @@
+You are a senior SEO engineer, technical auditor, and full-stack developer.
+
+Your mission is to FULLY AUDIT and IMMEDIATELY FIX the website:
+https://pdfhub24.com
+
+This is NOT a report-only task.
+You must ANALYZE → DECIDE → IMPLEMENT FIXES automatically.
+
+---
+
+PHASE 1: FULL SITE CRAWL
+
+- Crawl sitemap.xml and all internal links
+- Build full URL list
+- Categorize into:
+  1. GLOBAL (/tools/tool-name)
+  2. LANGUAGE (/{lang}/tool-name)
+  3. COUNTRY (/tools/tool-name-country)
+
+---
+
+PHASE 2: DUPLICATE & INTENT CLEANUP (AUTO FIX)
+
+- Detect duplicate content and same-intent pages
+
+IF pages have same intent:
+→ Keep BEST version
+→ Apply NOINDEX to weaker pages
+
+IF content similarity > 60%:
+→ Rewrite content to make it unique
+→ OR apply NOINDEX if low value
+
+---
+
+PHASE 3: CONTENT OPTIMIZATION (AUTO APPLY)
+
+For ALL important pages:
+
+- Generate and REPLACE:
+  
+  - SEO Title (optimized CTR)
+  - Meta Description
+  - H1 tag
+
+- Add:
+  
+  - 500–800 words unique SEO content
+  - FAQ section (3–5 questions)
+
+Ensure:
+
+- Each page targets UNIQUE keywords
+- No keyword duplication
+
+---
+
+PHASE 4: COUNTRY PAGE FIX (HYBRID MODEL)
+
+For each country page:
+
+Check uniqueness.
+
+IF weak:
+→ Rewrite page with:
+
+- Local use cases (business, students, govt)
+- Country-specific keywords
+- Local signals (cities, laws, currency)
+- Unique structure (not template repetition)
+
+IF cannot be made unique:
+→ Apply NOINDEX
+
+---
+
+PHASE 5: TECHNICAL SEO FIX (AUTO APPLY)
+
+Fix ALL pages:
+
+- Add/Correct canonical tags
+- Add hreflang for language pages
+- Fix broken links
+- Add missing alt attributes
+- Optimize images
+- Remove unused JS/CSS
+- Fix render-blocking scripts
+
+---
+
+PHASE 6: PAGE SPEED & CORE WEB VITALS
+
+Optimize:
+
+- Lazy load images
+- Minify CSS/JS
+- Defer scripts
+- Reduce DOM size
+
+---
+
+PHASE 7: INDEXING CONTROL
+
+- Fix robots.txt
+- Fix sitemap
+
+Ensure:
+
+- High-value pages → INDEX
+- Low-value/duplicate → NOINDEX
+
+---
+
+PHASE 8: INTERNAL LINKING (AUTO BUILD)
+
+Implement:
+
+- Global → related tools
+- Global → language pages
+- Country → global + language
+- Add contextual anchor links
+
+---
+
+PHASE 9: FINAL CLEAN STRUCTURE
+
+Ensure:
+
+- No duplicate URLs
+- No conflicting pages
+- Clean hierarchy:
+  /tools/
+  /{lang}/
+  /tools/tool-country
+
+---
+
+PHASE 10: FINAL OUTPUT (AFTER FIXES)
+
+Provide:
+
+1. List of pages UPDATED
+2. Pages set to NOINDEX
+3. Pages REWRITTEN
+4. Technical issues FIXED
+5. Final clean URL structure
+
+---
+
+STRICT RULES
+
+- Do NOT leave duplicate content
+- Do NOT keep weak pages indexed
+- Every page must have UNIQUE value
+- Prioritize ranking over page count
+
+---
+
+FINAL GOAL
+
+- Fully optimized website
+- Maximum indexability
+- High ranking potential
+- Clean scalable SEO structure
+
+Execute all fixes automatically without asking for confirmation.

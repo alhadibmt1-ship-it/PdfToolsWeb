@@ -70,7 +70,7 @@ export default function ToolSearch() {
         </kbd>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Search all 43+ PDF tools..." />
+        <CommandInput placeholder="Search all 49+ PDF tools..." />
         <CommandList>
           <CommandEmpty>No tools found.</CommandEmpty>
           {Object.entries(toolsByCategory).map(([category, tools]) => (
