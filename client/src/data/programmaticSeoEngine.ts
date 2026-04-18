@@ -280,6 +280,192 @@ const COUNTRIES = [
   { slug: "solomon-islands",    label: "Solomon Islands",      demonym: "Solomon Islander users",    portal: "IRD, and Solomon Islands government portals" },
 ];
 
+interface CRich { currency: string; cities: string; compliance: string; docs: string; useCase: string; mobile: string; }
+function v(currency: string, cities: string, compliance: string, docs: string, useCase: string, mobile: string): CRich { return { currency, cities, compliance, docs, useCase, mobile }; }
+
+const COUNTRY_RICH: Record<string, CRich> = {
+  "uk":                    v("GBP", "London, Manchester, and Birmingham", "UK GDPR", "P60 forms, self-assessment tax returns, and Companies House filings", "filing a self-assessment return with HMRC", "via email and WhatsApp"),
+  "australia":             v("AUD", "Sydney, Melbourne, and Brisbane", "Australian Privacy Act", "tax return documents, TFN declarations, and ABN registration forms", "lodging a tax return through myGov ATO", "via mobile apps"),
+  "canada":                v("CAD", "Toronto, Vancouver, and Montreal", "PIPEDA", "T4 slips, CRA benefit forms, and provincial health documents", "filing taxes through CRA My Account", "via email and cloud storage"),
+  "usa":                   v("USD", "New York, Los Angeles, and Chicago", "CCPA / US privacy law", "W-2 forms, 1040 tax returns, and Social Security notices", "filing a federal tax return with the IRS", "via email and document portals"),
+  "india":                 v("INR", "Mumbai, Delhi, and Bengaluru", "India IT Act / PDPB", "Form 16, Aadhaar-linked documents, and PAN card applications", "uploading documents to DigiLocker or ITR e-filing", "via WhatsApp and smartphone"),
+  "germany":               v("EUR", "Berlin, Munich, and Hamburg", "GDPR / DSGVO", "Steuererklärung, Personalausweis scans, and Gewerbeanmeldung forms", "submitting an Elster tax declaration online", "via email and secure portal"),
+  "france":                v("EUR", "Paris, Lyon, and Marseille", "RGPD (GDPR)", "déclarations de revenus, formulaires CERFA, and Carte Vitale documents", "submitting your tax return on impots.gouv.fr", "via email and mobile"),
+  "spain":                 v("EUR", "Madrid, Barcelona, and Valencia", "GDPR (LOPDGDD)", "Modelo 303, DNI copies, and IRPF declarations", "filing your annual IRPF return on AEAT", "via mobile and email"),
+  "italy":                 v("EUR", "Rome, Milan, and Naples", "GDPR (Codice Privacy)", "Modello 730, Codice Fiscale documents, and INPS contributions", "submitting your 730 form on Agenzia delle Entrate", "via SPID and email"),
+  "japan":                 v("JPY", "Tokyo, Osaka, and Fukuoka", "APPI (個人情報保護法)", "確定申告 tax forms, マイナンバー notifications, and 住民票 certificates", "filing a 確定申告 on e-Tax", "via email and line messaging"),
+  "brazil":                v("BRL", "São Paulo, Rio de Janeiro, and Brasília", "LGPD", "IRPF declarations, CPF registration forms, and CNPJ company documents", "filing your IRPF return on Receita Federal", "via mobile apps and WhatsApp"),
+  "mexico":                v("MXN", "Mexico City, Guadalajara, and Monterrey", "Ley Federal de Protección de Datos", "SAT annual returns, CURP documents, and RFC registration forms", "submitting your annual SAT return online", "via WhatsApp and email"),
+  "pakistan":              v("PKR", "Karachi, Lahore, and Islamabad", "Pakistan data protection law", "income tax returns, CNIC copies, and NTN registration documents", "filing your return on FBR IRIS portal", "via WhatsApp and mobile"),
+  "uae":                   v("AED", "Dubai, Abu Dhabi, and Sharjah", "UAE Federal Data Protection Law", "Emirates ID applications, VAT returns, and trade license renewals", "submitting documents through UAE PASS or eDNRD", "via mobile apps"),
+  "nigeria":               v("NGN", "Lagos, Abuja, and Port Harcourt", "Nigeria Data Protection Regulation", "TIN certificates, CAC registration forms, and FIRS tax documents", "registering a business or filing taxes with FIRS", "via WhatsApp and mobile data"),
+  "indonesia":             v("IDR", "Jakarta, Surabaya, and Bandung", "UU PDP (data protection law)", "SPT annual returns, e-KTP identity documents, and NPWP tax numbers", "filing your SPT on DJP Online", "via WhatsApp and ojek apps"),
+  "turkey":                v("TRY", "Istanbul, Ankara, and Izmir", "KVKK (data protection law)", "e-Beyanname forms, TC Kimlik copies, and vergi levhası certificates", "submitting an e-Beyanname on e-Devlet", "via mobile and WhatsApp"),
+  "saudi-arabia":          v("SAR", "Riyadh, Jeddah, and Dammam", "Saudi Personal Data Protection Law", "هوية وطنية copies, Zakat returns, and commercial registration documents", "submitting documents through Absher or Zakat portal", "via mobile apps"),
+  "south-africa":          v("ZAR", "Johannesburg, Cape Town, and Durban", "POPIA", "SARS income tax returns, South African ID documents, and CIPC company forms", "filing your SARS return via eFiling", "via email and mobile banking apps"),
+  "china":                 v("CNY", "Beijing, Shanghai, and Shenzhen", "PIPL (个人信息保护法)", "税务申报表 tax forms, 身份证 copies, and 营业执照 business licenses", "submitting documents on GSXT or tax bureaus", "via WeChat and mobile apps"),
+  "philippines":           v("PHP", "Manila, Cebu, and Davao", "Philippines Data Privacy Act", "BIR Form 1701 tax returns, PSA birth certificates, and TIN applications", "filing your BIR return on eFPS", "via mobile data and GCash"),
+  "bangladesh":            v("BDT", "Dhaka, Chittagong, and Sylhet", "Bangladesh data protection rules", "আয়কর রিটার্ন income tax forms, NID copies, and TIN certificates", "submitting your income tax return on NBR eTax", "via bKash and mobile data"),
+  "sri-lanka":             v("LKR", "Colombo, Kandy, and Galle", "Sri Lanka data protection law", "income tax returns, NIC copies, and company registration documents", "filing documents with IRD Sri Lanka", "via mobile data and email"),
+  "nepal":                 v("NPR", "Kathmandu, Pokhara, and Lalitpur", "Nepal privacy regulations", "tax return forms, नागरिकता citizenship documents, and PAN registration", "submitting your कर विवरण on IRD Nepal", "via mobile data and email"),
+  "malaysia":              v("MYR", "Kuala Lumpur, Penang, and Johor Bahru", "Malaysia PDPA", "e-Filing tax forms, MyKad identity copies, and SSM company documents", "filing your income tax return on MyTax", "via mobile apps and email"),
+  "singapore":             v("SGD", "Singapore, Jurong, and Woodlands", "Singapore PDPA", "IR8A employment forms, NRIC copies, and CorpPass documents", "submitting your tax return on IRAS myTax Portal", "via email and SingPass"),
+  "thailand":              v("THB", "Bangkok, Chiang Mai, and Phuket", "Thailand PDPA", "ภ.ง.ด. tax forms, บัตรประชาชน national ID copies, and business registration", "filing your tax return on the RD Thailand portal", "via LINE messaging and mobile"),
+  "vietnam":               v("VND", "Ho Chi Minh City, Hanoi, and Da Nang", "Vietnam Cybersecurity Law", "tờ khai thuế tax forms, căn cước công dân ID copies, and business licenses", "submitting your tax declaration on eTax VN", "via Zalo and mobile data"),
+  "egypt":                 v("EGP", "Cairo, Alexandria, and Giza", "Egypt data protection law", "بطاقة رقم قومي ID copies, tax declaration forms, and commercial registration", "submitting documents to ETA or Nafeza portal", "via WhatsApp and mobile"),
+  "morocco":               v("MAD", "Casablanca, Rabat, and Marrakech", "Morocco data protection law", "CIN copies, déclarations fiscales, and CNSS registration documents", "filing your tax return on the DGI portal", "via WhatsApp and mobile"),
+  "kenya":                 v("KES", "Nairobi, Mombasa, and Kisumu", "Kenya Data Protection Act", "KRA PIN certificates, national ID copies, and business registration documents", "filing returns or applying for certificates on iTax or eCitizen", "via M-Pesa and mobile data"),
+  "ghana":                 v("GHS", "Accra, Kumasi, and Tamale", "Ghana Data Protection Act", "Ghana Card copies, TIN certificates, and GRA tax returns", "submitting your tax return or registering on Ghana.gov.gh", "via mobile money and data"),
+  "ethiopia":              v("ETB", "Addis Ababa, Dire Dawa, and Gondar", "Ethiopia data protection law", "TIN certificates, national ID copies, and ERCA tax forms", "filing documents with ERCA or MoR portal", "via mobile data and Telebirr"),
+  "argentina":             v("ARS", "Buenos Aires, Córdoba, and Rosario", "Argentina data protection law (PDPA)", "AFIP income tax returns, CUIL/CUIT identity documents, and ANSES forms", "submitting your AFIP Ganancias return online", "via WhatsApp and email"),
+  "colombia":              v("COP", "Bogotá, Medellín, and Cali", "Colombia Habeas Data law", "declaración de renta DIAN forms, cédula de ciudadanía copies, and NIT documents", "filing your declaración de renta on DIAN portal", "via WhatsApp and email"),
+  "chile":                 v("CLP", "Santiago, Valparaíso, and Concepción", "Chile data protection law", "declaración de renta SII forms, RUT documents, and liquidaciones", "submitting your annual declaración de renta on SII", "via email and mobile"),
+  "peru":                  v("PEN", "Lima, Arequipa, and Trujillo", "Peru data protection law", "declaración jurada SUNAT forms, DNI copies, and RUC documents", "filing your renta on SUNAT Operaciones en Línea", "via WhatsApp and email"),
+  "poland":                v("PLN", "Warsaw, Kraków, and Wrocław", "GDPR (RODO)", "PIT-37 tax returns, PESEL identity documents, and KRS company filings", "filing your PIT return on e-Urząd Skarbowy", "via email and secure portal"),
+  "netherlands":           v("EUR", "Amsterdam, Rotterdam, and The Hague", "GDPR (AVG)", "belastingaangifte tax returns, DigiD authentication forms, and inschrijvingsbewijs", "submitting your jaarlijkse aangifte on Mijn Belastingdienst", "via email and iDEAL"),
+  "romania":               v("RON", "Bucharest, Cluj-Napoca, and Timișoara", "GDPR (Legea 190)", "declarație de impozit forms, CNP identity documents, and ANAF submissions", "filing your income tax declaration on ANAF", "via email and mobile"),
+  "ukraine":               v("UAH", "Kyiv, Kharkiv, and Lviv", "Ukraine data protection law", "декларація tax forms, ІПН tax codes, and Diia identity documents", "submitting documents on the Дія portal", "via Viber and mobile apps"),
+  "greece":                v("EUR", "Athens, Thessaloniki, and Patras", "GDPR (Ν. 4624/2019)", "φορολογική δήλωση forms, ΑΜΚΑ social security numbers, and TAXIS submissions", "filing your φορολογική δήλωση on AADE myTAXISnet", "via email and mobile"),
+  "portugal":              v("EUR", "Lisbon, Porto, and Coimbra", "RGPD (GDPR)", "declarações de IRS, NIF tax numbers, and Cartão de Cidadão documents", "submitting your IRS declaration on Portal das Finanças", "via email and MB WAY"),
+  "qatar":                 v("QAR", "Doha, Al Wakrah, and Al Khor", "Qatar data protection law", "QID copies, trade license documents, and tax registration forms", "submitting documents through Hukoomi or Metrash2", "via mobile apps"),
+  "kuwait":                v("KWD", "Kuwait City, Hawalli, and Salmiya", "Kuwait data protection law", "Civil ID copies, commercial registration documents, and PACI forms", "submitting documents through MOI eServices or PACI portal", "via mobile apps"),
+  "russia":                v("RUB", "Moscow, St. Petersburg, and Novosibirsk", "FZ-152 (Russian data law)", "3-НДФЛ tax returns, СНИЛС pension numbers, and ИНН tax certificates", "submitting your 3-НДФЛ on Госуслуги", "via mobile apps and email"),
+  "sweden":                v("SEK", "Stockholm, Gothenburg, and Malmö", "GDPR (dataskyddsförordningen)", "inkomstdeklaration forms, personnummer documents, and Skatteverket submissions", "filing your inkomstdeklaration on Skatteverket", "via email and BankID"),
+  "norway":                v("NOK", "Oslo, Bergen, and Trondheim", "GDPR (personopplysningsloven)", "skattemelding forms, personnummer documents, and Altinn submissions", "filing your skattemelding on Altinn", "via email and BankID"),
+  "denmark":               v("DKK", "Copenhagen, Aarhus, and Odense", "GDPR (databeskyttelsesloven)", "årsopgørelse tax forms, CPR number documents, and SKAT submissions", "reviewing your årsopgørelse on borger.dk", "via email and NemID"),
+  "finland":               v("EUR", "Helsinki, Tampere, and Espoo", "GDPR (tietosuojalaki)", "veroilmoitus forms, henkilötunnus identity documents, and Suomi.fi submissions", "filing your veroilmoitus on Vero.fi", "via email and mobile bank"),
+  "belgium":               v("EUR", "Brussels, Antwerp, and Ghent", "GDPR (AVG/RGPD)", "Tax-on-Web declarations, eBox notifications, and rijksregisternummer forms", "filing your tax declaration on MyGov.be Tax-on-Web", "via email and itsme"),
+  "switzerland":           v("CHF", "Zurich, Geneva, and Basel", "Swiss FADP (DSG)", "Steuererklärung forms, AHV-Nummer documents, and ESTV submissions", "filing your Steuererklärung with cantonal tax authorities", "via email and mobile"),
+  "austria":               v("EUR", "Vienna, Graz, and Linz", "GDPR (DSG 2018)", "Steuererklärung forms, Meldezettel residence documents, and FinanzOnline filings", "submitting your Steuererklärung on Finanz Online", "via email and A-Trust"),
+  "czech-republic":        v("CZK", "Prague, Brno, and Ostrava", "GDPR (zákon č. 110/2019)", "daňové přiznání tax returns, rodné číslo identity documents, and datová schránka submissions", "filing your daňové přiznání on Finanční správa portal", "via email and mobile"),
+  "hungary":               v("HUF", "Budapest, Debrecen, and Pécs", "GDPR (Infotv.)", "szja bevallás tax returns, TAJ szám social security cards, and NAV submissions", "filing your szja on NAV eSZJA portal", "via email and mobile"),
+  "slovakia":              v("EUR", "Bratislava, Košice, and Prešov", "GDPR (zákon č. 18/2018)", "daňové priznanie forms, rodné číslo identity documents, and eDane submissions", "filing your daňové priznanie on Finančná správa", "via email and mobile"),
+  "serbia":                v("RSD", "Belgrade, Novi Sad, and Niš", "Serbia data protection law", "poreska prijava tax forms, JMBG identity documents, and eUprava submissions", "filing your poreska prijava on eUprava portal", "via email and mobile"),
+  "croatia":               v("EUR", "Zagreb, Split, and Rijeka", "GDPR (ZZOP)", "dohodak tax forms, OIB identity numbers, and ePorezna submissions", "submitting your dohodak declaration on ePorezna", "via email and m-token"),
+  "bulgaria":              v("BGN", "Sofia, Plovdiv, and Varna", "GDPR (ZZLD)", "данъчна декларация forms, ЕГН identity numbers, and NRA submissions", "filing your данъчна декларация on e-government.bg", "via email and mobile"),
+  "ireland":               v("EUR", "Dublin, Cork, and Limerick", "GDPR (Irish Data Protection Act)", "Form 11 income tax returns, PPS number documents, and Revenue submissions", "filing your Form 11 on Revenue Online Service (ROS)", "via email and mobile"),
+  "belarus":               v("BYR", "Minsk, Gomel, and Grodno", "Belarus data protection law", "налоговая декларация tax returns, УНП registration numbers, and МНС submissions", "filing documents on portal.gov.by or МНС portal", "via email and mobile"),
+  "estonia":               v("EUR", "Tallinn, Tartu, and Narva", "GDPR (IKS)", "tuludeklaratsioon forms, isikukood identity documents, and X-Road submissions", "filing your tuludeklaratsioon on eesti.ee", "via email and ID-card"),
+  "latvia":                v("EUR", "Riga, Daugavpils, and Liepāja", "GDPR (Fizisko personu datu apstrādes likums)", "ienākumu deklarācija forms, personas kods documents, and EDS submissions", "filing your deklarācija on latvija.lv EDS", "via email and smart-ID"),
+  "lithuania":             v("EUR", "Vilnius, Kaunas, and Klaipėda", "GDPR (ADTAĮ)", "pajamų deklaracija forms, asmens kodas documents, and i.MAS submissions", "filing your deklaracija on vmi.lt", "via email and mobile"),
+  "moldova":               v("MDL", "Chișinău, Bălți, and Cahul", "Moldova data protection law", "declaratia fiscala forms, IDNO documents, and SFS submissions", "submitting your declaratia fiscala on servicii.gov.md", "via email and mobile"),
+  "albania":               v("ALL", "Tirana, Durrës, and Shkodër", "Albania data protection law", "deklaratë tatimore forms, NIPT business numbers, and e-albania submissions", "filing your deklaratë tatimore on e-albania.al", "via email and mobile"),
+  "north-macedonia":       v("MKD", "Skopje, Bitola, and Kumanovo", "North Macedonia data protection law", "даночна пријава tax forms, ЕМБГ identity numbers, and UJP submissions", "filing your даночна пријава on uslugi.gov.mk", "via email and mobile"),
+  "bosnia":                v("BAM", "Sarajevo, Banja Luka, and Mostar", "Bosnia data protection law", "poreska prijava forms, JMB identity documents, and eUprava submissions", "submitting your tax filing on eUprava portal", "via email and mobile"),
+  "montenegro":            v("EUR", "Podgorica, Nikšić, and Bar", "Montenegro data protection law", "poreska prijava forms, JMBG identity documents, and eUprava Montenegro submissions", "filing documents on eUprava Montenegro portal", "via email and mobile"),
+  "slovenia":              v("EUR", "Ljubljana, Maribor, and Celje", "GDPR (ZVOP-2)", "dohodninska napoved forms, EMŠO identity numbers, and eDavki submissions", "submitting your dohodninsko napoved on eDavki", "via email and mToken"),
+  "luxembourg":            v("EUR", "Luxembourg City, Esch-sur-Alzette, and Differdange", "GDPR (loi du 1er août 2018)", "déclaration fiscale forms, numéro de matricule documents, and AED submissions", "filing your déclaration on guichet.lu", "via email and LuxTrust"),
+  "malta":                 v("EUR", "Valletta, Sliema, and St. Julian's", "GDPR (Data Protection Act)", "income tax return forms, ID card copies, and CFR submissions", "filing your income tax return on servizz.gov.mt", "via email and mobile"),
+  "cyprus":                v("EUR", "Nicosia, Limassol, and Larnaca", "GDPR (Law 125(I)/2018)", "φορολογική δήλωση forms, ΑΦΜ tax numbers, and TAXISnet submissions", "filing your tax declaration on TAXISnet Cyprus", "via email and mobile"),
+  "iceland":               v("ISK", "Reykjavik, Akureyri, and Hafnarfjörður", "Iceland data protection law (lög nr. 90/2018)", "skattframtal forms, kennitala identity numbers, and Skatturinn submissions", "filing your skattframtal on skatturinn.is", "via email and Ísland.is"),
+  "andorra":               v("EUR", "Andorra la Vella, Escaldes-Engordany, and Encamp", "Andorra data protection law (LQPD)", "declaració de renda forms, NRT numbers, and govern.ad submissions", "filing your declaració de renda on govern.ad", "via email and mobile"),
+  "south-korea":           v("KRW", "Seoul, Busan, and Incheon", "PIPA (개인정보보호법)", "세금신고서 tax forms, 주민등록번호 identity documents, and Hometax submissions", "filing your 종합소득세 on Hometax", "via KakaoTalk and mobile apps"),
+  "taiwan":                v("TWD", "Taipei, Kaohsiung, and Taichung", "Taiwan Personal Data Protection Act", "綜合所得稅 tax forms, 身分證 copies, and 統一編號 business numbers", "filing your 綜合所得稅 on eTax Taiwan", "via Line and mobile apps"),
+  "hong-kong":             v("HKD", "Central, Kowloon, and New Territories", "PDPO (Personal Data Privacy Ordinance)", "IR56B employer returns, HKID copies, and salaries tax forms", "filing salaries tax on GovHK eTAX", "via mobile apps and email"),
+  "myanmar":               v("MMK", "Yangon, Mandalay, and Naypyidaw", "Myanmar data protection law", "income tax returns, NRC copies, and IRD submission forms", "filing documents with IRD Myanmar", "via mobile data and Viber"),
+  "cambodia":              v("KHR", "Phnom Penh, Siem Reap, and Battambang", "Cambodia data protection law", "tax declaration forms, national ID copies, and GDT submissions", "filing your tax declaration with GDT", "via mobile data and Wing"),
+  "laos":                  v("LAK", "Vientiane, Luang Prabang, and Pakse", "Laos data protection law", "tax declaration forms, national ID copies, and DTD submissions", "submitting documents on Laos-gov.la", "via mobile data and email"),
+  "mongolia":              v("MNT", "Ulaanbaatar, Erdenet, and Darkhan", "Mongolia data protection law", "tax declaration forms, registration number documents, and e-Mongolia submissions", "filing your tax declaration on e-Mongolia portal", "via mobile apps and email"),
+  "afghanistan":           v("AFN", "Kabul, Kandahar, and Herat", "Afghanistan data protection law", "tax declaration forms, national ID copies, and AISA registration documents", "filing business or tax documents with AISA", "via mobile data and email"),
+  "kazakhstan":            v("KZT", "Almaty, Nur-Sultan, and Shymkent", "Kazakhstan data protection law", "декларация tax forms, ИИН identity numbers, and egov.kz submissions", "filing your декларация on egov.kz portal", "via mobile apps and email"),
+  "uzbekistan":            v("UZS", "Tashkent, Samarkand, and Namangan", "Uzbekistan data protection law", "солиқ декларацияси tax forms, ПИНФЛ identity codes, and my.gov.uz submissions", "filing your tax declaration on my.gov.uz", "via Telegram and mobile"),
+  "kyrgyzstan":            v("KGS", "Bishkek, Osh, and Jalal-Abad", "Kyrgyzstan data protection law", "tax declaration forms, INN identity numbers, and salyk.kg submissions", "filing documents on salyk.kg or tunduk.kg", "via mobile data and email"),
+  "tajikistan":            v("TJS", "Dushanbe, Khujand, and Kulob", "Tajikistan data protection law", "tax declaration forms, national ID copies, and andoz.tj submissions", "filing documents on andoz.tj portal", "via mobile data and email"),
+  "turkmenistan":          v("TMT", "Ashgabat, Türkmenabat, and Daşoguz", "Turkmenistan data protection law", "tax declaration forms, national ID copies, and government submission forms", "submitting documents to Turkmenistan government portals", "via mobile data and email"),
+  "maldives":              v("MVR", "Malé, Addu City, and Fuvahmulah", "Maldives data protection law", "tax declaration forms, national ID copies, and MIRA submissions", "filing documents with MIRA Maldives", "via mobile data and email"),
+  "bhutan":                v("BTN", "Thimphu, Phuentsholing, and Punakha", "Bhutan data protection law", "tax declaration forms, CID identity copies, and RCSC submissions", "filing documents with Bhutan RCSC or MFET", "via mobile data and email"),
+  "brunei":                v("BND", "Bandar Seri Begawan, Kuala Belait, and Seria", "Brunei data protection law", "income tax forms, IC number copies, and BruConnect submissions", "filing your income tax on e-Darussalam portal", "via mobile apps and email"),
+  "east-timor":            v("USD", "Dili, Baucau, and Maliana", "East Timor data protection law", "tax declaration forms, national ID copies, and SERVE submissions", "filing documents with SERVE or MoF East Timor", "via mobile data and email"),
+  "azerbaijan":            v("AZN", "Baku, Ganja, and Sumqayit", "Azerbaijan data protection law", "vergi bəyannaməsi tax forms, FİN identity numbers, and e-gov.az submissions", "filing your vergi bəyannaməsi on e-gov.az", "via mobile apps and email"),
+  "armenia":               v("AMD", "Yerevan, Gyumri, and Vanadzor", "Armenia data protection law", "tax declaration forms, SSN documents, and e-gov.am submissions", "filing your tax declaration on e-gov.am", "via mobile apps and email"),
+  "georgia":               v("GEL", "Tbilisi, Kutaisi, and Batumi", "Georgia data protection law", "deklaratsia forms, personal ID copies, and rs.ge submissions", "filing your deklaratsia on rs.ge portal", "via mobile apps and email"),
+  "iran":                  v("IRR", "Tehran, Isfahan, and Shiraz", "Iran data protection law", "tax declaration forms, national ID copies, and Tax Administration submissions", "filing documents with Iran Tax Administration", "via Telegram and mobile"),
+  "iraq":                  v("IQD", "Baghdad, Basra, and Erbil", "Iraq data protection law", "tax declaration forms, national ID copies, and FIA submission documents", "submitting documents to MOF Iraq or FIA portal", "via mobile data and email"),
+  "israel":                v("ILS", "Tel Aviv, Jerusalem, and Haifa", "Israeli PDPA (Privacy Protection Law)", "annual tax return forms, ID number documents, and Tax Authority submissions", "filing your annual tax return with Israel Tax Authority", "via email and mobile"),
+  "jordan":                v("JOD", "Amman, Zarqa, and Irbid", "Jordan data protection law", "income tax forms, national ID copies, and JAX submissions", "filing your income tax return on my.gov.jo or JAX", "via mobile apps and email"),
+  "lebanon":               v("LBP", "Beirut, Tripoli, and Sidon", "Lebanon data protection law", "income tax forms, national ID copies, and MOF submissions", "filing your income tax with MOF Lebanon", "via WhatsApp and email"),
+  "oman":                  v("OMR", "Muscat, Salalah, and Sohar", "Oman data protection law", "civil card copies, commercial registration forms, and Tax Authority submissions", "submitting documents on Invest Easy or Oman Tax Authority portal", "via mobile apps and email"),
+  "bahrain":               v("BHD", "Manama, Riffa, and Muharraq", "Bahrain data protection law", "CPR copies, commercial registration documents, and NBR submissions", "submitting documents on bahrain.bh or NBR portal", "via mobile apps and email"),
+  "yemen":                 v("YER", "Sanaa, Aden, and Taiz", "Yemen data protection law", "tax declaration forms, national ID copies, and MOF submission documents", "filing documents with MOF Yemen", "via mobile data and email"),
+  "syria":                 v("SYP", "Damascus, Aleppo, and Homs", "Syria data protection law", "tax declaration forms, national ID copies, and administrative documents", "submitting documents to Syrian administrative portals", "via email and mobile"),
+  "tanzania":              v("TZS", "Dar es Salaam, Dodoma, and Mwanza", "Tanzania Personal Data Protection Act", "TIN certificates, national ID copies, and TRA submission forms", "filing your tax return or registering on TRA Tanzania", "via M-Pesa and mobile data"),
+  "uganda":                v("UGX", "Kampala, Gulu, and Mbarara", "Uganda Data Protection and Privacy Act", "TIN certificates, national ID copies, and URA submission forms", "filing returns or registering on URA Uganda portal", "via mobile money and data"),
+  "cameroon":              v("XAF", "Yaoundé, Douala, and Garoua", "Cameroon data protection law", "déclaration fiscale forms, national ID copies, and DGI Cameroon submissions", "filing your déclaration fiscale on DGI Cameroon portal", "via mobile money and email"),
+  "ivory-coast":           v("XOF", "Abidjan, Bouaké, and Yamoussoukro", "Ivory Coast data protection law", "déclaration fiscale forms, CNI copies, and DGI submissions", "filing your déclaration fiscale on e-government.ci or DGI", "via mobile money and email"),
+  "algeria":               v("DZD", "Algiers, Oran, and Constantine", "Algeria data protection law", "إقرار ضريبي tax forms, بطاقة هوية وطنية ID copies, and DGI submissions", "filing your tax declaration on dgimpots.gov.dz", "via mobile data and email"),
+  "tunisia":               v("TND", "Tunis, Sfax, and Sousse", "Tunisia data protection law", "tax declaration forms, بطاقة هوية ID copies, and DGI Tunisia submissions", "filing your tax declaration on impots.finances.gov.tn", "via mobile data and email"),
+  "sudan":                 v("SDG", "Khartoum, Omdurman, and Port Sudan", "Sudan data protection law", "tax declaration forms, national ID copies, and STA submission documents", "filing documents with Sudan Tax Authority", "via mobile data and email"),
+  "zimbabwe":              v("ZWL", "Harare, Bulawayo, and Mutare", "Zimbabwe data protection law", "TIN certificates, national ID copies, and ZIMRA submission forms", "filing returns or registering on ZIMRA Zimbabwe portal", "via mobile money EcoCash and email"),
+  "angola":                v("AOA", "Luanda, Huambo, and Lobito", "Angola data protection law", "declaração fiscal forms, BI national ID copies, and AGT submissions", "filing your declaração fiscal on AGT portal", "via mobile data and email"),
+  "zambia":                v("ZMW", "Lusaka, Kitwe, and Ndola", "Zambia Data Protection Act", "TIN certificates, national ID copies, and ZRA submission forms", "filing returns or registering on ZRA Zambia portal", "via mobile money and data"),
+  "mozambique":            v("MZN", "Maputo, Beira, and Nampula", "Mozambique data protection law", "declaração fiscal forms, BI identity copies, and AT Mozambique submissions", "filing your declaração fiscal on Portal do Governo portal", "via mobile data and email"),
+  "senegal":               v("XOF", "Dakar, Thiès, and Kaolack", "Senegal data protection law", "déclaration fiscale forms, CNI copies, and DGID submissions", "filing your déclaration fiscale on e-impots.finances.gouv.sn", "via mobile money and email"),
+  "rwanda":                v("RWF", "Kigali, Butare, and Musanze", "Rwanda Data Protection Law", "TIN certificates, national ID copies, and RRA submission forms", "filing returns or registering on RRA or Irembo portal", "via MTN Mobile Money and data"),
+  "drc":                   v("CDF", "Kinshasa, Lubumbashi, and Mbuji-Mayi", "DRC data protection law", "déclaration fiscale forms, carte d'identité copies, and DGRAD submissions", "submitting your fiscal documents on DGI Congo or DGRAD portal", "via mobile money and data"),
+  "botswana":              v("BWP", "Gaborone, Francistown, and Molepolole", "Botswana Data Protection Act", "TIN certificates, national ID copies, and BURS submission forms", "filing returns or registering on BURS Botswana portal", "via Orange Money and email"),
+  "namibia":               v("NAD", "Windhoek, Rundu, and Walvis Bay", "Namibia data protection law", "TIN certificates, national ID copies, and NamRA submission forms", "filing returns on NamRA Namibia portal", "via mobile data and email"),
+  "mali":                  v("XOF", "Bamako, Sikasso, and Mopti", "Mali data protection law", "déclaration fiscale forms, CNI copies, and DGI Mali submissions", "filing your tax declaration with DGI Mali", "via Orange Money and email"),
+  "niger":                 v("XOF", "Niamey, Zinder, and Maradi", "Niger data protection law", "déclaration fiscale forms, CNI copies, and DGI Niger submissions", "filing your tax declaration with DGI Niger", "via mobile data and email"),
+  "somalia":               v("USD", "Mogadishu, Hargeisa, and Bosaso", "Somalia data protection law", "tax declaration forms, national ID copies, and MOF Somalia submissions", "submitting administrative documents to federal government portals", "via mobile data and Hormuud Telesom"),
+  "sierra-leone":          v("SLL", "Freetown, Bo, and Kenema", "Sierra Leone data protection law", "TIN certificates, national ID copies, and NRA submission forms", "filing returns on NRA Sierra Leone portal", "via mobile money and data"),
+  "liberia":               v("LRD", "Monrovia, Gbarnga, and Buchanan", "Liberia data protection law", "TIN certificates, national ID copies, and LRA submission forms", "filing returns on LRA Liberia portal", "via mobile data and email"),
+  "togo":                  v("XOF", "Lomé, Sokodé, and Kara", "Togo data protection law", "déclaration fiscale forms, CNI copies, and OTR submissions", "filing your tax declaration with OTR Togo", "via mobile money and email"),
+  "benin":                 v("XOF", "Cotonou, Porto-Novo, and Parakou", "Benin data protection law", "déclaration fiscale forms, CNI copies, and DGI Benin submissions", "filing your tax declaration with DGI Benin", "via MTN Mobile Money and email"),
+  "burkina-faso":          v("XOF", "Ouagadougou, Bobo-Dioulasso, and Koudougou", "Burkina Faso data protection law", "déclaration fiscale forms, CNI copies, and DGI Burkina Faso submissions", "filing your tax declaration with DGI Burkina Faso", "via mobile money and email"),
+  "chad":                  v("XAF", "N'Djamena, Moundou, and Sarh", "Chad data protection law", "déclaration fiscale forms, CNI copies, and DGI Chad submissions", "submitting your tax declaration with DGI Chad", "via mobile data and email"),
+  "gabon":                 v("XAF", "Libreville, Port-Gentil, and Franceville", "Gabon data protection law", "déclaration fiscale forms, CNI copies, and DGI Gabon submissions", "filing your tax declaration with DGI Gabon", "via mobile data and email"),
+  "congo":                 v("XAF", "Brazzaville, Pointe-Noire, and Dolisie", "Republic of Congo data protection law", "déclaration fiscale forms, CNI copies, and DGI Congo-Brazzaville submissions", "submitting your tax declaration on Congo government portals", "via mobile data and email"),
+  "mauritius":             v("MUR", "Port Louis, Beau Bassin, and Rose Hill", "Mauritius Data Protection Act", "TAN certificates, national ID copies, and MRA submission forms", "filing your income tax return on MRA Mauritius portal", "via mobile banking and email"),
+  "malawi":                v("MWK", "Lilongwe, Blantyre, and Mzuzu", "Malawi data protection law", "TIN certificates, national ID copies, and MRA Malawi submissions", "filing returns on MRA Malawi portal", "via mobile money and data"),
+  "gambia":                v("GMD", "Banjul, Serekunda, and Brikama", "Gambia data protection law", "TIN certificates, national ID copies, and GRA submission forms", "filing returns or registering on GRA Gambia portal", "via mobile data and email"),
+  "south-sudan":           v("SSP", "Juba, Wau, and Malakal", "South Sudan data protection law", "TIN certificates, national ID copies, and NRA submission forms", "filing documents with NRA South Sudan", "via mobile data and email"),
+  "eritrea":               v("ERN", "Asmara, Keren, and Massawa", "Eritrea data protection law", "tax declaration forms, national ID copies, and ERCA submission documents", "filing documents with ERCA Eritrea", "via mobile data and email"),
+  "lesotho":               v("LSL", "Maseru, Teyateyaneng, and Mafeteng", "Lesotho data protection law", "TIN certificates, national ID copies, and LRA submission forms", "filing returns on LRA Lesotho portal", "via mobile money and data"),
+  "eswatini":              v("SZL", "Mbabane, Manzini, and Lobamba", "Eswatini data protection law", "TIN certificates, national ID copies, and SRA submission forms", "filing returns on SRA Eswatini portal", "via mobile money and data"),
+  "djibouti":              v("DJF", "Djibouti City, Ali Sabieh, and Tadjourah", "Djibouti data protection law", "déclaration fiscale forms, CNI copies, and DGI Djibouti submissions", "filing your tax declaration with DGI Djibouti", "via mobile data and email"),
+  "cape-verde":            v("CVE", "Praia, Mindelo, and Santa Maria", "Cape Verde data protection law", "declaração fiscal forms, BI identity copies, and DNRE submissions", "filing your declaração fiscal on portondinosilha portal", "via mobile data and email"),
+  "guinea":                v("GNF", "Conakry, Nzérékoré, and Kankan", "Guinea data protection law", "déclaration fiscale forms, CNI copies, and DGI Guinea submissions", "filing your tax declaration with DGI Guinea", "via mobile money and email"),
+  "central-african-republic": v("XAF", "Bangui, Bimbo, and Berbérati", "CAR data protection law", "déclaration fiscale forms, CNI copies, and DGID submissions", "submitting your tax declaration with DGID CAR", "via mobile data and email"),
+  "venezuela":             v("VEF", "Caracas, Maracaibo, and Valencia", "Venezuela data protection law", "declaración definitiva forms, cédula de identidad copies, and RIF documents", "filing your declaración de renta on SENIAT portal", "via WhatsApp and mobile"),
+  "bolivia":               v("BOB", "La Paz, Santa Cruz, and Cochabamba", "Bolivia data protection law", "declaración jurada forms, CI identity copies, and NIT documents", "submitting your declaración jurada on SIN Bolivia portal", "via WhatsApp and email"),
+  "ecuador":               v("USD", "Quito, Guayaquil, and Cuenca", "Ecuador data protection law", "declaración de impuesto forms, cédula de identidad copies, and RUC documents", "filing your tax declaration on SRI Ecuador portal", "via WhatsApp and email"),
+  "uruguay":               v("UYU", "Montevideo, Salto, and Paysandú", "Uruguay data protection law", "declaración jurada forms, cédula de identidad copies, and RUT documents", "filing your declaración jurada on DGI Uruguay portal", "via email and mobile"),
+  "paraguay":              v("PYG", "Asunción, Ciudad del Este, and San Lorenzo", "Paraguay data protection law", "declaración jurada forms, cédula de identidad copies, and RUC documents", "filing your declaración jurada on SET Paraguay portal", "via WhatsApp and email"),
+  "guatemala":             v("GTQ", "Guatemala City, Mixco, and Villa Nueva", "Guatemala data protection law", "declaración jurada forms, DPI identity copies, and NIT documents", "filing your declaración jurada on SAT Guatemala portal", "via WhatsApp and email"),
+  "honduras":              v("HNL", "Tegucigalpa, San Pedro Sula, and Choloma", "Honduras data protection law", "declaración de impuestos forms, DNI copies, and RTN documents", "filing your tax declaration on SAR Honduras portal", "via WhatsApp and email"),
+  "el-salvador":           v("USD", "San Salvador, Soyapango, and Santa Ana", "El Salvador data protection law", "declaración de impuestos forms, DUI copies, and NIT documents", "filing your tax declaration on DGII El Salvador portal", "via WhatsApp and email"),
+  "nicaragua":             v("NIO", "Managua, León, and Masaya", "Nicaragua data protection law", "declaración de impuestos forms, cédula identity copies, and RUC documents", "filing your tax declaration on DGI Nicaragua portal", "via WhatsApp and email"),
+  "costa-rica":            v("CRC", "San José, Alajuela, and Desamparados", "Costa Rica data protection law", "declaración de impuestos forms, cédula identity copies, and NIF documents", "filing your tax declaration on Hacienda Costa Rica portal", "via WhatsApp and email"),
+  "panama":                v("USD", "Panama City, San Miguelito, and Tocumen", "Panama data protection law", "declaración de renta forms, cédula identity copies, and RUC documents", "filing your declaración de renta on DGI Panama portal", "via WhatsApp and email"),
+  "cuba":                  v("CUP", "Havana, Santiago, and Camagüey", "Cuba data protection law", "declaración fiscal forms, carné de identidad copies, and ONAT documents", "filing documents with ONAT Cuba", "via email and mobile"),
+  "dominican-republic":    v("DOP", "Santo Domingo, Santiago, and La Romana", "Dominican Republic data protection law", "declaración de impuestos forms, cédula identity copies, and RNC documents", "filing your declaración de impuestos on DGII portal", "via WhatsApp and email"),
+  "haiti":                 v("HTG", "Port-au-Prince, Cap-Haïtien, and Gonaïves", "Haiti data protection law", "déclaration fiscale forms, CIN copies, and DGI Haiti submissions", "filing your déclaration fiscale with DGI Haiti", "via mobile data and email"),
+  "jamaica":               v("JMD", "Kingston, Portmore, and Spanish Town", "Jamaica data protection law", "income tax return forms, TRN copies, and NIS documents", "filing your income tax return on TAJ Jamaica portal", "via email and mobile"),
+  "trinidad-tobago":       v("TTD", "Port of Spain, San Fernando, and Chaguanas", "Trinidad and Tobago data protection law", "income tax return forms, TIN copies, and BIR documents", "filing your income tax return on TTBIR portal", "via email and mobile"),
+  "barbados":              v("BBD", "Bridgetown, Speightstown, and Oistins", "Barbados data protection law", "income tax return forms, NIS copies, and TIN documents", "filing your income tax return on BRA Barbados portal", "via email and mobile"),
+  "guyana":                v("GYD", "Georgetown, Linden, and New Amsterdam", "Guyana data protection law", "income tax return forms, TIN copies, and GRA documents", "filing your income tax return on GRA Guyana portal", "via email and mobile"),
+  "suriname":              v("SRD", "Paramaribo, Lelydorp, and Nieuw Nickerie", "Suriname data protection law", "belastingaangifte forms, identity card copies, and DIB submissions", "filing your belastingaangifte on Suriname government portal", "via email and mobile"),
+  "belize":                v("BZD", "Belize City, Belmopan, and San Ignacio", "Belize data protection law", "income tax return forms, social security copies, and BNBS documents", "filing your income tax return on Belize government portal", "via email and mobile"),
+  "bahamas":               v("BSD", "Nassau, Freeport, and Marsh Harbour", "Bahamas data protection law", "income tax return forms, national ID copies, and DOI documents", "filing documents with the Bahamas Department of Inland Revenue", "via email and mobile"),
+  "new-zealand":           v("NZD", "Auckland, Wellington, and Christchurch", "New Zealand Privacy Act 2020", "IR3 income tax returns, IRD number documents, and KiwiSaver forms", "filing your IR3 return on IRD myIR portal", "via email and mobile"),
+  "fiji":                  v("FJD", "Suva, Nadi, and Lautoka", "Fiji data protection law", "income tax return forms, TIN copies, and FRCA submission documents", "filing your income tax return on FRCA Fiji portal", "via mobile data and email"),
+  "papua-new-guinea":      v("PGK", "Port Moresby, Lae, and Mount Hagen", "PNG data protection law", "income tax return forms, TIN copies, and IRC submission documents", "filing your income tax return on IRC PNG portal", "via mobile data and email"),
+  "samoa":                 v("WST", "Apia, Faleolo, and Salelologa", "Samoa data protection law", "income tax return forms, TIN copies, and MSAF submission documents", "filing your income tax return on Samoa government portal", "via mobile data and email"),
+  "vanuatu":               v("VUV", "Port Vila, Luganville, and Isangel", "Vanuatu data protection law", "tax declaration forms, national ID copies, and VFSC submission documents", "filing documents with Vanuatu government portals", "via mobile data and email"),
+  "tonga":                 v("TOP", "Nukualofa, Neiafu, and Haapai", "Tonga data protection law", "income tax return forms, national ID copies, and IRCOT submission documents", "filing your income tax return on Tonga government portal", "via mobile data and email"),
+  "solomon-islands":       v("SBD", "Honiara, Gizo, and Auki", "Solomon Islands data protection law", "income tax return forms, TIN copies, and IRD submission documents", "filing your income tax return on Solomon Islands government portal", "via mobile data and email"),
+};
+
+function getRich(slug: string): CRich {
+  return COUNTRY_RICH[slug] || { currency: "local currency", cities: "major cities", compliance: "local data protection law", docs: "tax forms and national ID documents", useCase: "submitting documents to government portals", mobile: "via mobile data and email" };
+}
+
+function slugVariant(slug: string): number {
+  let h = 0;
+  for (let i = 0; i < slug.length; i++) h = ((h << 5) - h + slug.charCodeAt(i)) | 0;
+  return Math.abs(h) % 4;
+}
+
 const DOC_TYPES = [
   { slug: "resume",          label: "Resume",           context: "Job seekers need their resume PDF compressed for email attachments and ATS upload portals." },
   { slug: "invoice",         label: "Invoice",          context: "Small businesses send invoices by email daily. A compressed invoice under 200KB reaches any inbox reliably." },
@@ -969,86 +1155,118 @@ ${pr.label} using this tool benefit from enterprise-grade processing without ent
 
 function genCountryPages(): ProgrammaticPage[] {
   const results: ProgrammaticPage[] = [];
+
   for (const c of COUNTRIES) {
+    const rd = getRich(c.slug);
+    const vr = slugVariant(c.slug);
+
+    // ── compress-pdf-{country} ─────────────────────────────────────────────
     const s1 = `compress-pdf-${c.slug}`;
-    if (!skip(s1)) results.push(page(
-      s1,
-      `Compress PDF Online Free — Best Tool for ${c.label} Users | PDF HUB 24`,
-      `Best Free PDF Compressor for ${c.label} Users`,
-      `Compress PDF online free — trusted by ${c.demonym}. No signup, no watermark. Works perfectly for ${c.portal}.`,
-      "/compress", "Compress PDF",
-      `${c.demonym} regularly submit documents to ${c.portal}, many of which enforce strict file-size limits. Our free PDF compressor helps you meet these requirements reliably, without needing to install software or create an account.
+    if (!skip(s1)) {
+      const compressContent = [
+        // Variant 0 — Document-first
+        `In ${c.label}, common document submissions — including ${rd.docs} — often require PDFs under 1–5 MB. Residents of ${rd.cities} rely on our free PDF compressor daily to meet portal upload limits without installing software or paying for a subscription.\n\nFor ${c.portal} submissions, medium compression achieves the right balance between file size and document clarity. For stricter limits under 500 KB, high compression combined with grayscale conversion reduces file sizes by up to 90% while keeping text sharp and readable.\n\nAll files are processed securely with HTTPS encryption and deleted within 1 hour — aligned with ${rd.compliance} data minimisation principles. No account needed. Compress as many PDFs as you need, completely free.`,
+        // Variant 1 — Portal-first
+        `${c.portal} and other ${c.label} government platforms typically enforce file-size limits of 1–5 MB per document. Failing to meet these limits means rejected submissions — a frustrating delay when you are handling ${rd.docs} or other time-sensitive paperwork.\n\nOur free PDF compressor solves this reliably. Upload your PDF, choose a compression level, and download a smaller file ready for any ${c.label} portal. Medium compression works for most documents; high compression tackles image-heavy files. No software installation, no watermark, no signup.\n\nProcessing happens directly in your browser. Files are deleted within 1 hour, meeting the data minimisation requirements of ${rd.compliance}. Fully accessible from ${rd.cities} and across all of ${c.label} — no VPN needed.`,
+        // Variant 2 — Problem-first
+        `The challenge of ${rd.useCase} is familiar to anyone who has tried uploading a large PDF to a government or commercial portal in ${c.label}. Many portals reject files over 1–2 MB, sending you back to square one.\n\nPDF HUB 24 solves this in seconds. Upload your document — whether it is a ${rd.docs.split(",")[0].trim()} or a multi-page scanned report — choose your compression level, and download a portal-ready PDF. No registration, no software, no cost.\n\nThe tool is fully accessible from ${rd.cities} and all of ${c.label} on any device. Files are processed securely and permanently deleted within 1 hour, consistent with ${rd.compliance} requirements for data security.`,
+        // Variant 3 — Mobile-first
+        `${c.demonym} increasingly manage documents ${rd.mobile} — including ${rd.docs} — and large PDFs slow everything down. Our free PDF compressor is optimised for ${c.label} connection speeds, compressing files to a fraction of their original size without quality loss.\n\nOpen any browser on your smartphone or desktop, upload your PDF, and get a compressed file ready for ${c.portal} or any other ${c.label} platform. Three compression levels give you full control: low for maximum quality, medium for the best balance, high for the smallest file size.\n\nData security is built in: all files use HTTPS encryption and are deleted within 1 hour — meeting ${rd.compliance} standards. No account required, no watermark added. Completely free for all ${c.demonym}.`,
+      ][vr];
 
-The tool is fully accessible from ${c.label} — no VPN required, no regional restrictions. Simply open the page in any modern browser, upload your PDF, choose a compression level, and download the result.
+      results.push(page(
+        s1,
+        `Compress PDF Online Free — Best Tool for ${c.label} Users | PDF HUB 24`,
+        `Best Free PDF Compressor for ${c.label} Users`,
+        `Compress PDF online free — trusted by ${c.demonym}. Works for ${c.portal}. Meet upload limits for ${rd.docs}. No signup, no watermark.`,
+        "/compress", "Compress PDF",
+        compressContent,
+        [
+          `Compressing ${rd.docs.split(",")[0].trim()} before submitting to ${c.portal}`,
+          `Meeting file-size limits on ${c.label} government and commercial portals`,
+          `Sharing compressed PDFs ${rd.mobile} with ${c.label} colleagues`,
+          `Reducing PDF size for cloud storage and email in ${rd.cities}`,
+          `Preparing ${rd.compliance}-compliant compressed documents for ${c.label} submissions`,
+        ],
+        [
+          { question: `Can ${c.demonym} use this PDF compressor for free?`, answer: `Yes. The tool is completely free for ${c.demonym} — no signup, no watermark, and no usage limits. Accessible from ${rd.cities} and all of ${c.label}.` },
+          { question: `Does the tool work for ${c.portal}?`, answer: `Yes. Our compressor produces PDFs that meet the file-size requirements of ${c.portal}. Use medium or high compression and download your portal-ready document instantly.` },
+          { question: `Is my data protected under ${rd.compliance}?`, answer: `Yes. Files are processed using HTTPS encryption and permanently deleted within 1 hour. No data is stored or shared — consistent with ${rd.compliance} requirements.` },
+        ]
+      ));
+    }
 
-For ${c.portal} submissions specifically, medium compression usually achieves the right balance between file size and document quality. For stricter limits (under 500KB), use high compression and consider converting colour scans to grayscale first for maximum reduction.
-
-PDF HUB 24 serves users from over 150 countries including thousands of users in ${c.label} every month. The tool is optimised for speed on all connection types, including mobile data networks.`,
-      [
-        `Submitting compressed documents to ${c.portal}`,
-        `Meeting file-size requirements for ${c.label} government online services`,
-        `Sharing compressed PDFs via email with ${c.label} colleagues and clients`,
-        `Reducing PDF size before uploading to ${c.label} cloud storage platforms`,
-        `Preparing compressed documents for ${c.label} regulatory or compliance portals`,
-      ],
-      [
-        { question: `Can ${c.demonym} use this PDF compressor for free?`, answer: `Yes. The tool is completely free, with no signup required. It works in any browser and is accessible from ${c.label} without restrictions.` },
-        { question: `Does the tool work for ${c.portal}?`, answer: `Yes. Our compressor produces PDFs that meet the file-size requirements of ${c.portal}. Use medium or high compression to stay within their specific limits.` },
-        { question: "Is there a daily or monthly usage limit?", answer: "No. You can compress as many PDFs as you need with no limits on usage, file count, or session length." },
-      ]
-    ));
-
+    // ── pdf-tools-{country} ────────────────────────────────────────────────
     const s2 = `pdf-tools-${c.slug}`;
-    if (!skip(s2)) results.push(page(
-      s2,
-      `Free PDF Tools for ${c.label} Users | PDF HUB 24`,
-      `Free PDF Tools for ${c.label} — 49+ Online Tools`,
-      `Complete PDF toolkit for ${c.label} users. Compress, merge, split, convert, sign, and edit PDFs free. No signup, works on any device.`,
-      "/", "PDF HUB 24",
-      `PDF HUB 24 provides ${c.demonym} with access to 49+ free online PDF tools with no registration, no watermarks, and no hidden costs. Whether you're preparing documents for ${c.portal} or simply managing everyday PDF files, our complete toolkit has everything you need.
+    if (!skip(s2)) {
+      const toolsContent = [
+        // Variant 0
+        `From ${rd.cities} to every corner of ${c.label}, PDF HUB 24 gives ${c.demonym} access to 49+ free PDF tools — no registration, no watermarks, no hidden costs. Whether you are preparing ${rd.docs} for ${c.portal} or handling day-to-day document tasks, our complete toolkit covers every need.\n\nThe most-used tools among ${c.demonym} include: Compress PDF (for meeting portal upload limits), Merge PDF (for bundling multi-document submissions), PDF to Word (for editing official ${c.label} documents), Sign PDF (for adding digital signatures without printing), and Protect PDF (for securing sensitive files with ${rd.currency}-transaction-level 256-bit AES encryption before sharing).\n\nEvery tool runs in your browser — smartphone, tablet, or desktop. No app download, no VPN. Files are processed securely and deleted within 1 hour, aligned with ${rd.compliance}.`,
+        // Variant 1
+        `Paying for Adobe Acrobat or similar software is unnecessary for ${c.demonym}. PDF HUB 24 provides all the PDF tools you need — compress, merge, split, convert, sign, edit, protect, and more — completely free, with no account required.\n\nFor ${c.portal} document workflows, the most important tools are Compress PDF (meeting strict upload size limits), Merge PDF (combining ${rd.docs} into a single submission), and PDF to Word (converting official PDFs into editable files). All are available at no cost for ${c.label} residents.\n\nFiles are deleted within 1 hour and never stored on our servers — a key consideration for ${c.demonym} handling sensitive ${rd.compliance}-regulated documents. The service works equally fast from ${rd.cities} and rural areas of ${c.label}.`,
+        // Variant 2
+        `${c.label}'s document landscape requires a versatile PDF toolkit. From ${rd.docs} to signed contracts and compressed government submissions, ${c.demonym} handle a wide variety of PDF tasks daily. PDF HUB 24 provides every tool needed — 49+ utilities — all permanently free.\n\nUsers in ${rd.cities} and across ${c.label} consistently rely on: Compress PDF for reducing file sizes before uploading to ${c.portal}, Merge PDF for combining multi-part applications, PDF to Word for editing scanned or digital official documents, and Sign PDF for legally-valid digital signatures.\n\nSecurity matters when handling official ${c.label} documents. All processing uses HTTPS and files are permanently deleted within 1 hour — meeting ${rd.compliance} data protection expectations. Free, unlimited, no watermarks.`,
+        // Variant 3
+        `The best free PDF tools for ${c.label} — all in one place. PDF HUB 24 gives ${c.demonym} access to 49+ tools covering everything from compression and merging to signing, protecting, and converting PDFs. No subscription fee, no watermarks, no signup.\n\nDocuments commonly handled by ${c.label} residents — including ${rd.docs} — often need compression before uploading to ${c.portal}. Our toolkit makes this workflow fast: compress, merge, sign, and download in minutes, entirely in your browser.\n\nWhether you are accessing the tools from ${rd.cities} on a desktop or from a smartphone ${rd.mobile}, the experience is identical. Files are deleted within 1 hour and processing complies with ${rd.compliance} data protection standards.`,
+      ][vr];
 
-Popular tools among ${c.demonym} include: Compress PDF for meeting government portal file-size limits, Merge PDF for assembling multi-document submissions, PDF to Word for converting official documents into editable format, and Sign PDF for adding digital signatures to contracts and forms.
+      results.push(page(
+        s2,
+        `Free PDF Tools for ${c.label} Users | PDF HUB 24`,
+        `Free PDF Tools for ${c.label} — 49+ Online Tools`,
+        `Complete PDF toolkit for ${c.label}. Compress, merge, split, convert, sign, and edit ${rd.docs} and more. Free, no signup, any device.`,
+        "/", "PDF HUB 24",
+        toolsContent,
+        [
+          `Accessing free PDF tools for ${rd.docs} without software subscriptions in ${c.label}`,
+          `Preparing ${c.portal} submissions using free online PDF tools from ${c.label}`,
+          `Converting, compressing, and editing PDFs from ${rd.cities} and across ${c.label}`,
+          `Handling ${rd.compliance}-compliant document workflows free of charge`,
+          `Using enterprise-grade PDF tools for ${c.label} residents at no cost`,
+        ],
+        [
+          { question: `Are PDF HUB 24 tools available to ${c.demonym}?`, answer: `Yes. All 49+ tools are fully accessible from ${c.label} — including ${rd.cities} — with no regional restrictions, no VPN, and no signup required.` },
+          { question: `Which tools are most useful for ${c.label} document requirements?`, answer: `For ${c.portal} and other ${c.label} portals, the most commonly needed tools are Compress PDF, Merge PDF, and PDF to Word. All handle ${rd.docs} and similar documents reliably.` },
+          { question: `Is my data safe under ${rd.compliance} when using PDF HUB 24?`, answer: `Yes. Files are processed over HTTPS and permanently deleted within 1 hour. No data is stored or shared — fully consistent with ${rd.compliance} expectations.` },
+        ]
+      ));
+    }
 
-All tools are fully accessible from ${c.label} — no VPN, no restrictions. The service is optimised for all connection speeds and works on desktop computers, laptops, tablets, and mobile phones.`,
-      [
-        `Accessing free PDF tools without paying for software subscriptions in ${c.label}`,
-        `Preparing documents for ${c.portal} using free online tools`,
-        `Converting, compressing, and editing PDFs from any ${c.label} device`,
-        `Managing government and professional document workflows for free`,
-        `Using enterprise-grade PDF tools without enterprise costs in ${c.label}`,
-      ],
-      [
-        { question: `Are PDF HUB 24 tools available to ${c.demonym}?`, answer: `Yes. All 49+ tools are fully accessible from ${c.label} with no regional restrictions, no VPN required, and no signup.` },
-        { question: `Which tools are most useful for ${c.label} document requirements?`, answer: `For ${c.portal}, the most commonly needed tools are Compress PDF, Merge PDF, and PDF to Word. All are free and unlimited.` },
-        { question: `Is PDF HUB 24 free for ${c.demonym}?`, answer: "Yes, completely free. All 49+ tools are available at no charge, with no account required and no watermarks added." },
-      ]
-    ));
-
+    // ── free-pdf-tools-{country} ───────────────────────────────────────────
     const s3 = `free-pdf-tools-${c.slug}`;
-    if (!skip(s3)) results.push(page(
-      s3,
-      `Free PDF Tools ${c.label} — No Signup Required | PDF HUB 24`,
-      `Free PDF Tools in ${c.label} — Complete Toolkit`,
-      `Free PDF tools for ${c.label}. 49+ tools including compress, merge, split, convert, sign, and edit. No signup, no watermark, no cost.`,
-      "/", "PDF HUB 24",
-      `Finding genuinely free PDF tools in ${c.label} without hidden costs, forced registrations, or watermarks is challenging. PDF HUB 24 provides exactly that — a complete set of 49+ PDF tools that are permanently free, require no account creation, and never add watermarks to your documents.
+    if (!skip(s3)) {
+      const freeToolsContent = [
+        // Variant 0
+        `Finding truly free PDF tools in ${c.label} — without hidden subscription fees, forced account creation, or watermarked output — is harder than it should be. PDF HUB 24 provides exactly that: 49+ permanently free tools that handle every PDF task ${c.demonym} encounter, from compressing ${rd.docs} for ${c.portal} to signing contracts and converting files to Word.\n\nResidents of ${rd.cities} and all of ${c.label} can use every tool without registration. The interface works identically on all devices and all connection types, including mobile data. Output is always watermark-free and download-ready.\n\nPrivacy is protected by design: all files are deleted within 1 hour of upload, meeting ${rd.compliance} data minimisation standards. There are no premium tiers — every tool is free for every user.`,
+        // Variant 1
+        `${c.demonym} deserve free PDF tools that actually work — without surprise paywalls, low upload limits, or watermarks on the output. PDF HUB 24 delivers: 49+ tools covering compression, merging, splitting, conversion, signing, and more, all permanently free with no account required.\n\nFor the most common ${c.label} document tasks — compressing ${rd.docs.split(",")[0].trim()} for ${c.portal}, merging multi-page applications, and converting scanned PDFs to Word — our tools handle everything reliably. Users from ${rd.cities} report fast processing even on mobile data connections.\n\nAll processing complies with ${rd.compliance}: files use HTTPS encryption and are deleted within 1 hour. No data is ever sold, shared, or retained. Free, unlimited, and permanently available.`,
+        // Variant 2
+        `For ${c.label} residents juggling ${rd.docs} and day-to-day PDF needs, the cost of PDF software adds up quickly. PDF HUB 24 eliminates that cost entirely — 49+ free tools, no subscription, no account, no watermarks.\n\nThe tools most valued by ${c.demonym} are: Compress PDF (reducing file sizes before uploading to ${c.portal}), Merge PDF (bundling multiple documents into one submission), PDF to Word (editing official ${c.label} PDFs), and Protect PDF (securing sensitive files with 256-bit AES encryption before sharing ${rd.mobile}).\n\nAll tools are accessible from ${rd.cities} and across ${c.label} in any browser. Files are deleted within 1 hour — ensuring compliance with ${rd.compliance}. Every tool, every time, completely free.`,
+        // Variant 3
+        `The search for genuinely free PDF tools in ${c.label} ends here. PDF HUB 24 provides 49+ free online tools — compress, merge, split, convert, sign, edit, protect — with no cost, no watermark, and no registration for ${c.demonym}.\n\nFor ${rd.useCase} and other common ${c.label} document workflows, our tools streamline the entire process. ${rd.docs.split(",")[0].trim()} and similar documents compress quickly, merge cleanly, and download ready for ${c.portal} without a single paid feature unlocked.\n\nFrom ${rd.cities} to every region of ${c.label}, the service works on any device ${rd.mobile}. Files are processed with HTTPS encryption and deleted within 1 hour — consistent with ${rd.compliance} and your right to data privacy.`,
+      ][vr];
 
-For ${c.demonym} specifically, the most popular free tools are: Compress PDF (for government and commercial portal submissions), Merge PDF (for assembling multi-document applications), PDF to Word (for editing official documents), and Protect PDF (for adding passwords to sensitive files before sharing).
-
-All tools work identically for users in ${c.label} as anywhere else in the world. There are no geographical restrictions, premium tiers, or country-specific limitations. Every tool is free, every result is clean, and every file is deleted within 1 hour for your privacy.`,
-      [
-        `Free PDF compression for ${c.label} government portal submissions`,
-        `Free PDF merging for multi-document professional applications in ${c.label}`,
-        `Free PDF conversion for editing official documents in ${c.label}`,
-        `Free PDF signing for contracts and agreements handled in ${c.label}`,
-        `Free PDF tools with no signup or watermark for ${c.demonym}`,
-      ],
-      [
-        { question: `Are there any free PDF tools in ${c.label} without watermarks?`, answer: `Yes. PDF HUB 24 provides 49+ PDF tools completely free for ${c.demonym} with no watermarks, no account required, and no hidden fees.` },
-        { question: `Do these tools work on ${c.label} government portals?`, answer: `Yes. Our compress, merge, and convert tools produce PDFs compatible with ${c.portal} and all standard document portals.` },
-        { question: `How long has PDF HUB 24 been serving ${c.label} users?`, answer: `PDF HUB 24 has been serving ${c.demonym} as part of a global user base of millions. The service is free and permanently available.` },
-      ]
-    ));
+      results.push(page(
+        s3,
+        `Free PDF Tools ${c.label} — No Signup Required | PDF HUB 24`,
+        `Free PDF Tools in ${c.label} — Complete Toolkit`,
+        `Free PDF tools for ${c.label}. Compress ${rd.docs.split(",")[0].trim()}, merge, split, and convert PDFs. No signup, no watermark, no cost.`,
+        "/", "PDF HUB 24",
+        freeToolsContent,
+        [
+          `Free PDF compression for ${c.label} government portal submissions`,
+          `Free PDF merging for ${rd.docs} applications in ${c.label}`,
+          `Free PDF conversion for editing official ${c.label} documents`,
+          `Free PDF signing for ${c.label} contracts and agreements`,
+          `Free PDF tools with no signup or watermark for ${c.demonym}`,
+        ],
+        [
+          { question: `Are there any free PDF tools in ${c.label} without watermarks?`, answer: `Yes. PDF HUB 24 provides 49+ free tools for ${c.demonym} — no watermarks, no account required, no hidden fees. Accessible from ${rd.cities} and all of ${c.label}.` },
+          { question: `Do these tools work for ${c.portal} document requirements?`, answer: `Yes. Our compress, merge, and convert tools produce PDFs accepted by ${c.portal} and all standard ${c.label} document portals. They handle ${rd.docs} and similar files reliably.` },
+          { question: `How does PDF HUB 24 protect my ${rd.compliance}-regulated documents?`, answer: `All files are processed via HTTPS and permanently deleted within 1 hour. No data is stored, shared, or accessed — consistent with ${rd.compliance} data protection requirements.` },
+        ]
+      ));
+    }
   }
   return results;
 }
@@ -1332,6 +1550,7 @@ No software installation, no monthly subscription, and no watermarks on output f
 
 function genCountryToolPages(): ProgrammaticPage[] {
   const results: ProgrammaticPage[] = [];
+  type CC = { label: string; demonym: string; portal: string; slug: string };
   const tools = [
     {
       id: "merge",
@@ -1341,8 +1560,15 @@ function genCountryToolPages(): ProgrammaticPage[] {
       desc: (label: string, demonym: string) => `Merge PDF files free online — trusted by ${demonym}. Combine multiple PDFs into one. No signup, no watermark, instant download.`,
       toolPath: "/merge",
       toolName: "Merge PDF",
-      content: (c: { label: string; demonym: string; portal: string }) =>
-        `${c.demonym} regularly need to combine multiple PDF files — from multi-part government applications and multi-page contracts to bundled financial documents. Our free PDF merger lets you upload multiple PDFs, arrange them in any order, and download a single combined file in seconds.\n\nThe tool works directly from any browser in ${c.label} — no app to install, no account to create. Whether you are using a desktop computer, laptop, or mobile phone, the experience is identical. Simply drag and drop your files, order them as needed, and click Merge.\n\nFor ${c.portal}, bundling all required documents into a single PDF is often the most convenient submission format. Our merge tool makes this a one-step process, free for all ${c.demonym}.`,
+      content: (c: CC) => {
+        const rd = getRich(c.slug); const vr = slugVariant(c.slug);
+        return [
+          `${c.demonym} regularly need to combine multiple PDF files — ${rd.docs} and more — into a single document for submission to ${c.portal} or sharing with colleagues in ${rd.cities}. Our free PDF merger lets you upload multiple PDFs, arrange them in any order, and download a combined file in seconds, no account needed.\n\nFor ${c.portal}, bundling all required documents into a single PDF is the standard submission format. Our merge tool makes this a one-step process: drag your files into order and click Merge. Works on any browser and any device, accessible across all of ${c.label} without VPN restrictions.\n\nFiles are processed securely with HTTPS encryption and permanently deleted within 1 hour — consistent with ${rd.compliance} data protection standards. Free and unlimited for all ${c.demonym}.`,
+          `Assembling documents for ${rd.useCase} in ${c.label} often means combining several separate PDF files — a task that takes seconds with PDF HUB 24. Upload your ${rd.docs.split(",")[0].trim()} and other supporting files, arrange them in the correct order, and download a single merged PDF ready for ${c.portal}.\n\nThe tool works directly in your browser from ${rd.cities} and anywhere else in ${c.label}. No software to install, no registration required, and no watermark on the output. Simply drag and drop your PDFs into the desired order and click Merge.\n\nAll processing uses HTTPS encryption and files are deleted within 1 hour — meeting ${rd.compliance} requirements. Free for all ${c.demonym}, with no limit on the number of files you can merge.`,
+          `The most common reason ${c.demonym} need to merge PDFs is preparing a complete package for ${c.portal} — combining ${rd.docs} into one organised submission file. PDF HUB 24 makes this effortless: upload, arrange, merge, download in under a minute.\n\nFrom ${rd.cities} to rural areas of ${c.label}, the tool works on any connection speed and any device. No app to download, no account to create. The merged PDF maintains the quality and formatting of all source files and is accepted by all major ${c.label} portals.\n\nData security: files are processed over HTTPS and permanently deleted within 1 hour — compliant with ${rd.compliance}. Completely free with no restrictions.`,
+          `Managing documents ${rd.mobile} in ${c.label} means you need a merge tool that works quickly on a smartphone. PDF HUB 24 is fully optimised for mobile browsers — upload your ${rd.docs.split(",")[0].trim()} and other files, drag them into order, and download the merged PDF in seconds.\n\nThe tool is free for all ${c.demonym}, with no registration, no watermarks, and no file count limits. Merge as many PDFs as your ${c.portal} submission requires — the tool handles them all reliably.\n\nSecurity and privacy: all files use HTTPS encryption and are permanently deleted within 1 hour, meeting ${rd.compliance} data minimisation requirements.`,
+        ][vr];
+      },
       useCases: (c: { label: string; demonym: string; portal: string }) => [
         `Merging multiple PDF documents for submission to ${c.portal}`,
         `Combining contracts, invoices, and supporting files into one PDF in ${c.label}`,
@@ -1364,20 +1590,33 @@ function genCountryToolPages(): ProgrammaticPage[] {
       desc: (label: string, demonym: string) => `Convert PDF to editable Word document free online in ${label}. Trusted by ${demonym}. No signup, instant DOCX download.`,
       toolPath: "/pdf-to-word",
       toolName: "PDF to Word",
-      content: (c: { label: string; demonym: string; portal: string }) =>
-        `Converting PDF documents to editable Word files is an everyday need for ${c.demonym} — whether editing scanned forms from ${c.portal}, updating contracts, revising academic documents, or repurposing official letters.\n\nOur free PDF to Word converter accurately extracts text, tables, and formatting from any PDF and delivers an editable DOCX file in seconds. The conversion uses intelligent layout analysis to preserve paragraph structure, headings, and table rows as closely as possible.\n\nThe tool is fully accessible in ${c.label} from any browser on any device. No Microsoft Word subscription is required to use the converter — the output DOCX can be opened in any word processor including LibreOffice, Google Docs, and WPS Office.`,
-      useCases: (c: { label: string; demonym: string; portal: string }) => [
-        `Converting official PDF documents from ${c.portal} into editable Word format`,
-        `Editing scanned government forms and certificates in ${c.label}`,
-        `Extracting text from PDF contracts for revision by ${c.label} legal teams`,
-        `Converting PDF academic papers and reports for editing in ${c.label}`,
-        `Repurposing PDF templates from ${c.label} institutions into editable documents`,
-      ],
-      faqs: (c: { label: string; demonym: string; portal: string }) => [
-        { question: `Can ${c.demonym} convert PDF to Word for free?`, answer: `Yes. The PDF to Word converter is completely free for ${c.demonym} — no signup, no watermark, and no file size tricks.` },
-        { question: `Does PDF to Word conversion work for documents from ${c.portal}?`, answer: `Yes. Our converter handles standard PDFs from any source including government portals, banks, and institutions in ${c.label}.` },
-        { question: `What Word format does the conversion produce?`, answer: `The output is a standard DOCX file compatible with Microsoft Word 2010+, LibreOffice, Google Docs, and all modern word processors.` },
-      ],
+      content: (c: CC) => {
+        const rd = getRich(c.slug); const vr = slugVariant(c.slug);
+        return [
+          `Converting ${rd.docs.split(",")[0].trim()} and other official PDFs from ${c.portal} into editable Word files is a daily need for ${c.demonym} in ${rd.cities}. Our free converter extracts text, tables, and formatting accurately, delivering an editable DOCX in seconds.\n\nThe conversion preserves paragraph structure, headings, and table layouts as closely as possible. No Microsoft Word licence is required — the output DOCX works in LibreOffice, Google Docs, WPS Office, and all modern word processors.\n\nAll files are processed with HTTPS encryption and deleted within 1 hour — meeting ${rd.compliance} data protection standards. Free for ${c.demonym}, no signup required.`,
+          `Editing a PDF you received from ${c.portal} or another ${c.label} institution requires conversion to Word format. PDF HUB 24 makes this free and instant — upload your PDF and download an editable DOCX in seconds, from ${rd.cities} or anywhere in ${c.label}.\n\nIntelligent layout analysis preserves the structure of your ${rd.docs.split(",")[0].trim()} and similar official documents. The output is a standard DOCX compatible with all word processors — no expensive Adobe licence needed.\n\nData security: all files use HTTPS encryption and are permanently deleted within 1 hour — aligned with ${rd.compliance} requirements.`,
+          `${c.label} professionals and students in ${rd.cities} routinely need to edit PDFs — whether to update a ${rd.docs.split(",")[0].trim()} or revise a contract. Our free PDF to Word converter handles this without any software installation or account creation.\n\nThe converted DOCX file accurately reflects the layout of your original PDF, with text, tables, and headings preserved. Works for standard PDFs from ${c.portal} and all major ${c.label} institutions.\n\nFiles are deleted within 1 hour — meeting ${rd.compliance} standards for data protection. Completely free, no watermarks.`,
+          `Managing documents ${rd.mobile} in ${c.label} often means you need to edit a PDF on the go. Our free PDF to Word converter works perfectly on mobile browsers — upload your ${rd.docs.split(",")[0].trim()} or other PDF, convert it, and download the editable DOCX in seconds.\n\nThe output is compatible with all word processors including Google Docs (popular for ${c.label} mobile users). No Microsoft Office subscription needed, no watermark, no registration.\n\nAll processing complies with ${rd.compliance}: files are encrypted in transit and deleted within 1 hour.`,
+        ][vr];
+      },
+      useCases: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          `Converting ${rd.docs.split(",")[0].trim()} from ${c.portal} into editable Word format`,
+          `Editing scanned government forms and ${rd.docs.split(",")[1]?.trim() || "certificates"} in ${c.label}`,
+          `Extracting text from ${c.label} contracts for legal team revision`,
+          `Converting PDF academic papers and official documents for editing in ${rd.cities}`,
+          `Repurposing PDF templates from ${c.label} institutions into editable DOCX files`,
+        ];
+      },
+      faqs: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          { question: `Can ${c.demonym} convert PDF to Word for free?`, answer: `Yes. The converter is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, no file size limits.` },
+          { question: `Does it work for ${rd.docs.split(",")[0].trim()} and other ${c.portal} documents?`, answer: `Yes. Our converter handles standard PDFs from any ${c.label} source including government portals, banks, and official institutions.` },
+          { question: `What Word format does the conversion produce?`, answer: `A standard DOCX file compatible with Microsoft Word 2010+, LibreOffice, Google Docs, and all modern word processors.` },
+        ];
+      },
     },
     {
       id: "sign-pdf",
@@ -1387,20 +1626,33 @@ function genCountryToolPages(): ProgrammaticPage[] {
       desc: (label: string, demonym: string) => `Sign PDF documents free online in ${label}. Trusted by ${demonym}. Draw, type, or upload your signature. No signup required.`,
       toolPath: "/sign-pdf",
       toolName: "Sign PDF",
-      content: (c: { label: string; demonym: string; portal: string }) =>
-        `${c.demonym} sign contracts, agreements, consent forms, and official documents regularly. Our free online PDF signature tool lets you add a legally recognised handwritten-style signature to any PDF without printing, scanning, or paying for specialised software.\n\nThree signature methods are available: draw your signature with your mouse or finger, type your name and choose a handwriting-style font, or upload an image of your actual signature. The signature is embedded directly into the PDF and is visible in all standard PDF viewers.\n\nFor everyday use in ${c.label} — signing rental agreements, employment contracts, consent forms, or documents submitted to ${c.portal} — this free tool handles everything quickly and securely. Files are deleted within 1 hour.`,
-      useCases: (c: { label: string; demonym: string; portal: string }) => [
-        `Signing contracts and agreements digitally in ${c.label}`,
-        `Adding handwritten signatures to documents for ${c.portal}`,
-        `Signing consent forms, applications, and official letters in ${c.label}`,
-        `Signing rental, employment, and service contracts as a ${c.label} resident`,
-        `Adding digital signatures to PDFs without expensive software in ${c.label}`,
-      ],
-      faqs: (c: { label: string; demonym: string; portal: string }) => [
-        { question: `Can ${c.demonym} sign PDFs for free?`, answer: `Yes. PDF signing is completely free for ${c.demonym} — draw, type, or upload your signature with no account required.` },
-        { question: `Is a digital signature valid in ${c.label}?`, answer: `Electronic signatures are widely accepted for personal and commercial documents. For legally certified signatures on court or regulatory documents, consult a qualified professional in ${c.label}.` },
-        { question: `Does the signature work with ${c.portal}?`, answer: `Yes. Our signed PDFs are standard PDF files accepted by all major document portals and email systems.` },
-      ],
+      content: (c: CC) => {
+        const rd = getRich(c.slug); const vr = slugVariant(c.slug);
+        return [
+          `${c.demonym} in ${rd.cities} sign contracts, rental agreements, employment forms, and documents submitted to ${c.portal} regularly. Our free PDF signature tool lets you add a legally recognised handwritten-style signature to any PDF — no printing, no scanning, no expensive software.\n\nThree methods: draw with mouse or finger, type your name in a handwriting font, or upload a photo of your signature. The signature is embedded permanently into the PDF and visible in all standard PDF viewers.\n\nFiles are deleted within 1 hour — meeting ${rd.compliance} data protection standards. Completely free for all ${c.demonym}.`,
+          `Signing a ${rd.docs.split(",")[0].trim()} or other official document in ${c.label} no longer requires a printer. PDF HUB 24 lets ${c.demonym} sign any PDF electronically in seconds — draw, type, or upload your signature, then download the signed document ready for ${c.portal} or email.\n\nThe signature is embedded directly into the PDF and compatible with all PDF viewers and document platforms used in ${c.label}. No account, no watermark, no cost.\n\nAll files use HTTPS encryption and are permanently deleted within 1 hour — consistent with ${rd.compliance}.`,
+          `From ${rd.cities} to rural ${c.label}, the need to sign PDFs electronically is universal. Our free tool supports three signature methods — draw, type, or upload — and works on any device without software installation.\n\nSigned PDFs from our tool are accepted by ${c.portal} and all major ${c.label} document portals and email systems. The signature is embedded at the pixel level and displays correctly in every PDF viewer.\n\nData is protected under ${rd.compliance} standards: HTTPS encryption throughout, files deleted within 1 hour.`,
+          `Signing documents ${rd.mobile} in ${c.label} is effortless with PDF HUB 24. Upload your contract, consent form, or ${rd.docs.split(",")[0].trim()}, draw or type your signature, and download the signed PDF — all from your smartphone browser.\n\nNo app to install, no account to create, no watermark. The signed PDF is fully compatible with ${c.portal} and all standard document platforms in ${c.label}.\n\nPrivacy guaranteed: files are processed with HTTPS encryption and deleted within 1 hour, meeting ${rd.compliance} requirements.`,
+        ][vr];
+      },
+      useCases: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          `Signing ${rd.docs.split(",")[0].trim()} and contracts digitally in ${c.label}`,
+          `Adding handwritten-style signatures to documents for ${c.portal}`,
+          `Signing consent forms, applications, and official letters in ${rd.cities}`,
+          `Signing rental and employment contracts as a ${c.label} resident`,
+          `Adding digital signatures to PDFs without expensive software in ${c.label}`,
+        ];
+      },
+      faqs: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          { question: `Can ${c.demonym} sign PDFs for free?`, answer: `Yes. PDF signing is completely free for ${c.demonym} — draw, type, or upload your signature with no account required, accessible from ${rd.cities} and all of ${c.label}.` },
+          { question: `Is a digital signature valid in ${c.label}?`, answer: `Electronic signatures are widely accepted for personal and commercial documents in ${c.label}. For court or notarised documents, check with a qualified ${c.label} professional.` },
+          { question: `Does the signed PDF work with ${c.portal}?`, answer: `Yes. Our signed PDFs are standard format accepted by ${c.portal} and all major document systems used in ${c.label}.` },
+        ];
+      },
     },
     {
       id: "split-pdf",
@@ -1410,20 +1662,33 @@ function genCountryToolPages(): ProgrammaticPage[] {
       desc: (label: string, demonym: string) => `Split PDF documents free online in ${label}. Extract specific pages or split by page range. Trusted by ${demonym}. No signup.`,
       toolPath: "/split",
       toolName: "Split PDF",
-      content: (c: { label: string; demonym: string; portal: string }) =>
-        `Splitting a PDF is useful whenever you need to share only part of a document — a single section of a report, specific pages from a scanned document, or selected pages from a multi-chapter PDF from ${c.portal}.\n\nOur free PDF splitter lets ${c.demonym} extract any page or range of pages from a PDF document in seconds. Simply upload your PDF, specify the pages you need (e.g., "pages 3-7" or "pages 1, 5, 12"), and download the result as a new, smaller PDF.\n\nThe tool is fully accessible from ${c.label} with no restrictions. Works on desktop and mobile browsers without any software installation. Extracted pages maintain their original quality, formatting, and any embedded content.`,
-      useCases: (c: { label: string; demonym: string; portal: string }) => [
-        `Extracting specific pages from ${c.portal} PDF documents in ${c.label}`,
-        `Splitting large PDF reports into individual sections for ${c.label} colleagues`,
-        `Separating a multi-document scan into individual files in ${c.label}`,
-        `Extracting a single page certificate or form from a larger PDF package`,
-        `Creating a smaller PDF excerpt to share with ${c.label} contacts`,
-      ],
-      faqs: (c: { label: string; demonym: string; portal: string }) => [
-        { question: `Can ${c.demonym} split PDFs for free?`, answer: `Yes. PDF splitting is completely free for all ${c.demonym} — no signup, no watermark, and no page count limit.` },
-        { question: `How do I extract specific pages in ${c.label}?`, answer: `Upload your PDF, type the page numbers or ranges you want to extract (e.g., 1-3, 5, 8-10), and download the new PDF with only those pages.` },
-        { question: `Does splitting reduce the quality of my PDF?`, answer: `No. Splitting only separates pages — it does not compress or alter the quality of text, images, or any other content.` },
-      ],
+      content: (c: CC) => {
+        const rd = getRich(c.slug); const vr = slugVariant(c.slug);
+        return [
+          `${c.demonym} in ${rd.cities} often receive large multi-part PDFs from ${c.portal} — including ${rd.docs} — and need to extract only specific pages for a particular purpose. Our free PDF splitter makes this instant: upload, specify page numbers or ranges, download.\n\nExtracted pages maintain their original quality — no compression, no formatting loss. Works on desktop and mobile browsers across all of ${c.label} with no software installation required.\n\nFiles are processed with HTTPS encryption and deleted within 1 hour — meeting ${rd.compliance} data protection requirements. Free and unlimited for all ${c.demonym}.`,
+          `Sharing only the relevant section of a ${rd.docs.split(",")[0].trim()} or government document is a common need in ${c.label}. Our free PDF splitter lets ${c.demonym} extract any page or range from any PDF in seconds — no software, no account, no cost.\n\nSpecify your pages (e.g., "1-3, 5, 8-10") and download a clean new PDF containing exactly what you need. The extracted pages are identical in quality to the original — no compression applied.\n\nData security: files use HTTPS encryption and are deleted within 1 hour, meeting ${rd.compliance} standards.`,
+          `When you receive a combined PDF from ${c.portal} or another ${c.label} source, you sometimes need just one section — a single certificate, a specific invoice page, or a particular declaration from a set of ${rd.docs}. Our free PDF splitter extracts exactly what you need in seconds.\n\nFrom ${rd.cities} and across ${c.label}, the tool works on any device in any browser. No app to install, no registration. Simply upload, enter your page numbers, and download the extracted PDF.\n\nAll processing complies with ${rd.compliance}: HTTPS encryption throughout, files deleted within 1 hour.`,
+          `Splitting PDFs ${rd.mobile} in ${c.label} — our tool works perfectly on mobile browsers. Upload your PDF, enter the page numbers you need (for example, just the signature page of your ${rd.docs.split(",")[0].trim()}), and download the extracted PDF instantly.\n\nThe tool handles all standard ${c.label} PDFs — from ${c.portal} government documents to business reports and academic papers. No watermark, no size limit, no account required.\n\nPrivacy: files are encrypted in transit and permanently deleted within 1 hour — consistent with ${rd.compliance}.`,
+        ][vr];
+      },
+      useCases: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          `Extracting specific pages from ${rd.docs.split(",")[0].trim()} and ${c.portal} PDFs in ${c.label}`,
+          `Splitting large PDF reports into individual sections for ${rd.cities} colleagues`,
+          `Separating a multi-document scan into individual files in ${c.label}`,
+          `Extracting a single certificate or declaration page from a larger ${c.label} PDF`,
+          `Creating smaller PDF excerpts to share with ${c.label} contacts`,
+        ];
+      },
+      faqs: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          { question: `Can ${c.demonym} split PDFs for free?`, answer: `Yes. PDF splitting is completely free for all ${c.demonym} — no signup, no watermark, and no page count limit. Accessible from ${rd.cities} and all of ${c.label}.` },
+          { question: `How do I extract specific pages from a ${c.label} PDF?`, answer: `Upload your PDF, type the page numbers or ranges you want (e.g., 1-3, 5, 8-10), and download a new PDF with only those pages. Handles ${rd.docs.split(",")[0].trim()} and all standard ${c.label} document formats.` },
+          { question: `Does splitting reduce the quality of my PDF?`, answer: `No. Splitting only separates pages — text, images, and formatting are preserved exactly from the original.` },
+        ];
+      },
     },
     {
       id: "convert-pdf",
@@ -1433,20 +1698,33 @@ function genCountryToolPages(): ProgrammaticPage[] {
       desc: (label: string, demonym: string) => `Convert PDF to Word, Excel, JPG, PNG, PowerPoint free online in ${label}. Trusted by ${demonym}. No signup, instant download.`,
       toolPath: "/convert-pdf",
       toolName: "PDF Converter",
-      content: (c: { label: string; demonym: string; portal: string }) =>
-        `${c.demonym} frequently need to convert PDFs into different formats — Word for editing, Excel for data extraction, JPG for image sharing, or PNG for high-quality images. Our free PDF conversion suite covers all major formats in one place.\n\nAll conversion tools are accessible from ${c.label} without restriction. Choose from PDF to Word, PDF to Excel, PDF to JPG, PDF to PNG, PDF to PowerPoint, and more. Each converter produces high-quality output that accurately preserves the layout and content of your original PDF.\n\nFor documents from ${c.portal} and other ${c.label} sources, our converters handle standard PDF formats reliably. No software to install, no account to create — just upload, convert, and download.`,
-      useCases: (c: { label: string; demonym: string; portal: string }) => [
-        `Converting PDF documents from ${c.portal} to editable Word or Excel format`,
-        `Converting PDF reports and presentations to JPG or PNG images in ${c.label}`,
-        `Transforming PDF data tables into Excel spreadsheets for ${c.label} businesses`,
-        `Converting PDF slides to PowerPoint for ${c.label} presentations`,
-        `Converting scanned documents from ${c.label} offices to editable text formats`,
-      ],
-      faqs: (c: { label: string; demonym: string; portal: string }) => [
-        { question: `What PDF conversion formats are available for ${c.demonym}?`, answer: `Convert PDF to Word, Excel, JPG, PNG, PowerPoint, and more — all free for ${c.demonym} with no signup or watermark.` },
-        { question: `Does PDF conversion work for ${c.portal} documents?`, answer: `Yes. Our converters handle standard PDFs from all sources including government portals, banks, and institutions in ${c.label}.` },
-        { question: `How long does PDF conversion take in ${c.label}?`, answer: `Most conversions complete in 10-30 seconds. The tool works on all connection speeds including mobile data networks.` },
-      ],
+      content: (c: CC) => {
+        const rd = getRich(c.slug); const vr = slugVariant(c.slug);
+        return [
+          `${c.demonym} in ${rd.cities} frequently need to convert PDFs into different formats — ${rd.docs.split(",")[0].trim()} and similar ${c.portal} documents to Word for editing, data-heavy PDFs to Excel, or pages to JPG for messaging apps. Our free conversion suite covers every format in one place.\n\nChoose from PDF to Word, PDF to Excel, PDF to JPG, PDF to PNG, and PDF to PowerPoint. Each converter uses intelligent layout analysis to preserve the structure of your original ${c.label} document as accurately as possible.\n\nAll conversions use HTTPS encryption and files are deleted within 1 hour — meeting ${rd.compliance} data protection standards. Free, instant, no account required.`,
+          `Converting documents from ${c.portal} into editable or shareable formats is a standard workflow for ${c.demonym}. Our free PDF converter handles all major output formats — Word, Excel, JPG, PNG, PowerPoint — from any PDF source, including ${rd.docs} and scanned documents.\n\nThe tool is accessible from ${rd.cities} and across ${c.label} on any browser and any device. No Microsoft Office or Adobe licence needed — output files work in all common software.\n\nData security: files use HTTPS encryption and are permanently deleted within 1 hour — consistent with ${rd.compliance}.`,
+          `For ${c.label} professionals, academics, and government workers in ${rd.cities}, converting PDFs to editable formats is an everyday task. PDF HUB 24 provides a complete conversion suite — PDF to Word, Excel, JPG, PNG, PowerPoint — all free and all accessible without registration.\n\nDocuments from ${c.portal} and other ${c.label} sources convert reliably, with text, tables, and images faithfully reproduced in the output format. Most conversions complete in 10–30 seconds on any ${c.label} connection speed.\n\nAll files are encrypted in transit and deleted within 1 hour — meeting ${rd.compliance} requirements.`,
+          `Converting PDFs ${rd.mobile} in ${c.label} — our full conversion suite works on any smartphone browser. Whether you are converting a ${rd.docs.split(",")[0].trim()} to Word or a PDF report to Excel, the tool handles it instantly without any app installation.\n\nOutput files are compatible with all common ${c.label} software — Microsoft Office, Google Workspace, and local alternatives. No watermarks, no registration, no cost.\n\nPrivacy: HTTPS encryption throughout, files deleted within 1 hour, meeting ${rd.compliance} standards.`,
+        ][vr];
+      },
+      useCases: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          `Converting ${rd.docs.split(",")[0].trim()} from ${c.portal} to editable Word or Excel format`,
+          `Converting ${c.label} PDF reports and presentations to JPG or PNG images`,
+          `Transforming ${rd.docs.split(",")[1]?.trim() || "PDF data tables"} into Excel spreadsheets for ${c.label} businesses`,
+          `Converting PDF slides to PowerPoint for ${rd.cities} presentations`,
+          `Converting scanned ${c.label} official documents to editable text formats`,
+        ];
+      },
+      faqs: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          { question: `What PDF conversion formats are available for ${c.demonym}?`, answer: `Convert PDF to Word, Excel, JPG, PNG, PowerPoint, and more — all free for ${c.demonym} in ${rd.cities} and across ${c.label}. No signup or watermark.` },
+          { question: `Does PDF conversion work for ${rd.docs.split(",")[0].trim()} and other ${c.portal} documents?`, answer: `Yes. Our converters handle standard PDFs from all ${c.label} sources including government portals, banks, and institutions.` },
+          { question: `How long does PDF conversion take in ${c.label}?`, answer: `Most conversions complete in 10-30 seconds. The tool works on all ${c.label} connection speeds including mobile data.` },
+        ];
+      },
     },
     {
       id: "compress-pdf-online",
@@ -1456,20 +1734,33 @@ function genCountryToolPages(): ProgrammaticPage[] {
       desc: (label: string, demonym: string) => `Best free PDF compressor online for ${label}. Trusted by ${demonym}. Reduce PDF size by 90% instantly. No signup, no watermark.`,
       toolPath: "/compress",
       toolName: "Compress PDF",
-      content: (c: { label: string; demonym: string; portal: string }) =>
-        `The best free PDF compressor online for ${c.label} — no software, no subscription, no watermark. ${c.demonym} use our tool daily to reduce PDF file sizes for email, WhatsApp, government portal uploads, and cloud storage.\n\nChoose from three compression levels: low compression for maximum quality retention, medium compression for the best balance (recommended for ${c.portal} submissions), and high compression for the smallest possible file size. All levels preserve text at full sharpness — only embedded images are reduced.\n\nThe compressor is optimised for speed on all connection types available in ${c.label} including mobile data. Files are processed instantly and deleted within 1 hour of upload. Completely free, with no restrictions on how many PDFs you compress.`,
-      useCases: (c: { label: string; demonym: string; portal: string }) => [
-        `Best free PDF compression for ${c.label} government portal submissions`,
-        `Compressing PDFs for WhatsApp and email sharing in ${c.label}`,
-        `Reducing PDF file size for ${c.portal} upload limits`,
-        `Free PDF compressor for students and professionals in ${c.label}`,
-        `Compressing PDF without watermark online in ${c.label}`,
-      ],
-      faqs: (c: { label: string; demonym: string; portal: string }) => [
-        { question: `What is the best free PDF compressor in ${c.label}?`, answer: `PDF HUB 24 is trusted by thousands of ${c.demonym} for free PDF compression with no signup, no watermark, and no hidden costs.` },
+      content: (c: CC) => {
+        const rd = getRich(c.slug); const vr = slugVariant(c.slug);
+        return [
+          `The best free PDF compressor for ${c.label} — no software, no subscription, no watermark. ${c.demonym} in ${rd.cities} use our tool daily to reduce file sizes for email, ${rd.mobile.replace("via ", "")}, ${c.portal} uploads, and cloud storage.\n\nThree compression levels: low for maximum quality retention, medium for the ideal balance (recommended for ${c.portal} submissions), and high for the smallest possible file size. Text is always preserved at full sharpness — only embedded images are reduced.\n\nProcessing complies with ${rd.compliance}: HTTPS encryption throughout, files deleted within 1 hour. Compress as many ${rd.docs.split(",")[0].trim()} and other PDFs as you need — completely free.`,
+          `${c.portal} and other ${c.label} platforms cap document uploads at 1–5 MB. ${c.demonym} from ${rd.cities} rely on our free online compressor to meet these limits reliably — compressing ${rd.docs.split(",")[0].trim()} and other documents without watermarks or registration.\n\nMedium compression is the recommended setting for most ${c.label} government submissions. High compression with grayscale conversion achieves the maximum reduction for image-heavy files. All text remains perfectly sharp at every compression level.\n\nFiles are deleted within 1 hour — meeting ${rd.compliance} standards. Free, unlimited, accessible across all of ${c.label}.`,
+          `When ${rd.useCase} in ${c.label}, one of the most common obstacles is a file-size rejection from the portal. Our free PDF compressor solves this in seconds — upload your document, compress, and download a portal-ready file smaller than the limit.\n\nFrom ${rd.cities} and across all of ${c.label}, the tool works on any browser and device. No software, no account, no watermark. Medium compression handles most ${c.label} government document requirements; high compression tackles larger files.\n\nAll data is processed under ${rd.compliance} protections: HTTPS encryption and deletion within 1 hour.`,
+          `${c.demonym} sharing documents ${rd.mobile} need compressed PDFs that load instantly. Our free compressor reduces ${rd.docs.split(",")[0].trim()} and other files by up to 90% without quality loss — the result opens instantly on any ${c.label} mobile device.\n\nThree compression levels give full control for every use case: from a quick compress before emailing a ${c.label} colleague, to maximum compression for a strict ${c.portal} upload limit. All text stays sharp.\n\nData security: HTTPS encryption + deletion within 1 hour, meeting ${rd.compliance} standards. Completely free for all ${c.demonym}.`,
+        ][vr];
+      },
+      useCases: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          `Best free PDF compression for ${c.label} government portal submissions`,
+          `Compressing ${rd.docs.split(",")[0].trim()} for ${rd.mobile.replace("via ", "")} sharing in ${c.label}`,
+          `Reducing PDF file size for ${c.portal} strict upload limits`,
+          `Free PDF compressor for students and professionals in ${rd.cities}`,
+          `Compressing PDF without watermark for ${rd.compliance}-compliant ${c.label} workflows`,
+        ];
+      },
+      faqs: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          { question: `What is the best free PDF compressor in ${c.label}?`, answer: `PDF HUB 24 is trusted by thousands of ${c.demonym} in ${rd.cities} and across ${c.label} for free PDF compression — no signup, no watermark, no hidden costs.` },
         { question: `How much can I compress a PDF in ${c.label}?`, answer: `Typically 60-90% file size reduction depending on content. Image-heavy PDFs compress the most; text-only PDFs typically compress 30-60%.` },
         { question: `Is PDF compression free for ${c.demonym}?`, answer: `Yes, completely free. No account needed, no watermarks added, no daily limits. Compress as many PDFs as you need.` },
-      ],
+        ];
+      },
     },
     {
       id: "edit-pdf",
@@ -1479,20 +1770,33 @@ function genCountryToolPages(): ProgrammaticPage[] {
       desc: (label: string, demonym: string) => `Edit PDF files free online in ${label}. Add text, annotations, and signatures. Trusted by ${demonym}. No signup, instant results.`,
       toolPath: "/edit-pdf",
       toolName: "Edit PDF",
-      content: (c: { label: string; demonym: string; portal: string }) =>
-        `${c.demonym} regularly need to make quick edits to PDF files — adding text notes, highlighting important sections, inserting comments, or marking up documents before sharing. Our free online PDF editor handles all of these tasks without installing software or creating an account.\n\nThe editor works directly in your browser in ${c.label}. Open any PDF, click to add text annotations, use highlighting tools to mark key sections, and download the edited PDF instantly. All edits are embedded into the PDF file and visible in any standard PDF viewer.\n\nFor documents from ${c.portal} and other ${c.label} sources, our editor handles standard PDFs reliably. Files are processed securely over HTTPS and deleted from our servers within 1 hour — your document content is never stored or accessed by us.`,
-      useCases: (c: { label: string; demonym: string; portal: string }) => [
-        `Adding text annotations to official PDF documents from ${c.portal}`,
-        `Marking up PDF reports and contracts for ${c.label} colleagues`,
-        `Inserting comments and notes into PDF documents in ${c.label}`,
-        `Editing PDF forms and applications for ${c.label} submissions`,
-        `Annotating scanned documents from ${c.label} government offices`,
-      ],
-      faqs: (c: { label: string; demonym: string; portal: string }) => [
-        { question: `Can ${c.demonym} edit PDFs for free online?`, answer: `Yes. Our PDF editor is completely free for ${c.demonym} — no signup, no watermark, and no usage limits.` },
-        { question: `What editing features are available for ${c.label} users?`, answer: `Add text, highlight sections, insert annotations, and draw shapes. All edits are embedded into the PDF and compatible with all standard PDF viewers.` },
-        { question: `Is edited PDF compatible with ${c.portal}?`, answer: `Yes. Our edited PDFs are standard PDF files accepted by all major document portals and email systems used in ${c.label}.` },
-      ],
+      content: (c: CC) => {
+        const rd = getRich(c.slug); const vr = slugVariant(c.slug);
+        return [
+          `${c.demonym} in ${rd.cities} regularly need to annotate, mark up, and add notes to PDFs — whether reviewing a ${rd.docs.split(",")[0].trim()}, commenting on a contract, or inserting text into a form before submission to ${c.portal}. Our free online PDF editor handles all of this without software installation.\n\nAdd text annotations, highlight key sections, insert comments, and draw shapes — all edits are embedded directly into the PDF and visible in every standard PDF viewer. The edited document is accepted by ${c.portal} and all major ${c.label} platforms.\n\nFiles are processed with HTTPS encryption and deleted within 1 hour — meeting ${rd.compliance} standards. Free for all ${c.demonym}, no account required.`,
+          `Editing a ${rd.docs.split(",")[0].trim()} or other official PDF from ${c.portal} without Adobe Acrobat is straightforward with PDF HUB 24. ${c.demonym} in ${rd.cities} can add text, highlight sections, insert annotations, and download the updated PDF in seconds, entirely in a browser.\n\nAll edits are permanently embedded into the PDF file — visible in every viewer and accepted by all ${c.label} document systems. No software to install, no account to create, no watermark.\n\nData security: HTTPS encryption and deletion within 1 hour, consistent with ${rd.compliance}.`,
+          `Quick PDF edits are a daily need for ${c.label} professionals and students across ${rd.cities}. Our free editor lets ${c.demonym} add text, highlight important passages, and annotate any PDF from ${c.portal} or another ${c.label} source — in any browser on any device.\n\nAll annotations are embedded into the output PDF, which remains compatible with all standard PDF viewers and ${c.label} document portals. No expensive software licences, no account registration, no watermarks.\n\nAll processing complies with ${rd.compliance}: HTTPS encryption throughout, files deleted within 1 hour.`,
+          `Annotating PDFs ${rd.mobile} in ${c.label} — our free editor works perfectly on mobile browsers. ${c.demonym} can highlight sections, insert text notes, and mark up a ${rd.docs.split(",")[0].trim()} or other document before sharing with colleagues or submitting to ${c.portal}.\n\nAll edits are embedded and visible in every PDF viewer. The result is fully compatible with ${c.label} government and commercial portals. No registration, no watermark, no cost.\n\nPrivacy: files use HTTPS encryption and are permanently deleted within 1 hour — meeting ${rd.compliance} standards.`,
+        ][vr];
+      },
+      useCases: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          `Adding text annotations to ${rd.docs.split(",")[0].trim()} and official PDFs from ${c.portal}`,
+          `Marking up PDF reports and contracts for ${rd.cities} colleagues`,
+          `Inserting comments and notes into ${c.label} government PDF forms`,
+          `Editing PDF applications for ${c.label} submissions without software`,
+          `Annotating scanned documents from ${c.label} offices before sharing`,
+        ];
+      },
+      faqs: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          { question: `Can ${c.demonym} edit PDFs for free online?`, answer: `Yes. Our PDF editor is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, and no usage limits.` },
+          { question: `What editing features are available for ${c.label} users?`, answer: `Add text, highlight sections, insert annotations, and draw shapes. All edits are embedded into the PDF and compatible with ${c.portal} and all standard PDF viewers.` },
+          { question: `Is the edited PDF compatible with ${rd.compliance} requirements?`, answer: `Yes. Our edited PDFs are standard format accepted by all major ${c.label} portals and document systems, with processing that meets ${rd.compliance} data protection standards.` },
+        ];
+      },
     },
     {
       id: "jpg-to-pdf",
@@ -1502,20 +1806,33 @@ function genCountryToolPages(): ProgrammaticPage[] {
       desc: (label: string, demonym: string) => `Convert JPG images to PDF free online in ${label}. Trusted by ${demonym}. Combine multiple images into one PDF. No signup required.`,
       toolPath: "/jpg-to-pdf",
       toolName: "JPG to PDF",
-      content: (c: { label: string; demonym: string; portal: string }) =>
-        `Converting JPG images to PDF is one of the most common document tasks for ${c.demonym} — scanning ID cards, photographs, receipts, and handwritten forms into a single PDF document for submission to ${c.portal} or sharing with colleagues.\n\nOur free JPG to PDF converter lets you upload one or multiple JPG images and combine them into a single PDF in seconds. Images are arranged in the order you upload them, and the output PDF maintains the full resolution of your original photos.\n\nThe tool works from any browser in ${c.label} on any device — smartphone, tablet, or desktop. No app download, no account, no watermark. Simply select your images, click Convert, and download your PDF. Files are automatically deleted within 1 hour.`,
-      useCases: (c: { label: string; demonym: string; portal: string }) => [
-        `Converting ID card and passport photos to PDF for ${c.portal} submissions`,
-        `Creating PDF documents from scanned receipts and invoices in ${c.label}`,
-        `Combining multiple JPG images into a single PDF for ${c.label} applications`,
-        `Converting smartphone photos of documents to PDF format in ${c.label}`,
-        `Creating PDF portfolios from JPG images for ${c.label} institutions`,
-      ],
-      faqs: (c: { label: string; demonym: string; portal: string }) => [
-        { question: `Can ${c.demonym} convert JPG to PDF for free?`, answer: `Yes. JPG to PDF conversion is completely free for ${c.demonym} — no signup, no watermark, and no limit on image count.` },
-        { question: `Can I combine multiple JPG images into one PDF in ${c.label}?`, answer: `Yes. Upload multiple JPG images and they will be combined into a single PDF in the order you upload them.` },
-        { question: `Does the JPG to PDF output work with ${c.portal}?`, answer: `Yes. Our PDFs are standard format accepted by all major document portals and submission systems used in ${c.label}.` },
-      ],
+      content: (c: CC) => {
+        const rd = getRich(c.slug); const vr = slugVariant(c.slug);
+        return [
+          `Converting smartphone photos to PDF is a daily task for ${c.demonym} in ${rd.cities} — photographing ${rd.docs.split(",")[0].trim()} and other documents and submitting them to ${c.portal} as a PDF attachment. Our free JPG to PDF converter handles this in seconds.\n\nUpload one or multiple JPG images, arrange them in order, and download a single PDF with full-resolution images. Works on any device — smartphone, tablet, or desktop — in any browser across ${c.label}.\n\nFiles are deleted within 1 hour — meeting ${rd.compliance} data minimisation standards. No account, no watermark, completely free for all ${c.demonym}.`,
+          `${c.portal} and other ${c.label} portals typically accept PDF uploads rather than raw image files. ${c.demonym} in ${rd.cities} use our free JPG to PDF converter to transform smartphone photos of ${rd.docs.split(",")[0].trim()} and other documents into submission-ready PDFs in seconds.\n\nUpload multiple JPGs in the correct order and get a single PDF preserving full image resolution. Works on all ${c.label} devices and browsers without any app download.\n\nAll files are processed with HTTPS encryption and deleted within 1 hour — consistent with ${rd.compliance}. Free, no limits, no watermark.`,
+          `Scanning ID cards, receipts, handwritten forms, and ${rd.docs.split(",")[0].trim()} with a smartphone is standard practice in ${c.label}. Our free JPG to PDF converter turns those photos into a professional PDF ready for ${c.portal} in seconds — without a scanner or dedicated app.\n\nUpload your JPGs, set the order, and click Convert. The output PDF is accepted by all ${c.label} government and commercial portals. Accessible from ${rd.cities} and all of ${c.label} on any device.\n\nPrivacy: HTTPS encryption + deletion within 1 hour, meeting ${rd.compliance} requirements.`,
+          `Converting photos to PDF ${rd.mobile} in ${c.label} — our free JPG to PDF converter is fully optimised for mobile. Upload photos of your ${rd.docs.split(",")[0].trim()} or other documents from your phone gallery, combine them into a PDF, and share or submit immediately.\n\nThe output PDF is full resolution and accepted by ${c.portal} and all standard ${c.label} document systems. No app download, no registration, no watermark.\n\nData protection: HTTPS encryption throughout, files deleted within 1 hour — meeting ${rd.compliance} standards.`,
+        ][vr];
+      },
+      useCases: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          `Converting ${rd.docs.split(",")[0].trim()} photos to PDF for ${c.portal} submissions`,
+          `Creating PDFs from scanned receipts and invoices in ${rd.cities}`,
+          `Combining multiple JPG photos into a single PDF for ${c.label} applications`,
+          `Converting smartphone photos of ${c.label} documents to PDF format`,
+          `Creating PDF portfolios from JPG images for ${c.label} institutions`,
+        ];
+      },
+      faqs: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          { question: `Can ${c.demonym} convert JPG to PDF for free?`, answer: `Yes. JPG to PDF conversion is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, no image count limit.` },
+          { question: `Can I combine multiple JPG photos into one PDF in ${c.label}?`, answer: `Yes. Upload multiple JPG images and they are combined into a single PDF in the order you upload them — perfect for multi-page ${rd.docs.split(",")[0].trim()} submissions.` },
+          { question: `Does the JPG to PDF output work with ${c.portal}?`, answer: `Yes. Our PDFs are standard format accepted by ${c.portal} and all major document systems in ${c.label}.` },
+        ];
+      },
     },
     {
       id: "pdf-to-jpg",
@@ -1525,20 +1842,33 @@ function genCountryToolPages(): ProgrammaticPage[] {
       desc: (label: string, demonym: string) => `Convert PDF to JPG images free online in ${label}. Trusted by ${demonym}. High-resolution output, instant download. No signup.`,
       toolPath: "/pdf-to-jpg",
       toolName: "PDF to JPG",
-      content: (c: { label: string; demonym: string; portal: string }) =>
-        `${c.demonym} frequently need to convert PDF pages into JPG images — for sharing on messaging apps, inserting into presentations, uploading to websites, or attaching to email when PDF format isn't accepted.\n\nOur free PDF to JPG converter extracts pages from any PDF as high-resolution JPG images. You can convert a single page or all pages at once. The output images are optimised for clarity and detail, making them suitable for both screen display and printing.\n\nThe tool is fully accessible from ${c.label} with no regional restrictions. Upload your PDF, select the pages or convert all, and download your JPG images. For documents obtained from ${c.portal} or other ${c.label} sources, our converter handles all standard PDF formats reliably.`,
-      useCases: (c: { label: string; demonym: string; portal: string }) => [
-        `Converting PDF pages from ${c.portal} to JPG images for sharing in ${c.label}`,
-        `Extracting PDF content as images for presentations in ${c.label}`,
-        `Converting PDF certificates and documents to JPG for upload portals`,
-        `Sharing PDF pages via WhatsApp and messaging apps commonly used in ${c.label}`,
-        `Converting scanned PDF documents to JPG images for editing in ${c.label}`,
-      ],
-      faqs: (c: { label: string; demonym: string; portal: string }) => [
-        { question: `Can ${c.demonym} convert PDF to JPG for free?`, answer: `Yes. PDF to JPG conversion is completely free for ${c.demonym} — no signup, no watermark, and high-quality output.` },
-        { question: `What resolution are the JPG images output for ${c.label} users?`, answer: `Images are output at high resolution suitable for printing, presentations, and digital sharing. Quality is maintained from the original PDF.` },
-        { question: `Can I convert multiple PDF pages to JPG at once in ${c.label}?`, answer: `Yes. Convert all pages of a PDF to individual JPG images in one operation and download them as a ZIP archive.` },
-      ],
+      content: (c: CC) => {
+        const rd = getRich(c.slug); const vr = slugVariant(c.slug);
+        return [
+          `${c.demonym} in ${rd.cities} often need to share PDF content as images — extracting pages from ${c.portal} documents as JPGs for messaging apps, presentations, or platforms that do not accept PDF uploads. Our free converter handles this in seconds.\n\nConvert a single page or all pages at once. Output images are high-resolution JPGs — suitable for printing, presentations, and digital sharing. Works on any ${c.label} device in any browser without software installation.\n\nFiles are deleted within 1 hour — meeting ${rd.compliance} data minimisation requirements. Free for all ${c.demonym}, no account needed.`,
+          `When you need to share a page from a ${rd.docs.split(",")[0].trim()} or other ${c.portal} document as an image — for a presentation, a WhatsApp message, or a platform that only accepts JPG uploads — our free PDF to JPG converter is the solution for ${c.demonym} across ${rd.cities}.\n\nExtract any page or all pages as high-resolution JPGs in one operation. Download as individual files or a ZIP archive. No software to install, no account to create.\n\nData security: HTTPS encryption + deletion within 1 hour, meeting ${rd.compliance} standards.`,
+          `Extracting PDF pages as images is a common task for ${c.label} professionals in ${rd.cities} — from inserting a certificate into a presentation to sharing a document page ${rd.mobile}. Our free PDF to JPG converter makes this instant and free.\n\nConvert single pages or the entire PDF at once. All output images maintain the original document quality. Works for PDFs from ${c.portal} and all standard ${c.label} sources.\n\nAll processing complies with ${rd.compliance}: HTTPS encryption, files deleted within 1 hour. No watermarks, no registration.`,
+          `Converting PDF pages to JPG ${rd.mobile} in ${c.label} — our free tool works perfectly on mobile browsers. ${c.demonym} can extract any page from a ${rd.docs.split(",")[0].trim()} or other PDF document and download it as a high-resolution JPG in seconds.\n\nThe output images are suitable for sharing on any platform used in ${c.label}. No app download required, no account, no watermark.\n\nPrivacy: HTTPS encryption throughout, files deleted within 1 hour — consistent with ${rd.compliance}.`,
+        ][vr];
+      },
+      useCases: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          `Converting ${c.portal} PDF pages to JPG images for sharing in ${rd.cities}`,
+          `Extracting ${rd.docs.split(",")[0].trim()} content as images for ${c.label} presentations`,
+          `Converting PDF certificates and documents to JPG for ${c.label} upload portals`,
+          `Sharing PDF pages ${rd.mobile} in ${c.label}`,
+          `Converting scanned ${c.label} PDFs to JPG images for editing or archiving`,
+        ];
+      },
+      faqs: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          { question: `Can ${c.demonym} convert PDF to JPG for free?`, answer: `Yes. PDF to JPG conversion is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, high-quality output.` },
+          { question: `What resolution are the JPG images for ${c.label} users?`, answer: `High resolution suitable for printing, presentations, and digital sharing. Quality is maintained from the original PDF including ${c.portal} and other ${c.label} official documents.` },
+          { question: `Can I convert multiple PDF pages to JPG at once in ${c.label}?`, answer: `Yes. Convert all pages in one operation and download as a ZIP archive — handles ${rd.docs.split(",")[0].trim()} and all standard ${c.label} PDF formats.` },
+        ];
+      },
     },
     {
       id: "protect-pdf",
@@ -1548,20 +1878,33 @@ function genCountryToolPages(): ProgrammaticPage[] {
       desc: (label: string, demonym: string) => `Add password protection to PDF free online in ${label}. Trusted by ${demonym}. 256-bit AES encryption. No signup required.`,
       toolPath: "/protect-pdf",
       toolName: "Protect PDF",
-      content: (c: { label: string; demonym: string; portal: string }) =>
-        `Protecting sensitive PDF documents with a password is essential for ${c.demonym} sharing confidential files — from personal ID documents and bank statements to business contracts and legal filings. Our free PDF password protection tool adds 256-bit AES encryption to any PDF in seconds.\n\nSimply upload your PDF, set your chosen password, and download the protected file. The password-protected PDF requires the correct password to open in any PDF viewer. This is the same encryption standard used by banks and government agencies worldwide, including those in ${c.label}.\n\nFor sensitive documents related to ${c.portal} or other ${c.label} institutions, adding password protection before sharing by email or cloud storage significantly reduces the risk of unauthorised access. The tool is free, instant, and requires no account.`,
-      useCases: (c: { label: string; demonym: string; portal: string }) => [
-        `Password protecting sensitive documents before emailing in ${c.label}`,
-        `Encrypting PDF files containing personal information for ${c.demonym}`,
-        `Securing business contracts and legal documents shared in ${c.label}`,
-        `Protecting confidential reports before sharing via cloud storage in ${c.label}`,
-        `Adding password protection to PDF applications sent to ${c.portal}`,
-      ],
-      faqs: (c: { label: string; demonym: string; portal: string }) => [
-        { question: `Can ${c.demonym} password protect PDFs for free?`, answer: `Yes. PDF password protection is completely free for ${c.demonym} — no signup, no watermark, with 256-bit AES encryption.` },
-        { question: `What encryption level is used for ${c.label} users?`, answer: `256-bit AES encryption — the highest standard available for PDF protection, used by banks and government agencies worldwide.` },
-        { question: `Can I open the protected PDF with ${c.portal} systems?`, answer: `Yes. Password-protected PDFs are standard format compatible with all PDF viewers. The recipient simply needs the password to open the file.` },
-      ],
+      content: (c: CC) => {
+        const rd = getRich(c.slug); const vr = slugVariant(c.slug);
+        return [
+          `${c.demonym} in ${rd.cities} share sensitive documents — ${rd.docs} — by email and cloud storage every day. Before sharing, password-protecting your PDF adds a critical layer of security. Our free tool adds 256-bit AES encryption to any PDF in seconds.\n\nSet a password, download the protected file, and share it with the recipient separately. The protected PDF opens in any PDF viewer once the correct password is entered. This is the same encryption standard used by banks and government agencies in ${c.label}.\n\nFiles are deleted within 1 hour after processing — meeting ${rd.compliance} data minimisation requirements. Free for all ${c.demonym}, no account needed.`,
+          `Under ${rd.compliance}, ${c.demonym} are responsible for protecting personal data shared in documents. Password-protecting your ${rd.docs.split(",")[0].trim()} and other sensitive PDFs before emailing or uploading to ${c.portal} is a straightforward compliance measure.\n\nOur free tool adds 256-bit AES encryption — the highest PDF security standard — in seconds. No Adobe Acrobat licence required. Works on any browser in ${rd.cities} and across all of ${c.label}.\n\nFiles are processed with HTTPS and deleted within 1 hour. Free, no watermark, no registration.`,
+          `Sharing ${rd.docs.split(",")[0].trim()} and other sensitive ${c.label} documents by email or cloud platforms is risky without password protection. Our free PDF encryption tool adds 256-bit AES password protection — the same standard used by ${c.label} financial institutions — in seconds.\n\nFor documents submitted to ${c.portal} or shared with colleagues in ${rd.cities}, password protection is an important additional security layer. Simply upload, set your password, and download the protected file.\n\nData security: HTTPS encryption + deletion within 1 hour, meeting ${rd.compliance} requirements. Completely free, no account required.`,
+          `Protecting PDFs ${rd.mobile} in ${c.label} — our free tool works perfectly on mobile browsers. ${c.demonym} can password-protect any ${rd.docs.split(",")[0].trim()} or other sensitive document before sending it ${rd.mobile} — in seconds, directly from their smartphone.\n\n256-bit AES encryption, the highest available for PDF files, is applied instantly. The protected PDF opens in any PDF viewer once the password is entered. Accepted by ${c.portal} and all standard ${c.label} platforms.\n\nPrivacy: HTTPS encryption throughout, files deleted within 1 hour — consistent with ${rd.compliance}.`,
+        ][vr];
+      },
+      useCases: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          `Password protecting ${rd.docs.split(",")[0].trim()} before emailing in ${c.label}`,
+          `Encrypting PDFs containing ${rd.compliance}-regulated personal information`,
+          `Securing ${c.label} business contracts and legal documents before sharing`,
+          `Protecting confidential reports before uploading to ${c.label} cloud storage`,
+          `Adding 256-bit AES encryption to PDF applications for ${c.portal}`,
+        ];
+      },
+      faqs: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          { question: `Can ${c.demonym} password protect PDFs for free?`, answer: `Yes. PDF password protection is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, with 256-bit AES encryption.` },
+          { question: `Does password protection meet ${rd.compliance} requirements in ${c.label}?`, answer: `256-bit AES encryption is the highest standard for PDF security and is recognised by banks, government agencies, and data protection authorities worldwide, including in ${c.label}.` },
+          { question: `Can I open the protected PDF with ${c.portal} systems?`, answer: `Yes. Password-protected PDFs are standard format compatible with all PDF viewers. The recipient needs only the correct password to open the file.` },
+        ];
+      },
     },
     {
       id: "rotate-pdf",
@@ -1571,20 +1914,33 @@ function genCountryToolPages(): ProgrammaticPage[] {
       desc: (label: string, demonym: string) => `Rotate PDF pages free online in ${label}. Fix sideways or upside-down pages instantly. Trusted by ${demonym}. No signup required.`,
       toolPath: "/rotate-pdf",
       toolName: "Rotate PDF",
-      content: (c: { label: string; demonym: string; portal: string }) =>
-        `Scanned documents and PDFs from ${c.portal} sometimes arrive with pages in the wrong orientation — sideways or upside down. Our free PDF rotation tool lets ${c.demonym} fix page orientation instantly without any software installation.\n\nRotate individual pages or all pages at once by 90°, 180°, or 270° in either direction. The corrected orientation is permanently saved into the PDF file, so it displays correctly in all PDF viewers and when printed. This is especially useful for mobile phone scans and documents generated by older scanning equipment.\n\nThe tool is fully accessible from ${c.label} on any browser and any device. Upload your PDF, select the rotation you need, and download the corrected file in seconds. All files are deleted within 1 hour and your documents are never accessed or stored.`,
-      useCases: (c: { label: string; demonym: string; portal: string }) => [
-        `Fixing sideways scanned documents before submitting to ${c.portal}`,
-        `Correcting page orientation in PDFs created by ${c.label} mobile phone scans`,
-        `Rotating upside-down pages in PDF reports and presentations in ${c.label}`,
-        `Fixing orientation of bank statements and official letters in ${c.label}`,
-        `Correcting PDF page rotation before email or cloud sharing in ${c.label}`,
-      ],
-      faqs: (c: { label: string; demonym: string; portal: string }) => [
-        { question: `Can ${c.demonym} rotate PDF pages for free?`, answer: `Yes. PDF page rotation is completely free for ${c.demonym} — no signup, no watermark, and no limit on page count.` },
-        { question: `Can I rotate only specific pages in my PDF in ${c.label}?`, answer: `Yes. Choose to rotate individual pages or apply rotation to all pages at once. Rotate 90°, 180°, or 270° in either direction.` },
-        { question: `Will the rotated PDF work with ${c.portal}?`, answer: `Yes. Rotated PDFs are standard format accepted by all PDF viewers and document portals used in ${c.label}.` },
-      ],
+      content: (c: CC) => {
+        const rd = getRich(c.slug); const vr = slugVariant(c.slug);
+        return [
+          `Smartphone-scanned ${rd.docs.split(",")[0].trim()} and other documents often arrive in ${c.portal} sideways or upside down — a common issue for ${c.demonym} in ${rd.cities}. Our free PDF rotation tool corrects page orientation in seconds, no software required.\n\nRotate individual pages or all pages at once by 90°, 180°, or 270°. The corrected orientation is permanently saved into the PDF and displays correctly in all viewers and when printed. Works on any device in any browser.\n\nFiles are deleted within 1 hour — meeting ${rd.compliance} data minimisation requirements. Free and unlimited for all ${c.demonym}.`,
+          `Receiving a ${rd.docs.split(",")[0].trim()} from ${c.portal} with pages in the wrong orientation is a common frustration in ${c.label}. Our free PDF rotation tool fixes this instantly — rotate any page or all pages by 90°, 180°, or 270°, and download a corrected PDF ready for printing or submission.\n\nAccessible from ${rd.cities} and all of ${c.label} on any device. No software installation, no account, no watermark. The corrected PDF works with all ${c.label} platforms.\n\nData security: HTTPS encryption + deletion within 1 hour, meeting ${rd.compliance} standards.`,
+          `Mobile scanning is widely used across ${c.label} — and phone cameras often capture documents at the wrong angle. Our free PDF rotation tool lets ${c.demonym} in ${rd.cities} fix page orientation for ${rd.docs.split(",")[0].trim()} and other scanned PDFs before submitting to ${c.portal} or sharing.\n\nRotate individual pages or all at once. Corrected orientation is permanently embedded into the PDF file — no viewer-specific setting needed. Works in every browser on every device.\n\nAll processing complies with ${rd.compliance}: HTTPS encryption, files deleted within 1 hour.`,
+          `Fixing PDF orientation ${rd.mobile} in ${c.label} — our free rotation tool works perfectly on smartphone browsers. ${c.demonym} can correct a sideways ${rd.docs.split(",")[0].trim()} or bank statement before sending it ${rd.mobile} to colleagues or submitting to ${c.portal}.\n\nRotate 90°, 180°, or 270° — individual pages or all at once. The fixed PDF downloads in seconds and is accepted by all ${c.label} document systems. No app, no registration, no watermark.\n\nPrivacy: HTTPS encryption throughout, files deleted within 1 hour — consistent with ${rd.compliance}.`,
+        ][vr];
+      },
+      useCases: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          `Fixing sideways ${rd.docs.split(",")[0].trim()} scans before submitting to ${c.portal}`,
+          `Correcting page orientation in ${c.label} smartphone-scanned PDFs`,
+          `Rotating upside-down pages in PDF reports and official letters in ${rd.cities}`,
+          `Fixing orientation of ${rd.docs.split(",")[1]?.trim() || "bank statements"} and official letters in ${c.label}`,
+          `Correcting PDF page rotation before email or cloud sharing in ${c.label}`,
+        ];
+      },
+      faqs: (c: CC) => {
+        const rd = getRich(c.slug);
+        return [
+          { question: `Can ${c.demonym} rotate PDF pages for free?`, answer: `Yes. PDF page rotation is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, no page count limit.` },
+          { question: `Can I rotate only specific pages in my ${c.label} PDF?`, answer: `Yes. Rotate individual pages or apply rotation to all pages at once. Choose 90°, 180°, or 270° in either direction. Works for ${rd.docs.split(",")[0].trim()} and all standard PDF formats.` },
+          { question: `Will the rotated PDF work with ${c.portal}?`, answer: `Yes. Rotated PDFs are standard format accepted by ${c.portal} and all PDF viewers and document portals used in ${c.label}.` },
+        ];
+      },
     },
   ];
 
