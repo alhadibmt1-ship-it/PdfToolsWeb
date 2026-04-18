@@ -8,6 +8,7 @@ import SocialShare from "./SocialShare";
 import { getToolSEOData, ToolSEOData } from "@/data/toolSEOData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { t, getLang } from "@/lib/languages";
+import { TOOL_CONTENT_TRANSLATIONS } from "@/lib/toolContentTranslations";
 
 const FEATURED_BLOG_POSTS = [
   { slug: "best-free-pdf-tools-2026", title: "Best Free PDF Tools in 2026: The Complete Roundup", desc: "A comprehensive guide to the most useful PDF tools available for free online." },
@@ -43,12 +44,31 @@ export default function EnhancedToolSEOContent({
   // Long-form content from toolSEOData is English-only; wrap with ltr for RTL pages
   const enContentProps = isRtl ? { lang: "en", dir: "ltr" as const } : {};
 
+  // Translated content — when available, replaces English toolSEOData content
+  const tc = lang !== "en" ? TOOL_CONTENT_TRANSLATIONS[lang] : null;
+  // If we have a translation, content is already in the target language (no ltr override needed)
+  const contentProps = tc ? {} : enContentProps;
+
   const tool = PDF_TOOLS.find(tool => tool.id === toolId);
   const seoData = getToolSEOData(toolId);
   
   const toolName = tool?.title || fallbackToolName || "PDF Tool";
   const toolPath = tool?.path || "/";
   const category = tool?.category || "edit-pdf";
+
+  // Derived content: use translation if available, fall back to English seoData
+  const aboutText = tc ? tc.about(toolName) : seoData.heroContent;
+  const ucTitle = tc ? tc.useCases.title(toolName) : seoData.useCases.title;
+  const ucDesc = tc ? tc.useCases.desc : seoData.useCases.description;
+  const ucItems = tc ? tc.useCases.items : seoData.useCases.items;
+  const tutTitle = tc ? tc.tutorial.title(toolName) : seoData.tutorial.title;
+  const tutSteps = tc ? tc.tutorial.steps : seoData.tutorial.steps;
+  const faqItemsTranslated = tc ? tc.faqs(toolName) : (seoData?.faqs || fallbackFaqs);
+  const trTitle = tc ? tc.troubleshooting.title : seoData.troubleshooting.title;
+  const trIssues = tc ? tc.troubleshooting.issues : seoData.troubleshooting.issues;
+  const secTitle = tc ? tc.security.title : seoData.securitySection.title;
+  const secContent = tc ? tc.security.content : seoData.securitySection.content;
+  const secPoints = tc ? tc.security.points : seoData.securitySection.points;
 
   const categoryLabels: Record<string, string> = {
     "from-pdf": t(lang, "convertFromPdf"),
@@ -215,11 +235,11 @@ export default function EnhancedToolSEOContent({
         <h2 className="text-2xl font-bold mb-4">
           {t(lang, "aboutToolPrefix")} {toolName}
         </h2>
-        <p className="text-lg text-muted-foreground leading-relaxed" {...enContentProps}>
-          {seoData.heroContent}
+        <p className="text-lg text-muted-foreground leading-relaxed" {...contentProps}>
+          {aboutText}
         </p>
-        {seoData.secondaryKeywords.length > 0 && (
-          <p className="text-muted-foreground leading-relaxed mt-4" {...enContentProps}>
+        {!tc && seoData.secondaryKeywords.length > 0 && (
+          <p className="text-muted-foreground leading-relaxed mt-4" {...contentProps}>
             People searching for{" "}
             {seoData.secondaryKeywords.slice(0, 2).map((kw, i, arr) => (
               <span key={i}><strong>{kw}</strong>{i < arr.length - 1 ? ", " : ""}</span>
@@ -230,27 +250,27 @@ export default function EnhancedToolSEOContent({
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4" {...enContentProps}>{seoData.useCases.title}</h2>
-        <p className="text-muted-foreground leading-relaxed mb-4" {...enContentProps}>{seoData.useCases.description}</p>
+        <h2 className="text-2xl font-bold mb-4" {...contentProps}>{ucTitle}</h2>
+        <p className="text-muted-foreground leading-relaxed mb-4" {...contentProps}>{ucDesc}</p>
         <ul className="grid md:grid-cols-2 gap-3">
-          {seoData.useCases.items.map((item, index) => (
+          {ucItems.map((item, index) => (
             <li key={index} className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
-              <span className="text-muted-foreground" {...enContentProps}>{item}</span>
+              <span className="text-muted-foreground" {...contentProps}>{item}</span>
             </li>
           ))}
         </ul>
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-6" {...enContentProps}>{seoData.tutorial.title}</h2>
+        <h2 className="text-2xl font-bold mb-6" {...contentProps}>{tutTitle}</h2>
         <div className="grid gap-6">
-          {seoData.tutorial.steps.map((step, index) => (
+          {tutSteps.map((step, index) => (
             <div key={index} className="flex gap-4 items-start">
               <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
                 {index + 1}
               </div>
-              <div className="flex-1" {...enContentProps}>
+              <div className="flex-1" {...contentProps}>
                 <h3 className="font-semibold text-lg mb-1">{step.step}</h3>
                 <p className="text-muted-foreground">{step.detail}</p>
               </div>
@@ -312,14 +332,14 @@ export default function EnhancedToolSEOContent({
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2" {...enContentProps}>
+        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2" {...contentProps}>
           <AlertTriangle className="w-6 h-6 text-amber-500" aria-hidden="true" />
-          {seoData.troubleshooting.title}
+          {trTitle}
         </h2>
         <div className="space-y-4">
-          {seoData.troubleshooting.issues.map((issue, index) => (
+          {trIssues.map((issue, index) => (
             <Card key={index}>
-              <CardContent className="p-6" {...enContentProps}>
+              <CardContent className="p-6" {...contentProps}>
                 <h3 className="font-semibold mb-2 flex items-center gap-2">
                   <Lightbulb className="w-4 h-4 text-amber-500" aria-hidden="true" />
                   {issue.problem}
@@ -349,16 +369,16 @@ export default function EnhancedToolSEOContent({
       )}
 
       <section className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
-        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2" {...enContentProps}>
+        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2" {...contentProps}>
           <Lock className="w-6 h-6 text-green-600 dark:text-green-400" aria-hidden="true" />
-          {seoData.securitySection.title}
+          {secTitle}
         </h2>
-        <p className="text-muted-foreground leading-relaxed mb-4" {...enContentProps}>{seoData.securitySection.content}</p>
+        <p className="text-muted-foreground leading-relaxed mb-4" {...contentProps}>{secContent}</p>
         <ul className="grid md:grid-cols-2 gap-3">
-          {seoData.securitySection.points.map((point, index) => (
+          {secPoints.map((point, index) => (
             <li key={index} className="flex items-start gap-3">
               <Shield className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
-              <span className="text-muted-foreground" {...enContentProps}>{point}</span>
+              <span className="text-muted-foreground" {...contentProps}>{point}</span>
             </li>
           ))}
         </ul>
@@ -487,9 +507,9 @@ export default function EnhancedToolSEOContent({
           {t(lang, "faqSectionTitle")}
         </h2>
         <div className="space-y-4">
-          {seoData.faqs.map((faq, index) => (
+          {faqItemsTranslated.map((faq, index) => (
             <Card key={index}>
-              <CardContent className="p-6" {...enContentProps}>
+              <CardContent className="p-6" {...contentProps}>
                 <h3 className="font-semibold mb-2">{faq.question}</h3>
                 <p className="text-muted-foreground">{faq.answer}</p>
               </CardContent>
