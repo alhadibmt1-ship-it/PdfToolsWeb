@@ -33,12 +33,13 @@ The design focuses on a "Clean Modern Utility Design" with a vibrant color schem
   - 4 structural content variants per page type (slugVariant hash determines which variant)
   - 5th content variant (industry angle) for top-20 countries via slugVariant5() + industryAngleContent() — COUNTRY_INDUSTRIES map provides sector context per country
   - secPara() helper: 5 structurally distinct data-security closing paragraphs (eliminates template fingerprint)
+  - rotateSecPara(): ~20% of pages open with the secPara paragraph instead of closing — breaks "always-last" structural fingerprint
   - faqYes() helper: 6 varied FAQ answer openers (eliminates uniform "Yes." pattern)
-  - faqQ1() helper: 6 structurally distinct FAQ Q1 question patterns (eliminates "Can {demonym} X for free?" fingerprint across all 11 tool generators + 3 country page generators)
+  - faqQ1() helper: 6 structurally distinct FAQ Q1 question patterns — wired into all 11 tool generators + 3 country page generators; edit-pdf previously used banned pattern (fixed T007)
   - toolCount() helper: 6 varied phrasings of "49+ free tools" (eliminates repetition)
   - NOINDEX_COUNTRY_SLUGS: 35 low-volume countries skipped from genCountryPages + genCountryToolPages
-  - COUNTRY_SPECIFIC_FAQS: 16-country native-language FAQ map appended to all 11 tool FAQ arrays + 3 country page FAQ arrays
-  - COUNTRY_DOC_SCENARIOS: 16-country × 11-tool specific doc scenario map; replaces use-case bullet[0] in generator for top countries
+  - COUNTRY_SPECIFIC_FAQS: 16-country native-language FAQ map appended to all 11 tool FAQ arrays + 3 country page FAQ arrays (compress-pdf-online + edit-pdf wired in T007)
+  - COUNTRY_DOC_SCENARIOS: 24-country × up-to-11-tool specific doc scenario map; replaces use-case bullet[0] in generator for top countries (T008: added France, South Korea, Spain, Italy, Poland, Argentina, Turkey, Thailand in native language)
   - TOP_20_COUNTRY_SLUGS: Set of 20 high-volume countries targeted for enhanced content (5th variant, specific FAQs, doc scenarios)
   - compress-pdf-online-{c} differentiated as "browser vs. desktop software" (4 angles: cost, any-device, IT-restriction, infrequent-use)
   - free-pdf-tools-{c} differentiated as "cost-comparison vs. paid tools" (vs. Adobe/Smallpdf paid tiers)
