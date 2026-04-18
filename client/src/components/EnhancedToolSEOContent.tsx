@@ -6,6 +6,8 @@ import { Link } from "wouter";
 import { PDF_TOOLS } from "@shared/schema";
 import SocialShare from "./SocialShare";
 import { getToolSEOData, ToolSEOData } from "@/data/toolSEOData";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { t, getLang } from "@/lib/languages";
 
 const FEATURED_BLOG_POSTS = [
   { slug: "best-free-pdf-tools-2026", title: "Best Free PDF Tools in 2026: The Complete Roundup", desc: "A comprehensive guide to the most useful PDF tools available for free online." },
@@ -35,7 +37,13 @@ export default function EnhancedToolSEOContent({
   fallbackBenefits = [],
   fallbackFaqs = []
 }: EnhancedToolSEOContentProps) {
-  const tool = PDF_TOOLS.find(t => t.id === toolId);
+  const { lang } = useLanguage();
+  const langInfo = getLang(lang);
+  const isRtl = langInfo.dir === "rtl";
+  // Long-form content from toolSEOData is English-only; wrap with ltr for RTL pages
+  const enContentProps = isRtl ? { lang: "en", dir: "ltr" as const } : {};
+
+  const tool = PDF_TOOLS.find(tool => tool.id === toolId);
   const seoData = getToolSEOData(toolId);
   
   const toolName = tool?.title || fallbackToolName || "PDF Tool";
@@ -43,10 +51,10 @@ export default function EnhancedToolSEOContent({
   const category = tool?.category || "edit-pdf";
 
   const categoryLabels: Record<string, string> = {
-    "from-pdf": "Convert from PDF",
-    "to-pdf": "Convert to PDF",
-    "edit-pdf": "Edit PDF",
-    "utility": "Utility Tools"
+    "from-pdf": t(lang, "convertFromPdf"),
+    "to-pdf": t(lang, "convertToPdf"),
+    "edit-pdf": t(lang, "editPdf"),
+    "utility": t(lang, "utilityTools"),
   };
 
   useEffect(() => {
@@ -193,7 +201,7 @@ export default function EnhancedToolSEOContent({
 
       <div className="flex items-center justify-between gap-4 pb-4 border-b">
         <p className="text-sm text-muted-foreground">
-          Found this tool helpful? Share it with others!
+          {t(lang, "foundHelpful")}
         </p>
         <SocialShare 
           title={`${toolName} - Free Online PDF Tool | PDF HUB 24`}
@@ -204,39 +212,45 @@ export default function EnhancedToolSEOContent({
       <div data-ad-slot="top-banner" data-testid="ad-slot-top" />
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">About {toolName}</h2>
-        <p className="text-lg text-muted-foreground leading-relaxed">
+        <h2 className="text-2xl font-bold mb-4">
+          {t(lang, "aboutToolPrefix")} {toolName}
+        </h2>
+        <p className="text-lg text-muted-foreground leading-relaxed" {...enContentProps}>
           {seoData.heroContent}
         </p>
         {seoData.secondaryKeywords.length > 0 && (
-          <p className="text-muted-foreground leading-relaxed mt-4">
-            People searching for <strong>{seoData.secondaryKeywords.slice(0, 2).join("</strong>, <strong>")}</strong>, and related terms trust PDF HUB 24 for fast, reliable results. Our tool handles everything from simple documents to complex files with embedded images and forms.
+          <p className="text-muted-foreground leading-relaxed mt-4" {...enContentProps}>
+            People searching for{" "}
+            {seoData.secondaryKeywords.slice(0, 2).map((kw, i, arr) => (
+              <span key={i}><strong>{kw}</strong>{i < arr.length - 1 ? ", " : ""}</span>
+            ))}{" "}
+            and related terms trust PDF HUB 24 for fast, reliable results. Our tool handles everything from simple documents to complex files with embedded images and forms.
           </p>
         )}
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">{seoData.useCases.title}</h2>
-        <p className="text-muted-foreground leading-relaxed mb-4">{seoData.useCases.description}</p>
+        <h2 className="text-2xl font-bold mb-4" {...enContentProps}>{seoData.useCases.title}</h2>
+        <p className="text-muted-foreground leading-relaxed mb-4" {...enContentProps}>{seoData.useCases.description}</p>
         <ul className="grid md:grid-cols-2 gap-3">
           {seoData.useCases.items.map((item, index) => (
             <li key={index} className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
-              <span className="text-muted-foreground">{item}</span>
+              <span className="text-muted-foreground" {...enContentProps}>{item}</span>
             </li>
           ))}
         </ul>
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-6">{seoData.tutorial.title}</h2>
+        <h2 className="text-2xl font-bold mb-6" {...enContentProps}>{seoData.tutorial.title}</h2>
         <div className="grid gap-6">
           {seoData.tutorial.steps.map((step, index) => (
             <div key={index} className="flex gap-4 items-start">
               <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
                 {index + 1}
               </div>
-              <div className="flex-1">
+              <div className="flex-1" {...enContentProps}>
                 <h3 className="font-semibold text-lg mb-1">{step.step}</h3>
                 <p className="text-muted-foreground">{step.detail}</p>
               </div>
@@ -250,20 +264,20 @@ export default function EnhancedToolSEOContent({
             data-testid="button-cta-start-now"
           >
             <Zap className="w-4 h-4 mr-2" />
-            Start Now - It's Free
+            {t(lang, "startNowFree")}
           </Button>
         </div>
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-6">Why Choose PDF HUB 24?</h2>
+        <h2 className="text-2xl font-bold mb-6">{t(lang, "whyChoosePdfHub")}</h2>
         <div className="grid md:grid-cols-2 gap-4">
           <Card>
             <CardContent className="p-6 flex gap-4">
               <Zap className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
               <div>
-                <h3 className="font-semibold mb-2">Lightning Fast Processing</h3>
-                <p className="text-sm text-muted-foreground">Process your PDFs in seconds with our optimized cloud servers. No waiting, no delays, no software downloads.</p>
+                <h3 className="font-semibold mb-2">{t(lang, "lightningFast")}</h3>
+                <p className="text-sm text-muted-foreground">{t(lang, "lightningFastDesc")}</p>
               </div>
             </CardContent>
           </Card>
@@ -271,8 +285,8 @@ export default function EnhancedToolSEOContent({
             <CardContent className="p-6 flex gap-4">
               <Shield className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
               <div>
-                <h3 className="font-semibold mb-2">Bank-Level Security</h3>
-                <p className="text-sm text-muted-foreground">256-bit SSL encryption protects your files. Documents auto-delete after processing. We never access your content.</p>
+                <h3 className="font-semibold mb-2">{t(lang, "bankSecurity")}</h3>
+                <p className="text-sm text-muted-foreground">{t(lang, "bankSecurityDesc")}</p>
               </div>
             </CardContent>
           </Card>
@@ -280,8 +294,8 @@ export default function EnhancedToolSEOContent({
             <CardContent className="p-6 flex gap-4">
               <CheckCircle2 className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
               <div>
-                <h3 className="font-semibold mb-2">100% Free Forever</h3>
-                <p className="text-sm text-muted-foreground">All 49+ tools are completely free. No registration, no hidden fees, no watermarks, no file limits.</p>
+                <h3 className="font-semibold mb-2">{t(lang, "hundredFreeForever")}</h3>
+                <p className="text-sm text-muted-foreground">{t(lang, "hundredFreeForeverDesc")}</p>
               </div>
             </CardContent>
           </Card>
@@ -289,8 +303,8 @@ export default function EnhancedToolSEOContent({
             <CardContent className="p-6 flex gap-4">
               <Clock className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
               <div>
-                <h3 className="font-semibold mb-2">Available 24/7 Worldwide</h3>
-                <p className="text-sm text-muted-foreground">Access PDF HUB 24 anytime, from any device. Works perfectly on desktop, tablet, and mobile browsers.</p>
+                <h3 className="font-semibold mb-2">{t(lang, "available247")}</h3>
+                <p className="text-sm text-muted-foreground">{t(lang, "available247Desc")}</p>
               </div>
             </CardContent>
           </Card>
@@ -298,14 +312,14 @@ export default function EnhancedToolSEOContent({
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2" {...enContentProps}>
           <AlertTriangle className="w-6 h-6 text-amber-500" aria-hidden="true" />
           {seoData.troubleshooting.title}
         </h2>
         <div className="space-y-4">
           {seoData.troubleshooting.issues.map((issue, index) => (
             <Card key={index}>
-              <CardContent className="p-6">
+              <CardContent className="p-6" {...enContentProps}>
                 <h3 className="font-semibold mb-2 flex items-center gap-2">
                   <Lightbulb className="w-4 h-4 text-amber-500" aria-hidden="true" />
                   {issue.problem}
@@ -335,33 +349,33 @@ export default function EnhancedToolSEOContent({
       )}
 
       <section className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
-        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2" {...enContentProps}>
           <Lock className="w-6 h-6 text-green-600 dark:text-green-400" aria-hidden="true" />
           {seoData.securitySection.title}
         </h2>
-        <p className="text-muted-foreground leading-relaxed mb-4">{seoData.securitySection.content}</p>
+        <p className="text-muted-foreground leading-relaxed mb-4" {...enContentProps}>{seoData.securitySection.content}</p>
         <ul className="grid md:grid-cols-2 gap-3">
           {seoData.securitySection.points.map((point, index) => (
             <li key={index} className="flex items-start gap-3">
               <Shield className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
-              <span className="text-muted-foreground">{point}</span>
+              <span className="text-muted-foreground" {...enContentProps}>{point}</span>
             </li>
           ))}
         </ul>
-        <p className="text-sm text-muted-foreground mt-4">
+        <p className="text-sm text-muted-foreground mt-4" lang="en" dir="ltr">
           Learn more about our <Link href="/privacy" className="text-primary hover:underline" data-testid="link-privacy-policy">Privacy Policy</Link> and <Link href="/dmca" className="text-primary hover:underline" data-testid="link-dmca-policy">DMCA & Copyright Policy</Link> for full transparency on how we handle your data.
         </p>
       </section>
 
       {seoData.internalLinks.filter(l => !l.href.startsWith("/blog")).length > 0 && (
         <section>
-          <h2 className="text-2xl font-bold mb-4">Related PDF Tools You Might Need</h2>
-          <p className="text-muted-foreground mb-4">Complete your PDF workflow with these complementary tools:</p>
+          <h2 className="text-2xl font-bold mb-4">{t(lang, "relatedToolsTitle")}</h2>
+          <p className="text-muted-foreground mb-4">{t(lang, "relatedToolsDesc")}</p>
           <div className="grid md:grid-cols-2 gap-4">
             {seoData.internalLinks.filter(l => !l.href.startsWith("/blog")).map((link, index) => (
               <Link key={index} href={link.href}>
                 <Card className="hover-elevate cursor-pointer h-full">
-                  <CardContent className="p-4 flex items-center gap-4">
+                  <CardContent className="p-4 flex items-center gap-4" {...enContentProps}>
                     <FileText className="w-8 h-8 text-primary flex-shrink-0" aria-hidden="true" />
                     <div className="flex-1">
                       <h3 className="font-semibold flex items-center gap-1">
@@ -382,14 +396,14 @@ export default function EnhancedToolSEOContent({
         <section>
           <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
             <BookOpen className="w-6 h-6" aria-hidden="true" />
-            Helpful Guides & Tutorials
+            {t(lang, "helpfulGuidesTitle")}
           </h2>
-          <p className="text-muted-foreground mb-4">Learn more with our in-depth articles and step-by-step guides:</p>
+          <p className="text-muted-foreground mb-4">{t(lang, "helpfulGuidesDesc")}</p>
           <div className="grid md:grid-cols-2 gap-4">
             {seoData.internalLinks.filter(l => l.href.startsWith("/blog")).map((link, index) => (
               <Link key={index} href={link.href}>
                 <Card className="hover-elevate cursor-pointer h-full">
-                  <CardContent className="p-4 flex items-center gap-4">
+                  <CardContent className="p-4 flex items-center gap-4" {...enContentProps}>
                     <BookOpen className="w-6 h-6 text-primary flex-shrink-0" aria-hidden="true" />
                     <div className="flex-1">
                       <h3 className="font-semibold flex items-center gap-1 text-sm">
@@ -408,16 +422,16 @@ export default function EnhancedToolSEOContent({
 
       {seoData.relatedWorkflows.length > 0 && (
         <section>
-          <h2 className="text-2xl font-bold mb-4">Common PDF Workflows</h2>
+          <h2 className="text-2xl font-bold mb-4">{t(lang, "commonWorkflows")}</h2>
           <div className="space-y-4">
             {seoData.relatedWorkflows.map((workflow, index) => (
               <Card key={index}>
-                <CardContent className="p-6">
+                <CardContent className="p-6" {...enContentProps}>
                   <h3 className="font-semibold mb-2">{workflow.title}</h3>
                   <p className="text-muted-foreground mb-3">{workflow.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {workflow.tools.map((toolIdRef, toolIndex) => {
-                      const refTool = PDF_TOOLS.find(t => t.id === toolIdRef);
+                      const refTool = PDF_TOOLS.find(ref => ref.id === toolIdRef);
                       return refTool ? (
                         <Link key={toolIndex} href={refTool.path}>
                           <span className="inline-flex items-center gap-1 px-3 py-1 bg-primary/10 text-primary rounded-full text-sm hover:bg-primary/20 transition-colors cursor-pointer">
@@ -438,19 +452,19 @@ export default function EnhancedToolSEOContent({
       <section>
         <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
           <Newspaper className="w-6 h-6" aria-hidden="true" />
-          More from Our Blog
+          {t(lang, "moreBlogTitle")}
         </h2>
-        <p className="text-muted-foreground mb-4">In-depth guides and tutorials to help you work smarter with PDFs:</p>
+        <p className="text-muted-foreground mb-4">{t(lang, "moreBlogDesc")}</p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {FEATURED_BLOG_POSTS.map((post, index) => (
             <Link key={index} href={`/blog/${post.slug}`}>
               <Card className="hover-elevate cursor-pointer h-full">
-                <CardContent className="p-4 flex flex-col gap-2 h-full">
+                <CardContent className="p-4 flex flex-col gap-2 h-full" lang="en" dir="ltr">
                   <BookOpen className="w-5 h-5 text-primary flex-shrink-0" aria-hidden="true" />
                   <h3 className="font-semibold text-sm leading-snug">{post.title}</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed flex-1">{post.desc}</p>
                   <span className="text-xs text-primary font-medium flex items-center gap-1 mt-1">
-                    Read Guide <ArrowRight className="w-3 h-3" aria-hidden="true" />
+                    {t(lang, "readGuide")} <ArrowRight className="w-3 h-3" aria-hidden="true" />
                   </span>
                 </CardContent>
               </Card>
@@ -461,7 +475,7 @@ export default function EnhancedToolSEOContent({
           <Link href="/blog">
             <Button variant="outline" className="gap-2" data-testid="button-view-all-blog">
               <BookOpen className="w-4 h-4" />
-              View All Blog Articles
+              {t(lang, "viewAllBlog")}
             </Button>
           </Link>
         </div>
@@ -470,12 +484,12 @@ export default function EnhancedToolSEOContent({
       <section>
         <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
           <HelpCircle className="w-6 h-6" aria-hidden="true" />
-          Frequently Asked Questions
+          {t(lang, "faqSectionTitle")}
         </h2>
         <div className="space-y-4">
           {seoData.faqs.map((faq, index) => (
             <Card key={index}>
-              <CardContent className="p-6">
+              <CardContent className="p-6" {...enContentProps}>
                 <h3 className="font-semibold mb-2">{faq.question}</h3>
                 <p className="text-muted-foreground">{faq.answer}</p>
               </CardContent>
@@ -484,7 +498,7 @@ export default function EnhancedToolSEOContent({
         </div>
       </section>
 
-      <section>
+      <section lang="en" dir="ltr">
         <h2 className="text-2xl font-bold mb-4">Learn More About PDF Technology</h2>
         <p className="text-muted-foreground mb-4">
           PDF (Portable Document Format) is an open standard maintained by the International Organization for Standardization (ISO). 
@@ -515,8 +529,8 @@ export default function EnhancedToolSEOContent({
       <div data-ad-slot="bottom-banner" data-testid="ad-slot-bottom" />
 
       <section className="bg-card border rounded-lg p-8 text-center">
-        <h2 className="text-2xl font-bold mb-4">Ready to {toolName}?</h2>
-        <p className="text-muted-foreground mb-4 max-w-2xl mx-auto">
+        <h2 className="text-2xl font-bold mb-4">{t(lang, "readyToPrefix")} {toolName}?</h2>
+        <p className="text-muted-foreground mb-4 max-w-2xl mx-auto" lang="en" dir="ltr">
           Upload your file above and experience the fastest, most reliable {toolName.toLowerCase()} tool online. 
           No registration, no downloads, no limits — just fast, secure results.
         </p>
@@ -526,10 +540,10 @@ export default function EnhancedToolSEOContent({
           data-testid="button-cta-bottom"
         >
           <FileText className="w-4 h-4 mr-2" />
-          {toolName} - Start Free
+          {toolName} - {t(lang, "startFree")}
         </Button>
         <p className="text-sm text-muted-foreground mt-4">
-          Trusted by thousands of users worldwide for all their PDF needs.
+          {t(lang, "trustedBy")}
         </p>
       </section>
     </div>
