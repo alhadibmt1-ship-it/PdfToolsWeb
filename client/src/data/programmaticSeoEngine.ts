@@ -479,6 +479,18 @@ function slugVariant5(slug: string): number {
   return Math.abs(h) % 5;
 }
 
+// Structural de-fingerprinting: for ~20% of pages, move the closing secPara to the opening position.
+// Eliminates the "every body ends with a data-security paragraph" template signal.
+// Only activates for 3-paragraph content (all standard tool body variants qualify).
+function rotateSecPara(slug: string, content: string): string {
+  let h = 0;
+  for (let i = 0; i < slug.length; i++) h = ((h << 5) - h + slug.charCodeAt(i) * 53) | 0;
+  if (Math.abs(h) % 5 !== 1) return content; // only ~20% of pages
+  const paras = content.split('\n\n');
+  if (paras.length !== 3) return content; // only for the standard 3-paragraph structure
+  return [paras[2], paras[0], paras[1]].join('\n\n');
+}
+
 // Top-20 high-volume countries that receive the 5th industry-angle variant
 const TOP_20_COUNTRY_SLUGS = new Set([
   "uk","usa","india","australia","canada","germany","france","brazil",
@@ -763,6 +775,110 @@ const COUNTRY_DOC_SCENARIOS: Record<string, Record<string, string>> = {
     "pdf-to-word":        "Convirtiendo documentos SAT, comprobantes CFDI y formularios del RFC a Word editable",
     "sign":               "Firmar contratos laborales, arrendamientos y documentos del SAT electrónicamente en México",
     "jpg-to-pdf":         "Convirtiendo fotos de RFC, CURP y comprobantes CFDI a PDF para envío al portal SAT por WhatsApp",
+  },
+  "france": {
+    "merge":              "Regrouper déclaration de revenus, formulaire CERFA et Carte Vitale dans un seul PDF pour impots.gouv.fr",
+    "pdf-to-word":        "Convertir déclarations de revenus et formulaires CERFA d'impots.gouv.fr en fichiers Word modifiables",
+    "sign":               "Signer des contrats de travail, baux et documents administratifs français électroniquement",
+    "split":              "Extraire des pages spécifiques des avis d'imposition et courriers de l'administration fiscale française",
+    "jpg-to-pdf":         "Convertir photos de Carte Vitale et justificatifs fiscaux en PDF pour soumission à impots.gouv.fr",
+    "protect":            "Protéger par mot de passe les déclarations fiscales et documents CERFA avant envoi par e-mail au comptable",
+    "rotate":             "Corriger l'orientation de formulaires CERFA et avis d'imposition scannés pour impots.gouv.fr",
+    "edit":               "Annoter des formulaires CERFA et courriers de l'administration fiscale française avant révision",
+    "compress-pdf-online":"Compresser déclarations de revenus et formulaires CERFA sans Adobe Acrobat sur un ordinateur professionnel français",
+    "pdf-to-jpg":         "Extraire des pages d'avis d'imposition de impots.gouv.fr à partager avec comptables et notaires",
+    "convert-pdf":        "Convertir des formulaires CERFA et documents DGFiP de PDF en Word pour les équipes juridiques françaises",
+  },
+  "south-korea": {
+    "merge":              "종합소득세 신고서, 주민등록증 사본, 사업자등록증을 하나의 PDF로 합쳐 홈택스에 제출",
+    "pdf-to-word":        "홈택스 PDF 서류와 국세청 공문을 편집 가능한 워드 파일로 변환",
+    "sign":               "한국 근로계약서, 임대차계약서, 관공서 서류를 전자 서명",
+    "split":              "홈택스 세금 납부서와 국세청 공문에서 특정 페이지 추출",
+    "jpg-to-pdf":         "주민등록증과 사업자등록증 사진을 PDF로 변환하여 홈택스에 제출",
+    "protect":            "주민등록증 스캔본과 소득세 신고 서류를 이메일 전송 전 비밀번호 보호",
+    "rotate":             "홈택스에서 받은 세금 납부서와 공문의 페이지 방향 수정",
+    "edit":               "홈택스 공문과 세금 신고 서류에 주석 및 메모 추가",
+    "compress-pdf-online":"홈택스 세금 신고 서류를 소프트웨어 없이 브라우저에서 압축",
+    "pdf-to-jpg":         "홈택스 세금 고지서에서 특정 페이지를 이미지로 변환하여 공유",
+    "convert-pdf":        "홈택스 PDF 서류를 편집 가능한 형식으로 변환하여 세무사에게 전달",
+  },
+  "spain": {
+    "merge":              "Combinar Modelo 303, DNI y declaración IRPF en un único PDF para la Agencia Tributaria (AEAT)",
+    "pdf-to-word":        "Convertir declaraciones IRPF y formularios de la AEAT en documentos Word editables",
+    "sign":               "Firmar contratos de trabajo, arrendamientos y formularios de la Seguridad Social electrónicamente",
+    "split":              "Extraer páginas específicas de notificaciones de la AEAT y documentos del Catastro",
+    "jpg-to-pdf":         "Convertir fotos del DNI y justificantes fiscales en PDF para el portal de la AEAT",
+    "protect":            "Proteger con contraseña las declaraciones IRPF y documentos con NIE/DNI antes de enviarlos al gestor",
+    "rotate":             "Corregir la orientación de formularios AEAT escaneados antes de subirlos al portal tributario",
+    "edit":               "Anotar formularios de la AEAT y notificaciones de Hacienda antes de su revisión",
+    "compress-pdf-online":"Comprimir la declaración IRPF y Modelo 303 sin instalar software en el ordenador del trabajo",
+    "pdf-to-jpg":         "Extraer páginas de notificaciones de la AEAT para compartir con gestores fiscales españoles",
+    "convert-pdf":        "Convertir formularios AEAT y documentos de Hacienda de PDF a Word para equipos jurídicos",
+  },
+  "italy": {
+    "merge":              "Unire Modello 730, Codice Fiscale e contributi INPS in un unico PDF per l'Agenzia delle Entrate",
+    "pdf-to-word":        "Convertire il Modello 730 e le dichiarazioni dei redditi in documenti Word modificabili",
+    "sign":               "Firmare contratti di lavoro, contratti d'affitto e moduli INPS elettronicamente",
+    "split":              "Estrarre pagine specifiche da comunicazioni dell'Agenzia delle Entrate e notifiche INPS",
+    "jpg-to-pdf":         "Convertire foto del Codice Fiscale e documenti INPS in PDF per l'Agenzia delle Entrate",
+    "protect":            "Proteggere con password il Modello 730 e i documenti INPS prima dell'invio al commercialista",
+    "rotate":             "Correggere l'orientamento di formulari INPS e comunicazioni dell'Agenzia delle Entrate scansionati",
+    "edit":               "Annotare il Modello 730 e i documenti dell'Agenzia delle Entrate prima della revisione",
+    "compress-pdf-online":"Comprimere il Modello 730 e i documenti dell'Agenzia delle Entrate senza installare software",
+    "pdf-to-jpg":         "Estrarre pagine da documenti INPS e Agenzia delle Entrate per condividerle con il commercialista",
+    "convert-pdf":        "Convertire moduli INPS e dichiarazioni dei redditi da PDF a Word per lo studio commercialista",
+  },
+  "poland": {
+    "merge":              "Łączenie deklaracji PIT, dowodu osobistego i dokumentów ZUS w jeden PDF do portalu e-Deklaracje",
+    "pdf-to-word":        "Konwersja deklaracji PIT i dokumentów e-Deklaracje do edytowalnych plików Word",
+    "sign":               "Elektroniczne podpisywanie umów o pracę, umów najmu i dokumentów ZUS w Polsce",
+    "split":              "Wyodrębnianie określonych stron z decyzji podatkowych i pism urzędu skarbowego",
+    "jpg-to-pdf":         "Konwersja zdjęć dowodu osobistego i dokumentów ZUS do PDF dla portalu e-Deklaracje",
+    "protect":            "Zabezpieczanie hasłem deklaracji PIT i dokumentów PESEL przed wysłaniem do księgowego",
+    "rotate":             "Korekta orientacji zeskanowanych dokumentów PIT i pism ZUS przed przesłaniem do e-Deklaracje",
+    "edit":               "Dodawanie adnotacji do dokumentów PIT i korespondencji urzędu skarbowego przed przeglądem",
+    "compress-pdf-online":"Kompresja deklaracji PIT i dokumentów ZUS bez oprogramowania na komputerze służbowym",
+    "pdf-to-jpg":         "Wyodrębnianie stron z decyzji podatkowych do udostępnienia polskiemu doradcy podatkowemu",
+    "convert-pdf":        "Konwersja formularzy ZUS i deklaracji PIT z PDF do Word dla polskich biur rachunkowych",
+  },
+  "argentina": {
+    "merge":              "Combinar declaración jurada AFIP, DNI y comprobantes de monotributo en un único PDF para Mi AFIP",
+    "pdf-to-word":        "Convertir declaraciones de AFIP y formularios de ANSES en documentos Word editables",
+    "sign":               "Firmar contratos laborales, locaciones y formularios de la ANSES electrónicamente en Argentina",
+    "split":              "Extraer páginas de notificaciones AFIP y documentos del ANSES",
+    "jpg-to-pdf":         "Convertir fotos de DNI y comprobantes de pago AFIP en PDF para cargar en Mi AFIP",
+    "protect":            "Proteger con contraseña las declaraciones AFIP y documentos CUIT/CUIL antes de enviarlos al contador",
+    "rotate":             "Corregir la orientación de formularios AFIP escaneados antes de subirlos al portal",
+    "edit":               "Anotar formularios AFIP y notificaciones de ANSES antes de su revisión",
+    "compress-pdf-online":"Comprimir declaraciones AFIP y formularios del monotributo sin software en Buenos Aires y todo el país",
+    "pdf-to-jpg":         "Extraer páginas de notificaciones AFIP para compartir con contadores en Argentina",
+    "convert-pdf":        "Convertir formularios AFIP y comprobantes fiscales de PDF a Word para estudios contables argentinos",
+  },
+  "turkey": {
+    "merge":              "Gelir vergisi beyannamesi, TC kimlik kartı kopyası ve e-Devlet belgelerini birleştirip İnteraktif Vergi Dairesi'ne gönderme",
+    "pdf-to-word":        "İnteraktif Vergi Dairesi belgelerini ve TC kimlik kartı kayıtlarını düzenlenebilir Word dosyalarına dönüştürme",
+    "sign":               "Türk iş sözleşmelerini, kira sözleşmelerini ve SGK belgelerini elektronik imzalama",
+    "split":              "Vergi dairesi bildirimlerinden ve e-Devlet yazışmalarından belirli sayfaları çıkarma",
+    "jpg-to-pdf":         "TC kimlik kartı ve SGK belgesi fotoğraflarını e-Devlet portalı için PDF'e dönüştürme",
+    "protect":            "Vergi beyannameleri ve TC kimlik kartı kopyalarını muhasebeciye göndermeden önce şifreleme",
+    "rotate":             "Vergi dairesinden alınan bildirimler ve e-Devlet belgelerinin sayfa yönünü düzeltme",
+    "edit":               "Vergi beyannameleri ve e-Devlet belgelerine açıklama ve not ekleme",
+    "compress-pdf-online":"Gelir vergisi beyannamelerini ve e-Devlet belgelerini yazılım kurmadan sıkıştırma",
+    "pdf-to-jpg":         "Vergi dairesi bildirimlerinden sayfa çıkararak Türk mali danışmanlarla paylaşma",
+    "convert-pdf":        "Türk vergi formları ve e-Devlet belgelerini PDF'den Word'e dönüştürme",
+  },
+  "thailand": {
+    "merge":              "รวมแบบ ภ.ง.ด. ใบกำกับภาษี และบัตรประชาชน เป็น PDF เดียวเพื่อยื่นต่อกรมสรรพากร (RD Thailand)",
+    "pdf-to-word":        "แปลงแบบแสดงรายการภาษีจาก RD Thailand เป็นไฟล์ Word ที่แก้ไขได้",
+    "sign":               "เซ็นสัญญาจ้างงาน สัญญาเช่า และเอกสารราชการไทยแบบอิเล็กทรอนิกส์",
+    "split":              "แยกหน้าเฉพาะจากหนังสือแจ้งกรมสรรพากรและเอกสารราชการไทย",
+    "jpg-to-pdf":         "แปลงภาพบัตรประชาชนและเอกสารภาษีเป็น PDF สำหรับยื่นต่อกรมสรรพากร",
+    "protect":            "ป้องกันด้วยรหัสผ่านสำหรับแบบภาษีและบัตรประชาชนก่อนส่งอีเมลถึงนักบัญชี",
+    "rotate":             "แก้ไขการหมุนของเอกสารกรมสรรพากรและเอกสารราชการไทยที่สแกนด้วยสมาร์ตโฟน",
+    "edit":               "เพิ่มหมายเหตุและคำอธิบายในแบบภาษีและเอกสารราชการไทยก่อนตรวจสอบ",
+    "compress-pdf-online":"บีบอัดแบบ ภ.ง.ด. และเอกสาร RD Thailand โดยไม่ต้องติดตั้งซอฟต์แวร์",
+    "pdf-to-jpg":         "แยกหน้าจากหนังสือแจ้งกรมสรรพากรเพื่อแชร์กับนักบัญชีผ่าน LINE",
+    "convert-pdf":        "แปลงแบบฟอร์มภาษีและเอกสาร RD Thailand จาก PDF เป็น Word สำหรับสำนักงานบัญชี",
   },
 };
 
@@ -2091,6 +2207,7 @@ function genCountryToolPages(): ProgrammaticPage[] {
           { question: `Do I need to install software to compress a PDF in ${c.label}?`, answer: `Not at all — PDF HUB 24 runs entirely in your browser. No Adobe Acrobat, no Smallpdf Desktop, no plugin required. Works on any device in ${rd.cities} and across ${c.label}.` },
           { question: `Is browser-based PDF compression as good as desktop software?`, answer: `For most use cases, yes. The compression algorithms produce equivalent results to desktop software. Text quality is preserved at all compression levels; only embedded images are reduced.` },
           { question: `How is my data protected under ${rd.compliance}?`, answer: `Your ${rd.compliance} rights are protected — files are encrypted in transit using HTTPS and permanently deleted within 1 hour. No content is retained, analysed, or shared.` },
+          ...(COUNTRY_SPECIFIC_FAQS[c.slug] || []),
         ];
       },
     },
@@ -2124,9 +2241,10 @@ function genCountryToolPages(): ProgrammaticPage[] {
       faqs: (c: CC) => {
         const rd = getRich(c.slug);
         return [
-          { question: `Can ${c.demonym} edit PDFs for free online?`, answer: `${faqYes(1)} our PDF editor is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, and no usage limits.` },
+          { question: faqQ1(`edit-pdf-${c.slug}`, c.demonym, "edit PDFs online"), answer: `${faqYes(1)} our PDF editor is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, and no usage limits.` },
           { question: `What editing features are available for ${c.label} users?`, answer: `Add text, highlight sections, insert annotations, and draw shapes. All edits are embedded into the PDF and compatible with ${c.portal} and all standard PDF viewers.` },
           { question: `Is the edited PDF compatible with ${rd.compliance} requirements?`, answer: `${faqYes(3)} our edited PDFs are standard format accepted by all major ${c.label} portals and document systems, with processing that meets ${rd.compliance} data protection standards.` },
+          ...(COUNTRY_SPECIFIC_FAQS[c.slug] || []),
         ];
       },
     },
@@ -2292,7 +2410,9 @@ function genCountryToolPages(): ProgrammaticPage[] {
         const useCases = docScenario ? [docScenario, ...baseUseCases.slice(1)] : baseUseCases;
         // 5th body variant: industry-angle content for top-20 countries
         const useIndustryVariant = TOP_20_COUNTRY_SLUGS.has(c.slug) && slugVariant5(slug) === 4;
-        const content = useIndustryVariant ? industryAngleContent(t.id, c) : t.content(c);
+        const rawContent = useIndustryVariant ? industryAngleContent(t.id, c) : t.content(c);
+        // Structural de-fingerprinting: ~20% of pages open with the secPara instead of closing with it
+        const content = rotateSecPara(slug, rawContent);
         results.push({
           slug,
           title: t.title(c.label),
