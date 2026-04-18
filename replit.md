@@ -1,84 +1,43 @@
 # PDF HUB 24
 
 ## Overview
-PDF HUB 24 is a comprehensive web-based platform designed for PDF and image manipulation, offering 49 tools across four main categories: Convert from PDF, Convert to PDF, Edit PDF, and Utility & Image Tools. The platform aims to provide professional-grade document processing, enhance user trust through robust SEO and UX, and offer a wide array of free tools for various PDF and image tasks. Key capabilities include conversion between various formats (e.g., PDF to Word, JPG to PDF), extensive PDF editing (merge, split, compress, protect, sign, annotate, redact), and general image utilities (compress, resize, crop, convert). The business vision is to be a leading, user-friendly, and SEO-optimized solution for everyday document processing needs, inspired by successful platforms like PDF24.
+PDF HUB 24 is a comprehensive web-based platform offering 49 tools for PDF and image manipulation across four categories: Convert from PDF, Convert to PDF, Edit PDF, and Utility & Image Tools. Its primary purpose is to provide a user-friendly, professional-grade solution for document processing, emphasizing robust SEO and UX to build user trust. The platform aims to be a leading, SEO-optimized solution for everyday document needs, offering extensive conversion, editing, and utility features.
 
 ## User Preferences
 Preferred communication style: Simple, everyday language.
 
 ## System Architecture
 
-### Frontend Architecture
-The frontend is built using React 18 with TypeScript, Vite for bundling, and Wouter for routing. UI components leverage Radix UI primitives and shadcn/ui, styled with Tailwind CSS, adhering to a "Clean Modern Utility Design" aesthetic. Features include full dark mode support, user settings, and `localStorage` for theme and settings persistence. State management is primarily local React state and TanStack Query for server state. Performance is optimized with `React.lazy()` for code splitting.
+### Frontend
+The frontend uses React 18 with TypeScript, Vite, Wouter for routing, Radix UI, and shadcn/ui. Styling is managed with Tailwind CSS, adhering to a "Clean Modern Utility Design." It includes dark mode, user settings persistence via `localStorage`, and state management with React's local state and TanStack Query. Performance is enhanced through code splitting.
 
-### Backend Architecture
-The backend is implemented with Express.js and TypeScript. PDF processing utilizes a dual-library approach with `pdf-lib-with-encrypt` for encryption-specific tasks and standard `pdf-lib` for all other PDF operations. File uploads are handled by Multer with in-memory storage, incorporating magic byte and MIME type validation. All API endpoints are secured with Zod schema validation and robust error handling.
+### Backend
+The backend is built with Express.js and TypeScript. PDF processing uses `pdf-lib-with-encrypt` for encryption and `pdf-lib` for other operations. Multer handles file uploads with in-memory storage, including magic byte and MIME type validation. Zod is used for API schema validation and error handling.
 
 ### Data Storage
-Client-side persistence for user preferences and theme settings is managed via `localStorage`. For future persistent data needs, Drizzle ORM and NeonDB are configured, with schema definitions in `shared/schema.ts`, indicating a planned transition to PostgreSQL.
+Client-side user preferences and theme settings are stored in `localStorage`. For future persistent data, Drizzle ORM and NeonDB are configured for PostgreSQL.
 
-### UI/UX Decisions
-The design philosophy is "Clean Modern Utility Design" with a vibrant color scheme. The platform incorporates TrustBadges and RelatedTools on all tool pages, drawing inspiration from PDF24, to build user confidence and facilitate tool discovery. The homepage includes sections like "How It Works" and "Why Choose PDF HUB 24?". Each tool page is rich with SEO content, such as "About Our Tool," "How to Use," "Key Benefits," and FAQs.
+### UI/UX Design
+The design focuses on a "Clean Modern Utility Design" with a vibrant color scheme. TrustBadges and RelatedTools, inspired by PDF24, are integrated to enhance user confidence and tool discovery. Each tool page includes SEO-rich content like "About Our Tool," "How to Use," and FAQs.
 
-### Technical Implementations
-Key technical features include:
-- **Performance**: WebP image optimization, code splitting, asynchronous font loading (media=print trick), deferred analytics, and `preconnect` hints for Google Fonts (googleapis.com + gstatic.com with crossorigin) to reduce LCP latency.
-- **Security**: File upload validation (magic byte, MIME type), comprehensive error handling, and Zod schema validation.
-- **SEO**: Dynamic meta tags, `sitemap.xml`, and `robots.txt` integration. Server-side SEO injection via `injectSEO()` in `server/app.ts`. Hreflang tags (13 languages + x-default) injected server-side on every page.
-- **International SEO**: 13-language support (en, es, ar, hi, fr, pt, de, zh, ja, id, ru, it, ur) with URL prefix routing (`/es/`, `/ar/`, `/de/`, `/ur/` etc.) via Wouter's `base` prop. RTL support for Arabic and Urdu via html `dir` attribute. `LanguageSwitcher` (Globe dropdown), `LanguageBanner` (browser language detection), and `LanguageContext` components. Server-side `injectSEO()` sets `html lang/dir` and uses **self-canonical URLs** for language pages. `og:url` also self-canonical for language pages.
-- **Translated URL Slugs**: Latin-script languages (es, fr, pt, de, it, id) use fully-translated tool slugs matching iLovePDF/PDF24 industry standard — e.g., `/es/comprimir-pdf`, `/de/pdf-bearbeiten`, `/fr/fusionner-pdf`. Non-Latin languages (ar, hi, zh, ja, ru, ur) keep English slugs (also matches competitors). Architecture: `client/src/lib/translatedSlugs.ts` has the full 48-tool × 6-language translation map; `App.tsx` registers 288 translated slug routes dynamically via `TranslatedSlugRoutes()`; `LanguageSwitcher` resolves current slug to English then to target language; `server/seo-config.ts` `stripLangPrefix()` resolves translated → English for config lookup and `generateHreflangTags()` generates per-language translated URLs. Sitemap updated with all translated URLs.
-- **Conversion Quality**: Advanced PDF to Word conversion with intelligent formatting, high-resolution PDF to JPG output.
-- **User Settings**: Dark mode toggle and configurable compression levels.
-- **Interactive Editing**: Canvas-based editing for tools like Edit PDF, Annotate PDF, and Redact PDF, featuring real-time preview and undo functionality.
-- **Full-spectrum pre-render shell**: `generatePreRenderShell()` in `server/seo-config.ts` now serves rich static HTML for ALL page types — tool pages (use cases + tutorial + FAQs + internal links), blog articles (full markdown rendered as H1-H4 + paragraphs + lists + related tools), programmatic pages (intro + use cases + FAQs), and category hubs (intro + tool list + FAQs). A `markdownToHtml()` helper converts markdown to proper HTML tags (H2/H3/H4, ul/li, ol, strong, p) for crawlers. The function is wrapped in try-catch to prevent crashes from propagating to the page response. This ensures every page type delivers 500–2000 words of unique, keyword-rich content to Google's first-wave crawl before JavaScript executes.
-- **90%+ native-language body content on all language pages**: Comprehensive translation data added to `server/seo-config.ts` covering all 12 non-English languages. `LANG_LABELS` (18 UI labels × 12 langs), `LANG_HOW_TO_STEPS` (3 how-to steps × 12 langs), `LANG_TOOL_FAQS` (5 Q&A pairs × 12 langs with {name} tool placeholder), `LANG_BENEFITS` (5 trust bullets × 12 langs). Helper `buildLangToolContent()` generates native H2 sections (How-To, Benefits, FAQ) for any tool/blog page. Helper `getLangCatLabel()` translates category headings. For language pages (lang ≠ "en"): tool pages replace English toolData with native content, blog pages replace English markdown with native content, category hubs keep tool list but replace intro/FAQ with native content, home page renders all section headings natively (category labels, "Explore All Free Tools", etc.). Google's first-wave crawl now sees 2,000+ words of native-language content on every language tool/blog/category/home page.
-- **Noscript deduplication**: The `<noscript>` fallback in `client/index.html` had a generic H1 "PDF HUB 24 - 43+ Free PDF Tools Online" on every page (duplicate content). Removed that H1; the noscript now serves only as a navigation menu for JS-disabled browsers.
-- **Full native-language meta tags**: All language-prefixed pages (1,380 URLs) now serve native-language `<title>` and `<meta name="description">` server-side. Coverage: homepages (LANG_HOME_TITLE/LANG_HOME_DESC), tool pages (TOOL_TITLE_TRANSLATIONS + LANG_DESC_TEMPLATE), category hubs (LANG_CATEGORY), blog pages (getBlogMeta from server/blog-meta-translations.ts — 420 translated titles/descriptions), and static pages (LANG_STATIC). All implemented in `server/seo-config.ts` `generateMetaTags()`. No language page serves English metadata — Google sees consistent lang attribute + title + description in the same language.
-
-### International SEO Architecture
-- **Language files**: `client/src/lib/languages.ts` — 13-language config with labels, native labels, hreflang codes, and RTL flags
-- **Context**: `client/src/contexts/LanguageContext.tsx` — reads lang from URL path, sets `html lang` and `dir` attributes reactively
-- **Components**: `client/src/components/LanguageSwitcher.tsx` (Globe dropdown, desktop + mobile), `client/src/components/LanguageBanner.tsx` (browser language detection with sessionStorage dismissal)
-- **Routing**: `client/src/App.tsx` uses `WouterRouter` with `base={/lang}` for non-English paths; English uses root router
-- **Server-side**: `server/seo-config.ts` `stripLangPrefix()` strips lang prefix before config lookup; `generateMetaTags()` uses **self-canonical** for language pages (lang !== "en" → canonical = `/${lang}${canonicalPath}`); `injectSEO()` sets `html lang/dir` (RTL for both Arabic AND Urdu) and injects 13 hreflang tags per page
-- **Sitemap**: `client/public/sitemap.xml` — 4,053 URLs (Google-clean). Removed 338 duplicate/low-value URLs: 138 utility pages under language prefixes, 1 /html-sitemap, 170 compress-pdf-online-{country} variants (301→ compress-pdf-{country}), 32 compress-pdf-under-*/reduce-pdf-size-to-* variants (301→ compress-pdf-to-*). Language homepages use no trailing slash (e.g., `/es` not `/es/`).
-- **robots.txt**: Disallows /api/, /seo-audit, /html-sitemap. Allows all other pages.
-- **301 redirect middleware** (server/app.ts): Three redirect layers — (1) Latin lang English slugs → translated slugs, (2) size variant duplicates → primary, (3) online-country → direct-country.
-
-## SEO Architecture
-- **Server-side meta tags**: `server/seo-config.ts` provides unique title, description, keywords, canonical, OG, Twitter, and robots tags for every page. `injectSEO()` strips existing tags and reinjects correct ones.
-- **Structured data**: WebApplication + FAQPage + BreadcrumbList schemas on all 43 tool pages (client-side via `EnhancedToolSEOContent`). WebPage schema server-side. Organization + FAQ schemas on homepage. Article + FAQ schemas on blog pages.
-- **Internal linking**: Each tool page links to 8+ related tools and 2+ blog articles via `toolSEOData.ts`. Blog articles contain 3-15+ internal links to tools.
-- **Sitemap**: `client/public/sitemap.xml` covers 1,131 URLs — all tools, blogs, categories, programmatic pages, information pages, and international language alternates.
-- **Heading hierarchy**: All pages follow H1→H2→H3 structure with long-tail keyword H1s from `toolSEOData.ts`.
-- **AdSense placeholders**: `data-ad-slot` divs on tool pages (top, mid, bottom), blog pages (top, mid, bottom), and homepage (hero, mid, bottom).
-- **CTA blocks**: "Start Now - It's Free" buttons on tool pages after tutorial steps and at bottom. Blog pages have mid-article and bottom CTAs.
-- **Security trust signals**: SSL, auto-delete, GDPR, privacy/DMCA links on every tool page.
+### Technical Features
+- **Performance**: Optimized with WebP images, code splitting, asynchronous font loading, deferred analytics, and preconnect hints.
+- **Security**: File upload validation and Zod schema validation.
+- **SEO**: Dynamic meta tags, `sitemap.xml`, `robots.txt`, server-side SEO injection, and Hreflang tags for 13 languages.
+- **Internationalization**: Support for 13 languages with URL prefix routing, RTL support, and translated URL slugs for Latin-script languages. Full native-language body content and meta tags are provided for all language pages.
+- **Conversion Quality**: Advanced PDF to Word conversion and high-resolution PDF to JPG output.
+- **Interactive Editing**: Canvas-based editing tools with real-time preview and undo functionality.
+- **Pre-render Shell**: Rich static HTML is generated server-side for all page types (tools, blogs, programmatic, category hubs) to optimize initial content delivery for crawlers.
+- **Programmatic SEO**: Extensive generation of landing pages based on various parameters (countries, industries, document types) with deep country-specific content uniqueness.
 
 ## External Dependencies
 
 ### Third-party Services
-- **Google Fonts CDN**: For typography.
-- **CloudConvert API**: Utilized for high-quality conversions including PDF to Word, PDF to JPG, PDF to PNG, PDF to PowerPoint, PowerPoint to PDF, Grayscale PDF, and OCR PDF.
+- **Google Fonts CDN**: For web typography.
+- **CloudConvert API**: Used for advanced conversions (PDF to Word, PDF to JPG, PDF to PNG, PDF to PowerPoint, Grayscale PDF, OCR PDF).
 
 ### Key NPM Packages
 - **PDF Processing**: `pdf-lib`, `pdf-lib-with-encrypt`, `pdf-parse`, `docx`, `mammoth`, `sharp`, `archiver`, `xlsx`.
-- **Frontend UI**: `@radix-ui/`, `@tanstack/react-query`, `wouter`.
+- **Frontend**: `@radix-ui/`, `@tanstack/react-query`, `wouter`.
 - **Backend**: `express`, `multer`, `zod`, `cloudconvert`.
 - **Database (Future)**: `drizzle-orm`, `@neondatabase/serverless`, `connect-pg-simple`.
-
-## Content
-- **35 blog articles** covering tutorials, guides, and tool roundups with internal linking (25 original + 10 new: annotate-pdf-comments, translate-pdf-documents, repair-corrupted-pdf, pdf-to-powerpoint-guide, jpg-to-pdf-guide, compress-images-online, reorder-pdf-pages, remove-background-from-image, convert-pdf-to-png, excel-to-pdf)
-- **43 tool pages** each with EnhancedToolSEOContent (About, Tutorial, Use Cases, Why Choose, Troubleshooting, Security, FAQs, Internal Links, Blog Links, Workflows)
-- **5 category hub pages** (/convert-pdf, /compress-pdf-tools, /edit-pdf-tools, /secure-pdf, /image-tools) — 800+ word intros, tool listings, FAQs, blog links, structured data
-- **2,000+ programmatic SEO landing pages** (/tools/:slug) — 20 generators: compress size, compress use-case, compress platform, compress profession, merge count, merge use-case, merge profession, split, split use-case, format conversion, profession tool, country (170 countries × 3 base types = 510), country tools (170 countries × 11 tool types = 1,870: merge, pdf-to-word, sign, split, convert, compress-online, edit, jpg-to-pdf, pdf-to-jpg, protect, rotate), doc type, industry, watermark/annotate/sign, OCR+security, batch+workflow, image tools (5×8=40), conversion quality (6×5=30). Countries: all 170 nations worldwide across Europe, Asia, Middle East, Africa, Americas, Pacific.
-- **Trust pages**: /data-security (security practices), /auto-delete (file deletion policy), /pricing (free vs pro)
-- **Backlink pages**: /write-for-us (guest post guidelines), /embed (iframe widget generator), /pdf-comparison-chart (6-platform comparison), /pdf-file-formats-guide (10-format reference)
-- **Footer**: Organized by category with tool category hub links, company links including pricing/security/write-for-us/embed/comparison/formats, popular tools, utility tools, and blog articles
-- **Sitemap**: 4,391 URLs (0 duplicates, Google-clean) — English static (110) + language-prefixed pages (1,392) + programmatic /tools/ pages (2,889). All 50+ tool routes, 35 blogs, 5 category hubs, 11 supporting pages covered in all 12 language alternates. 170 countries × 14 pages = 2,380 country pages total (3 base + 11 tool-specific).
-
-### Data Files
-- `client/src/data/categoryHubData.ts` — 5 category hub configurations with tools, FAQs, blogs
-- `client/src/data/programmaticSeoData.ts` — 40 long-tail SEO page configurations
-- `client/src/data/toolSEOData.ts` — SEO content for all 43 tool pages
-- `client/src/data/blogData.ts` — 25 blog article configurations
