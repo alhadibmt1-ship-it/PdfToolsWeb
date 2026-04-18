@@ -2413,6 +2413,213 @@ function markdownToHtml(md: string, maxWords = 600): string {
   return parts.join("\n");
 }
 
+// ── Comprehensive native-language content for language pages ──────────────────
+// Used in generatePreRenderShell to generate 90%+ native-language body content
+// for all 12 non-English languages on tool, blog, and category pages.
+
+type LangLabels = {
+  faq: string; howTo: string; benefits: string; relatedTools: string;
+  exploreAll: string; convertFrom: string; convertTo: string; editPdf: string;
+  securePdf: string; imageTools: string; utility: string; howToGuides: string;
+  popularArticles: string; whyChoose: string; resources: string;
+  availableTools: string; commonUseCases: string; browseByCategory: string;
+};
+
+const LANG_LABELS: Record<string, LangLabels> = {
+  es: { faq:"Preguntas frecuentes", howTo:"Cómo usar", benefits:"Ventajas principales", relatedTools:"Herramientas PDF relacionadas", exploreAll:"Explorar todas las herramientas gratuitas", convertFrom:"Convertir desde PDF", convertTo:"Convertir a PDF", editPdf:"Editar PDF", securePdf:"PDF seguro", imageTools:"Herramientas de imagen", utility:"Utilidades", howToGuides:"Guías de uso", popularArticles:"Artículos populares", whyChoose:"¿Por qué elegir PDF HUB 24?", resources:"Recursos", availableTools:"Herramientas disponibles", commonUseCases:"Casos de uso comunes", browseByCategory:"Explorar por categoría" },
+  ar: { faq:"الأسئلة الشائعة", howTo:"كيفية الاستخدام", benefits:"الفوائد الرئيسية", relatedTools:"أدوات PDF ذات الصلة", exploreAll:"استكشاف جميع الأدوات المجانية", convertFrom:"التحويل من PDF", convertTo:"التحويل إلى PDF", editPdf:"تحرير PDF", securePdf:"تأمين PDF", imageTools:"أدوات الصور", utility:"أدوات مساعدة", howToGuides:"أدلة الاستخدام", popularArticles:"مقالات شائعة", whyChoose:"لماذا تختار PDF HUB 24؟", resources:"الموارد", availableTools:"الأدوات المتاحة", commonUseCases:"حالات الاستخدام الشائعة", browseByCategory:"تصفح حسب الفئة" },
+  hi: { faq:"अक्सर पूछे जाने वाले प्रश्न", howTo:"उपयोग कैसे करें", benefits:"मुख्य लाभ", relatedTools:"संबंधित PDF टूल", exploreAll:"सभी मुफ़्त टूल देखें", convertFrom:"PDF से कन्वर्ट", convertTo:"PDF में कन्वर्ट", editPdf:"PDF संपादित", securePdf:"PDF सुरक्षित", imageTools:"इमेज टूल", utility:"उपयोगिताएं", howToGuides:"उपयोग मार्गदर्शिकाएं", popularArticles:"लोकप्रिय लेख", whyChoose:"PDF HUB 24 क्यों चुनें?", resources:"संसाधन", availableTools:"उपलब्ध टूल", commonUseCases:"सामान्य उपयोग के मामले", browseByCategory:"श्रेणी के अनुसार ब्राउज़ करें" },
+  fr: { faq:"Foire aux questions", howTo:"Comment utiliser", benefits:"Avantages clés", relatedTools:"Outils PDF associés", exploreAll:"Explorer tous les outils gratuits", convertFrom:"Convertir depuis PDF", convertTo:"Convertir en PDF", editPdf:"Modifier PDF", securePdf:"Sécuriser PDF", imageTools:"Outils d'image", utility:"Utilitaires", howToGuides:"Guides pratiques", popularArticles:"Articles populaires", whyChoose:"Pourquoi choisir PDF HUB 24 ?", resources:"Ressources", availableTools:"Outils disponibles", commonUseCases:"Cas d'usage courants", browseByCategory:"Parcourir par catégorie" },
+  pt: { faq:"Perguntas frequentes", howTo:"Como usar", benefits:"Principais vantagens", relatedTools:"Ferramentas PDF relacionadas", exploreAll:"Explorar todas as ferramentas gratuitas", convertFrom:"Converter de PDF", convertTo:"Converter para PDF", editPdf:"Editar PDF", securePdf:"Proteger PDF", imageTools:"Ferramentas de imagem", utility:"Utilitários", howToGuides:"Guias de uso", popularArticles:"Artigos populares", whyChoose:"Por que escolher PDF HUB 24?", resources:"Recursos", availableTools:"Ferramentas disponíveis", commonUseCases:"Casos de uso comuns", browseByCategory:"Navegar por categoria" },
+  de: { faq:"Häufig gestellte Fragen", howTo:"Wie man es benutzt", benefits:"Wichtige Vorteile", relatedTools:"Verwandte PDF-Tools", exploreAll:"Alle kostenlosen Tools erkunden", convertFrom:"Von PDF konvertieren", convertTo:"Zu PDF konvertieren", editPdf:"PDF bearbeiten", securePdf:"PDF sichern", imageTools:"Bildwerkzeuge", utility:"Dienstprogramme", howToGuides:"Anleitungen", popularArticles:"Beliebte Artikel", whyChoose:"Warum PDF HUB 24 wählen?", resources:"Ressourcen", availableTools:"Verfügbare Tools", commonUseCases:"Häufige Anwendungsfälle", browseByCategory:"Nach Kategorie durchsuchen" },
+  zh: { faq:"常见问题", howTo:"如何使用", benefits:"主要优势", relatedTools:"相关PDF工具", exploreAll:"探索所有免费工具", convertFrom:"从PDF转换", convertTo:"转换为PDF", editPdf:"编辑PDF", securePdf:"安全PDF", imageTools:"图像工具", utility:"实用工具", howToGuides:"使用指南", popularArticles:"热门文章", whyChoose:"为什么选择PDF HUB 24？", resources:"资源", availableTools:"可用工具", commonUseCases:"常见使用场景", browseByCategory:"按类别浏览" },
+  ja: { faq:"よくある質問", howTo:"使い方", benefits:"主な特長", relatedTools:"関連PDFツール", exploreAll:"すべての無料ツールを見る", convertFrom:"PDFから変換", convertTo:"PDFに変換", editPdf:"PDFを編集", securePdf:"PDFを保護", imageTools:"画像ツール", utility:"ユーティリティ", howToGuides:"使い方ガイド", popularArticles:"人気記事", whyChoose:"なぜPDF HUB 24？", resources:"リソース", availableTools:"利用可能なツール", commonUseCases:"よくある使用例", browseByCategory:"カテゴリ別に閲覧" },
+  id: { faq:"Pertanyaan yang Sering Diajukan", howTo:"Cara Menggunakan", benefits:"Keunggulan Utama", relatedTools:"Alat PDF Terkait", exploreAll:"Jelajahi Semua Alat Gratis", convertFrom:"Konversi dari PDF", convertTo:"Konversi ke PDF", editPdf:"Edit PDF", securePdf:"Aman PDF", imageTools:"Alat Gambar", utility:"Utilitas", howToGuides:"Panduan Cara", popularArticles:"Artikel Populer", whyChoose:"Mengapa Pilih PDF HUB 24?", resources:"Sumber Daya", availableTools:"Alat Tersedia", commonUseCases:"Kasus Penggunaan Umum", browseByCategory:"Jelajahi berdasarkan kategori" },
+  ru: { faq:"Часто задаваемые вопросы", howTo:"Как использовать", benefits:"Ключевые преимущества", relatedTools:"Связанные PDF-инструменты", exploreAll:"Все бесплатные инструменты", convertFrom:"Конвертировать из PDF", convertTo:"Конвертировать в PDF", editPdf:"Редактировать PDF", securePdf:"Защита PDF", imageTools:"Инструменты для изображений", utility:"Утилиты", howToGuides:"Инструкции", popularArticles:"Популярные статьи", whyChoose:"Почему PDF HUB 24?", resources:"Ресурсы", availableTools:"Доступные инструменты", commonUseCases:"Частые случаи использования", browseByCategory:"Просмотр по категориям" },
+  it: { faq:"Domande frequenti", howTo:"Come si usa", benefits:"Vantaggi principali", relatedTools:"Strumenti PDF correlati", exploreAll:"Esplora tutti gli strumenti gratuiti", convertFrom:"Converti da PDF", convertTo:"Converti in PDF", editPdf:"Modifica PDF", securePdf:"Proteggi PDF", imageTools:"Strumenti immagine", utility:"Strumenti utili", howToGuides:"Guide pratiche", popularArticles:"Articoli popolari", whyChoose:"Perché PDF HUB 24?", resources:"Risorse", availableTools:"Strumenti disponibili", commonUseCases:"Casi d'uso comuni", browseByCategory:"Sfoglia per categoria" },
+  ur: { faq:"اکثر پوچھے جانے والے سوالات", howTo:"استعمال کا طریقہ", benefits:"اہم فوائد", relatedTools:"متعلقہ PDF ٹولز", exploreAll:"تمام مفت ٹولز دیکھیں", convertFrom:"PDF سے تبدیل", convertTo:"PDF میں تبدیل", editPdf:"PDF ترمیم", securePdf:"PDF محفوظ", imageTools:"تصویری ٹولز", utility:"یوٹیلیٹی", howToGuides:"استعمال کی رہنمائی", popularArticles:"مشہور مضامین", whyChoose:"PDF HUB 24 کیوں چنیں؟", resources:"وسائل", availableTools:"دستیاب ٹولز", commonUseCases:"عام استعمالات", browseByCategory:"زمرہ کے حساب سے دیکھیں" },
+};
+
+// 3 how-to steps per language: [stepTitle, stepDescription with {name} placeholder]
+const LANG_HOW_TO_STEPS: Record<string, [string,string][]> = {
+  es: [["Subir archivo","Haz clic en el botón o arrastra tu archivo. {name} acepta archivos de hasta 100 MB."],["Iniciar proceso","Haz clic en 'Iniciar' y {name} procesa todo automáticamente en segundos."],["Descargar resultado","Descarga el archivo final gratis. Sin cuenta, sin correo, sin marcas de agua."]],
+  ar: [["رفع الملف","انقر على الزر أو اسحب ملفك. {name} يقبل ملفات حتى 100 ميغابايت."],["بدء المعالجة","انقر على 'ابدأ' و{name} يعالج كل شيء تلقائيًا في ثوانٍ."],["تنزيل النتيجة","نزّل الملف النهائي مجانًا. بدون حساب، بدون بريد إلكتروني، بدون علامات مائية."]],
+  hi: [["फ़ाइल अपलोड करें","बटन पर क्लिक करें या अपनी फ़ाइल खींचें। {name} 100 MB तक की फ़ाइलें स्वीकार करता है।"],["प्रक्रिया शुरू करें","'शुरू करें' पर क्लिक करें और {name} सब कुछ स्वचालित रूप से सेकंड में करता है।"],["डाउनलोड करें","अपनी तैयार फ़ाइल मुफ़्त में डाउनलोड करें। कोई अकाउंट, ईमेल या वॉटरमार्क नहीं।"]],
+  fr: [["Téléverser le fichier","Cliquez sur le bouton ou glissez votre fichier. {name} accepte les fichiers jusqu'à 100 Mo."],["Lancer le traitement","Cliquez sur 'Démarrer' et {name} traite tout automatiquement en quelques secondes."],["Télécharger le résultat","Téléchargez votre fichier final gratuitement. Sans compte, sans email, sans filigrane."]],
+  pt: [["Fazer upload do arquivo","Clique no botão ou arraste seu arquivo. {name} aceita arquivos de até 100 MB."],["Iniciar o processo","Clique em 'Iniciar' e {name} processa tudo automaticamente em segundos."],["Baixar o resultado","Baixe o arquivo final gratuitamente. Sem conta, sem e-mail, sem marca d'água."]],
+  de: [["Datei hochladen","Klicken Sie auf die Schaltfläche oder ziehen Sie Ihre Datei per Drag & Drop. {name} akzeptiert Dateien bis zu 100 MB."],["Verarbeitung starten","Klicken Sie auf 'Starten' und {name} erledigt alles automatisch in Sekundenschnelle."],["Herunterladen","Laden Sie Ihre fertige Datei kostenlos herunter. Kein Konto, keine E-Mail, keine Wasserzeichen."]],
+  zh: [["上传文件","点击按钮或拖放您的文件。{name}接受最大100MB的文件。"],["开始处理","点击'开始'，{name}将在数秒内自动完成处理。"],["下载结果","免费下载处理后的文件。无需账户、电子邮件或水印。"]],
+  ja: [["ファイルをアップロード","ボタンをクリックするかファイルをドラッグ＆ドロップ。{name}は最大100MBのファイルに対応しています。"],["処理を開始","「開始」をクリックすると、{name}が数秒で自動的に処理します。"],["ダウンロード","完成したファイルを無料でダウンロード。アカウント、メール、透かし不要。"]],
+  id: [["Unggah file","Klik tombol atau seret file Anda. {name} menerima file hingga 100 MB."],["Mulai proses","Klik 'Mulai' dan {name} memproses semuanya secara otomatis dalam hitungan detik."],["Unduh hasilnya","Unduh file Anda secara gratis. Tanpa akun, tanpa email, tanpa watermark."]],
+  ru: [["Загрузить файл","Нажмите кнопку или перетащите файл. {name} принимает файлы до 100 МБ."],["Начать обработку","Нажмите 'Начать' и {name} всё сделает автоматически за считанные секунды."],["Скачать результат","Скачайте готовый файл бесплатно. Без аккаунта, без email, без водяных знаков."]],
+  it: [["Carica il file","Clicca sul pulsante o trascina il tuo file. {name} accetta file fino a 100 MB."],["Avviare l'elaborazione","Clicca su 'Avvia' e {name} elabora tutto automaticamente in pochi secondi."],["Scaricare il risultato","Scarica il file finale gratuitamente. Senza account, email o filigrana."]],
+  ur: [["فائل اپلوڈ کریں","بٹن پر کلک کریں یا اپنی فائل گھسیٹیں۔ {name} 100 MB تک کی فائلیں قبول کرتا ہے۔"],["عمل شروع کریں","'شروع کریں' پر کلک کریں اور {name} چند سیکنڈ میں سب کچھ خودکار طریقے سے کرتا ہے۔"],["ڈاؤن لوڈ کریں","اپنی مکمل فائل مفت ڈاؤن لوڈ کریں۔ کوئی اکاؤنٹ، ای میل یا واٹر مارک نہیں۔"]],
+};
+
+// 5 FAQ Q&A pairs per language with {name} placeholder
+const LANG_TOOL_FAQS: Record<string, Array<{q:string;a:string}>> = {
+  es: [
+    {q:"¿{name} es realmente gratis?",a:"Sí, {name} es 100% gratuito. Sin costos ocultos, sin suscripción y sin necesidad de registrarse."},
+    {q:"¿Qué tan seguros están mis archivos con {name}?",a:"Tus archivos se transfieren mediante cifrado SSL y se eliminan automáticamente de nuestros servidores después de 1 hora. Nadie tiene acceso a tus documentos."},
+    {q:"¿Necesito instalar software para usar {name}?",a:"No. {name} funciona completamente en tu navegador — sin instalación, sin descarga, sin complementos necesarios."},
+    {q:"¿Qué tamaño de archivo acepta {name}?",a:"{name} procesa archivos de hasta 100 MB. Para archivos muy grandes, te recomendamos dividirlos primero con nuestra herramienta Dividir PDF."},
+    {q:"¿{name} funciona en dispositivos móviles?",a:"Sí, {name} funciona en todos los dispositivos — PC, Mac, smartphone y tablet. No es necesario descargar ninguna app."},
+  ],
+  ar: [
+    {q:"هل {name} مجاني حقًا؟",a:"نعم، {name} مجاني 100%. لا توجد رسوم خفية، ولا اشتراك، ولا حاجة للتسجيل."},
+    {q:"كيف يتم حماية ملفاتي مع {name}؟",a:"يتم نقل ملفاتك عبر تشفير SSL ويتم حذفها تلقائيًا من خوادمنا بعد ساعة واحدة. لا أحد يمكنه الوصول إلى مستنداتك."},
+    {q:"هل أحتاج إلى تثبيت برنامج لاستخدام {name}؟",a:"لا. يعمل {name} بالكامل في متصفحك — لا تثبيت، لا تنزيل، لا إضافات مطلوبة."},
+    {q:"ما حجم الملف الذي يدعمه {name}؟",a:"يعالج {name} ملفات حتى 100 ميغابايت. للملفات الكبيرة جدًا، نوصي بتقسيمها أولاً."},
+    {q:"هل يعمل {name} على الأجهزة المحمولة؟",a:"نعم، يعمل {name} على جميع الأجهزة — الكمبيوتر والماك والهاتف الذكي والجهاز اللوحي. لا حاجة لتنزيل أي تطبيق."},
+  ],
+  hi: [
+    {q:"{name} क्या सच में मुफ़्त है?",a:"हाँ, {name} 100% मुफ़्त है। कोई छिपी लागत नहीं, कोई सदस्यता नहीं और पंजीकरण की कोई ज़रूरत नहीं।"},
+    {q:"{name} से मेरी फ़ाइलें कितनी सुरक्षित हैं?",a:"आपकी फ़ाइलें SSL एन्क्रिप्शन से ट्रांसफर होती हैं और 1 घंटे के बाद हमारे सर्वर से स्वत: हटा दी जाती हैं। आपके दस्तावेज़ों तक किसी की पहुँच नहीं है।"},
+    {q:"{name} इस्तेमाल करने के लिए कोई सॉफ़्टवेयर इंस्टॉल करना होगा?",a:"नहीं। {name} पूरी तरह आपके ब्राउज़र में चलता है — कोई इंस्टॉलेशन, डाउनलोड या प्लगइन की ज़रूरत नहीं।"},
+    {q:"{name} कितने बड़े आकार की फ़ाइल संभाल सकता है?",a:"{name} 100 MB तक की फ़ाइलें प्रोसेस करता है। बहुत बड़ी फ़ाइलों के लिए हम उन्हें पहले विभाजित करने की सलाह देते हैं।"},
+    {q:"क्या {name} मोबाइल डिवाइस पर काम करता है?",a:"हाँ, {name} सभी उपकरणों पर काम करता है — PC, Mac, स्मार्टफोन और टैबलेट। कोई ऐप डाउनलोड ज़रूरी नहीं।"},
+  ],
+  fr: [
+    {q:"{name} est-il vraiment gratuit ?",a:"Oui, {name} est 100% gratuit. Aucuns frais cachés, aucun abonnement et aucune inscription requise."},
+    {q:"Mes fichiers sont-ils en sécurité avec {name} ?",a:"Vos fichiers sont transférés via chiffrement SSL et supprimés automatiquement de nos serveurs après 1 heure. Personne n'a accès à vos documents."},
+    {q:"Dois-je installer un logiciel pour utiliser {name} ?",a:"Non. {name} fonctionne entièrement dans votre navigateur — aucune installation, aucun téléchargement, aucun plugin requis."},
+    {q:"Quelle taille de fichier {name} prend-il en charge ?",a:"{name} traite des fichiers jusqu'à 100 Mo. Pour les très gros fichiers, nous recommandons de les diviser d'abord."},
+    {q:"{name} fonctionne-t-il sur les appareils mobiles ?",a:"Oui, {name} fonctionne sur tous les appareils — PC, Mac, smartphone et tablette. Aucune application à télécharger."},
+  ],
+  pt: [
+    {q:"{name} é realmente gratuito?",a:"Sim, {name} é 100% gratuito. Sem custos ocultos, sem assinatura e sem necessidade de registro."},
+    {q:"Meus arquivos estão seguros com {name}?",a:"Seus arquivos são transferidos com criptografia SSL e excluídos automaticamente dos nossos servidores após 1 hora. Ninguém tem acesso aos seus documentos."},
+    {q:"Preciso instalar algum software para usar {name}?",a:"Não. {name} funciona completamente no seu navegador — sem instalação, sem download, sem extensões necessárias."},
+    {q:"Qual o tamanho de arquivo que {name} suporta?",a:"{name} processa arquivos de até 100 MB. Para arquivos muito grandes, recomendamos dividi-los primeiro."},
+    {q:"{name} funciona em dispositivos móveis?",a:"Sim, {name} funciona em todos os dispositivos — PC, Mac, smartphone e tablet. Sem necessidade de baixar nenhum app."},
+  ],
+  de: [
+    {q:"Ist {name} wirklich kostenlos?",a:"Ja, {name} ist 100% kostenlos. Es gibt keine versteckten Kosten, kein Abonnement und keine Registrierung erforderlich."},
+    {q:"Wie sicher sind meine Dateien bei {name}?",a:"Ihre Dateien werden per SSL-Verschlüsselung übertragen und automatisch nach 1 Stunde von unseren Servern gelöscht. Niemand hat Zugriff auf Ihre Dokumente."},
+    {q:"Muss ich Software installieren, um {name} zu nutzen?",a:"Nein. {name} läuft vollständig in Ihrem Browser — keine Installation, kein Download, kein Plugin erforderlich."},
+    {q:"Welche Dateigröße unterstützt {name}?",a:"{name} verarbeitet Dateien bis zu 100 MB. Bei sehr großen Dateien empfehlen wir, diese zuerst aufzuteilen."},
+    {q:"Funktioniert {name} auf Mobilgeräten?",a:"Ja, {name} funktioniert auf allen Geräten — PC, Mac, Smartphone und Tablet. Kein App-Download erforderlich."},
+  ],
+  zh: [
+    {q:"{name}真的免费吗？",a:"是的，{name}完全免费。没有隐藏费用，无需订阅，也无需注册。"},
+    {q:"使用{name}我的文件安全吗？",a:"您的文件通过SSL加密传输，并在1小时后从我们的服务器自动删除。没有人能访问您的文档。"},
+    {q:"使用{name}需要安装软件吗？",a:"不需要。{name}完全在您的浏览器中运行——无需安装、下载或插件。"},
+    {q:"{name}支持什么大小的文件？",a:"{name}处理最大100MB的文件。对于非常大的文件，我们建议先拆分它们。"},
+    {q:"{name}在移动设备上可以使用吗？",a:"是的，{name}适用于所有设备——PC、Mac、智能手机和平板电脑。无需下载任何应用程序。"},
+  ],
+  ja: [
+    {q:"{name}は本当に無料ですか？",a:"はい、{name}は100%無料です。隠れた費用なし、サブスクリプションなし、登録も不要です。"},
+    {q:"{name}を使うとファイルは安全ですか？",a:"ファイルはSSL暗号化で転送され、1時間後に自動的にサーバーから削除されます。誰もあなたの文書にアクセスできません。"},
+    {q:"{name}を使うためにソフトウェアをインストールする必要がありますか？",a:"いいえ。{name}はブラウザで完全に動作します——インストール、ダウンロード、プラグイン不要です。"},
+    {q:"{name}はどのサイズのファイルに対応していますか？",a:"{name}は最大100MBのファイルを処理します。非常に大きなファイルの場合は、まず分割することをお勧めします。"},
+    {q:"{name}はモバイルデバイスで使えますか？",a:"はい、{name}はすべてのデバイスで動作します——PC、Mac、スマートフォン、タブレット。アプリのダウンロードは不要です。"},
+  ],
+  id: [
+    {q:"Apakah {name} benar-benar gratis?",a:"Ya, {name} 100% gratis. Tidak ada biaya tersembunyi, tidak ada langganan, dan tidak perlu mendaftar."},
+    {q:"Apakah file saya aman dengan {name}?",a:"File Anda ditransfer dengan enkripsi SSL dan dihapus secara otomatis dari server kami setelah 1 jam. Tidak ada yang bisa mengakses dokumen Anda."},
+    {q:"Apakah saya perlu menginstal perangkat lunak untuk menggunakan {name}?",a:"Tidak. {name} bekerja sepenuhnya di browser Anda — tanpa instalasi, unduhan, atau plugin."},
+    {q:"Ukuran file apa yang didukung {name}?",a:"{name} memproses file hingga 100 MB. Untuk file yang sangat besar, kami sarankan untuk membaginya terlebih dahulu."},
+    {q:"Apakah {name} bekerja di perangkat mobile?",a:"Ya, {name} bekerja di semua perangkat — PC, Mac, smartphone, dan tablet. Tidak perlu mengunduh aplikasi apapun."},
+  ],
+  ru: [
+    {q:"{name} действительно бесплатный?",a:"Да, {name} на 100% бесплатный. Никаких скрытых платежей, подписок и регистрации не требуется."},
+    {q:"Насколько безопасны мои файлы при использовании {name}?",a:"Ваши файлы передаются через SSL-шифрование и автоматически удаляются с наших серверов через 1 час. Никто не имеет доступа к вашим документам."},
+    {q:"Нужно ли устанавливать программное обеспечение для использования {name}?",a:"Нет. {name} работает полностью в вашем браузере — никакой установки, загрузок или плагинов."},
+    {q:"Какой размер файла поддерживает {name}?",a:"{name} обрабатывает файлы до 100 МБ. Для очень больших файлов мы рекомендуем сначала их разделить."},
+    {q:"Работает ли {name} на мобильных устройствах?",a:"Да, {name} работает на всех устройствах — ПК, Mac, смартфон и планшет. Загрузка приложений не требуется."},
+  ],
+  it: [
+    {q:"{name} è davvero gratuito?",a:"Sì, {name} è 100% gratuito. Nessun costo nascosto, nessun abbonamento e nessuna registrazione richiesta."},
+    {q:"I miei file sono al sicuro con {name}?",a:"I tuoi file vengono trasferiti con crittografia SSL ed eliminati automaticamente dai nostri server dopo 1 ora. Nessuno ha accesso ai tuoi documenti."},
+    {q:"Devo installare del software per usare {name}?",a:"No. {name} funziona interamente nel tuo browser — nessuna installazione, download o plugin richiesto."},
+    {q:"Quale dimensione di file supporta {name}?",a:"{name} elabora file fino a 100 MB. Per file molto grandi, ti consigliamo di dividerli prima."},
+    {q:"{name} funziona su dispositivi mobili?",a:"Sì, {name} funziona su tutti i dispositivi — PC, Mac, smartphone e tablet. Non è necessario scaricare nessuna app."},
+  ],
+  ur: [
+    {q:"کیا {name} واقعی مفت ہے؟",a:"ہاں، {name} 100% مفت ہے۔ کوئی پوشیدہ اخراجات نہیں، کوئی سبسکرپشن نہیں اور رجسٹریشن کی ضرورت نہیں۔"},
+    {q:"{name} کے ساتھ میری فائلیں کتنی محفوظ ہیں؟",a:"آپ کی فائلیں SSL انکرپشن کے ذریعے منتقل ہوتی ہیں اور 1 گھنٹے کے بعد ہمارے سرورز سے خودکار طریقے سے حذف ہو جاتی ہیں۔ کوئی بھی آپ کے دستاویزات تک رسائی نہیں پا سکتا۔"},
+    {q:"{name} استعمال کرنے کے لیے کیا کوئی سافٹ ویئر انسٹال کرنا ہوگا؟",a:"نہیں۔ {name} مکمل طور پر آپ کے براؤزر میں چلتا ہے — کوئی انسٹالیشن، ڈاؤن لوڈ یا پلگ ان کی ضرورت نہیں۔"},
+    {q:"{name} کتنے بڑے فائل سائز کو سپورٹ کرتا ہے؟",a:"{name} 100 MB تک کی فائلیں پروسیس کرتا ہے۔ بہت بڑی فائلوں کے لیے ہم پہلے انہیں تقسیم کرنے کی سفارش کرتے ہیں۔"},
+    {q:"کیا {name} موبائل ڈیوائسز پر کام کرتا ہے؟",a:"ہاں، {name} تمام ڈیوائسز پر کام کرتا ہے — PC، Mac، سمارٹ فون اور ٹیبلیٹ۔ کوئی ایپ ڈاؤن لوڈ کرنے کی ضرورت نہیں۔"},
+  ],
+};
+
+// 5 benefit bullet points per language (no {name} placeholder — generic trust points)
+const LANG_BENEFITS: Record<string, string[]> = {
+  es: ["Completamente gratuito — sin suscripciones ni costos ocultos","Sin registro ni dirección de correo electrónico necesarios","Funciona en todos los dispositivos — PC, Mac, tablet y smartphone","Sus archivos se eliminan automáticamente y de forma segura después de 1 hora","Cifrado SSL protege sus datos durante la transferencia"],
+  ar: ["مجاني تمامًا — بدون اشتراكات، بدون رسوم خفية","لا حاجة للتسجيل أو البريد الإلكتروني","يعمل على جميع الأجهزة — الكمبيوتر والماك والجهاز اللوحي والهاتف الذكي","يتم حذف ملفاتك تلقائيًا وبأمان بعد ساعة واحدة","تشفير SSL يحمي بياناتك أثناء النقل"],
+  hi: ["पूरी तरह मुफ़्त — कोई सदस्यता नहीं, कोई छिपी लागत नहीं","कोई पंजीकरण या ईमेल पते की ज़रूरत नहीं","सभी उपकरणों पर काम करता है — PC, Mac, टैबलेट और स्मार्टफोन","आपकी फ़ाइलें 1 घंटे बाद स्वत: और सुरक्षित रूप से हटा दी जाती हैं","SSL एन्क्रिप्शन ट्रांसफर के दौरान आपके डेटा की सुरक्षा करता है"],
+  fr: ["Entièrement gratuit — sans abonnement, sans frais cachés","Aucune inscription ni adresse e-mail requise","Fonctionne sur tous les appareils — PC, Mac, tablette et smartphone","Vos fichiers sont supprimés automatiquement et en toute sécurité après 1 heure","Le chiffrement SSL protège vos données lors du transfert"],
+  pt: ["Completamente gratuito — sem assinaturas, sem custos ocultos","Sem necessidade de cadastro ou endereço de e-mail","Funciona em todos os dispositivos — PC, Mac, tablet e smartphone","Seus arquivos são excluídos automática e seguramente após 1 hora","Criptografia SSL protege seus dados durante a transferência"],
+  de: ["Vollständig kostenlos — keine Abonnements, keine versteckten Kosten","Keine Anmeldung oder E-Mail-Adresse erforderlich","Funktioniert auf allen Geräten — PC, Mac, Tablet und Smartphone","Ihre Dateien werden nach 1 Stunde automatisch und sicher gelöscht","SSL-Verschlüsselung schützt Ihre Daten bei der Übertragung"],
+  zh: ["完全免费——无订阅，无隐藏费用","无需注册或电子邮件地址","适用于所有设备——PC、Mac、平板电脑和智能手机","您的文件在1小时后自动安全删除","SSL加密在传输过程中保护您的数据"],
+  ja: ["完全無料——サブスクリプションなし、隠れた費用なし","登録やメールアドレス不要","すべてのデバイスで動作——PC、Mac、タブレット、スマートフォン","ファイルは1時間後に自動的に安全に削除されます","SSL暗号化が転送中にデータを保護します"],
+  id: ["Sepenuhnya gratis — tanpa langganan, tanpa biaya tersembunyi","Tidak perlu registrasi atau alamat email","Bekerja di semua perangkat — PC, Mac, tablet, dan smartphone","File Anda dihapus secara otomatis dan aman setelah 1 jam","Enkripsi SSL melindungi data Anda selama transfer"],
+  ru: ["Полностью бесплатно — без подписок, без скрытых платежей","Регистрация и электронная почта не требуются","Работает на всех устройствах — ПК, Mac, планшет и смартфон","Ваши файлы удаляются автоматически и безопасно через 1 час","SSL-шифрование защищает ваши данные при передаче"],
+  it: ["Completamente gratuito — senza abbonamenti, senza costi nascosti","Nessuna registrazione o indirizzo email richiesto","Funziona su tutti i dispositivi — PC, Mac, tablet e smartphone","I tuoi file vengono eliminati automaticamente e in modo sicuro dopo 1 ora","La crittografia SSL protegge i tuoi dati durante il trasferimento"],
+  ur: ["مکمل طور پر مفت — کوئی سبسکرپشن نہیں، کوئی پوشیدہ اخراجات نہیں","رجسٹریشن یا ای میل ایڈریس کی ضرورت نہیں","تمام ڈیوائسز پر کام کرتا ہے — PC، Mac، ٹیبلیٹ اور سمارٹ فون","آپ کی فائلیں 1 گھنٹے کے بعد خودکار اور محفوظ طریقے سے حذف ہو جاتی ہیں","SSL انکرپشن منتقلی کے دوران آپ کے ڈیٹا کی حفاظت کرتا ہے"],
+};
+
+/** Build native-language rich body content for a tool page in any non-English language */
+function buildLangToolContent(toolName: string, lang: string): string {
+  const L = LANG_LABELS[lang];
+  if (!L) return "";
+  const fill = (s: string) => s.replace(/\{name\}/g, toolName);
+  let out = "";
+
+  // How-to steps section
+  const steps = LANG_HOW_TO_STEPS[lang];
+  if (steps?.length) {
+    const stepsHtml = steps.map(([ title, desc ], i) =>
+      `<li style="margin-bottom:0.75rem"><strong>${escHtml(title)}:</strong> ${escHtml(fill(desc))}</li>`
+    ).join("");
+    out += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+      <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">${escHtml(L.howTo)}: ${escHtml(toolName)}</h2>
+      <ol style="padding-left:1.5rem;line-height:1.8">${stepsHtml}</ol>
+    </section>`;
+  }
+
+  // Key benefits section
+  const benefits = LANG_BENEFITS[lang];
+  if (benefits?.length) {
+    const bHtml = benefits.map(b => `<li style="margin-bottom:0.4rem">${escHtml(b)}</li>`).join("");
+    out += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+      <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">${escHtml(L.benefits)}</h2>
+      <ul style="padding-left:1.5rem;line-height:1.8">${bHtml}</ul>
+    </section>`;
+  }
+
+  // FAQ section
+  const faqs = LANG_TOOL_FAQS[lang];
+  if (faqs?.length) {
+    const faqHtml = faqs.map(f =>
+      `<div style="margin-bottom:1rem"><h3 style="font-size:1rem;font-weight:600;margin-bottom:0.25rem">${escHtml(fill(f.q))}</h3><p style="line-height:1.7">${escHtml(fill(f.a))}</p></div>`
+    ).join("");
+    out += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+      <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">${escHtml(L.faq)}</h2>
+      ${faqHtml}
+    </section>`;
+  }
+
+  return out;
+}
+
+/** Build native-language section headings for the all-tools grid */
+function getLangCatLabel(cat: string, lang: string): string {
+  const L = LANG_LABELS[lang];
+  if (!L) return cat;
+  const map: Record<string, keyof LangLabels> = {
+    "Convert from PDF": "convertFrom",
+    "Convert to PDF": "convertTo",
+    "Edit PDF": "editPdf",
+    "Secure PDF": "securePdf",
+    "Image Tools": "imageTools",
+    "Utility": "utility",
+  };
+  const key = map[cat];
+  return key ? L[key] as string : cat;
+}
+
 function generatePreRenderShell(canonicalPath: string, lang: string = "en"): string {
   try {
   const config = seoConfig[canonicalPath];
@@ -2508,26 +2715,48 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
     return "";
   }
 
+  // Translated labels for this language (null for English — use English strings directly)
+  const LL = lang !== "en" ? (LANG_LABELS[lang] ?? null) : null;
+
   // Build rich content sections
   let richContent = "";
 
   // ── BLOG ARTICLE ────────────────────────────────────────────────────────────
   if (blogPost) {
-    const meta = `<p style="font-size:0.875rem;color:#64748b;margin-bottom:1.5rem">
-      ${escHtml(blogPost.publishDate || "")} &bull; ${escHtml(blogPost.readTime || "")} &bull; ${escHtml(blogPost.category || "")}
-    </p>`;
-    richContent += meta;
-    richContent += `<article style="text-align:left;max-width:800px;width:100%;line-height:1.75">
-      ${markdownToHtml(blogPost.content, 800)}
-    </article>`;
-    if (blogPost.relatedTools?.length) {
-      const links = blogPost.relatedTools.map(t =>
-        `<a href="${escHtml(t.path)}" style="color:#2563eb;text-decoration:none">${escHtml(t.name)} — ${escHtml(t.description)}</a>`
-      ).join("<br>");
-      richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
-        <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">Related PDF Tools</h2>
-        <div style="display:flex;flex-direction:column;gap:0.5rem">${links}</div>
-      </section>`;
+    if (lang === "en") {
+      // English: render full article markdown
+      const meta = `<p style="font-size:0.875rem;color:#64748b;margin-bottom:1.5rem">
+        ${escHtml(blogPost.publishDate || "")} &bull; ${escHtml(blogPost.readTime || "")} &bull; ${escHtml(blogPost.category || "")}
+      </p>`;
+      richContent += meta;
+      richContent += `<article style="text-align:left;max-width:800px;width:100%;line-height:1.75">
+        ${markdownToHtml(blogPost.content, 800)}
+      </article>`;
+      if (blogPost.relatedTools?.length) {
+        const links = blogPost.relatedTools.map(t =>
+          `<a href="${escHtml(t.path)}" style="color:#2563eb;text-decoration:none">${escHtml(t.name)} — ${escHtml(t.description)}</a>`
+        ).join("<br>");
+        richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+          <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">Related PDF Tools</h2>
+          <div style="display:flex;flex-direction:column;gap:0.5rem">${links}</div>
+        </section>`;
+      }
+    } else {
+      // Language pages: render native-language content (how-to + benefits + FAQs)
+      // Use the blog title as the "tool name" in templates since it's a guide article
+      const articleName = h1Text || blogPost.title || "PDF HUB 24";
+      richContent += buildLangToolContent(articleName, lang);
+      // Related tools with translated label
+      const L = LANG_LABELS[lang];
+      if (blogPost.relatedTools?.length && L) {
+        const links = blogPost.relatedTools.map(t =>
+          `<a href="${escHtml(t.path)}" style="color:#2563eb;text-decoration:none">${escHtml(t.name)}</a>`
+        ).join(" &bull; ");
+        richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+          <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">${escHtml(L.relatedTools)}</h2>
+          <p style="line-height:1.8">${links}</p>
+        </section>`;
+      }
     }
   }
 
@@ -2536,8 +2765,9 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
     richContent += `<p style="line-height:1.75;max-width:800px;margin-bottom:1.5rem">${escHtml(progPage.content)}</p>`;
     if (progPage.useCases?.length) {
       const items = progPage.useCases.map(u => `<li style="margin-bottom:0.4rem">${escHtml(u)}</li>`).join("");
+      const useCasesLabel = LL ? LL.commonUseCases : "Common Use Cases";
       richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
-        <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">Common Use Cases</h2>
+        <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">${escHtml(useCasesLabel)}</h2>
         <ul style="padding-left:1.5rem;line-height:1.8">${items}</ul>
       </section>`;
     }
@@ -2545,8 +2775,9 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
       const faqs = progPage.faqs.map(f =>
         `<div style="margin-bottom:1rem"><h3 style="font-size:1rem;font-weight:600;margin-bottom:0.25rem">${escHtml(f.question)}</h3><p style="line-height:1.7">${escHtml(f.answer)}</p></div>`
       ).join("");
+      const faqLabel = LL ? LL.faq : "Frequently Asked Questions";
       richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
-        <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">Frequently Asked Questions</h2>
+        <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">${escHtml(faqLabel)}</h2>
         ${faqs}
       </section>`;
     }
@@ -2554,19 +2785,23 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
 
   // ── CATEGORY HUB ─────────────────────────────────────────────────────────────
   else if (categoryHub) {
-    richContent += `<div style="text-align:left;max-width:800px;width:100%;line-height:1.75;margin-bottom:1.5rem">
-      ${markdownToHtml(categoryHub.intro, 400)}
-    </div>`;
+    if (lang === "en") {
+      richContent += `<div style="text-align:left;max-width:800px;width:100%;line-height:1.75;margin-bottom:1.5rem">
+        ${markdownToHtml(categoryHub.intro, 400)}
+      </div>`;
+    }
     if (categoryHub.tools?.length) {
       const toolLinks = categoryHub.tools.map(t =>
         `<li style="margin-bottom:0.5rem"><a href="${escHtml(t.path)}" style="color:#2563eb;text-decoration:none;font-weight:600">${escHtml(t.name)}</a> — ${escHtml(t.description)}</li>`
       ).join("");
+      const availLabel = LL ? LL.availableTools : "Available Tools";
       richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
-        <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">Available Tools</h2>
+        <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">${escHtml(availLabel)}</h2>
         <ul style="padding-left:1.5rem;line-height:1.9">${toolLinks}</ul>
       </section>`;
     }
-    if (categoryHub.faqs?.length) {
+    if (lang === "en" && categoryHub.faqs?.length) {
+      // English: show English FAQ
       const faqs = categoryHub.faqs.map(f =>
         `<div style="margin-bottom:1rem"><h3 style="font-size:1rem;font-weight:600;margin-bottom:0.25rem">${escHtml(f.question)}</h3><p style="line-height:1.7">${escHtml(f.answer)}</p></div>`
       ).join("");
@@ -2574,43 +2809,52 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
         <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">Frequently Asked Questions</h2>
         ${faqs}
       </section>`;
+    } else if (lang !== "en") {
+      // Language pages: show native-language benefits + FAQs
+      richContent += buildLangToolContent(h1Text, lang);
     }
   }
 
   // ── TOOL PAGE ─────────────────────────────────────────────────────────────────
   else if (toolData) {
-    if (toolData.useCases?.items?.length) {
-      const items = toolData.useCases.items.map(i => `<li>${escHtml(i)}</li>`).join("");
-      richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
-        <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">${escHtml(toolData.useCases.title)}</h2>
-        <p style="margin-bottom:0.75rem">${escHtml(toolData.useCases.description)}</p>
-        <ul style="padding-left:1.5rem;line-height:1.8">${items}</ul>
-      </section>`;
-    }
-    if (toolData.tutorial?.steps?.length) {
-      const steps = toolData.tutorial.steps.map((s) =>
-        `<li style="margin-bottom:0.75rem"><strong>${escHtml(s.step)}:</strong> ${escHtml(s.detail)}</li>`
-      ).join("");
-      richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
-        <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">${escHtml(toolData.tutorial.title)}</h2>
-        <ol style="padding-left:1.5rem;line-height:1.8">${steps}</ol>
-      </section>`;
-    }
-    if (toolData.faqs?.length) {
-      const faqs = toolData.faqs.map(f =>
-        `<div style="margin-bottom:1rem"><h3 style="font-size:1rem;font-weight:600;margin-bottom:0.25rem">${escHtml(f.question)}</h3><p style="line-height:1.7">${escHtml(f.answer)}</p></div>`
-      ).join("");
-      richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
-        <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">Frequently Asked Questions</h2>
-        ${faqs}
-      </section>`;
-    }
-    const realLinks = toolData.internalLinks?.filter(l => !l.href.startsWith("/blog/")) || [];
-    if (realLinks.length) {
-      const links = realLinks.map(l =>
-        `<a href="${escHtml(l.href)}" style="color:#2563eb;text-decoration:none;margin-right:1.5rem">${escHtml(l.text)}</a>`
-      ).join("");
-      richContent += `<nav style="margin:1.5rem 0;text-align:left;max-width:800px;width:100%;flex-wrap:wrap;display:flex;gap:0.5rem">${links}</nav>`;
+    if (lang === "en") {
+      // English: render full tool-specific content
+      if (toolData.useCases?.items?.length) {
+        const items = toolData.useCases.items.map(i => `<li>${escHtml(i)}</li>`).join("");
+        richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+          <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">${escHtml(toolData.useCases.title)}</h2>
+          <p style="margin-bottom:0.75rem">${escHtml(toolData.useCases.description)}</p>
+          <ul style="padding-left:1.5rem;line-height:1.8">${items}</ul>
+        </section>`;
+      }
+      if (toolData.tutorial?.steps?.length) {
+        const steps = toolData.tutorial.steps.map((s) =>
+          `<li style="margin-bottom:0.75rem"><strong>${escHtml(s.step)}:</strong> ${escHtml(s.detail)}</li>`
+        ).join("");
+        richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+          <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">${escHtml(toolData.tutorial.title)}</h2>
+          <ol style="padding-left:1.5rem;line-height:1.8">${steps}</ol>
+        </section>`;
+      }
+      if (toolData.faqs?.length) {
+        const faqs = toolData.faqs.map(f =>
+          `<div style="margin-bottom:1rem"><h3 style="font-size:1rem;font-weight:600;margin-bottom:0.25rem">${escHtml(f.question)}</h3><p style="line-height:1.7">${escHtml(f.answer)}</p></div>`
+        ).join("");
+        richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+          <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:0.75rem">Frequently Asked Questions</h2>
+          ${faqs}
+        </section>`;
+      }
+      const realLinks = toolData.internalLinks?.filter(l => !l.href.startsWith("/blog/")) || [];
+      if (realLinks.length) {
+        const links = realLinks.map(l =>
+          `<a href="${escHtml(l.href)}" style="color:#2563eb;text-decoration:none;margin-right:1.5rem">${escHtml(l.text)}</a>`
+        ).join("");
+        richContent += `<nav style="margin:1.5rem 0;text-align:left;max-width:800px;width:100%;flex-wrap:wrap;display:flex;gap:0.5rem">${links}</nav>`;
+      }
+    } else {
+      // Language pages: replace English tool content with full native-language body
+      richContent += buildLangToolContent(h1Text.split(" - ")[0] || h1Text, lang);
     }
   }
 
@@ -2714,9 +2958,10 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
     });
     let homeToolSections = "";
     for (const [cat, tools] of Object.entries(toolsByCategory)) {
+      const catLabel = LL ? getLangCatLabel(cat, lang) : cat;
       const toolLinks = tools.map(t => `<a href="${escHtml(t.href)}" style="${lnkStyle}">${escHtml(t.text)}</a>`).join("");
       homeToolSections += `<div style="margin-bottom:1.25rem">
-        <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:0.5rem;color:#334155;text-transform:uppercase;letter-spacing:0.05em">${escHtml(cat)}</h3>
+        <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:0.5rem;color:#334155;text-transform:uppercase;letter-spacing:0.05em">${escHtml(catLabel)}</h3>
         <div style="display:flex;flex-wrap:wrap">${toolLinks}</div>
       </div>`;
     }
@@ -2744,27 +2989,32 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
       { href: "/pdf-file-formats-guide", text: "PDF Formats Guide" },
     ].map(f => `<a href="${escHtml(f.href)}" style="${lnkStyle}">${escHtml(f.text)}</a>`).join("");
 
+    const allToolsLabel = LL ? LL.exploreAll : "All Free PDF & Image Tools";
+    const toolCatsLabel = LL ? LL.browseByCategory : "Tool Categories";
+    const guidesLabel = LL ? LL.howToGuides : "PDF Guides & Tutorials";
+
     richContent += `<section style="margin:2.5rem 0 1rem;text-align:left;max-width:900px;width:100%">
-      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:#0f172a">All Free PDF &amp; Image Tools</h2>
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:#0f172a">${escHtml(allToolsLabel)}</h2>
       ${homeToolSections}
     </section>
     <section style="margin:2rem 0;text-align:left;max-width:900px;width:100%">
-      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:#0f172a">Tool Categories</h2>
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:#0f172a">${escHtml(toolCatsLabel)}</h2>
       <div style="display:flex;flex-wrap:wrap">${catHubLinks}</div>
     </section>
     <section style="margin:2rem 0;text-align:left;max-width:900px;width:100%">
-      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:#0f172a">PDF Guides &amp; Tutorials</h2>
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:#0f172a">${escHtml(guidesLabel)}</h2>
       <div style="display:flex;flex-wrap:wrap">${blogLinks}</div>
     </section>
     <nav style="margin:2rem 0;text-align:left;max-width:900px;width:100%">
-      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:#0f172a">Company</h2>
+      <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;color:#0f172a">${escHtml(LL ? LL.whyChoose : "Company")}</h2>
       <div style="display:flex;flex-wrap:wrap">${footerLinks}</div>
     </nav>`;
   } else {
     const allToolLinks = ALL_TOOLS.filter(t => t.href !== canonicalPath)
       .map(t => `<a href="${escHtml(t.href)}" style="${lnkStyle}">${escHtml(t.text)}</a>`).join("");
+    const exploreLabel = LL ? LL.exploreAll : "Explore All Free PDF &amp; Image Tools";
     richContent += `<section style="margin:2.5rem 0 1rem;padding:1.5rem;background:#f8fafc;border-radius:8px;text-align:left;max-width:800px;width:100%">
-      <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;color:#0f172a">Explore All Free PDF &amp; Image Tools</h2>
+      <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;color:#0f172a">${escHtml(exploreLabel)}</h2>
       <div style="display:flex;flex-wrap:wrap;gap:0.35rem">${allToolLinks}</div>
     </section>`;
   }
