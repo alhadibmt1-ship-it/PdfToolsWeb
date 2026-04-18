@@ -1944,8 +1944,12 @@ export function generateMetaTags(path: string): string {
   const effectiveCanonicalUrl = canonicalUrl;
 
   // Country pages: NO hreflang (no translated equivalents exist for /tools/ or country pages)
+  // Blog posts: EN-only content → only emit en + x-default (not 13-language pointing to non-existent URLs)
   // Language pages: full 13-language hreflang set
-  const effectiveHreflangBlock = (progSlugMatch || directProgPage) ? "" : hreflangBlock;
+  const blogOnlyHreflangBlock = blogPost
+    ? `\n    <!-- Hreflang (EN-only blog content) -->\n    <link rel="alternate" hreflang="en" href="${BASE_URL}/blog/${blogPost.slug}" />\n    <link rel="alternate" hreflang="x-default" href="${BASE_URL}/blog/${blogPost.slug}" />`
+    : "";
+  const effectiveHreflangBlock = (progSlugMatch || directProgPage) ? "" : (blogPost ? blogOnlyHreflangBlock : hreflangBlock);
 
   // ── Override seo title/description from progPage for generated pages ──────
   let effectiveTitle = progPage ? progPage.title : seo.title;
@@ -2139,6 +2143,8 @@ export function generateMetaTags(path: string): string {
       "url": `${BASE_URL}${canonicalPath}`,
       "applicationCategory": "Utilities",
       "operatingSystem": "Web Browser",
+      "datePublished": "2025-12-16",
+      "dateModified": "2026-04-18",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
       "author": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
       ...countrySchema
