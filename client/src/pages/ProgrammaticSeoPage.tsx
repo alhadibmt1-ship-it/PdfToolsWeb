@@ -85,14 +85,6 @@ export default function ProgrammaticSeoPage() {
     description: page?.description || "",
     keywords: countryKeywords || undefined,
     canonicalPath: `/tools/${slug}`,
-    structuredData: page ? {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": page.h1,
-      "description": page.description,
-      "url": `${BASE_URL}/tools/${slug}`,
-      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
-    } : undefined
   });
 
   // FAQPage + SoftwareApplication + BreadcrumbList are already injected server-side for programmatic pages.

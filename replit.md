@@ -18,7 +18,7 @@ The backend is built with Express.js and TypeScript. PDF processing uses `pdf-li
 Client-side user preferences and theme settings are stored in `localStorage`. For future persistent data, Drizzle ORM and NeonDB are configured for PostgreSQL.
 
 ### UI/UX Design
-The design focuses on a "Clean Modern Utility Design" with a vibrant color scheme. TrustBadges and RelatedTools, inspired by PDF24, are integrated to enhance user confidence and tool discovery. Each tool page includes SEO-rich content like "About Our Tool," "How to Use," and FAQs.
+The design focuses on a "Clean Modern Utility Design" with a vibrant color scheme. TrustBadges, RelatedTools, and CountrySpotlight are integrated to enhance user confidence and tool discovery. CountrySpotlight shows top-20 country-specific landing page links on /compress, /merge, /pdf-to-word, /sign-pdf, and /protect-pdf. Each tool page includes SEO-rich content like "About Our Tool," "How to Use," and FAQs. The /sign-pdf page includes a legal validity section covering US ESIGN, EU eIDAS, and UK eIDAS regulations.
 
 ### Technical Features
 - **Performance**: Optimized with WebP images, code splitting, asynchronous font loading, deferred analytics, and preconnect hints.
@@ -38,7 +38,7 @@ The design focuses on a "Clean Modern Utility Design" with a vibrant color schem
   - faqQ1() helper: 6 structurally distinct FAQ Q1 question patterns — wired into all 11 tool generators + 3 country page generators; edit-pdf previously used banned pattern (fixed T007)
   - toolCount() helper: 6 varied phrasings of "49+ free tools" (eliminates repetition)
   - NOINDEX_COUNTRY_SLUGS: 35 low-volume countries skipped from genCountryPages + genCountryToolPages
-  - COUNTRY_SPECIFIC_FAQS: 16-country native-language FAQ map appended to all 11 tool FAQ arrays + 3 country page FAQ arrays (compress-pdf-online + edit-pdf wired in T007)
+  - COUNTRY_SPECIFIC_FAQS: 24-country native-language FAQ map (France RGPD, Spain LOPDGDD, Italy Codice Privacy, South Korea PIPA, Poland RODO, Argentina Ley 25.326, Turkey KVKK, Thailand PDPA added — all in native language) appended to all 11 tool FAQ arrays + 3 country page FAQ arrays
   - COUNTRY_DOC_SCENARIOS: 24-country × up-to-11-tool specific doc scenario map; replaces use-case bullet[0] in generator for top countries (T008: added France, South Korea, Spain, Italy, Poland, Argentina, Turkey, Thailand in native language)
   - TOP_20_COUNTRY_SLUGS: Set of 20 high-volume countries targeted for enhanced content (5th variant, specific FAQs, doc scenarios)
   - compress-pdf-online-{c} differentiated as "browser vs. desktop software" (4 angles: cost, any-device, IT-restriction, infrequent-use)

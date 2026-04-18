@@ -51,6 +51,17 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
+// 301 redirects for legacy/duplicate URLs — keeps link equity flowing to canonical targets
+app.use((req, res, next) => {
+  const redirects: Record<string, string> = {
+    "/free-pdf-editor": "/edit-pdf",
+    "/free-pdf-converter": "/convert-pdf",
+  };
+  const target = redirects[req.path];
+  if (target) return res.redirect(301, target);
+  next();
+});
+
 // Security headers for SEO and protection
 app.use((req, res, next) => {
   // Prevent MIME type sniffing
