@@ -260,7 +260,7 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
     tutorial: {
       title: (n) => `${n} verwenden: Schritt-für-Schritt-Anleitung`,
       steps: [
-        { step: "Datei hochladen", detail: "Ziehen Sie Ihre PDF-Datei per Drag & Drop in den Upload-Bereich oder klicken Sie auf „Datei auswählen", um sie auf Ihrem Gerät zu suchen." },
+        { step: "Datei hochladen", detail: "Ziehen Sie Ihre PDF-Datei per Drag & Drop in den Upload-Bereich oder klicken Sie auf „Datei auswählen”, um sie auf Ihrem Gerät zu suchen." },
         { step: "Einstellungen anpassen", detail: "Konfigurieren Sie die verfügbaren Optionen nach Ihren Anforderungen: Ausgabequalität, Seitenbereich oder weitere Parameter." },
         { step: "Verarbeitung starten", detail: "Klicken Sie auf die Schaltfläche und warten Sie wenige Sekunden — die Verarbeitung erfolgt auf unseren sicheren Servern." },
         { step: "Ergebnis herunterladen", detail: "Nach der Verarbeitung steht Ihre Datei sofort zum Download bereit. Sie wird automatisch nach einigen Minuten von unseren Servern gelöscht." },
@@ -277,7 +277,7 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
       title: "Häufige Probleme und Lösungen",
       issues: [
         { problem: "Die PDF-Datei lässt sich nicht hochladen oder eine Fehlermeldung erscheint", solution: "Prüfen Sie, ob die Datei passwortgeschützt oder beschädigt ist. Bei verschlüsselten PDFs nutzen Sie zunächst unser PDF-Entsperrungstool und versuchen Sie es danach erneut." },
-        { problem: "Die Ausgabequalität entspricht nicht den Erwartungen", solution: "Erhöhen Sie den Qualitätswert in den erweiterten Einstellungen. Für Dokumente mit hochauflösenden Bildern wählen Sie den Modus „Maximale Qualität"." },
+        { problem: "Die Ausgabequalität entspricht nicht den Erwartungen", solution: "Erhöhen Sie den Qualitätswert in den erweiterten Einstellungen. Für Dokumente mit hochauflösenden Bildern wählen Sie den Modus „Maximale Qualität”." },
       ],
     },
     security: {

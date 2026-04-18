@@ -160,7 +160,7 @@ export default function ImageCompressorPage() {
                     <Label className="mb-2 block">Quality: {quality[0]}%</Label>
                     <Slider
                       value={quality}
-                      onValueChange={setQuality}
+                      onValueChange={(val) => setQuality(val as typeof quality)}
                       min={10}
                       max={100}
                       step={5}
