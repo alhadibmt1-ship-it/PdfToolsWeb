@@ -29,6 +29,14 @@ The design focuses on a "Clean Modern Utility Design" with a vibrant color schem
 - **Interactive Editing**: Canvas-based editing tools with real-time preview and undo functionality.
 - **Pre-render Shell**: Rich static HTML is generated server-side for all page types (tools, blogs, programmatic, category hubs) to optimize initial content delivery for crawlers.
 - **Programmatic SEO**: Extensive generation of landing pages based on various parameters (countries, industries, document types) with deep country-specific content uniqueness.
+  - COUNTRY_RICH system provides local portals, document names, compliance laws, and cities for 170 countries
+  - 4 structural content variants per page type (slugVariant hash determines which variant)
+  - secPara() helper: 5 structurally distinct data-security closing paragraphs (eliminates template fingerprint)
+  - faqYes() helper: 6 varied FAQ answer openers (eliminates uniform "Yes." pattern)
+  - toolCount() helper: 6 varied phrasings of "49+ free tools" (eliminates repetition)
+  - NOINDEX_COUNTRY_SLUGS: 35 low-volume countries skipped from genCountryPages + genCountryToolPages
+  - compress-pdf-online-{c} differentiated as "browser vs. desktop software" (4 angles: cost, any-device, IT-restriction, infrequent-use)
+  - free-pdf-tools-{c} differentiated as "cost-comparison vs. paid tools" (vs. Adobe/Smallpdf paid tiers)
 
 ## External Dependencies
 
