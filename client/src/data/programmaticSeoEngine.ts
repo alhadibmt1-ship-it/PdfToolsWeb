@@ -677,6 +677,326 @@ const COUNTRY_SPECIFIC_FAQS: Record<string, Array<{ question: string; answer: st
   "netherlands": [
     { question: "Moet ik mijn belastingaangifte comprimeren voor Mijn Belastingdienst?", answer: "Ja — de Belastingdienst portal heeft bestandsgroottelimieten voor bijlagen bij de belastingaangifte. Comprimeer uw belastingaangifte en DigiD-documenten tot minder dan 2 MB om uploadfouten te voorkomen bij het indienen via Mijn Belastingdienst." },
   ],
+  // ── Americas ──────────────────────────────────────────────────────────────
+  "usa": [
+    { question: "Can I compress my W-2 and IRS tax documents before uploading to IRS Direct File or state portals?", answer: "Yes — IRS portals, USCIS immigration services, and federal government portals enforce file size limits on PDF attachments. Compressing your W-2 forms, 1099 documents, and supporting schedules to under 2 MB prevents upload errors and ensures your federal tax submission is accepted on the first attempt." },
+  ],
+  "brazil": [
+    { question: "Posso comprimir meu IRPF e documentos da Receita Federal antes de enviar pelo Gov.br?", answer: "Sim — a Receita Federal e o Gov.br têm limites de tamanho para anexos de documentos fiscais. Comprimir sua declaração de IRPF, contracheques e documentos CPF para menos de 2 MB evita erros de envio e garante que sua declaração fiscal brasileira seja aceita sem problemas." },
+  ],
+  "colombia": [
+    { question: "Can I compress my DIAN tax return documents for online submission in Colombia?", answer: "Yes — the DIAN portal and Cancillería digital services in Colombia enforce upload size limits on tax return attachments. Compressing your Declaración de Renta, RUT documents, and DIAN forms to under 2 MB prevents submission errors and ensures your Colombian tax filing is processed promptly." },
+  ],
+  "chile": [
+    { question: "Can I compress my Declaración de Renta documents before uploading to the SII portal in Chile?", answer: "Yes — the SII and ChileAtiende portals have file size restrictions for tax return attachments. Compressing your Declaración de Renta, RUT certificate, and supporting receipts to under 2 MB prevents upload failures and ensures your Chilean tax submission is accepted through the SII online system." },
+  ],
+  "peru": [
+    { question: "Can I compress my Declaración Jurada documents for SUNAT online submission in Peru?", answer: "Yes — the SUNAT and Gob.pe portals enforce file size limits for PDFs. Compressing your Declaración Jurada, RUC certificate, and tax documents to under 2 MB prevents upload rejections and ensures your Peruvian tax submission is accepted through the SUNAT online platform." },
+  ],
+  "venezuela": [
+    { question: "Can I compress my SENIAT tax documents for online submission in Venezuela?", answer: "Yes — the SENIAT portal and SUDEBAN financial services have file size limits for uploaded documents. Compressing your tax declarations and identity documents to under 2 MB helps ensure successful submissions to Venezuelan government digital portals." },
+  ],
+  "bolivia": [
+    { question: "Can I compress my SIN tax forms before uploading to the Bolivian government portal?", answer: "Yes — the SIN tax authority and AJ digital portals in Bolivia have upload size limits for tax return documents. Compressing your tax forms and identity documents to under 2 MB prevents errors and ensures your Bolivian government submission is processed correctly." },
+  ],
+  "ecuador": [
+    { question: "Can I compress my SRI tax documents before filing online in Ecuador?", answer: "Yes — the SRI and SENESCYT digital portals in Ecuador enforce file size limits for attachments. Compressing your Declaración de Impuesto a la Renta and supporting documents to under 2 MB prevents upload errors and ensures your Ecuadorian tax submission goes through without issues." },
+  ],
+  "uruguay": [
+    { question: "Can I compress my DGI tax documents for online submission in Uruguay?", answer: "Yes — the DGI and BPS digital portals in Uruguay have file size limits for PDF attachments. Compressing your tax declarations, cédula scans, and BPS contribution documents to under 2 MB prevents upload errors and ensures your Uruguayan government submission is accepted." },
+  ],
+  "paraguay": [
+    { question: "Can I compress my SET tax documents before uploading to the Paraguayan government portal?", answer: "Yes — the SET tax authority and MOPC portals in Paraguay enforce upload size restrictions. Compressing your Declaración Jurada and RUC documents to under 2 MB ensures your Paraguayan tax filing is processed without errors." },
+  ],
+  "guatemala": [
+    { question: "Can I compress my SAT tax documents for online filing in Guatemala?", answer: "Yes — the SAT portal and MARN digital services in Guatemala have file size limits for PDF uploads. Compressing your Declaración de ISR and NIT documents to under 2 MB prevents submission errors and ensures your Guatemalan tax return is accepted through the SAT online portal." },
+  ],
+  "honduras": [
+    { question: "Can I compress my SAR tax documents for online submission in Honduras?", answer: "Yes — the SAR and SEFIN digital portals in Honduras enforce upload size limits for tax documents. Compressing your Declaración de Impuesto Sobre la Renta and RTN documents to under 2 MB prevents errors and ensures your Honduran tax submission is processed successfully." },
+  ],
+  "el-salvador": [
+    { question: "Can I compress my DGII tax forms before uploading to the El Salvador government portal?", answer: "Yes — the DGII and BFA digital portals in El Salvador have file size limits for PDF attachments. Compressing your Declaración de Renta, NIT documents, and tax forms to under 2 MB prevents upload rejections and ensures your Salvadoran government submission is accepted." },
+  ],
+  "nicaragua": [
+    { question: "Can I compress my DGI tax documents for online filing in Nicaragua?", answer: "Yes — the DGI and INSS portals in Nicaragua enforce upload size restrictions for tax return documents. Compressing your Declaración Anual and RUC documents to under 2 MB prevents submission errors and ensures your Nicaraguan tax filing is processed without issues." },
+  ],
+  "costa-rica": [
+    { question: "Can I compress my Hacienda tax documents for online submission in Costa Rica?", answer: "Yes — the Hacienda digital portal and SUGEF financial services in Costa Rica have file size limits for PDF attachments. Compressing your Declaración de Renta and cédula jurídica documents to under 2 MB prevents upload errors and ensures your Costa Rican tax submission is accepted." },
+  ],
+  "panama": [
+    { question: "Can I compress my DGI tax documents before uploading to the Panama government portal?", answer: "Yes — the DGI and MEF digital portals in Panama enforce upload size limits for tax return documents. Compressing your Declaración de Renta, RUC certificate, and supporting documents to under 2 MB ensures your Panamanian tax submission is processed without errors." },
+  ],
+  "dominican-republic": [
+    { question: "Can I compress my DGII tax documents for online filing in the Dominican Republic?", answer: "Yes — the DGII and TSS digital portals in the Dominican Republic have file size restrictions for PDF uploads. Compressing your Declaración de Impuesto Sobre la Renta and RNC documents to under 2 MB prevents upload failures and ensures your Dominican tax submission is accepted." },
+  ],
+  "jamaica": [
+    { question: "Can I compress my TAJ tax documents before uploading to the Jamaica government portal?", answer: "Yes — the TAJ portal and JIPO digital services in Jamaica enforce file size limits for tax return attachments. Compressing your income tax returns, TRN documents, and supporting schedules to under 2 MB prevents upload errors and ensures your Jamaican government submission goes through." },
+  ],
+  "trinidad-tobago": [
+    { question: "Can I compress my TTBIR tax documents for online submission in Trinidad & Tobago?", answer: "Yes — the TTBIR and TTConnect digital portals in Trinidad & Tobago enforce upload size limits for tax documents. Compressing your income tax returns and BIR Number documents to under 2 MB prevents submission errors and ensures your T&T tax filing is accepted without delays." },
+  ],
+  "barbados": [
+    { question: "Can I compress my BRA tax documents before uploading to the Barbados government portal?", answer: "Yes — the BRA and BCC digital portals in Barbados have file size limits for PDF attachments. Compressing your income tax returns and NIS documents to under 2 MB prevents upload rejections and ensures your Barbadian government submission is processed correctly." },
+  ],
+  "guyana": [
+    { question: "Can I compress my GRA tax documents for online submission in Guyana?", answer: "Yes — the GRA and GLSC digital portals in Guyana enforce upload size limits for tax return documents. Compressing your income tax returns and TIN documents to under 2 MB prevents errors and ensures your Guyanese government submission is accepted." },
+  ],
+  "suriname": [
+    { question: "Can I compress my DIB tax documents before filing online in Suriname?", answer: "Yes — the DIB and CBvS digital portals in Suriname have file size restrictions for PDF uploads. Compressing your tax declarations and identity documents to under 2 MB ensures your Surinamese government submission is processed without issues." },
+  ],
+  "belize": [
+    { question: "Can I compress my BNBS tax documents for online submission in Belize?", answer: "Yes — the BNBS and BTB digital portals in Belize enforce upload size limits for government document submissions. Compressing your tax returns and identity documents to under 2 MB prevents upload errors and ensures your Belizean government submission is accepted." },
+  ],
+  "bahamas": [
+    { question: "Can I compress my DOI documents before uploading to the Bahamas government portal?", answer: "Yes — the DOI and BFSB digital portals in the Bahamas have file size limits for PDF attachments. Compressing your business licence applications, tax documents, and identity records to under 2 MB prevents upload rejections and ensures your Bahamian government submission goes through." },
+  ],
+  "new-zealand": [
+    { question: "Can I compress my IRD tax documents before uploading to myIR in New Zealand?", answer: "Yes — the IRD myIR portal and Business.govt.nz digital services in New Zealand enforce file size limits for tax return attachments. Compressing your IR3 tax returns, GST forms, and payslip records to under 2 MB prevents upload errors and ensures your NZ tax submission is accepted." },
+  ],
+  "fiji": [
+    { question: "Can I compress my FRCA tax documents for online submission in Fiji?", answer: "Yes — the FRCA and FRCS digital portals in Fiji have upload size limits for tax return documents. Compressing your income tax returns, TIN documents, and supporting schedules to under 2 MB prevents submission errors and ensures your Fijian government filing is processed correctly." },
+  ],
+  "papua-new-guinea": [
+    { question: "Can I compress my IRC tax documents before uploading to the PNG government portal?", answer: "Yes — the IRC and IPA digital portals in Papua New Guinea enforce upload size limits for tax documents. Compressing your income tax returns and TIN certificates to under 2 MB prevents errors and ensures your PNG government submission is accepted without delays." },
+  ],
+  // ── Europe ──────────────────────────────────────────────────────────────────
+  "russia": [
+    { question: "Нужно ли мне сжимать налоговые документы перед загрузкой на Госуслуги?", answer: "Да — портал Госуслуги и ФНС имеют ограничения на размер файлов для вложений налоговых деклараций. Сжатие деклараций по налогу на прибыль, ИНН-документов и подтверждающих материалов до 2 МБ предотвращает ошибки загрузки и обеспечивает принятие вашей российской налоговой декларации." },
+  ],
+  "norway": [
+    { question: "Do I need to compress my tax documents before uploading to Altinn in Norway?", answer: "Yes — the Altinn portal and Skatteetaten digital services in Norway have file size limits for tax return attachments. Compressing your Skattemelding, employment income documents, and supporting receipts to under 2 MB prevents upload errors and ensures your Norwegian tax submission is accepted without delays." },
+  ],
+  "denmark": [
+    { question: "Do I need to compress my tax documents before uploading to borger.dk in Denmark?", answer: "Yes — the borger.dk portal and SKAT digital services in Denmark enforce file size limits for tax attachments. Compressing your Selvangivelse and NemID documents to under 2 MB prevents upload rejections and ensures your Danish tax submission is processed correctly." },
+  ],
+  "finland": [
+    { question: "Do I need to compress my Veroilmoitus before uploading to Vero.fi in Finland?", answer: "Yes — the Vero.fi portal and Suomi.fi digital services in Finland have file size restrictions for tax return attachments. Compressing your Veroilmoitus, employer certificates, and supporting documents to under 2 MB prevents upload errors and ensures your Finnish tax submission is accepted." },
+  ],
+  "belgium": [
+    { question: "Do I need to compress my tax documents before uploading to MyMinfin in Belgium?", answer: "Yes — the MyMinfin and CBSS digital portals in Belgium enforce file size limits for tax return attachments. Compressing your Déclaration fiscale, identity documents, and salary certificates to under 2 MB prevents upload errors and ensures your Belgian tax submission is accepted through MyMinfin." },
+  ],
+  "switzerland": [
+    { question: "Do I need to compress my Steuererklärung before uploading to EasyGov in Switzerland?", answer: "Yes — the EasyGov portal and ESTV SuisseTax in Switzerland have upload size restrictions for tax documents. Compressing your Steuererklärung and AHV documents to under 2 MB prevents submission errors and ensures your Swiss federal and cantonal tax filing is accepted without issues." },
+  ],
+  "austria": [
+    { question: "Muss ich meine Steuererklärung komprimieren, bevor ich sie über Finanz Online in Österreich einreiche?", answer: "Ja — das Finanz Online Portal und USP in Österreich haben Dateigrößenbeschränkungen für Steueranlagen. Komprimieren Sie Ihre Steuererklärung, Lohnzettel und Sozialversicherungsdokumente auf unter 2 MB, um Uploadfehler zu vermeiden und Ihre österreichische Steuererklärung erfolgreich einzureichen." },
+  ],
+  "czech-republic": [
+    { question: "Do I need to compress my Daňové přiznání before uploading to Moje Daně in Czech Republic?", answer: "Yes — the Moje Daně and CzechPOINT digital portals in Czech Republic have file size limits for tax return attachments. Compressing your Daňové přiznání, birth certificate scans, and supporting documents to under 2 MB prevents upload errors and ensures your Czech tax submission is accepted." },
+  ],
+  "hungary": [
+    { question: "Do I need to compress my adóbevallás before uploading to eSZJA in Hungary?", answer: "Yes — the eSZJA portal and Magyarország.hu digital services in Hungary have file size restrictions for tax return attachments. Compressing your adóbevallás, personal identity documents, and payslips to under 2 MB prevents upload errors and ensures your Hungarian tax submission is processed correctly." },
+  ],
+  "slovakia": [
+    { question: "Do I need to compress my Daňové priznanie before uploading to Financná Sprava in Slovakia?", answer: "Yes — the Financná Sprava and UPVS digital portals in Slovakia enforce file size limits for tax return attachments. Compressing your Daňové priznanie, employee certificates, and supporting documents to under 2 MB prevents upload rejections and ensures your Slovak tax submission is accepted." },
+  ],
+  "serbia": [
+    { question: "Do I need to compress my tax documents before uploading to ePorezi in Serbia?", answer: "Yes — the ePorezi and eUprava digital portals in Serbia have file size limits for PDF submissions. Compressing your Poreska prijava, identity documents, and supporting evidence to under 2 MB prevents upload errors and ensures your Serbian government submission is accepted without delays." },
+  ],
+  "croatia": [
+    { question: "Do I need to compress my Porezna prijava before uploading to ePorezna in Croatia?", answer: "Yes — the ePorezna and ePisarnica digital portals in Croatia enforce upload size limits for tax documents. Compressing your Porezna prijava, JMBG identity documents, and employer certificates to under 2 MB prevents submission errors and ensures your Croatian tax filing is accepted." },
+  ],
+  "bulgaria": [
+    { question: "Do I need to compress my tax declaration before uploading to NRA or eGov.bg in Bulgaria?", answer: "Yes — the NRA and eGov.bg digital portals in Bulgaria have file size limits for tax declaration attachments. Compressing your Годишна данъчна декларация, identity documents, and income certificates to under 2 MB prevents upload errors and ensures your Bulgarian tax submission is processed correctly." },
+  ],
+  "ireland": [
+    { question: "Do I need to compress my tax documents before uploading to Revenue in Ireland?", answer: "Yes — the Revenue MyGovID portal in Ireland enforces file size limits for tax return attachments. Compressing your Form 11, payslips, pension documents, and supporting receipts to under 2 MB prevents upload errors and ensures your Irish tax return is submitted successfully through the Revenue online system." },
+  ],
+  "belarus": [
+    { question: "Do I need to compress my tax documents before uploading to Nalog.gov.by in Belarus?", answer: "Yes — the Nalog.gov.by and portal.gov.by digital services in Belarus have file size limits for uploaded tax documents. Compressing your tax declarations and identity records to under 2 MB prevents submission errors and ensures your Belarusian government filing is accepted." },
+  ],
+  "estonia": [
+    { question: "Do I need to compress my Maksudeklaratsioon before uploading to eesti.ee in Estonia?", answer: "Yes — the eesti.ee and X-Road digital government portals in Estonia have upload size restrictions for tax documents. Compressing your Maksudeklaratsioon and digital identity documents to under 1 MB ensures fast submission and acceptance through Estonia's e-government system, one of the most advanced in Europe." },
+  ],
+  "latvia": [
+    { question: "Do I need to compress my Gada ienākumu deklarācija before uploading to latvija.lv in Latvia?", answer: "Yes — the latvija.lv and EDS digital portals in Latvia enforce file size limits for tax return attachments. Compressing your Gada ienākumu deklarācija and identity documents to under 2 MB prevents upload errors and ensures your Latvian tax submission is accepted without issues." },
+  ],
+  "lithuania": [
+    { question: "Do I need to compress my Metinė pajamų deklaracija before uploading to vmi.lt in Lithuania?", answer: "Yes — the vmi.lt and epaslaugos digital portals in Lithuania have file size limits for tax declaration attachments. Compressing your Metinė pajamų deklaracija, employer certificates, and supporting documents to under 2 MB prevents upload errors and ensures your Lithuanian tax submission is processed correctly." },
+  ],
+  "slovenia": [
+    { question: "Do I need to compress my Davčna napoved before uploading to eDavki in Slovenia?", answer: "Yes — the eDavki and e-Uprava digital portals in Slovenia enforce upload size limits for tax return documents. Compressing your Davčna napoved, EMŠO identity documents, and income certificates to under 2 MB prevents submission errors and ensures your Slovenian tax filing is accepted." },
+  ],
+  "luxembourg": [
+    { question: "Do I need to compress my Déclaration fiscale before uploading to MyGuichet.lu in Luxembourg?", answer: "Yes — the MyGuichet.lu portal and AED digital services in Luxembourg have file size limits for tax declaration attachments. Compressing your Déclaration d'impôt and supporting identity documents to under 2 MB prevents upload errors and ensures your Luxembourg tax return is accepted." },
+  ],
+  "malta": [
+    { question: "Do I need to compress my Income Tax Return before uploading to CFR Services in Malta?", answer: "Yes — the CFR Services and MyMalta digital portals enforce file size limits for tax return attachments. Compressing your Maltese Income Tax Return, ID card scans, and employer FS3 forms to under 2 MB prevents upload errors and ensures your Maltese tax submission is accepted by the Inland Revenue." },
+  ],
+  "cyprus": [
+    { question: "Do I need to compress my Φορολογική Δήλωση before uploading to TAXISnet in Cyprus?", answer: "Yes — the TAXISnet and Ariadne digital portals in Cyprus enforce file size limits for tax return documents. Compressing your Φορολογική Δήλωση, identity documents, and payslips to under 2 MB prevents upload errors and ensures your Cypriot tax submission is processed correctly." },
+  ],
+  "iceland": [
+    { question: "Do I need to compress my Skattframtal before uploading to Skatturinn in Iceland?", answer: "Yes — the Skatturinn portal and Island.is digital services in Iceland have upload size restrictions for tax return documents. Compressing your Skattframtal, kennitala identity documents, and income certificates to under 2 MB prevents submission errors and ensures your Icelandic tax filing is accepted." },
+  ],
+  "andorra": [
+    { question: "Do I need to compress my tax documents before uploading to ANA or Govern.ad in Andorra?", answer: "Yes — the Govern.ad portal and ANA digital services in Andorra have file size limits for administrative document submissions. Compressing your tax declarations and identity documents to under 2 MB prevents upload errors and ensures your Andorran government submission is accepted." },
+  ],
+  "romania": [
+    { question: "Do I need to compress my Declarație Fiscală before uploading to ANAF in Romania?", answer: "Yes — the ANAF and Romania.gov.ro digital portals enforce file size limits for tax return attachments. Compressing your Declarație de venit, CNP identity documents, and employer certificates to under 2 MB prevents upload errors and ensures your Romanian tax submission is accepted without delays." },
+  ],
+  "ukraine": [
+    { question: "Do I need to compress my tax declaration before uploading to Diia or tax.gov.ua in Ukraine?", answer: "Yes — the Diia app and tax.gov.ua digital portals in Ukraine enforce file size limits for tax declaration attachments. Compressing your Податкова декларація, INN documents, and supporting evidence to under 2 MB prevents upload errors and ensures your Ukrainian government submission is accepted." },
+  ],
+  "greece": [
+    { question: "Χρειάζεται να συμπιέσω τη φορολογική μου δήλωση πριν την υποβολή στο AADE;", answer: "Ναι — το AADE και το gov.gr έχουν όρια μεγέθους αρχείου για τα συνημμένα φορολογικών δηλώσεων. Η συμπίεση της φορολογικής σας δήλωσης Ε1, εγγράφων ΑΦΜ και αποδείξεων σε λιγότερο από 2 MB αποτρέπει σφάλματα μεταφόρτωσης στο ελληνικό σύστημα e-filing." },
+  ],
+  "portugal": [
+    { question: "Preciso comprimir a minha Declaração de IRS antes de entregar no Portal das Finanças?", answer: "Sim — o Portal das Finanças e o SNS24 têm limites de tamanho de ficheiro para os anexos das declarações de IRS. Comprimir a sua Declaração de IRS, documentação NIF e certificados de rendimentos para menos de 2 MB evita erros de envio e garante que a sua declaração fiscal portuguesa é aceite sem problemas." },
+  ],
+  // ── Middle East ───────────────────────────────────────────────────────────
+  "saudi-arabia": [
+    { question: "Can I compress my Zakat or VAT documents before uploading to Absher in Saudi Arabia?", answer: "Yes — the Absher and Muqeem portals in Saudi Arabia enforce upload size limits for government document submissions. Compressing your VAT returns, Iqama documents, and Zakat filing attachments to under 2 MB prevents upload errors and ensures your Saudi digital government submission is accepted from Riyadh, Jeddah, or Dammam." },
+  ],
+  "qatar": [
+    { question: "Can I compress my tax documents before uploading to Hukoomi or Metrash2 in Qatar?", answer: "Yes — the Hukoomi portal and Metrash2 digital services in Qatar enforce file size limits for government document uploads. Compressing your Qatar ID applications, business registration documents, and VAT returns to under 2 MB prevents upload errors and ensures your Qatari digital government submission is accepted." },
+  ],
+  "kuwait": [
+    { question: "Can I compress my documents before uploading to MOI eServices or PACI in Kuwait?", answer: "Yes — the MOI eServices and PACI digital portals in Kuwait have upload size limits for civil identification and government document submissions. Compressing your Civil ID applications, residence documents, and government forms to under 2 MB prevents errors and ensures your Kuwaiti digital submission is accepted." },
+  ],
+  "israel": [
+    { question: "Can I compress my tax documents before uploading to the MISIM portal in Israel?", answer: "Yes — the Gov.il and MISIM digital portals in Israel enforce file size limits for Mas Hachnasa (income tax) attachments. Compressing your annual tax return, Teudat Zehut documents, and supporting receipts to under 2 MB prevents upload errors and ensures your Israeli tax submission is processed correctly." },
+  ],
+  "jordan": [
+    { question: "Can I compress my tax documents before uploading to the ISTD portal in Jordan?", answer: "Yes — the ISTD and e-Gov digital portals in Jordan enforce file size limits for income tax return attachments. Compressing your tax declarations, National ID documents, and supporting receipts to under 2 MB prevents submission errors and ensures your Jordanian tax filing is accepted." },
+  ],
+  "lebanon": [
+    { question: "Can I compress my tax documents before uploading to MOF or LRA portals in Lebanon?", answer: "Yes — the MOF and LRA digital portals in Lebanon have file size limits for tax return submissions. Compressing your income tax declarations, commercial register documents, and supporting evidence to under 2 MB prevents upload errors and ensures your Lebanese government filing is accepted." },
+  ],
+  "oman": [
+    { question: "Can I compress my VAT or income tax documents before uploading to the Oman Tax Authority portal?", answer: "Yes — the Oman Tax Authority and Invest Easy digital portals enforce upload size limits for VAT returns and tax filings. Compressing your tax documents, commercial registration certificates, and Civil Card records to under 2 MB prevents errors and ensures your Omani digital submission is accepted." },
+  ],
+  "bahrain": [
+    { question: "Can I compress my NBR tax documents before uploading to Bahrain government portals?", answer: "Yes — the NBR portal and Bahrain.bh digital government services enforce file size limits for VAT return attachments. Compressing your VAT declarations, CPR identity documents, and commercial registration records to under 2 MB prevents upload errors and ensures your Bahraini tax submission is accepted." },
+  ],
+  "iran": [
+    { question: "Can I compress my tax documents before uploading to my.tax.gov.ir in Iran?", answer: "Yes — the my.tax.gov.ir portal and Shahrvand digital services in Iran have upload size limits for tax return documents. Compressing your Maliati declarations, Melli Card documents, and supporting receipts to under 2 MB prevents submission errors and ensures your Iranian tax filing is accepted." },
+  ],
+  // ── Asia ─────────────────────────────────────────────────────────────────
+  "china": [
+    { question: "在向税务局或GSXT提交PDF文件前，我需要压缩它吗？", answer: "是的——税务局网上申报系统和GSXT工商信息平台对上传附件有文件大小限制。将您的个人所得税申报表、营业执照扫描件和增值税发票压缩到2MB以下，可以避免上传失败，确保您的中国税务文件顺利提交。" },
+  ],
+  "pakistan": [
+    { question: "Can I compress my FBR tax return documents before uploading to Iris portal in Pakistan?", answer: "Yes — the FBR Iris portal and NADRA digital services in Pakistan enforce file size limits for income tax return attachments. Compressing your ITR documents, CNIC scans, and salary certificates to under 2 MB prevents upload errors and ensures your Pakistani tax submission is accepted on the first attempt." },
+  ],
+  "bangladesh": [
+    { question: "Can I compress my NBR eTax documents before uploading to the Bangladesh tax portal?", answer: "Yes — the NBR eTax and BRTA digital portals in Bangladesh have file size limits for tax return attachments. Compressing your Income Tax Returns, NID card documents, and supporting certificates to under 2 MB prevents upload errors and ensures your Bangladeshi government submission is processed correctly." },
+  ],
+  "sri-lanka": [
+    { question: "Can I compress my IRD documents before uploading to the Sri Lanka tax portal?", answer: "Yes — the IRD Sri Lanka and BRTA digital portals have upload size restrictions for tax return documents. Compressing your income tax returns, NIC card scans, and employer certificates to under 2 MB prevents submission errors and ensures your Sri Lankan government filing is accepted." },
+  ],
+  "nepal": [
+    { question: "Can I compress my IRD Nepal tax documents before uploading to the government portal?", answer: "Yes — the IRD Nepal and OCMCM digital portals have file size limits for income tax return attachments. Compressing your Aaykar Bibaran, Citizenship Certificate scans, and PAN documents to under 2 MB prevents upload errors and ensures your Nepali government submission is accepted." },
+  ],
+  "vietnam": [
+    { question: "Tôi có cần nén tài liệu thuế eTax VN trước khi nộp qua cổng thuế điện tử không?", answer: "Có — cổng eTax VN và DRVN có giới hạn kích thước tệp cho các phụ lục tờ khai thuế. Nén tờ khai thuế thu nhập cá nhân, tài liệu CMND/CCCD và các chứng từ hỗ trợ xuống dưới 2 MB giúp tránh lỗi tải lên và đảm bảo bản khai thuế của bạn được chấp nhận thành công." },
+  ],
+  "taiwan": [
+    { question: "在向台灣eTax或MyData申報個人所得稅前，我需要壓縮PDF嗎？", answer: "是的——台灣eTax申報系統和MyData平台對附件大小有限制。將您的綜合所得稅申報書、身分證影本和扣繳憑單壓縮到2MB以下，可避免上傳失敗，確保您的台灣稅務申報順利完成。" },
+  ],
+  "hong-kong": [
+    { question: "Can I compress my salaries tax documents before uploading to GovHK or eTAX in Hong Kong?", answer: "Yes — the GovHK portal and eTAX digital services in Hong Kong enforce upload size limits for Salaries Tax return attachments. Compressing your BIR60 tax returns, HKID scans, and employer's tax documents to under 2 MB prevents upload errors and ensures your Hong Kong Inland Revenue submission is accepted." },
+  ],
+  "cambodia": [
+    { question: "Can I compress my GDT tax documents before uploading to the Cambodian government portal?", answer: "Yes — the GDT and MPTC digital portals in Cambodia enforce file size limits for tax return submissions. Compressing your profit tax returns, National ID scans, and supporting documents to under 2 MB prevents errors and ensures your Cambodian government submission is accepted." },
+  ],
+  "kazakhstan": [
+    { question: "Нужно ли мне сжимать налоговые документы перед загрузкой на egov.kz в Казахстане?", answer: "Да — портал egov.kz и Kaz-tax имеют ограничения на размер загружаемых файлов. Сжатие деклараций по ИПН, удостоверения личности и подтверждающих документов до 2 МБ предотвращает ошибки загрузки и обеспечивает принятие вашей казахстанской налоговой декларации." },
+  ],
+  "uzbekistan": [
+    { question: "Солиқ ҳужжатларимни my.gov.uz порталига юклашдан олдин сиқиб чиқаришим керакми?", answer: "Ҳа — my.gov.uz ва SoliqServis рақамли порталлари солиқ декларацияси илова ҳужжатлари учун файл ҳажмига чеклов белгилаган. Солиқ декларацияларингизни, паспорт нусхаларингизни ва тасдиқловчи ҳужжатларингизни 2 МБ дан кам бўладиган ҳажмга сиқиш юклашдаги хатоликларни олдини олади." },
+  ],
+  "brunei": [
+    { question: "Can I compress my tax documents before uploading to BruConnect or e-Darussalam in Brunei?", answer: "Yes — the BruConnect portal and e-Darussalam digital services in Brunei enforce file size limits for government document submissions. Compressing your income tax returns, IC identity documents, and government forms to under 2 MB prevents upload errors and ensures your Brunei government submission is accepted." },
+  ],
+  "azerbaijan": [
+    { question: "Can I compress my tax documents before uploading to e-gov.az or ASAN in Azerbaijan?", answer: "Yes — the e-gov.az portal and ASAN service centres in Azerbaijan enforce upload size limits for tax return documents. Compressing your income tax declarations, Şəxsiyyət vəsiqəsi scans, and VÖEN documents to under 2 MB prevents submission errors and ensures your Azerbaijani government filing is accepted." },
+  ],
+  "armenia": [
+    { question: "Can I compress my tax documents before uploading to e-gov.am or tax.gov.am in Armenia?", answer: "Yes — the e-gov.am and tax.gov.am digital portals in Armenia enforce file size limits for income tax declaration attachments. Compressing your Եկամտի հայտարարագիր forms, passport scans, and supporting documents to under 2 MB prevents upload errors and ensures your Armenian tax submission is processed correctly." },
+  ],
+  "georgia": [
+    { question: "Can I compress my tax documents before uploading to rs.ge or my.gov.ge in Georgia?", answer: "Yes — the rs.ge Revenue Service and my.gov.ge digital portals in Georgia enforce file size limits for income tax declaration attachments. Compressing your საშემოსავლო გადასახადის deklarations, ID card scans, and employer certificates to under 2 MB prevents submission errors and ensures your Georgian tax filing is accepted." },
+  ],
+  // ── Africa ───────────────────────────────────────────────────────────────
+  "egypt": [
+    { question: "Can I compress my ETA tax documents before uploading to the Nafeza portal in Egypt?", answer: "Yes — the ETA and Nafeza digital portals in Egypt have file size limits for tax return attachments. Compressing your income tax declarations, National ID scans, and supporting certificates to under 2 MB prevents upload errors and ensures your Egyptian tax submission is accepted through the digital government portal." },
+  ],
+  "morocco": [
+    { question: "Dois-je compresser ma Déclaration de revenus avant de la soumettre sur le portail DGI du Maroc?", answer: "Oui — le portail DGI et la CNSS au Maroc imposent des limites de taille de fichier pour les pièces jointes de déclaration de revenus. Compresser votre déclaration d'IR, les copies de votre CIN et les justificatifs à moins de 2 Mo évite les erreurs d'envoi et garantit l'acceptation de votre déclaration fiscale marocaine." },
+  ],
+  "kenya": [
+    { question: "Can I compress my KRA iTax documents before uploading to the eCitizen portal in Kenya?", answer: "Yes — the KRA iTax portal and eCitizen digital services in Kenya enforce file size limits for tax return attachments. Compressing your P9 forms, KRA PIN certificates, and income tax returns to under 2 MB prevents upload errors and ensures your Kenyan tax submission is accepted from Nairobi, Mombasa, or Kisumu." },
+  ],
+  "ghana": [
+    { question: "Can I compress my GRA tax documents before uploading to the Ghana government portal?", answer: "Yes — the GRA and Ghana.gov.gh digital portals enforce file size limits for income tax return attachments. Compressing your Annual Income Tax Returns, Ghana Card scans, and TIN documents to under 2 MB prevents upload errors and ensures your Ghanaian tax submission is processed correctly." },
+  ],
+  "ethiopia": [
+    { question: "Can I compress my ERCA tax documents before uploading to the Ethiopian government portal?", answer: "Yes — the ERCA and MoR digital portals in Ethiopia have file size limits for income tax declaration attachments. Compressing your income tax returns, Kebele ID scans, and TIN documents to under 2 MB prevents upload errors and ensures your Ethiopian government submission is accepted." },
+  ],
+  "south-africa": [
+    { question: "Can I compress my SARS eFiling documents before uploading my ITR12 in South Africa?", answer: "Yes — the SARS eFiling portal and Home Affairs digital services in South Africa enforce file size limits for tax return attachments. Compressing your ITR12, IRP5 certificates, and medical aid tax certificates to under 2 MB prevents upload errors and ensures your South African tax submission is accepted on the first attempt." },
+  ],
+  "tanzania": [
+    { question: "Can I compress my TRA tax documents before uploading to the Tanzania government portal?", answer: "Yes — the TRA and BRELA digital portals in Tanzania enforce file size limits for income tax return attachments. Compressing your ITR forms, NIDA national ID documents, and TIN certificates to under 2 MB prevents upload errors and ensures your Tanzanian government submission is accepted." },
+  ],
+  "uganda": [
+    { question: "Can I compress my URA tax documents before uploading to the Uganda government portal?", answer: "Yes — the URA and URSB digital portals in Uganda enforce upload size limits for income tax return attachments. Compressing your income tax returns, National ID scans, and TIN documents to under 2 MB prevents submission errors and ensures your Ugandan government filing is accepted." },
+  ],
+  "cameroon": [
+    { question: "Dois-je compresser mes documents fiscaux DGI avant de les soumettre sur les portails gouvernementaux camerounais?", answer: "Oui — le portail DGI et le CDIP au Cameroun imposent des limites de taille de fichier pour les déclarations fiscales. Comprimer votre déclaration d'impôt sur le revenu, les copies de votre CNI et les justificatifs à moins de 2 Mo évite les erreurs d'envoi et garantit l'acceptation de votre déclaration fiscale camerounaise." },
+  ],
+  "ivory-coast": [
+    { question: "Dois-je compresser mes documents fiscaux DGI avant de les soumettre sur e-Impôts en Côte d'Ivoire?", answer: "Oui — le portail e-Impôts et la DGI en Côte d'Ivoire ont des restrictions de taille de fichier pour les pièces jointes de déclaration de revenus. Comprimer votre déclaration d'ITS, les copies de votre CNI et les certificats d'employeur à moins de 2 Mo évite les erreurs d'envoi et garantit l'acceptation de votre dossier fiscal ivoirien." },
+  ],
+  "algeria": [
+    { question: "هل أحتاج إلى ضغط وثائق الضريبة قبل الرفع على بوابة الضرائب الجزائرية؟", answer: "نعم — بوابة الضرائب DGI ومنصة jur2fisc في الجزائر لها حدود لحجم الملفات المرفقة. ضغط الإقرار الضريبي السنوي ووثائق بطاقة التعريف الوطنية إلى أقل من 2 ميغابايت يمنع أخطاء الرفع ويضمن قبول ملفك الضريبي الجزائري." },
+  ],
+  "tunisia": [
+    { question: "Dois-je compresser mes documents fiscaux DGI avant de les soumettre sur Tunisia.gov.tn?", answer: "Oui — le portail DGI et Tunisia.gov.tn ont des limites de taille de fichier pour les déclarations fiscales. Comprimer votre déclaration d'impôt sur le revenu, les copies de votre CIN et les justificatifs à moins de 2 Mo évite les erreurs d'envoi et garantit l'acceptation de votre déclaration fiscale tunisienne." },
+  ],
+  "sudan": [
+    { question: "Can I compress my STA tax documents before uploading to the Sudan government portal?", answer: "Yes — the STA and Sudan.gov.sd digital portals have file size limits for tax return submissions. Compressing your income tax declarations, National ID scans, and supporting documents to under 2 MB prevents upload errors and ensures your Sudanese government submission is accepted." },
+  ],
+  "zimbabwe": [
+    { question: "Can I compress my ZIMRA tax documents before uploading to Zimbabwe e-Services?", answer: "Yes — the ZIMRA e-Services portal and Zimbabwe digital government services enforce file size limits for income tax return attachments. Compressing your ITF 263 tax returns, National ID scans, and ZIMRA registration documents to under 2 MB prevents upload errors and ensures your Zimbabwean tax submission is processed correctly." },
+  ],
+  "angola": [
+    { question: "Preciso comprimir os meus documentos AGT antes de enviar pela plataforma BUE em Angola?", answer: "Sim — a AGT e o BUE em Angola têm limites de tamanho para os anexos das declarações fiscais. Comprimir a sua declaração de IRT, documentos NIF e BI para menos de 2 MB evita erros de envio e garante que a sua declaração fiscal angolana é aceite sem problemas." },
+  ],
+  "zambia": [
+    { question: "Can I compress my ZRA tax documents before uploading to the Zambia government portal?", answer: "Yes — the ZRA and PACRA digital portals in Zambia enforce file size limits for income tax return attachments. Compressing your income tax returns, NRC identity documents, and TPIN certificates to under 2 MB prevents upload errors and ensures your Zambian government filing is accepted." },
+  ],
+  "mozambique": [
+    { question: "Preciso comprimir os meus documentos AT antes de enviar pelo portal do governo de Moçambique?", answer: "Sim — a AT e o INSS em Moçambique têm limites de tamanho para os anexos de declarações fiscais. Comprimir a sua declaração de IRPS, documentos NUIT e BI para menos de 2 MB evita erros de envio e garante que a sua declaração fiscal moçambicana é aceite." },
+  ],
+  "senegal": [
+    { question: "Dois-je compresser mes documents DGID avant de les soumettre sur Sénégal-services?", answer: "Oui — le portail DGID et Sénégal-services ont des limites de taille de fichier pour les déclarations fiscales. Comprimer votre déclaration d'impôt sur le revenu, les copies de votre CNI et les justificatifs à moins de 2 Mo évite les erreurs d'envoi et garantit l'acceptation de votre dossier fiscal sénégalais." },
+  ],
+  "rwanda": [
+    { question: "Can I compress my RRA tax documents before uploading to Irembo in Rwanda?", answer: "Yes — the RRA portal and Irembo digital government services in Rwanda enforce upload size limits for income tax return attachments. Compressing your annual income tax returns, National ID scans, and TIN documents to under 2 MB prevents upload errors and ensures your Rwandan government submission is accepted." },
+  ],
+  "drc": [
+    { question: "Dois-je compresser mes documents DGRAD avant de les soumettre sur les portails gouvernementaux de la RDC?", answer: "Oui — le portail DGRAD et la DGDA en République Démocratique du Congo imposent des limites de taille de fichier pour les déclarations fiscales. Comprimer votre déclaration d'impôt sur le revenu et les copies de votre pièce d'identité à moins de 2 Mo garantit l'acceptation de votre dossier fiscal congolais." },
+  ],
+  "botswana": [
+    { question: "Can I compress my BURS tax documents before uploading to the Botswana government portal?", answer: "Yes — the BURS and CIPA digital portals in Botswana enforce file size limits for income tax return attachments. Compressing your ITF 261 tax returns, Omang national ID scans, and BURS registration documents to under 2 MB prevents upload errors and ensures your Botswana government submission is accepted." },
+  ],
+  "namibia": [
+    { question: "Can I compress my NamRA tax documents before uploading to the Namibia government portal?", answer: "Yes — the NamRA and NBS digital portals in Namibia enforce upload size limits for income tax return attachments. Compressing your income tax returns, National ID scans, and supporting documents to under 2 MB prevents submission errors and ensures your Namibian government filing is accepted." },
+  ],
+  "gabon": [
+    { question: "Dois-je compresser mes documents DGI avant de les soumettre sur Gabon.go.ga?", answer: "Oui — le portail DGI et Gabon.go.ga ont des limites de taille pour les déclarations fiscales. Comprimer votre déclaration d'impôt sur le revenu, votre carte d'identité et les justificatifs à moins de 2 Mo évite les erreurs d'envoi et garantit l'acceptation de votre dossier fiscal gabonais." },
+  ],
+  "congo": [
+    { question: "Dois-je compresser mes documents DGI avant de les soumettre sur Congo-gov.cg?", answer: "Oui — le portail DGI de la République du Congo et Congo-gov.cg ont des restrictions de taille de fichier pour les déclarations fiscales. Comprimer votre déclaration d'impôt sur le revenu et les documents d'identité à moins de 2 Mo garantit l'acceptation de votre dossier fiscal congolais." },
+  ],
+  "mauritius": [
+    { question: "Can I compress my MRA tax documents before uploading to the Mauritius government portal?", answer: "Yes — the MRA and CIEE digital portals in Mauritius enforce file size limits for income tax return attachments. Compressing your income tax returns, National Identity Card scans, and employer TDS certificates to under 2 MB prevents upload errors and ensures your Mauritian tax submission is accepted." },
+  ],
+  "malawi": [
+    { question: "Can I compress my MRA tax documents before uploading to the Malawi government portal?", answer: "Yes — the MRA and MBRS digital portals in Malawi enforce file size limits for income tax return attachments. Compressing your income tax returns, National ID scans, and TPIN documents to under 2 MB prevents upload errors and ensures your Malawian government filing is accepted." },
+  ],
 };
 
 // Per-country, per-tool first use-case scenario strings for top-20 countries
