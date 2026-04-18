@@ -2413,7 +2413,7 @@ function markdownToHtml(md: string, maxWords = 600): string {
   return parts.join("\n");
 }
 
-function generatePreRenderShell(canonicalPath: string): string {
+function generatePreRenderShell(canonicalPath: string, lang: string = "en"): string {
   try {
   const config = seoConfig[canonicalPath];
   const isHome = canonicalPath === "/";
@@ -2433,30 +2433,77 @@ function generatePreRenderShell(canonicalPath: string): string {
   // Category hub: /convert-pdf, /edit-pdf-tools, etc.
   const categoryHub = categoryHubs.find(h => `/${h.slug}` === canonicalPath);
 
+  // Helper: strip brand suffix from any translated title string
+  const stripBrand = (s: string) =>
+    s.replace(/\s*[|—–]\s*PDF HUB 24\s*$/, "").trim();
+
   let h1Text = "";
   let descText = "";
 
   if (isHome) {
     h1Text = "Professional PDF Tools — 100% Free Online";
     descText = "Convert, merge, compress, edit, sign, and secure PDF files instantly. 49 free tools with no registration, no watermarks, and no file size tricks. Trusted by users worldwide.";
+    // Language homepage: use native-language H1 derived from LANG_HOME_TITLE
+    if (lang !== "en" && LANG_HOME_TITLE[lang]) {
+      // Strip leading "PDF HUB 24 — " brand prefix to get the value-prop as H1
+      h1Text = LANG_HOME_TITLE[lang].replace(/^PDF HUB 24\s*[—–]\s*/, "").trim();
+      descText = LANG_HOME_DESC[lang] || descText;
+    }
   } else if (blogPost) {
     h1Text = blogPost.title || "";
     descText = blogPost.excerpt || "";
+    // Blog language pages: use translated title if available
+    if (lang !== "en") {
+      const blogMeta = getBlogMeta(lang, blogPost.slug);
+      if (blogMeta?.[0]) h1Text = stripBrand(blogMeta[0]);
+      if (blogMeta?.[1]) descText = blogMeta[1];
+    }
   } else if (progPage) {
     h1Text = (progPage.title || "").split(" | ")[0];
     descText = progPage.description || "";
   } else if (categoryHub) {
     h1Text = categoryHub.h1 || "";
     descText = categoryHub.description || "";
+    // Category hub language pages: use translated title
+    if (lang !== "en" && LANG_CATEGORY[canonicalPath]?.[lang]) {
+      const [catTitle, catDesc] = LANG_CATEGORY[canonicalPath][lang];
+      h1Text = stripBrand(catTitle);
+      descText = catDesc || descText;
+    }
   } else if (toolData) {
     h1Text = toolData.longTailH1 || config?.title?.split(" | ")[0] || "";
     descText = toolData.metaDescription || config?.description || "";
+    // Tool language pages: use native-language tool name + "100% free" suffix
+    if (lang !== "en") {
+      const toolKey = PATH_TO_TOOL_KEY[canonicalPath];
+      const translatedName = toolKey
+        ? (TOOL_TITLE_TRANSLATIONS as Record<string, Partial<Record<string,string>>>)[toolKey]?.[lang]
+        : undefined;
+      if (translatedName) {
+        const free100 = LANG_100_FREE[lang] || "";
+        h1Text = free100 ? `${translatedName} - 100% ${free100}` : translatedName;
+        const descTpl = LANG_DESC_TEMPLATE[lang];
+        if (descTpl) descText = descTpl.replace("{name}", translatedName);
+      }
+    }
   } else if (config?.h1) {
     h1Text = config.h1;
     descText = config.description || "";
+    // Static config page language: use LANG_STATIC translated title
+    if (lang !== "en" && LANG_STATIC[canonicalPath]?.[lang]) {
+      const [stTitle, stDesc] = LANG_STATIC[canonicalPath][lang];
+      h1Text = stripBrand(stTitle);
+      descText = stDesc || descText;
+    }
   } else if (config?.title) {
     h1Text = config.title.split(" | ")[0];
     descText = config.description || "";
+    // Static config page language: use LANG_STATIC translated title
+    if (lang !== "en" && LANG_STATIC[canonicalPath]?.[lang]) {
+      const [stTitle, stDesc] = LANG_STATIC[canonicalPath][lang];
+      h1Text = stripBrand(stTitle);
+      descText = stDesc || descText;
+    }
   } else {
     return "";
   }
@@ -2744,7 +2791,7 @@ function generatePreRenderShell(canonicalPath: string): string {
 export function injectSEO(html: string, path: string): string {
   const { lang, canonicalPath } = stripLangPrefix(path);
   const metaTags = generateMetaTags(path);
-  const preRenderShell = generatePreRenderShell(canonicalPath);
+  const preRenderShell = generatePreRenderShell(canonicalPath, lang);
   const dir = (lang === "ar" || lang === "ur") ? "rtl" : "ltr";
   
   return html
