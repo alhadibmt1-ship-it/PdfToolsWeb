@@ -136,9 +136,9 @@ function TranslatedSlugRoutes() {
   for (const [englishSlug, langs] of Object.entries(TOOL_SLUG_TRANSLATIONS)) {
     const Component = ENGLISH_SLUG_TO_COMPONENT[englishSlug];
     if (!Component) continue;
-    for (const translatedSlug of Object.values(langs)) {
+    for (const [langCode, translatedSlug] of Object.entries(langs)) {
       if (translatedSlug && translatedSlug !== englishSlug) {
-        routes.push(<Route key={translatedSlug} path={`/${translatedSlug}`} component={Component} />);
+        routes.push(<Route key={`${englishSlug}__${langCode}__${translatedSlug}`} path={`/${translatedSlug}`} component={Component} />);
       }
     }
   }

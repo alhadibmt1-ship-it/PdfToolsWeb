@@ -9,6 +9,7 @@ import { getToolSEOData, ToolSEOData } from "@/data/toolSEOData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { t, getLang } from "@/lib/languages";
 import { TOOL_CONTENT_TRANSLATIONS } from "@/lib/toolContentTranslations";
+import { TOOL_CATEGORY_MAP, CATEGORY_CONTENT } from "@/lib/toolCategoryContent";
 
 const FEATURED_BLOG_POSTS = [
   { slug: "best-free-pdf-tools-2026", title: "Best Free PDF Tools in 2026: The Complete Roundup", desc: "A comprehensive guide to the most useful PDF tools available for free online." },
@@ -56,16 +57,20 @@ export default function EnhancedToolSEOContent({
   const toolPath = tool?.path || "/";
   const category = tool?.category || "edit-pdf";
 
+  // Category-specific content override (ensures uniqueness across tools in same language)
+  const toolCat = TOOL_CATEGORY_MAP[toolId ?? ""];
+  const catContent = (tc && toolCat) ? (CATEGORY_CONTENT[lang]?.[toolCat] ?? null) : null;
+
   // Derived content: use translation if available, fall back to English seoData
   const aboutText = tc ? tc.about(toolName) : seoData.heroContent;
   const ucTitle = tc ? tc.useCases.title(toolName) : seoData.useCases.title;
   const ucDesc = tc ? tc.useCases.desc : seoData.useCases.description;
-  const ucItems = tc ? tc.useCases.items : seoData.useCases.items;
+  const ucItems = catContent?.useCaseItems ?? (tc ? tc.useCases.items : seoData.useCases.items);
   const tutTitle = tc ? tc.tutorial.title(toolName) : seoData.tutorial.title;
   const tutSteps = tc ? tc.tutorial.steps : seoData.tutorial.steps;
   const faqItemsTranslated = tc ? tc.faqs(toolName) : (seoData?.faqs || fallbackFaqs);
   const trTitle = tc ? tc.troubleshooting.title : seoData.troubleshooting.title;
-  const trIssues = tc ? tc.troubleshooting.issues : seoData.troubleshooting.issues;
+  const trIssues = catContent?.troubleshooting ?? (tc ? tc.troubleshooting.issues : seoData.troubleshooting.issues);
   const secTitle = tc ? tc.security.title : seoData.securitySection.title;
   const secContent = tc ? tc.security.content : seoData.securitySection.content;
   const secPoints = tc ? tc.security.points : seoData.securitySection.points;
