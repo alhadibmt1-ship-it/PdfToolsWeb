@@ -1,0 +1,242 @@
+You are a senior SEO engineer, technical auditor, and full-stack developer.
+
+Perform a COMPLETE, DEEP, and ACTIONABLE audit of the website:
+https://pdfhub24.com
+
+This is a large-scale programmatic SEO site. Your job is to CLEAN, OPTIMIZE, and PREPARE it for maximum Google indexing and ranking.
+
+Do NOT give generic advice. Provide precise, structured, and executable fixes.
+
+---
+
+PHASE 1: FULL SITE CRAWL & MAPPING
+
+- Crawl sitemap.xml and all internal links
+- Build a complete URL inventory
+- Group URLs into:
+  1. GLOBAL pages (/tools/tool-name)
+  2. LANGUAGE pages (/{lang}/tool-name)
+  3. COUNTRY pages (/tools/tool-name-country)
+
+Output:
+
+- Total URL count per group
+- Orphan pages
+- Deep pages (3+ clicks)
+
+---
+
+PHASE 2: URL STRUCTURE & INTENT ANALYSIS
+
+- Detect:
+  - Duplicate URLs
+  - Keyword cannibalization
+  - Same-intent pages across global/language/country
+
+Rules:
+
+- ONE page per intent
+- Each page must have a UNIQUE purpose
+
+Flag:
+
+- Competing pages
+- Weak differentiation
+
+---
+
+PHASE 3: DUPLICATE & PROGRAMMATIC CONTENT AUDIT
+
+- Measure:
+  - Content similarity %
+  - Sentence structure repetition
+  - Template patterns
+
+Classify each page:
+
+- HIGH UNIQUE
+- MEDIUM (needs improvement)
+- LOW (duplicate risk)
+
+If similarity >60% → flag as risk
+
+---
+
+PHASE 4: CONTENT QUALITY & SEO OPTIMIZATION
+
+For TOP 50 important pages:
+
+Generate:
+
+- SEO Title (high CTR)
+- Meta Description
+- H1
+- Target Keywords
+- Content outline (500–800 words)
+- FAQ schema ideas
+
+Check:
+
+- Thin content (<300 words)
+- Missing headings
+- Weak keyword targeting
+
+---
+
+PHASE 5: COUNTRY PAGE VALIDATION (HYBRID MODEL)
+
+For each country page:
+
+Verify:
+
+- Real localization (NOT just country name)
+- Local use cases (students, business, gov docs)
+- Local signals (cities, currency, laws)
+- Unique keyword targeting
+
+If missing:
+→ Mark as:
+
+- IMPROVE
+- NOINDEX (if weak)
+
+---
+
+PHASE 6: TECHNICAL SEO & CODE AUDIT
+
+Audit ALL pages:
+
+Check:
+
+- Core Web Vitals (LCP, CLS, INP)
+- Page speed issues
+- Render-blocking JS/CSS
+- Unused scripts/styles
+- Image optimization
+- Broken links (internal/external)
+- Missing alt attributes
+- Canonical tags correctness
+- hreflang implementation
+- Mobile responsiveness
+
+Provide:
+
+- Exact code-level fixes
+- Performance improvements
+
+---
+
+PHASE 7: INDEXING & CRAWL BUDGET
+
+Check:
+
+- robots.txt
+- meta robots tags
+- sitemap accuracy
+
+Identify:
+
+- Crawl waste pages
+- Low-value URLs
+
+Actions:
+
+- INDEX (high value)
+- NOINDEX (low/duplicate)
+- REMOVE (if useless)
+
+---
+
+PHASE 8: INTERNAL LINKING SYSTEM
+
+Analyze:
+
+- Link depth
+- Orphan pages
+- Anchor text usage
+
+Fix:
+
+- Global → related tools
+- Global → language pages
+- Country → global + language
+- Add contextual links
+
+---
+
+PHASE 9: AUTHORITY & RANKING SIGNALS
+
+Evaluate:
+
+- Pages with ranking potential
+- Content gaps
+- Missing backlinks
+
+Suggest:
+
+- Pages to push for traffic
+- Keyword gaps
+- Link-building targets
+
+---
+
+PHASE 10: FINAL REPORT (MANDATORY)
+
+Provide:
+
+1. CLEAN IDEAL SITE STRUCTURE
+2. Pages to KEEP
+3. Pages to NOINDEX
+4. Pages to DELETE
+5. Pages to MERGE
+
+TOP 20 PRIORITY PAGES:
+
+- Title
+- Meta Description
+- Keywords
+- Content improvements
+
+TECHNICAL ISSUES:
+
+- Errors list
+- Speed fixes
+- SEO problems
+
+---
+
+PHASE 11: EXECUTION ROADMAP
+
+DAY 1:
+
+- Quick fixes (meta, noindex, canonical)
+
+WEEK 1:
+
+- Content improvements
+- Internal linking
+
+MONTH 1:
+
+- Authority building
+- Ranking optimization
+
+---
+
+STRICT RULES
+
+- No duplicate intent pages
+- No thin content
+- No shallow localization
+- Each page must provide real value
+
+---
+
+FINAL GOAL
+
+- Maximum indexing efficiency
+- Clean SEO architecture
+- Higher rankings
+- Scalable growth
+
+Run a strict, professional-grade audit and provide actionable outputs.

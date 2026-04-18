@@ -70,10 +70,13 @@ export default function ProgrammaticSeoPage() {
 
   const siblingCountries = (() => {
     if (!countryInfo) return [];
-    return COUNTRIES
-      .filter(c => c.label !== countryInfo.countryLabel)
-      .sort(() => 0.5 - Math.random())
-      .slice(0, 8)
+    // Deterministic selection based on page slug hash — consistent for crawlers
+    let h = 0;
+    for (let i = 0; i < slug.length; i++) h = ((h << 5) - h + slug.charCodeAt(i)) | 0;
+    const seed = Math.abs(h);
+    const pool = COUNTRIES.filter(c => c.label !== countryInfo.countryLabel);
+    const start = seed % Math.max(1, pool.length - 8);
+    return pool.slice(start, start + 8)
       .map(c => ({ label: c.label, slug: `${countryInfo.toolSlug}-${c.slug}` }));
   })();
 
@@ -81,7 +84,7 @@ export default function ProgrammaticSeoPage() {
     title: page?.title || "PDF Tool | PDF HUB 24",
     description: page?.description || "",
     keywords: countryKeywords || undefined,
-    canonicalPath: countryInfo ? countryInfo.toolPath : `/tools/${slug}`,
+    canonicalPath: `/tools/${slug}`,
     structuredData: page ? {
       "@context": "https://schema.org",
       "@type": "WebPage",
