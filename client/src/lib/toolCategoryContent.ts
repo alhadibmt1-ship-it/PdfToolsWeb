@@ -1,23 +1,33 @@
 export type ToolCategory = 'compress' | 'merge_split' | 'pdf_to_editable' | 'pdf_to_image' | 'to_pdf' | 'security' | 'edit' | 'ocr_extract';
 
 export const TOOL_CATEGORY_MAP: Record<string, ToolCategory> = {
+  // Compress
   'compress-pdf': 'compress',
+  'compress': 'compress',
   'flatten-pdf': 'compress',
   'grayscale-pdf': 'compress',
   'batch-compress': 'compress',
+  // Merge / Split
   'merge-pdf': 'merge_split',
+  'merge': 'merge_split',
   'split-pdf': 'merge_split',
+  'split': 'merge_split',
   'extract-pages': 'merge_split',
   'delete-pages': 'merge_split',
   'reorder-pages': 'merge_split',
+  // PDF to Editable
   'pdf-to-word': 'pdf_to_editable',
   'pdf-to-excel': 'pdf_to_editable',
   'pdf-to-ppt': 'pdf_to_editable',
+  'pdf-to-powerpoint': 'pdf_to_editable',
+  // PDF to Image
   'pdf-to-jpg': 'pdf_to_image',
   'pdf-to-png': 'pdf_to_image',
+  // To PDF / Image tools
   'word-to-pdf': 'to_pdf',
   'excel-to-pdf': 'to_pdf',
   'ppt-to-pdf': 'to_pdf',
+  'powerpoint-to-pdf': 'to_pdf',
   'html-to-pdf': 'to_pdf',
   'jpg-to-pdf': 'to_pdf',
   'png-to-pdf': 'to_pdf',
@@ -30,14 +40,17 @@ export const TOOL_CATEGORY_MAP: Record<string, ToolCategory> = {
   'crop-image': 'to_pdf',
   'resize-image': 'to_pdf',
   'rotate-image': 'to_pdf',
+  // Security
   'protect-pdf': 'security',
   'unlock-pdf': 'security',
   'sign-pdf': 'security',
   'redact-pdf': 'security',
+  // Edit
   'add-watermark': 'edit',
   'add-page-numbers': 'edit',
   'crop-pdf': 'edit',
   'rotate-pdf': 'edit',
+  'rotate': 'edit',
   'annotate-pdf': 'edit',
   'edit-pdf': 'edit',
   'resize-pdf': 'edit',
@@ -45,6 +58,8 @@ export const TOOL_CATEGORY_MAP: Record<string, ToolCategory> = {
   'compare-pdf': 'edit',
   'pdf-viewer': 'edit',
   'translate-pdf': 'edit',
+  'pdf-to-pdfa': 'edit',
+  // OCR / Extract
   'ocr-pdf': 'ocr_extract',
   'extract-text': 'ocr_extract',
   'extract-images': 'ocr_extract',

@@ -8,6 +8,7 @@ import { useRecentTools } from "@/contexts/RecentToolsContext";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import EnhancedToolSEOContent from "@/components/LazyEnhancedSEO";
+import { useSEO } from "@/hooks/useSEO";
 
 function formatBytes(bytes: number) {
   if (bytes < 1024) return `${bytes} B`;
@@ -16,6 +17,13 @@ function formatBytes(bytes: number) {
 }
 
 export default function PdfToAPage() {
+  useSEO({
+    title: "Convert PDF to PDF/A Online Free — Long-Term Archival Format | PDF HUB 24",
+    description: "Convert PDF to PDF/A online free. Create ISO-compliant archival PDFs for legal, government, and long-term document storage. No signup.",
+    keywords: "convert pdf to pdf/a online free, pdf to pdfa converter free, pdf/a archival format online, make pdf iso compliant, pdf archiving standard",
+    canonicalPath: "/pdf-to-pdfa"
+  });
+
   const [file, setFile] = useState<File | null>(null);
   const [isConverting, setIsConverting] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
