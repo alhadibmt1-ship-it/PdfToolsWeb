@@ -2792,7 +2792,7 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
       </article>`;
       if (blogPost.relatedTools?.length) {
         const links = blogPost.relatedTools.map(t =>
-          `<a href="${escHtml(t.path)}" style="color:#2563eb;text-decoration:none">${escHtml(t.name)} — ${escHtml(t.description)}</a>`
+          `<a href="${escHtml(t.path)}" style="color:#E03535;text-decoration:none">${escHtml(t.name)} — ${escHtml(t.description)}</a>`
         ).join("<br>");
         richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
           <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">Related PDF Tools</h2>
@@ -2808,7 +2808,7 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
       const L = LANG_LABELS[lang];
       if (blogPost.relatedTools?.length && L) {
         const links = blogPost.relatedTools.map(t =>
-          `<a href="${escHtml(t.path)}" style="color:#2563eb;text-decoration:none">${escHtml(t.name)}</a>`
+          `<a href="${escHtml(t.path)}" style="color:#E03535;text-decoration:none">${escHtml(t.name)}</a>`
         ).join(" &bull; ");
         richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
           <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">${escHtml(L.relatedTools)}</h2>
@@ -2850,7 +2850,7 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
     }
     if (categoryHub.tools?.length) {
       const toolLinks = categoryHub.tools.map(t =>
-        `<li style="margin-bottom:0.5rem"><a href="${escHtml(t.path)}" style="color:#2563eb;text-decoration:none;font-weight:600">${escHtml(t.name)}</a> — ${escHtml(t.description)}</li>`
+        `<li style="margin-bottom:0.5rem"><a href="${escHtml(t.path)}" style="color:#E03535;text-decoration:none;font-weight:600">${escHtml(t.name)}</a> — ${escHtml(t.description)}</li>`
       ).join("");
       const availLabel = LL ? LL.availableTools : "Available Tools";
       richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
@@ -2906,7 +2906,7 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
       const realLinks = toolData.internalLinks?.filter(l => !l.href.startsWith("/blog/")) || [];
       if (realLinks.length) {
         const links = realLinks.map(l =>
-          `<a href="${escHtml(l.href)}" style="color:#2563eb;text-decoration:none;margin-right:1.5rem">${escHtml(l.text)}</a>`
+          `<a href="${escHtml(l.href)}" style="color:#E03535;text-decoration:none;margin-right:1.5rem">${escHtml(l.text)}</a>`
         ).join("");
         richContent += `<nav style="margin:1.5rem 0;text-align:left;max-width:800px;width:100%;flex-wrap:wrap;display:flex;gap:0.5rem">${links}</nav>`;
       }
@@ -3081,7 +3081,7 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
   // Small inline script only applies theme colors (no DOM creation)
   return `<div id="__psr" style="min-height:100vh;display:flex;flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,Inter,sans-serif;background:#ffffff;color:#0f172a">
   <div style="height:56px;border-bottom:1px solid rgba(0,0,0,0.08);display:flex;align-items:center;padding:0 1.5rem">
-    <a href="/" style="font-size:1.25rem;font-weight:700;color:#2563eb;text-decoration:none">PDF HUB 24</a>
+    <a href="/" style="font-size:1.25rem;font-weight:700;color:#E03535;text-decoration:none">PDF HUB 24</a>
   </div>
   <main style="flex:1;max-width:1024px;margin:0 auto;padding:2.5rem 1.5rem;width:100%">
     <h1 style="font-size:clamp(1.5rem,5vw,2.75rem);font-weight:700;line-height:1.15;margin-bottom:1rem">${escHtml(h1Text)}</h1>
