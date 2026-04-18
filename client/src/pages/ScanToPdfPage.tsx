@@ -7,6 +7,7 @@ import { useRecentTools } from "@/contexts/RecentToolsContext";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import EnhancedToolSEOContent from "@/components/LazyEnhancedSEO";
+import { useSEO } from "@/hooks/useSEO";
 
 interface CapturedImage {
   id: string;
@@ -15,6 +16,13 @@ interface CapturedImage {
 }
 
 export default function ScanToPdfPage() {
+  useSEO({
+    title: "Scan to PDF Online Free — Convert Camera Photos to PDF | PDF HUB 24",
+    description: "Scan to PDF online free. Convert camera photos and images to PDF instantly from your browser. No app download needed.",
+    keywords: "scan to pdf online free, scan document to pdf, photo to pdf scanner online, mobile scan to pdf, convert scanned image to pdf",
+    canonicalPath: "/scan-to-pdf"
+  });
+
   const [images, setImages] = useState<CapturedImage[]>([]);
   const [isConverting, setIsConverting] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState<string | null>(null);

@@ -10,6 +10,7 @@ import { useSettings } from "@/contexts/SettingsContext";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import EnhancedToolSEOContent from "@/components/LazyEnhancedSEO";
+import { useSEO } from "@/hooks/useSEO";
 
 function formatBytes(bytes: number) {
   if (bytes < 1024) return `${bytes} B`;
@@ -20,6 +21,13 @@ function formatBytes(bytes: number) {
 type CompressionLevel = "low" | "medium" | "high";
 
 export default function BatchCompressPage() {
+  useSEO({
+    title: "Batch Compress Multiple PDFs Free — Bulk PDF Compressor | PDF HUB 24",
+    description: "Batch compress multiple PDF files at once online free. Bulk PDF compressor reduces all files simultaneously. No signup required.",
+    keywords: "batch compress pdf, compress multiple pdfs at once, bulk pdf compression free, compress all pdfs online, batch pdf compressor",
+    canonicalPath: "/batch-compress"
+  });
+
   const { settings } = useSettings();
   const [files, setFiles] = useState<File[]>([]);
   const [level, setLevel] = useState<CompressionLevel>(settings.defaultCompressionLevel);

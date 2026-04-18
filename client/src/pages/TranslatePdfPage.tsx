@@ -10,6 +10,7 @@ import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import EnhancedToolSEOContent from "@/components/LazyEnhancedSEO";
 import CloudImportBar from "@/components/CloudImportBar";
+import { useSEO } from "@/hooks/useSEO";
 
 function formatBytes(bytes: number) {
   if (bytes < 1024) return `${bytes} B`;
@@ -72,6 +73,13 @@ const LANGUAGES = [
 ];
 
 export default function TranslatePdfPage() {
+  useSEO({
+    title: "Translate PDF Online Free — Convert PDF to Any Language | PDF HUB 24",
+    description: "Translate PDF online free. Convert your PDF document to Spanish, French, German, Chinese, Arabic and 50+ languages instantly.",
+    keywords: "translate pdf online free, pdf translator online free, translate pdf document to spanish, pdf to french translation free, online pdf language converter",
+    canonicalPath: "/translate-pdf"
+  });
+
   const [file, setFile] = useState<File | null>(null);
   const [sourceLang, setSourceLang] = useState("en");
   const [targetLang, setTargetLang] = useState("es");
