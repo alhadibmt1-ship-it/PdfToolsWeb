@@ -284,11 +284,11 @@ interface CRich { currency: string; cities: string; compliance: string; docs: st
 function v(currency: string, cities: string, compliance: string, docs: string, useCase: string, mobile: string): CRich { return { currency, cities, compliance, docs, useCase, mobile }; }
 
 const COUNTRY_RICH: Record<string, CRich> = {
-  "uk":                    v("GBP", "London, Manchester, and Birmingham", "UK GDPR", "P60 forms, self-assessment tax returns, and Companies House filings", "filing a self-assessment return with HMRC", "via email and WhatsApp"),
-  "australia":             v("AUD", "Sydney, Melbourne, and Brisbane", "Australian Privacy Act", "tax return documents, TFN declarations, and ABN registration forms", "lodging a tax return through myGov ATO", "via mobile apps"),
-  "canada":                v("CAD", "Toronto, Vancouver, and Montreal", "PIPEDA", "T4 slips, CRA benefit forms, and provincial health documents", "filing taxes through CRA My Account", "via email and cloud storage"),
-  "usa":                   v("USD", "New York, Los Angeles, and Chicago", "CCPA / US privacy law", "W-2 forms, 1040 tax returns, and Social Security notices", "filing a federal tax return with the IRS", "via email and document portals"),
-  "india":                 v("INR", "Mumbai, Delhi, and Bengaluru", "India IT Act / PDPB", "Form 16, Aadhaar-linked documents, and PAN card applications", "uploading documents to DigiLocker or ITR e-filing", "via WhatsApp and smartphone"),
+  "uk":                    v("GBP", "London, Manchester, and Birmingham", "UK GDPR / Data Protection Act 2018", "P60 forms, SA100 self-assessment tax returns, and Companies House annual accounts", "filing a self-assessment return with HMRC", "via email, WhatsApp, and banking apps"),
+  "australia":             v("AUD", "Sydney, Melbourne, and Brisbane", "Australian Privacy Act 1988 (APPs)", "PAYG summary forms, TFN declaration forms, and ABN registration documents", "lodging a tax return through myGov ATO", "via banking apps and mobile"),
+  "canada":                v("CAD", "Toronto, Vancouver, and Montreal", "PIPEDA / Canadian Privacy Act", "T4 slips, RRSP contribution receipts, and provincial benefit documents", "filing taxes through CRA My Account", "via email and banking apps"),
+  "usa":                   v("USD", "New York, Los Angeles, and Chicago", "CCPA / US Federal Privacy standards", "W-2 forms, 1040 tax returns, and Social Security benefit letters", "filing a federal tax return with the IRS", "via email and banking portals"),
+  "india":                 v("INR", "Mumbai, Delhi, and Bengaluru", "Digital Personal Data Protection Act 2023 (DPDPA)", "Form 16, Aadhaar-linked documents, and PAN card applications", "uploading documents to DigiLocker or ITR e-filing", "via WhatsApp and smartphone"),
   "germany":               v("EUR", "Berlin, Munich, and Hamburg", "GDPR / DSGVO", "Steuererklärung, Personalausweis scans, and Gewerbeanmeldung forms", "submitting an Elster tax declaration online", "via email and secure portal"),
   "france":                v("EUR", "Paris, Lyon, and Marseille", "RGPD (GDPR)", "déclarations de revenus, formulaires CERFA, and Carte Vitale documents", "submitting your tax return on impots.gouv.fr", "via email and mobile"),
   "spain":                 v("EUR", "Madrid, Barcelona, and Valencia", "GDPR (LOPDGDD)", "Modelo 303, DNI copies, and IRPF declarations", "filing your annual IRPF return on AEAT", "via mobile and email"),
@@ -298,23 +298,23 @@ const COUNTRY_RICH: Record<string, CRich> = {
   "mexico":                v("MXN", "Mexico City, Guadalajara, and Monterrey", "Ley Federal de Protección de Datos", "SAT annual returns, CURP documents, and RFC registration forms", "submitting your annual SAT return online", "via WhatsApp and email"),
   "pakistan":              v("PKR", "Karachi, Lahore, and Islamabad", "Pakistan data protection law", "income tax returns, CNIC copies, and NTN registration documents", "filing your return on FBR IRIS portal", "via WhatsApp and mobile"),
   "uae":                   v("AED", "Dubai, Abu Dhabi, and Sharjah", "UAE Federal Data Protection Law", "Emirates ID applications, VAT returns, and trade license renewals", "submitting documents through UAE PASS or eDNRD", "via mobile apps"),
-  "nigeria":               v("NGN", "Lagos, Abuja, and Port Harcourt", "Nigeria Data Protection Regulation", "TIN certificates, CAC registration forms, and FIRS tax documents", "registering a business or filing taxes with FIRS", "via WhatsApp and mobile data"),
-  "indonesia":             v("IDR", "Jakarta, Surabaya, and Bandung", "UU PDP (data protection law)", "SPT annual returns, e-KTP identity documents, and NPWP tax numbers", "filing your SPT on DJP Online", "via WhatsApp and ojek apps"),
+  "nigeria":               v("NGN", "Lagos, Abuja, and Port Harcourt", "Nigeria Data Protection Regulation (NDPR)", "TIN certificates, CAC Form CAC-IT/1, and FIRS withholding tax certificates", "registering a business or filing taxes on the FIRS portal", "via WhatsApp and mobile data"),
+  "indonesia":             v("IDR", "Jakarta, Surabaya, and Bandung", "Indonesia PDPA (UU No. 27/2022)", "SPT tahunan annual returns, e-KTP identity documents, and NPWP tax numbers", "filing your SPT on DJP Online", "via WhatsApp and mobile apps"),
   "turkey":                v("TRY", "Istanbul, Ankara, and Izmir", "KVKK (data protection law)", "e-Beyanname forms, TC Kimlik copies, and vergi levhası certificates", "submitting an e-Beyanname on e-Devlet", "via mobile and WhatsApp"),
   "saudi-arabia":          v("SAR", "Riyadh, Jeddah, and Dammam", "Saudi Personal Data Protection Law", "هوية وطنية copies, Zakat returns, and commercial registration documents", "submitting documents through Absher or Zakat portal", "via mobile apps"),
   "south-africa":          v("ZAR", "Johannesburg, Cape Town, and Durban", "POPIA", "SARS income tax returns, South African ID documents, and CIPC company forms", "filing your SARS return via eFiling", "via email and mobile banking apps"),
   "china":                 v("CNY", "Beijing, Shanghai, and Shenzhen", "PIPL (个人信息保护法)", "税务申报表 tax forms, 身份证 copies, and 营业执照 business licenses", "submitting documents on GSXT or tax bureaus", "via WeChat and mobile apps"),
-  "philippines":           v("PHP", "Manila, Cebu, and Davao", "Philippines Data Privacy Act", "BIR Form 1701 tax returns, PSA birth certificates, and TIN applications", "filing your BIR return on eFPS", "via mobile data and GCash"),
-  "bangladesh":            v("BDT", "Dhaka, Chittagong, and Sylhet", "Bangladesh data protection rules", "আয়কর রিটার্ন income tax forms, NID copies, and TIN certificates", "submitting your income tax return on NBR eTax", "via bKash and mobile data"),
+  "philippines":           v("PHP", "Manila, Cebu, and Davao", "Philippines Data Privacy Act (RA 10173)", "BIR Form 1701 tax returns, PHILSYS national ID, and TIN applications", "filing your BIR return on eFPS", "via GCash and mobile data"),
+  "bangladesh":            v("BDT", "Dhaka, Chittagong, and Sylhet", "Bangladesh Personal Data Protection Act (draft)", "আয়কর রিটার্ন income tax forms, NID copies, and TIN certificates", "submitting your income tax return on NBR eTax", "via bKash and mobile data"),
   "sri-lanka":             v("LKR", "Colombo, Kandy, and Galle", "Sri Lanka data protection law", "income tax returns, NIC copies, and company registration documents", "filing documents with IRD Sri Lanka", "via mobile data and email"),
   "nepal":                 v("NPR", "Kathmandu, Pokhara, and Lalitpur", "Nepal privacy regulations", "tax return forms, नागरिकता citizenship documents, and PAN registration", "submitting your कर विवरण on IRD Nepal", "via mobile data and email"),
-  "malaysia":              v("MYR", "Kuala Lumpur, Penang, and Johor Bahru", "Malaysia PDPA", "e-Filing tax forms, MyKad identity copies, and SSM company documents", "filing your income tax return on MyTax", "via mobile apps and email"),
-  "singapore":             v("SGD", "Singapore, Jurong, and Woodlands", "Singapore PDPA", "IR8A employment forms, NRIC copies, and CorpPass documents", "submitting your tax return on IRAS myTax Portal", "via email and SingPass"),
+  "malaysia":              v("MYR", "Kuala Lumpur, Penang, and Johor Bahru", "Malaysia PDPA 2010", "LHDN e-Filing forms, MyKad identity copies, and EP Form/CP58 certificates", "filing your income tax return on LHDN MyTax portal", "via banking apps and email"),
+  "singapore":             v("SGD", "Singapore, Jurong, and Woodlands", "Singapore PDPA 2012", "IR8A employment income forms, NRIC copies, and CorpPass-authenticated documents", "submitting your tax return on IRAS myTax Portal via SingPass", "via SingPass and email"),
   "thailand":              v("THB", "Bangkok, Chiang Mai, and Phuket", "Thailand PDPA", "ภ.ง.ด. tax forms, บัตรประชาชน national ID copies, and business registration", "filing your tax return on the RD Thailand portal", "via LINE messaging and mobile"),
   "vietnam":               v("VND", "Ho Chi Minh City, Hanoi, and Da Nang", "Vietnam Cybersecurity Law", "tờ khai thuế tax forms, căn cước công dân ID copies, and business licenses", "submitting your tax declaration on eTax VN", "via Zalo and mobile data"),
-  "egypt":                 v("EGP", "Cairo, Alexandria, and Giza", "Egypt data protection law", "بطاقة رقم قومي ID copies, tax declaration forms, and commercial registration", "submitting documents to ETA or Nafeza portal", "via WhatsApp and mobile"),
+  "egypt":                 v("EGP", "Cairo, Alexandria, and Giza", "Egypt Data Protection Law No. 151/2020", "بطاقة رقم قومي national ID copies, ضريبة الدخل income tax forms, and commercial registration", "submitting documents to ETA or Nafeza portal", "via WhatsApp and mobile"),
   "morocco":               v("MAD", "Casablanca, Rabat, and Marrakech", "Morocco data protection law", "CIN copies, déclarations fiscales, and CNSS registration documents", "filing your tax return on the DGI portal", "via WhatsApp and mobile"),
-  "kenya":                 v("KES", "Nairobi, Mombasa, and Kisumu", "Kenya Data Protection Act", "KRA PIN certificates, national ID copies, and business registration documents", "filing returns or applying for certificates on iTax or eCitizen", "via M-Pesa and mobile data"),
+  "kenya":                 v("KES", "Nairobi, Mombasa, and Kisumu", "Kenya Data Protection Act 2019", "KRA PIN certificates, Huduma Namba national ID, and business registration documents", "filing returns or applying for certificates on iTax or eCitizen", "via M-Pesa and mobile data"),
   "ghana":                 v("GHS", "Accra, Kumasi, and Tamale", "Ghana Data Protection Act", "Ghana Card copies, TIN certificates, and GRA tax returns", "submitting your tax return or registering on Ghana.gov.gh", "via mobile money and data"),
   "ethiopia":              v("ETB", "Addis Ababa, Dire Dawa, and Gondar", "Ethiopia data protection law", "TIN certificates, national ID copies, and ERCA tax forms", "filing documents with ERCA or MoR portal", "via mobile data and Telebirr"),
   "argentina":             v("ARS", "Buenos Aires, Córdoba, and Rosario", "Argentina data protection law (PDPA)", "AFIP income tax returns, CUIL/CUIT identity documents, and ANSES forms", "submitting your AFIP Ganancias return online", "via WhatsApp and email"),
@@ -472,6 +472,71 @@ function slugVariant6(slug: string): number {
   return Math.abs(h) % 6;
 }
 
+// 5th body-variant selector — returns 0-4; value 4 triggers industry-angle content
+function slugVariant5(slug: string): number {
+  let h = 0;
+  for (let i = 0; i < slug.length; i++) h = ((h << 5) - h + slug.charCodeAt(i) * 17) | 0;
+  return Math.abs(h) % 5;
+}
+
+// Top-20 high-volume countries that receive the 5th industry-angle variant
+const TOP_20_COUNTRY_SLUGS = new Set([
+  "uk","usa","india","australia","canada","germany","france","brazil",
+  "japan","south-africa","kenya","nigeria","indonesia","malaysia",
+  "philippines","saudi-arabia","uae","mexico","egypt","singapore"
+]);
+
+// Industry context per top-20 country
+const COUNTRY_INDUSTRIES: Record<string, [string, string, string]> = {
+  "uk":           ["finance and legal services", "healthcare and the NHS", "property and real estate"],
+  "usa":          ["healthcare and insurance", "legal and paralegal services", "real estate and mortgage"],
+  "india":        ["IT and software services", "banking and financial services", "government and compliance"],
+  "australia":    ["mining and resources", "healthcare and aged care", "finance and accounting"],
+  "canada":       ["real estate and mortgage", "finance and insurance", "healthcare and government"],
+  "germany":      ["manufacturing and engineering", "legal and notarial services", "finance and banking"],
+  "france":       ["public administration and legal", "healthcare and social services", "finance and insurance"],
+  "brazil":       ["legal and cartorial services", "finance and banking", "government and public sector"],
+  "japan":        ["manufacturing and trading", "finance and banking", "government and public services"],
+  "south-africa": ["mining and resources", "legal and compliance", "finance and banking"],
+  "kenya":        ["telecoms and fintech", "legal and compliance", "government and public services"],
+  "nigeria":      ["banking and finance", "legal and compliance", "oil and gas administration"],
+  "indonesia":    ["finance and banking", "government and public services", "manufacturing and trade"],
+  "malaysia":     ["finance and banking", "manufacturing and trade", "government and public services"],
+  "philippines":  ["business process outsourcing", "banking and finance", "government and public services"],
+  "saudi-arabia": ["oil and energy administration", "banking and finance", "government and Vision 2030 projects"],
+  "uae":          ["finance and free-zone business", "real estate and construction", "government and public services"],
+  "mexico":       ["manufacturing and maquiladora", "finance and banking", "government and SAT compliance"],
+  "egypt":        ["banking and finance", "tourism and hospitality administration", "government and public services"],
+  "singapore":    ["finance and wealth management", "shipping and logistics", "government and regulatory compliance"],
+};
+
+const TOOL_INDUSTRY_VERB: Record<string, string> = {
+  "merge":       "merge PDF documents",
+  "pdf-to-word": "convert PDFs to Word",
+  "sign-pdf":    "sign PDFs digitally",
+  "split-pdf":   "split and extract PDF pages",
+  "convert-pdf": "convert PDF documents",
+  "jpg-to-pdf":  "convert images to PDF",
+  "pdf-to-jpg":  "convert PDFs to images",
+  "protect-pdf": "password-protect PDFs",
+  "rotate-pdf":  "rotate PDF pages",
+};
+
+function industryAngleContent(toolId: string, c: CC): string {
+  const rd = getRich(c.slug);
+  const inds = COUNTRY_INDUSTRIES[c.slug] || ["business", "finance", "public sector"];
+  const verb = TOOL_INDUSTRY_VERB[toolId] || "process PDF documents";
+  const toolNames: Record<string, string> = {
+    "merge": "PDF merger", "pdf-to-word": "PDF to Word converter",
+    "sign-pdf": "electronic signature tool", "split-pdf": "PDF splitter",
+    "convert-pdf": "PDF converter", "jpg-to-pdf": "image to PDF tool",
+    "pdf-to-jpg": "PDF to image converter", "protect-pdf": "PDF encryption tool",
+    "rotate-pdf": "PDF page rotation tool",
+  };
+  const toolLabel = toolNames[toolId] || "PDF processing tool";
+  return `${c.demonym} working in ${inds[0]} and ${inds[1]} sectors need to ${verb} reliably every working day. Handling ${rd.docs.split(",")[0].trim()} and similar official documents is a routine part of professional life in ${rd.cities} — and PDF HUB 24's free ${toolLabel} eliminates the friction of desktop software, paid subscriptions, and IT-managed devices.\n\nProfessionals across ${c.label}'s ${inds[0]} industry submit documents to ${c.portal} and internal review systems that require specific PDF standards. Our ${toolLabel} produces output that passes validation at every major ${c.label} platform, with no watermarks, no branding, and no file count limits — whether you're processing a single document or dozens.\n\n${secPara(c.slug + toolId + "ind", rd.compliance, c.label)}`;
+}
+
 // 5 structurally distinct data-security closing paragraphs
 function secPara(slug: string, compliance: string, label: string): string {
   const v = slugVariant6(slug + "sec") % 5;
@@ -488,6 +553,219 @@ function secPara(slug: string, compliance: string, label: string): string {
 const FAQ_OPENERS = ["Absolutely —", "Correct —", "Completely free —", "There are no restrictions —", "All tools are free —", "No cost at all —"];
 function faqYes(i: number): string { return FAQ_OPENERS[i % FAQ_OPENERS.length]; }
 
+// 6 structurally distinct FAQ Q1 question patterns — eliminates "Can {demonym} X for free?" fingerprint
+function faqQ1(slug: string, demonym: string, verb: string): string {
+  const v = slugVariant6(slug + "q1") % 6;
+  return [
+    `Can ${demonym} ${verb} for free?`,
+    `How do ${demonym} ${verb} without paying for software?`,
+    `What is the best free way for ${demonym} to ${verb} online?`,
+    `Where can ${demonym} ${verb} for free, without an account?`,
+    `Is there a free tool for ${demonym} to ${verb} online?`,
+    `Do ${demonym} need to pay to ${verb}?`,
+  ][v];
+}
+
+// Country-specific FAQ questions for top-20 countries — appended to FAQ arrays
+const COUNTRY_SPECIFIC_FAQS: Record<string, Array<{ question: string; answer: string }>> = {
+  "uk": [
+    { question: "Do I need to compress my P60 before uploading to HMRC Self Assessment?", answer: "Yes — HMRC and UK government portals enforce upload size limits, typically 2–5 MB per document. Compressing your P60 and self-assessment tax returns to under 1 MB prevents rejected submissions and ensures your filing goes through first time." },
+    { question: "Can I merge payslips, P60, and bank statements into one PDF for my UK accountant?", answer: "Absolutely — combining payslips, P60, and bank statements into a single PDF is standard practice for UK accountants and mortgage lenders. Our free PDF merger handles any number of files with drag-and-drop ordering in seconds." },
+  ],
+  "germany": [
+    { question: "Muss ich meine Steuererklärung als PDF komprimieren, bevor ich sie an Elster sende?", answer: "Ja — Elster und andere deutsche Behördenportale haben Dateigrößenbeschränkungen von 1–5 MB pro Dokument. Komprimieren Sie Ihre Steuererklärung und Personalausweis-Scans auf unter 2 MB, um Uploadfehler zu vermeiden. Unser kostenloser Kompressor funktioniert direkt im Browser ohne Installation." },
+    { question: "Kann ich Personalausweis und Gewerbeanmeldung für Elster als eine PDF-Datei zusammenführen?", answer: "Ja — laden Sie beide Dateien in unser kostenloses Zusammenführungstool hoch, ordnen Sie sie an und klicken Sie auf Zusammenführen. Das Ergebnis wird von Elster und allen deutschen Behördenportalen akzeptiert." },
+  ],
+  "india": [
+    { question: "Can I compress my Form 16 and Aadhaar scans for ITR e-filing?", answer: "Yes — the Income Tax e-filing portal accepts PDF attachments up to 5 MB. Compressing your Form 16, Aadhaar scans, and PAN card documents to under 1 MB ensures your ITR submission uploads without portal errors, whether you're filing from Mumbai, Delhi, or Bengaluru." },
+    { question: "How do I combine Form 16, Aadhaar, and PAN card into one PDF for DigiLocker or income tax?", answer: "Upload all documents to our free PDF merger, arrange them in order, and download a single PDF. The merged file is accepted by the Income Tax Department's e-filing portal, DigiLocker, and all major Indian government submission systems." },
+  ],
+  "australia": [
+    { question: "Do I need to compress my tax documents before uploading to myGov ATO?", answer: "Yes — the ATO myGov portal has file size limits for supporting attachments. Compressing your PAYG summaries, receipts, and deduction evidence to under 2 MB prevents upload errors and ensures your tax return lodgement goes through without delays." },
+    { question: "Can I merge multiple PAYG summaries and receipts for my ATO tax return?", answer: "Absolutely — combining your PAYG summaries, medical expense receipts, and work-related deduction documents into a single PDF is the recommended format for ATO online lodgement. Our free merger handles multiple files with instant results." },
+  ],
+  "canada": [
+    { question: "Can I compress my T4 slips and CRA documents for online submission?", answer: "Yes — CRA My Account and provincial tax portals have document size limits. Compressing your T4 slips, RRSP contribution receipts, and supporting documents to under 2 MB prevents upload rejections and speeds up your CRA filing process." },
+    { question: "How do I combine T4 slips and CRA forms into one PDF for my accountant?", answer: "Upload your T4 slips, T5 statements, and any supporting receipts to our free PDF merger. Arrange, merge, and download a single CRA-ready PDF accepted by CRA My Account and all provincial online tax systems." },
+  ],
+  "japan": [
+    { question: "e-Taxに提出するPDFのサイズを圧縮する必要がありますか？", answer: "はい — e-Taxおよびその他の行政ポータルには添付ファイルのサイズ制限があります。確定申告書類のPDFを1MB以下に圧縮することで、アップロードエラーを防ぎ、スムーズに申告を完了できます。" },
+    { question: "確定申告に必要な複数の書類（源泉徴収票・医療費明細）を一つのPDFにまとめられますか？", answer: "はい — 無料のPDF結合ツールに書類をアップロードし、順序を整えてから結合してください。e-Tax、マイナポータル、その他の行政ポータルで受け付けられる標準的なPDFが出力されます。" },
+  ],
+  "brazil": [
+    { question: "Preciso compactar meu IRPF antes de enviar para a Receita Federal?", answer: "Sim — o portal da Receita Federal tem limites de tamanho de arquivo para declarações e documentos de suporte. Compactar sua declaração IRPF, comprovantes CPF e documentos CNPJ para menos de 2 MB evita erros de envio no portal da Receita Federal." },
+    { question: "Posso unir minha declaração IRPF, CPF e comprovantes em um único PDF?", answer: "Sim — carregue todos os documentos em nossa ferramenta gratuita de mesclagem de PDF, organize-os na ordem correta e baixe um único PDF pronto para envio à Receita Federal. Funciona no desktop e no celular via WhatsApp ou mobile." },
+  ],
+  "france": [
+    { question: "Dois-je compresser ma déclaration de revenus avant de la télécharger sur impots.gouv.fr ?", answer: "Oui — les portails gouvernementaux français ont des limites de taille de fichier pour les pièces jointes fiscales. Compressez vos formulaires CERFA et documents de revenus à moins de 2 Mo pour éviter les erreurs d'envoi sur impots.gouv.fr." },
+  ],
+  "south-africa": [
+    { question: "Do I need to compress my SARS documents before submitting via eFiling?", answer: "Yes — SARS eFiling has document size limits for tax return attachments. Compressing your IRP5 certificates, income tax return, and supporting documents to under 2 MB prevents upload errors and ensures your SARS submission is processed without delays." },
+    { question: "Can I merge my IRP5, payslips, and CIPC documents for my SARS accountant?", answer: "Yes — combining your IRP5 certificates, SARS income tax return, and CIPC company forms into a single PDF is standard practice for South African tax submissions. Our free merger handles multiple files instantly from Johannesburg, Cape Town, or Durban." },
+  ],
+  "kenya": [
+    { question: "Can I compress my KRA documents before filing on iTax?", answer: "Yes — the iTax portal has file size limits for supporting documents. Compressing your KRA PIN certificate, national ID scan, and business registration documents to under 1 MB ensures smooth upload on iTax and eCitizen, especially on M-Pesa mobile data connections in Nairobi, Mombasa, or Kisumu." },
+    { question: "How do I combine KRA and eCitizen documents on my phone in Kenya?", answer: "Open our free PDF merger in your mobile browser — it works over mobile data on any Kenyan network. Upload your KRA PIN certificate, national ID copies, and business registration forms, merge them, and download a single PDF for iTax or eCitizen submission." },
+  ],
+  "nigeria": [
+    { question: "Can I compress my TIN certificate and FIRS documents for Nigerian tax filing?", answer: "Yes — the FIRS portal has file size restrictions for submitted documents. Compressing your TIN certificate, CAC registration forms, and FIRS tax documents to under 2 MB prevents upload failures when filing your returns or registering a business in Lagos, Abuja, or Port Harcourt." },
+    { question: "Can I merge my TIN, CAC registration, and FIRS documents into one PDF in Nigeria?", answer: "Yes — upload your TIN certificate, CAC Form CAC-IT/1, and FIRS tax documents to our free PDF merger. Arrange, merge, and download a single PDF for FIRS submission. Works on any Nigerian mobile connection via WhatsApp data." },
+  ],
+  "philippines": [
+    { question: "Can I compress my BIR Form 1701 before uploading to eFPS?", answer: "Yes — the BIR eFPS portal has file size limits for tax return attachments. Compressing your BIR Form 1701, supporting schedules, and PSA certificates to under 2 MB prevents upload errors and ensures your Philippine tax return submission is accepted." },
+    { question: "Can I combine my BIR forms and PSA documents into one PDF for eFPS?", answer: "Yes — upload your BIR Form 1701, PSA birth certificate, and TIN application documents to our free PDF merger. The merged PDF is accepted by BIR eFPS and Philippine government portals. Works on mobile via GCash data." },
+  ],
+  "indonesia": [
+    { question: "Apakah saya perlu mengompres SPT tahunan sebelum diunggah ke DJP Online?", answer: "Ya — portal DJP Online memiliki batas ukuran file untuk lampiran pajak. Mengompres SPT tahunan, e-KTP, dan dokumen NPWP Anda hingga di bawah 2 MB mencegah kesalahan unggahan dan memastikan pelaporan pajak SPT berhasil diproses di Jakarta, Surabaya, atau Bandung." },
+  ],
+  "malaysia": [
+    { question: "Do I need to compress my e-Filing forms before submitting to MyTax LHDN?", answer: "Yes — the LHDN MyTax portal has file size limits for tax return attachments. Compressing your e-Filing forms, EA forms, and MyKad documents to under 2 MB prevents upload rejections and ensures your Malaysian income tax submission is accepted from Kuala Lumpur, Penang, or Johor Bahru." },
+  ],
+  "singapore": [
+    { question: "Do I need to compress IR8A forms before submitting to IRAS myTax Portal?", answer: "Yes — the IRAS myTax Portal has file size limits for employment income documents. Compressing your IR8A forms and SingPass-authenticated documents to under 1 MB ensures fast upload and acceptance on the Singapore tax portal." },
+  ],
+  "uae": [
+    { question: "Can I compress my Emirates ID documents for UAE PASS or eDNRD submission?", answer: "Yes — UAE government portals including UAE PASS and eDNRD enforce upload size limits. Compressing your Emirates ID application, VAT returns, and trade licence renewals to under 2 MB ensures smooth processing through UAE digital government services from Dubai, Abu Dhabi, or Sharjah." },
+  ],
+  "mexico": [
+    { question: "¿Necesito comprimir mis documentos antes de enviarlos al portal SAT?", answer: "Sí — el portal del SAT tiene límites de tamaño para declaraciones anuales y documentos de soporte. Comprimir tu declaración anual, comprobantes CFDI y documentos RFC a menos de 2 MB evita errores de envío y agiliza tu trámite fiscal en México." },
+  ],
+  "sweden": [
+    { question: "Behöver jag komprimera min inkomstdeklaration innan jag skickar till Skatteverket?", answer: "Ja — Skatteverkets e-tjänst har filstorleksgränser för bilagor. Komprimera din inkomstdeklaration, personnummer-dokument och Skatteverket-formulär till under 2 MB för att undvika uppladdningsfel när du deklarerar via Skatteverket.se eller BankID." },
+  ],
+  "netherlands": [
+    { question: "Moet ik mijn belastingaangifte comprimeren voor Mijn Belastingdienst?", answer: "Ja — de Belastingdienst portal heeft bestandsgroottelimieten voor bijlagen bij de belastingaangifte. Comprimeer uw belastingaangifte en DigiD-documenten tot minder dan 2 MB om uploadfouten te voorkomen bij het indienen via Mijn Belastingdienst." },
+  ],
+};
+
+// Per-country, per-tool first use-case scenario strings for top-20 countries
+// Used to replace generic "Merging multiple documents for {portal}" bullets with doc-specific scenarios
+const COUNTRY_DOC_SCENARIOS: Record<string, Record<string, string>> = {
+  "uk": {
+    "merge":              "Combining your P60, payslips, and bank statements into one PDF for HMRC Self Assessment submission",
+    "pdf-to-word":        "Converting HMRC P60 forms and Companies House annual accounts into editable Word documents",
+    "sign":               "Signing UK employment contracts, tenancy agreements, and consent forms electronically",
+    "split":              "Extracting specific pages from HMRC tax correspondence or Companies House filing packs",
+    "jpg-to-pdf":         "Converting photos of P60 slips and National Insurance documents for HMRC portal submission",
+    "protect":            "Password-protecting sensitive P60 forms and self-assessment returns before emailing to your UK accountant",
+    "rotate":             "Correcting orientation of scanned HMRC tax returns and Companies House correspondence",
+    "edit":               "Annotating HMRC tax correspondence and Companies House filings before review",
+    "convert-pdf":        "Converting Companies House annual accounts from PDF to Word for UK legal team editing",
+    "pdf-to-jpg":         "Extracting pages from HMRC tax return correspondence to share with UK accountants and solicitors",
+    "compress-pdf-online":"Compressing P60 and self-assessment returns for HMRC without installing Adobe Acrobat on a UK work computer",
+  },
+  "germany": {
+    "merge":              "Steuererklärung, Personalausweis-Scan und Gewerbeanmeldung als eine PDF-Datei für Elster zusammenführen",
+    "pdf-to-word":        "Steuererklärung und Behördenformulare aus Elster in editierbare Word-Dateien umwandeln",
+    "sign":               "Arbeitsverträge, Mietverträge und Behördenformulare ohne Drucker elektronisch unterschreiben",
+    "split":              "Einzelne Seiten aus Elster-Bescheiden und Behördenschreiben extrahieren",
+    "jpg-to-pdf":         "Fotos von Steuerbescheiden, Personalausweis und Gewerbeanmeldung als PDF für Elster speichern",
+    "protect":            "Steuererklärungen und Personalausweis-Scans DSGVO-konform vor dem E-Mail-Versand passwortschützen",
+    "compress-pdf-online":"Steuererklärung und Elster-Formulare ohne Adobe Acrobat im Browser komprimieren",
+  },
+  "india": {
+    "merge":              "Combining Form 16, Aadhaar card, and PAN card scans into one PDF for Income Tax e-filing or DigiLocker",
+    "pdf-to-word":        "Converting Form 16 and government-issued DigiLocker PDFs into editable Word format for ITR preparation",
+    "sign":               "Signing ITR acknowledgements, Aadhaar-linked forms, and EPFO documents digitally without printing",
+    "split":              "Extracting specific pages from Form 26AS and income tax return documents for CA submission",
+    "jpg-to-pdf":         "Converting photos of Form 16, Aadhaar card, and PAN card to PDF for income tax e-filing",
+    "protect":            "Password-protecting Aadhaar-linked documents and PAN card scans before sharing via WhatsApp",
+    "compress-pdf-online":"Compressing Form 16 and ITR documents without software on shared Indian office or cybercafé computers",
+  },
+  "australia": {
+    "merge":              "Combining PAYG summaries, work expense receipts, and deduction evidence into one PDF for ATO myGov lodgement",
+    "pdf-to-word":        "Converting ATO correspondence and myGov tax return documents into editable Word format",
+    "sign":               "Signing Australian employment contracts, lease agreements, and ATO authorisation forms digitally",
+    "split":              "Extracting specific pages from ATO tax assessment notices and myGov correspondence",
+    "jpg-to-pdf":         "Converting scanned PAYG summaries and work expense receipts to PDF for ATO myGov submission",
+    "protect":            "Password-protecting ATO tax return attachments and TFN documents before emailing to your Australian accountant",
+    "compress-pdf-online":"Compressing ATO tax documents without installing software on a shared or work-managed Australian computer",
+  },
+  "canada": {
+    "merge":              "Combining T4 slips, RRSP contribution receipts, and medical expense documents into one PDF for CRA My Account",
+    "pdf-to-word":        "Converting T4 slips and CRA benefit correspondence into editable Word documents for Canadian tax professionals",
+    "sign":               "Signing Canadian lease agreements, employment forms, and CRA-related documents without printing",
+    "split":              "Extracting specific pages from CRA notices and provincial tax assessment letters",
+    "jpg-to-pdf":         "Converting scanned T4 slips and receipt photos to PDF for CRA My Account lodgement",
+    "protect":            "Password-protecting T4 slips and SIN-containing documents before emailing to your Canadian accountant",
+    "compress-pdf-online":"Compressing T4 slips and CRA documents without software on Canadian remote-work or employer-managed computers",
+  },
+  "japan": {
+    "merge":              "確定申告書、源泉徴収票、医療費明細書を一つのPDFにまとめてe-Taxに提出",
+    "pdf-to-word":        "e-TaxのPDFフォームやマイナンバー書類をWord形式に変換して編集",
+    "sign":               "雇用契約書、賃貸契約書、マイナンバー関連書類を電子署名で署名",
+    "jpg-to-pdf":         "マイナンバー通知カード、源泉徴収票の写真をPDFに変換してe-Tax提出用に使用",
+    "compress-pdf-online":"確定申告書とマイナンバー関連書類をAdobe Acrobatなしでブラウザ上で圧縮",
+  },
+  "brazil": {
+    "merge":              "Combinando declaração IRPF, CPF e documentos CNPJ em um único PDF para envio à Receita Federal",
+    "pdf-to-word":        "Convertendo declarações IRPF e formulários da Receita Federal em arquivos Word editáveis",
+    "sign":               "Assinar contratos de trabalho, aluguéis e documentos da Receita Federal eletronicamente",
+    "jpg-to-pdf":         "Convertendo fotos de CPF, CNPJ e recibos para PDF para submissão à Receita Federal via WhatsApp",
+    "compress-pdf-online":"Compactar declaração IRPF e documentos da Receita Federal sem instalar software no computador",
+  },
+  "south-africa": {
+    "merge":              "Combining IRP5 certificates, SARS income tax return, and CIPC company forms into one PDF for eFiling",
+    "pdf-to-word":        "Converting SARS eFiling assessment notices and CIPC company documents into editable Word format",
+    "sign":               "Signing South African employment contracts, lease agreements, and SARS authorisation forms digitally",
+    "jpg-to-pdf":         "Converting scanned IRP5 certificates and South African ID documents to PDF for SARS eFiling",
+    "compress-pdf-online":"Compressing SARS tax documents without installing software on South African corporate managed devices",
+  },
+  "kenya": {
+    "merge":              "Combining KRA PIN certificate, national ID, and business registration documents for iTax or eCitizen submission",
+    "pdf-to-word":        "Converting KRA certificates and eCitizen portal documents into editable Word format",
+    "sign":               "Signing Kenyan business registration forms, leases, and government application documents electronically",
+    "jpg-to-pdf":         "Converting M-Pesa payment receipts and KRA certificate photos to PDF for eCitizen submission",
+    "protect":            "Password-protecting KRA and eCitizen documents before sharing via mobile banking apps in Kenya",
+    "compress-pdf-online":"Compressing KRA documents for iTax submission without software — works on mobile data in Nairobi and beyond",
+  },
+  "nigeria": {
+    "merge":              "Combining TIN certificate, CAC Form CAC-IT/1, and FIRS withholding tax certificates into one PDF for tax filing",
+    "pdf-to-word":        "Converting FIRS tax assessment notices and CAC registration documents into editable Word format",
+    "sign":               "Signing Nigerian business contracts, employment agreements, and CAC forms without printing",
+    "jpg-to-pdf":         "Converting photos of TIN certificates and national ID cards to PDF for FIRS submission via WhatsApp",
+    "compress-pdf-online":"Compressing TIN certificates and FIRS documents without software — works on mobile data across Nigeria",
+  },
+  "philippines": {
+    "merge":              "Combining BIR Form 1701, PSA birth certificate, and PHILSYS national ID into one PDF for eFPS submission",
+    "pdf-to-word":        "Converting BIR assessment forms and PhilSys ID documents into editable Word format",
+    "sign":               "Signing Philippine BIR forms, employment contracts, and consent forms electronically",
+    "jpg-to-pdf":         "Converting GCash payment receipts and BIR certificate photos to PDF for eFPS submission",
+    "compress-pdf-online":"Compressing BIR Form 1701 and supporting schedules without software — accessible via GCash mobile data",
+  },
+  "indonesia": {
+    "merge":              "Menggabungkan SPT tahunan, e-KTP, dan dokumen NPWP menjadi satu PDF untuk DJP Online atau OSS",
+    "pdf-to-word":        "Mengonversi formulir SPT dari DJP Online dan surat pajak Indonesia menjadi file Word yang dapat diedit",
+    "sign":               "Menandatangani kontrak kerja, perjanjian sewa, dan formulir pemerintah Indonesia secara elektronik",
+    "jpg-to-pdf":         "Mengonversi foto e-KTP dan NPWP ke PDF untuk pengajuan DJP Online melalui ponsel",
+    "compress-pdf-online":"Mengompres SPT tahunan dan e-KTP tanpa menginstal software — bisa diakses melalui WhatsApp di Jakarta dan seluruh Indonesia",
+  },
+  "malaysia": {
+    "merge":              "Combining e-Filing tax forms, MyKad identity copies, and EP Form/CP58 into one PDF for LHDN MyTax",
+    "pdf-to-word":        "Converting LHDN e-Filing assessment notices and MyKad documents into editable Word format",
+    "sign":               "Signing Malaysian employment contracts, tenancy agreements, and SSM documents electronically",
+    "jpg-to-pdf":         "Converting photos of MyKad and EPF statements to PDF for MyTax or SSM portal submission",
+    "compress-pdf-online":"Compressing LHDN e-Filing forms and MyKad documents without software on Malaysian corporate computers",
+  },
+  "singapore": {
+    "merge":              "Combining IR8A employment forms, NRIC copies, and CorpPass-authenticated documents into one PDF for IRAS",
+    "pdf-to-word":        "Converting IRAS myTax Portal notices and SingPass documents into editable Word format",
+    "jpg-to-pdf":         "Converting SingPass document photos and CPF statements to PDF for IRAS myTax submission",
+  },
+  "uae": {
+    "merge":              "Combining Emirates ID application, VAT return, and trade licence renewal documents for UAE PASS or eDNRD",
+    "pdf-to-word":        "Converting UAE government portal PDFs and Emirates ID documents into editable Word format",
+    "sign":               "Signing UAE employment contracts, tenancy agreements, and government application forms electronically",
+    "jpg-to-pdf":         "Converting Emirates ID and trade licence document photos to PDF for UAE PASS portal submission",
+  },
+  "mexico": {
+    "merge":              "Combinando declaración anual SAT, RFC y documentos CURP en un único PDF para el portal del SAT",
+    "pdf-to-word":        "Convirtiendo documentos SAT, comprobantes CFDI y formularios del RFC a Word editable",
+    "sign":               "Firmar contratos laborales, arrendamientos y documentos del SAT electrónicamente en México",
+    "jpg-to-pdf":         "Convirtiendo fotos de RFC, CURP y comprobantes CFDI a PDF para envío al portal SAT por WhatsApp",
+  },
+};
+
 // Countries with near-zero PDF tool search volume — skip from output
 const NOINDEX_COUNTRY_SLUGS = new Set([
   "tonga","solomon-islands","samoa","vanuatu","east-timor","bhutan","maldives",
@@ -495,6 +773,9 @@ const NOINDEX_COUNTRY_SLUGS = new Set([
   "lesotho","eswatini","gambia","cuba","haiti","yemen","syria","somalia",
   "guinea","guinea-bissau","sierra-leone","liberia","togo","benin","burkina-faso",
   "niger","mali","cape-verde","comoros","sao-tome","seychelles","kiribati","nauru","palau",
+  // T3 near-duplicate content countries — protect crawl budget until content upgraded
+  "tajikistan","kyrgyzstan","turkmenistan","laos","mongolia","afghanistan",
+  "iraq","myanmar","north-macedonia","bosnia","montenegro","moldova","albania","guinea",
 ]);
 
 // Tool-count phrasing variants to avoid "49+ free tools" repetition
@@ -1227,9 +1508,10 @@ function genCountryPages(): ProgrammaticPage[] {
           `Preparing ${rd.compliance}-compliant compressed documents for ${c.label} submissions`,
         ],
         [
-          { question: `Can ${c.demonym} use this PDF compressor for free?`, answer: `${faqYes(0)} the tool is completely free for ${c.demonym} — no signup, no watermark, and no usage limits. Accessible from ${rd.cities} and all of ${c.label}.` },
+          { question: faqQ1(s1, c.demonym, "use this PDF compressor"), answer: `${faqYes(0)} the tool is completely free for ${c.demonym} — no signup, no watermark, and no usage limits. Accessible from ${rd.cities} and all of ${c.label}.` },
           { question: `Does the tool produce PDFs accepted by ${c.portal}?`, answer: `${faqYes(1)} our compressor outputs standard PDFs that meet the size requirements of ${c.portal}. Medium compression covers most ${c.label} portal limits; high compression handles stricter thresholds.` },
           { question: `How does PDF HUB 24 handle ${rd.compliance} data obligations?`, answer: `${faqYes(2)} files are encrypted in transit with HTTPS and permanently deleted within 1 hour. No content is retained, analysed, or shared — consistent with ${rd.compliance} requirements.` },
+          ...(COUNTRY_SPECIFIC_FAQS[c.slug] || []),
         ]
       ));
     }
@@ -1267,6 +1549,7 @@ function genCountryPages(): ProgrammaticPage[] {
           { question: `Are all ${tc} really free for ${c.demonym}?`, answer: `${faqYes(3)} every tool is permanently free for ${c.demonym} in ${rd.cities} and across ${c.label} — no regional restrictions, no VPN, and no account required.` },
           { question: `Which PDF tools are most useful for ${c.label} government submissions?`, answer: `For ${c.portal} and other ${c.label} portals, Compress PDF, Merge PDF, and PDF to Word handle ${rd.docs} and similar documents most reliably. All are free with no usage limits.` },
           { question: `How does PDF HUB 24 protect ${rd.compliance}-regulated documents?`, answer: `${faqYes(4)} files are processed over HTTPS and permanently deleted within 1 hour — no data stored, no data shared, fully consistent with ${rd.compliance} expectations.` },
+          ...(COUNTRY_SPECIFIC_FAQS[c.slug] || []),
         ]
       ));
     }
@@ -1304,6 +1587,7 @@ function genCountryPages(): ProgrammaticPage[] {
           { question: `Are there any free PDF tools in ${c.label} without watermarks?`, answer: `${faqYes(3)} PDF HUB 24 provides 49+ free tools for ${c.demonym} — no watermarks, no account required, no hidden fees. Accessible from ${rd.cities} and all of ${c.label}.` },
           { question: `Do these tools work for ${c.portal} document requirements?`, answer: `${faqYes(5)} our compress, merge, and convert tools produce PDFs accepted by ${c.portal} and all standard ${c.label} document portals. They handle ${rd.docs} and similar files reliably.` },
           { question: `How does PDF HUB 24 protect my ${rd.compliance}-regulated documents?`, answer: `All files are processed via HTTPS and permanently deleted within 1 hour. No data is stored, shared, or accessed — consistent with ${rd.compliance} data protection requirements.` },
+          ...(COUNTRY_SPECIFIC_FAQS[c.slug] || []),
         ]
       ));
     }
@@ -1616,10 +1900,11 @@ function genCountryToolPages(): ProgrammaticPage[] {
         `Bundling PDF reports for sharing with ${c.label} colleagues and clients`,
         `Creating unified document packages for ${c.label} regulatory submissions`,
       ],
-      faqs: (c: { label: string; demonym: string; portal: string }) => [
-        { question: `Can ${c.demonym} merge PDFs for free?`, answer: `${faqYes(0)} PDF merging is completely free for all ${c.demonym} with no signup, no watermark, and no file count limit.` },
+      faqs: (c: CC) => [
+        { question: faqQ1(`merge-pdf-${c.slug}`, c.demonym, "merge PDFs"), answer: `${faqYes(0)} PDF merging is completely free for all ${c.demonym} with no signup, no watermark, and no file count limit.` },
         { question: `How many PDFs can I merge in ${c.label}?`, answer: `There is no limit on the number of PDFs you can merge. Upload as many files as your document requires.` },
         { question: `Does the merged PDF work with ${c.portal}?`, answer: `${faqYes(2)} our merged PDFs are fully compatible with all major document portals and comply with standard PDF specifications.` },
+        ...(COUNTRY_SPECIFIC_FAQS[c.slug] || []),
       ],
     },
     {
@@ -1652,9 +1937,10 @@ function genCountryToolPages(): ProgrammaticPage[] {
       faqs: (c: CC) => {
         const rd = getRich(c.slug);
         return [
-          { question: `Can ${c.demonym} convert PDF to Word for free?`, answer: `${faqYes(1)} the converter is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, no file size limits.` },
+          { question: faqQ1(`pdf-to-word-${c.slug}`, c.demonym, "convert PDF to Word"), answer: `${faqYes(1)} the converter is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, no file size limits.` },
           { question: `Does it work for ${rd.docs.split(",")[0].trim()} and other ${c.portal} documents?`, answer: `${faqYes(3)} our converter handles standard PDFs from any ${c.label} source including government portals, banks, and official institutions.` },
           { question: `What Word format does the conversion produce?`, answer: `A standard DOCX file compatible with Microsoft Word 2010+, LibreOffice, Google Docs, and all modern word processors.` },
+          ...(COUNTRY_SPECIFIC_FAQS[c.slug] || []),
         ];
       },
     },
@@ -1688,9 +1974,10 @@ function genCountryToolPages(): ProgrammaticPage[] {
       faqs: (c: CC) => {
         const rd = getRich(c.slug);
         return [
-          { question: `Can ${c.demonym} sign PDFs for free?`, answer: `${faqYes(4)} PDF signing is completely free for ${c.demonym} — draw, type, or upload your signature with no account required, accessible from ${rd.cities} and all of ${c.label}.` },
+          { question: faqQ1(`sign-pdf-${c.slug}`, c.demonym, "sign PDFs digitally"), answer: `${faqYes(4)} PDF signing is completely free for ${c.demonym} — draw, type, or upload your signature with no account required, accessible from ${rd.cities} and all of ${c.label}.` },
           { question: `Is a digital signature valid in ${c.label}?`, answer: `Electronic signatures are widely accepted for personal and commercial documents in ${c.label}. For court or notarised documents, check with a qualified ${c.label} professional.` },
           { question: `Does the signed PDF work with ${c.portal}?`, answer: `${faqYes(5)} our signed PDFs are standard format accepted by ${c.portal} and all major document systems used in ${c.label}.` },
+          ...(COUNTRY_SPECIFIC_FAQS[c.slug] || []),
         ];
       },
     },
@@ -1724,9 +2011,10 @@ function genCountryToolPages(): ProgrammaticPage[] {
       faqs: (c: CC) => {
         const rd = getRich(c.slug);
         return [
-          { question: `Can ${c.demonym} split PDFs for free?`, answer: `${faqYes(0)} PDF splitting is completely free for all ${c.demonym} — no signup, no watermark, and no page count limit. Accessible from ${rd.cities} and all of ${c.label}.` },
+          { question: faqQ1(`split-pdf-${c.slug}`, c.demonym, "split PDF pages"), answer: `${faqYes(0)} PDF splitting is completely free for all ${c.demonym} — no signup, no watermark, and no page count limit. Accessible from ${rd.cities} and all of ${c.label}.` },
           { question: `How do I extract specific pages from a ${c.label} PDF?`, answer: `Upload your PDF, type the page numbers or ranges you want (e.g., 1-3, 5, 8-10), and download a new PDF with only those pages. Handles ${rd.docs.split(",")[0].trim()} and all standard ${c.label} document formats.` },
           { question: `Does splitting reduce the quality of my PDF?`, answer: `No. Splitting only separates pages — text, images, and formatting are preserved exactly from the original.` },
+          ...(COUNTRY_SPECIFIC_FAQS[c.slug] || []),
         ];
       },
     },
@@ -1872,9 +2160,10 @@ function genCountryToolPages(): ProgrammaticPage[] {
       faqs: (c: CC) => {
         const rd = getRich(c.slug);
         return [
-          { question: `Can ${c.demonym} convert JPG to PDF for free?`, answer: `${faqYes(0)} JPG to PDF conversion is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, no image count limit.` },
+          { question: faqQ1(`jpg-to-pdf-${c.slug}`, c.demonym, "convert JPG to PDF"), answer: `${faqYes(0)} JPG to PDF conversion is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, no image count limit.` },
           { question: `Can I combine multiple JPG photos into one PDF in ${c.label}?`, answer: `${faqYes(4)} upload multiple JPG images and they are combined into a single PDF in the order you upload them — perfect for multi-page ${rd.docs.split(",")[0].trim()} submissions.` },
           { question: `Does the JPG to PDF output work with ${c.portal}?`, answer: `${faqYes(2)} our PDFs are standard format accepted by ${c.portal} and all major document systems in ${c.label}.` },
+          ...(COUNTRY_SPECIFIC_FAQS[c.slug] || []),
         ];
       },
     },
@@ -1908,9 +2197,10 @@ function genCountryToolPages(): ProgrammaticPage[] {
       faqs: (c: CC) => {
         const rd = getRich(c.slug);
         return [
-          { question: `Can ${c.demonym} convert PDF to JPG for free?`, answer: `${faqYes(5)} PDF to JPG conversion is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, high-quality output.` },
+          { question: faqQ1(`pdf-to-jpg-${c.slug}`, c.demonym, "convert PDF to JPG"), answer: `${faqYes(5)} PDF to JPG conversion is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, high-quality output.` },
           { question: `What resolution are the JPG images for ${c.label} users?`, answer: `High resolution suitable for printing, presentations, and digital sharing. Quality is maintained from the original PDF including ${c.portal} and other ${c.label} official documents.` },
           { question: `Can I convert multiple PDF pages to JPG at once in ${c.label}?`, answer: `${faqYes(1)} convert all pages in one operation and download as a ZIP archive — handles ${rd.docs.split(",")[0].trim()} and all standard ${c.label} PDF formats.` },
+          ...(COUNTRY_SPECIFIC_FAQS[c.slug] || []),
         ];
       },
     },
@@ -1944,9 +2234,10 @@ function genCountryToolPages(): ProgrammaticPage[] {
       faqs: (c: CC) => {
         const rd = getRich(c.slug);
         return [
-          { question: `Can ${c.demonym} password protect PDFs for free?`, answer: `${faqYes(3)} PDF password protection is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, with 256-bit AES encryption.` },
+          { question: faqQ1(`protect-pdf-${c.slug}`, c.demonym, "password protect PDFs"), answer: `${faqYes(3)} PDF password protection is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, with 256-bit AES encryption.` },
           { question: `Does password protection meet ${rd.compliance} requirements in ${c.label}?`, answer: `256-bit AES encryption is the highest standard for PDF security and is recognised by banks, government agencies, and data protection authorities worldwide, including in ${c.label}.` },
           { question: `Can I open the protected PDF with ${c.portal} systems?`, answer: `${faqYes(0)} password-protected PDFs are standard format compatible with all PDF viewers. The recipient needs only the correct password to open the file.` },
+          ...(COUNTRY_SPECIFIC_FAQS[c.slug] || []),
         ];
       },
     },
@@ -1980,9 +2271,10 @@ function genCountryToolPages(): ProgrammaticPage[] {
       faqs: (c: CC) => {
         const rd = getRich(c.slug);
         return [
-          { question: `Can ${c.demonym} rotate PDF pages for free?`, answer: `${faqYes(4)} PDF page rotation is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, no page count limit.` },
+          { question: faqQ1(`rotate-pdf-${c.slug}`, c.demonym, "rotate PDF pages"), answer: `${faqYes(4)} PDF page rotation is completely free for ${c.demonym} in ${rd.cities} and across ${c.label} — no signup, no watermark, no page count limit.` },
           { question: `Can I rotate only specific pages in my ${c.label} PDF?`, answer: `${faqYes(2)} rotate individual pages or apply rotation to all pages at once. Choose 90°, 180°, or 270° in either direction. Works for ${rd.docs.split(",")[0].trim()} and all standard PDF formats.` },
           { question: `Will the rotated PDF work with ${c.portal}?`, answer: `${faqYes(5)} rotated PDFs are standard format accepted by ${c.portal} and all PDF viewers and document portals used in ${c.label}.` },
+          ...(COUNTRY_SPECIFIC_FAQS[c.slug] || []),
         ];
       },
     },
@@ -1994,6 +2286,13 @@ function genCountryToolPages(): ProgrammaticPage[] {
       if (NOINDEX_COUNTRY_SLUGS.has(c.slug)) continue;
       const slug = t.slug(c.slug);
       if (!skip(slug)) {
+        const docScenarioKey = COUNTRY_DOC_SCENARIOS[c.slug]?.[t.id] !== undefined ? t.id : t.id.replace("-pdf", "");
+        const docScenario = COUNTRY_DOC_SCENARIOS[c.slug]?.[docScenarioKey];
+        const baseUseCases = t.useCases(c);
+        const useCases = docScenario ? [docScenario, ...baseUseCases.slice(1)] : baseUseCases;
+        // 5th body variant: industry-angle content for top-20 countries
+        const useIndustryVariant = TOP_20_COUNTRY_SLUGS.has(c.slug) && slugVariant5(slug) === 4;
+        const content = useIndustryVariant ? industryAngleContent(t.id, c) : t.content(c);
         results.push({
           slug,
           title: t.title(c.label),
@@ -2001,8 +2300,8 @@ function genCountryToolPages(): ProgrammaticPage[] {
           description: t.desc(c.label, c.demonym),
           toolName: t.toolName,
           toolPath: t.toolPath,
-          content: t.content(c),
-          useCases: t.useCases(c),
+          content,
+          useCases,
           faqs: t.faqs(c),
         });
       }
