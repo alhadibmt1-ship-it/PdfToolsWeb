@@ -79,7 +79,7 @@ export default function Header() {
           </div>
           
           {/* Mobile: language switcher, theme toggle and hamburger menu */}
-          <div className="flex items-center gap-0.5">
+          <div className="flex items-center gap-1">
             <div className="md:hidden">
               <LanguageSwitcher />
             </div>
