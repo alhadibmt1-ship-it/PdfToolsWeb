@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { PDF_TOOLS } from "@shared/schema";
 import { Card } from "@/components/ui/card";
+import AdSlot from "./AdSlot";
 
 const relatedArticles: Record<string, { title: string; slug: string }[]> = {
   "compress": [
@@ -554,6 +555,10 @@ export default function RelatedTools({ currentToolId, maxTools = 6 }: RelatedToo
           </div>
         </div>
       )}
+
+      {/* Ad Slot 2 — above related tools grid */}
+      {/* To activate: add adClient="ca-pub-XXXXXXXXXXXXXXXX" adSlot="XXXXXXXXXX" */}
+      <AdSlot format="rectangle" label="Advertisement" />
 
       <h2 className="text-xl font-semibold mb-6">More PDF Tools</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
