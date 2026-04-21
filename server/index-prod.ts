@@ -37,7 +37,12 @@ export async function serveStatic(app: Express, _server: Server) {
   app.use("*", (req, res) => {
     const urlPath = req.originalUrl.split('?')[0];
     const html = injectSEO(indexHtml, urlPath);
-    res.status(200).set({ "Content-Type": "text/html" }).send(html);
+    res.status(200).set({
+      "Content-Type": "text/html; charset=utf-8",
+      "Cache-Control": "no-cache, no-store, must-revalidate",
+      "Vary": "Accept-Encoding",
+      "X-Content-Type-Options": "nosniff",
+    }).send(html);
   });
 }
 

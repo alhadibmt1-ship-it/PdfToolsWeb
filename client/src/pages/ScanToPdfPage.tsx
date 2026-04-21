@@ -189,6 +189,7 @@ export default function ScanToPdfPage() {
                       src={img.preview}
                       alt={`Page ${idx + 1}`}
                       className="w-full h-full object-cover"
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-1">
                       <button

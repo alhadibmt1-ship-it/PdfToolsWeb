@@ -168,6 +168,7 @@ export default function CropImagePage() {
                       alt="Preview" 
                       className="max-w-full h-auto max-h-64 mx-auto"
                       data-testid="img-preview"
+                      loading="lazy"
                     />
                   </div>
                 )}
@@ -245,6 +246,7 @@ export default function CropImagePage() {
                     alt="Cropped result" 
                     className="max-w-full h-auto max-h-64 mx-auto"
                     data-testid="img-result"
+                    loading="lazy"
                   />
                 </div>
                 <Button 

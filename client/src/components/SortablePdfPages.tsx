@@ -75,6 +75,7 @@ function SortablePageCard({ page, index, onRemove }: SortablePageCardProps) {
             src={page.thumbnail}
             alt={`Page ${page.pageNumber} from ${page.fileName}`}
             className="w-full rounded border bg-white"
+            loading="lazy"
           />
         ) : (
           <div className="w-full aspect-[3/4] rounded border bg-muted flex items-center justify-center">

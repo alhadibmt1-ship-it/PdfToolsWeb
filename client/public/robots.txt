@@ -2,8 +2,18 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /seo-audit
+
+# Low-value utility pages — noindexed via meta tags but also blocked here to save crawl budget
 Disallow: /html-sitemap
 Disallow: /embed
+
+# Block common bot traps and scanner paths
+Disallow: /wp-admin
+Disallow: /wp-login
+Disallow: /.env
+Disallow: /admin
+
+Crawl-delay: 1
 
 Sitemap: https://pdfhub24.com/sitemap-index.xml
 Sitemap: https://pdfhub24.com/sitemap.xml
