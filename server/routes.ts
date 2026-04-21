@@ -3180,6 +3180,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.send(rss);
   });
 
+  // Sitemap index — references all sub-sitemaps for Google discovery
+  app.get("/sitemap-index.xml", (_req, res) => {
+    const today = new Date().toISOString().split("T")[0];
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://pdfhub24.com/sitemap.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://pdfhub24.com/sitemap-tools.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+</sitemapindex>`;
+    res.set("Content-Type", "application/xml; charset=utf-8");
+    res.set("Cache-Control", "public, max-age=3600");
+    res.send(xml);
+  });
+
   // Dynamic sitemap for generated /tools/:slug pages
   app.get("/sitemap-tools.xml", async (req, res) => {
     try {
