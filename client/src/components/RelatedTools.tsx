@@ -581,7 +581,7 @@ export default function RelatedTools({ currentToolId, maxTools = 6 }: RelatedToo
       <div className="mt-6 text-center">
         <Link href="/" data-testid="link-all-tools">
           <span className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline cursor-pointer">
-            View All 48+ Tools
+            View All 49+ Tools
             <ArrowRight className="w-4 h-4" />
           </span>
         </Link>

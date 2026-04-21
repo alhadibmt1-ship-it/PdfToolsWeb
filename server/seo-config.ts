@@ -2197,7 +2197,23 @@ export function generateMetaTags(path: string): string {
 
   } else {
     // Default: use hardcoded schema from seoConfig
-    if (seo.schema) schemas.push(seo.schema);
+    if (seo.schema) {
+      const rawSchema = seo.schema as Record<string, unknown>;
+      // Article rich results require image + publisher.logo — add defaults where missing
+      if (rawSchema["@type"] === "Article") {
+        const enriched: Record<string, unknown> = { ...rawSchema };
+        if (!enriched["image"]) {
+          enriched["image"] = { "@type": "ImageObject", "url": `${BASE_URL}/og-image.png`, "width": 1200, "height": 630 };
+        }
+        const pub = enriched["publisher"] as Record<string, unknown> | undefined;
+        if (pub && !pub["logo"]) {
+          enriched["publisher"] = { ...pub, "logo": { "@type": "ImageObject", "url": `${BASE_URL}/favicon.png`, "width": 512, "height": 512 } };
+        }
+        schemas.push(enriched);
+      } else {
+        schemas.push(rawSchema);
+      }
+    }
 
     if (canonicalPath === "/" || canonicalPath === "") {
       // Homepage: add Organization + FAQPage schemas
