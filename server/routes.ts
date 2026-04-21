@@ -3191,6 +3191,122 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.send(rss);
   });
 
+  // Dynamic OG Image Generator — unique 1200×630 PNG per blog post
+  app.get("/api/og-image/:slug", async (req, res) => {
+    const { slug } = req.params;
+
+    const BLOG_TITLES: Record<string, string> = {
+      "how-to-compress-pdf-for-email": "Compress PDF for Email Under 25MB",
+      "convert-pdf-to-word-without-losing-formatting": "Convert PDF to Word Without Losing Formatting",
+      "merge-pdf-files-guide": "Merge PDF Files Free — Combine Multiple PDFs",
+      "protect-pdf-with-password": "Password Protect PDF Free (AES-256 Guide)",
+      "pdf-tools-for-students": "10 Free PDF Tools Every Student Needs in 2026",
+      "sign-pdf-electronically": "Sign PDF Free Online — 3 Methods, No Printing",
+      "edit-pdf-text-images": "Edit PDF Free — Add Text, Images & Shapes",
+      "watermark-pdf-documents": "Add Watermark to PDF Free (Custom Text & Style)",
+      "pdf-to-excel-convert-tables": "PDF to Excel Free — Convert Tables Instantly",
+      "redact-sensitive-pdf-information": "How to Redact a PDF: Black Out Sensitive Text",
+      "how-to-split-pdf-pages": "Split PDF Free — Extract Pages in Seconds",
+      "add-page-numbers-to-pdf": "Add Page Numbers to PDF Free — Custom Style",
+      "convert-images-to-pdf": "Images to PDF Free — JPG PNG WebP (No Signup)",
+      "ocr-scanned-pdf-to-text": "OCR PDF Free — Scanned to Searchable Text",
+      "rotate-pdf-pages": "Rotate PDF Pages Free — Fix Orientation",
+      "how-to-flatten-pdf": "Flatten PDF Free — Forms, Layers & Annotations",
+      "crop-pdf-pages-guide": "Crop PDF Pages Free — Remove Margins",
+      "resize-pdf-to-a4": "Resize PDF to A4 or Letter Free (No Software)",
+      "compare-two-pdf-files": "Compare 2 PDF Files Free — Find Every Change",
+      "html-to-pdf-conversion": "HTML to PDF Free — Render Web Pages (Keeps CSS)",
+      "extract-text-from-pdf": "Extract Text from PDF Free — Scans + OCR",
+      "best-free-pdf-tools-2026": "12 Best Free PDF Tools Online in 2026",
+      "pdf-accessibility-guide": "PDF Accessibility Guide 2026 — OCR, Tags & ADA",
+      "batch-convert-images-to-pdf": "Batch Convert Images to PDF Free (JPG PNG TIFF)",
+      "unlock-pdf-remove-password": "Unlock PDF Free — Remove Password Instantly",
+      "annotate-pdf-comments": "How to Annotate PDF: Comments, Highlights, Notes",
+      "translate-pdf-documents": "How to Translate a PDF to Any Language Free",
+      "repair-corrupted-pdf": "How to Repair a Corrupted PDF File Free Online",
+      "pdf-to-powerpoint-guide": "Convert PDF to PowerPoint Free Online (2026)",
+      "jpg-to-pdf-guide": "How to Convert JPG to PDF Free Online (2026)",
+      "compress-images-online": "Compress Images Without Losing Quality (2026)",
+      "reorder-pdf-pages": "How to Reorder PDF Pages: Rearrange & Organize",
+      "remove-background-from-image": "Remove Background from Image — Transparent PNG",
+      "convert-pdf-to-png": "Convert PDF to PNG Free Online — High Quality",
+      "excel-to-pdf": "Convert Excel to PDF Free — Spreadsheets & Tables",
+    };
+
+    const COLOR_THEMES = [
+      { from: "#0C65F4", to: "#0048c8", accent: "#93c5fd" },
+      { from: "#7c3aed", to: "#5b21b6", accent: "#c4b5fd" },
+      { from: "#059669", to: "#047857", accent: "#6ee7b7" },
+      { from: "#c2410c", to: "#9a3412", accent: "#fca5a5" },
+      { from: "#b45309", to: "#92400e", accent: "#fcd34d" },
+      { from: "#0e7490", to: "#155e75", accent: "#67e8f9" },
+      { from: "#be185d", to: "#9d174d", accent: "#f9a8d4" },
+      { from: "#4338ca", to: "#3730a3", accent: "#a5b4fc" },
+    ];
+
+    function slugHash(s: string): number {
+      let h = 5381;
+      for (let i = 0; i < s.length; i++) h = ((h << 5) + h) ^ s.charCodeAt(i);
+      return Math.abs(h);
+    }
+
+    function wrapText(text: string, maxLen = 28): string[] {
+      const words = text.split(" ");
+      const lines: string[] = [];
+      let cur = "";
+      for (const w of words) {
+        const test = cur ? `${cur} ${w}` : w;
+        if (test.length <= maxLen) { cur = test; }
+        else { if (cur) lines.push(cur); cur = w; }
+      }
+      if (cur) lines.push(cur);
+      return lines.slice(0, 3);
+    }
+
+    function escXml(s: string): string {
+      return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    const title = BLOG_TITLES[slug] || "PDF Tips & Free Tools Guide";
+    const theme = COLOR_THEMES[slugHash(slug) % COLOR_THEMES.length];
+    const lines = wrapText(title);
+    const maxLineLen = Math.max(...lines.map(l => l.length));
+    // Arial Black is ~0.65× char-width ratio at given px — fit to 1040px usable width
+    const fontSize = Math.min(72, Math.max(40, Math.floor(1040 / maxLineLen / 0.68)));
+    const lineH = fontSize + 20;
+    const totalH = lines.length * lineH;
+    const startY = Math.round((630 - totalH) / 2) + fontSize - 10;
+
+    const textLines = lines.map((line, i) =>
+      `<text x="80" y="${startY + i * lineH}" font-family="'Arial Black',Arial,sans-serif" font-size="${fontSize}" font-weight="900" fill="white" letter-spacing="-0.5">${escXml(line)}</text>`
+    ).join("\n  ");
+
+    const svg = `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="${theme.from}"/>
+      <stop offset="100%" stop-color="${theme.to}"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1080" cy="90" r="240" fill="${theme.accent}" fill-opacity="0.12"/>
+  <circle cx="120" cy="560" r="180" fill="${theme.accent}" fill-opacity="0.08"/>
+  <rect x="80" y="64" width="44" height="44" rx="8" fill="white" fill-opacity="0.15"/>
+  <text x="80" y="52" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="white" fill-opacity="0.6" letter-spacing="2">PDF HUB 24</text>
+  ${textLines}
+  <text x="80" y="596" font-family="Arial,sans-serif" font-size="20" fill="white" fill-opacity="0.55">pdfhub24.com  •  Free Online PDF &amp; Document Tools</text>
+</svg>`;
+
+    try {
+      const png = await sharp(Buffer.from(svg)).png().toBuffer();
+      res.set("Content-Type", "image/png");
+      res.set("Cache-Control", "public, max-age=2592000");
+      res.send(png);
+    } catch {
+      res.redirect("/og-image.png");
+    }
+  });
+
   // Sitemap index — references all sub-sitemaps for Google discovery
   app.get("/sitemap-index.xml", (_req, res) => {
     const today = new Date().toISOString().split("T")[0];

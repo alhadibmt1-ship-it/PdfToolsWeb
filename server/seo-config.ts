@@ -2049,6 +2049,11 @@ export function generateMetaTags(path: string): string {
   const twitterTitle = seo.twitterTitle || ogTitle;
   const twitterDescription = seo.twitterDescription || ogDescription;
 
+  // Blog posts each get a unique dynamically-generated OG image
+  const blogSlug = canonicalPath.startsWith("/blog/") ? canonicalPath.replace("/blog/", "") : null;
+  const pageOgImage = blogSlug ? `${BASE_URL}/api/og-image/${blogSlug}` : OG_IMAGE;
+  const pageOgAlt = blogSlug ? (ogTitle.replace(/ \|.*$/, "").trim()) : "PDF HUB 24 — Free Online PDF Tools";
+
   // ── Robots directive logic ──────────────────────────────────────────────────
   // Language blog pages: INDEXED — each has unique fully-translated content per language
   // All country pages: INDEXED — each has unique locally-enriched content
@@ -2203,7 +2208,8 @@ export function generateMetaTags(path: string): string {
       if (rawSchema["@type"] === "Article") {
         const enriched: Record<string, unknown> = { ...rawSchema };
         if (!enriched["image"]) {
-          enriched["image"] = { "@type": "ImageObject", "url": `${BASE_URL}/og-image.png`, "width": 1200, "height": 630 };
+          const articleImageUrl = blogSlug ? `${BASE_URL}/api/og-image/${blogSlug}` : `${BASE_URL}/og-image.png`;
+          enriched["image"] = { "@type": "ImageObject", "url": articleImageUrl, "width": 1200, "height": 630 };
         }
         const pub = enriched["publisher"] as Record<string, unknown> | undefined;
         if (pub && !pub["logo"]) {
@@ -2280,10 +2286,10 @@ export function generateMetaTags(path: string): string {
     ${ogUrl ? `<meta property="og:url" content="${ogUrl}" />` : ""}
     <meta property="og:type" content="${ogType}" />
     <meta property="og:site_name" content="PDF HUB 24" />
-    <meta property="og:image" content="${OG_IMAGE}" />
+    <meta property="og:image" content="${pageOgImage}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="PDF HUB 24 — Free Online PDF Tools" />
+    <meta property="og:image:alt" content="${pageOgAlt}" />
     <meta property="og:locale" content="${langAttr}" />${articleOgTags}
     
     <!-- Twitter Card -->
@@ -2291,8 +2297,8 @@ export function generateMetaTags(path: string): string {
     <meta name="twitter:site" content="@pdfhub24" />
     <meta name="twitter:title" content="${twitterTitle}" />
     <meta name="twitter:description" content="${twitterDescription}" />
-    <meta name="twitter:image" content="${OG_IMAGE}" />
-    <meta name="twitter:image:alt" content="PDF HUB 24 — Free Online PDF Tools" />
+    <meta name="twitter:image" content="${pageOgImage}" />
+    <meta name="twitter:image:alt" content="${pageOgAlt}" />
     
     <!-- Robots -->
     <meta name="robots" content="${robotsContent}" />
