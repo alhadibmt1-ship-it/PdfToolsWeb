@@ -130,7 +130,18 @@ const uploadPng = multer({
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  
+
+  // Security headers — applied to every response
+  app.use((_req, res, next) => {
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader("X-Frame-Options", "SAMEORIGIN");
+    res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+    res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+    res.setHeader("X-XSS-Protection", "1; mode=block");
+    res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+    next();
+  });
+
   app.post("/api/merge", uploadPdf.array("files", 10), async (req, res) => {
     try {
       const files = req.files as Express.Multer.File[];
