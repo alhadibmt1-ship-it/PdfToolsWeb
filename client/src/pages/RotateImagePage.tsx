@@ -165,6 +165,7 @@ export default function RotateImagePage() {
                         transform: `rotate(${rotation}deg) scaleX(${flipH ? -1 : 1}) scaleY(${flipV ? -1 : 1})`
                       }}
                       data-testid="img-preview"
+                      loading="lazy"
                     />
                   </div>
                 )}
@@ -234,6 +235,7 @@ export default function RotateImagePage() {
                     alt="Result" 
                     className="max-w-full h-auto max-h-64 mx-auto"
                     data-testid="img-result"
+                    loading="lazy"
                   />
                 </div>
                 <Button 

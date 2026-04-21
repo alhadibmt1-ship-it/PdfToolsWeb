@@ -276,7 +276,7 @@ export default function SignPdfPage() {
                     </div>
                     {signatureImage && (
                       <div className="p-4 bg-muted rounded-md text-center">
-                        <img src={signatureImage} alt="Uploaded signature" className="max-h-20 mx-auto" />
+                        <img src={signatureImage} alt="Uploaded signature" className="max-h-20 mx-auto" loading="lazy" />
                       </div>
                     )}
                   </TabsContent>

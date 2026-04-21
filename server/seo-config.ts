@@ -683,7 +683,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/crop-pdf": {
     title: "Crop PDF Free Online (Remove Margins Instantly) | PDF HUB 24",
-    description: "Crop and trim PDF page margins in seconds. Free PDF cropper — remove white space and unwanted areas. No signup, no watermark required.",
+    description: "Crop and trim PDF page margins in seconds. Free PDF cropper — remove white space and unwanted border areas. No signup, no watermark, instant download.",
     keywords: "crop PDF, trim PDF margins, PDF cropper, remove PDF margins, crop PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -707,7 +707,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/sign-pdf": {
     title: "Sign PDF Free Online (Draw, Type or Upload) | PDF HUB 24",
-    description: "Add your signature to PDF documents in seconds. Free PDF signing tool — draw, type, or upload your signature. No signup, no watermark.",
+    description: "Add your signature to PDF documents in seconds. Free PDF signing tool — draw, type, or upload an image of your signature. No signup, no watermark required.",
     keywords: "sign PDF, add signature PDF, PDF signature, e-sign PDF, sign PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -743,7 +743,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/repair-pdf": {
     title: "Repair PDF Free Online (Fix Corrupted Files) | PDF HUB 24",
-    description: "Repair corrupted or damaged PDF files in seconds. Free PDF repair tool — fix broken PDFs and recover content. No signup, no watermark.",
+    description: "Repair corrupted or damaged PDF files instantly. Free PDF repair tool — fix broken structure, recover content and pages. No signup, no watermark required.",
     keywords: "repair PDF, fix corrupted PDF, PDF repair tool, recover PDF, repair PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -803,7 +803,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/gif-to-pdf": {
     title: "GIF to PDF Free Online (All Frames Preserved) | PDF HUB 24",
-    description: "Convert GIF images to PDF in seconds. Free GIF to PDF converter — preserves all frames and quality. No signup, no watermark required.",
+    description: "Convert GIF images to PDF in seconds with our free online tool. Preserves all animation frames and original quality. No signup, no watermark, instant results.",
     keywords: "GIF to PDF, convert GIF to PDF, GIF to PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -815,7 +815,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/webp-to-pdf": {
     title: "WebP to PDF Free Online (Fast & Lossless) | PDF HUB 24",
-    description: "Convert WebP images to PDF in seconds. Free WebP to PDF converter — maintains original quality. No signup, no watermark required.",
+    description: "Convert WebP images to PDF in seconds with our free online converter. Maintains original quality, supports multiple WebP uploads. No signup, no watermark.",
     keywords: "WebP to PDF, convert WebP to PDF, WebP to PDF online free",
     schema: {
       "@context": "https://schema.org",
@@ -839,7 +839,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/pdf-viewer": {
     title: "PDF Viewer Free Online (No Download Needed) | PDF HUB 24",
-    description: "View PDF files directly in your browser. Free online PDF viewer — no download needed. Open and read PDFs instantly on any device.",
+    description: "View PDF files in your browser — no download, no install, no signup needed. Free online PDF viewer with zoom, scroll, and page navigation. Works on all devices.",
     keywords: "PDF viewer, view PDF online, read PDF, open PDF, PDF viewer online free",
     schema: {
       "@context": "https://schema.org",
@@ -887,7 +887,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/crop-image": {
     title: "Crop Image Free Online (Select & Trim) | PDF HUB 24",
-    description: "Crop images to remove unwanted areas in seconds. Free image cropper — select and trim any portion. Supports JPG, PNG, WebP. No signup.",
+    description: "Crop images to remove unwanted areas in seconds. Free online image cropper — select and trim any portion precisely. Supports JPG, PNG, and WebP. No signup required.",
     keywords: "crop image, trim image, cut image, image cropper, crop image online free",
     schema: {
       "@context": "https://schema.org",
@@ -923,7 +923,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/about": {
     title: "About PDF HUB 24 - Free Online PDF Tools",
-    description: "Learn about PDF HUB 24 - your trusted source for free online PDF tools. 49+ tools for converting, editing, and managing PDF files.",
+    description: "Learn about PDF HUB 24 — your trusted source for 49+ free online PDF tools. Convert, edit, merge, compress, sign, and manage PDF files with no signup required.",
     keywords: "about PDF HUB 24, PDF tools, free PDF converter",
     schema: {
       "@context": "https://schema.org",
@@ -934,7 +934,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/privacy": {
     title: "Privacy Policy — How We Protect Your Files | PDF HUB 24",
-    description: "Read our privacy policy. PDF HUB 24 respects your privacy - files are processed securely and deleted automatically.",
+    description: "Read the PDF HUB 24 privacy policy. Uploads use TLS encryption, processed in-memory, and deleted within 1 hour. We never store or share your files. GDPR compliant.",
     keywords: "privacy policy, PDF HUB 24 privacy",
     schema: {
       "@context": "https://schema.org",
@@ -958,7 +958,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/contact": {
     title: "Contact Us — Get Help With PDF Tools | PDF HUB 24",
-    description: "Get in touch with PDF HUB 24. Contact our support team for questions, feedback, or assistance with our PDF tools.",
+    description: "Get in touch with PDF HUB 24. Contact our team for help with any PDF tool, to report a bug, request a feature, or share general feedback. We respond promptly.",
     keywords: "contact PDF HUB 24, PDF tools support, contact us",
     schema: {
       "@context": "https://schema.org",
@@ -1116,7 +1116,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/blog/redact-sensitive-pdf-information": {
     title: "How to Redact a PDF: Black Out Sensitive Text & Images (GDPR Guide)",
-    description: "Step-by-step guide to permanently redacting sensitive data from PDFs. Covers GDPR, HIPAA, and CCPA compliance — black out text, images, and personal data. Free tool, no signup.",
+    description: "Step-by-step guide to redact sensitive data from PDFs. Black out text, images, and personal info. GDPR, HIPAA & CCPA compliant. Free online tool, no signup required.",
     keywords: "how to redact PDF, black out PDF text, GDPR PDF redaction, HIPAA redaction guide, remove sensitive info PDF, PDF redaction tutorial",
     schema: {
       "@context": "https://schema.org",
@@ -1146,7 +1146,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/press": {
     title: "Press & Media Kit - PDF HUB 24",
-    description: "PDF HUB 24 press kit for journalists and bloggers. Company facts, tool categories, brand assets, and media contact information.",
+    description: "PDF HUB 24 press kit for journalists and bloggers. Download logo files, brand guidelines, company facts, tool screenshots, and find our media contact details.",
     keywords: "PDF HUB 24 press kit, media kit, company information, brand assets",
     schema: {
       "@context": "https://schema.org",
@@ -1184,7 +1184,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/dmca": {
     title: "DMCA Policy — Copyright Compliance | PDF HUB 24",
-    description: "DMCA policy for PDF HUB 24. Learn about our copyright compliance procedures and how to report infringing content.",
+    description: "Read the PDF HUB 24 DMCA policy. Learn how to report copyright infringement, our content takedown procedures, and how we handle intellectual property claims.",
     keywords: "DMCA policy, copyright, PDF HUB 24 DMCA",
     schema: {
       "@context": "https://schema.org",
@@ -1286,7 +1286,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/blog/crop-pdf-pages-guide": {
     title: "Crop PDF Pages Free (Remove Margins) | PDF HUB 24",
-    description: "Crop PDF pages and remove unwanted margins or whitespace in seconds. Free online PDF cropper — no registration, no watermark needed.",
+    description: "Crop PDF pages and remove unwanted margins or whitespace in seconds. Free online PDF cropper — trim borders precisely, no registration, no watermark needed.",
     keywords: "crop PDF, remove PDF margins, trim PDF pages, PDF cropper free online",
     schema: {
       "@context": "https://schema.org",
@@ -1301,7 +1301,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/blog/resize-pdf-to-a4": {
     title: "Resize PDF to A4 or Letter Free (No Software) | PDF HUB 24",
-    description: "Change PDF page size to A4, Letter, Legal, or custom dimensions. Free online PDF resizer — no software download, no signup required.",
+    description: "Change PDF page size to A4, Letter, Legal, or custom dimensions online. Free PDF resizer — resize all or selected pages. No software download, no signup required.",
     keywords: "resize PDF to A4, change PDF page size, PDF resize online free, PDF to letter size",
     schema: {
       "@context": "https://schema.org",
@@ -1346,7 +1346,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/blog/extract-text-from-pdf": {
     title: "Extract Text from PDF Free (Scans + OCR) | PDF HUB 24",
-    description: "Extract and copy text from PDF files easily. Works with scanned PDFs using OCR. Free online tool — no signup, instant results.",
+    description: "Extract and copy text from any PDF file online — including scanned documents using OCR. Free tool with instant results. No signup, no software installation needed.",
     keywords: "extract text from PDF, copy text from PDF, PDF text extractor, PDF to text free",
     schema: {
       "@context": "https://schema.org",
@@ -1449,7 +1449,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/blog/jpg-to-pdf-guide": {
     title: "How to Convert JPG to PDF Free Online (2026) | PDF HUB 24",
-    description: "Convert JPG images to PDF free online. Combine multiple JPG photos into one PDF. No signup, no watermark. Download PDF instantly.",
+    description: "Convert JPG images to PDF free online in seconds. Combine multiple JPEG photos into one PDF. No signup, no watermark, instant download. Works on all devices.",
     keywords: "JPG to PDF, convert image to PDF, photo to PDF, JPEG to PDF free",
     schema: { "@context": "https://schema.org", "@type": "Article", "headline": "How to Convert JPG to PDF: Complete Guide", "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }, "datePublished": "2026-03-15",
       "dateModified": "2026-04-18", "url": `${BASE_URL}/blog/jpg-to-pdf-guide` }
@@ -1470,7 +1470,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/blog/remove-background-from-image": {
     title: "Remove Background from Image Free — Transparent PNG | PDF HUB 24",
-    description: "Remove image backgrounds free online. Get transparent PNG instantly. Works on photos, logos, product images. No signup, no watermark.",
+    description: "Remove image backgrounds free online and get a transparent PNG in seconds. Works on photos, logos, and product images. No signup, no watermark, instant results.",
     keywords: "remove background, transparent PNG, background remover, cut out image free",
     schema: { "@context": "https://schema.org", "@type": "Article", "headline": "How to Remove Background from Any Image", "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }, "datePublished": "2026-03-22",
       "dateModified": "2026-04-18", "url": `${BASE_URL}/blog/remove-background-from-image` }
@@ -1528,7 +1528,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/image-tools": {
     title: "Free Image Tools — Compress, Resize & Convert | PDF HUB 24",
-    description: "Free online image tools for compression, resizing, cropping, rotating, and format conversion. Supports JPG, PNG, WebP, GIF, TIFF.",
+    description: "Free online image tools — compress, resize, crop, rotate, and convert formats. Supports JPG, PNG, WebP, GIF, and TIFF. No signup, no watermark, instant results.",
     keywords: "image tools, compress image, resize image, crop image, convert image, image compressor",
     schema: { "@context": "https://schema.org", "@type": "CollectionPage", "name": "Image Tools", "url": `${BASE_URL}/image-tools`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
@@ -1540,7 +1540,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/data-security": {
     title: "Data Security & Privacy — How We Protect Files | PDF HUB 24",
-    description: "Learn how PDF HUB 24 protects your files. SSL encryption, automatic deletion within 1 hour, zero-access policy, GDPR compliance.",
+    description: "Learn how PDF HUB 24 protects your files. TLS encryption in transit, automatic deletion within 1 hour, zero-access policy, and full GDPR compliance for all users.",
     keywords: "data security, file privacy, PDF security, GDPR, file encryption, auto delete",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Data Security", "url": `${BASE_URL}/data-security`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
@@ -1552,13 +1552,13 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/pricing": {
     title: "Pricing — 49+ Free PDF Tools (No Hidden Costs) | PDF HUB 24",
-    description: "All 49+ PDF tools are 100% free. No signup, no watermarks, no limits. See our free plan features and upcoming Pro plan details.",
+    description: "All 49+ PDF tools are 100% free — no signup, no watermarks, no daily limits, no file size cap. See what's included and what's coming in the Pro plan at PDF HUB 24.",
     keywords: "free pdf tools, pdf tool pricing, free pdf converter, free pdf editor, pdf hub pricing",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Pricing", "url": `${BASE_URL}/pricing`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/embed": {
     title: "Embed Free PDF Tools on Your Website | PDF HUB 24",
-    description: "Embed free PDF tools on your website with our widget generator. Get iframe code for merge, compress, convert, and 49+ PDF tools.",
+    description: "Embed free PDF tools on your website using our widget generator. Get ready-to-paste iframe code for merge, compress, convert, sign, and all 49+ PDF tools.",
     keywords: "embed pdf tools, pdf widget, iframe pdf converter, embed pdf merger, website pdf tools",
     robots: "noindex, nofollow",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Embed Widget Generator", "url": `${BASE_URL}/embed`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
@@ -1635,7 +1635,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/tools/reduce-pdf-size-to-200kb": {
     title: "Reduce PDF Size to 200KB Free Online | PDF HUB 24",
-    description: "Reduce PDF file size to 200KB or less. Free online tool for meeting upload requirements. Maintain quality while shrinking files.",
+    description: "Reduce any PDF to 200KB with our free online compressor. Perfect for government portal upload limits. Maintains readable quality throughout. No signup required.",
     keywords: "reduce pdf 200kb, compress pdf 200kb, pdf size 200kb, small pdf file",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Reduce PDF to 200KB", "url": `${BASE_URL}/tools/reduce-pdf-size-to-200kb`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
@@ -1647,7 +1647,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/tools/merge-pdf-for-visa-application": {
     title: "Merge PDF for Visa Application Free Online | PDF HUB 24",
-    description: "Combine passport, bank statements, photos, and supporting documents into one PDF for visa applications. Free online merger.",
+    description: "Combine passport copies, bank statements, photos, and support documents into a single PDF for visa applications. Free online merger, no signup, instant download.",
     keywords: "merge pdf visa, combine documents visa, visa application pdf, merge pdf passport",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Merge PDF for Visa Application", "url": `${BASE_URL}/tools/merge-pdf-for-visa-application`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
@@ -1659,7 +1659,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/tools/make-pdf-smaller-for-email": {
     title: "Make PDF Smaller for Email Free Online | PDF HUB 24",
-    description: "Make your PDF smaller for email in seconds. Reduce under 25MB for Gmail, 20MB for Outlook. Free compressor with quality options.",
+    description: "Make any PDF small enough for email. Shrink under 25MB for Gmail or 20MB for Outlook in seconds. Free online PDF compressor with adjustable quality. No signup.",
     keywords: "make pdf smaller email, compress pdf email, pdf too large email, reduce pdf for gmail",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Make PDF Smaller for Email", "url": `${BASE_URL}/tools/make-pdf-smaller-for-email`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
@@ -1701,7 +1701,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/tools/unlock-pdf-for-editing": {
     title: "Unlock PDF for Editing Free Online | PDF HUB 24",
-    description: "Remove editing restrictions from password-protected PDFs free. Unlock PDFs for copying, printing, and editing. Requires your password.",
+    description: "Remove editing restrictions from password-protected PDFs for free. Unlock PDFs for copying, printing, and editing. Owner password required. No signup needed.",
     keywords: "unlock pdf editing, remove pdf restrictions, unlock pdf free, pdf remove password editing",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Unlock PDF for Editing", "url": `${BASE_URL}/tools/unlock-pdf-for-editing`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
@@ -1743,7 +1743,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/tools/convert-excel-to-pdf-free": {
     title: "Convert Excel to PDF Free Online | PDF HUB 24",
-    description: "Convert Excel XLS and XLSX files to PDF online for free. Preserve formatting, formulas display, and column widths. No signup required.",
+    description: "Convert Excel XLS and XLSX spreadsheets to PDF online for free. Preserves cell formatting, formulas display, column widths, and styles. No signup, no watermark.",
     keywords: "excel to pdf free, convert xlsx to pdf, spreadsheet to pdf, xls to pdf online, excel pdf converter",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert Excel to PDF Free", "url": `${BASE_URL}/tools/convert-excel-to-pdf-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
@@ -1767,7 +1767,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/tools/edit-pdf-without-adobe-acrobat": {
     title: "Edit PDF Without Adobe Acrobat Free Online | PDF HUB 24",
-    description: "Edit PDF files without Adobe Acrobat. Free online PDF editor with text, images, shapes, and annotations. No expensive software needed.",
+    description: "Edit PDFs without Adobe Acrobat. Free online PDF editor with text editing, image insertion, shapes, and annotations. No signup, no software installation required.",
     keywords: "edit pdf without adobe, pdf editor no acrobat, free alternative adobe acrobat, edit pdf free no adobe",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Edit PDF Without Adobe Acrobat", "url": `${BASE_URL}/tools/edit-pdf-without-adobe-acrobat`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
@@ -1815,7 +1815,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/tools/resize-pdf-to-a4-free": {
     title: "Resize PDF to A4 Free Online | PDF HUB 24",
-    description: "Resize PDF pages to A4 paper size (210x297mm) free online. Convert Letter, Legal, or custom sizes to standard A4 format for printing.",
+    description: "Resize PDF pages to A4 paper size (210×297 mm) free online. Convert Letter, Legal, or any custom size to standard A4 format for printing and sharing. No signup.",
     keywords: "resize pdf a4 free, change pdf to a4, pdf a4 size converter, convert pdf page size a4",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Resize PDF to A4 Free", "url": `${BASE_URL}/tools/resize-pdf-to-a4-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
