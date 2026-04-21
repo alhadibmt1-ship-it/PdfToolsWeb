@@ -324,9 +324,18 @@ export const seoConfig: Record<string, PageSEO> = {
     schema: {
       "@context": "https://schema.org",
       "@type": "WebSite",
+      "@id": `${BASE_URL}/#website`,
       "name": "PDF HUB 24",
       "url": BASE_URL,
-      "description": "Free online PDF tools — 49+ tools for converting, editing, merging, compressing, and managing PDF files"
+      "description": "Free online PDF tools — 49+ tools for converting, editing, merging, compressing, and managing PDF files",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": `${BASE_URL}/all-tools?q={search_term_string}`
+        },
+        "query-input": "required name=search_term_string"
+      }
     }
   },
   "/merge": {
@@ -2119,6 +2128,22 @@ export function generateMetaTags(path: string): string {
         }))
       });
     }
+    // HowTo schema if tutorial steps exist
+    const tutorialSteps: { step: string; detail: string }[] = (toolData as any).tutorial?.steps || [];
+    if (tutorialSteps.length > 0) {
+      schemas.push({
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": (toolData as any).tutorial?.title || `How to use ${toolName}`,
+        "description": seo.description,
+        "step": tutorialSteps.map((s: { step: string; detail: string }, i: number) => ({
+          "@type": "HowToStep",
+          "position": i + 1,
+          "name": s.step,
+          "text": s.detail
+        }))
+      });
+    }
     // BreadcrumbList for tool pages
     schemas.push({
       "@context": "https://schema.org",
@@ -2179,9 +2204,17 @@ export function generateMetaTags(path: string): string {
       schemas.push({
         "@context": "https://schema.org",
         "@type": "Organization",
+        "@id": `${BASE_URL}/#organization`,
         "name": "PDF HUB 24",
         "url": BASE_URL,
-        "logo": { "@type": "ImageObject", "url": `${BASE_URL}/og-image.png`, "width": 1200, "height": 630 },
+        "logo": {
+          "@type": "ImageObject",
+          "@id": `${BASE_URL}/#logo`,
+          "url": `${BASE_URL}/og-image.png`,
+          "width": 1200,
+          "height": 630,
+          "caption": "PDF HUB 24"
+        },
         "sameAs": [],
         "description": "Free online PDF tools — merge, split, compress, convert, and edit PDF files with no signup."
       });
@@ -2231,13 +2264,16 @@ export function generateMetaTags(path: string): string {
     <meta property="og:image" content="${OG_IMAGE}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="PDF HUB 24 — Free Online PDF Tools" />
     <meta property="og:locale" content="${langAttr}" />${articleOgTags}
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pdfhub24" />
     <meta name="twitter:title" content="${twitterTitle}" />
     <meta name="twitter:description" content="${twitterDescription}" />
     <meta name="twitter:image" content="${OG_IMAGE}" />
+    <meta name="twitter:image:alt" content="PDF HUB 24 — Free Online PDF Tools" />
     
     <!-- Robots -->
     <meta name="robots" content="${robotsContent}" />
