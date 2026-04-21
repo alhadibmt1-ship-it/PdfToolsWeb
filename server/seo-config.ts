@@ -2215,7 +2215,10 @@ export function generateMetaTags(path: string): string {
           "height": 630,
           "caption": "PDF HUB 24"
         },
-        "sameAs": [],
+        "sameAs": [
+          "https://www.facebook.com/profile.php?id=61584792122187",
+          "https://youtube.com/@pdfhub24"
+        ],
         "description": "Free online PDF tools — merge, split, compress, convert, and edit PDF files with no signup."
       });
       schemas.push({
