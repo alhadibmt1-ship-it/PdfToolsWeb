@@ -29,6 +29,7 @@ The design focuses on a "Clean Modern Utility Design" with a vibrant color schem
 - **Conversion Quality**: Advanced PDF to Word conversion and high-resolution PDF to JPG output.
 - **Interactive Editing**: Canvas-based editing tools with real-time preview and undo functionality.
 - **Pre-render Shell**: Rich static HTML is generated server-side for all page types (tools, blogs, programmatic, category hubs) to optimize initial content delivery for crawlers.
+- **Invalid Blog Slug Protection**: Unknown `/blog/:slug` paths (not in blogData) automatically receive `noindex, nofollow` robots directive to prevent thin content indexing.
 - **Programmatic SEO**: Extensive generation of landing pages based on various parameters (countries, industries, document types) with deep country-specific content uniqueness.
   - COUNTRY_RICH system provides local portals, document names, compliance laws, and cities for 170 countries (Tier-2 compliance upgraded to named laws: DPDPA 2023, APPs 1988, PIPEDA, PDPA 2010, NDPR, Kenya DPA 2019, Egypt DPA No.151/2020, etc.)
   - 4 structural content variants per page type (slugVariant hash determines which variant)

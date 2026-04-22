@@ -3829,8 +3829,83 @@ toolSEOData["batch-compress"] = {
     { text: "Merge PDF", href: "/merge", context: "Merge all your PDFs into one before or after compressing" },
     { text: "Split PDF", href: "/split", context: "Split large PDFs into smaller sections" },
     { text: "Extract Pages", href: "/extract-pages", context: "Extract only the pages you need before compressing" },
-    { text: "Compress Image", href: "/compress-img", context: "Compress images before embedding in PDF" },
+    { text: "Compress Image", href: "/image-compressor", context: "Compress images before embedding in PDF" },
     { text: "Unlock PDF", href: "/unlock-pdf", context: "Remove passwords from PDFs before batch compressing" },
     { text: "/blog/how-to-compress-pdf-for-email", href: "/blog/how-to-compress-pdf-for-email", context: "Guide to compressing PDFs for email attachments" }
+  ]
+} as unknown as ToolSEOData;
+
+toolSEOData["ppt-to-pdf"] = {
+  id: "ppt-to-pdf",
+  primaryKeyword: "ppt to pdf converter free online",
+  longTailH1: "PPT to PDF Converter Free Online — Keeps Slides & Formatting",
+  secondaryKeywords: [
+    "ppt to pdf free no signup",
+    "convert ppt to pdf online",
+    "pptx to pdf keep formatting",
+    "powerpoint to pdf converter free",
+    "upload ppt convert to pdf",
+    "presentation to pdf high quality"
+  ],
+  metaDescription: "Convert PPT or PPTX files to PDF free online. Preserves all slides, fonts, and layout. No signup, no watermark. Fast browser-based PPT to PDF tool.",
+  heroContent: "Need to turn a PowerPoint file into a PDF right now? Upload your .ppt or .pptx file and get a professionally formatted PDF in seconds — all slides preserved, fonts intact, layout pixel-perfect. Whether you're preparing a pitch deck for investors, sharing training slides with a team, or archiving conference materials, PDF HUB 24's PPT to PDF converter handles it instantly in your browser with zero software installation. No Microsoft Office required. Completely free, no file size limits, no watermarks.",
+  useCases: {
+    title: "When to Convert PPT to PDF",
+    description: "Converting PowerPoint to PDF is ideal in these situations:",
+    items: [
+      "Sharing pitch decks with clients who don't have PowerPoint",
+      "Distributing training materials in a non-editable format",
+      "Submitting presentations for conferences and events",
+      "Creating meeting handouts and printed agendas",
+      "Archiving slide decks in a universal, long-term format",
+      "Sending investor decks as polished, protected PDFs",
+      "Uploading presentations to portals that require PDF format",
+      "Preparing webinar recordings with slide references"
+    ]
+  },
+  tutorial: {
+    title: "How to Convert PPT to PDF — Step by Step",
+    steps: [
+      { step: "Upload Your PPT File", detail: "Drag and drop your .ppt or .pptx file onto the upload area, or click 'Choose File'. All PowerPoint versions are supported." },
+      { step: "Convert to PDF", detail: "Click 'Convert to PDF'. The tool processes each slide and builds the PDF with all formatting preserved." },
+      { step: "Download Your PDF", detail: "Click 'Download PDF' to save your converted file. The PDF is ready to share, print, or upload anywhere." }
+    ]
+  },
+  troubleshooting: {
+    title: "PPT to PDF — Common Issues and Fixes",
+    issues: [
+      { problem: "Fonts look different in the PDF compared to the original slides", solution: "If the fonts used in your presentation are not installed on our server, the system substitutes a similar font. To avoid this: embed fonts in PowerPoint before uploading (File > Options > Save > Embed fonts in the file). This ensures all custom fonts travel with the file and appear correctly in the converted PDF." },
+      { problem: "Slides are cropped or have white borders around the content", solution: "This happens when the slide dimensions don't match a standard paper size. In PowerPoint, go to Design > Slide Size and set it to Widescreen (16:9) or Standard (4:3) before converting. If you need a specific page size in the PDF, use our Resize PDF tool after conversion to adjust the dimensions to A4, Letter, or any custom size." }
+    ]
+  },
+  securitySection: {
+    title: "Secure PPT to PDF Conversion",
+    content: "Your presentation files are handled with strict privacy controls:",
+    points: [
+      "256-bit SSL encryption for all file transfers",
+      "Files processed in an isolated, per-session environment",
+      "Automatic deletion of all files after conversion completes",
+      "No access to or storage of your presentation content",
+      "No Microsoft account or registration required",
+      "GDPR-compliant infrastructure and data handling"
+    ]
+  },
+  faqs: [
+    { question: "Does the PPT to PDF converter keep all my slides?", answer: "Yes — every slide in your .ppt or .pptx file becomes a page in the PDF. No slides are skipped or reordered." },
+    { question: "Will animations and transitions appear in the PDF?", answer: "PDFs are static documents, so animations don't carry over. Each slide is captured in its final visual state, which is what recipients see when you share the PDF." },
+    { question: "Is there a file size limit for uploading PPT files?", answer: "No hard file size limit. Large presentations with many high-resolution images may take a few extra seconds to process, but all files are supported." },
+    { question: "Does the tool support both .ppt and .pptx formats?", answer: "Yes, both legacy .ppt (PowerPoint 97-2003) and modern .pptx (PowerPoint 2007+) formats are fully supported." },
+    { question: "Can I convert a password-protected PowerPoint to PDF?", answer: "Password-protected PPT files cannot be processed until the password is removed. Open the file in PowerPoint, go to File > Info > Protect Presentation and remove the password, then re-upload." }
+  ],
+  relatedWorkflows: [
+    { title: "Presentation Distribution Workflow", description: "Convert and share presentations professionally", tools: ["ppt-to-pdf", "compress", "add-watermark"] },
+    { title: "Meeting Materials Workflow", description: "Prepare handouts and agendas from slides", tools: ["ppt-to-pdf", "merge", "add-page-numbers"] }
+  ],
+  internalLinks: [
+    { text: "PDF to PPT", href: "/pdf-to-ppt", context: "Convert PDF slides back to editable PowerPoint format" },
+    { text: "Word to PDF", href: "/word-to-pdf", context: "Convert Word documents to PDF" },
+    { text: "Compress PDF", href: "/compress", context: "Reduce the PDF file size after converting from PPT" },
+    { text: "Add Watermark", href: "/add-watermark", context: "Add branding or confidential labels to your presentation PDF" },
+    { text: "Merge PDF", href: "/merge", context: "Combine multiple presentation PDFs into one" }
   ]
 } as unknown as ToolSEOData;
