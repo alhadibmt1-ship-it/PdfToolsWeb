@@ -9,7 +9,6 @@ import EnhancedToolSEOContent from "@/components/LazyEnhancedSEO";
 import { getToolSEOData } from "@/data/toolSEOData";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
-import { ToolBreadcrumbs } from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -174,8 +173,6 @@ export default function DeletePagesPage() {
       
       <main className="flex-1 py-8">
         <div className="max-w-4xl mx-auto px-6">
-          <ToolBreadcrumbs toolName="Delete PDF Pages" category="edit-pdf" />
-          
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" />

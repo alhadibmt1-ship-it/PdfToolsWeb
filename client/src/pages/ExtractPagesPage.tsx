@@ -8,7 +8,6 @@ import ProcessingState from "@/components/ProcessingState";
 import EnhancedToolSEOContent from "@/components/LazyEnhancedSEO";
 import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
-import { ToolBreadcrumbs } from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -140,7 +139,6 @@ export default function ExtractPagesPage() {
       <Header />
       <main className="flex-1">
         <div className="max-w-2xl mx-auto px-4 py-8 space-y-6">
-          <ToolBreadcrumbs toolName="Extract PDF Pages" category="edit-pdf" />
           <Link href="/">
             <Button variant="ghost" size="sm" className="gap-1 text-muted-foreground -ml-2">
               <ChevronLeft className="w-4 h-4" /> Back
