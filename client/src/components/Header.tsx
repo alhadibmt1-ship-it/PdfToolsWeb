@@ -30,7 +30,6 @@ export default function Header() {
               width="36"
               height="36"
               loading="eager"
-              fetchPriority="high"
             />
             <span className="text-lg sm:text-xl font-bold tracking-tight">PDF HUB 24</span>
           </div>

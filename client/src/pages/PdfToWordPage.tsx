@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, Download, FileText, ArrowRight, Shield, Lock, Trash2, Eye, Scale, Zap, CheckCircle2, RefreshCw, FileDown } from "lucide-react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
@@ -19,6 +19,9 @@ import { getToolSEOData } from "@/data/toolSEOData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { t } from "@/lib/languages";
 
+const MAX_FILE_SIZE_MB = 50;
+const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
+
 export default function PdfToWordPage() {
   useSEO({
     title: "PDF to Word Free Online (No Email, No Watermark) | PDF HUB 24",
@@ -32,20 +35,52 @@ export default function PdfToWordPage() {
   const [files, setFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const { toast } = useToast();
   const { progress, runWithProgress } = useConversionProgress();
+
+  // Revoke object URL when component unmounts or resultUrl changes
+  useEffect(() => {
+    return () => {
+      if (resultUrl) {
+        URL.revokeObjectURL(resultUrl);
+      }
+    };
+  }, [resultUrl]);
+
+  // Reset to idle when new files are selected so user can convert again
+  const handleFilesSelected = useCallback((newFiles: File[]) => {
+    if (resultUrl) {
+      URL.revokeObjectURL(resultUrl);
+      setResultUrl(null);
+    }
+    setStatus("idle");
+    setErrorMessage("");
+    setFiles(newFiles);
+  }, [resultUrl]);
 
   const handleConvert = async () => {
     if (files.length === 0) {
       toast({
-        title: "Error",
-        description: "Please select a PDF file to convert",
+        title: "No file selected",
+        description: "Please select a PDF file to convert.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Client-side file size validation
+    if (files[0].size > MAX_FILE_SIZE_BYTES) {
+      toast({
+        title: "File too large",
+        description: `Please upload a PDF under ${MAX_FILE_SIZE_MB}MB. Your file is ${(files[0].size / 1024 / 1024).toFixed(1)}MB.`,
         variant: "destructive",
       });
       return;
     }
 
     setStatus("processing");
+    setErrorMessage("");
 
     const formData = new FormData();
     formData.append("file", files[0]);
@@ -58,25 +93,34 @@ export default function PdfToWordPage() {
         });
 
         if (!response.ok) {
-          throw new Error("Failed to convert PDF");
+          // Read the actual error from the server
+          let serverError = "Failed to convert PDF. Please try again.";
+          try {
+            const errBody = await response.json();
+            if (errBody?.error) serverError = errBody.error;
+          } catch {
+            // ignore JSON parse failure
+          }
+          throw new Error(serverError);
         }
 
         return await response.blob();
       });
 
+      // Revoke any previous URL before creating a new one
+      if (resultUrl) {
+        URL.revokeObjectURL(resultUrl);
+      }
       const url = URL.createObjectURL(blob);
       setResultUrl(url);
       setStatus("success");
-
-      toast({
-        title: "Success!",
-        description: "PDF converted to Word successfully",
-      });
-    } catch (error) {
+    } catch (error: any) {
       setStatus("error");
+      const msg = error?.message || "Failed to convert PDF. Please try again.";
+      setErrorMessage(msg);
       toast({
-        title: "Error",
-        description: "Failed to convert PDF. Please try again.",
+        title: "Conversion failed",
+        description: msg,
         variant: "destructive",
       });
     }
@@ -86,9 +130,21 @@ export default function PdfToWordPage() {
     if (resultUrl) {
       const a = document.createElement("a");
       a.href = resultUrl;
-      a.download = "converted.docx";
+      // Use original filename with .docx extension
+      const baseName = files[0]?.name?.replace(/\.pdf$/i, "") || "converted";
+      a.download = `${baseName}.docx`;
       a.click();
     }
+  };
+
+  const handleReset = () => {
+    if (resultUrl) {
+      URL.revokeObjectURL(resultUrl);
+    }
+    setResultUrl(null);
+    setFiles([]);
+    setStatus("idle");
+    setErrorMessage("");
   };
 
   const seoData = getToolSEOData("pdf-to-word");
@@ -111,7 +167,7 @@ export default function PdfToWordPage() {
 
           <section className="mb-8" aria-label="Tool introduction">
             <h1 className="text-3xl md:text-4xl font-bold mb-3" data-testid="text-page-title">
-              Convert PDF to Word Free Online – Editable DOCX in Seconds
+              Convert PDF to Word Free Online - Editable DOCX in Seconds
             </h1>
             <p className="text-muted-foreground leading-relaxed mb-4 text-lg">
               Transform any PDF into a fully editable Word document (DOCX) instantly. No email required, no watermarks, no signup — just fast, secure, and accurate <Link href="/pdf-to-word" className="text-primary hover:underline">PDF to Word conversion</Link> that works on all devices.
@@ -133,12 +189,12 @@ export default function PdfToWordPage() {
 
           <section id="upload-section" className="space-y-6 mb-10" aria-label="PDF to Word converter tool">
             <FileUploadZone
-              onFilesSelected={setFiles}
+              onFilesSelected={handleFilesSelected}
               acceptedFormats=".pdf"
               multiple={false}
               disabled={status === "processing"}
             />
-            <CloudImportBar accept="pdf" onFileImported={(file) => setFiles([file])} />
+            <CloudImportBar accept="pdf" onFileImported={(file) => handleFilesSelected([file])} />
 
             {files.length > 0 && status === "idle" && (
               <Button
@@ -152,15 +208,45 @@ export default function PdfToWordPage() {
               </Button>
             )}
 
-            <ProcessingState
-              status={status}
-              progress={progress}
-              message={status === "processing" ? "Converting PDF to Word..." : undefined}
-            />
+            {/* Show processing and error states via ProcessingState */}
+            {(status === "processing" || status === "error") && (
+              <ProcessingState
+                status={status}
+                progress={progress}
+                message={
+                  status === "processing"
+                    ? "Converting PDF to Word..."
+                    : errorMessage || "Conversion failed. Please try again."
+                }
+              />
+            )}
 
+            {/* Show error retry button */}
+            {status === "error" && (
+              <Button
+                variant="outline"
+                className="w-full"
+                size="lg"
+                onClick={handleReset}
+                data-testid="button-retry"
+              >
+                <RefreshCw className="w-4 h-4 mr-2" />
+                Try Again
+              </Button>
+            )}
+
+            {/* Success: single unified download card */}
             {status === "success" && resultUrl && (
-              <div className="rounded-lg border bg-card p-6 space-y-4">
-                <h3 className="font-semibold">Your Word document is ready!</h3>
+              <div className="rounded-xl border border-green-500/30 bg-gradient-to-br from-green-500/5 to-transparent p-6 space-y-4">
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="w-6 h-6 text-green-500 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold">Your Word document is ready!</h3>
+                    <p className="text-sm text-muted-foreground">
+                      {files[0]?.name?.replace(/\.pdf$/i, ".docx") || "converted.docx"}
+                    </p>
+                  </div>
+                </div>
                 <Button
                   onClick={handleDownload}
                   className="w-full"
@@ -169,6 +255,16 @@ export default function PdfToWordPage() {
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Download DOCX File
+                </Button>
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  size="lg"
+                  onClick={handleReset}
+                  data-testid="button-convert-another"
+                >
+                  <RefreshCw className="w-4 h-4 mr-2" />
+                  Convert Another PDF
                 </Button>
               </div>
             )}
@@ -257,7 +353,7 @@ export default function PdfToWordPage() {
           </section>
 
           <section className="mb-10" aria-label="Common PDF to Word issues and fixes">
-            <h2 className="text-2xl font-bold mb-4">Common PDF to Word Issues & Fixes</h2>
+            <h2 className="text-2xl font-bold mb-4">Common PDF to Word Issues &amp; Fixes</h2>
             <div className="space-y-3">
               {[
                 { problem: "Formatting looks different in Word", fix: "Complex PDF layouts with multiple columns or heavy design elements may need minor adjustments. For best results, use PDFs with standard text-based layouts." },
@@ -286,7 +382,7 @@ export default function PdfToWordPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Card>
                 <CardContent className="p-4">
-                  <h3 className="font-semibold text-sm mb-2">Edit & Re-export Workflow</h3>
+                  <h3 className="font-semibold text-sm mb-2">Edit &amp; Re-export Workflow</h3>
                   <p className="text-xs text-muted-foreground mb-2">Convert PDF to Word, make your edits, then convert back to PDF.</p>
                   <div className="flex flex-wrap gap-2">
                     <Link href="/pdf-to-word" className="text-xs text-primary hover:underline">PDF to Word</Link>
@@ -341,7 +437,7 @@ export default function PdfToWordPage() {
           </section>
 
           <section className="mb-10" aria-label="Security and privacy">
-            <h2 className="text-2xl font-bold mb-4">Security & Privacy</h2>
+            <h2 className="text-2xl font-bold mb-4">Security &amp; Privacy</h2>
             <Card>
               <CardContent className="p-5">
                 <p className="text-muted-foreground text-sm mb-4">
