@@ -1962,6 +1962,18 @@ export function generateMetaTags(path: string): string {
     : "";
   const effectiveHreflangBlock = (progSlugMatch || directProgPage) ? "" : (blogPost ? blogOnlyHreflangBlock : hreflangBlock);
 
+  // ── Truly unknown page detection ─────────────────────────────────────────
+  // Any English path not matched by seoConfig, toolSEOData, blog, or prog pages
+  // is a garbage/unknown URL → noindex, nofollow + suppress hreflang.
+  // progSlugMatch covers all /tools/ paths even when getProgrammaticPage() returns null
+  const isTrulyUnknownPage = lang === "en"
+    && !isDefinedStaticPage
+    && !toolData
+    && !blogSlugMatch
+    && !progPage
+    && !progSlugMatch;
+  const finalHreflangBlock = isTrulyUnknownPage ? "" : effectiveHreflangBlock;
+
   // ── Override seo title/description from progPage for generated pages ──────
   let effectiveTitle = progPage ? progPage.title : seo.title;
   let effectiveDescription = progPage ? progPage.description : seo.description;
@@ -2067,7 +2079,7 @@ export function generateMetaTags(path: string): string {
   // Language blog pages: INDEXED — each has unique fully-translated content per language
   // All country pages: INDEXED — each has unique locally-enriched content
   // All other pages: standard index,follow with full preview directives
-  const robotsContent = isUnknownBlogSlug
+  const robotsContent = (isUnknownBlogSlug || isTrulyUnknownPage)
     ? "noindex, nofollow"
     : (seo.robots || "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
 
@@ -2288,7 +2300,7 @@ export function generateMetaTags(path: string): string {
     <meta name="description" content="${effectiveDescription}" />
     <meta name="keywords" content="${effectiveKeywords}" />
     <link rel="canonical" href="${effectiveCanonicalUrl}" />
-    ${effectiveHreflangBlock}
+    ${finalHreflangBlock}
     
     <!-- Open Graph -->
     <meta property="og:title" content="${ogTitle}" />
@@ -2312,6 +2324,7 @@ export function generateMetaTags(path: string): string {
     
     <!-- Robots -->
     <meta name="robots" content="${robotsContent}" />
+    ${process.env.GOOGLE_SITE_VERIFICATION ? `\n    <!-- Google Search Console Verification -->\n    <meta name="google-site-verification" content="${process.env.GOOGLE_SITE_VERIFICATION}" />` : ""}
     
     <!-- Structured Data -->
     ${schemaBlocks}

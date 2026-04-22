@@ -181,6 +181,27 @@ app.use('/api/*/convert', uploadLimiter);
 app.use('/api/*/compress', uploadLimiter);
 app.use('/api/*/merge', uploadLimiter);
 
+// Cache-Control headers for crawl efficiency and performance
+app.use((req, res, next) => {
+  if (req.path.startsWith('/api/')) {
+    // API responses: no caching
+    res.setHeader('Cache-Control', 'no-store');
+  } else if (/sitemap.*\.xml$/.test(req.path) || req.path === '/robots.txt') {
+    // Sitemaps and robots: 12-hour public cache
+    res.setHeader('Cache-Control', 'public, max-age=43200');
+  } else if (/\.(js|css|woff2?|ttf|otf|eot)$/.test(req.path)) {
+    // JS/CSS/fonts: 1-year immutable cache (Vite fingerprints them)
+    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+  } else if (/\.(png|jpg|jpeg|webp|svg|ico|gif)$/.test(req.path)) {
+    // Images: 7-day cache
+    res.setHeader('Cache-Control', 'public, max-age=604800');
+  } else {
+    // HTML pages: 1-hour cache, stale-while-revalidate for fast repeat visits
+    res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
+  }
+  next();
+});
+
 // Normalize trailing slashes - redirect /path/ to /path (301 for SEO)
 app.use((req, res, next) => {
   if (req.path !== '/' && req.path.endsWith('/')) {
