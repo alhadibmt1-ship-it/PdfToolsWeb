@@ -3909,3 +3909,819 @@ toolSEOData["ppt-to-pdf"] = {
     { text: "Merge PDF", href: "/merge", context: "Combine multiple presentation PDFs into one" }
   ]
 } as unknown as ToolSEOData;
+
+toolSEOData["watermark-pdf"] = {
+  id: "watermark-pdf",
+  primaryKeyword: "add watermark to pdf free",
+  longTailH1: "Add Watermark to PDF Free — Text, Image, Custom Opacity",
+  secondaryKeywords: ["pdf watermark tool", "watermark pdf online free", "text watermark pdf", "image watermark pdf", "protect pdf with watermark"],
+  metaDescription: "Add custom text or image watermarks to any PDF. Free watermark tool — control opacity, position, and rotation. No signup, no watermarks added by us.",
+  heroContent: "Need to brand a document as 'Confidential', 'Draft', or stamp your company logo on every page? PDF HUB 24's watermark tool lets you add any text or image watermark across your entire PDF in seconds — no Acrobat subscription required. You control the font, size, color, opacity, and position. The result is a professionally watermarked document ready for distribution, legal review, or secure sharing.",
+  useCases: {
+    title: "When to Add a Watermark to Your PDF",
+    description: "Watermarks serve legal, branding, and workflow purposes across many industries:",
+    items: ["Marking draft documents as 'DRAFT' before final sign-off", "Branding client proposals with your company logo", "Protecting confidential reports shared externally", "Marking invoices 'PAID' after payment is received", "Stamping training materials with 'FOR INTERNAL USE ONLY'", "Adding copyright notices to published documents", "Identifying document versions in review workflows", "Deterring unauthorized redistribution of proprietary content"]
+  },
+  tutorial: {
+    title: "How to Add a Watermark to PDF — Step by Step",
+    steps: [
+      { step: "Upload Your PDF", detail: "Drag and drop your PDF or click to upload. Supports PDFs of any size." },
+      { step: "Configure Your Watermark", detail: "Choose text or image watermark. Set font, size, color, opacity (0–100%), rotation angle, and position (center, tile, or custom coordinates)." },
+      { step: "Apply & Download", detail: "Click 'Add Watermark'. The watermark is applied to every page. Download your watermarked PDF instantly." }
+    ]
+  },
+  troubleshooting: {
+    title: "Watermark Issues — Common Problems and Fixes",
+    issues: [
+      { problem: "Watermark appears behind content instead of over it", solution: "Toggle the 'Overlay' option to place the watermark on top of all page content. Some PDFs have complex layer ordering — enabling foreground mode ensures the watermark renders above all elements." },
+      { problem: "Watermark text looks different than expected", solution: "Font rendering depends on system fonts. For consistent results, use standard fonts like Arial, Helvetica, or Times New Roman. If using a custom font, consider converting your watermark text to an image first and uploading that as an image watermark instead." }
+    ]
+  },
+  securitySection: {
+    title: "Secure Watermark Processing",
+    content: "Your files are protected throughout the watermarking process:",
+    points: ["TLS encryption for all file uploads and downloads", "Files processed in isolated per-session containers", "Automatic deletion after watermark is applied", "No storage or analysis of document content", "GDPR-compliant infrastructure"]
+  },
+  faqs: [
+    { question: "Can I add a watermark to every page automatically?", answer: "Yes — the watermark is applied to all pages in the PDF by default. You can optionally select specific page ranges if needed." },
+    { question: "Can I remove a watermark added by this tool?", answer: "Watermarks added by PDF HUB 24 are embedded into the page content. They cannot be removed without re-editing the source PDF. Use our tool intentionally for final document versions." },
+    { question: "Does the watermark affect PDF text searchability?", answer: "No — the watermark is added as an overlay layer. The original text remains searchable and selectable beneath it." },
+    { question: "Can I add a transparent or semi-transparent watermark?", answer: "Yes. Use the opacity slider to set any transparency level from 10% to 100%. Most professional watermarks use 20–40% opacity to remain readable without obscuring the document." },
+    { question: "Is there a limit on PDF file size for watermarking?", answer: "No hard limit. Large PDFs with many pages may take a few extra seconds to process, but all file sizes are supported." }
+  ],
+  relatedWorkflows: [
+    { title: "Document Protection Workflow", description: "Watermark, encrypt, and control access to sensitive PDFs", tools: ["watermark-pdf", "protect-pdf", "sign-pdf"] },
+    { title: "Branding Workflow", description: "Add corporate identity elements to client-facing documents", tools: ["watermark-pdf", "merge", "add-page-numbers"] }
+  ],
+  internalLinks: [
+    { text: "Protect PDF", href: "/protect-pdf", context: "Add password encryption alongside your watermark" },
+    { text: "Add Page Numbers", href: "/page-numbers", context: "Number pages in addition to watermarking" },
+    { text: "Sign PDF", href: "/sign-pdf", context: "Digitally sign the watermarked document" },
+    { text: "Compress PDF", href: "/compress", context: "Reduce file size after watermarking" }
+  ]
+} as unknown as ToolSEOData;
+
+toolSEOData["page-numbers"] = {
+  id: "page-numbers",
+  primaryKeyword: "add page numbers to pdf free",
+  longTailH1: "Add Page Numbers to PDF Free — Custom Position, Font & Style",
+  secondaryKeywords: ["pdf page numbering online", "number pages in pdf free", "add folio to pdf", "custom page numbers pdf", "pdf page numbers no signup"],
+  metaDescription: "Add page numbers to any PDF in any position — bottom center, top right, or custom offset. Multiple number styles. Free online tool, no signup required.",
+  heroContent: "Submitting a thesis, legal brief, or business report without page numbers is a common mistake that makes documents hard to navigate. PDF HUB 24's page numbering tool lets you add professional page numbers to any PDF in seconds — choose the position, font, size, starting number, and format. Roman numerals, Arabic numbers, or letter prefixes all supported. No software installation needed.",
+  useCases: {
+    title: "When to Add Page Numbers to a PDF",
+    description: "Page numbers are required or expected in many professional contexts:",
+    items: ["Academic dissertations and thesis submissions", "Legal briefs and court filings", "Business reports and proposals shared with stakeholders", "Book manuscripts prepared for printing or publishing", "Meeting agendas and multi-page handouts", "Technical manuals and user documentation", "Annual reports and financial statements", "Any multi-page PDF intended for print distribution"]
+  },
+  tutorial: {
+    title: "How to Add Page Numbers to PDF — Step by Step",
+    steps: [
+      { step: "Upload Your PDF", detail: "Drag and drop or click to upload your PDF. All PDF versions and sizes are supported." },
+      { step: "Configure Page Number Settings", detail: "Choose position (header or footer, left/center/right), font style and size, starting number, number format (1, i, a), and any prefix or suffix text." },
+      { step: "Apply & Download", detail: "Click 'Add Page Numbers'. Numbers are embedded into the PDF. Download your numbered document instantly." }
+    ]
+  },
+  troubleshooting: {
+    title: "Page Number Issues — Common Problems and Fixes",
+    issues: [
+      { problem: "Page numbers overlap with existing header or footer content", solution: "Increase the margin offset in the position settings. Try moving numbers to the opposite edge — if your document has a top header, place numbers in the footer instead." },
+      { problem: "I want to start numbering from page 3 (skip cover and contents)", solution: "Use the 'Start page' and 'Start number' settings. Set 'Start page' to 3 and 'Start number' to 1 to skip the cover and table of contents pages without numbering them." }
+    ]
+  },
+  securitySection: {
+    title: "Secure Page Number Processing",
+    content: "Your PDFs are handled safely at every step:",
+    points: ["256-bit TLS encryption for all uploads", "Files deleted automatically after processing", "No document content is read or stored", "Per-session isolated processing environment", "GDPR-compliant data handling"]
+  },
+  faqs: [
+    { question: "Can I skip numbering certain pages like the cover page?", answer: "Yes — set the 'Start page' option to the page where numbering should begin. Pages before the start page will not receive numbers." },
+    { question: "Can I use Roman numerals for page numbers?", answer: "Yes. The tool supports Arabic numerals (1, 2, 3), lowercase Roman numerals (i, ii, iii), uppercase Roman numerals (I, II, III), and letter-based numbering (a, b, c)." },
+    { question: "Will adding page numbers change the PDF file size significantly?", answer: "No — page numbers add minimal data. A 100-page PDF typically increases in size by less than 50KB after numbering." },
+    { question: "Can I add 'Page X of Y' format?", answer: "Yes. Enable the 'Total pages' option to display formats like 'Page 1 of 12' or 'Pg. 3/10' depending on your configuration." },
+    { question: "Does this tool work with password-protected PDFs?", answer: "Password-protected PDFs cannot be edited until unlocked. Use our Unlock PDF tool first to remove the password, then add page numbers." }
+  ],
+  relatedWorkflows: [
+    { title: "Document Preparation Workflow", description: "Prepare professional reports and submissions", tools: ["page-numbers", "merge", "compress"] },
+    { title: "Academic Submission Workflow", description: "Format thesis and dissertation PDFs correctly", tools: ["page-numbers", "watermark-pdf", "protect-pdf"] }
+  ],
+  internalLinks: [
+    { text: "Merge PDF", href: "/merge", context: "Combine chapters before adding page numbers" },
+    { text: "Add Watermark", href: "/watermark-pdf", context: "Add a watermark alongside page numbers" },
+    { text: "Compress PDF", href: "/compress", context: "Reduce size after formatting your document" },
+    { text: "Protect PDF", href: "/protect-pdf", context: "Password-protect the numbered document" }
+  ]
+} as unknown as ToolSEOData;
+
+toolSEOData["jpg-to-png"] = {
+  id: "jpg-to-png",
+  primaryKeyword: "jpg to png converter free online",
+  longTailH1: "JPG to PNG Free — Lossless Conversion with Transparency Support",
+  secondaryKeywords: ["convert jpeg to png free", "jpg to png no signup", "jpeg to png transparent", "batch jpg to png", "jpg png converter online"],
+  metaDescription: "Convert JPG images to PNG with full transparency support. Free JPG to PNG converter — instant, lossless, supports batch conversion. No signup required.",
+  heroContent: "PNG is the go-to format when you need a lossless image with transparency support — perfect for logos, UI elements, product shots on white backgrounds, and anything you'll edit further. Converting from JPG to PNG is lossless once you're in PNG format, meaning no additional quality is lost after conversion. Upload your JPG, convert instantly, and get a clean PNG ready for any design tool or web application.",
+  useCases: {
+    title: "When to Convert JPG to PNG",
+    description: "Converting to PNG makes sense in several situations:",
+    items: ["Creating logos and graphics that need transparent backgrounds", "Preparing product images for e-commerce with white/transparent backgrounds", "Converting screenshots for web use where lossless quality matters", "Creating UI assets for mobile apps and web design", "Editing images in tools that work better with PNG (Figma, GIMP, etc.)", "Archiving images in a lossless format for future editing", "Creating images for presentations where sharpness is critical", "Preparing assets that will be overlaid on colored backgrounds"]
+  },
+  tutorial: {
+    title: "How to Convert JPG to PNG — Step by Step",
+    steps: [
+      { step: "Upload Your JPG", detail: "Drag and drop your JPG or JPEG image, or click to browse. Multiple files can be converted at once." },
+      { step: "Convert to PNG", detail: "Click 'Convert to PNG'. The tool instantly converts your image to lossless PNG format." },
+      { step: "Download PNG", detail: "Download your converted PNG file. For batch conversions, all files are packaged in a ZIP." }
+    ]
+  },
+  troubleshooting: {
+    title: "JPG to PNG — Common Issues",
+    issues: [
+      { problem: "PNG file is much larger than the original JPG", solution: "This is expected — PNG is lossless and stores more data. A JPG compressed with quality loss will always produce a larger PNG equivalent. If file size matters, consider keeping the JPG. Use PNG only when you need transparency or lossless quality for further editing." },
+      { problem: "The converted PNG looks slightly different from the original JPG", solution: "JPGs use lossy compression, so the original already has some quality loss baked in. Converting to PNG captures that existing quality accurately — what you see is the true state of the original JPG, not any new degradation from conversion." }
+    ]
+  },
+  securitySection: {
+    title: "Secure Image Conversion",
+    content: "Your images are processed with full privacy protection:",
+    points: ["TLS-encrypted uploads and downloads", "Files auto-deleted after conversion", "No image analysis or storage", "Per-session processing isolation", "No account or registration required"]
+  },
+  faqs: [
+    { question: "Does JPG to PNG conversion improve image quality?", answer: "No — converting from JPG to PNG does not recover quality lost during JPG compression. It simply stores the existing image data in a lossless format, preventing any further quality loss in subsequent saves." },
+    { question: "Will my PNG have a transparent background?", answer: "JPG does not support transparency, so the converted PNG will have a white (or original) background. To add transparency, use a background removal tool after conversion." },
+    { question: "Can I convert multiple JPGs to PNG at once?", answer: "Yes — upload multiple JPG files and all will be converted simultaneously. Results are downloaded in a ZIP archive." },
+    { question: "Is there a file size limit?", answer: "No hard limit. Very large images may take a few seconds to process, but all file sizes are supported." },
+    { question: "What is the difference between JPG and PNG?", answer: "JPG uses lossy compression (smaller file, some quality loss) while PNG uses lossless compression (larger file, perfect quality). PNG also supports transparency; JPG does not." }
+  ],
+  relatedWorkflows: [
+    { title: "Image Editing Preparation", description: "Convert and prepare images for design tools", tools: ["jpg-to-png", "resize-image", "crop-image"] },
+    { title: "Web Asset Pipeline", description: "Prepare optimized images for websites", tools: ["jpg-to-png", "image-compressor", "resize-image"] }
+  ],
+  internalLinks: [
+    { text: "PNG to JPG", href: "/png-to-jpg", context: "Convert PNG back to JPG for smaller file size" },
+    { text: "Resize Image", href: "/resize-image", context: "Resize the converted PNG to specific dimensions" },
+    { text: "Compress Image", href: "/image-compressor", context: "Reduce PNG file size after conversion" },
+    { text: "Image Converter", href: "/image-converter", context: "Convert between any image formats" }
+  ]
+} as unknown as ToolSEOData;
+
+toolSEOData["png-to-jpg"] = {
+  id: "png-to-jpg",
+  primaryKeyword: "png to jpg converter free online",
+  longTailH1: "PNG to JPG Free — Reduce File Size with Custom Quality",
+  secondaryKeywords: ["convert png to jpeg free", "png to jpg no signup", "png to jpg quality settings", "batch png to jpg", "png jpg converter online"],
+  metaDescription: "Convert PNG images to JPG and reduce file size significantly. Free PNG to JPG converter — custom quality, instant download, no signup required.",
+  heroContent: "PNG files can be 3–5x larger than equivalent JPGs for photos and complex images. When you need to share images via email, upload to web platforms with size limits, or just save disk space, converting PNG to JPG is the fastest solution. PDF HUB 24's converter lets you choose the quality level so you control the trade-off between file size and visual quality — from near-lossless to maximum compression.",
+  useCases: {
+    title: "When to Convert PNG to JPG",
+    description: "Converting PNG to JPG is useful when file size is a priority:",
+    items: ["Reducing image attachments for email (Gmail 25MB limit)", "Uploading photos to social media with size restrictions", "Optimizing product images for faster e-commerce page loads", "Saving disk space when archiving large photo collections", "Preparing images for web use where PNG transparency is not needed", "Sharing high-resolution screenshots without bloated file sizes", "Converting UI mockups to shareable image previews", "Compressing images before embedding in PDF or Word documents"]
+  },
+  tutorial: {
+    title: "How to Convert PNG to JPG — Step by Step",
+    steps: [
+      { step: "Upload Your PNG", detail: "Drag and drop your PNG file or click to browse. Supports single and batch uploads." },
+      { step: "Choose Quality", detail: "Select output quality from 60% (smallest file) to 100% (near-lossless). 80–85% is recommended for photos, 90–95% for graphics with fine detail." },
+      { step: "Download JPG", detail: "Click 'Convert to JPG' and download your compressed image instantly. Batch outputs arrive in a ZIP." }
+    ]
+  },
+  troubleshooting: {
+    title: "PNG to JPG — Common Issues",
+    issues: [
+      { problem: "My transparent PNG background turns black or white after conversion", solution: "JPG does not support transparency. Transparent PNG areas are replaced with a solid background color during conversion. Use the background color option to set white, black, or a custom hex color to match your use case." },
+      { problem: "The JPG looks blurry compared to the original PNG", solution: "Lower quality settings (below 70%) introduce visible compression artifacts, especially on text and sharp edges. Increase the quality setting to 85–90% for sharp content like screenshots, diagrams, and logos." }
+    ]
+  },
+  securitySection: {
+    title: "Secure PNG to JPG Processing",
+    content: "Your images are protected throughout conversion:",
+    points: ["TLS encryption for all file transfers", "Automatic file deletion after conversion", "No image content stored or analyzed", "Isolated per-session processing", "No account required"]
+  },
+  faqs: [
+    { question: "Will converting PNG to JPG cause quality loss?", answer: "Yes — JPG uses lossy compression. The amount of quality loss depends on the quality setting. At 90%+ quality, the difference is barely perceptible for most photos." },
+    { question: "What happens to transparent areas in my PNG?", answer: "JPG does not support transparency. Transparent areas are filled with a background color — white by default. You can configure this to any color before conversion." },
+    { question: "Can I convert multiple PNG files to JPG at once?", answer: "Yes — drag multiple PNGs at once for batch conversion. All converted JPGs are packaged in a downloadable ZIP." },
+    { question: "What quality setting should I use?", answer: "For photos, 80–85% gives great visual quality with 60–70% size savings. For screenshots or graphics with text, use 90–95% to preserve sharpness." },
+    { question: "Is PNG or JPG better for my use case?", answer: "Use PNG for graphics, logos, screenshots, and anything needing transparency or lossless quality. Use JPG for photos and images where file size matters more than perfect precision." }
+  ],
+  relatedWorkflows: [
+    { title: "Image Optimization Workflow", description: "Compress and convert images for web and email", tools: ["png-to-jpg", "image-compressor", "resize-image"] },
+    { title: "Photo Sharing Workflow", description: "Prepare photos for social media and email", tools: ["png-to-jpg", "crop-image", "resize-image"] }
+  ],
+  internalLinks: [
+    { text: "JPG to PNG", href: "/jpg-to-png", context: "Convert JPG back to lossless PNG" },
+    { text: "Compress Image", href: "/image-compressor", context: "Further compress the JPG for even smaller files" },
+    { text: "Resize Image", href: "/resize-image", context: "Resize the image before or after conversion" },
+    { text: "Image Converter", href: "/image-converter", context: "Convert between any image formats" }
+  ]
+} as unknown as ToolSEOData;
+
+toolSEOData["image-converter"] = {
+  id: "image-converter",
+  primaryKeyword: "image converter free online",
+  longTailH1: "Image Converter Free — JPG, PNG, WebP, GIF, TIFF, BMP Instant",
+  secondaryKeywords: ["convert image format online free", "jpg png webp converter", "batch image format converter", "image format change online", "convert any image free"],
+  metaDescription: "Convert images between JPG, PNG, WebP, GIF, TIFF, and BMP formats instantly. Free online image converter — batch supported, no signup required.",
+  heroContent: "Different platforms, tools, and devices expect different image formats. WordPress requires JPG or PNG. Figma exports WebP. Your camera shoots TIFF. Social media prefers JPG. PDF HUB 24's image converter handles any format-to-format conversion instantly — select your source format, choose the output format, upload, and download. Batch conversion supported for processing large image collections in one go.",
+  useCases: {
+    title: "When to Use an Image Format Converter",
+    description: "Format conversion is needed in many everyday situations:",
+    items: ["Converting WebP images from websites to JPG for editing", "Converting TIFF camera exports to PNG for web use", "Batch converting RAW exports to JPG for sharing", "Converting GIF to PNG for static images (smaller file size)", "Converting BMP files to JPG for significantly smaller sizes", "Preparing images in formats required by specific platforms or APIs", "Converting between formats for compatibility with older software", "Creating WebP versions of images for faster website loading"]
+  },
+  tutorial: {
+    title: "How to Convert Image Formats — Step by Step",
+    steps: [
+      { step: "Upload Your Image", detail: "Drag and drop your image or click to browse. Supports JPG, PNG, WebP, GIF, TIFF, and BMP. Multiple files accepted for batch conversion." },
+      { step: "Select Output Format", detail: "Choose the target format: JPG, PNG, WebP, GIF, TIFF, or BMP. Quality settings available for JPG and WebP outputs." },
+      { step: "Convert & Download", detail: "Click 'Convert'. Download your converted image instantly. Batch conversions arrive as a ZIP file." }
+    ]
+  },
+  troubleshooting: {
+    title: "Image Conversion Issues — Common Fixes",
+    issues: [
+      { problem: "Converted image file size is larger than expected", solution: "Different formats have different compression characteristics. PNG is lossless (larger), WebP is highly efficient (smallest), TIFF is uncompressed (largest). If size is your concern, choose JPG at 80–85% quality or WebP for the best size-to-quality ratio." },
+      { problem: "Animated GIF loses animation when converted", solution: "Only GIF to GIF preserves animation. Converting an animated GIF to any other format (JPG, PNG, WebP) captures only the first frame. To preserve animation, keep the output format as GIF or convert to APNG if your use case supports it." }
+    ]
+  },
+  securitySection: {
+    title: "Secure Image Format Conversion",
+    content: "All image conversions are handled with strict privacy controls:",
+    points: ["TLS-encrypted file transfers", "Files deleted automatically after conversion", "No image content analyzed or stored", "Isolated processing environment per session", "No account or registration needed"]
+  },
+  faqs: [
+    { question: "Which image formats can I convert between?", answer: "Supported formats include JPG/JPEG, PNG, WebP, GIF, TIFF/TIF, and BMP — in any combination of source and destination." },
+    { question: "Can I batch convert multiple images at once?", answer: "Yes — upload multiple images simultaneously and they will all be converted in one pass. The results are packaged in a ZIP file for download." },
+    { question: "Does WebP give the best compression among supported formats?", answer: "Yes — for web use, WebP typically delivers 25–35% smaller files than JPG at equivalent visual quality. Google Chrome, Firefox, and Safari all support WebP natively." },
+    { question: "Will converting to JPG from PNG lose quality?", answer: "Yes — JPG uses lossy compression. Quality loss depends on the quality setting selected. At 90%+ quality, loss is minimal. For lossless output, choose PNG or WebP lossless." },
+    { question: "Is TIFF to JPG conversion supported?", answer: "Yes — TIFF to JPG is fully supported. TIFF files (often from professional cameras and scanners) can be compressed significantly by converting to JPG while maintaining excellent visual quality." }
+  ],
+  relatedWorkflows: [
+    { title: "Web Image Optimization", description: "Convert and compress images for faster websites", tools: ["image-converter", "image-compressor", "resize-image"] },
+    { title: "Photo Library Management", description: "Standardize image formats in large collections", tools: ["image-converter", "resize-image", "crop-image"] }
+  ],
+  internalLinks: [
+    { text: "Compress Image", href: "/image-compressor", context: "Compress the converted image for smaller file size" },
+    { text: "JPG to PNG", href: "/jpg-to-png", context: "Specifically convert JPG to PNG with transparency" },
+    { text: "PNG to JPG", href: "/png-to-jpg", context: "Specifically convert PNG to smaller JPG" },
+    { text: "Resize Image", href: "/resize-image", context: "Resize image after format conversion" }
+  ]
+} as unknown as ToolSEOData;
+
+toolSEOData["epub-to-pdf"] = {
+  id: "epub-to-pdf",
+  primaryKeyword: "epub to pdf converter free online",
+  longTailH1: "EPUB to PDF Free Online — Preserves Chapter Structure & Images",
+  secondaryKeywords: ["convert epub to pdf free", "ebook to pdf online", "epub pdf no signup", "epub converter online", "open epub as pdf"],
+  metaDescription: "Convert EPUB ebooks to PDF in seconds. Free EPUB to PDF converter — preserves chapter structure, text, and images. No signup, instant download.",
+  heroContent: "EPUB is the standard ebook format for Kindle, Kobo, and Apple Books — but it's not easy to share, print, or annotate. Converting your EPUB to PDF gives you a universally compatible document that any device, browser, or PDF reader can open. PDF HUB 24's EPUB to PDF converter preserves chapter headings, paragraph flow, embedded images, and formatting so your ebook looks professional in its PDF form.",
+  useCases: {
+    title: "When to Convert EPUB to PDF",
+    description: "EPUB to PDF conversion is needed in many scenarios:",
+    items: ["Printing an ebook on paper (PDFs print cleanly, EPUBs do not)", "Sharing an ebook with someone who doesn't have an ebook reader", "Submitting ebook content to publishers that require PDF format", "Annotating and highlighting chapters using PDF tools", "Archiving ebooks in a universally readable format", "Uploading to document platforms that only accept PDF", "Reviewing manuscripts before final publication", "Converting technical documentation originally in EPUB format"]
+  },
+  tutorial: {
+    title: "How to Convert EPUB to PDF — Step by Step",
+    steps: [
+      { step: "Upload Your EPUB", detail: "Drag and drop your .epub file or click to browse. All EPUB versions (EPUB 2 and EPUB 3) are supported." },
+      { step: "Convert to PDF", detail: "Click 'Convert to PDF'. The tool processes chapters, renders images, and builds the PDF with proper formatting." },
+      { step: "Download PDF", detail: "Download your PDF instantly. The result is ready to print, share, annotate, or upload." }
+    ]
+  },
+  troubleshooting: {
+    title: "EPUB to PDF Conversion Issues",
+    issues: [
+      { problem: "Fonts look different in the PDF compared to the ebook reader", solution: "EPUB fonts may be embedded or rely on system fonts. If custom fonts aren't rendering correctly, this is typically a font embedding issue in the original EPUB. The tool substitutes standard serif/sans-serif fonts as needed. For exact font matching, ensure the EPUB has embedded fonts before conversion." },
+      { problem: "PDF pages are too wide or too narrow compared to the original ebook", solution: "EPUBs are reflowable — they adapt to any screen size. When converted to PDF, a fixed page size is used (A4 or Letter). Use our PDF Page Size tool after conversion to adjust page dimensions if needed." }
+    ]
+  },
+  securitySection: {
+    title: "Secure EPUB Conversion",
+    content: "Your ebook files are handled with complete privacy:",
+    points: ["TLS encryption for all uploads", "Automatic file deletion after conversion", "No ebook content read, stored, or analyzed", "Isolated processing per session", "No account required"]
+  },
+  faqs: [
+    { question: "Does the EPUB to PDF converter support all EPUB versions?", answer: "Yes — both EPUB 2 and EPUB 3 formats are supported. EPUB 3 with multimedia content converts the text and images; interactive elements are rendered as static content in the PDF." },
+    { question: "Will DRM-protected EPUBs convert?", answer: "No — DRM (Digital Rights Management) protected EPUBs cannot be converted. Only DRM-free EPUB files can be processed. Most personal or self-published EPUBs are DRM-free." },
+    { question: "Will the PDF be paginated correctly?", answer: "Yes — the tool breaks content into PDF pages based on standard A4 or Letter dimensions, maintaining chapter flow and headings across page breaks." },
+    { question: "Can I convert a large ebook (300+ pages) to PDF?", answer: "Yes — no page limit exists. Large EPUBs may take a few extra seconds to process, but all sizes are supported." },
+    { question: "Are images in the EPUB included in the PDF?", answer: "Yes — all embedded images in the EPUB are preserved in the output PDF at their original quality." }
+  ],
+  relatedWorkflows: [
+    { title: "Ebook Distribution Workflow", description: "Convert and prepare ebooks for various platforms", tools: ["epub-to-pdf", "compress", "protect-pdf"] },
+    { title: "Document Review Workflow", description: "Convert ebook manuscripts for annotation and review", tools: ["epub-to-pdf", "annotate-pdf", "sign-pdf"] }
+  ],
+  internalLinks: [
+    { text: "PDF to EPUB", href: "/pdf-to-epub", context: "Convert PDF documents back to EPUB ebook format" },
+    { text: "Compress PDF", href: "/compress", context: "Reduce the converted PDF file size" },
+    { text: "PDF Page Size", href: "/pdf-page-size", context: "Adjust PDF page dimensions after conversion" },
+    { text: "Protect PDF", href: "/protect-pdf", context: "Password-protect the converted PDF" }
+  ]
+} as unknown as ToolSEOData;
+
+toolSEOData["pdf-to-epub"] = {
+  id: "pdf-to-epub",
+  primaryKeyword: "pdf to epub converter free online",
+  longTailH1: "PDF to EPUB Free — Convert Documents to eBook Format",
+  secondaryKeywords: ["convert pdf to epub free", "pdf to kindle ebook", "pdf ebook converter online", "pdf to apple books", "pdf to epub no signup"],
+  metaDescription: "Convert PDF documents to EPUB format for Kindle, Kobo, and Apple Books. Free PDF to EPUB converter — reflows text automatically. No signup required.",
+  heroContent: "Reading a PDF on a Kindle or small phone screen is uncomfortable — you have to zoom, scroll horizontally, and the text doesn't reflow to fit your screen. Converting to EPUB solves this: the text reflows dynamically to any screen size and font size preference. PDF HUB 24's PDF to EPUB converter extracts the text and structure from your PDF and outputs a proper EPUB file ready for any ebook reader.",
+  useCases: {
+    title: "When to Convert PDF to EPUB",
+    description: "PDF to EPUB conversion improves the reading experience in many situations:",
+    items: ["Reading technical documentation or reports on Kindle or Kobo", "Converting academic papers to ebook format for mobile reading", "Creating ebook versions of PDF manuals or guides", "Distributing book drafts in a format compatible with all ebook readers", "Converting public domain PDF books for ebook library apps", "Making PDF content accessible via Apple Books or Google Play Books", "Sharing long-form articles and whitepapers in a reader-friendly format", "Building a personal ebook library from PDF downloads"]
+  },
+  tutorial: {
+    title: "How to Convert PDF to EPUB — Step by Step",
+    steps: [
+      { step: "Upload Your PDF", detail: "Drag and drop your PDF or click to browse. Scanned PDFs with OCR text are also supported." },
+      { step: "Convert to EPUB", detail: "Click 'Convert to EPUB'. The tool extracts text and structure, then outputs a properly formatted EPUB file." },
+      { step: "Download & Transfer", detail: "Download your EPUB and transfer it to your Kindle (via USB or email), Kobo, Apple Books, or any ebook reader app." }
+    ]
+  },
+  troubleshooting: {
+    title: "PDF to EPUB Conversion Issues",
+    issues: [
+      { problem: "Formatting looks broken with text jumbled together", solution: "Complex PDFs with multi-column layouts, tables, or heavy graphics don't convert cleanly to reflowable EPUB. The conversion works best for single-column text documents like books, reports, and articles. For complex layouts, consider using our PDF Viewer or extracting text with PDF to Text first." },
+      { problem: "The EPUB doesn't appear in my Kindle library after transfer", solution: "Kindle requires EPUB files to be transferred via the Kindle app or via email to your Kindle email address (not USB). Alternatively, use Amazon's 'Send to Kindle' service which converts EPUB to Kindle format automatically during transfer." }
+    ]
+  },
+  securitySection: {
+    title: "Secure PDF to EPUB Conversion",
+    content: "Your documents are protected during conversion:",
+    points: ["TLS encryption for all uploads and downloads", "Automatic deletion after conversion", "No document content stored or analyzed", "Per-session isolated processing", "No registration required"]
+  },
+  faqs: [
+    { question: "Will the EPUB work on Kindle, Kobo, and Apple Books?", answer: "Yes — the output is a standard EPUB 3 file compatible with all major ebook reading apps and devices including Kindle (via Kindle app or Send to Kindle), Kobo, Apple Books, Google Play Books, and Calibre." },
+    { question: "Does the EPUB preserve the original PDF formatting?", answer: "EPUB is a reflowable format, so fixed PDF layouts (columns, boxes, tables) are converted to flowing text. Simple single-column PDFs convert most accurately." },
+    { question: "Can I convert a scanned PDF to EPUB?", answer: "Scanned PDFs require OCR to extract text before conversion. Use our OCR PDF tool first to make the text selectable, then convert to EPUB." },
+    { question: "Is there a page limit for PDF to EPUB conversion?", answer: "No page limit. Longer PDFs may take a few extra seconds but all sizes are supported." },
+    { question: "What ebook readers support EPUB format?", answer: "EPUB is supported by Kobo, Apple Books, Google Play Books, Nook, Calibre, and most reading apps. Kindle natively supports EPUB starting from Kindle firmware 5.16.3 (2022), or use the Kindle app on any device." }
+  ],
+  relatedWorkflows: [
+    { title: "Ebook Creation Workflow", description: "Convert and prepare documents for ebook distribution", tools: ["pdf-to-epub", "epub-to-pdf", "compress"] },
+    { title: "Mobile Reading Workflow", description: "Optimize PDFs for reading on phones and tablets", tools: ["pdf-to-epub", "pdf-to-text", "extract-text"] }
+  ],
+  internalLinks: [
+    { text: "EPUB to PDF", href: "/epub-to-pdf", context: "Convert EPUB back to PDF format" },
+    { text: "OCR PDF", href: "/ocr-pdf", context: "Make scanned PDFs text-selectable before conversion" },
+    { text: "PDF to Text", href: "/pdf-to-text", context: "Extract plain text before converting to EPUB" },
+    { text: "Compress PDF", href: "/compress", context: "Reduce PDF size before format conversion" }
+  ]
+} as unknown as ToolSEOData;
+
+toolSEOData["pdf-to-xml"] = {
+  id: "pdf-to-xml",
+  primaryKeyword: "pdf to xml converter free online",
+  longTailH1: "PDF to XML Free — Extract Structured Document Data Online",
+  secondaryKeywords: ["convert pdf to xml free", "pdf xml extraction", "pdf data to xml", "pdf to structured xml", "parse pdf to xml online"],
+  metaDescription: "Extract structured data from PDFs and export as XML. Free PDF to XML converter — preserves document hierarchy and element structure. No signup.",
+  heroContent: "When you need the data inside a PDF in a machine-readable, structured format for APIs, data pipelines, or content management systems, XML is the answer. PDF HUB 24's PDF to XML converter extracts text, headings, tables, and metadata from your PDF and outputs a clean XML file preserving the document's hierarchical structure — ready for parsing, importing, or integration with enterprise systems.",
+  useCases: {
+    title: "When to Convert PDF to XML",
+    description: "PDF to XML conversion serves technical and business data needs:",
+    items: ["Extracting invoice data for accounting software import", "Parsing contract clauses for legal analysis systems", "Feeding document content into CMS or DMS platforms", "Building data pipelines from PDF reports", "Extracting catalog or product data from PDF documents", "Converting regulatory filings to XML for compliance systems", "Archiving document content in a structured, searchable format", "Integrating PDF data with REST APIs or XML-based web services"]
+  },
+  tutorial: {
+    title: "How to Convert PDF to XML — Step by Step",
+    steps: [
+      { step: "Upload Your PDF", detail: "Drag and drop your PDF or click to browse. Text-based PDFs produce the cleanest XML; scanned PDFs benefit from OCR pre-processing." },
+      { step: "Convert to XML", detail: "Click 'Convert to XML'. The tool parses the PDF structure and generates a well-formed XML document with tagged elements." },
+      { step: "Download XML", detail: "Download the XML file and use it in your data pipeline, import workflow, or application integration." }
+    ]
+  },
+  troubleshooting: {
+    title: "PDF to XML Conversion Issues",
+    issues: [
+      { problem: "The XML output has garbled or missing text", solution: "This usually happens with scanned PDFs that lack embedded text layers. Run the PDF through our OCR PDF tool first to add a text layer, then convert to XML for accurate text extraction." },
+      { problem: "Table data in the PDF doesn't parse correctly into XML", solution: "Complex PDF tables with merged cells, multi-line cells, or borderless formatting are difficult to parse automatically. For structured table data, our PDF to Excel tool may produce more accurate results, which can then be converted to XML via spreadsheet software." }
+    ]
+  },
+  securitySection: {
+    title: "Secure PDF to XML Processing",
+    content: "Your document data is handled with enterprise-grade privacy:",
+    points: ["TLS encryption for all file transfers", "Files deleted automatically after conversion", "No content cached or stored beyond the session", "Isolated server-side processing environment", "No account required"]
+  },
+  faqs: [
+    { question: "Is the output valid, well-formed XML?", answer: "Yes — the output is standard well-formed XML conforming to XML 1.0 specifications, compatible with any XML parser, XSLT processor, or XML-aware application." },
+    { question: "Does the XML preserve document structure (headings, paragraphs)?", answer: "Yes — the converter attempts to tag content semantically with elements like headings, paragraphs, lists, and tables based on PDF structure information." },
+    { question: "Can I convert scanned PDFs to XML?", answer: "Scanned PDFs need OCR processing first. Use our OCR PDF tool to add a text layer, then convert to XML for best results." },
+    { question: "What encoding does the XML output use?", answer: "UTF-8 encoding is used by default, ensuring full support for all languages and special characters including Arabic, Chinese, Cyrillic, and Latin extended characters." },
+    { question: "Is there a size limit for the PDF?", answer: "No hard size limit. Large PDFs may take a few extra seconds to process." }
+  ],
+  relatedWorkflows: [
+    { title: "Data Extraction Pipeline", description: "Extract and process PDF data for enterprise systems", tools: ["pdf-to-xml", "ocr-pdf", "extract-text"] },
+    { title: "Document Conversion Workflow", description: "Convert PDFs to multiple structured formats", tools: ["pdf-to-xml", "pdf-to-html", "pdf-to-text"] }
+  ],
+  internalLinks: [
+    { text: "PDF to HTML", href: "/pdf-to-html", context: "Convert PDF to HTML web format" },
+    { text: "PDF to Text", href: "/pdf-to-text", context: "Extract plain text from PDF" },
+    { text: "OCR PDF", href: "/ocr-pdf", context: "Add text layer to scanned PDFs before XML extraction" },
+    { text: "Extract Text", href: "/extract-text", context: "Extract raw text content from PDF" }
+  ]
+} as unknown as ToolSEOData;
+
+toolSEOData["pdf-to-html"] = {
+  id: "pdf-to-html",
+  primaryKeyword: "pdf to html converter free online",
+  longTailH1: "PDF to HTML Free Online — Convert Documents to Web-Ready Pages",
+  secondaryKeywords: ["convert pdf to html free", "pdf html conversion online", "pdf to webpage free", "pdf to html no signup", "pdf web conversion"],
+  metaDescription: "Convert PDF documents to HTML web pages with embedded styling. Free PDF to HTML converter — responsive output, inline CSS, no signup required.",
+  heroContent: "Publishing PDF content on the web is difficult — PDFs don't render natively in all browsers, they're not mobile-responsive, and they can't be indexed as efficiently as HTML by search engines. Converting PDF to HTML transforms your document into a proper web page with inline styles, maintaining the visual layout while making the content fully accessible, responsive, and crawlable by search engines.",
+  useCases: {
+    title: "When to Convert PDF to HTML",
+    description: "Converting to HTML makes PDF content more web-friendly and accessible:",
+    items: ["Publishing reports, whitepapers, or guides on your website", "Converting documentation into web-accessible format", "Making newsletter or catalog content indexable by search engines", "Integrating PDF content into CMS platforms like WordPress", "Converting legal or compliance documents for online publication", "Building web-based document viewers from PDF content", "Migrating content from PDF archives to web-based knowledge bases", "Creating ADA-accessible versions of PDF documents"]
+  },
+  tutorial: {
+    title: "How to Convert PDF to HTML — Step by Step",
+    steps: [
+      { step: "Upload Your PDF", detail: "Drag and drop your PDF or click to browse. Text-based PDFs produce the best HTML output." },
+      { step: "Convert to HTML", detail: "Click 'Convert to HTML'. The tool generates an HTML file with inline CSS preserving the visual structure." },
+      { step: "Download & Deploy", detail: "Download the HTML file (and any embedded image assets). Upload to your web server, CMS, or open in any browser." }
+    ]
+  },
+  troubleshooting: {
+    title: "PDF to HTML Conversion Issues",
+    issues: [
+      { problem: "The HTML output has layout issues compared to the PDF", solution: "Complex PDF layouts with absolute positioning, overlapping elements, or multi-column designs don't translate perfectly to standard HTML flow. Use the HTML output as a starting point and adjust the CSS as needed for your target environment." },
+      { problem: "Images from the PDF are missing in the HTML", solution: "Images are extracted as separate files and referenced in the HTML. Make sure to keep the image files in the same directory as the HTML file when deploying. The download includes all assets in a ZIP." }
+    ]
+  },
+  securitySection: {
+    title: "Secure PDF to HTML Conversion",
+    content: "Document conversion is handled with full privacy:",
+    points: ["TLS encryption for all file transfers", "Files auto-deleted after conversion completes", "No document content stored or logged", "Isolated server processing per session", "No registration or account required"]
+  },
+  faqs: [
+    { question: "Does the HTML output include CSS styling?", answer: "Yes — the output includes inline CSS and a stylesheet that preserves fonts, colors, spacing, and layout from the original PDF as accurately as possible." },
+    { question: "Is the HTML mobile-responsive?", answer: "The tool generates responsive HTML with relative units where possible. Complex fixed-position PDF layouts may require additional CSS tweaking for full mobile responsiveness." },
+    { question: "Are images embedded or linked in the HTML?", answer: "Images are extracted as separate files and linked from the HTML. The complete download package includes all referenced images in a ZIP archive." },
+    { question: "Can I embed the HTML directly in my website?", answer: "Yes — the output is standard HTML5 that can be embedded in any web page using an iframe, or the content can be copied and pasted into your CMS." },
+    { question: "Does PDF to HTML work with scanned documents?", answer: "Scanned PDFs need OCR processing first. Use our OCR PDF tool to add a searchable text layer, then convert to HTML for proper text rendering." }
+  ],
+  relatedWorkflows: [
+    { title: "Web Publishing Workflow", description: "Convert and publish PDF content on websites", tools: ["pdf-to-html", "pdf-to-text", "extract-text"] },
+    { title: "Document Migration Workflow", description: "Migrate PDF archives to web-based content", tools: ["pdf-to-html", "pdf-to-xml", "ocr-pdf"] }
+  ],
+  internalLinks: [
+    { text: "PDF to XML", href: "/pdf-to-xml", context: "Convert PDF to structured XML format" },
+    { text: "PDF to Text", href: "/pdf-to-text", context: "Extract plain text from PDF" },
+    { text: "OCR PDF", href: "/ocr-pdf", context: "Make scanned PDFs text-searchable before conversion" },
+    { text: "Extract Text", href: "/extract-text", context: "Extract raw text for web content" }
+  ]
+} as unknown as ToolSEOData;
+
+toolSEOData["pdf-to-text"] = {
+  id: "pdf-to-text",
+  primaryKeyword: "pdf to text converter free online",
+  longTailH1: "PDF to Text Free — Extract All Text Content as Plain TXT",
+  secondaryKeywords: ["extract text from pdf free", "pdf to txt online", "convert pdf to plain text", "pdf text extractor", "copy text from pdf free"],
+  metaDescription: "Extract all text from PDF files as a plain TXT file. Free PDF to text tool — works on scanned PDFs with OCR. No signup, instant results.",
+  heroContent: "Whether you need to copy text from a PDF for editing in Word, analyze content with NLP tools, import it into a database, or simply extract the text for search indexing — PDF to Text is the fastest way. PDF HUB 24 extracts every word from your PDF into a clean .txt file in seconds. Works on both native PDFs and scanned documents (via OCR for the latter).",
+  useCases: {
+    title: "When to Convert PDF to Plain Text",
+    description: "Extracting plain text from PDFs is needed for many workflows:",
+    items: ["Copying document content to paste into Word, Google Docs, or emails", "Feeding PDF content into natural language processing (NLP) pipelines", "Extracting data for database import or spreadsheet analysis", "Indexing PDF content for custom search engines", "Converting PDF reports into editable text files for revision", "Extracting text from contracts or legal documents for keyword search", "Creating plain-text backups of document libraries", "Processing invoices or forms for automated data capture"]
+  },
+  tutorial: {
+    title: "How to Convert PDF to Text — Step by Step",
+    steps: [
+      { step: "Upload Your PDF", detail: "Drag and drop your PDF or click to browse. Both native and scanned PDFs are supported." },
+      { step: "Extract Text", detail: "Click 'Extract Text'. The tool retrieves all text from the PDF, including headers, body, and footnotes." },
+      { step: "Download TXT File", detail: "Download a clean .txt file with all extracted text. Open it in any text editor, import into any application." }
+    ]
+  },
+  troubleshooting: {
+    title: "PDF to Text Extraction Issues",
+    issues: [
+      { problem: "The extracted text is garbled or full of strange characters", solution: "This typically indicates a PDF with non-standard font encoding or custom glyph mapping. Try our OCR PDF tool instead, which uses optical character recognition to extract text visually rather than relying on embedded text data." },
+      { problem: "Text from my scanned PDF comes out empty", solution: "Scanned PDFs are essentially images — they don't have an embedded text layer. Use our OCR PDF tool to add a text layer first, then use PDF to Text to extract it cleanly." }
+    ]
+  },
+  securitySection: {
+    title: "Secure Text Extraction",
+    content: "Your document text is handled with strict privacy:",
+    points: ["TLS-encrypted file uploads", "Text files deleted automatically after extraction", "No document content stored or analyzed", "Isolated processing environment per session", "No account required"]
+  },
+  faqs: [
+    { question: "Does PDF to Text work on scanned PDFs?", answer: "For scanned PDFs (image-based), use our OCR PDF tool first to add a text layer, then extract with PDF to Text. Alternatively, PDF to Text attempts basic OCR on scanned pages automatically." },
+    { question: "Does the extracted text maintain the original reading order?", answer: "For single-column documents, yes. Multi-column layouts may produce text in a different order than the visual reading sequence. For complex layouts, consider extracting by page range." },
+    { question: "Can I extract text from specific pages only?", answer: "Yes — use the page range selector to extract text from specific pages rather than the entire document." },
+    { question: "What encoding is the output TXT file?", answer: "UTF-8 encoding, supporting all languages including Arabic, Chinese, Japanese, Korean, and all Latin-extended characters." },
+    { question: "Is there a page limit?", answer: "No limit. Large PDFs extract in segments and are provided as a single combined .txt file." }
+  ],
+  relatedWorkflows: [
+    { title: "Content Extraction Workflow", description: "Extract and process PDF text for various applications", tools: ["pdf-to-text", "ocr-pdf", "extract-text"] },
+    { title: "Data Processing Workflow", description: "Extract PDF data for analysis and database import", tools: ["pdf-to-text", "pdf-to-xml", "pdf-to-html"] }
+  ],
+  internalLinks: [
+    { text: "OCR PDF", href: "/ocr-pdf", context: "Add text layer to scanned PDFs before extraction" },
+    { text: "Extract Text", href: "/extract-text", context: "Extract text with additional formatting options" },
+    { text: "PDF to XML", href: "/pdf-to-xml", context: "Extract text in structured XML format" },
+    { text: "PDF to HTML", href: "/pdf-to-html", context: "Extract text as web-ready HTML" }
+  ]
+} as unknown as ToolSEOData;
+
+toolSEOData["heic-to-jpg"] = {
+  id: "heic-to-jpg",
+  primaryKeyword: "heic to jpg converter free online",
+  longTailH1: "HEIC to JPG Free — Convert iPhone & iPad Photos Instantly",
+  secondaryKeywords: ["convert heic to jpg free", "heif to jpg online", "iphone heic converter", "heic to jpeg free no signup", "batch heic to jpg"],
+  metaDescription: "Convert HEIC and HEIF photos from iPhone to JPG for universal compatibility. Free HEIC to JPG converter — batch supported, no signup required.",
+  heroContent: "Apple's HEIC format (used by iPhone and iPad since iOS 11) stores photos at half the size of JPEG with equivalent quality — great for storage, but incompatible with most Windows PCs, Android devices, older Macs, and many web platforms. PDF HUB 24's HEIC to JPG converter solves this instantly: upload your HEIC files and get universally compatible JPGs in seconds. Batch conversion handles entire phone exports at once.",
+  useCases: {
+    title: "When to Convert HEIC to JPG",
+    description: "HEIC compatibility problems arise in many common situations:",
+    items: ["Sharing iPhone photos with Windows PC users who can't open HEIC", "Uploading photos to websites and apps that don't support HEIC", "Editing iPhone photos in Photoshop, GIMP, or Lightroom (older versions)", "Sending photos via email to non-Apple recipients", "Printing photos at a print shop that requires JPG or TIFF", "Uploading to social media platforms that may reject HEIC files", "Backing up photos in a universally compatible format", "Using iPhone photos in documents, presentations, or web design projects"]
+  },
+  tutorial: {
+    title: "How to Convert HEIC to JPG — Step by Step",
+    steps: [
+      { step: "Upload HEIC Files", detail: "Drag and drop your .heic or .heif files from your iPhone or iPad, or click to browse. Multiple files accepted for batch conversion." },
+      { step: "Convert to JPG", detail: "Click 'Convert to JPG'. All HEIC files are converted to high-quality JPG simultaneously." },
+      { step: "Download JPGs", detail: "Download individual JPGs or receive all converted files in a ZIP archive for batch downloads." }
+    ]
+  },
+  troubleshooting: {
+    title: "HEIC to JPG Conversion Issues",
+    issues: [
+      { problem: "The converted JPG has different colors than the original iPhone photo", solution: "HEIC files use a wider color gamut (Display P3) than standard JPGs (sRGB). When converting, colors are mapped from P3 to sRGB, which can shift some vivid colors slightly. This is normal and expected — most displays and platforms use sRGB." },
+      { problem: "The converted JPG is rotated incorrectly", solution: "HEIC files store rotation as metadata (EXIF orientation tag). The converter reads and applies this rotation. If the result is still wrong, use our Image Converter tool and check the rotation/orientation settings." }
+    ]
+  },
+  securitySection: {
+    title: "Secure HEIC Conversion",
+    content: "Your photos are handled with strict privacy:",
+    points: ["TLS-encrypted photo uploads", "Files automatically deleted after conversion", "No photo content analyzed or retained", "Per-session isolated processing", "No Apple ID or registration required"]
+  },
+  faqs: [
+    { question: "Why does iPhone save photos in HEIC instead of JPG?", answer: "HEIC (High Efficiency Image Container) stores photos at roughly half the file size of JPG at equivalent quality, saving storage space on your device. Apple adopted it by default in iOS 11." },
+    { question: "Will converting HEIC to JPG reduce photo quality?", answer: "HEIC to JPG conversion involves some quality loss since JPG uses lossy compression. At 90%+ quality settings, the difference is barely visible. The default quality setting preserves excellent photo quality." },
+    { question: "Can I batch convert a whole photo library from HEIC to JPG?", answer: "Yes — upload multiple HEIC files at once and they all convert simultaneously. The batch output is packaged in a ZIP for easy download." },
+    { question: "Do iCloud shared photos convert correctly?", answer: "Yes — HEIC files downloaded from iCloud (via icloud.com or AirDrop) convert the same as any other HEIC file." },
+    { question: "What about HEIF files — are they the same as HEIC?", answer: "HEIC and HEIF are related — HEIC is Apple's implementation of the HEIF container format. Both .heic and .heif files are supported by this converter." }
+  ],
+  relatedWorkflows: [
+    { title: "iPhone Photo Sharing Workflow", description: "Convert and share iPhone photos across platforms", tools: ["heic-to-jpg", "resize-image", "image-compressor"] },
+    { title: "Photo Library Migration", description: "Convert entire iPhone photo collections to universal format", tools: ["heic-to-jpg", "heic-to-png", "heic-to-pdf"] }
+  ],
+  internalLinks: [
+    { text: "HEIC to PNG", href: "/heic-to-png", context: "Convert HEIC to PNG with transparency support" },
+    { text: "HEIC to PDF", href: "/heic-to-pdf", context: "Convert HEIC photos into a PDF document" },
+    { text: "Image Compressor", href: "/image-compressor", context: "Compress JPG files after conversion" },
+    { text: "Resize Image", href: "/resize-image", context: "Resize converted JPG photos" }
+  ]
+} as unknown as ToolSEOData;
+
+toolSEOData["heic-to-png"] = {
+  id: "heic-to-png",
+  primaryKeyword: "heic to png converter free online",
+  longTailH1: "HEIC to PNG Free — Lossless iPhone Photo Conversion",
+  secondaryKeywords: ["convert heic to png free", "heif to png online", "iphone heic to png", "heic png lossless", "batch heic to png free"],
+  metaDescription: "Convert HEIC images from iPhone to PNG with full transparency support. Free HEIC to PNG converter — lossless quality, no signup required.",
+  heroContent: "When you need the best possible quality from your iPhone photos with transparency support, HEIC to PNG is the right conversion choice. PNG is a lossless format — perfect for product photos, UI screenshots, design assets, and anything you'll edit further. PDF HUB 24's HEIC to PNG converter delivers pixel-perfect PNG files from your iPhone photos with zero quality degradation.",
+  useCases: {
+    title: "When to Convert HEIC to PNG",
+    description: "HEIC to PNG conversion is ideal for quality-critical uses:",
+    items: ["Converting iPhone product photos for e-commerce design work", "Getting high-quality screenshots from iPhone for presentations", "Creating design assets from iPhone photos in Figma or Sketch", "Archiving photos in a lossless, universally readable format", "Preparing photos for background removal (PNG supports transparency)", "Using iPhone photos in web design where PNG is preferred", "Converting iPhone screenshots for app store submissions", "Editing photos in tools that work best with lossless PNG"]
+  },
+  tutorial: {
+    title: "How to Convert HEIC to PNG — Step by Step",
+    steps: [
+      { step: "Upload HEIC Files", detail: "Drag and drop your .heic or .heif files or click to browse. Multiple files supported for batch conversion." },
+      { step: "Convert to PNG", detail: "Click 'Convert to PNG'. Images are converted to lossless PNG with full quality preservation." },
+      { step: "Download PNG Files", detail: "Download individual PNGs or a ZIP archive for batch downloads." }
+    ]
+  },
+  troubleshooting: {
+    title: "HEIC to PNG Issues",
+    issues: [
+      { problem: "PNG files are very large compared to the original HEIC", solution: "This is expected — PNG is lossless and stores more data per pixel than HEIC. A 3MB HEIC photo may produce a 12–20MB PNG. If file size matters, consider converting to JPG instead. Use PNG only when you need lossless quality or transparency for further editing." },
+      { problem: "PNG doesn't show the correct orientation", solution: "HEIC stores rotation in EXIF metadata. The converter reads and applies this rotation. If orientation is still wrong, use our Image Converter with manual rotation options to correct it." }
+    ]
+  },
+  securitySection: {
+    title: "Secure Photo Conversion",
+    content: "Your photos are protected throughout the conversion process:",
+    points: ["TLS-encrypted uploads", "Files auto-deleted after conversion", "No photo storage or analysis", "Per-session processing isolation", "No registration required"]
+  },
+  faqs: [
+    { question: "Is HEIC to PNG truly lossless?", answer: "Yes — PNG is a lossless format. Once converted, PNG stores all pixel data exactly with no further quality loss, regardless of how many times you save or re-export the file." },
+    { question: "Can I add a transparent background when converting HEIC to PNG?", answer: "PNG supports transparency, but HEIC photos have solid backgrounds. The tool converts with the original background intact. To remove the background, use our background removal tool after converting to PNG." },
+    { question: "Are Live Photos (HEIC with motion) supported?", answer: "The still photo component of Live Photos converts correctly. The motion/video component is not included in the PNG output." },
+    { question: "Can I batch convert multiple HEIC files to PNG?", answer: "Yes — upload multiple files simultaneously for batch conversion. All results are packaged in a ZIP." },
+    { question: "Is HEIC to PNG or HEIC to JPG better for web use?", answer: "For web images that need the best quality (product photos, design assets), use PNG. For general photo sharing and web publishing where file size matters, use JPG." }
+  ],
+  relatedWorkflows: [
+    { title: "Design Asset Workflow", description: "Prepare iPhone photos for design tools", tools: ["heic-to-png", "resize-image", "crop-image"] },
+    { title: "Photo Archive Workflow", description: "Archive iPhone photos in lossless format", tools: ["heic-to-png", "heic-to-jpg", "heic-to-pdf"] }
+  ],
+  internalLinks: [
+    { text: "HEIC to JPG", href: "/heic-to-jpg", context: "Convert HEIC to smaller JPG format" },
+    { text: "HEIC to PDF", href: "/heic-to-pdf", context: "Combine HEIC photos into a PDF" },
+    { text: "Crop Image", href: "/crop-image", context: "Crop the converted PNG to specific dimensions" },
+    { text: "Resize Image", href: "/resize-image", context: "Resize the PNG output" }
+  ]
+} as unknown as ToolSEOData;
+
+toolSEOData["heic-to-pdf"] = {
+  id: "heic-to-pdf",
+  primaryKeyword: "heic to pdf converter free online",
+  longTailH1: "HEIC to PDF Free — Convert iPhone Photos to PDF Documents",
+  secondaryKeywords: ["convert heic to pdf free", "iphone photos to pdf", "heic pdf creator", "multiple heic to pdf", "heic to pdf no signup"],
+  metaDescription: "Convert HEIC photos from iPhone directly to PDF documents. Free HEIC to PDF converter — combine multiple photos into one PDF. No signup required.",
+  heroContent: "Need to submit iPhone photos as a PDF document? Insurance claims, property surveys, inspection reports, and travel expense receipts often require photos to be compiled into a single PDF. PDF HUB 24's HEIC to PDF converter lets you upload one or many HEIC photos from your iPhone and assembles them into a clean, professional PDF — each photo on its own page, with configurable orientation and page size.",
+  useCases: {
+    title: "When to Convert HEIC to PDF",
+    description: "HEIC to PDF conversion is useful in many professional and personal situations:",
+    items: ["Submitting photo evidence for insurance claims as a PDF", "Compiling property inspection photos into a PDF report", "Sending multiple photos to clients or contractors as one attachment", "Attaching iPhone photos to legal or official PDF documents", "Creating photo albums or portfolios as PDF documents", "Submitting expense receipts photographed on iPhone as a PDF", "Archiving event or travel photos in a portable document format", "Converting medical photo documentation to PDF for healthcare records"]
+  },
+  tutorial: {
+    title: "How to Convert HEIC to PDF — Step by Step",
+    steps: [
+      { step: "Upload HEIC Files", detail: "Drag and drop your .heic files or click to browse. Upload one or multiple HEIC photos — the order you upload them determines the page order in the PDF." },
+      { step: "Configure Layout", detail: "Choose page size (A4, Letter, or fit to image) and orientation. Optionally reorder photos before conversion." },
+      { step: "Convert & Download", detail: "Click 'Convert to PDF'. All photos are compiled into a single PDF with each HEIC image on its own page. Download instantly." }
+    ]
+  },
+  troubleshooting: {
+    title: "HEIC to PDF Conversion Issues",
+    issues: [
+      { problem: "Photos appear rotated in the PDF", solution: "HEIC photos store orientation in EXIF metadata. If the PDF shows incorrect orientation, the EXIF rotation wasn't applied correctly. Try uploading the same file to our HEIC to JPG tool first, which applies EXIF rotation, then convert the JPG to PDF." },
+      { problem: "Large HEIC files produce very large PDF documents", solution: "Each HEIC photo is embedded at full quality in the PDF. To reduce the output PDF size, use our Compress PDF tool after conversion to optimize the embedded images without noticeable quality loss." }
+    ]
+  },
+  securitySection: {
+    title: "Secure Photo to PDF Conversion",
+    content: "Your photos and documents are handled securely:",
+    points: ["TLS encryption for all uploads and downloads", "Files deleted automatically after PDF creation", "No photos stored or analyzed beyond processing", "Isolated per-session environment", "No registration required"]
+  },
+  faqs: [
+    { question: "Can I combine multiple HEIC photos into a single PDF?", answer: "Yes — upload as many HEIC files as needed. Each photo becomes one page in the PDF. You can reorder them before converting." },
+    { question: "What page size is the output PDF?", answer: "Choose between A4, Letter, or 'fit to image' which sizes each page to the photo dimensions." },
+    { question: "Is there a limit on the number of HEIC photos?", answer: "No hard limit. Uploading many large HEIC files may take a few extra seconds, but all quantities are supported." },
+    { question: "Will the PDF preserve the full photo quality?", answer: "Yes — photos are embedded at full resolution. If you need a smaller file, use our Compress PDF tool after conversion to optimize image compression within the PDF." },
+    { question: "Can I add page numbers to the HEIC photo PDF?", answer: "Yes — after converting to PDF, use our Add Page Numbers tool to add numbered footers or headers to your photo document." }
+  ],
+  relatedWorkflows: [
+    { title: "Photo Documentation Workflow", description: "Compile iPhone photos into professional PDF reports", tools: ["heic-to-pdf", "add-page-numbers", "compress"] },
+    { title: "Receipt & Expense Workflow", description: "Convert receipt photos to PDF for expense reporting", tools: ["heic-to-pdf", "merge", "compress"] }
+  ],
+  internalLinks: [
+    { text: "HEIC to JPG", href: "/heic-to-jpg", context: "Convert HEIC to JPG for universal compatibility" },
+    { text: "JPG to PDF", href: "/jpg-to-pdf", context: "Convert JPG photos to PDF" },
+    { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs after conversion" },
+    { text: "Compress PDF", href: "/compress", context: "Reduce the PDF file size after photo compilation" }
+  ]
+} as unknown as ToolSEOData;
+
+toolSEOData["reduce-pdf-size"] = {
+  id: "reduce-pdf-size",
+  primaryKeyword: "reduce pdf size free online",
+  longTailH1: "Reduce PDF Size Free — Lossless Online Compression Tool",
+  secondaryKeywords: ["decrease pdf file size", "pdf file size reducer", "shrink pdf online free", "make pdf smaller free", "pdf size reduction tool"],
+  metaDescription: "Reduce PDF file size without losing quality. Free online PDF size reducer — intelligent compression with 3 quality levels. No signup required.",
+  heroContent: "Oversized PDFs create problems everywhere — email attachments bounce, upload portals reject them, and loading times slow to a crawl. PDF HUB 24's PDF size reducer intelligently compresses images, removes redundant data, and optimizes the PDF structure to significantly reduce file size. Choose from three compression levels: Low (best quality, moderate reduction), Medium (balanced), or High (maximum reduction). No quality loss on text-heavy documents.",
+  useCases: {
+    title: "When to Reduce PDF File Size",
+    description: "PDF size reduction solves many everyday file management problems:",
+    items: ["Reducing email attachments below the 25MB Gmail limit", "Making PDFs small enough for government and legal portal uploads", "Optimizing PDFs for faster web page loading", "Reducing storage consumption on your device or cloud drive", "Making PDFs faster to load on mobile devices", "Preparing PDFs for WhatsApp, Telegram, or Slack sharing", "Reducing invoice and contract PDFs for email delivery", "Archiving documents in a space-efficient format"]
+  },
+  tutorial: {
+    title: "How to Reduce PDF File Size — Step by Step",
+    steps: [
+      { step: "Upload Your PDF", detail: "Drag and drop your PDF or click to upload. Files of any size are accepted." },
+      { step: "Select Compression Level", detail: "Choose Low (20–40% size reduction, excellent quality), Medium (40–70% reduction, good quality), or High (70–90% reduction, acceptable quality for email)." },
+      { step: "Download Reduced PDF", detail: "See the before/after size comparison, then download your smaller PDF instantly." }
+    ]
+  },
+  troubleshooting: {
+    title: "PDF Size Reduction Issues",
+    issues: [
+      { problem: "PDF is still too large after High compression", solution: "The PDF likely contains many high-resolution full-page scans or embedded images. Try using our Split PDF tool to divide the document into smaller parts — a 30MB PDF split into three 10MB parts can all be emailed individually. Alternatively, use our PDF to JPG tool to extract images and re-embed them at a lower resolution." },
+      { problem: "File size barely changed after compression", solution: "The PDF was likely already optimally compressed by its creator (e.g., exported from Adobe Acrobat or Microsoft Word). These tools apply compression by default. For further reduction, try removing unnecessary pages with Delete Pages or splitting the document." }
+    ]
+  },
+  securitySection: {
+    title: "Secure PDF Compression",
+    content: "File compression is handled with complete privacy:",
+    points: ["256-bit TLS encryption for all transfers", "Files deleted automatically after compression", "No document content stored or analyzed", "Per-session isolated processing", "GDPR-compliant infrastructure"]
+  },
+  faqs: [
+    { question: "What is the difference between Low, Medium, and High compression?", answer: "Low: 20–40% size reduction with near-original quality. Best for print-ready documents. Medium: 40–70% reduction, good quality for screen and email. High: 70–90% reduction, optimized for email attachments and uploads where size matters more than perfect quality." },
+    { question: "Will reducing PDF size affect text quality?", answer: "No — PDF text is vector-based and is not affected by compression settings. Only embedded images are compressed. Text remains crisp and selectable at all compression levels." },
+    { question: "What is the maximum file size I can upload?", answer: "No hard limit. Large PDFs may take a few extra seconds to process, but all file sizes are supported." },
+    { question: "Can I reduce a password-protected PDF?", answer: "Password-protected PDFs cannot be modified until unlocked. Use our Unlock PDF tool to remove the password first, then reduce the size." },
+    { question: "How much will my PDF be reduced?", answer: "Results depend on content. Image-heavy PDFs typically reduce by 50–80%. Text-only PDFs may only reduce by 10–30% since they're already efficient." }
+  ],
+  relatedWorkflows: [
+    { title: "Email Attachment Workflow", description: "Compress and prepare PDFs for email delivery", tools: ["reduce-pdf-size", "split", "compress"] },
+    { title: "Archive Optimization Workflow", description: "Optimize stored PDFs for space efficiency", tools: ["reduce-pdf-size", "flatten-pdf", "grayscale-pdf"] }
+  ],
+  internalLinks: [
+    { text: "Compress PDF", href: "/compress", context: "Alternative PDF compression with different options" },
+    { text: "Split PDF", href: "/split", context: "Split large PDFs into smaller parts" },
+    { text: "Grayscale PDF", href: "/grayscale-pdf", context: "Convert to grayscale for additional size reduction" },
+    { text: "Delete Pages", href: "/delete-pages", context: "Remove unwanted pages to reduce file size" }
+  ]
+} as unknown as ToolSEOData;
+
+toolSEOData["pdf-page-size"] = {
+  id: "pdf-page-size",
+  primaryKeyword: "pdf page size converter free online",
+  longTailH1: "PDF Page Size Converter Free — A4, Letter, A3, Legal & Custom",
+  secondaryKeywords: ["change pdf page size free", "resize pdf to a4 online", "pdf page resizer", "convert pdf letter to a4", "custom pdf page dimensions"],
+  metaDescription: "Resize PDF pages to A4, Letter, A3, Legal, or any custom size free online. Free PDF page resizer — all standard paper sizes supported. No signup.",
+  heroContent: "Received a PDF formatted for US Letter but need to print it on A4? Or have a PDF with mixed page sizes that need to be standardized for a professional print run? PDF HUB 24's page size converter resizes all pages to any standard or custom dimension — A4, A3, Letter, Legal, Tabloid, and more. The content scales proportionally or you can crop it to fill the new page size exactly.",
+  useCases: {
+    title: "When to Change PDF Page Size",
+    description: "Page size conversion is needed in many print and publishing workflows:",
+    items: ["Converting US Letter PDFs to A4 for international printing", "Standardizing mixed page sizes in multi-source PDF documents", "Resizing PDFs for booklet printing (A5 from A4 content)", "Preparing PDFs for large-format printing (A3, Tabloid, poster)", "Converting legal-size documents to standard Letter or A4", "Adjusting PDF page dimensions for upload to print-on-demand services", "Resizing presentation PDFs from widescreen to A4 for distribution", "Preparing PDFs for specific envelope or card stock dimensions"]
+  },
+  tutorial: {
+    title: "How to Change PDF Page Size — Step by Step",
+    steps: [
+      { step: "Upload Your PDF", detail: "Drag and drop your PDF or click to browse. All PDF versions and page sizes are supported." },
+      { step: "Select Target Size", detail: "Choose a standard size (A4, A3, A5, Letter, Legal, Tabloid) or enter custom width and height in mm, cm, or inches." },
+      { step: "Apply & Download", detail: "Click 'Resize Pages'. All pages are resized to the target dimensions. Download your reformatted PDF." }
+    ]
+  },
+  troubleshooting: {
+    title: "PDF Page Size Issues",
+    issues: [
+      { problem: "Content is cropped or cut off after resizing to a smaller page", solution: "When scaling down to a smaller page size, content near the edges may be cropped. Enable the 'Scale content' option to proportionally shrink content to fit within the new page boundaries." },
+      { problem: "White borders appear around the content after resizing to a larger page", solution: "This is the expected behavior when scaling up — the content is centered on the larger page with margins. Disable 'Scale content' and enable 'Crop to fill' to stretch content to fill the entire new page size (may clip edge content slightly)." }
+    ]
+  },
+  securitySection: {
+    title: "Secure PDF Page Resizing",
+    content: "Your documents are processed with complete privacy:",
+    points: ["TLS-encrypted file transfers", "Files deleted after processing completes", "No document content read or retained", "Isolated processing per session", "No account required"]
+  },
+  faqs: [
+    { question: "Can I set a custom page size?", answer: "Yes — enter any custom width and height in mm, cm, or inches. This is useful for unusual print formats like custom card stock, posters, or specific publishing dimensions." },
+    { question: "Does resizing affect PDF text quality?", answer: "No — PDF text is vector-based. When scaling a PDF up or down, text remains crisp and perfectly readable at any size." },
+    { question: "Can I resize only specific pages in a PDF?", answer: "Yes — use the page range selector to apply the new size only to selected pages, leaving other pages unchanged." },
+    { question: "What is the difference between A4 and Letter sizes?", answer: "A4 (210 × 297mm) is the standard paper size in Europe, Australia, and most of the world. Letter (8.5 × 11 inches / 216 × 279mm) is the North American standard. A4 is slightly taller and narrower than Letter." },
+    { question: "Will the PDF still be searchable after page resizing?", answer: "Yes — resizing page dimensions does not affect the text layer. The PDF remains fully text-searchable and selectable after page size conversion." }
+  ],
+  relatedWorkflows: [
+    { title: "Print Preparation Workflow", description: "Standardize and prepare PDFs for professional printing", tools: ["pdf-page-size", "compress", "flatten-pdf"] },
+    { title: "Document Standardization Workflow", description: "Normalize mixed-format PDFs for consistent presentation", tools: ["pdf-page-size", "merge", "add-page-numbers"] }
+  ],
+  internalLinks: [
+    { text: "Crop PDF", href: "/crop-pdf", context: "Crop specific areas of PDF pages" },
+    { text: "Rotate PDF", href: "/rotate", context: "Rotate page orientation alongside resizing" },
+    { text: "Compress PDF", href: "/compress", context: "Reduce file size after page resizing" },
+    { text: "Merge PDF", href: "/merge", context: "Combine standardized PDFs into one document" }
+  ]
+} as unknown as ToolSEOData;
+
+toolSEOData["pdf-metadata"] = {
+  id: "pdf-metadata",
+  primaryKeyword: "pdf metadata editor free online",
+  longTailH1: "Edit PDF Metadata Free — Title, Author, Subject & Keywords",
+  secondaryKeywords: ["edit pdf document properties", "change pdf title author free", "pdf metadata editor online", "update pdf metadata", "pdf info editor free"],
+  metaDescription: "Edit PDF metadata including title, author, subject, and keywords online free. Add, modify, or clear document properties. No signup required.",
+  heroContent: "PDF metadata (document properties) controls how your PDF appears in file explorers, search engines, document management systems, and accessibility tools. The title, author, subject, and keyword fields are read by screen readers, indexed by enterprise search systems, and affect how your document appears when embedded on websites. PDF HUB 24's metadata editor lets you update any or all document properties in seconds — no Acrobat required.",
+  useCases: {
+    title: "When to Edit PDF Metadata",
+    description: "PDF metadata editing is important for professional document management:",
+    items: ["Correcting incorrect author or title in PDFs shared externally", "Adding keywords for enterprise document management system indexing", "Updating document version info in the subject or description fields", "Removing sensitive personal information from document properties", "Setting proper metadata for PDFs published on your website (SEO benefit)", "Standardizing metadata across a document library", "Preparing PDFs for accessibility compliance (title field is required)", "Adding copyright notices and creation date to published documents"]
+  },
+  tutorial: {
+    title: "How to Edit PDF Metadata — Step by Step",
+    steps: [
+      { step: "Upload Your PDF", detail: "Drag and drop your PDF or click to browse. The current metadata is read and displayed in the editor." },
+      { step: "Edit Document Properties", detail: "Update any field: Title, Author, Subject, Keywords, Creator, Producer, or custom properties. Leave fields blank to clear them." },
+      { step: "Save & Download", detail: "Click 'Save Metadata'. Your PDF is returned with the updated properties embedded. Original content is unchanged." }
+    ]
+  },
+  troubleshooting: {
+    title: "PDF Metadata Editing Issues",
+    issues: [
+      { problem: "Metadata changes aren't visible in Windows Explorer or Mac Finder", solution: "System file browsers cache metadata. After downloading the updated PDF, right-click > Properties (Windows) or Get Info (Mac) to verify the new metadata. You may need to close and reopen the file explorer panel to see updates." },
+      { problem: "The PDF author field is locked and can't be changed", solution: "Some PDFs are digitally signed, which locks all metadata changes (as altering metadata would break the signature). To update metadata, you'd need to remove the signature first, which may not be possible for legally signed documents." }
+    ]
+  },
+  securitySection: {
+    title: "Secure Metadata Processing",
+    content: "Metadata editing is handled with complete privacy:",
+    points: ["TLS-encrypted uploads and downloads", "Files and metadata deleted after processing", "No document content or metadata stored beyond your session", "Isolated processing per session", "No account or registration required"]
+  },
+  faqs: [
+    { question: "What metadata fields can I edit?", answer: "You can edit Title, Author, Subject, Keywords, Creator (application that created the PDF), and Producer (PDF generator used). Custom XMP metadata fields are also supported." },
+    { question: "Will editing metadata change the PDF content?", answer: "No — metadata editing only changes the document properties stored in the PDF header. The visible content, formatting, and pages remain completely unchanged." },
+    { question: "Can I remove all metadata from a PDF for privacy?", answer: "Yes — clear all fields to strip metadata from the PDF. This is useful for removing author information, company names, or creation dates before sharing externally." },
+    { question: "Does PDF metadata affect SEO?", answer: "The Title field matters for SEO when PDFs are indexed by search engines. Google displays the PDF Title field in search results. Well-written titles improve click-through rates for PDFs published online." },
+    { question: "Can I view the existing metadata before editing?", answer: "Yes — uploading the PDF displays the current metadata in all fields. You can review and selectively update only the fields you need to change." }
+  ],
+  relatedWorkflows: [
+    { title: "Document Publishing Workflow", description: "Prepare PDFs with proper metadata for web publishing", tools: ["pdf-metadata", "compress", "flatten-pdf"] },
+    { title: "Privacy Workflow", description: "Remove sensitive metadata before external sharing", tools: ["pdf-metadata", "redact-pdf", "protect-pdf"] }
+  ],
+  internalLinks: [
+    { text: "Redact PDF", href: "/redact-pdf", context: "Remove sensitive content from PDF pages" },
+    { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection to the document" },
+    { text: "Flatten PDF", href: "/flatten-pdf", context: "Flatten form fields before finalizing metadata" },
+    { text: "PDF to Text", href: "/pdf-to-text", context: "Extract the text content from the PDF" }
+  ]
+} as unknown as ToolSEOData;

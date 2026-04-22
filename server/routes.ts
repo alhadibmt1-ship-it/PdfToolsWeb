@@ -3245,6 +3245,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
       "crop-image": "Crop Image Free Online — Select & Trim",
       "rotate-image": "Rotate & Flip Image Free — 90°, 180°, Mirror",
       "convert-image": "Convert Image Free — JPG PNG WebP GIF Instant",
+      "watermark-pdf": "Add Watermark to PDF Free — Text & Image",
+      "page-numbers": "Add Page Numbers to PDF Free — Custom Style",
+      "jpg-to-png": "JPG to PNG Free — Lossless Instant Conversion",
+      "png-to-jpg": "PNG to JPG Free — Reduce File Size",
+      "image-converter": "Image Converter Free — JPG PNG WebP GIF",
+      "epub-to-pdf": "EPUB to PDF Free Online — Keeps Layout",
+      "pdf-to-epub": "PDF to EPUB Free — Convert PDFs to eBooks",
+      "pdf-to-xml": "PDF to XML Free Online — Structured Data",
+      "pdf-to-html": "PDF to HTML Free Online — Web-Ready Output",
+      "pdf-to-text": "PDF to Text Free — Extract All Text Content",
+      "heic-to-jpg": "HEIC to JPG Free — Convert iPhone Photos",
+      "heic-to-png": "HEIC to PNG Free — Transparent PNG Output",
+      "heic-to-pdf": "HEIC to PDF Free — iPhone Photos to PDF",
+      "reduce-pdf-size": "Reduce PDF Size Free — Lossless Online Tool",
+      "pdf-page-size": "PDF Page Size Converter — A4, Letter, Custom",
+      "pdf-metadata": "Edit PDF Metadata Free — Title, Author & More",
       // Blog posts
       "how-to-compress-pdf-for-email": "Compress PDF for Email Under 25MB",
       "convert-pdf-to-word-without-losing-formatting": "Convert PDF to Word Without Losing Formatting",
@@ -3280,7 +3296,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       "reorder-pdf-pages": "How to Reorder PDF Pages: Rearrange & Organize",
       "remove-background-from-image": "Remove Background from Image — Transparent PNG",
       "convert-pdf-to-png": "Convert PDF to PNG Free Online — High Quality",
-      "excel-to-pdf": "Convert Excel to PDF Free — Spreadsheets & Tables",
     };
 
     const COLOR_THEMES = [
