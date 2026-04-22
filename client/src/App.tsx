@@ -145,6 +145,18 @@ function TranslatedSlugRoutes() {
   return <>{routes}</>;
 }
 
+function RedirectFreePdfConverter() {
+  const [, setLoc] = useLocation();
+  useEffect(() => { setLoc("/convert-pdf"); }, []);
+  return null;
+}
+
+function RedirectFreePdfEditor() {
+  const [, setLoc] = useLocation();
+  useEffect(() => { setLoc("/edit-pdf"); }, []);
+  return null;
+}
+
 function PageLoader() {
   return (
     <div className="min-h-screen flex items-center justify-center" data-testid="status-route-loading">
@@ -229,8 +241,8 @@ function AppRoutes() {
         <Route path="/html-sitemap" component={HtmlSitemapPage} />
         <Route path="/best-free-tools" component={BestFreeToolsPage} />
         <Route path="/seo-audit" component={SeoAuditPage} />
-        <Route path="/free-pdf-converter" component={() => { const [, setLoc] = useLocation(); useEffect(() => { setLoc("/convert-pdf"); }, []); return null; }} />
-        <Route path="/free-pdf-editor" component={() => { const [, setLoc] = useLocation(); useEffect(() => { setLoc("/edit-pdf"); }, []); return null; }} />
+        <Route path="/free-pdf-converter" component={RedirectFreePdfConverter} />
+        <Route path="/free-pdf-editor" component={RedirectFreePdfEditor} />
         <Route path="/write-for-us" component={WriteForUsPage} />
         <Route path="/data-security" component={DataSecurityPage} />
         <Route path="/auto-delete" component={AutoDeletePage} />

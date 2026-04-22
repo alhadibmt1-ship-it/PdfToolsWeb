@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
 type Theme = "light" | "dark";
 
@@ -10,16 +10,21 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(() => {
+function getInitialTheme(): Theme {
+  try {
     const stored = localStorage.getItem("pdf-tools-theme");
     if (stored === "dark" || stored === "light") return stored;
-    
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches) {
       return "dark";
     }
-    return "light";
-  });
+  } catch {
+    // ignore
+  }
+  return "light";
+}
+
+export function ThemeProvider({ children }: { children: ReactNode }) {
+  const [theme, setThemeState] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
     const root = document.documentElement;

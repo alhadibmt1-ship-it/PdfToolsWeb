@@ -13,7 +13,6 @@ import TrustBadges from "@/components/TrustBadges";
 import RelatedTools from "@/components/RelatedTools";
 import StepIndicator from "@/components/StepIndicator";
 import SuccessCelebration from "@/components/SuccessCelebration";
-import { ToolBreadcrumbs } from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
@@ -195,8 +194,6 @@ export default function MergePdfPage() {
       
       <main className="flex-1 py-6 sm:py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <ToolBreadcrumbs toolName="Merge PDF" category="edit-pdf" />
-          
           <Link href="/" data-testid="link-back">
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-4 sm:mb-6 cursor-pointer hover-elevate active-elevate-2 rounded-md px-3 py-2 -ml-3 transition-all">
               <ChevronLeft className="w-4 h-4" aria-hidden="true" />
