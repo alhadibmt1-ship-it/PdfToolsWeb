@@ -921,6 +921,102 @@ export const seoConfig: Record<string, PageSEO> = {
       "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
+  "/watermark-pdf": {
+    title: "Add Watermark to PDF Free (Text & Image) | PDF HUB 24",
+    description: "Add custom text or image watermarks to any PDF. Free watermark tool — control opacity, position, and size. No signup, no watermarks added by us.",
+    keywords: "add watermark to PDF, PDF watermark, watermark PDF free, text watermark PDF, image watermark PDF online",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Add Watermark to PDF - PDF HUB 24", "url": `${BASE_URL}/watermark-pdf`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/page-numbers": {
+    title: "Add Page Numbers to PDF Free — Custom Style | PDF HUB 24",
+    description: "Add page numbers to any PDF in any position — bottom center, top right, or custom offset. Multiple numbering styles. Free online tool, no signup.",
+    keywords: "add page numbers to PDF, PDF page numbering, page numbers PDF free, number PDF pages online",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Add Page Numbers to PDF - PDF HUB 24", "url": `${BASE_URL}/page-numbers`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/jpg-to-png": {
+    title: "JPG to PNG Free — Lossless Transparent Output | PDF HUB 24",
+    description: "Convert JPG images to PNG with full transparency support. Free JPG to PNG converter — instant, lossless, supports batch conversion. No signup.",
+    keywords: "JPG to PNG, convert JPG to PNG, JPEG to PNG free, JPG to PNG online, lossless image conversion",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "JPG to PNG Converter - PDF HUB 24", "url": `${BASE_URL}/jpg-to-png`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/png-to-jpg": {
+    title: "PNG to JPG Free — Reduce Image File Size | PDF HUB 24",
+    description: "Convert PNG images to JPG and shrink file size significantly. Free PNG to JPG converter — custom quality, instant download, no signup required.",
+    keywords: "PNG to JPG, convert PNG to JPG, PNG to JPEG free, PNG to JPG online, reduce image size",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "PNG to JPG Converter - PDF HUB 24", "url": `${BASE_URL}/png-to-jpg`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/image-converter": {
+    title: "Image Converter Free — JPG PNG WebP GIF | PDF HUB 24",
+    description: "Convert images between JPG, PNG, WebP, GIF, TIFF, and BMP formats instantly. Free online image converter — batch supported, no signup required.",
+    keywords: "image converter, convert image format, JPG PNG WebP converter, image format converter free online",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Image Converter - PDF HUB 24", "url": `${BASE_URL}/image-converter`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/epub-to-pdf": {
+    title: "EPUB to PDF Free Online (Keeps Layout) | PDF HUB 24",
+    description: "Convert EPUB ebooks to PDF in seconds. Free EPUB to PDF converter — preserves chapter structure, text flow, and images. No signup required.",
+    keywords: "EPUB to PDF, convert EPUB to PDF, ebook to PDF, EPUB converter online free",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "EPUB to PDF Converter - PDF HUB 24", "url": `${BASE_URL}/epub-to-pdf`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/pdf-to-epub": {
+    title: "PDF to EPUB Free — Convert PDFs to eBooks | PDF HUB 24",
+    description: "Convert PDF documents to EPUB ebook format for Kindle, Kobo, and Apple Books. Free PDF to EPUB — reflows text automatically. No signup required.",
+    keywords: "PDF to EPUB, convert PDF to EPUB, PDF to ebook, PDF to Kindle, PDF to EPUB converter free",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "PDF to EPUB Converter - PDF HUB 24", "url": `${BASE_URL}/pdf-to-epub`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/pdf-to-xml": {
+    title: "PDF to XML Free Online (Structured Data) | PDF HUB 24",
+    description: "Extract structured data from PDFs and export as XML. Free PDF to XML converter — preserves document structure and element hierarchy. No signup.",
+    keywords: "PDF to XML, convert PDF to XML, PDF data extraction, PDF to structured XML free online",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "PDF to XML Converter - PDF HUB 24", "url": `${BASE_URL}/pdf-to-xml`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/pdf-to-html": {
+    title: "PDF to HTML Free Online (Web-Ready Output) | PDF HUB 24",
+    description: "Convert PDF documents to HTML web pages with embedded styling. Free PDF to HTML converter — responsive output, inline CSS, no signup required.",
+    keywords: "PDF to HTML, convert PDF to HTML, PDF to web page, PDF to HTML online free",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "PDF to HTML Converter - PDF HUB 24", "url": `${BASE_URL}/pdf-to-html`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/pdf-to-text": {
+    title: "PDF to Text Free — Extract All Text Content | PDF HUB 24",
+    description: "Extract all text from PDF files as a plain TXT file. Free PDF to text tool — works on scanned PDFs with OCR. No signup, instant results.",
+    keywords: "PDF to text, extract text from PDF, PDF to TXT, PDF text extractor free online",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "PDF to Text - PDF HUB 24", "url": `${BASE_URL}/pdf-to-text`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/heic-to-jpg": {
+    title: "HEIC to JPG Free — Convert iPhone Photos | PDF HUB 24",
+    description: "Convert HEIC and HEIF photos from iPhone to JPG for universal compatibility. Free HEIC to JPG converter — batch supported, no signup required.",
+    keywords: "HEIC to JPG, convert HEIC to JPG, HEIF to JPG, iPhone photo converter free online",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "HEIC to JPG Converter - PDF HUB 24", "url": `${BASE_URL}/heic-to-jpg`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/heic-to-png": {
+    title: "HEIC to PNG Free — Transparent PNG Output | PDF HUB 24",
+    description: "Convert HEIC images from iPhone to PNG format with full transparency support. Free HEIC to PNG converter — lossless quality, no signup required.",
+    keywords: "HEIC to PNG, convert HEIC to PNG, HEIF to PNG, iPhone HEIC converter free online",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "HEIC to PNG Converter - PDF HUB 24", "url": `${BASE_URL}/heic-to-png`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/heic-to-pdf": {
+    title: "HEIC to PDF Free — iPhone Photos to PDF | PDF HUB 24",
+    description: "Convert HEIC photos from iPhone directly to PDF documents. Free HEIC to PDF converter — combine multiple photos into one PDF. No signup required.",
+    keywords: "HEIC to PDF, convert HEIC to PDF, iPhone photos to PDF, HEIF to PDF free online",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "HEIC to PDF Converter - PDF HUB 24", "url": `${BASE_URL}/heic-to-pdf`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/reduce-pdf-size": {
+    title: "Reduce PDF Size Free — Lossless Online Tool | PDF HUB 24",
+    description: "Reduce PDF file size without losing quality. Free online PDF size reducer — intelligent compression with 3 quality levels. No signup required.",
+    keywords: "reduce PDF size, PDF size reducer, compress PDF free, shrink PDF online, reduce PDF file size",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Reduce PDF Size - PDF HUB 24", "url": `${BASE_URL}/reduce-pdf-size`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/pdf-page-size": {
+    title: "PDF Page Size Converter — A4, Letter, Custom | PDF HUB 24",
+    description: "Resize PDF pages to A4, Letter, A3, Legal, or any custom size online free. Free PDF page resizer — all standard sizes supported. No signup.",
+    keywords: "PDF page size, resize PDF pages, PDF page resizer, change PDF paper size, A4 PDF converter free",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "PDF Page Size Converter - PDF HUB 24", "url": `${BASE_URL}/pdf-page-size`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
+  "/pdf-metadata": {
+    title: "Edit PDF Metadata Free — Title, Author & More | PDF HUB 24",
+    description: "Edit PDF metadata including title, author, subject, and keywords. Free PDF metadata editor — add, modify, or clear document properties. No signup.",
+    keywords: "PDF metadata editor, edit PDF metadata, PDF document properties, PDF title author keywords free",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "PDF Metadata Editor - PDF HUB 24", "url": `${BASE_URL}/pdf-metadata`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
   "/about": {
     title: "About PDF HUB 24 - Free Online PDF Tools",
     description: "Learn about PDF HUB 24 — your trusted source for 49+ free online PDF tools. Convert, edit, merge, compress, sign, and manage PDF files with no signup required.",
