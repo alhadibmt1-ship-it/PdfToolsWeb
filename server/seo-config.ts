@@ -1926,12 +1926,14 @@ export function generateMetaTags(path: string): string {
   const hreflangTags = generateHreflangTags(canonicalPath);
   const langAttr = getLangAttribute(lang);
 
-  const isNoindex = !!(seo.robots && seo.robots.includes("noindex"));
+  // ── Detect blog page type early (needed for noindex logic) ──────────────
+  const blogSlugMatch = canonicalPath.match(/^\/blog\/([^/]+)$/);
+  const blogPost = blogSlugMatch ? blogPosts.find(p => p.slug === blogSlugMatch[1]) : null;
+  const isUnknownBlogSlug = !!(blogSlugMatch && !blogPost);
+  const isNoindex = !!(seo.robots && seo.robots.includes("noindex")) || isUnknownBlogSlug;
   const hreflangBlock = isNoindex ? "" : `\n    <!-- Hreflang International SEO -->\n    ${hreflangTags}`;
 
   // ── Detect page type ──────────────────────────────────────────────────────
-  const blogSlugMatch = canonicalPath.match(/^\/blog\/([^/]+)$/);
-  const blogPost = blogSlugMatch ? blogPosts.find(p => p.slug === blogSlugMatch[1]) : null;
   const progSlugMatch = canonicalPath.match(/^\/tools\/([^/]+)$/);
   // Also detect programmatic pages at root level (e.g. /compress-pdf-online-us)
   const directSlug = canonicalPath.slice(1);
@@ -2065,8 +2067,9 @@ export function generateMetaTags(path: string): string {
   // Language blog pages: INDEXED — each has unique fully-translated content per language
   // All country pages: INDEXED — each has unique locally-enriched content
   // All other pages: standard index,follow with full preview directives
-  const robotsContent = seo.robots
-    || "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
+  const robotsContent = isUnknownBlogSlug
+    ? "noindex, nofollow"
+    : (seo.robots || "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
 
   // ── og:type + article-specific OG tags ───────────────────────────────────
   const ogType = blogPost ? "article" : "website";

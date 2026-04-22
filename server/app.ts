@@ -101,6 +101,7 @@ app.use((req, res, next) => {
     "/pdf-redact": "/redact-pdf",
     "/batch-pdf-compress": "/batch-compress",
     "/image-compress": "/image-compressor",
+    "/compress-img": "/image-compressor",
     "/image-resize": "/resize-image",
     "/image-crop": "/crop-image",
     "/image-rotate": "/rotate-image",
