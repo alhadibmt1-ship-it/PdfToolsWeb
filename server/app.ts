@@ -54,8 +54,57 @@ if (process.env.NODE_ENV === 'production') {
 // 301 redirects for legacy/duplicate URLs — keeps link equity flowing to canonical targets
 app.use((req, res, next) => {
   const redirects: Record<string, string> = {
+    // Legacy page aliases
     "/free-pdf-editor": "/edit-pdf",
     "/free-pdf-converter": "/convert-pdf",
+    // Hyphenated tool variants → canonical short paths
+    "/merge-pdf": "/merge",
+    "/compress-pdf": "/compress",
+    "/split-pdf": "/split",
+    "/rotate-pdf": "/rotate",
+    "/pdf-merge": "/merge",
+    "/pdf-split": "/split",
+    "/pdf-compress": "/compress",
+    "/pdf-rotate": "/rotate",
+    "/pdf-editor": "/edit-pdf",
+    "/protect-pdf-with-password": "/protect-pdf",
+    "/password-protect-pdf": "/protect-pdf",
+    "/unlock-pdf-free": "/unlock-pdf",
+    "/remove-pdf-password": "/unlock-pdf",
+    "/pdf-to-word-converter": "/pdf-to-word",
+    "/pdf-to-jpg-converter": "/pdf-to-jpg",
+    "/pdf-to-png-converter": "/pdf-to-png",
+    "/pdf-to-excel-converter": "/pdf-to-excel",
+    "/word-to-pdf-converter": "/word-to-pdf",
+    "/jpg-to-pdf-converter": "/jpg-to-pdf",
+    "/compress-pdf-free": "/compress",
+    "/merge-pdf-free": "/merge",
+    "/split-pdf-free": "/split",
+    "/merge-pdfs": "/merge",
+    "/combine-pdf": "/merge",
+    "/combine-pdfs": "/merge",
+    "/sign-pdf-free": "/sign-pdf",
+    "/pdf-signer": "/sign-pdf",
+    "/pdf-ocr": "/ocr-pdf",
+    "/ocr-pdf-free": "/ocr-pdf",
+    "/pdf-annotator": "/annotate-pdf",
+    "/pdf-watermark": "/add-watermark",
+    "/pdf-page-numbers": "/add-page-numbers",
+    "/pdf-delete-pages": "/delete-pages",
+    "/pdf-extract-pages": "/extract-pages",
+    "/pdf-reorder": "/reorder-pages",
+    "/pdf-crop": "/crop-pdf",
+    "/pdf-resize": "/resize-pdf",
+    "/pdf-flatten": "/flatten-pdf",
+    "/pdf-grayscale": "/grayscale-pdf",
+    "/pdf-repair": "/repair-pdf",
+    "/pdf-redact": "/redact-pdf",
+    "/batch-pdf-compress": "/batch-compress",
+    "/image-compress": "/image-compressor",
+    "/image-resize": "/resize-image",
+    "/image-crop": "/crop-image",
+    "/image-rotate": "/rotate-image",
+    "/image-convert": "/convert-image",
   };
   const target = redirects[req.path];
   if (target) return res.redirect(301, target);
@@ -160,6 +209,7 @@ app.use((req, res, next) => {
 // 301 redirect duplicate-intent size-variant programmatic pages to primary
 // "compress-pdf-under-Xkb" and "reduce-pdf-size-to-Xkb" → "compress-pdf-to-Xkb"
 // "compress-pdf-online-{country}" → "compress-pdf-{country}"
+// Orphan compress-to-size sizes → nearest canonical size in sitemap
 app.use((req, res, next) => {
   const m1 = req.path.match(/^\/tools\/compress-pdf-under-(.+)$/);
   if (m1) return res.redirect(301, `/tools/compress-pdf-to-${m1[1]}`);
@@ -169,6 +219,28 @@ app.use((req, res, next) => {
 
   const m3 = req.path.match(/^\/tools\/compress-pdf-online-(.+)$/);
   if (m3) return res.redirect(301, `/tools/compress-pdf-${m3[1]}`);
+
+  // Redirect orphan (non-sitemap) compress-to-size variants → nearest canonical size
+  const orphanSizes: Record<string, string> = {
+    "100kb": "75kb",
+    "200kb": "250kb",
+    "350kb": "300kb",
+    "400kb": "500kb",
+    "450kb": "500kb",
+    "600kb": "750kb",
+    "700kb": "750kb",
+    "800kb": "750kb",
+    "900kb": "1mb",
+    "1.5mb": "1mb",
+    "3mb": "2mb",
+    "4mb": "5mb",
+    "6mb": "5mb",
+    "7mb": "5mb",
+    "8mb": "10mb",
+    "9mb": "10mb",
+  };
+  const m4 = req.path.match(/^\/tools\/compress-pdf-to-(.+)$/);
+  if (m4 && orphanSizes[m4[1]]) return res.redirect(301, `/tools/compress-pdf-to-${orphanSizes[m4[1]]}`);
 
   next();
 });
