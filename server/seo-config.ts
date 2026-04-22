@@ -2049,10 +2049,15 @@ export function generateMetaTags(path: string): string {
   const twitterTitle = seo.twitterTitle || ogTitle;
   const twitterDescription = seo.twitterDescription || ogDescription;
 
-  // Blog posts each get a unique dynamically-generated OG image
+  // Blog posts and tool pages each get a unique dynamically-generated OG image
   const blogSlug = canonicalPath.startsWith("/blog/") ? canonicalPath.replace("/blog/", "") : null;
-  const pageOgImage = blogSlug ? `${BASE_URL}/api/og-image/${blogSlug}` : OG_IMAGE;
-  const pageOgAlt = blogSlug ? (ogTitle.replace(/ \|.*$/, "").trim()) : "PDF HUB 24 — Free Online PDF Tools";
+  const toolOgSlug = !blogSlug && toolData ? canonicalPath.slice(1) : null;
+  const pageOgImage = blogSlug
+    ? `${BASE_URL}/api/og-image/${blogSlug}`
+    : (toolOgSlug ? `${BASE_URL}/api/og-image/${toolOgSlug}` : OG_IMAGE);
+  const pageOgAlt = (blogSlug || toolOgSlug)
+    ? (ogTitle.replace(/ \|.*$/, "").trim())
+    : "PDF HUB 24 — Free Online PDF Tools";
 
   // ── Robots directive logic ──────────────────────────────────────────────────
   // Language blog pages: INDEXED — each has unique fully-translated content per language
@@ -2092,7 +2097,7 @@ export function generateMetaTags(path: string): string {
       "mainEntityOfPage": { "@type": "WebPage", "@id": `${BASE_URL}/blog/${blogPost.slug}` },
       "keywords": (blogPost.tags || []).join(", "),
       "articleSection": blogPost.category || "Tutorials",
-      "image": { "@type": "ImageObject", "url": `${BASE_URL}/og-image.png`, "width": 1200, "height": 630 }
+      "image": { "@type": "ImageObject", "url": `${BASE_URL}/api/og-image/${blogPost.slug}`, "width": 1200, "height": 630 }
     });
     // BreadcrumbList for blog article
     schemas.push({
