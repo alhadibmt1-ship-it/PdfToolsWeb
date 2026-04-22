@@ -3331,10 +3331,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { getAllGeneratedSlugs } = await import("../client/src/data/programmaticSeoData.js");
       const baseUrl = "https://pdfhub24.com";
-      const slugs: string[] = getAllGeneratedSlugs();
-      const urlEntries = slugs.map(slug => `
+      const today = new Date().toISOString().split("T")[0];
+      const allSlugs: string[] = getAllGeneratedSlugs();
+      // Exclude redirect-only slugs that 301 to canonical forms (wastes crawl budget)
+      const REDIRECT_PATTERNS = [
+        /^compress-pdf-under-/,
+        /^reduce-pdf-size-to-/,
+        /^compress-pdf-online-/,
+      ];
+      const canonicalSlugs = allSlugs.filter(slug =>
+        !REDIRECT_PATTERNS.some(pattern => pattern.test(slug))
+      );
+      const urlEntries = canonicalSlugs.map(slug => `
   <url>
     <loc>${baseUrl}/tools/${slug}</loc>
+    <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>`).join("");
