@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { ChevronLeft, Download } from "lucide-react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
@@ -19,6 +19,9 @@ import { getToolSEOData } from "@/data/toolSEOData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
+const MAX_FILE_SIZE_MB = 50;
+const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
+
 export default function SplitPdfPage() {
   useSEO({
     title: "Split PDF Free Online - Extract Pages from PDF | PDF HUB 24",
@@ -37,8 +40,24 @@ export default function SplitPdfPage() {
   const [endPage, setEndPage] = useState<number>(1);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const { toast } = useToast();
   const { progress, runWithProgress } = useConversionProgress();
+
+  useEffect(() => {
+    return () => {
+      if (resultUrl) URL.revokeObjectURL(resultUrl);
+    };
+  }, [resultUrl]);
+
+  const handleFilesSelected = useCallback((newFiles: File[]) => {
+    if (resultUrl) {
+      URL.revokeObjectURL(resultUrl);
+      setResultUrl(null);
+    }
+    setStatus("idle");
+    setFiles(newFiles);
+  }, [resultUrl]);
 
   const handleSplit = async () => {
     if (files.length === 0) {
@@ -59,6 +78,15 @@ export default function SplitPdfPage() {
       return;
     }
 
+    // Client-side file size validation
+    if (files[0].size > MAX_FILE_SIZE_BYTES) {
+      toast({
+        title: "File too large",
+        description: `Please upload a file under ${MAX_FILE_SIZE_MB}MB. Your file is ${(files[0].size / 1024 / 1024).toFixed(1)}MB.`,
+        variant: "destructive",
+      });
+      return;
+    }
     setStatus("processing");
 
     const formData = new FormData();
@@ -74,7 +102,9 @@ export default function SplitPdfPage() {
         });
 
         if (!response.ok) {
-          throw new Error("Failed to split PDF");
+          let serverError = "Conversion failed. Please try again.";
+          try { const errBody = await response.clone().json(); if (errBody?.error) serverError = errBody.error; } catch {}
+          throw new Error(serverError);
         }
 
         return await response.blob();
@@ -96,6 +126,14 @@ export default function SplitPdfPage() {
         variant: "destructive",
       });
     }
+  };
+
+  const handleReset = () => {
+    if (resultUrl) URL.revokeObjectURL(resultUrl);
+    setResultUrl(null);
+    setFiles([]);
+    setStatus("idle");
+    setErrorMessage("");
   };
 
   const handleDownload = () => {
@@ -132,14 +170,14 @@ export default function SplitPdfPage() {
 
           <div className="space-y-6">
             <FileUploadZone
-              onFilesSelected={setFiles}
+              onFilesSelected={handleFilesSelected}
               acceptedFormats=".pdf"
               multiple={false}
               disabled={status === "processing"}
             />
             <CloudImportBar
               accept="pdf"
-              onFileImported={(file) => setFiles([file])}
+              onFileImported={(file) => handleFilesSelected([file])}
             />
 
             {files.length > 0 && status === "idle" && (
@@ -181,7 +219,7 @@ export default function SplitPdfPage() {
             )}
 
             <ProcessingState
-              status={status}
+              status={status === "processing" || status === "error" ? status : "idle"}
               progress={progress}
               message={status === "processing" ? "Splitting your PDF..." : undefined}
             />
@@ -197,6 +235,15 @@ export default function SplitPdfPage() {
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Download Split PDF
+                </Button>
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  size="lg"
+                  onClick={handleReset}
+                  data-testid="button-convert-another"
+                >
+                  Convert Another File
                 </Button>
               </div>
             )}

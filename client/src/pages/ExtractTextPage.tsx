@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { ChevronLeft, Download, Copy } from "lucide-react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
@@ -16,6 +16,9 @@ import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { t, getToolTitle, getToolDesc } from "@/lib/languages";
+
+const MAX_FILE_SIZE_MB = 50;
+const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
 
 export default function ExtractTextPage() {
   useSEO({
@@ -36,6 +39,12 @@ export default function ExtractTextPage() {
   const { toast } = useToast();
   const { progress, runWithProgress } = useConversionProgress();
 
+  const handleFilesSelected = useCallback((newFiles: File[]) => {
+    setExtractedText("");
+    setStatus("idle");
+    setFiles(newFiles);
+  }, []);
+
   const handleExtract = async () => {
     if (files.length === 0) {
       toast({
@@ -46,6 +55,15 @@ export default function ExtractTextPage() {
       return;
     }
 
+    // Client-side file size validation
+    if (files[0].size > MAX_FILE_SIZE_BYTES) {
+      toast({
+        title: "File too large",
+        description: `Please upload a file under ${MAX_FILE_SIZE_MB}MB. Your file is ${(files[0].size / 1024 / 1024).toFixed(1)}MB.`,
+        variant: "destructive",
+      });
+      return;
+    }
     setStatus("processing");
 
     const formData = new FormData();
@@ -76,7 +94,7 @@ export default function ExtractTextPage() {
       setStatus("error");
       toast({
         title: "Error",
-        description: "Failed to extract text. Please try again.",
+        description: error instanceof Error ? error.message : "Failed to extract text. Please try again.",
         variant: "destructive",
       });
     }
@@ -123,7 +141,7 @@ export default function ExtractTextPage() {
 
           <div className="space-y-6">
             <FileUploadZone
-              onFilesSelected={setFiles}
+              onFilesSelected={handleFilesSelected}
               acceptedFormats=".pdf"
               multiple={false}
               disabled={status === "processing"}
@@ -141,7 +159,7 @@ export default function ExtractTextPage() {
             )}
 
             <ProcessingState
-              status={status}
+              status={status === "processing" || status === "error" ? status : "idle"}
               progress={progress}
               message={status === "processing" ? "Extracting text from PDF..." : undefined}
             />

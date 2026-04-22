@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, Download, FileCode } from "lucide-react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
@@ -32,8 +32,15 @@ export default function HtmlToPdfPage() {
   const [htmlContent, setHtmlContent] = useState("");
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);
+
   const { toast } = useToast();
   const { progress, runWithProgress } = useConversionProgress();
+
+  useEffect(() => {
+    return () => {
+      if (resultUrl) URL.revokeObjectURL(resultUrl);
+    };
+  }, [resultUrl]);
 
   const handleConvert = async () => {
     if (!htmlContent.trim()) {
@@ -56,7 +63,9 @@ export default function HtmlToPdfPage() {
         });
 
         if (!response.ok) {
-          throw new Error("Failed to convert HTML to PDF");
+          let serverError = "Conversion failed. Please try again.";
+          try { const errBody = await response.clone().json(); if (errBody?.error) serverError = errBody.error; } catch {}
+          throw new Error(serverError);
         }
 
         return await response.blob();
@@ -136,7 +145,7 @@ export default function HtmlToPdfPage() {
             )}
 
             <ProcessingState
-              status={status}
+              status={status === "processing" || status === "error" ? status : "idle"}
               progress={progress}
               message={status === "processing" ? "Converting HTML to PDF..." : undefined}
             />

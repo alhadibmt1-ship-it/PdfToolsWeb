@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { ChevronLeft, Download, Image as ImageIcon } from "lucide-react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
@@ -37,10 +37,26 @@ export default function ImageCompressorPage() {
   const [quality, setQuality] = useState([settings.defaultImageQuality]);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const [originalSize, setOriginalSize] = useState<number>(0);
   const [compressedSize, setCompressedSize] = useState<number>(0);
   const { toast } = useToast();
   const { progress, runWithProgress } = useConversionProgress();
+
+  useEffect(() => {
+    return () => {
+      if (resultUrl) URL.revokeObjectURL(resultUrl);
+    };
+  }, [resultUrl]);
+
+  const handleFilesSelected = useCallback((newFiles: File[]) => {
+    if (resultUrl) {
+      URL.revokeObjectURL(resultUrl);
+      setResultUrl(null);
+    }
+    setStatus("idle");
+    setFiles(newFiles);
+  }, [resultUrl]);
 
   const handleCompress = async () => {
     if (files.length === 0) {
@@ -67,7 +83,9 @@ export default function ImageCompressorPage() {
         });
 
         if (!response.ok) {
-          throw new Error("Failed to compress image");
+          let serverError = "Conversion failed. Please try again.";
+          try { const errBody = await response.clone().json(); if (errBody?.error) serverError = errBody.error; } catch {}
+          throw new Error(serverError);
         }
 
         return await response.blob();
@@ -98,6 +116,14 @@ export default function ImageCompressorPage() {
         variant: "destructive",
       });
     }
+  };
+
+  const handleReset = () => {
+    if (resultUrl) URL.revokeObjectURL(resultUrl);
+    setResultUrl(null);
+    setFiles([]);
+    setStatus("idle");
+    setErrorMessage("");
   };
 
   const handleDownload = () => {
@@ -143,7 +169,7 @@ export default function ImageCompressorPage() {
 
           <div className="space-y-6">
             <FileUploadZone
-              onFilesSelected={setFiles}
+              onFilesSelected={handleFilesSelected}
               acceptedFormats=".jpg,.jpeg,.png,.webp"
               multiple={false}
               disabled={status === "processing"}
@@ -190,7 +216,7 @@ export default function ImageCompressorPage() {
             )}
 
             <ProcessingState
-              status={status}
+              status={status === "processing" || status === "error" ? status : "idle"}
               progress={progress}
               message={status === "processing" ? "Compressing your image..." : undefined}
             />
@@ -221,6 +247,15 @@ export default function ImageCompressorPage() {
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Download Compressed Image
+                </Button>
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  size="lg"
+                  onClick={handleReset}
+                  data-testid="button-convert-another"
+                >
+                  Convert Another File
                 </Button>
               </div>
             )}
