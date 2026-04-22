@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { ChevronLeft, Download, Sparkles } from "lucide-react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
@@ -42,11 +42,18 @@ export default function CompressPdfPage() {
   const [hasManuallyChanged, setHasManuallyChanged] = useState(false);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const [originalSize, setOriginalSize] = useState<number>(0);
   const [compressedSize, setCompressedSize] = useState<number>(0);
   const [showCelebration, setShowCelebration] = useState(false);
   const { toast } = useToast();
   const { progress, runWithProgress } = useConversionProgress();
+
+  useEffect(() => {
+    return () => {
+      if (resultUrl) URL.revokeObjectURL(resultUrl);
+    };
+  }, [resultUrl]);
 
   const toolTitle = getToolTitle("compress", lang, getToolSEOData("compress")?.longTailH1 || "Compress PDF");
   const toolDesc = getToolDesc("compress", lang, "Reduce your PDF file size while maintaining quality. Choose your compression level based on your needs.");
@@ -65,7 +72,7 @@ export default function CompressPdfPage() {
     if (status === "success" && resultUrl && settings.autoDownload) {
       const a = document.createElement("a");
       a.href = resultUrl;
-      a.download = "compressed.pdf";
+      a.download = (files[0]?.name?.replace(/\.pdf$/i, "") || "file") + "-compressed.pdf";
       a.click();
     }
   }, [status, resultUrl, settings.autoDownload]);
@@ -75,6 +82,15 @@ export default function CompressPdfPage() {
     : status === "processing" ? 2 
     : status === "success" ? 3 
     : 2;
+
+  const handleFilesSelected = useCallback((newFiles: File[]) => {
+    if (resultUrl) {
+      URL.revokeObjectURL(resultUrl);
+      setResultUrl(null);
+    }
+    setStatus("idle");
+    setFiles(newFiles);
+  }, [resultUrl]);
 
   const handleCompress = async () => {
     if (files.length === 0) {
@@ -101,7 +117,9 @@ export default function CompressPdfPage() {
         });
 
         if (!response.ok) {
-          throw new Error("Failed to compress PDF");
+          let serverError = "Conversion failed. Please try again.";
+          try { const errBody = await response.clone().json(); if (errBody?.error) serverError = errBody.error; } catch {}
+          throw new Error(serverError);
         }
 
         return await response.blob();
@@ -126,7 +144,7 @@ export default function CompressPdfPage() {
     if (resultUrl) {
       const a = document.createElement("a");
       a.href = resultUrl;
-      a.download = "compressed.pdf";
+      a.download = (files[0]?.name?.replace(/\.pdf$/i, "") || "file") + "-compressed.pdf";
       a.click();
     }
   };
@@ -178,7 +196,7 @@ export default function CompressPdfPage() {
             {status !== "success" && (
               <>
                 <FileUploadZone
-                  onFilesSelected={setFiles}
+                  onFilesSelected={handleFilesSelected}
                   acceptedFormats=".pdf"
                   multiple={false}
                   disabled={status === "processing"}
@@ -186,7 +204,7 @@ export default function CompressPdfPage() {
                 />
                 <CloudImportBar
                   accept="pdf"
-                  onFileImported={(file) => setFiles([file])}
+                  onFileImported={(file) => handleFilesSelected([file])}
                 />
               </>
             )}
@@ -342,6 +360,17 @@ export default function CompressPdfPage() {
                 status={status}
                 message="Failed to compress PDF. Please try again with a different file."
               />
+            )}
+            {status === "error" && (
+              <Button
+                variant="outline"
+                className="w-full"
+                size="lg"
+                onClick={handleReset}
+                data-testid="button-retry"
+              >
+                Try Again
+              </Button>
             )}
           </div>
 

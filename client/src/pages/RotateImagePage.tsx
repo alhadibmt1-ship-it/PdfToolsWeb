@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { ChevronLeft, Download, RotateCw, FlipHorizontal, FlipVertical } from "lucide-react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
@@ -15,6 +15,9 @@ import { useConversionProgress } from "@/hooks/useConversionProgress";
 import { useSEO } from "@/hooks/useSEO";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { t, getToolTitle, getToolDesc } from "@/lib/languages";
+
+const MAX_FILE_SIZE_MB = 50;
+const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
 
 export default function RotateImagePage() {
   useSEO({
@@ -36,6 +39,7 @@ export default function RotateImagePage() {
   const [flipV, setFlipV] = useState(false);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const { toast } = useToast();
   const { progress, runWithProgress } = useConversionProgress();
 
@@ -46,6 +50,15 @@ export default function RotateImagePage() {
       return () => URL.revokeObjectURL(url);
     }
   }, [files]);
+
+  const handleFilesSelected = useCallback((newFiles: File[]) => {
+    if (resultUrl) {
+      URL.revokeObjectURL(resultUrl);
+      setResultUrl(null);
+    }
+    setStatus("idle");
+    setFiles(newFiles);
+  }, [resultUrl]);
 
   const handleRotateFlip = async () => {
     if (files.length === 0) {
@@ -66,6 +79,15 @@ export default function RotateImagePage() {
       return;
     }
 
+    // Client-side file size validation
+    if (files[0].size > MAX_FILE_SIZE_BYTES) {
+      toast({
+        title: "File too large",
+        description: `Please upload a file under ${MAX_FILE_SIZE_MB}MB. Your file is ${(files[0].size / 1024 / 1024).toFixed(1)}MB.`,
+        variant: "destructive",
+      });
+      return;
+    }
     setStatus("processing");
 
     const formData = new FormData();
@@ -82,7 +104,9 @@ export default function RotateImagePage() {
         });
 
         if (!response.ok) {
-          throw new Error("Failed to process image");
+          let serverError = "Conversion failed. Please try again.";
+          try { const errBody = await response.clone().json(); if (errBody?.error) serverError = errBody.error; } catch {}
+          throw new Error(serverError);
         }
 
         return await response.blob();
@@ -104,6 +128,14 @@ export default function RotateImagePage() {
         variant: "destructive",
       });
     }
+  };
+
+  const handleReset = () => {
+    if (resultUrl) URL.revokeObjectURL(resultUrl);
+    setResultUrl(null);
+    setFiles([]);
+    setStatus("idle");
+    setErrorMessage("");
   };
 
   const handleDownload = () => {
@@ -142,7 +174,7 @@ export default function RotateImagePage() {
 
           <div className="space-y-6">
             <FileUploadZone
-              onFilesSelected={setFiles}
+              onFilesSelected={handleFilesSelected}
               acceptedFormats=".jpg,.jpeg,.png,.webp,.gif"
               multiple={false}
               disabled={status === "processing"}
@@ -221,7 +253,7 @@ export default function RotateImagePage() {
             )}
 
             <ProcessingState
-              status={status}
+              status={status === "processing" || status === "error" ? status : "idle"}
               progress={progress}
               message={status === "processing" ? "Processing your image..." : undefined}
             />
@@ -246,6 +278,15 @@ export default function RotateImagePage() {
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Download Image
+                </Button>
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  size="lg"
+                  onClick={handleReset}
+                  data-testid="button-convert-another"
+                >
+                  Convert Another File
                 </Button>
               </div>
             )}

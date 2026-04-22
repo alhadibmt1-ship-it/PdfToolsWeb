@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, Download, Move, GripVertical } from "lucide-react";
 import { Link } from "wouter";
 import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors, DragEndEvent } from "@dnd-kit/core";
@@ -47,6 +47,9 @@ function SortableItem({ id, pageNumber }: PageItem) {
   );
 }
 
+const MAX_FILE_SIZE_MB = 50;
+const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
+
 export default function ReorderPagesPage() {
   useSEO({
     title: "Reorder PDF Pages Free Online - Rearrange PDF | PDF HUB 24",
@@ -65,8 +68,15 @@ export default function ReorderPagesPage() {
   const [pages, setPages] = useState<PageItem[]>([]);
   const [status, setStatus] = useState<"idle" | "loading" | "ready" | "processing" | "success" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const { toast } = useToast();
   const { progress, runWithProgress } = useConversionProgress();
+
+  useEffect(() => {
+    return () => {
+      if (resultUrl) URL.revokeObjectURL(resultUrl);
+    };
+  }, [resultUrl]);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -147,6 +157,15 @@ export default function ReorderPagesPage() {
       return;
     }
 
+    // Client-side file size validation
+    if (files[0].size > MAX_FILE_SIZE_BYTES) {
+      toast({
+        title: "File too large",
+        description: `Please upload a file under ${MAX_FILE_SIZE_MB}MB. Your file is ${(files[0].size / 1024 / 1024).toFixed(1)}MB.`,
+        variant: "destructive",
+      });
+      return;
+    }
     setStatus("processing");
 
     const formData = new FormData();
@@ -185,11 +204,19 @@ export default function ReorderPagesPage() {
     }
   };
 
+  const handleReset = () => {
+    if (resultUrl) URL.revokeObjectURL(resultUrl);
+    setResultUrl(null);
+    setFiles([]);
+    setStatus("idle");
+    setErrorMessage("");
+  };
+
   const handleDownload = () => {
     if (resultUrl) {
       const a = document.createElement("a");
       a.href = resultUrl;
-      a.download = "reordered.pdf";
+      a.download = (files[0]?.name?.replace(/\.pdf$/i, "") || "file") + "-reordered.pdf";
       a.click();
     }
   };
@@ -280,6 +307,15 @@ export default function ReorderPagesPage() {
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Download Reordered PDF
+                </Button>
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  size="lg"
+                  onClick={handleReset}
+                  data-testid="button-convert-another"
+                >
+                  Convert Another File
                 </Button>
               </div>
             )}

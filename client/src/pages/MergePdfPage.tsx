@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { ChevronLeft, Download, Combine } from "lucide-react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
@@ -40,6 +40,9 @@ const MERGE_STEPS = [
   "Download your merged PDF document"
 ];
 
+const MAX_FILE_SIZE_MB = 50;
+const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
+
 export default function MergePdfPage() {
   useSEO({
     title: "Merge PDF Free - Combine PDF Files | PDF HUB 24",
@@ -58,9 +61,16 @@ export default function MergePdfPage() {
   const [selectedPages, setSelectedPages] = useState<PdfPage[]>([]);
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const [showCelebration, setShowCelebration] = useState(false);
   const { toast } = useToast();
   const { progress, runWithProgress } = useConversionProgress();
+
+  useEffect(() => {
+    return () => {
+      if (resultUrl) URL.revokeObjectURL(resultUrl);
+    };
+  }, [resultUrl]);
   const { pages, loading: thumbnailsLoading, error: thumbnailsError } = usePdfThumbnails(files);
 
   useEffect(() => {
@@ -94,6 +104,15 @@ export default function MergePdfPage() {
       return;
     }
 
+    // Client-side file size validation
+    if (files[0].size > MAX_FILE_SIZE_BYTES) {
+      toast({
+        title: "File too large",
+        description: `Please upload a file under ${MAX_FILE_SIZE_MB}MB. Your file is ${(files[0].size / 1024 / 1024).toFixed(1)}MB.`,
+        variant: "destructive",
+      });
+      return;
+    }
     setStatus("processing");
 
     const formData = new FormData();
@@ -125,7 +144,9 @@ export default function MergePdfPage() {
         });
 
         if (!response.ok) {
-          throw new Error("Failed to merge PDFs");
+          let serverError = "Conversion failed. Please try again.";
+          try { const errBody = await response.clone().json(); if (errBody?.error) serverError = errBody.error; } catch {}
+          throw new Error(serverError);
         }
 
         return await response.blob();
@@ -143,6 +164,14 @@ export default function MergePdfPage() {
         variant: "destructive",
       });
     }
+  };
+
+  const handleReset = () => {
+    if (resultUrl) URL.revokeObjectURL(resultUrl);
+    setResultUrl(null);
+    setFiles([]);
+    setStatus("idle");
+    setErrorMessage("");
   };
 
   const handleDownload = () => {

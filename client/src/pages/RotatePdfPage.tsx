@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { ChevronLeft, Download } from "lucide-react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
@@ -19,6 +19,9 @@ import { useSEO } from "@/hooks/useSEO";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { t, getToolTitle, getToolDesc } from "@/lib/languages";
 
+const MAX_FILE_SIZE_MB = 50;
+const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
+
 export default function RotatePdfPage() {
   useSEO({
     title: "Rotate PDF Free - Turn Pages 90, 180 | PDF HUB 24",
@@ -36,8 +39,24 @@ export default function RotatePdfPage() {
   const [angle, setAngle] = useState<RotationAngle>("90");
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const { toast } = useToast();
   const { progress, runWithProgress } = useConversionProgress();
+
+  useEffect(() => {
+    return () => {
+      if (resultUrl) URL.revokeObjectURL(resultUrl);
+    };
+  }, [resultUrl]);
+
+  const handleFilesSelected = useCallback((newFiles: File[]) => {
+    if (resultUrl) {
+      URL.revokeObjectURL(resultUrl);
+      setResultUrl(null);
+    }
+    setStatus("idle");
+    setFiles(newFiles);
+  }, [resultUrl]);
 
   const handleRotate = async () => {
     if (files.length === 0) {
@@ -49,6 +68,15 @@ export default function RotatePdfPage() {
       return;
     }
 
+    // Client-side file size validation
+    if (files[0].size > MAX_FILE_SIZE_BYTES) {
+      toast({
+        title: "File too large",
+        description: `Please upload a file under ${MAX_FILE_SIZE_MB}MB. Your file is ${(files[0].size / 1024 / 1024).toFixed(1)}MB.`,
+        variant: "destructive",
+      });
+      return;
+    }
     setStatus("processing");
 
     const formData = new FormData();
@@ -63,7 +91,9 @@ export default function RotatePdfPage() {
         });
 
         if (!response.ok) {
-          throw new Error("Failed to rotate PDF");
+          let serverError = "Conversion failed. Please try again.";
+          try { const errBody = await response.clone().json(); if (errBody?.error) serverError = errBody.error; } catch {}
+          throw new Error(serverError);
         }
 
         return await response.blob();
@@ -87,11 +117,19 @@ export default function RotatePdfPage() {
     }
   };
 
+  const handleReset = () => {
+    if (resultUrl) URL.revokeObjectURL(resultUrl);
+    setResultUrl(null);
+    setFiles([]);
+    setStatus("idle");
+    setErrorMessage("");
+  };
+
   const handleDownload = () => {
     if (resultUrl) {
       const a = document.createElement("a");
       a.href = resultUrl;
-      a.download = "rotated.pdf";
+      a.download = (files[0]?.name?.replace(/\.pdf$/i, "") || "file") + "-rotated.pdf";
       a.click();
     }
   };
@@ -119,7 +157,7 @@ export default function RotatePdfPage() {
 
           <div className="space-y-6">
             <FileUploadZone
-              onFilesSelected={setFiles}
+              onFilesSelected={handleFilesSelected}
               acceptedFormats=".pdf"
               multiple={false}
               disabled={status === "processing"}
@@ -163,7 +201,7 @@ export default function RotatePdfPage() {
             )}
 
             <ProcessingState
-              status={status}
+              status={status === "processing" || status === "error" ? status : "idle"}
               progress={progress}
               message={status === "processing" ? "Rotating your PDF..." : undefined}
             />
@@ -179,6 +217,15 @@ export default function RotatePdfPage() {
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Download Rotated PDF
+                </Button>
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  size="lg"
+                  onClick={handleReset}
+                  data-testid="button-convert-another"
+                >
+                  Convert Another File
                 </Button>
               </div>
             )}

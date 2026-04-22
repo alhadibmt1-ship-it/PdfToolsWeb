@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { ChevronLeft, Download, Scissors } from "lucide-react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
@@ -61,8 +61,24 @@ export default function ExtractPagesPage() {
   const [pagesToExtract, setPagesToExtract] = useState("");
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const { toast } = useToast();
   const { progress, runWithProgress } = useConversionProgress();
+
+  useEffect(() => {
+    return () => {
+      if (resultUrl) URL.revokeObjectURL(resultUrl);
+    };
+  }, [resultUrl]);
+
+  const handleFilesSelected = useCallback((newFiles: File[]) => {
+    if (resultUrl) {
+      URL.revokeObjectURL(resultUrl);
+      setResultUrl(null);
+    }
+    setStatus("idle");
+    setFiles(newFiles);
+  }, [resultUrl]);
 
   const handleExtract = async () => {
     if (files.length === 0) {
@@ -103,6 +119,14 @@ export default function ExtractPagesPage() {
     }
   };
 
+  const handleReset = () => {
+    if (resultUrl) URL.revokeObjectURL(resultUrl);
+    setResultUrl(null);
+    setFiles([]);
+    setStatus("idle");
+    setErrorMessage("");
+  };
+
   const handleDownload = () => {
     if (!resultUrl) return;
     const a = document.createElement("a");
@@ -140,7 +164,7 @@ export default function ExtractPagesPage() {
           <div className="space-y-4">
             {status === "idle" && files.length === 0 && (
               <FileUploadZone
-                onFilesSelected={setFiles}
+                onFilesSelected={handleFilesSelected}
                 acceptedFormats=".pdf"
                 maxFiles={1}
               />
@@ -184,7 +208,7 @@ export default function ExtractPagesPage() {
             )}
 
             <ProcessingState
-              status={status}
+              status={status === "processing" || status === "error" ? status : "idle"}
               progress={progress}
               message={status === "processing" ? "Extracting pages..." : undefined}
             />

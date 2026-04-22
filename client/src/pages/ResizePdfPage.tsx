@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { ChevronLeft, Download, Maximize2 } from "lucide-react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
@@ -27,6 +27,9 @@ const PAGE_SIZES = [
   { value: "tabloid", label: "Tabloid (11 × 17 in)", width: 792, height: 1224 },
 ];
 
+const MAX_FILE_SIZE_MB = 50;
+const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
+
 export default function ResizePdfPage() {
   useSEO({
     title: "Resize PDF Free - Change Page Size to A4 | PDF HUB 24",
@@ -44,8 +47,24 @@ export default function ResizePdfPage() {
   const [pageSize, setPageSize] = useState("a4");
   const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");
   const [resultUrl, setResultUrl] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const { toast } = useToast();
   const { progress, runWithProgress } = useConversionProgress();
+
+  useEffect(() => {
+    return () => {
+      if (resultUrl) URL.revokeObjectURL(resultUrl);
+    };
+  }, [resultUrl]);
+
+  const handleFilesSelected = useCallback((newFiles: File[]) => {
+    if (resultUrl) {
+      URL.revokeObjectURL(resultUrl);
+      setResultUrl(null);
+    }
+    setStatus("idle");
+    setFiles(newFiles);
+  }, [resultUrl]);
 
   const handleResize = async () => {
     if (files.length === 0) {
@@ -57,6 +76,15 @@ export default function ResizePdfPage() {
       return;
     }
 
+    // Client-side file size validation
+    if (files[0].size > MAX_FILE_SIZE_BYTES) {
+      toast({
+        title: "File too large",
+        description: `Please upload a file under ${MAX_FILE_SIZE_MB}MB. Your file is ${(files[0].size / 1024 / 1024).toFixed(1)}MB.`,
+        variant: "destructive",
+      });
+      return;
+    }
     setStatus("processing");
 
     const selectedSize = PAGE_SIZES.find(s => s.value === pageSize);
@@ -73,7 +101,9 @@ export default function ResizePdfPage() {
         });
 
         if (!response.ok) {
-          throw new Error("Failed to resize PDF");
+          let serverError = "Conversion failed. Please try again.";
+          try { const errBody = await response.clone().json(); if (errBody?.error) serverError = errBody.error; } catch {}
+          throw new Error(serverError);
         }
 
         return await response.blob();
@@ -97,11 +127,19 @@ export default function ResizePdfPage() {
     }
   };
 
+  const handleReset = () => {
+    if (resultUrl) URL.revokeObjectURL(resultUrl);
+    setResultUrl(null);
+    setFiles([]);
+    setStatus("idle");
+    setErrorMessage("");
+  };
+
   const handleDownload = () => {
     if (resultUrl) {
       const a = document.createElement("a");
       a.href = resultUrl;
-      a.download = "resized.pdf";
+      a.download = (files[0]?.name?.replace(/\.pdf$/i, "") || "file") + "-resized.pdf";
       a.click();
     }
   };
@@ -129,7 +167,7 @@ export default function ResizePdfPage() {
 
           <div className="space-y-6">
             <FileUploadZone
-              onFilesSelected={setFiles}
+              onFilesSelected={handleFilesSelected}
               acceptedFormats=".pdf"
               multiple={false}
               disabled={status === "processing"}
@@ -171,7 +209,7 @@ export default function ResizePdfPage() {
             )}
 
             <ProcessingState
-              status={status}
+              status={status === "processing" || status === "error" ? status : "idle"}
               progress={progress}
               message={status === "processing" ? "Resizing your PDF..." : undefined}
             />
@@ -187,6 +225,15 @@ export default function ResizePdfPage() {
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Download Resized PDF
+                </Button>
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  size="lg"
+                  onClick={handleReset}
+                  data-testid="button-convert-another"
+                >
+                  Convert Another File
                 </Button>
               </div>
             )}
