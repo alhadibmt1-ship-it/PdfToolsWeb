@@ -3196,6 +3196,56 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const { slug } = req.params;
 
     const BLOG_TITLES: Record<string, string> = {
+      // Tool pages — unique title per tool
+      "merge": "Merge PDF Free Online — Combine PDFs Instantly",
+      "split": "Split PDF Free Online — Extract Any Page",
+      "compress": "Compress PDF Free — Reduce File Size 90%",
+      "rotate": "Rotate PDF Free — Fix Orientation Instantly",
+      "pdf-to-word": "PDF to Word Free — No Email, No Watermark",
+      "pdf-to-jpg": "PDF to JPG Free — High Quality, No Signup",
+      "pdf-to-png": "PDF to PNG Free — Transparent, High Quality",
+      "pdf-to-excel": "PDF to Excel Free — Keep Table Format",
+      "pdf-to-ppt": "PDF to PowerPoint Free — Keeps Slides & Format",
+      "word-to-pdf": "Word to PDF Free Online — Keeps Formatting",
+      "jpg-to-pdf": "JPG to PDF Free — Combine Multiple Images",
+      "png-to-pdf": "PNG to PDF Free Online — Keeps Transparency",
+      "excel-to-pdf": "Excel to PDF Free — Keeps Tables & Format",
+      "ppt-to-pdf": "PowerPoint to PDF Free — Keeps Slides",
+      "protect-pdf": "Protect PDF Free — AES-256 Encryption",
+      "unlock-pdf": "Unlock PDF Free — Remove Password Instantly",
+      "delete-pages": "Delete PDF Pages Free — Select & Remove",
+      "add-page-numbers": "Add Page Numbers to PDF Free — Custom Position",
+      "add-watermark": "Add Watermark to PDF Free — Text & Custom Style",
+      "extract-pages": "Extract Pages from PDF Free — Select Any Pages",
+      "reorder-pages": "Reorder PDF Pages Free — Drag & Drop",
+      "extract-text": "Extract Text from PDF Free — Copy & Download",
+      "extract-images": "Extract Images from PDF Free — Original Quality",
+      "scan-to-pdf": "Scan to PDF Free — Camera Scan Documents",
+      "pdf-to-pdfa": "PDF to PDF/A Free — ISO Archive Format",
+      "translate-pdf": "Translate PDF Free — 50+ Languages Online",
+      "batch-compress": "Batch Compress PDF Free — Multiple PDFs at Once",
+      "ocr-pdf": "OCR PDF Free — Scanned PDF to Searchable Text",
+      "crop-pdf": "Crop PDF Free Online — Remove Margins Instantly",
+      "resize-pdf": "Resize PDF Free Online — A4, Letter & More",
+      "sign-pdf": "Sign PDF Free Online — Draw, Type or Upload",
+      "flatten-pdf": "Flatten PDF Free Online — Forms & Layers",
+      "grayscale-pdf": "PDF to Grayscale Free — Save Ink & Toner",
+      "repair-pdf": "Repair PDF Free Online — Fix Corrupted Files",
+      "edit-pdf": "Edit PDF Free — Add Text, Images & Shapes",
+      "annotate-pdf": "Annotate PDF Free — Highlight & Add Notes",
+      "redact-pdf": "Redact PDF Free — Remove Sensitive Info",
+      "tiff-to-pdf": "TIFF to PDF Free Online — High Quality",
+      "gif-to-pdf": "GIF to PDF Free Online — All Frames Preserved",
+      "webp-to-pdf": "WebP to PDF Free Online — Fast & Lossless",
+      "html-to-pdf": "HTML to PDF Free Online — Render Web Pages",
+      "pdf-viewer": "PDF Viewer Free Online — No Download Needed",
+      "compare-pdf": "Compare PDF Free Online — Find Every Difference",
+      "image-compressor": "Image Compressor Free — JPG PNG WebP No Loss",
+      "resize-image": "Resize Image Free — Pixels or Percentage",
+      "crop-image": "Crop Image Free Online — Select & Trim",
+      "rotate-image": "Rotate & Flip Image Free — 90°, 180°, Mirror",
+      "convert-image": "Convert Image Free — JPG PNG WebP GIF Instant",
+      // Blog posts
       "how-to-compress-pdf-for-email": "Compress PDF for Email Under 25MB",
       "convert-pdf-to-word-without-losing-formatting": "Convert PDF to Word Without Losing Formatting",
       "merge-pdf-files-guide": "Merge PDF Files Free — Combine Multiple PDFs",
@@ -3267,7 +3317,37 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     }
 
-    const title = BLOG_TITLES[slug] || "PDF Tips & Free Tools Guide";
+    // Smart fallback: resolve programmatic page slugs to meaningful titles
+    function resolveProgTitle(s: string): string {
+      // compress-pdf-to-{size}
+      const sizeM = s.match(/^compress-pdf-to-(\d+(?:\.\d+)?(?:kb|mb))$/i);
+      if (sizeM) return `Compress PDF to ${sizeM[1].toUpperCase()} Free Online`;
+      // {tool}-{country} patterns — extract tool title
+      const TOOL_PREFIXES: [RegExp, string][] = [
+        [/^compress-pdf-/, "Compress PDF Free Online"],
+        [/^merge-pdf-/, "Merge PDF Free Online"],
+        [/^split-pdf-/, "Split PDF Free Online"],
+        [/^rotate-pdf-/, "Rotate PDF Free Online"],
+        [/^pdf-to-word-/, "PDF to Word Free Online"],
+        [/^pdf-to-jpg-/, "PDF to JPG Free Online"],
+        [/^pdf-to-png-/, "PDF to PNG Free Online"],
+        [/^pdf-to-excel-/, "PDF to Excel Free Online"],
+        [/^word-to-pdf-/, "Word to PDF Free Online"],
+        [/^jpg-to-pdf-/, "JPG to PDF Free Online"],
+        [/^protect-pdf-/, "Protect PDF Free Online"],
+        [/^unlock-pdf-/, "Unlock PDF Free Online"],
+        [/^sign-pdf-/, "Sign PDF Free Online"],
+        [/^ocr-pdf-/, "OCR PDF Free Online"],
+        [/^edit-pdf-/, "Edit PDF Free Online"],
+        [/^free-pdf-tools-/, "Free PDF Tools Online"],
+        [/^pdf-tools-/, "Free PDF Tools Online"],
+      ];
+      for (const [rx, title] of TOOL_PREFIXES) {
+        if (rx.test(s)) return title;
+      }
+      return "PDF Tips & Free Tools Guide";
+    }
+    const title = BLOG_TITLES[slug] || resolveProgTitle(slug);
     const theme = COLOR_THEMES[slugHash(slug) % COLOR_THEMES.length];
     const lines = wrapText(title);
     const maxLineLen = Math.max(...lines.map(l => l.length));

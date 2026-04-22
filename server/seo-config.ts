@@ -339,7 +339,7 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/merge": {
-    title: "Merge PDF Free Online — Combine Multiple PDFs Instantly | PDF HUB 24",
+    title: "Merge PDF Free Online — Combine PDFs Instantly | PDF HUB 24",
     description: "Merge multiple PDF files into one in seconds. Free online PDF merger — drag & drop to combine PDFs. No registration, no watermarks, no file limits.",
     keywords: "merge PDF, combine PDF, join PDF files, PDF merger online, merge multiple PDFs free, combine PDF files",
     schema: {
@@ -2049,9 +2049,11 @@ export function generateMetaTags(path: string): string {
   const twitterTitle = seo.twitterTitle || ogTitle;
   const twitterDescription = seo.twitterDescription || ogDescription;
 
-  // Blog posts and tool pages each get a unique dynamically-generated OG image
+  // Blog posts, tool pages, and programmatic pages each get a unique dynamically-generated OG image
   const blogSlug = canonicalPath.startsWith("/blog/") ? canonicalPath.replace("/blog/", "") : null;
-  const toolOgSlug = !blogSlug && toolData ? canonicalPath.slice(1) : null;
+  const toolOgSlug = !blogSlug && toolData ? canonicalPath.slice(1)
+    : (!blogSlug && progPage && progSlugMatch) ? progSlugMatch[1]
+    : null;
   const pageOgImage = blogSlug
     ? `${BASE_URL}/api/og-image/${blogSlug}`
     : (toolOgSlug ? `${BASE_URL}/api/og-image/${toolOgSlug}` : OG_IMAGE);
