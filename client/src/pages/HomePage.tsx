@@ -65,7 +65,7 @@ import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useSEO } from "@/hooks/useSEO";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useLocation } from "wouter";
 import RecentToolsSection from "@/components/RecentToolsSection";
 import SocialProofSection from "@/components/SocialProofSection";
@@ -315,19 +315,6 @@ export default function HomePage() {
     }
   ];
 
-  const faqSchemaData = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
-  };
-
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -353,23 +340,6 @@ export default function HomePage() {
     "numberOfEmployees": { "@type": "QuantitativeValue", "value": 5 }
   };
 
-  const webSiteSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "PDF HUB 24",
-    "url": "https://pdfhub24.com",
-    "description": "49+ free online PDF tools. Convert, merge, split, compress, edit and protect PDFs. No signup, no watermarks.",
-    "inLanguage": ["en", "es", "ar", "hi", "fr", "pt", "de", "zh", "ja", "id", "ru", "it", "ur"],
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://pdfhub24.com/?search={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
-    }
-  };
-
   useSEO({
     title: "PDF HUB 24 - 49+ Free PDF Tools | Convert, Edit, Compress",
     description: "100% free PDF tools. Convert PDF to Word, JPG, Excel. Merge, split, compress PDFs instantly. Best free PDF converter - no signup, no watermarks.",
@@ -377,35 +347,6 @@ export default function HomePage() {
     canonicalPath: "/",
     structuredData: organizationSchema
   });
-
-  useEffect(() => {
-    const existingWebsite = document.querySelector('script[data-schema="website"]');
-    if (existingWebsite) existingWebsite.remove();
-    const websiteScript = document.createElement("script");
-    websiteScript.setAttribute("type", "application/ld+json");
-    websiteScript.setAttribute("data-schema", "website");
-    websiteScript.textContent = JSON.stringify(webSiteSchema);
-    document.head.appendChild(websiteScript);
-    return () => {
-      const s = document.querySelector('script[data-schema="website"]');
-      if (s) s.remove();
-    };
-  }, []);
-
-  useEffect(() => {
-    const faqScript = document.createElement("script");
-    faqScript.setAttribute("type", "application/ld+json");
-    faqScript.setAttribute("data-schema", "faq");
-    faqScript.textContent = JSON.stringify(faqSchemaData);
-    document.head.appendChild(faqScript);
-
-    return () => {
-      const existing = document.querySelector('script[data-schema="faq"]');
-      if (existing) {
-        existing.remove();
-      }
-    };
-  }, []);
 
   const allTools = PDF_TOOLS;
   const filteredTools = activeCategory === "all" 
