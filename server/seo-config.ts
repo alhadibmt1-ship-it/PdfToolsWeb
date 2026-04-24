@@ -2357,8 +2357,10 @@ export function generateMetaTags(path: string): string {
         },
         "sameAs": [
           "https://www.facebook.com/profile.php?id=61584792122187",
-          "https://youtube.com/@pdfhub24"
+          "https://youtube.com/@pdfhub24",
+          "https://twitter.com/hassanizhar419"
         ],
+        "foundingDate": "2024",
         "description": "Free online PDF tools — merge, split, compress, convert, and edit PDF files with no signup."
       });
       schemas.push({

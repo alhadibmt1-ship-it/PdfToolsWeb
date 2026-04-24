@@ -828,12 +828,12 @@ export default function HomePage() {
                 
                 <div className="grid grid-cols-3 gap-8 text-center">
                   <div>
-                    <div className="text-2xl sm:text-3xl font-bold text-primary">2M+</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-primary">1M+</div>
                     <div className="text-xs text-muted-foreground">Files Uploaded</div>
                   </div>
                   <div>
                     <div className="text-2xl sm:text-3xl font-bold text-primary">500K+</div>
-                    <div className="text-xs text-muted-foreground">PDFs Edited</div>
+                    <div className="text-xs text-muted-foreground">Documents Edited</div>
                   </div>
                   <div>
                     <div className="text-2xl sm:text-3xl font-bold text-primary">1M+</div>

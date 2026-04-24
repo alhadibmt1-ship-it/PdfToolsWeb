@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { PDF_TOOLS } from "@shared/schema";
 import { ChevronDown, Shield, Lock, Zap, Globe } from "lucide-react";
-import { SiFacebook, SiYoutube } from "react-icons/si";
+import { SiFacebook, SiYoutube, SiX } from "react-icons/si";
 import siteLogo from "@assets/generated_images/logo-64.webp";
 
 const FOOTER_BLOG_POSTS = [
@@ -587,6 +587,16 @@ export default function Footer() {
                 aria-label="Subscribe to our YouTube channel"
               >
                 <SiYoutube className="w-5 h-5" />
+              </a>
+              <a
+                href="https://twitter.com/hassanizhar419"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="link-social-twitter"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Follow us on X (Twitter)"
+              >
+                <SiX className="w-5 h-5" />
               </a>
             </div>
           </div>

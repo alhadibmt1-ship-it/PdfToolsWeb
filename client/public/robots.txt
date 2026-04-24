@@ -15,6 +15,16 @@ Disallow: /admin
 
 Crawl-delay: 1
 
+# Major search engine crawlers — explicitly allowed
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
 # AI crawlers — allowed (content indexing / search features)
 User-agent: Amazonbot
 Allow: /
