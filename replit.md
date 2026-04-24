@@ -39,6 +39,10 @@ The design focuses on a "Clean Modern Utility Design" with a vibrant color schem
 - **Unknown Page noindex**: Any English path not matched by seoConfig, toolSEOData, blog slugs, or programmatic patterns gets `noindex, nofollow` + hreflang suppressed — prevents garbage/typo URLs from being indexed as soft 404s. `/tools/` paths are always treated as programmatic (never soft-404d).
 - **Cache-Control Headers**: HTML pages: `public, max-age=3600, stale-while-revalidate=86400`; sitemaps/robots: 12-hour; JS/CSS: 1-year immutable; images: 7-day.
 - **GSC Verification**: Set `GOOGLE_SITE_VERIFICATION` env var to automatically inject the Google Search Console meta verification tag site-wide.
+- **Security Headers**: Centralized in `server/app.ts` global middleware only (X-Content-Type-Options, X-Frame-Options, X-XSS-Protection, Referrer-Policy, Permissions-Policy, HSTS in production, CSP). Duplicate headers previously in `server/routes.ts` have been removed.
+- **Social Media**: Footer and Organization schema include Facebook, YouTube, and Twitter (@hassanizhar419). twitter:site/@pdfhub24 and twitter:image are present in both index.html and server-side injection.
+- **robots.txt**: Includes explicit Allow for Googlebot, Bingbot, DuckDuckBot, plus AI crawler rules. All three sitemaps listed.
+- **Sitemap lastmod**: Static sitemap.xml lastmod dates last updated to 2026-04-24.
 - **Programmatic SEO**: Extensive generation of landing pages based on various parameters (countries, industries, document types) with deep country-specific content uniqueness.
   - COUNTRY_RICH system provides local portals, document names, compliance laws, and cities for 170 countries (Tier-2 compliance upgraded to named laws: DPDPA 2023, APPs 1988, PIPEDA, PDPA 2010, NDPR, Kenya DPA 2019, Egypt DPA No.151/2020, etc.)
   - 4 structural content variants per page type (slugVariant hash determines which variant)
