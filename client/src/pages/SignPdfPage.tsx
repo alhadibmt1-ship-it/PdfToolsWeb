@@ -281,7 +281,7 @@ export default function SignPdfPage() {
                   </TabsContent>
                   
                   <TabsContent value="draw" className="space-y-4">
-                    <div className="border rounded-md bg-white p-2">
+                    <div className="border rounded-md bg-white dark:bg-white p-2">
                       <canvas
                         ref={canvasRef}
                         width={400}
