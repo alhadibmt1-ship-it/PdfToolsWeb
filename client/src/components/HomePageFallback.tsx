@@ -20,7 +20,7 @@ export default function HomePageFallback() {
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8">
             Convert, merge, compress, and edit PDF files instantly.{" "}
-            Trusted by millions of users worldwide.
+            Trusted by users in 50+ countries worldwide.
           </p>
           <div className="flex items-center justify-center gap-3 flex-wrap">
             <div className="h-9 w-32 rounded-md bg-primary/10 animate-pulse" />

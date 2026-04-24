@@ -95,7 +95,7 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     heroBadge: "49+ Free PDF Tools - No Registration Required",
     heroTitle: "Professional PDF Tools",
     heroFree: "100% Free Online",
-    heroSubtitle: "Convert, merge, compress, and edit PDF files instantly. Trusted by millions of users worldwide.",
+    heroSubtitle: "Convert, merge, compress, and edit PDF files instantly. Trusted by users in 50+ countries worldwide.",
     heroDropFile: "Drop your file here or click to upload",
     heroChooseTool: "Then choose what you want to do with it",
     splitPdf: "Split PDF",

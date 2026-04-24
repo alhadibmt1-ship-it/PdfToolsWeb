@@ -161,17 +161,56 @@ function ConversionIcon({ iconType, size = "default" }: { iconType: string; size
     }
   }
 
+  const iconColors: Record<string, { bg: string; text: string }> = {
+    compress:         { bg: "bg-orange-500/10",  text: "text-orange-500" },
+    merge:            { bg: "bg-blue-500/10",     text: "text-blue-600" },
+    split:            { bg: "bg-purple-500/10",   text: "text-purple-500" },
+    "rotate-cw":      { bg: "bg-teal-500/10",     text: "text-teal-500" },
+    trash:            { bg: "bg-red-500/10",      text: "text-red-500" },
+    move:             { bg: "bg-blue-400/10",     text: "text-blue-400" },
+    droplet:          { bg: "bg-slate-400/10",    text: "text-slate-500" },
+    lock:             { bg: "bg-red-600/10",      text: "text-red-600" },
+    unlock:           { bg: "bg-green-600/10",    text: "text-green-600" },
+    hash:             { bg: "bg-blue-500/10",     text: "text-blue-500" },
+    layers:           { bg: "bg-slate-500/10",    text: "text-slate-500" },
+    grayscale:        { bg: "bg-gray-500/10",     text: "text-gray-500" },
+    repair:           { bg: "bg-amber-500/10",    text: "text-amber-500" },
+    "html-to-pdf":    { bg: "bg-orange-700/10",  text: "text-orange-700" },
+    images:           { bg: "bg-cyan-500/10",     text: "text-cyan-500" },
+    ocr:              { bg: "bg-teal-600/10",     text: "text-teal-600" },
+    viewer:           { bg: "bg-indigo-500/10",   text: "text-indigo-500" },
+    compare:          { bg: "bg-violet-500/10",   text: "text-violet-500" },
+    "image-compress": { bg: "bg-orange-400/10",  text: "text-orange-400" },
+    signature:        { bg: "bg-blue-600/10",     text: "text-blue-600" },
+    "edit-pdf":       { bg: "bg-blue-500/10",     text: "text-blue-500" },
+    annotate:         { bg: "bg-amber-500/10",    text: "text-amber-500" },
+    redact:           { bg: "bg-zinc-700/10",     text: "text-zinc-700 dark:text-zinc-300" },
+    crop:             { bg: "bg-green-500/10",    text: "text-green-500" },
+    resize:           { bg: "bg-sky-400/10",      text: "text-sky-400" },
+    "file-type":      { bg: "bg-indigo-500/10",   text: "text-indigo-500" },
+    "file-image":     { bg: "bg-pink-500/10",     text: "text-pink-500" },
+    image:            { bg: "bg-pink-500/10",     text: "text-pink-500" },
+    scissors:         { bg: "bg-green-500/10",    text: "text-green-500" },
+    camera:           { bg: "bg-rose-500/10",     text: "text-rose-500" },
+    archive:          { bg: "bg-yellow-600/10",   text: "text-yellow-600" },
+    languages:        { bg: "bg-emerald-500/10",  text: "text-emerald-500" },
+  };
+
+  const colors = iconColors[iconType] || { bg: "bg-primary/10", text: "text-primary" };
+
+  const containerSize = size === "large" ? "w-14 h-14 sm:w-16 sm:h-16" : "w-11 h-11 sm:w-14 sm:h-14";
+
   const Icon = iconMap[iconType];
   if (Icon) {
     return (
-      <div className={`${size === "large" ? "w-14 h-14 sm:w-16 sm:h-16" : "w-11 h-11 sm:w-14 sm:h-14"} rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center border border-primary/10`}>
-        <Icon className={`${sizeClasses.icon} text-primary`} />
+      <div className={`${containerSize} rounded-xl ${colors.bg} flex items-center justify-center`}>
+        <Icon className={`${sizeClasses.icon} ${colors.text}`} />
       </div>
     );
   }
 
   return (
-    <div className={`${size === "large" ? "w-14 h-14 sm:w-16 sm:h-16" : "w-11 h-11 sm:w-14 sm:h-14"} rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center border border-primary/10`}>
+    <div className={`${containerSize} rounded-xl bg-primary/10 flex items-center justify-center`}>
       <FileText className={`${sizeClasses.icon} text-primary`} />
     </div>
   );
@@ -400,10 +439,10 @@ export default function HomePage() {
                 {t(lang, "heroSubtitle")}
               </p>
 
-              {/* Compact horizontal upload strip */}
-              <div className="max-w-lg mx-auto mb-4">
+              {/* Hero Upload Strip */}
+              <div className="max-w-xl mx-auto mb-4">
                 <div
-                  className="group flex items-center gap-3 border-2 border-dashed border-primary/30 hover:border-primary/60 rounded-xl px-4 py-3 bg-card/60 backdrop-blur-sm cursor-pointer transition-all hover:shadow-md"
+                  className="group flex items-center gap-4 border-2 border-dashed border-primary/40 hover:border-primary/80 rounded-2xl px-5 py-4 bg-gradient-to-r from-primary/10 via-card/80 to-cyan-500/5 backdrop-blur-sm cursor-pointer transition-all duration-200 hover:shadow-lg hover:shadow-primary/10"
                   data-testid="hero-upload-zone"
                   onDragOver={(e) => e.preventDefault()}
                   onDrop={handleFileDrop}
@@ -417,14 +456,14 @@ export default function HomePage() {
                     onChange={handleFileSelect}
                     data-testid="input-hero-file"
                   />
-                  <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-105 transition-transform flex-shrink-0">
-                    <Upload className="w-5 h-5 text-primary" />
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-cyan-500/10 border border-primary/20 flex items-center justify-center group-hover:scale-105 transition-transform flex-shrink-0">
+                    <Upload className="w-6 h-6 text-primary" />
                   </div>
-                  <div className="text-left">
-                    <p className="font-semibold text-sm">{t(lang, "heroDropFile")}</p>
-                    <p className="text-xs text-muted-foreground">{t(lang, "heroChooseTool")}</p>
+                  <div className="text-left flex-1 min-w-0">
+                    <p className="font-bold text-sm sm:text-base">{t(lang, "heroDropFile")}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">{t(lang, "heroChooseTool")}</p>
                   </div>
-                  <Button size="sm" className="ml-auto flex-shrink-0" data-testid="button-upload-hero">
+                  <Button size="default" className="flex-shrink-0" data-testid="button-upload-hero">
                     {t(lang, "selectFile")}
                   </Button>
                 </div>
@@ -781,8 +820,8 @@ export default function HomePage() {
                       <Star key={i} className={`w-6 h-6 ${i <= 4 ? 'text-yellow-500 fill-yellow-500' : 'text-yellow-500/50 fill-yellow-500/50'}`} />
                     ))}
                   </div>
-                  <div className="text-2xl font-bold mb-1">4.8 out of 5</div>
-                  <div className="text-sm text-muted-foreground">Based on 2,847 user reviews</div>
+                  <div className="text-2xl font-bold mb-1">4.9 out of 5</div>
+                  <div className="text-sm text-muted-foreground">Highly rated by our users</div>
                 </div>
                 
                 <div className="hidden md:block h-16 w-px bg-border" />
@@ -1151,9 +1190,7 @@ export default function HomePage() {
             </p>
           </div>
         </section>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4" data-testid="ad-placeholder-bottom">
-          <div className="min-h-[90px] flex items-center justify-center text-xs text-muted-foreground/50" aria-hidden="true" />
-        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2" data-testid="ad-placeholder-bottom" aria-hidden="true" />
       </main>
 
       <Footer />

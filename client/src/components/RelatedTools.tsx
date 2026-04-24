@@ -462,11 +462,29 @@ function ToolIcon({ iconType }: { iconType: string }) {
     }
   }
 
+  const iconColors: Record<string, { bg: string; text: string }> = {
+    compress:      { bg: "bg-orange-500/10", text: "text-orange-500" },
+    merge:         { bg: "bg-blue-500/10",   text: "text-blue-600" },
+    split:         { bg: "bg-purple-500/10", text: "text-purple-500" },
+    "rotate-cw":   { bg: "bg-teal-500/10",   text: "text-teal-500" },
+    trash:         { bg: "bg-red-500/10",    text: "text-red-500" },
+    move:          { bg: "bg-blue-400/10",   text: "text-blue-400" },
+    droplet:       { bg: "bg-slate-400/10",  text: "text-slate-500" },
+    lock:          { bg: "bg-red-600/10",    text: "text-red-600" },
+    unlock:        { bg: "bg-green-600/10",  text: "text-green-600" },
+    hash:          { bg: "bg-blue-500/10",   text: "text-blue-500" },
+    image:         { bg: "bg-pink-500/10",   text: "text-pink-500" },
+    "file-image":  { bg: "bg-pink-500/10",   text: "text-pink-500" },
+    "file-type":   { bg: "bg-indigo-500/10", text: "text-indigo-500" },
+  };
+
+  const colors = iconColors[iconType] || { bg: "bg-primary/10", text: "text-primary" };
+
   const Icon = iconMap[iconType];
   if (Icon) {
     return (
-      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-        <Icon className="w-5 h-5 text-primary" />
+      <div className={`w-10 h-10 rounded-lg ${colors.bg} flex items-center justify-center`}>
+        <Icon className={`w-5 h-5 ${colors.text}`} />
       </div>
     );
   }
