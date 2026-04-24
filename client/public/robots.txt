@@ -15,6 +15,32 @@ Disallow: /admin
 
 Crawl-delay: 1
 
+# AI crawlers — allowed (content indexing / search features)
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# AI crawlers — blocked (training data scraping)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
 Sitemap: https://pdfhub24.com/sitemap-index.xml
 Sitemap: https://pdfhub24.com/sitemap.xml
 Sitemap: https://pdfhub24.com/sitemap-tools.xml
