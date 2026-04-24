@@ -25,7 +25,7 @@ export default function Header() {
           <div className="flex items-center gap-2 sm:gap-2.5 hover-elevate active-elevate-2 rounded-lg px-2 sm:px-3 py-2 -ml-2 sm:-ml-3 cursor-pointer transition-all">
             <img 
               src={siteLogo} 
-              alt="PDF HUB 24" 
+              alt="PDF HUB 24 - Free Online PDF Tools" 
               className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg shadow-md"
               width="36"
               height="36"

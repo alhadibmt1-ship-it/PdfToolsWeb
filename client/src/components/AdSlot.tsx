@@ -62,14 +62,5 @@ export default function AdSlot({
     );
   }
 
-  return (
-    <div
-      className={`my-6 flex items-center justify-center rounded-md border border-dashed border-border/40 bg-muted/20 text-xs text-muted-foreground/50 select-none ${className}`}
-      style={{ minHeight: "90px" }}
-      aria-hidden="true"
-      data-ad-placeholder="true"
-    >
-      {label}
-    </div>
-  );
+  return null;
 }

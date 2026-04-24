@@ -74,12 +74,18 @@
       h1{font-weight:700;letter-spacing:-0.02em}
       .container{width:100%;max-width:1280px;margin:0 auto;padding:0 1.5rem}
     </style>
-    <!-- Preconnect to font origins (establishes TCP+TLS early, reduces font FOUT) -->
+    <!-- Preconnect to font origins and GTM (establishes TCP+TLS early) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- DNS prefetch for analytics (not on critical path, prefetch is sufficient) -->
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <!-- DNS prefetch for analytics -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    <!-- Prefetch most-visited tool pages for instant navigation -->
+    <link rel="prefetch" href="/compress">
+    <link rel="prefetch" href="/pdf-to-word">
+    <link rel="prefetch" href="/merge">
     <!-- Non-render-blocking font loading — fires after initial paint -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>

@@ -43,6 +43,11 @@ The design focuses on a "Clean Modern Utility Design" with a vibrant color schem
 - **Social Media**: Footer and Organization schema include Facebook, YouTube, and Twitter (@hassanizhar419). twitter:site/@pdfhub24 and twitter:image are present in both index.html and server-side injection.
 - **robots.txt**: Includes explicit Allow for Googlebot, Bingbot, DuckDuckBot, plus AI crawler rules. All three sitemaps listed.
 - **Sitemap lastmod**: Static sitemap.xml lastmod dates last updated to 2026-04-24.
+- **Schema Type**: Tool pages and programmatic pages use `@type: "WebApplication"` (not SoftwareApplication) with `applicationCategory: "UtilitiesApplication"`, `operatingSystem: "Any"`, and `featureList` array.
+- **Performance Hints**: `index.html` has preconnect for Google Fonts + GTM, dns-prefetch for GA/GTM, and prefetch for /compress, /pdf-to-word, /merge.
+- **AdSlot**: Returns `null` when no adClient/adSlot provided — hides empty placeholder boxes from users.
+- **SocialProofSection**: Testimonials have colored Quote icon top-left, no hardcoded quote marks in text, Trustpilot CTA below testimonials. LiveCounter starts at random 85–150 with slow drift (8–15s interval).
+- **Internal Linking**: RelatedTools (6 per page) on every tool page; ToolBreadcrumbs on all tool pages; BlogBreadcrumbs on all blog pages.
 - **Programmatic SEO**: Extensive generation of landing pages based on various parameters (countries, industries, document types) with deep country-specific content uniqueness.
   - COUNTRY_RICH system provides local portals, document names, compliance laws, and cities for 170 countries (Tier-2 compliance upgraded to named laws: DPDPA 2023, APPs 1988, PIPEDA, PDPA 2010, NDPR, Kenya DPA 2019, Egypt DPA No.151/2020, etc.)
   - 4 structural content variants per page type (slugVariant hash determines which variant)
