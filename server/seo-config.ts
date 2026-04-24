@@ -2228,14 +2228,15 @@ export function generateMetaTags(path: string): string {
     const toolName = (toolData as any).pageTitle || seo.title.split(" | ")[0];
     schemas.push({
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebApplication",
       "name": toolName,
       "description": (toolData as any).metaDescription || seo.description,
       "url": `${BASE_URL}${canonicalPath}`,
-      "applicationCategory": "Utilities",
-      "operatingSystem": "Web Browser",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
       "browserRequirements": "Requires JavaScript",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
+      "featureList": ["Free to use", "No registration required", "No watermarks", "Instant processing", "Secure file handling"],
       "author": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
       "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }
     });
@@ -2285,15 +2286,17 @@ export function generateMetaTags(path: string): string {
       : {};
     schemas.push({
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebApplication",
       "name": pageName,
       "description": progPage.description || "",
       "url": `${BASE_URL}${canonicalPath}`,
-      "applicationCategory": "Utilities",
-      "operatingSystem": "Web Browser",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
       "datePublished": "2025-12-16",
-      "dateModified": "2026-04-18",
+      "dateModified": "2026-04-24",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "featureList": ["Free to use", "No registration required", "No watermarks", "Instant processing", "Secure file handling"],
       "author": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
       ...countrySchema
     });

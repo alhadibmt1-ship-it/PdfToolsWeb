@@ -145,7 +145,7 @@ export default function Footer() {
             <div className="flex items-center gap-2.5 mb-4">
               <img 
                 src={siteLogo} 
-                alt="PDF HUB 24" 
+                alt="PDF HUB 24 - Free Online PDF Tools" 
                 className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg"
                 width="36"
                 height="36"

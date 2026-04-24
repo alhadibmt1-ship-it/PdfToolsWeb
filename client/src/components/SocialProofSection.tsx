@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Users, FileCheck, TrendingUp, Star, Shield, Lock, Zap, GraduationCap, Briefcase, Home, Palette, BookOpen, User, ExternalLink, Layers } from "lucide-react";
+import { Users, FileCheck, TrendingUp, Star, Shield, Lock, Zap, GraduationCap, Briefcase, Home, Palette, BookOpen, User, ExternalLink, Layers, Quote } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Card } from "@/components/ui/card";
 
@@ -26,8 +26,9 @@ const testimonials = [
     role: "High School Teacher",
     rating: 5,
     initials: "SM",
-    borderColor: "border-l-blue-500",
-    avatarBg: "bg-blue-500/10 text-blue-600"
+    borderColor: "border-l-[#22C55E]",
+    avatarBg: "bg-[#22C55E]/10 text-[#22C55E]",
+    quoteColor: "text-[#22C55E]/20"
   },
   {
     quote: "As a freelance designer, I constantly need to convert files between formats. This tool saves me hours every week. The quality of conversions is impressive.",
@@ -35,8 +36,9 @@ const testimonials = [
     role: "Graphic Designer",
     rating: 5,
     initials: "DL",
-    borderColor: "border-l-purple-500",
-    avatarBg: "bg-purple-500/10 text-purple-600"
+    borderColor: "border-l-[#3B82F6]",
+    avatarBg: "bg-[#3B82F6]/10 text-[#3B82F6]",
+    quoteColor: "text-[#3B82F6]/20"
   },
   {
     quote: "Our HR department uses PDF HUB 24 daily for processing employee documents. It's reliable, fast, and the security features give us peace of mind.",
@@ -44,8 +46,9 @@ const testimonials = [
     role: "HR Manager",
     rating: 4,
     initials: "JK",
-    borderColor: "border-l-green-500",
-    avatarBg: "bg-green-500/10 text-green-600"
+    borderColor: "border-l-[#8B5CF6]",
+    avatarBg: "bg-[#8B5CF6]/10 text-[#8B5CF6]",
+    quoteColor: "text-[#8B5CF6]/20"
   },
   {
     quote: "I was skeptical about free tools, but PDF HUB 24 exceeded my expectations. The PDF to Word conversion keeps all my formatting intact.",
@@ -53,8 +56,9 @@ const testimonials = [
     role: "Real Estate Agent",
     rating: 5,
     initials: "MR",
-    borderColor: "border-l-orange-500",
-    avatarBg: "bg-orange-500/10 text-orange-600"
+    borderColor: "border-l-[#F97316]",
+    avatarBg: "bg-[#F97316]/10 text-[#F97316]",
+    quoteColor: "text-[#F97316]/20"
   }
 ];
 
@@ -98,10 +102,6 @@ function StatCard({ icon, value, suffix, label, bg, border, delay }: StatCardPro
     return () => observer.disconnect();
   }, [value]);
 
-  const formatted = value >= 1000
-    ? (displayValue / 1000).toFixed(displayValue === value ? 0 : 0)
-    : displayValue.toString();
-
   const display = value >= 1000
     ? `${Math.floor(displayValue / 1000)}${suffix}`
     : `${displayValue}${suffix}`;
@@ -125,17 +125,21 @@ function StatCard({ icon, value, suffix, label, bg, border, delay }: StatCardPro
 }
 
 function LiveCounter() {
-  const [count, setCount] = useState(89);
+  const [count, setCount] = useState(() => Math.floor(Math.random() * 65) + 85);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCount(prev => {
-        const delta = Math.floor(Math.random() * 3) - 1;
-        const next = prev + delta;
-        return Math.max(60, Math.min(200, next));
-      });
-    }, 4000);
-    return () => clearInterval(timer);
+    const schedule = () => {
+      const delay = Math.floor(Math.random() * 7000) + 8000;
+      return setTimeout(() => {
+        setCount(prev => {
+          const delta = Math.floor(Math.random() * 5) - 2;
+          return Math.max(50, Math.min(200, prev + delta));
+        });
+        timeoutRef.current = schedule();
+      }, delay);
+    };
+    const timeoutRef = { current: schedule() };
+    return () => clearTimeout(timeoutRef.current);
   }, []);
 
   return (
@@ -250,20 +254,9 @@ export default function SocialProofSection() {
           <h3 className="text-xl sm:text-2xl font-bold mb-2">
             What Our Users Say
           </h3>
-          <a
-            href="https://www.trustpilot.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-green-600 dark:text-green-400 hover:underline"
-            data-testid="link-trustpilot"
-          >
-            <Star className="w-4 h-4 fill-green-500 text-green-500" />
-            Verified reviews on Trustpilot
-            <ExternalLink className="w-3.5 h-3.5" />
-          </a>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
@@ -272,8 +265,9 @@ export default function SocialProofSection() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className={`h-full p-5 sm:p-6 border-l-4 ${testimonial.borderColor}`}>
-                <div className="flex items-center gap-1 mb-3">
+              <Card className={`h-full p-5 sm:p-6 border-l-4 ${testimonial.borderColor} relative`}>
+                <Quote className={`absolute top-4 left-4 w-6 h-6 ${testimonial.quoteColor}`} aria-hidden="true" />
+                <div className="flex items-center gap-1 mb-3 mt-2">
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
@@ -286,7 +280,7 @@ export default function SocialProofSection() {
                   ))}
                 </div>
                 <p className="text-sm text-muted-foreground mb-4 leading-relaxed flex-1">
-                  "{testimonial.quote}"
+                  {testimonial.quote}
                 </p>
                 <div className="flex items-center gap-3 mt-auto">
                   <div className={`w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 ${testimonial.avatarBg}`}>
@@ -301,6 +295,27 @@ export default function SocialProofSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* Trustpilot CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center mb-8"
+        >
+          <p className="text-sm text-muted-foreground mb-2">Enjoyed using PDF HUB 24?</p>
+          <a
+            href="https://www.trustpilot.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-green-600 dark:text-green-400 hover:underline"
+            data-testid="link-trustpilot"
+          >
+            <Star className="w-4 h-4 fill-green-500 text-green-500" />
+            Leave us a review on Trustpilot
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}

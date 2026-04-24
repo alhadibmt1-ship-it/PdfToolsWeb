@@ -1190,7 +1190,6 @@ export default function HomePage() {
             </p>
           </div>
         </section>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2" data-testid="ad-placeholder-bottom" aria-hidden="true" />
       </main>
 
       <Footer />
