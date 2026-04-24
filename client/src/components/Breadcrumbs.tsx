@@ -14,7 +14,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
     <nav aria-label="Breadcrumb" className="mb-6">
       <ol 
-        className="flex items-center flex-wrap gap-1 text-sm text-muted-foreground"
+        className="flex items-center flex-wrap gap-1 text-sm"
         itemScope 
         itemType="https://schema.org/BreadcrumbList"
       >
@@ -26,7 +26,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
         >
           <Link 
             href="/" 
-            className="hover:text-primary transition-colors flex items-center gap-1" 
+            className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors flex items-center gap-1 font-medium" 
             data-testid="breadcrumb-home"
             itemProp="item"
           >
@@ -45,12 +45,12 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
               itemType: "https://schema.org/ListItem"
             } : {})}
           >
-            <ChevronRight className="w-4 h-4 mx-1 text-muted-foreground/50" aria-hidden="true" />
+            <ChevronRight className="w-4 h-4 mx-1.5 text-muted-foreground/40" aria-hidden="true" />
             {item.href ? (
               <>
                 <Link 
                   href={item.href} 
-                  className="hover:text-primary transition-colors"
+                  className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors font-medium"
                   data-testid={`breadcrumb-${index}`}
                   itemProp="item"
                 >
@@ -60,7 +60,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
               </>
             ) : (
               <span 
-                className="text-foreground font-medium" 
+                className="text-foreground font-bold" 
                 data-testid={`breadcrumb-current-${index}`}
               >
                 {item.label}

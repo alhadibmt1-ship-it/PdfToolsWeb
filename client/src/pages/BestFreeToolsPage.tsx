@@ -323,7 +323,7 @@ export default function BestFreeToolsPage() {
               {[
                 {
                   q: "Are all PDF HUB 24 tools really free?",
-                  a: "Yes. All 49 tools listed on this page are 100% free. No credit card, no account, and no watermarks on your output files.",
+                  a: "Yes. All 49+ tools listed on this page are 100% free. No credit card, no account, and no watermarks on your output files.",
                 },
                 {
                   q: "Is there a file size limit for free tools?",
@@ -353,11 +353,11 @@ export default function BestFreeToolsPage() {
           {/* CTA */}
           <div className="text-center py-10 bg-primary/5 rounded-xl border">
             <h2 className="text-2xl font-bold mb-3">Ready to start?</h2>
-            <p className="text-muted-foreground mb-6">All 49 tools are free, instant, and require no sign-up.</p>
+            <p className="text-muted-foreground mb-6">All 49+ tools are free, instant, and require no sign-up.</p>
             <div className="flex flex-wrap justify-center gap-3">
               <Link href="/merge"><Button size="lg">Merge PDF</Button></Link>
               <Link href="/compress"><Button size="lg" variant="outline">Compress PDF</Button></Link>
-              <Link href="/all-tools"><Button size="lg" variant="outline">See All 49 Tools</Button></Link>
+              <Link href="/all-tools"><Button size="lg" variant="outline">See All 49+ Tools</Button></Link>
             </div>
           </div>
 

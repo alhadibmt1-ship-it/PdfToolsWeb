@@ -19,6 +19,12 @@ Client-side user preferences and theme settings are stored in `localStorage`. Fo
 
 ### UI/UX Design
 The design focuses on a "Clean Modern Utility Design" with a vibrant color scheme. TrustBadges, RelatedTools, and CountrySpotlight are integrated to enhance user confidence and tool discovery. CountrySpotlight shows top-20 country-specific landing page links on /compress, /merge, /pdf-to-word, /sign-pdf, and /protect-pdf. Each tool page includes SEO-rich content like "About Our Tool," "How to Use," and FAQs. The /sign-pdf page includes a legal validity section covering US ESIGN, EU eIDAS, and UK eIDAS regulations.
+- **Tool Icons**: All tool icons use unique per-tool color schemes (ToolIcon.tsx, ConversionIcon in HomePage.tsx, RelatedTools.tsx) — e.g. compress=orange, merge=blue, split=purple, lock=red, unlock=green, ocr=teal, etc. — replacing the former uniform blue.
+- **MobileQuickActions**: Bottom mobile nav bar has 6 items (compress, merge, pdf-to-word, pdf-to-jpg, split, "More"/all-tools).
+- **ScrollToTop**: Floating back-to-top button (ChevronUp, appears after 400px scroll, hidden on mobile below 400px, uses `bottom-20` so it clears the mobile bottom nav).
+- **SocialProofSection**: Redesigned stats (50K+ Users, 1M+ PDFs, 49+ Tools, 99% Success) with large count-up animation; testimonial cards with colored left borders, avatar initials, mixed ratings (Jennifer K. = 4 stars), Trustpilot link; dynamic live counter (60–200 range).
+- **Breadcrumbs**: Blue link colors, bold current-page label.
+- **Hero Upload Box**: Larger (max-w-xl, py-4 px-5), gradient background, stronger dashed border, gradient icon container.
 
 ### Technical Features
 - **Performance**: Optimized with WebP images, code splitting, asynchronous font loading, deferred analytics, and preconnect hints.
