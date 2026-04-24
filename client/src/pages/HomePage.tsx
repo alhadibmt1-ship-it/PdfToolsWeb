@@ -69,6 +69,7 @@ import { useState } from "react";
 import { useLocation } from "wouter";
 import RecentToolsSection from "@/components/RecentToolsSection";
 import SocialProofSection from "@/components/SocialProofSection";
+import TrustBadges from "@/components/TrustBadges";
 import { useUploadContext } from "@/contexts/UploadContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { t, tFormat, getToolTitle } from "@/lib/languages";
@@ -637,6 +638,13 @@ export default function HomePage() {
                 <div className="text-xs text-muted-foreground">{t(lang, "utilityTools")}</div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Trust & Security Badges Section */}
+        <section className="py-10 sm:py-12">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <TrustBadges variant="prominent" />
           </div>
         </section>
 
