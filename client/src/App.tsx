@@ -239,6 +239,7 @@ function AppRoutes() {
         <Route path="/press" component={PressKitPage} />
         <Route path="/all-tools" component={AllToolsPage} />
         <Route path="/html-sitemap" component={HtmlSitemapPage} />
+        <Route path="/sitemap" component={HtmlSitemapPage} />
         <Route path="/best-free-tools" component={BestFreeToolsPage} />
         <Route path="/seo-audit" component={SeoAuditPage} />
         <Route path="/free-pdf-converter" component={RedirectFreePdfConverter} />
