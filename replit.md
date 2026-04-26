@@ -47,7 +47,8 @@ The design focuses on a "Clean Modern Utility Design" with a vibrant color schem
 - **Performance Hints**: `index.html` has preconnect for Google Fonts + GTM, dns-prefetch for GA/GTM, and prefetch for /compress, /pdf-to-word, /merge.
 - **AdSlot**: Returns `null` when no adClient/adSlot provided — hides empty placeholder boxes from users.
 - **SocialProofSection**: Testimonials have colored Quote icon top-left, no hardcoded quote marks in text, Trustpilot CTA below testimonials. LiveCounter starts at random 85–150 with slow drift (8–15s interval).
-- **Internal Linking**: RelatedTools (6 per page) on every tool page; ToolBreadcrumbs on all tool pages; BlogBreadcrumbs on all blog pages.
+- **Internal Linking**: RelatedTools (6 per page) on every tool page; ToolBreadcrumbs on all tool pages; BlogBreadcrumbs on all blog pages. Every pre-rendered page includes ALL_TOOLS (49 links) and ALL_BLOGS (20+ links) visible to crawlers in the server-side HTML shell.
+- **HTML Sitemap**: `/sitemap` (indexed, follow) — dedicated page with 147 descriptive text links covering all 49 tools by category, 19 blog posts, and key pages. Pre-rendered HTML shell visible immediately without JS. `/html-sitemap` kept as noindex alias with canonical pointing to /sitemap.
 - **Programmatic SEO**: Extensive generation of landing pages based on various parameters (countries, industries, document types) with deep country-specific content uniqueness.
   - COUNTRY_RICH system provides local portals, document names, compliance laws, and cities for 170 countries (Tier-2 compliance upgraded to named laws: DPDPA 2023, APPs 1988, PIPEDA, PDPA 2010, NDPR, Kenya DPA 2019, Egypt DPA No.151/2020, etc.)
   - 4 structural content variants per page type (slugVariant hash determines which variant)

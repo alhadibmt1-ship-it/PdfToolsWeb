@@ -1691,15 +1691,28 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "file formats guide, pdf format, docx format, image formats, document formats, file format comparison",
     schema: { "@context": "https://schema.org", "@type": "Article", "headline": "Ultimate Guide to PDF & Document File Formats 2026", "url": `${BASE_URL}/pdf-file-formats-guide`, "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL } }
   },
+  "/sitemap": {
+    title: "Site Map — All 49 PDF Tools & Blog Articles | PDF HUB 24",
+    description: "Complete directory of all PDF HUB 24 pages. Find all 49 free PDF tools, 20+ blog guides, and utility pages in one organised list.",
+    keywords: "sitemap, all pdf tools, pdf tools list, site map, pdf hub 24 pages",
+    robots: "index, follow",
+    canonical: `${BASE_URL}/sitemap`,
+    ogTitle: "Site Map — All PDF Tools & Pages | PDF HUB 24",
+    ogDescription: "Navigate all 49 PDF tools, 20+ blog articles, and information pages on PDF HUB 24.",
+    ogUrl: `${BASE_URL}/sitemap`,
+    twitterTitle: "Site Map — All PDF Tools & Pages",
+    twitterDescription: "Find every tool and page on PDF HUB 24 in one organised directory.",
+    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "PDF HUB 24 Site Map", "url": `${BASE_URL}/sitemap`, "description": "Complete directory of all 49 PDF tools and blog articles on PDF HUB 24.", "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
+  },
   "/html-sitemap": {
     title: "HTML Sitemap — All PDF Tools & Pages | PDF HUB 24",
     description: "Complete HTML sitemap for PDF HUB 24. Find all 49 PDF tools, 25 blog articles, category hubs, and information pages in one organized directory.",
     keywords: "sitemap, pdf tools list, all pdf tools, site map, pdf hub 24 pages",
     robots: "noindex, nofollow",
-    canonical: `${BASE_URL}/html-sitemap`,
+    canonical: `${BASE_URL}/sitemap`,
     ogTitle: "HTML Sitemap — All PDF Tools & Pages | PDF HUB 24",
     ogDescription: "Navigate all 49 PDF tools, 25 blog articles, and information pages on PDF HUB 24.",
-    ogUrl: `${BASE_URL}/html-sitemap`,
+    ogUrl: `${BASE_URL}/sitemap`,
     twitterTitle: "HTML Sitemap — All PDF Tools & Pages",
     twitterDescription: "Find every tool and page on PDF HUB 24 in one organized directory.",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "HTML Sitemap", "url": `${BASE_URL}/html-sitemap`, "description": "Complete directory of all pages on PDF HUB 24.", "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
@@ -3024,6 +3037,145 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
         ${faqs}
       </section>`;
     }
+  }
+
+  // ── HTML SITEMAP PAGE ─────────────────────────────────────────────────────────
+  else if (canonicalPath === "/sitemap" || canonicalPath === "/html-sitemap") {
+    const sitemapCategories = [
+      {
+        title: "Convert from PDF",
+        tools: [
+          { href: "/pdf-to-word", text: "PDF to Word — Convert PDF to editable Word document" },
+          { href: "/pdf-to-jpg", text: "PDF to JPG — Convert PDF pages to JPG images" },
+          { href: "/pdf-to-png", text: "PDF to PNG — Convert PDF to transparent PNG images" },
+          { href: "/pdf-to-excel", text: "PDF to Excel — Extract tables from PDF to spreadsheet" },
+          { href: "/pdf-to-ppt", text: "PDF to PowerPoint — Convert PDF slides to PPTX" },
+          { href: "/pdf-to-pdfa", text: "PDF to PDF/A — Convert to archival PDF/A format" },
+          { href: "/extract-text", text: "Extract Text from PDF — Copy text content from PDF" },
+          { href: "/extract-images", text: "Extract Images from PDF — Save images from PDF file" },
+        ],
+      },
+      {
+        title: "Convert to PDF",
+        tools: [
+          { href: "/word-to-pdf", text: "Word to PDF — Convert DOC/DOCX files to PDF" },
+          { href: "/jpg-to-pdf", text: "JPG to PDF — Convert JPEG images to PDF document" },
+          { href: "/png-to-pdf", text: "PNG to PDF — Convert PNG images to PDF" },
+          { href: "/excel-to-pdf", text: "Excel to PDF — Convert XLS/XLSX spreadsheets to PDF" },
+          { href: "/ppt-to-pdf", text: "PowerPoint to PDF — Convert PPTX presentations to PDF" },
+          { href: "/html-to-pdf", text: "HTML to PDF — Convert web pages to PDF" },
+          { href: "/webp-to-pdf", text: "WebP to PDF — Convert WebP images to PDF" },
+          { href: "/tiff-to-pdf", text: "TIFF to PDF — Convert TIFF files to PDF" },
+          { href: "/gif-to-pdf", text: "GIF to PDF — Convert animated GIF to PDF" },
+          { href: "/scan-to-pdf", text: "Scan to PDF — Capture document with camera as PDF" },
+        ],
+      },
+      {
+        title: "Edit PDF",
+        tools: [
+          { href: "/merge", text: "Merge PDF — Combine multiple PDF files into one" },
+          { href: "/split", text: "Split PDF — Separate PDF into individual pages or parts" },
+          { href: "/compress", text: "Compress PDF — Reduce PDF file size for email" },
+          { href: "/rotate", text: "Rotate PDF — Rotate PDF pages 90 or 180 degrees" },
+          { href: "/delete-pages", text: "Delete PDF Pages — Remove unwanted pages from PDF" },
+          { href: "/extract-pages", text: "Extract PDF Pages — Pull specific pages from PDF" },
+          { href: "/reorder-pages", text: "Reorder PDF Pages — Drag and drop to rearrange pages" },
+          { href: "/crop-pdf", text: "Crop PDF — Remove margins and trim PDF pages" },
+          { href: "/resize-pdf", text: "Resize PDF — Change PDF page size to A4, Letter, or custom" },
+          { href: "/add-page-numbers", text: "Add Page Numbers to PDF — Insert numbered headers or footers" },
+          { href: "/add-watermark", text: "Add Watermark to PDF — Stamp text or image watermark" },
+          { href: "/edit-pdf", text: "Edit PDF Text — Add and edit text directly in PDF" },
+          { href: "/annotate-pdf", text: "Annotate PDF — Add comments, highlights, and notes" },
+          { href: "/redact-pdf", text: "Redact PDF — Permanently black out sensitive information" },
+          { href: "/flatten-pdf", text: "Flatten PDF — Merge form fields and annotations" },
+          { href: "/repair-pdf", text: "Repair PDF — Fix corrupted or damaged PDF files" },
+          { href: "/batch-compress", text: "Batch Compress PDF — Compress multiple PDFs at once" },
+          { href: "/translate-pdf", text: "Translate PDF — Translate PDF to another language" },
+          { href: "/compare-pdf", text: "Compare PDFs — Find differences between two PDF files" },
+        ],
+      },
+      {
+        title: "Secure PDF",
+        tools: [
+          { href: "/protect-pdf", text: "Protect PDF — Password protect PDF with encryption" },
+          { href: "/unlock-pdf", text: "Unlock PDF — Remove password from PDF file" },
+          { href: "/sign-pdf", text: "Sign PDF — Add electronic signature to PDF" },
+        ],
+      },
+      {
+        title: "Utility & OCR Tools",
+        tools: [
+          { href: "/ocr-pdf", text: "OCR PDF — Convert scanned PDF to searchable text" },
+          { href: "/grayscale-pdf", text: "PDF to Grayscale — Convert colour PDF to black and white" },
+          { href: "/pdf-to-pdfa", text: "PDF to PDF/A — Archive-compliant PDF conversion" },
+        ],
+      },
+      {
+        title: "Image Tools",
+        tools: [
+          { href: "/compress-img", text: "Compress Image — Reduce image file size online" },
+          { href: "/resize-image", text: "Resize Image — Change image dimensions and resolution" },
+          { href: "/crop-image", text: "Crop Image — Trim and crop images online" },
+          { href: "/convert-image", text: "Convert Image — Convert between JPG, PNG, WebP formats" },
+          { href: "/rotate-image", text: "Rotate Image — Rotate and flip images" },
+          { href: "/remove-bg", text: "Remove Background — Remove image background automatically" },
+          { href: "/jpg-to-png", text: "JPG to PNG — Convert JPEG to PNG with transparency" },
+          { href: "/png-to-jpg", text: "PNG to JPG — Convert PNG to JPEG format" },
+          { href: "/image-to-text", text: "Image to Text — Extract text from image with OCR" },
+        ],
+      },
+    ];
+    const blogLinks = [
+      { href: "/blog/how-to-compress-pdf-for-email", text: "How to Compress PDF for Email" },
+      { href: "/blog/convert-pdf-to-word-without-losing-formatting", text: "How to Convert PDF to Word Without Losing Formatting" },
+      { href: "/blog/merge-pdf-files-guide", text: "How to Merge PDF Files Online for Free" },
+      { href: "/blog/protect-pdf-with-password", text: "How to Password Protect a PDF" },
+      { href: "/blog/pdf-tools-for-students", text: "Essential PDF Tools Every Student Needs" },
+      { href: "/blog/how-to-split-pdf-pages", text: "How to Split PDF Pages" },
+      { href: "/blog/add-page-numbers-to-pdf", text: "How to Add Page Numbers to PDF" },
+      { href: "/blog/convert-images-to-pdf", text: "How to Convert Images to PDF" },
+      { href: "/blog/ocr-scanned-pdf-to-text", text: "OCR PDF: Convert Scanned Documents to Searchable Text" },
+      { href: "/blog/rotate-pdf-pages", text: "How to Rotate PDF Pages" },
+      { href: "/blog/sign-pdf-electronically", text: "How to Sign a PDF Electronically" },
+      { href: "/blog/edit-pdf-text-images", text: "How to Edit a PDF: Text, Images and Shapes" },
+      { href: "/blog/watermark-pdf-documents", text: "How to Add a Watermark to PDF" },
+      { href: "/blog/pdf-to-excel-convert-tables", text: "How to Convert PDF Tables to Excel" },
+      { href: "/blog/redact-sensitive-pdf-information", text: "How to Redact Sensitive Information in PDF" },
+      { href: "/blog/how-to-flatten-pdf", text: "How to Flatten a PDF" },
+      { href: "/blog/crop-pdf-pages-guide", text: "How to Crop PDF Pages" },
+      { href: "/blog/resize-pdf-to-a4", text: "How to Resize PDF to A4 or Letter" },
+      { href: "/blog/compare-two-pdf-files", text: "How to Compare Two PDF Files" },
+    ];
+    const catSections = sitemapCategories.map(cat => {
+      const items = cat.tools.map(t =>
+        `<li style="margin-bottom:0.4rem"><a href="${t.href}" style="color:#1e40af;text-decoration:none">${escHtml(t.text)}</a></li>`
+      ).join("");
+      return `<section style="margin:1.5rem 0;text-align:left;max-width:900px;width:100%">
+        <h2 style="font-size:1.15rem;font-weight:700;margin-bottom:0.6rem;color:#111">${escHtml(cat.title)}</h2>
+        <ul style="padding-left:1.25rem;line-height:1.85;columns:2;column-gap:2rem">${items}</ul>
+      </section>`;
+    }).join("");
+    const blogItems = blogLinks.map(b =>
+      `<li style="margin-bottom:0.4rem"><a href="${b.href}" style="color:#1e40af;text-decoration:none">${escHtml(b.text)}</a></li>`
+    ).join("");
+    richContent += `
+      <p style="line-height:1.75;max-width:800px;margin-bottom:1.5rem">PDF HUB 24 offers 49 free PDF tools for converting, editing, compressing, and securing PDF files. Use the links below to navigate every tool and guide on the site.</p>
+      ${catSections}
+      <section style="margin:1.5rem 0;text-align:left;max-width:900px;width:100%">
+        <h2 style="font-size:1.15rem;font-weight:700;margin-bottom:0.6rem;color:#111">Blog &amp; Guides</h2>
+        <ul style="padding-left:1.25rem;line-height:1.85">${blogItems}</ul>
+      </section>
+      <section style="margin:1.5rem 0;text-align:left;max-width:900px;width:100%">
+        <h2 style="font-size:1.15rem;font-weight:700;margin-bottom:0.6rem;color:#111">Information Pages</h2>
+        <ul style="padding-left:1.25rem;line-height:1.85">
+          <li><a href="/all-tools" style="color:#1e40af;text-decoration:none">All PDF Tools — Browse all 49 tools by category</a></li>
+          <li><a href="/about" style="color:#1e40af;text-decoration:none">About PDF HUB 24</a></li>
+          <li><a href="/privacy" style="color:#1e40af;text-decoration:none">Privacy Policy</a></li>
+          <li><a href="/terms" style="color:#1e40af;text-decoration:none">Terms of Service</a></li>
+          <li><a href="/contact" style="color:#1e40af;text-decoration:none">Contact Us</a></li>
+          <li><a href="/blog" style="color:#1e40af;text-decoration:none">Blog — PDF tips and guides</a></li>
+        </ul>
+      </section>`;
   }
 
   // ── CATEGORY HUB ─────────────────────────────────────────────────────────────
