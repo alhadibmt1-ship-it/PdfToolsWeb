@@ -6,3 +6,21 @@ id = "jNBYShA9a0tGDL5ie_OHi"
 uri = "file://client/public/seo-content-plan.json"
 type = "unspecified"
 title = "PDF HUB 24 — 1000+ Page SEO Content Plan"
+
+[[outputs]]
+id = "fj1qJKm8QRFAmvqJmt_RA"
+uri = "file://attached_assets/generated_images/pdf_hub_24_logo_icon.png"
+type = "image"
+title = "PDF HUB 24 Logo (full)"
+
+[[outputs]]
+id = "fVadKGcV3thoMNOc8tPQi"
+uri = "file://attached_assets/generated_images/logo-128.webp"
+type = "image"
+title = "PDF HUB 24 Logo (128px)"
+
+[[outputs]]
+id = "lL1isMVIV0BzXH6gw4vCj"
+uri = "file://attached_assets/generated_images/logo-64.png"
+type = "image"
+title = "PDF HUB 24 Logo (64px)"
