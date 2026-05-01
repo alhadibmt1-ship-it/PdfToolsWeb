@@ -832,7 +832,7 @@ export default function HomePage() {
                     <div className="text-xs text-muted-foreground">Files Uploaded</div>
                   </div>
                   <div>
-                    <div className="text-2xl sm:text-3xl font-bold text-primary">500K+</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-primary">250K+</div>
                     <div className="text-xs text-muted-foreground">Documents Edited</div>
                   </div>
                   <div>
@@ -965,9 +965,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4" data-testid="ad-placeholder-mid">
-          <div className="min-h-[90px] flex items-center justify-center text-xs text-muted-foreground/50" aria-hidden="true" />
-        </div>
+        <div className="hidden" data-testid="ad-placeholder-mid" aria-hidden="true" />
 
         {/* Blog Articles Section */}
         <section className="py-16 sm:py-20">
@@ -1083,10 +1081,10 @@ export default function HomePage() {
                 </div>
                 <div className="space-y-3">
                   {[
-                    { href: "/merge", label: "Merge PDF", desc: "Combine multiple assignment files into one submission" },
-                    { href: "/compress", label: "Compress PDF", desc: "Shrink large files to meet university upload limits" },
+                    { href: "/merge-pdf", label: "Merge PDF", desc: "Combine multiple assignment files into one submission" },
+                    { href: "/compress-pdf", label: "Compress PDF", desc: "Shrink large files to meet university upload limits" },
                     { href: "/pdf-to-word", label: "PDF to Word", desc: "Convert lecture PDFs to editable notes in Word" },
-                    { href: "/split", label: "Split PDF", desc: "Extract specific chapters from large textbook PDFs" },
+                    { href: "/split-pdf", label: "Split PDF", desc: "Extract specific chapters from large textbook PDFs" },
                     { href: "/ocr-pdf", label: "OCR PDF", desc: "Make scanned handwritten notes searchable and selectable" },
                     { href: "/add-page-numbers", label: "Add Page Numbers", desc: "Number pages on essays and reports automatically" },
                   ].map((tool, i) => (
@@ -1101,7 +1099,7 @@ export default function HomePage() {
                     </Link>
                   ))}
                 </div>
-                <Link href="/compress">
+                <Link href="/compress-pdf">
                   <Button className="w-full mt-6 gap-2" variant="outline" data-testid="button-students-cta">
                     <GraduationCap className="w-4 h-4" />
                     Start with Student Tools
@@ -1171,7 +1169,7 @@ export default function HomePage() {
             </p>
             
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
-              <Link href="/merge">
+              <Link href="/merge-pdf">
                 <Button size="lg" className="gap-2" data-testid="button-merge-cta">
                   <Combine className="w-4 h-4" />
                   Merge PDFs

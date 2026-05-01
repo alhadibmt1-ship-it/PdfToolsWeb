@@ -18,7 +18,7 @@ The backend is built with Express.js and TypeScript. PDF processing uses `pdf-li
 Client-side user preferences and theme settings are stored in `localStorage`. For future persistent data, Drizzle ORM and NeonDB are configured for PostgreSQL.
 
 ### UI/UX Design
-The design focuses on a "Clean Modern Utility Design" with a vibrant color scheme. TrustBadges, RelatedTools, and CountrySpotlight are integrated to enhance user confidence and tool discovery. CountrySpotlight shows top-20 country-specific landing page links on /compress, /merge, /pdf-to-word, /sign-pdf, and /protect-pdf. Each tool page includes SEO-rich content like "About Our Tool," "How to Use," and FAQs. The /sign-pdf page includes a legal validity section covering US ESIGN, EU eIDAS, and UK eIDAS regulations.
+The design focuses on a "Clean Modern Utility Design" with a vibrant color scheme. TrustBadges, RelatedTools, and CountrySpotlight are integrated to enhance user confidence and tool discovery. CountrySpotlight shows top-20 country-specific landing page links on /compress-pdf, /merge-pdf, /pdf-to-word, /sign-pdf, and /protect-pdf. Each tool page includes SEO-rich content like "About Our Tool," "How to Use," and FAQs. The /sign-pdf page includes a legal validity section covering US ESIGN, EU eIDAS, and UK eIDAS regulations.
 - **Tool Icons**: All tool icons use unique per-tool color schemes (ToolIcon.tsx, ConversionIcon in HomePage.tsx, RelatedTools.tsx) — e.g. compress=orange, merge=blue, split=purple, lock=red, unlock=green, ocr=teal, etc. — replacing the former uniform blue.
 - **MobileQuickActions**: Bottom mobile nav bar has 6 items (compress, merge, pdf-to-word, pdf-to-jpg, split, "More"/all-tools).
 - **ScrollToTop**: Floating back-to-top button (ChevronUp, appears after 400px scroll, hidden on mobile below 400px, uses `bottom-20` so it clears the mobile bottom nav).
@@ -42,9 +42,10 @@ The design focuses on a "Clean Modern Utility Design" with a vibrant color schem
 - **Security Headers**: Centralized in `server/app.ts` global middleware only (X-Content-Type-Options, X-Frame-Options, X-XSS-Protection, Referrer-Policy, Permissions-Policy, HSTS in production, CSP). Duplicate headers previously in `server/routes.ts` have been removed.
 - **Social Media**: Footer and Organization schema include Facebook, YouTube, and Twitter (@hassanizhar419). twitter:site/@pdfhub24 and twitter:image are present in both index.html and server-side injection.
 - **robots.txt**: Includes explicit Allow for Googlebot, Bingbot, DuckDuckBot, plus AI crawler rules. All three sitemaps listed.
-- **Sitemap lastmod**: Static sitemap.xml lastmod dates last updated to 2026-04-24.
+- **Sitemap lastmod**: Static sitemap.xml lastmod dates last updated to 2026-05-01.
+- **Canonical URL migration**: Short tool URLs (/compress, /merge, /split, /rotate) migrated to full URLs (/compress-pdf, /merge-pdf, /split-pdf, /rotate-pdf) with 301 redirects in place. All internal links, seoConfig, canonicalPath in page components, TOOL_SLUG_TRANSLATIONS, ENGLISH_SLUG_TO_COMPONENT, and sitemap.xml updated accordingly.
 - **Schema Type**: Tool pages and programmatic pages use `@type: "WebApplication"` (not SoftwareApplication) with `applicationCategory: "UtilitiesApplication"`, `operatingSystem: "Any"`, and `featureList` array.
-- **Performance Hints**: `index.html` has preconnect for Google Fonts + GTM, dns-prefetch for GA/GTM, and prefetch for /compress, /pdf-to-word, /merge.
+- **Performance Hints**: `index.html` has preconnect for Google Fonts + GTM, dns-prefetch for GA/GTM, and prefetch for /compress-pdf, /pdf-to-word, /merge-pdf, /split-pdf.
 - **AdSlot**: Returns `null` when no adClient/adSlot provided — hides empty placeholder boxes from users.
 - **SocialProofSection**: Testimonials have colored Quote icon top-left, no hardcoded quote marks in text, Trustpilot CTA below testimonials. LiveCounter starts at random 85–150 with slow drift (8–15s interval).
 - **Internal Linking**: RelatedTools (6 per page) on every tool page; ToolBreadcrumbs on all tool pages; BlogBreadcrumbs on all blog pages. Every pre-rendered page includes ALL_TOOLS (49 links) and ALL_BLOGS (20+ links) visible to crawlers in the server-side HTML shell.

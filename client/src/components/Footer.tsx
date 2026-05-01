@@ -412,16 +412,16 @@ export default function Footer() {
         <div className="mb-8 pt-6 border-t border-border/50">
           <h3 className="font-semibold text-xs sm:text-sm uppercase tracking-wider text-muted-foreground mb-4">Popular PDF Tools</h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-            <a href="/merge" className="flex items-center gap-2 p-3 rounded-lg bg-muted/50 hover:bg-primary/10 transition-colors group" data-testid="link-popular-merge">
+            <a href="/merge-pdf" className="flex items-center gap-2 p-3 rounded-lg bg-muted/50 hover:bg-primary/10 transition-colors group" data-testid="link-popular-merge">
               <span className="text-sm font-medium group-hover:text-primary transition-colors">Merge PDF</span>
             </a>
-            <a href="/compress" className="flex items-center gap-2 p-3 rounded-lg bg-muted/50 hover:bg-primary/10 transition-colors group" data-testid="link-popular-compress">
+            <a href="/compress-pdf" className="flex items-center gap-2 p-3 rounded-lg bg-muted/50 hover:bg-primary/10 transition-colors group" data-testid="link-popular-compress">
               <span className="text-sm font-medium group-hover:text-primary transition-colors">Compress PDF</span>
             </a>
             <a href="/pdf-to-word" className="flex items-center gap-2 p-3 rounded-lg bg-muted/50 hover:bg-primary/10 transition-colors group" data-testid="link-popular-pdf-to-word">
               <span className="text-sm font-medium group-hover:text-primary transition-colors">PDF to Word</span>
             </a>
-            <a href="/split" className="flex items-center gap-2 p-3 rounded-lg bg-muted/50 hover:bg-primary/10 transition-colors group" data-testid="link-popular-split">
+            <a href="/split-pdf" className="flex items-center gap-2 p-3 rounded-lg bg-muted/50 hover:bg-primary/10 transition-colors group" data-testid="link-popular-split">
               <span className="text-sm font-medium group-hover:text-primary transition-colors">Split PDF</span>
             </a>
             <a href="/pdf-to-jpg" className="flex items-center gap-2 p-3 rounded-lg bg-muted/50 hover:bg-primary/10 transition-colors group" data-testid="link-popular-pdf-to-jpg">

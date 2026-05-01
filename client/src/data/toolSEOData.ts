@@ -106,7 +106,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     faqs: [
       { question: "How much can I reduce my PDF file size?", answer: "Depending on content, you can reduce PDF size by 30-90%. Image-heavy PDFs and scanned documents see the largest reductions. Text-only PDFs may compress less since text is already efficient." },
       { question: "Will compression affect my PDF quality?", answer: "Low compression keeps quality nearly identical to the original. Medium offers a good balance. High compression may slightly reduce image sharpness but keeps text perfectly readable." },
-      { question: "Can I compress multiple PDFs at once?", answer: "Currently we process one file at a time for optimal results. You can compress additional files immediately after each download." },
+      { question: "Can I compress multiple PDFs at once?", answer: "You can process files one at a time using any individual tool, or use our Batch Compress feature to process up to 20 files at once and download as ZIP." },
       { question: "Is there a maximum file size limit?", answer: "Yes, we accept PDF files up to 100MB for compression. For larger files, try splitting them first with our Split PDF tool." },
       { question: "Why is my compressed PDF sometimes larger?", answer: "This rarely happens with PDFs that are already highly optimized. In such cases, the original file is returned unchanged." }
     ],
@@ -115,8 +115,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { title: "Scanned Document Optimization", description: "Best workflow for scanned PDF documents", tools: ["compress", "ocr-pdf", "extract-text"] }
     ],
     internalLinks: [
-      { text: "Merge PDF", href: "/merge", context: "Combine multiple small PDFs before compressing for better efficiency" },
-      { text: "Split PDF", href: "/split", context: "Break large PDFs into smaller parts if compression alone isn't enough" },
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine multiple small PDFs before compressing for better efficiency" },
+      { text: "Split PDF", href: "/split-pdf", context: "Break large PDFs into smaller parts if compression alone isn't enough" },
       { text: "PDF to JPG", href: "/pdf-to-jpg", context: "Convert to images for maximum file size reduction" },
       { text: "Unlock PDF", href: "/unlock-pdf", context: "Remove password protection before compressing secured PDFs" },
       { text: "How to Compress PDF for Email", href: "/blog/how-to-compress-pdf-for-email", context: "Step-by-step guide to reducing PDF size under 25MB for email attachments" },
@@ -197,7 +197,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { title: "Multi-Document Report", description: "Assemble reports from multiple sources", tools: ["merge", "add-watermark", "protect-pdf"] }
     ],
     internalLinks: [
-      { text: "Compress PDF", href: "/compress", context: "Reduce the size of your merged document for email" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce the size of your merged document for email" },
       { text: "Add Page Numbers", href: "/add-page-numbers", context: "Add sequential numbering to your combined document" },
       { text: "Reorder Pages", href: "/reorder-pages", context: "Rearrange pages after merging for perfect order" },
       { text: "Protect PDF", href: "/protect-pdf", context: "Add password security to your merged document" },
@@ -297,9 +297,9 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "PDF to JPG", href: "/pdf-to-jpg", context: "Convert PDF pages to JPG images" },
       { text: "PDF to PNG", href: "/pdf-to-png", context: "Convert PDF pages to PNG images with transparency" },
       { text: "PDF to PowerPoint", href: "/pdf-to-ppt", context: "Convert PDF slides to editable PowerPoint presentations" },
-      { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs into one document before converting" },
-      { text: "Split PDF", href: "/split", context: "Extract specific pages before converting to Word" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size for faster uploading and sharing" },
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine multiple PDFs into one document before converting" },
+      { text: "Split PDF", href: "/split-pdf", context: "Extract specific pages before converting to Word" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce PDF file size for faster uploading and sharing" },
       { text: "Compare PDF", href: "/compare-pdf", context: "Find differences between two PDF versions" },
       { text: "PDF Viewer", href: "/pdf-viewer", context: "Preview your PDF before converting" },
       { text: "Extract Images", href: "/extract-images", context: "Extract all images from your PDF document" },
@@ -377,9 +377,9 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { title: "Large Document Management", description: "Break down large files", tools: ["split", "merge", "reorder-pages"] }
     ],
     internalLinks: [
-      { text: "Merge PDF", href: "/merge", context: "Combine split pages back into a new document" },
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine split pages back into a new document" },
       { text: "Delete Pages", href: "/delete-pages", context: "Remove unwanted pages instead of extracting" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce the size of extracted pages" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce the size of extracted pages" },
       { text: "Reorder Pages", href: "/reorder-pages", context: "Rearrange pages before or after splitting" },
       { text: "How to Split PDF Pages", href: "/blog/how-to-split-pdf-pages", context: "Complete guide to extracting and separating PDF pages for any use case" },
       { text: "Essential PDF Tools for Students", href: "/blog/pdf-tools-for-students", context: "How students split large textbooks and research papers into focused study materials" },
@@ -456,7 +456,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     ],
     internalLinks: [
       { text: "PDF to PNG", href: "/pdf-to-png", context: "Get PNG format for transparency support" },
-      { text: "Split PDF", href: "/split", context: "Extract specific pages before converting" },
+      { text: "Split PDF", href: "/split-pdf", context: "Extract specific pages before converting" },
       { text: "Image Compressor", href: "/image-compressor", context: "Reduce JPG file sizes after conversion" },
       { text: "Resize Image", href: "/resize-image", context: "Adjust image dimensions for your needs" },
       { text: "How to Convert Images to PDF", href: "/blog/convert-images-to-pdf", context: "Guide to converting JPG, PNG, and other image formats to and from PDF" },
@@ -536,7 +536,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     internalLinks: [
       { text: "Unlock PDF", href: "/unlock-pdf", context: "Remove password protection when needed" },
       { text: "Add Watermark", href: "/add-watermark", context: "Add visible security with watermarks" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce file size before protecting" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size before protecting" },
       { text: "Flatten PDF", href: "/flatten-pdf", context: "Lock form fields and layers before protection" },
       { text: "How to Password Protect a PDF", href: "/blog/protect-pdf-with-password", context: "Security best practices for encrypting and password-protecting PDF documents" },
       { text: "Best Free PDF Tools in 2026", href: "/blog/best-free-pdf-tools-2026", context: "Overview of the best free PDF security and protection tools available" },
@@ -612,11 +612,11 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { title: "Academic Document Prep", description: "Format thesis and papers", tools: ["add-page-numbers", "merge", "compress"] }
     ],
     internalLinks: [
-      { text: "Merge PDF", href: "/merge", context: "Combine documents before adding page numbers" },
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine documents before adding page numbers" },
       { text: "Add Watermark", href: "/add-watermark", context: "Add branding along with page numbers" },
       { text: "Reorder Pages", href: "/reorder-pages", context: "Arrange pages before numbering" },
       { text: "Delete Pages", href: "/delete-pages", context: "Remove unwanted pages before numbering" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce file size after adding page numbers" }
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size after adding page numbers" }
     ]
   },
   "pdf-to-png": {
@@ -689,7 +689,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     ],
     internalLinks: [
       { text: "PDF to JPG", href: "/pdf-to-jpg", context: "Convert to JPG for smaller file sizes" },
-      { text: "Split PDF", href: "/split", context: "Extract specific pages before converting" },
+      { text: "Split PDF", href: "/split-pdf", context: "Extract specific pages before converting" },
       { text: "Image Compressor", href: "/image-compressor", context: "Reduce PNG file sizes after conversion" },
       { text: "Extract Images", href: "/extract-images", context: "Extract embedded images from PDF instead" },
       { text: "Resize Image", href: "/resize-image", context: "Resize extracted PNG images for web or print" }
@@ -768,7 +768,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Extract Text", href: "/extract-text", context: "Get plain text if you don't need spreadsheet format" },
       { text: "PDF to Word", href: "/pdf-to-word", context: "Convert to Word if document has mixed content" },
       { text: "Excel to PDF", href: "/excel-to-pdf", context: "Convert your Excel back to PDF when done editing" },
-      { text: "Split PDF", href: "/split", context: "Split PDF into sections before converting" }
+      { text: "Split PDF", href: "/split-pdf", context: "Split PDF into sections before converting" }
     ]
   },
   "pdf-to-powerpoint": {
@@ -843,7 +843,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "PowerPoint to PDF", href: "/ppt-to-pdf", context: "Convert your edited presentation back to PDF" },
       { text: "PDF to Word", href: "/pdf-to-word", context: "Convert to Word if document is text-heavy" },
       { text: "Extract Images", href: "/extract-images", context: "Extract images from PDF separately" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce PDF size before converting" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce PDF size before converting" },
       { text: "OCR PDF", href: "/ocr-pdf", context: "Extract text from scanned presentation slides" }
     ]
   },
@@ -1072,7 +1072,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Extract Text", href: "/extract-text", context: "Extract text from PDFs that already have selectable text" },
       { text: "PDF to Word", href: "/pdf-to-word", context: "Convert OCR'd PDF to editable Word document" },
       { text: "PDF to Excel", href: "/pdf-to-excel", context: "Extract tables from OCR'd documents to spreadsheets" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce file size after OCR processing" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size after OCR processing" },
       { text: "OCR Scanned PDF to Text Guide", href: "/blog/ocr-scanned-pdf-to-text", context: "Complete guide to extracting text from scanned documents using OCR technology" },
       { text: "Convert PDF to Word Without Losing Formatting", href: "/blog/convert-pdf-to-word-without-losing-formatting", context: "Learn when to use OCR before converting scanned PDFs to editable Word documents" },
       { text: "Convert Scanned PDF to Editable Word", href: "/tools/convert-scanned-pdf-to-word-editable", context: "Use OCR to extract text from scanned PDFs and convert to editable Word documents" }
@@ -1149,9 +1149,9 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     ],
     internalLinks: [
       { text: "PDF to Word", href: "/pdf-to-word", context: "Convert PDF back to editable Word format" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce your PDF file size for email attachments" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce your PDF file size for email attachments" },
       { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection to your converted PDF" },
-      { text: "Merge PDF", href: "/merge", context: "Combine multiple converted PDFs into one document" },
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine multiple converted PDFs into one document" },
       { text: "Convert PDF to Word Without Losing Formatting", href: "/blog/convert-pdf-to-word-without-losing-formatting", context: "Learn the reverse workflow - converting PDFs back to editable Word documents" },
       { text: "Essential PDF Tools for Students", href: "/blog/pdf-tools-for-students", context: "How students use Word to PDF conversion for submitting polished assignments" }
     ]
@@ -1228,8 +1228,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     internalLinks: [
       { text: "PDF to JPG", href: "/pdf-to-jpg", context: "Convert PDF pages back to JPG images" },
       { text: "PNG to PDF", href: "/png-to-pdf", context: "Convert PNG images with transparency to PDF" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size after converting images" },
-      { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs from different image batches" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce PDF file size after converting images" },
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine multiple PDFs from different image batches" },
       { text: "Protect PDF", href: "/protect-pdf", context: "Password-protect your converted PDF" }
     ]
   },
@@ -1305,8 +1305,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     internalLinks: [
       { text: "PDF to PNG", href: "/pdf-to-png", context: "Convert PDF pages back to PNG images" },
       { text: "JPG to PDF", href: "/jpg-to-pdf", context: "Convert JPG photos to PDF format" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size after conversion" },
-      { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs into one document" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce PDF file size after conversion" },
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine multiple PDFs into one document" },
       { text: "Protect PDF", href: "/protect-pdf", context: "Secure your converted PNG document" }
     ]
   },
@@ -1382,7 +1382,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     internalLinks: [
       { text: "PDF to Excel", href: "/pdf-to-excel", context: "Convert PDF tables back to editable Excel format" },
       { text: "Word to PDF", href: "/word-to-pdf", context: "Convert Word documents to PDF format" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size for email sharing" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce PDF file size for email sharing" },
       { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection to sensitive spreadsheets" },
       { text: "Convert Excel to PDF Free", href: "/tools/convert-excel-to-pdf-free", context: "Transform XLSX spreadsheets to professional PDF documents with perfect formatting" }
     ]
@@ -1459,9 +1459,9 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     internalLinks: [
       { text: "PDF to PPT", href: "/pdf-to-ppt", context: "Convert PDF back to editable PowerPoint format" },
       { text: "Word to PDF", href: "/word-to-pdf", context: "Convert Word documents to PDF format" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size for email sharing" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce PDF file size for email sharing" },
       { text: "Add Watermark", href: "/add-watermark", context: "Add branding or confidential stamps to presentations" },
-      { text: "Merge PDF", href: "/merge", context: "Combine multiple converted presentation PDFs" }
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine multiple converted presentation PDFs" }
     ]
   },
   "tiff-to-pdf": {
@@ -1537,8 +1537,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "JPG to PDF", href: "/jpg-to-pdf", context: "Convert JPG images to PDF format" },
       { text: "PNG to PDF", href: "/png-to-pdf", context: "Convert PNG images to PDF format" },
       { text: "OCR PDF", href: "/ocr-pdf", context: "Make scanned TIFF-to-PDF documents searchable" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size after TIFF conversion" },
-      { text: "Merge PDF", href: "/merge", context: "Merge multiple TIFF-to-PDF conversions" }
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce PDF file size after TIFF conversion" },
+      { text: "Merge PDF", href: "/merge-pdf", context: "Merge multiple TIFF-to-PDF conversions" }
     ]
   },
   "gif-to-pdf": {
@@ -1613,9 +1613,9 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     internalLinks: [
       { text: "PNG to PDF", href: "/png-to-pdf", context: "Convert PNG images with better quality and transparency" },
       { text: "JPG to PDF", href: "/jpg-to-pdf", context: "Convert JPG photographs to PDF format" },
-      { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs into one document" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size after conversion" },
-      { text: "Split PDF", href: "/split", context: "Split converted GIF document into pages" }
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine multiple PDFs into one document" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce PDF file size after conversion" },
+      { text: "Split PDF", href: "/split-pdf", context: "Split converted GIF document into pages" }
     ]
   },
   "html-to-pdf": {
@@ -1689,8 +1689,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     ],
     internalLinks: [
       { text: "Word to PDF", href: "/word-to-pdf", context: "Convert Word documents to PDF format" },
-      { text: "Merge PDF", href: "/merge", context: "Combine multiple HTML-to-PDF conversions" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size after conversion" },
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine multiple HTML-to-PDF conversions" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce PDF file size after conversion" },
       { text: "Add Watermark", href: "/add-watermark", context: "Add branding to converted web content" },
       { text: "Protect PDF", href: "/protect-pdf", context: "Secure your converted HTML document" }
     ]
@@ -1767,8 +1767,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     internalLinks: [
       { text: "PNG to PDF", href: "/png-to-pdf", context: "Convert PNG images to PDF format" },
       { text: "JPG to PDF", href: "/jpg-to-pdf", context: "Convert JPG photographs to PDF format" },
-      { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs into one document" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size after conversion" },
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine multiple PDFs into one document" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce PDF file size after conversion" },
       { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection to your converted PDF" }
     ]
   },
@@ -1840,9 +1840,9 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { title: "Document Preparation", description: "Prepare PDFs for professional sharing", tools: ["rotate", "add-page-numbers", "add-watermark"] }
     ],
     internalLinks: [
-      { text: "Compress PDF", href: "/compress", context: "Reduce file size after fixing rotation" },
-      { text: "Split PDF", href: "/split", context: "Extract specific pages before rotating" },
-      { text: "Merge PDF", href: "/merge", context: "Combine rotated pages with other documents" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size after fixing rotation" },
+      { text: "Split PDF", href: "/split-pdf", context: "Extract specific pages before rotating" },
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine rotated pages with other documents" },
       { text: "OCR PDF", href: "/ocr-pdf", context: "Extract text from rotated scanned documents" },
       { text: "Rotate PDF and Save Permanently", href: "/tools/rotate-pdf-and-save", context: "Fix sideways or upside-down pages and save the corrected orientation permanently" }
     ]
@@ -1916,8 +1916,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { title: "Scanned Document Processing", description: "Process and clean scanned documents", tools: ["delete-pages", "rotate", "ocr-pdf"] }
     ],
     internalLinks: [
-      { text: "Split PDF", href: "/split", context: "Extract specific pages instead of deleting unwanted ones" },
-      { text: "Merge PDF", href: "/merge", context: "Combine remaining pages with other documents" },
+      { text: "Split PDF", href: "/split-pdf", context: "Extract specific pages instead of deleting unwanted ones" },
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine remaining pages with other documents" },
       { text: "Reorder Pages", href: "/reorder-pages", context: "Rearrange pages after removing unwanted ones" },
       { text: "Add Page Numbers", href: "/add-page-numbers", context: "Add new page numbers after deletion" },
       { text: "Remove Pages from PDF", href: "/tools/remove-pages-from-pdf", context: "Select and delete unwanted pages to create cleaner, more focused documents" }
@@ -1993,7 +1993,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     internalLinks: [
       { text: "Protect PDF", href: "/protect-pdf", context: "Re-add password protection after unlocking" },
       { text: "PDF to Word", href: "/pdf-to-word", context: "Convert unlocked PDF to editable Word format" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce file size after unlocking" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size after unlocking" },
       { text: "Edit PDF", href: "/edit-pdf", context: "Make changes to your unlocked document" },
       { text: "How to Remove PDF Password", href: "/blog/unlock-pdf-remove-password", context: "Step-by-step guide to removing password restrictions from PDF documents" },
       { text: "How to Password Protect a PDF", href: "/blog/protect-pdf-with-password", context: "Learn about PDF security best practices and how to re-protect documents after unlocking" },
@@ -2071,8 +2071,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     internalLinks: [
       { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection after watermarking" },
       { text: "Add Page Numbers", href: "/add-page-numbers", context: "Add page numbers along with watermarks" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce file size after adding watermarks" },
-      { text: "Merge PDF", href: "/merge", context: "Combine watermarked documents together" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size after adding watermarks" },
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine watermarked documents together" },
       { text: "Add Watermark to PDF Free", href: "/tools/add-watermark-to-pdf-free", context: "Add custom text or image watermarks to protect your PDF documents" }
     ]
   },
@@ -2145,8 +2145,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { title: "Scanned Document Fixing", description: "Fix and organize scanned documents", tools: ["reorder-pages", "rotate", "delete-pages"] }
     ],
     internalLinks: [
-      { text: "Merge PDF", href: "/merge", context: "Combine PDFs before or after reordering" },
-      { text: "Split PDF", href: "/split", context: "Extract sections before reordering" },
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine PDFs before or after reordering" },
+      { text: "Split PDF", href: "/split-pdf", context: "Extract sections before reordering" },
       { text: "Delete Pages", href: "/delete-pages", context: "Remove unwanted pages while reorganizing" },
       { text: "Add Page Numbers", href: "/add-page-numbers", context: "Add new page numbers after reordering" },
       { text: "Extract Pages", href: "/extract-pages", context: "Extract specific pages before reordering" }
@@ -2222,10 +2222,10 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     ],
     internalLinks: [
       { text: "Delete Pages", href: "/delete-pages", context: "Remove unwanted pages from a document instead of extracting" },
-      { text: "Split PDF", href: "/split", context: "Divide a PDF into multiple separate files" },
-      { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs after extracting sections" },
+      { text: "Split PDF", href: "/split-pdf", context: "Divide a PDF into multiple separate files" },
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine multiple PDFs after extracting sections" },
       { text: "Reorder Pages", href: "/reorder-pages", context: "Change page order after extracting" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce file size after extraction" }
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size after extraction" }
     ]
   },
   "crop-pdf": {
@@ -2298,9 +2298,9 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     ],
     internalLinks: [
       { text: "Resize PDF", href: "/resize-pdf", context: "Change page dimensions after cropping" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce file size after cropping" },
-      { text: "Rotate PDF", href: "/rotate", context: "Fix orientation before cropping" },
-      { text: "Split PDF", href: "/split", context: "Extract pages before cropping" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size after cropping" },
+      { text: "Rotate PDF", href: "/rotate-pdf", context: "Fix orientation before cropping" },
+      { text: "Split PDF", href: "/split-pdf", context: "Extract pages before cropping" },
       { text: "How to Crop PDF Pages", href: "/blog/crop-pdf-pages-guide", context: "Complete guide to removing margins and trimming white space from PDF pages" },
       { text: "How to Resize PDF to A4", href: "/blog/resize-pdf-to-a4", context: "Learn the difference between cropping and resizing PDF pages" }
     ]
@@ -2375,9 +2375,9 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     ],
     internalLinks: [
       { text: "Crop PDF", href: "/crop-pdf", context: "Trim margins instead of resizing dimensions" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce file size after resizing" },
-      { text: "Merge PDF", href: "/merge", context: "Combine PDFs of matching sizes" },
-      { text: "Split PDF", href: "/split", context: "Extract pages before resizing specific sections" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size after resizing" },
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine PDFs of matching sizes" },
+      { text: "Split PDF", href: "/split-pdf", context: "Extract pages before resizing specific sections" },
       { text: "How to Resize PDF to A4", href: "/blog/resize-pdf-to-a4", context: "Step-by-step guide to changing PDF page dimensions for international standards" },
       { text: "How to Crop PDF Pages", href: "/blog/crop-pdf-pages-guide", context: "Learn when to crop vs resize PDF pages for optimal results" }
     ]
@@ -2454,7 +2454,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Flatten PDF", href: "/flatten-pdf", context: "Lock your signature permanently after signing" },
       { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection to signed documents" },
       { text: "Edit PDF", href: "/edit-pdf", context: "Add text and fill forms before signing" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce file size of signed documents for email" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size of signed documents for email" },
       { text: "How to Sign PDF Electronically", href: "/blog/sign-pdf-electronically", context: "Complete guide to adding electronic signatures to PDF documents legally" },
       { text: "Best Free PDF Tools in 2026", href: "/blog/best-free-pdf-tools-2026", context: "Discover the top free PDF signing and document tools available online" },
       { text: "Add Signature to PDF Free", href: "/tools/add-signature-to-pdf-free", context: "Draw, type, or upload your signature to sign PDF documents without printing" }
@@ -2532,7 +2532,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Sign PDF", href: "/sign-pdf", context: "Add signatures before flattening for permanent signing" },
       { text: "Edit PDF", href: "/edit-pdf", context: "Add text and fill forms before flattening" },
       { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection after flattening" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce file size of flattened documents" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size of flattened documents" },
       { text: "How to Flatten PDF", href: "/blog/how-to-flatten-pdf", context: "Guide to flattening form fields, annotations, and layers in PDF documents" },
       { text: "How to Password Protect a PDF", href: "/blog/protect-pdf-with-password", context: "Learn about flattening as a security measure before password-protecting documents" },
       { text: "Flatten PDF for Printing", href: "/tools/flatten-pdf-for-printing", context: "Convert fillable form fields to static content for reliable, consistent printing" }
@@ -2607,9 +2607,9 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { title: "Draft Review Workflow", description: "Create review copies efficiently", tools: ["grayscale-pdf", "add-watermark", "annotate-pdf"] }
     ],
     internalLinks: [
-      { text: "Compress PDF", href: "/compress", context: "Further reduce file size after grayscale conversion" },
-      { text: "Split PDF", href: "/split", context: "Extract specific pages to convert to grayscale" },
-      { text: "Merge PDF", href: "/merge", context: "Combine grayscale and color pages" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Further reduce file size after grayscale conversion" },
+      { text: "Split PDF", href: "/split-pdf", context: "Extract specific pages to convert to grayscale" },
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine grayscale and color pages" },
       { text: "Add Watermark", href: "/add-watermark", context: "Add DRAFT watermark to grayscale review copies" },
       { text: "Protect PDF", href: "/protect-pdf", context: "Secure your grayscale PDF after conversion" }
     ]
@@ -2683,10 +2683,10 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { title: "Archive Restoration Workflow", description: "Restore old or damaged archived files", tools: ["repair-pdf", "flatten-pdf", "protect-pdf"] }
     ],
     internalLinks: [
-      { text: "Compress PDF", href: "/compress", context: "Optimize repaired PDFs for storage" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Optimize repaired PDFs for storage" },
       { text: "OCR PDF", href: "/ocr-pdf", context: "Extract text if repair recovers scanned content" },
       { text: "Flatten PDF", href: "/flatten-pdf", context: "Stabilize repaired documents with complex elements" },
-      { text: "Merge PDF", href: "/merge", context: "Combine recovered pages into complete documents" },
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine recovered pages into complete documents" },
       { text: "Protect PDF", href: "/protect-pdf", context: "Secure your repaired PDF with a password" }
     ]
   },
@@ -2839,8 +2839,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Flatten PDF", href: "/flatten-pdf", context: "Lock annotations permanently after review" },
       { text: "OCR PDF", href: "/ocr-pdf", context: "Make scanned PDFs highlightable" },
       { text: "Extract Text", href: "/extract-text", context: "Extract highlighted content as text" },
-      { text: "Merge PDF", href: "/merge", context: "Combine annotated documents for comprehensive review" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce file size of your annotated document" }
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine annotated documents for comprehensive review" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size of your annotated document" }
     ]
   },
   "redact-pdf": {
@@ -2914,8 +2914,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     internalLinks: [
       { text: "Flatten PDF", href: "/flatten-pdf", context: "Lock redacted document to prevent any modifications" },
       { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection to redacted documents" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce file size of redacted documents for sharing" },
-      { text: "Split PDF", href: "/split", context: "Extract specific pages for targeted redaction" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size of redacted documents for sharing" },
+      { text: "Split PDF", href: "/split-pdf", context: "Extract specific pages for targeted redaction" },
       { text: "Annotate PDF", href: "/annotate-pdf", context: "Add annotations before redacting sensitive content" }
     ]
   },
@@ -2990,9 +2990,9 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     internalLinks: [
       { text: "Annotate PDF", href: "/annotate-pdf", context: "Add highlights and comments after reviewing" },
       { text: "OCR PDF", href: "/ocr-pdf", context: "Make scanned PDFs searchable" },
-      { text: "Compress PDF", href: "/compress", context: "Reduce file size before sharing" },
+      { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size before sharing" },
       { text: "PDF to Word", href: "/pdf-to-word", context: "Convert to editable format after review" },
-      { text: "Split PDF", href: "/split", context: "Split PDF into sections while reviewing" }
+      { text: "Split PDF", href: "/split-pdf", context: "Split PDF into sections while reviewing" }
     ]
   },
   "compare-pdf": {
@@ -3068,7 +3068,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Annotate PDF", href: "/annotate-pdf", context: "Add comments to differences found" },
       { text: "Flatten PDF", href: "/flatten-pdf", context: "Lock document after approving changes" },
       { text: "Protect PDF", href: "/protect-pdf", context: "Secure the final approved version" },
-      { text: "Merge PDF", href: "/merge", context: "Merge documents after comparison" }
+      { text: "Merge PDF", href: "/merge-pdf", context: "Merge documents after comparison" }
     ]
   },
   "image-compressor": {
@@ -3605,10 +3605,10 @@ toolSEOData["pdf-to-ppt"] = {
   internalLinks: [
     { text: "PowerPoint to PDF", href: "/ppt-to-pdf", context: "Convert your finished presentation back to PDF for sharing" },
     { text: "PDF to Word", href: "/pdf-to-word", context: "Extract editable text content from your PDF" },
-    { text: "Compress PDF", href: "/compress", context: "Reduce PDF size before converting" },
+    { text: "Compress PDF", href: "/compress-pdf", context: "Reduce PDF size before converting" },
     { text: "OCR PDF", href: "/ocr-pdf", context: "Extract text from scanned PDFs before converting to PPTX" },
     { text: "PDF to Excel", href: "/pdf-to-excel", context: "Convert PDF tables to spreadsheets" },
-    { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs before converting" },
+    { text: "Merge PDF", href: "/merge-pdf", context: "Combine multiple PDFs before converting" },
     { text: "/blog/best-free-pdf-tools-2026", href: "/blog/best-free-pdf-tools-2026", context: "See all top free PDF tools including PDF to PPTX" }
   ]
 } as unknown as ToolSEOData;
@@ -3678,9 +3678,9 @@ toolSEOData["scan-to-pdf"] = {
   ],
   internalLinks: [
     { text: "OCR PDF", href: "/ocr-pdf", context: "Make your scanned documents fully searchable with OCR" },
-    { text: "Compress PDF", href: "/compress", context: "Reduce the size of your scanned PDF for email" },
+    { text: "Compress PDF", href: "/compress-pdf", context: "Reduce the size of your scanned PDF for email" },
     { text: "JPG to PDF", href: "/jpg-to-pdf", context: "Convert individual photos to PDF" },
-    { text: "Merge PDF", href: "/merge", context: "Combine multiple scanned pages into one PDF" },
+    { text: "Merge PDF", href: "/merge-pdf", context: "Combine multiple scanned pages into one PDF" },
     { text: "Protect PDF", href: "/protect", context: "Password-protect your scanned documents" },
     { text: "Rotate PDF", href: "/rotate-pdf", context: "Fix orientation of scanned pages" },
     { text: "/blog/pdf-tools-for-students", href: "/blog/pdf-tools-for-students", context: "Essential PDF tools for students including scanning workflows" }
@@ -3751,10 +3751,10 @@ toolSEOData["pdf-to-pdfa"] = {
     { title: "University Thesis Submission", description: "Ensure thesis is PDF/A compliant before submission", tools: ["pdf-to-pdfa", "compress"] }
   ],
   internalLinks: [
-    { text: "Compress PDF", href: "/compress", context: "Reduce PDF file size before archiving" },
+    { text: "Compress PDF", href: "/compress-pdf", context: "Reduce PDF file size before archiving" },
     { text: "Protect PDF", href: "/protect", context: "Add password to archived documents" },
     { text: "OCR PDF", href: "/ocr-pdf", context: "Make scanned content searchable before archiving" },
-    { text: "Merge PDF", href: "/merge", context: "Combine documents before converting to PDF/A" },
+    { text: "Merge PDF", href: "/merge-pdf", context: "Combine documents before converting to PDF/A" },
     { text: "Unlock PDF", href: "/unlock-pdf", context: "Remove passwords before PDF/A conversion" },
     { text: "Flatten PDF", href: "/flatten-pdf", context: "Flatten forms before archiving" },
     { text: "/blog/protect-pdf-with-password", href: "/blog/protect-pdf-with-password", context: "How to secure PDF documents for long-term storage" }
@@ -3825,9 +3825,9 @@ toolSEOData["batch-compress"] = {
     { title: "Email Delivery Workflow", description: "Compress multiple project files then share via email", tools: ["batch-compress", "compress"] }
   ],
   internalLinks: [
-    { text: "Compress PDF", href: "/compress", context: "Compress a single PDF file" },
-    { text: "Merge PDF", href: "/merge", context: "Merge all your PDFs into one before or after compressing" },
-    { text: "Split PDF", href: "/split", context: "Split large PDFs into smaller sections" },
+    { text: "Compress PDF", href: "/compress-pdf", context: "Compress a single PDF file" },
+    { text: "Merge PDF", href: "/merge-pdf", context: "Merge all your PDFs into one before or after compressing" },
+    { text: "Split PDF", href: "/split-pdf", context: "Split large PDFs into smaller sections" },
     { text: "Extract Pages", href: "/extract-pages", context: "Extract only the pages you need before compressing" },
     { text: "Compress Image", href: "/image-compressor", context: "Compress images before embedding in PDF" },
     { text: "Unlock PDF", href: "/unlock-pdf", context: "Remove passwords from PDFs before batch compressing" },
@@ -3904,9 +3904,9 @@ toolSEOData["ppt-to-pdf"] = {
   internalLinks: [
     { text: "PDF to PPT", href: "/pdf-to-ppt", context: "Convert PDF slides back to editable PowerPoint format" },
     { text: "Word to PDF", href: "/word-to-pdf", context: "Convert Word documents to PDF" },
-    { text: "Compress PDF", href: "/compress", context: "Reduce the PDF file size after converting from PPT" },
+    { text: "Compress PDF", href: "/compress-pdf", context: "Reduce the PDF file size after converting from PPT" },
     { text: "Add Watermark", href: "/add-watermark", context: "Add branding or confidential labels to your presentation PDF" },
-    { text: "Merge PDF", href: "/merge", context: "Combine multiple presentation PDFs into one" }
+    { text: "Merge PDF", href: "/merge-pdf", context: "Combine multiple presentation PDFs into one" }
   ]
 } as unknown as ToolSEOData;
 
@@ -3957,7 +3957,7 @@ toolSEOData["watermark-pdf"] = {
     { text: "Protect PDF", href: "/protect-pdf", context: "Add password encryption alongside your watermark" },
     { text: "Add Page Numbers", href: "/page-numbers", context: "Number pages in addition to watermarking" },
     { text: "Sign PDF", href: "/sign-pdf", context: "Digitally sign the watermarked document" },
-    { text: "Compress PDF", href: "/compress", context: "Reduce file size after watermarking" }
+    { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size after watermarking" }
   ]
 } as unknown as ToolSEOData;
 
@@ -4005,9 +4005,9 @@ toolSEOData["page-numbers"] = {
     { title: "Academic Submission Workflow", description: "Format thesis and dissertation PDFs correctly", tools: ["page-numbers", "watermark-pdf", "protect-pdf"] }
   ],
   internalLinks: [
-    { text: "Merge PDF", href: "/merge", context: "Combine chapters before adding page numbers" },
+    { text: "Merge PDF", href: "/merge-pdf", context: "Combine chapters before adding page numbers" },
     { text: "Add Watermark", href: "/watermark-pdf", context: "Add a watermark alongside page numbers" },
-    { text: "Compress PDF", href: "/compress", context: "Reduce size after formatting your document" },
+    { text: "Compress PDF", href: "/compress-pdf", context: "Reduce size after formatting your document" },
     { text: "Protect PDF", href: "/protect-pdf", context: "Password-protect the numbered document" }
   ]
 } as unknown as ToolSEOData;
@@ -4210,7 +4210,7 @@ toolSEOData["epub-to-pdf"] = {
   ],
   internalLinks: [
     { text: "PDF to EPUB", href: "/pdf-to-epub", context: "Convert PDF documents back to EPUB ebook format" },
-    { text: "Compress PDF", href: "/compress", context: "Reduce the converted PDF file size" },
+    { text: "Compress PDF", href: "/compress-pdf", context: "Reduce the converted PDF file size" },
     { text: "PDF Page Size", href: "/pdf-page-size", context: "Adjust PDF page dimensions after conversion" },
     { text: "Protect PDF", href: "/protect-pdf", context: "Password-protect the converted PDF" }
   ]
@@ -4263,7 +4263,7 @@ toolSEOData["pdf-to-epub"] = {
     { text: "EPUB to PDF", href: "/epub-to-pdf", context: "Convert EPUB back to PDF format" },
     { text: "OCR PDF", href: "/ocr-pdf", context: "Make scanned PDFs text-selectable before conversion" },
     { text: "PDF to Text", href: "/pdf-to-text", context: "Extract plain text before converting to EPUB" },
-    { text: "Compress PDF", href: "/compress", context: "Reduce PDF size before format conversion" }
+    { text: "Compress PDF", href: "/compress-pdf", context: "Reduce PDF size before format conversion" }
   ]
 } as unknown as ToolSEOData;
 
@@ -4568,8 +4568,8 @@ toolSEOData["heic-to-pdf"] = {
   internalLinks: [
     { text: "HEIC to JPG", href: "/heic-to-jpg", context: "Convert HEIC to JPG for universal compatibility" },
     { text: "JPG to PDF", href: "/jpg-to-pdf", context: "Convert JPG photos to PDF" },
-    { text: "Merge PDF", href: "/merge", context: "Combine multiple PDFs after conversion" },
-    { text: "Compress PDF", href: "/compress", context: "Reduce the PDF file size after photo compilation" }
+    { text: "Merge PDF", href: "/merge-pdf", context: "Combine multiple PDFs after conversion" },
+    { text: "Compress PDF", href: "/compress-pdf", context: "Reduce the PDF file size after photo compilation" }
   ]
 } as unknown as ToolSEOData;
 
@@ -4617,8 +4617,8 @@ toolSEOData["reduce-pdf-size"] = {
     { title: "Archive Optimization Workflow", description: "Optimize stored PDFs for space efficiency", tools: ["reduce-pdf-size", "flatten-pdf", "grayscale-pdf"] }
   ],
   internalLinks: [
-    { text: "Compress PDF", href: "/compress", context: "Alternative PDF compression with different options" },
-    { text: "Split PDF", href: "/split", context: "Split large PDFs into smaller parts" },
+    { text: "Compress PDF", href: "/compress-pdf", context: "Alternative PDF compression with different options" },
+    { text: "Split PDF", href: "/split-pdf", context: "Split large PDFs into smaller parts" },
     { text: "Grayscale PDF", href: "/grayscale-pdf", context: "Convert to grayscale for additional size reduction" },
     { text: "Delete Pages", href: "/delete-pages", context: "Remove unwanted pages to reduce file size" }
   ]
@@ -4669,9 +4669,9 @@ toolSEOData["pdf-page-size"] = {
   ],
   internalLinks: [
     { text: "Crop PDF", href: "/crop-pdf", context: "Crop specific areas of PDF pages" },
-    { text: "Rotate PDF", href: "/rotate", context: "Rotate page orientation alongside resizing" },
-    { text: "Compress PDF", href: "/compress", context: "Reduce file size after page resizing" },
-    { text: "Merge PDF", href: "/merge", context: "Combine standardized PDFs into one document" }
+    { text: "Rotate PDF", href: "/rotate-pdf", context: "Rotate page orientation alongside resizing" },
+    { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size after page resizing" },
+    { text: "Merge PDF", href: "/merge-pdf", context: "Combine standardized PDFs into one document" }
   ]
 } as unknown as ToolSEOData;
 

@@ -1374,7 +1374,7 @@ function genCompressSizePages(): ProgrammaticPage[] {
       `Compress PDF to ${s.label} Free Online | PDF HUB 24`,
       `Compress PDF to ${s.label} Free Online`,
       `Reduce your PDF file size to ${s.label} or less online, free. No signup, no watermark. Perfect for upload limits requiring files under ${s.label}.`,
-      "/compress", "Compress PDF",
+      "/compress-pdf", "Compress PDF",
       `Reaching a ${s.label} file size is a specific technical requirement for many online portals, email servers, and document management systems. A ${s.label} PDF represents a ${s.example} — and our free tool helps you get there without sacrificing readability.
 
 To compress a PDF to ${s.label}, upload your file using our Compress PDF tool and select the appropriate compression level. Text-only documents respond best to medium compression and often reach ${s.label} easily. Image-heavy files may need high compression combined with the grayscale conversion step for maximum size reduction.
@@ -1403,7 +1403,7 @@ Remember that file size depends on content complexity. A ${s.label} target is ac
       `Compress PDF Under ${s.label} Free Online | PDF HUB 24`,
       `Compress PDF to Under ${s.label} Instantly`,
       `Compress PDF files to under ${s.label} free online. Meet strict upload size limits for portals, email, and applications. No signup needed.`,
-      "/compress", "Compress PDF",
+      "/compress-pdf", "Compress PDF",
       `Many document submission systems reject files at exactly ${s.label} — meaning you need to stay strictly under this limit. Our compression tool gives you fine-grained control over the output size so you can confidently submit documents without getting an error.
 
 The most common reason a PDF exceeds ${s.label} is embedded images. Every scanned page, photo, chart, or screenshot adds significant file size. Our high-compression mode reduces image resolution to the minimum acceptable for screen viewing, typically reducing file size by 60–90% compared to the original.
@@ -1432,7 +1432,7 @@ Always check the compressed file by opening it before submitting — text should
       `Reduce PDF Size to ${s.label} Free | PDF HUB 24`,
       `Reduce PDF File Size to ${s.label} Free`,
       `Reduce PDF file size to ${s.label} online free. Fast compression with quality options. No sign up required. Works on any device.`,
-      "/compress", "Compress PDF",
+      "/compress-pdf", "Compress PDF",
       `Reducing a PDF to exactly ${s.label} is a common requirement across government portals, job application systems, insurance platforms, and cloud storage services. Our free tool handles this precisely, giving you a file that's within your target size without visible quality loss for text content.
 
 The secret to reliable PDF size reduction is understanding what makes your file large in the first place. Scanned images are the biggest culprit — a single scanned A4 page at 300 DPI can exceed 500KB on its own. Our compressor reduces image DPI to the optimal level for screen viewing while keeping text extracted at full quality.
@@ -1461,7 +1461,7 @@ function genCompressUseCasePages(): ProgrammaticPage[] {
     `Compress PDF for ${u.label} Free Online | PDF HUB 24`,
     `Compress PDF for ${u.label} — Free & Instant`,
     `Compress your PDF for ${u.label} online free. No signup, no watermark. Get your file within the required size limit in seconds.`,
-    "/compress", "Compress PDF",
+    "/compress-pdf", "Compress PDF",
     `${u.context}
 
 Our free PDF compressor handles ${u.label} requirements precisely. Simply upload your document, choose your compression level, and download the result. Three compression levels give you flexibility: low for minimal quality trade-off, medium for balanced results, and high for maximum size reduction.
@@ -1500,7 +1500,7 @@ function genCompressPlatformPages(): ProgrammaticPage[] {
     `Compress PDF on ${p.label} Free | PDF HUB 24`,
     `Compress PDF on ${p.label} — Free & Instant`,
     `Compress PDF on ${p.label} free online. No app or software installation needed. Works entirely in your ${p.label} browser.`,
-    "/compress", "Compress PDF",
+    "/compress-pdf", "Compress PDF",
     `${p.detail} This makes PDF compression accessible on ${p.label} without purchasing or installing dedicated software.
 
 To compress a PDF on ${p.label}: open this page in your browser, click the upload area to select your PDF, choose a compression level (medium is recommended for most use cases), and click Compress. Within seconds your compressed file is ready to download.
@@ -1529,7 +1529,7 @@ function genCompressProfessionPages(): ProgrammaticPage[] {
     `Compress PDF for ${pr.label} Free | PDF HUB 24`,
     `Free PDF Compression for ${pr.label}`,
     `PDF compression tool built for ${pr.label}. Compress documents for portals, email, and sharing — free, no signup, no watermark.`,
-    "/compress", "Compress PDF",
+    "/compress-pdf", "Compress PDF",
     `${pr.context}
 
 ${pr.label} benefit most from a fast, no-registration compression tool that handles the range of documents they work with: multi-page reports, scanned forms, image-rich presentations, and dense text documents. Our tool handles all of these with appropriate compression per content type.
@@ -1562,7 +1562,7 @@ function genMergeCountPages(): ProgrammaticPage[] {
       `Merge ${nLabel} PDF Files Free Online | PDF HUB 24`,
       `Merge ${nLabel} PDF Files Into One`,
       `Merge exactly ${n} PDF files into one document online, free. Drag to reorder pages, then download your combined PDF. No signup needed.`,
-      "/merge", "Merge PDF",
+      "/merge-pdf", "Merge PDF",
       `Combining exactly ${n} PDF files into a single document is a common task for organising reports, assembling application packages, or creating a unified reference file. Our free tool handles this in three simple steps: upload your ${n} files, arrange them in the correct order, and download the merged PDF.
 
 Page order matters when merging ${n} PDFs. Our drag-and-drop interface lets you arrange files or individual pages before merging, ensuring the final document follows the logical sequence you intend. You can also preview each document before merging to confirm the right files are selected.
@@ -1590,7 +1590,7 @@ For recurring workflows that require merging ${n} PDFs regularly, bookmark this 
       `Combine ${nLabel} PDF Files Free Online | PDF HUB 24`,
       `Combine ${nLabel} PDFs Into One Document`,
       `Combine ${n} PDF files into a single document free online. Fast, easy, no signup. Drag to reorder, then download your combined PDF.`,
-      "/merge", "Merge PDF",
+      "/merge-pdf", "Merge PDF",
       `Combining ${n} PDF documents is straightforward with our free tool. Whether you're assembling a multi-part submission, creating a comprehensive reference document, or simply organising related files, merging ${n} PDFs takes under a minute.
 
 Upload your ${n} files in any order — you can rearrange them in the interface before combining. Our tool preserves the complete content of each file, including all text, images, links, and formatting. The output is a standard PDF compatible with Adobe Reader, Mac Preview, Google Chrome, and every other PDF viewer.
@@ -1622,7 +1622,7 @@ function genMergeUseCasePages(): ProgrammaticPage[] {
       `Merge PDF for ${u.label} Free Online | PDF HUB 24`,
       `Merge PDF Documents for ${u.label}`,
       `Merge PDF files for ${u.label} online free. Combine multiple documents into one organised PDF. No signup, no watermark, instant download.`,
-      "/merge", "Merge PDF",
+      "/merge-pdf", "Merge PDF",
       `${u.context}
 
 To merge PDFs for ${u.label}: upload all your documents, arrange them in the correct order using drag-and-drop, then click Merge. The result is a single, professionally paginated PDF ready for submission or delivery.
@@ -1650,7 +1650,7 @@ No registration is required. Your documents are never shared with third parties,
       `Combine PDF for ${u.label} Free | PDF HUB 24`,
       `Combine PDFs for ${u.label} — Free & Instant`,
       `Combine multiple PDF files into one organised document for ${u.label}. Free online tool, no signup required, instant download.`,
-      "/merge", "Merge PDF",
+      "/merge-pdf", "Merge PDF",
       `${u.context}
 
 Combining PDFs specifically for ${u.label} purposes means getting the order and completeness right the first time. Our tool gives you full control: upload in any order, drag files or pages into the correct sequence, preview before merging, and download a polished single PDF.
@@ -1679,7 +1679,7 @@ function genMergeProfessionPages(): ProgrammaticPage[] {
     `Merge PDF for ${pr.label} Free | PDF HUB 24`,
     `Merge PDF for ${pr.label} — Free Online Tool`,
     `Merge PDF files for ${pr.label} free online. Combine reports, documents, and case files into one organised PDF. No signup required.`,
-    "/merge", "Merge PDF",
+    "/merge-pdf", "Merge PDF",
     `${pr.context}
 
 For ${pr.label}, merging PDFs often means combining documents from different sources — forms, supporting evidence, identification, and signed agreements — into a single coherent package. Our tool handles this precisely, giving you full control over the order and composition of the final document.
@@ -1712,7 +1712,7 @@ function genSplitPages(): ProgrammaticPage[] {
       `Split PDF Into ${n} Parts Free Online | PDF HUB 24`,
       `Split PDF Into ${n} Equal Parts Free`,
       `Split a PDF into ${n} parts online free. Divide your document evenly or by custom page ranges. No signup, instant download.`,
-      "/split", "Split PDF",
+      "/split-pdf", "Split PDF",
       `Splitting a PDF into exactly ${n} parts is useful for distributing a document to ${n} reviewers, creating ${n} chapter files from a complete manual, or dividing a large submission into ${n} upload-sized pieces.
 
 Our split tool offers two approaches: split evenly (our tool automatically calculates which pages go into each of the ${n} parts) or split by custom page ranges (you specify exactly which pages each part contains). Both options result in ${n} separate downloadable PDF files.
@@ -1742,7 +1742,7 @@ All ${n} output files maintain the original quality, formatting, and any embedde
       `Split PDF Every ${n} Page${n > 1 ? "s" : ""} Free Online | PDF HUB 24`,
       `Split PDF Every ${n} Page${n > 1 ? "s" : ""} — Free & Instant`,
       `Split a PDF into separate ${n}-page documents online free. Each output file contains exactly ${n} pages. No signup required.`,
-      "/split", "Split PDF",
+      "/split-pdf", "Split PDF",
       `Splitting a PDF every ${n} page${n > 1 ? "s" : ""} creates a series of ${n}-page documents from a longer file. This is useful for creating standardised ${n}-page handout packets, extracting ${n}-page invoice batches, or dividing a scanned multi-form document where each form is exactly ${n} page${n > 1 ? "s" : ""} long.
 
 After uploading your PDF and selecting the "split every ${n} page${n > 1 ? "s" : ""}" option, our tool automatically calculates how many output files to create and assigns the correct pages to each. If the total page count isn't evenly divisible by ${n}, the final output file will contain the remaining pages.
@@ -1800,7 +1800,7 @@ function genSplitUseCasePages(): ProgrammaticPage[] {
     `Split PDF for ${u.label} Free Online | PDF HUB 24`,
     `Split PDF for ${u.label} — Free & Fast`,
     `Split PDF files for ${u.label} online free. Divide documents into individual sections or parts. No signup, instant download.`,
-    "/split", "Split PDF",
+    "/split-pdf", "Split PDF",
     `${u.context}
 
 Splitting a PDF for ${u.label} purposes is straightforward with our free tool. Upload your document, choose how to split it (by page range, every N pages, or into equal parts), and download the resulting separate files. Each output retains the full quality and formatting of the original.
@@ -1890,7 +1890,7 @@ function genProfessionToolPages(): ProgrammaticPage[] {
     { prefix: "pdf-to-word-for", toolPath: "/pdf-to-word", toolName: "PDF to Word", action: "convert PDF documents to editable Word files" },
     { prefix: "sign-pdf-for", toolPath: "/sign-pdf", toolName: "Sign PDF", action: "add legally binding digital signatures to PDF documents" },
     { prefix: "protect-pdf-for", toolPath: "/protect-pdf", toolName: "Protect PDF", action: "add password protection to sensitive PDF documents" },
-    { prefix: "split-pdf-for-profession", toolPath: "/split", toolName: "Split PDF", action: "divide large PDF documents into focused sections" },
+    { prefix: "split-pdf-for-profession", toolPath: "/split-pdf", toolName: "Split PDF", action: "divide large PDF documents into focused sections" },
     { prefix: "annotate-pdf-for", toolPath: "/annotate-pdf", toolName: "Annotate PDF", action: "add highlights, comments, and annotations to PDF documents" },
   ];
 
@@ -1959,7 +1959,7 @@ function genCountryPages(): ProgrammaticPage[] {
         `Compress PDF Online Free — Best Tool for ${c.label} Users | PDF HUB 24`,
         `Best Free PDF Compressor for ${c.label} Users`,
         `Compress PDF online free — trusted by ${c.demonym}. Works for ${c.portal}. Meet upload limits for ${rd.docs}. No signup, no watermark.`,
-        "/compress", "Compress PDF",
+        "/compress-pdf", "Compress PDF",
         compressContent,
         [
           `Compressing ${rd.docs.split(",")[0].trim()} before submitting to ${c.portal}`,
@@ -2065,7 +2065,7 @@ function genDocTypePages(): ProgrammaticPage[] {
       `Compress ${d.label} PDF Free Online | PDF HUB 24`,
       `Compress ${d.label} PDF — Free & Instant`,
       `Compress ${d.label} PDF files online free. Reduce file size for email, upload portals, and sharing. No signup, no watermark.`,
-      "/compress", "Compress PDF",
+      "/compress-pdf", "Compress PDF",
       `${d.context}
 
 Compressing a ${d.label} PDF is straightforward: upload the file, select medium compression (which works well for most ${d.label} documents), and download the compressed version. The result is a smaller file that maintains the same professional appearance.
@@ -2091,7 +2091,7 @@ For ${d.label} documents specifically, text quality is paramount — our compres
       `Merge ${d.label} PDF Files Free | PDF HUB 24`,
       `Merge ${d.label} PDFs Into One Document`,
       `Merge multiple ${d.label} PDF files into one organised document free online. No signup, no watermark, instant download.`,
-      "/merge", "Merge PDF",
+      "/merge-pdf", "Merge PDF",
       `${d.context}
 
 Merging ${d.label} PDFs combines multiple separate files into a single professionally organised document. This is useful when you have several ${d.label} documents that logically belong together — for example, multiple months of ${d.label} documents that need to be presented as a complete set.
@@ -2117,9 +2117,9 @@ Upload your ${d.label} PDFs, arrange them in the correct sequence using drag-and
 function genIndustryPages(): ProgrammaticPage[] {
   const results: ProgrammaticPage[] = [];
   const tools = [
-    { prefix: "compress-pdf-for", toolPath: "/compress", toolName: "Compress PDF" },
-    { prefix: "merge-pdf-for", toolPath: "/merge", toolName: "Merge PDF" },
-    { prefix: "split-pdf-for", toolPath: "/split", toolName: "Split PDF" },
+    { prefix: "compress-pdf-for", toolPath: "/compress-pdf", toolName: "Compress PDF" },
+    { prefix: "merge-pdf-for", toolPath: "/merge-pdf", toolName: "Merge PDF" },
+    { prefix: "split-pdf-for", toolPath: "/split-pdf", toolName: "Split PDF" },
   ];
   for (const t of tools) {
     for (const ind of INDUSTRIES) {
@@ -2250,7 +2250,7 @@ OCR accuracy for ${l.label} depends on the scan quality. Clear, high-contrast sc
   }
 
   const securityPages = [
-    { slug: "compress-and-protect-pdf", toolPath: "/compress", toolName: "Compress PDF", h1: "Compress and Protect PDF in One Workflow", desc: "Compress your PDF to reduce file size, then protect it with a password — two essential steps for sharing sensitive documents securely." },
+    { slug: "compress-and-protect-pdf", toolPath: "/compress-pdf", toolName: "Compress PDF", h1: "Compress and Protect PDF in One Workflow", desc: "Compress your PDF to reduce file size, then protect it with a password — two essential steps for sharing sensitive documents securely." },
     { slug: "encrypt-pdf-free", toolPath: "/protect-pdf", toolName: "Protect PDF", h1: "Encrypt PDF with Password Free Online", desc: "Encrypt PDF files with 256-bit AES password protection online free. Prevent unauthorised access and control who can open your document." },
     { slug: "pdf-password-remove-free", toolPath: "/unlock-pdf", toolName: "Unlock PDF", h1: "Remove PDF Password Free Online", desc: "Remove password protection from your own PDF files online free. Unlock PDFs you own for editing, printing, and sharing." },
     { slug: "secure-pdf-for-sharing", toolPath: "/protect-pdf", toolName: "Protect PDF", h1: "Secure PDF Before Sharing — Password Protect", desc: "Add password protection to PDFs before sharing by email or messaging app. Control who can open your document with a strong password." },
@@ -2313,7 +2313,7 @@ function genBatchAndWorkflowPages(): ProgrammaticPage[] {
         `${bp.h1} | PDF HUB 24`,
         bp.h1,
         bp.desc,
-        "/compress", "Compress PDF",
+        "/compress-pdf", "Compress PDF",
         `${bp.desc}
 
 Our free PDF tools handle this task with no registration required. Simply open the tool in your browser, upload your file or files, complete the operation, and download the results. All processing is done securely with HTTPS encryption, and files are automatically deleted from our servers within 1 hour of processing.
@@ -2342,7 +2342,7 @@ function genCountryToolPages(): ProgrammaticPage[] {
       title: (label: string) => `Merge PDF Free Online in ${label} | PDF HUB 24`,
       h1: (label: string) => `Merge PDF in ${label} — Free Online Tool`,
       desc: (label: string, demonym: string) => `Merge PDF files free online — trusted by ${demonym}. Combine multiple PDFs into one. No signup, no watermark, instant download.`,
-      toolPath: "/merge",
+      toolPath: "/merge-pdf",
       toolName: "Merge PDF",
       content: (c: CC) => {
         const rd = getRich(c.slug); const vr = slugVariant(c.slug);
@@ -2447,7 +2447,7 @@ function genCountryToolPages(): ProgrammaticPage[] {
       title: (label: string) => `Split PDF Free Online in ${label} | PDF HUB 24`,
       h1: (label: string) => `Split PDF Online in ${label} — Extract Any Pages Free`,
       desc: (label: string, demonym: string) => `Split PDF documents free online in ${label}. Extract specific pages or split by page range. Trusted by ${demonym}. No signup.`,
-      toolPath: "/split",
+      toolPath: "/split-pdf",
       toolName: "Split PDF",
       content: (c: CC) => {
         const rd = getRich(c.slug); const vr = slugVariant(c.slug);
@@ -2520,7 +2520,7 @@ function genCountryToolPages(): ProgrammaticPage[] {
       title: (label: string) => `Compress PDF Online Free in ${label} — No Software Needed | PDF HUB 24`,
       h1: (label: string) => `Compress PDF Online in ${label} — No Install, No Account`,
       desc: (label: string, demonym: string) => `Compress PDF online free in ${label} — no software installation, no Adobe Acrobat licence. Trusted by ${demonym}. Works on any browser.`,
-      toolPath: "/compress",
+      toolPath: "/compress-pdf",
       toolName: "Compress PDF",
       content: (c: CC) => {
         const rd = getRich(c.slug); const vr = slugVariant(c.slug);

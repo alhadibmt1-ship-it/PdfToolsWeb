@@ -228,8 +228,8 @@ export default function AllToolsPage() {
             <p>
               PDF HUB 24 provides a comprehensive suite of over 43 professional PDF tools, all completely free and available online without any registration. 
               Whether you need to convert a <Link href="/pdf-to-word" className="text-primary hover:underline">PDF to Word</Link>, 
-              <Link href="/merge" className="text-primary hover:underline"> merge multiple PDFs</Link>, or 
-              <Link href="/compress" className="text-primary hover:underline"> compress a large PDF file</Link>, 
+              <Link href="/merge-pdf" className="text-primary hover:underline"> merge multiple PDFs</Link>, or 
+              <Link href="/compress-pdf" className="text-primary hover:underline"> compress a large PDF file</Link>, 
               our platform delivers professional results instantly.
             </p>
             <p>
@@ -264,7 +264,7 @@ export default function AllToolsPage() {
             </div>
             <p>
               Our tools are used by business professionals, students, educators, and legal teams worldwide. From simple tasks like 
-              <Link href="/rotate" className="text-primary hover:underline"> rotating a PDF</Link> to advanced operations like 
+              <Link href="/rotate-pdf" className="text-primary hover:underline"> rotating a PDF</Link> to advanced operations like 
               <Link href="/ocr-pdf" className="text-primary hover:underline"> OCR text recognition</Link> and 
               <Link href="/redact-pdf" className="text-primary hover:underline"> PDF redaction</Link>, 
               PDF HUB 24 covers every PDF workflow. Learn more about PDF usage trends on our 

@@ -24,7 +24,7 @@ interface ToolEntry {
 const topTools: ToolEntry[] = [
   {
     name: "Merge PDF",
-    path: "/merge",
+    path: "/merge-pdf",
     description: "Combine multiple PDF files into one document instantly. Drag, drop, and reorder files before merging.",
     badge: "Most Popular",
     tags: ["Free", "No signup", "Unlimited"],
@@ -33,7 +33,7 @@ const topTools: ToolEntry[] = [
   },
   {
     name: "Compress PDF",
-    path: "/compress",
+    path: "/compress-pdf",
     description: "Reduce PDF file size by up to 90% without visible quality loss. Great for email attachments.",
     badge: "Editor's Pick",
     tags: ["Free", "Adjustable quality", "Instant"],
@@ -58,7 +58,7 @@ const topTools: ToolEntry[] = [
   },
   {
     name: "Split PDF",
-    path: "/split",
+    path: "/split-pdf",
     description: "Split a PDF into individual pages or custom ranges. Extract exactly the pages you need.",
     tags: ["Free", "Custom ranges", "Page picker"],
     features: ["Page ranges", "Individual pages", "ZIP download", "No limit"],
@@ -355,8 +355,8 @@ export default function BestFreeToolsPage() {
             <h2 className="text-2xl font-bold mb-3">Ready to start?</h2>
             <p className="text-muted-foreground mb-6">All 49+ tools are free, instant, and require no sign-up.</p>
             <div className="flex flex-wrap justify-center gap-3">
-              <Link href="/merge"><Button size="lg">Merge PDF</Button></Link>
-              <Link href="/compress"><Button size="lg" variant="outline">Compress PDF</Button></Link>
+              <Link href="/merge-pdf"><Button size="lg">Merge PDF</Button></Link>
+              <Link href="/compress-pdf"><Button size="lg" variant="outline">Compress PDF</Button></Link>
               <Link href="/all-tools"><Button size="lg" variant="outline">See All 49+ Tools</Button></Link>
             </div>
           </div>

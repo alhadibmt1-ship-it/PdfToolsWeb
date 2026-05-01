@@ -182,12 +182,12 @@ export const COUNTRIES: CountryData[] = [
 export const COUNTRY_MAP = new Map<string, CountryData>(COUNTRIES.map(c => [c.slug, c]));
 
 export const TOOL_CONFIGS: Record<string, { name: string; toolPath: string; action: string; category: string }> = {
-  "compress-pdf":        { name: "Compress PDF",        toolPath: "/compress",       action: "compress",  category: "edit-pdf" },
-  "compress-pdf-online": { name: "Compress PDF Online", toolPath: "/compress",       action: "compress",  category: "edit-pdf" },
-  "merge-pdf":           { name: "Merge PDF",           toolPath: "/merge",          action: "merge",     category: "edit-pdf" },
+  "compress-pdf":        { name: "Compress PDF",        toolPath: "/compress-pdf",       action: "compress",  category: "edit-pdf" },
+  "compress-pdf-online": { name: "Compress PDF Online", toolPath: "/compress-pdf",       action: "compress",  category: "edit-pdf" },
+  "merge-pdf":           { name: "Merge PDF",           toolPath: "/merge-pdf",          action: "merge",     category: "edit-pdf" },
   "pdf-to-word":         { name: "PDF to Word",         toolPath: "/pdf-to-word",    action: "convert",   category: "from-pdf" },
   "sign-pdf":            { name: "Sign PDF",            toolPath: "/sign-pdf",       action: "sign",      category: "edit-pdf" },
-  "split-pdf":           { name: "Split PDF",           toolPath: "/split",          action: "split",     category: "edit-pdf" },
+  "split-pdf":           { name: "Split PDF",           toolPath: "/split-pdf",          action: "split",     category: "edit-pdf" },
   "convert-pdf":         { name: "Convert PDF",         toolPath: "/convert-pdf",    action: "convert",   category: "from-pdf" },
   "edit-pdf":            { name: "Edit PDF",            toolPath: "/edit-pdf",       action: "edit",      category: "edit-pdf" },
   "jpg-to-pdf":          { name: "JPG to PDF",          toolPath: "/jpg-to-pdf",     action: "convert",   category: "to-pdf" },

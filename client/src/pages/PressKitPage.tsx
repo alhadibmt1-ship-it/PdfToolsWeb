@@ -143,9 +143,9 @@ export default function PressKitPage() {
             <div className="grid sm:grid-cols-2 gap-3">
               {[
                 { name: "PDF to Word", path: "/pdf-to-word", desc: "Convert PDF to editable Word documents" },
-                { name: "Merge PDF", path: "/merge", desc: "Combine multiple PDFs into one" },
-                { name: "Compress PDF", path: "/compress", desc: "Reduce PDF file size for email" },
-                { name: "Split PDF", path: "/split", desc: "Extract specific pages from PDFs" },
+                { name: "Merge PDF", path: "/merge-pdf", desc: "Combine multiple PDFs into one" },
+                { name: "Compress PDF", path: "/compress-pdf", desc: "Reduce PDF file size for email" },
+                { name: "Split PDF", path: "/split-pdf", desc: "Extract specific pages from PDFs" },
                 { name: "Sign PDF", path: "/sign-pdf", desc: "Add signatures to PDF documents" },
                 { name: "Protect PDF", path: "/protect-pdf", desc: "Add password protection to PDFs" },
               ].map((tool) => (

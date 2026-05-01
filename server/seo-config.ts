@@ -237,9 +237,9 @@ const LANG_STATIC: Record<string, Record<string, [string, string]>> = {
 
 // ── Canonical path → TOOL_TITLE_TRANSLATIONS key ─────────────────────────────
 const PATH_TO_TOOL_KEY: Record<string, string> = {
-  "/merge":            "merge",
-  "/split":            "split",
-  "/compress":         "compress",
+  "/merge-pdf":        "merge",
+  "/split-pdf":        "split",
+  "/compress-pdf":     "compress",
   "/pdf-to-word":      "pdf-to-word",
   "/pdf-to-jpg":       "pdf-to-jpg",
   "/pdf-to-png":       "pdf-to-png",
@@ -253,7 +253,7 @@ const PATH_TO_TOOL_KEY: Record<string, string> = {
   "/protect-pdf":      "protect",
   "/unlock-pdf":       "unlock",
   "/sign-pdf":         "sign",
-  "/rotate":           "rotate",
+  "/rotate-pdf":       "rotate",
   "/add-watermark":    "watermark",
   "/grayscale-pdf":    "grayscale",
   "/ocr-pdf":          "ocr-pdf",
@@ -338,52 +338,56 @@ export const seoConfig: Record<string, PageSEO> = {
       }
     }
   },
-  "/merge": {
+  "/merge-pdf": {
     title: "Merge PDF Free Online — Combine PDFs Instantly | PDF HUB 24",
     description: "Merge multiple PDF files into one in seconds. Free online PDF merger — drag & drop to combine PDFs. No registration, no watermarks, no file limits.",
-    keywords: "merge PDF, combine PDF, join PDF files, PDF merger online, merge multiple PDFs free, combine PDF files",
+    keywords: "merge PDF, combine PDF files online free, join PDF files together, PDF merger online, merge multiple PDFs into one, pdf combiner online free",
+    canonical: `${BASE_URL}/merge-pdf`,
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Merge PDF - PDF HUB 24",
-      "url": `${BASE_URL}/merge`,
+      "url": `${BASE_URL}/merge-pdf`,
       "description": "Combine multiple PDF files into one document",
       "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
-  "/split": {
+  "/split-pdf": {
     title: "Split PDF Free Online (Extract Any Page) | PDF HUB 24",
-    description: "Split PDF files and extract specific pages in seconds. Free online PDF splitter — select page ranges or extract single pages. No signup, no watermark.",
-    keywords: "split PDF, extract PDF pages, PDF splitter, separate PDF pages, split PDF online free",
+    description: "Split PDF online free. Extract specific pages or split by page range. No signup required. Instant download. Free online PDF splitter tool.",
+    keywords: "split PDF, separate pdf pages online free, extract pages from pdf free, divide pdf into multiple files, PDF splitter, pdf page splitter online",
+    canonical: `${BASE_URL}/split-pdf`,
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Split PDF - PDF HUB 24",
-      "url": `${BASE_URL}/split`,
+      "url": `${BASE_URL}/split-pdf`,
       "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
-  "/compress": {
+  "/compress-pdf": {
     title: "Compress PDF Free — Reduce PDF Size 90% | PDF HUB 24",
-    description: "Compress PDF files and reduce size by up to 90%. Free online PDF compressor — 3 quality levels. Perfect for email under 25MB. No signup required.",
-    keywords: "compress PDF, reduce PDF size, PDF compressor, optimize PDF, shrink PDF online free",
+    description: "Compress PDF files online for free. Reduce PDF size up to 90% without losing quality. No signup, no watermarks, instant download. Free PDF compressor.",
+    keywords: "compress PDF, pdf compressor online, reduce pdf size online free, compress pdf without losing quality, compress large pdf file free, make pdf smaller online",
+    canonical: `${BASE_URL}/compress-pdf`,
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Compress PDF - PDF HUB 24",
-      "url": `${BASE_URL}/compress`,
+      "url": `${BASE_URL}/compress-pdf`,
       "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
-  "/rotate": {
+  "/rotate-pdf": {
     title: "Rotate PDF Free — Fix Orientation Instantly | PDF HUB 24",
-    description: "Rotate PDF pages 90°, 180°, or 270° clockwise. Free online PDF rotator — fix orientation issues instantly. No watermarks, no signup required.",
+    description: "Rotate PDF pages online free. Rotate single pages or entire PDF documents. 90 or 180 degrees. No signup required. Instant download. Free PDF rotator.",
     keywords: "rotate PDF, turn PDF pages, PDF rotator, flip PDF, rotate PDF online free",
+    canonical: `${BASE_URL}/rotate-pdf`,
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Rotate PDF - PDF HUB 24",
-      "url": `${BASE_URL}/rotate`,
+      "url": `${BASE_URL}/rotate-pdf`,
       "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
@@ -510,8 +514,8 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/protect-pdf": {
     title: "Protect PDF Free — AES-256 Encryption | PDF HUB 24",
-    description: "Add password protection to PDF files in seconds. Free PDF encryption tool — AES-256 security, set permissions. No signup, no watermark required.",
-    keywords: "protect PDF, encrypt PDF, password protect PDF, secure PDF, PDF encryption online free",
+    description: "Password protect PDF online free. Add 256-bit encryption to secure your PDF files. No signup required. Instant protection. Free PDF security tool.",
+    keywords: "protect PDF, encrypt pdf online free, add password to pdf free, secure pdf with password online, pdf encryption online free, password protect PDF",
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -558,8 +562,8 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/add-watermark": {
     title: "Add Watermark to PDF Free (Text & Custom Style) | PDF HUB 24",
-    description: "Add text watermarks to PDF documents in seconds. Free PDF watermark tool — customize text, position, and opacity. No signup, no watermark limits.",
-    keywords: "add watermark PDF, PDF watermark, watermark PDF online free, stamp PDF",
+    description: "Add watermark to PDF online free. Custom text or image watermarks. Adjust position, size and opacity. No signup. Instant download. Free PDF watermark tool.",
+    keywords: "add watermark PDF, PDF watermark online free, stamp PDF with text, custom watermark pdf, watermark pdf online, image watermark pdf",
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -671,8 +675,8 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/ocr-pdf": {
     title: "OCR PDF Free — Scanned PDF to Searchable Text | PDF HUB 24",
-    description: "OCR scanned PDFs and extract text instantly. Free online OCR tool — convert scanned documents to searchable, selectable text. No signup required.",
-    keywords: "OCR PDF, optical character recognition, extract text scanned PDF, OCR online free",
+    description: "OCR PDF online free. Make scanned PDFs searchable and selectable. Convert scanned documents to searchable text. No signup. Free online OCR tool.",
+    keywords: "ocr pdf online free, make scanned pdf searchable, convert scanned pdf to text, pdf text recognition online free, OCR PDF, optical character recognition PDF",
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -707,8 +711,8 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/sign-pdf": {
     title: "Sign PDF Free Online (Draw, Type or Upload) | PDF HUB 24",
-    description: "Add your signature to PDF documents in seconds. Free PDF signing tool — draw, type, or upload an image of your signature. No signup, no watermark required.",
-    keywords: "sign PDF, add signature PDF, PDF signature, e-sign PDF, sign PDF online free",
+    description: "Sign PDF online free. Add electronic signature to any PDF instantly. No printing or scanning needed. Legally valid digital signature. 100% free.",
+    keywords: "sign PDF, electronic signature pdf free, digitally sign pdf online, add signature to pdf free, esign pdf online free, PDF signature online",
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -779,8 +783,8 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/redact-pdf": {
     title: "Redact PDF Free — Remove Sensitive Info | PDF HUB 24",
-    description: "Redact sensitive information from PDF documents. Free PDF redaction tool — permanently black out text and images. No signup, 100% secure.",
-    keywords: "redact PDF, black out PDF, censor PDF, PDF redaction, redact PDF online free",
+    description: "Redact PDF online free. Permanently black out sensitive information. Secure and irreversible redaction. No signup required. Free online PDF redaction tool.",
+    keywords: "redact PDF, black out PDF text free, censor pdf online, PDF redaction tool, redact pdf online free, permanently remove text pdf",
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -2461,10 +2465,10 @@ function generateCrawlableNav(currentPath: string): string {
     { href: "/gif-to-pdf", text: "GIF to PDF" },
     { href: "/html-to-pdf", text: "HTML to PDF" },
     { href: "/webp-to-pdf", text: "WebP to PDF" },
-    { href: "/merge", text: "Merge PDF" },
-    { href: "/split", text: "Split PDF" },
-    { href: "/compress", text: "Compress PDF" },
-    { href: "/rotate", text: "Rotate PDF" },
+    { href: "/merge-pdf", text: "Merge PDF" },
+    { href: "/split-pdf", text: "Split PDF" },
+    { href: "/compress-pdf", text: "Compress PDF" },
+    { href: "/rotate-pdf", text: "Rotate PDF" },
     { href: "/delete-pages", text: "Delete Pages" },
     { href: "/protect-pdf", text: "Protect PDF" },
     { href: "/unlock-pdf", text: "Unlock PDF" },
@@ -3073,10 +3077,10 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
       {
         title: "Edit PDF",
         tools: [
-          { href: "/merge", text: "Merge PDF — Combine multiple PDF files into one" },
-          { href: "/split", text: "Split PDF — Separate PDF into individual pages or parts" },
-          { href: "/compress", text: "Compress PDF — Reduce PDF file size for email" },
-          { href: "/rotate", text: "Rotate PDF — Rotate PDF pages 90 or 180 degrees" },
+          { href: "/merge-pdf", text: "Merge PDF — Combine multiple PDF files into one" },
+          { href: "/split-pdf", text: "Split PDF — Separate PDF into individual pages or parts" },
+          { href: "/compress-pdf", text: "Compress PDF — Reduce PDF file size for email" },
+          { href: "/rotate-pdf", text: "Rotate PDF — Rotate PDF pages 90 or 180 degrees" },
           { href: "/delete-pages", text: "Delete PDF Pages — Remove unwanted pages from PDF" },
           { href: "/extract-pages", text: "Extract PDF Pages — Pull specific pages from PDF" },
           { href: "/reorder-pages", text: "Reorder PDF Pages — Drag and drop to rearrange pages" },
@@ -3268,10 +3272,10 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
     { href: "/html-to-pdf", text: "HTML to PDF", cat: "Convert to PDF" },
     { href: "/tiff-to-pdf", text: "TIFF to PDF", cat: "Convert to PDF" },
     { href: "/webp-to-pdf", text: "WebP to PDF", cat: "Convert to PDF" },
-    { href: "/merge", text: "Merge PDF", cat: "Edit PDF" },
-    { href: "/split", text: "Split PDF", cat: "Edit PDF" },
-    { href: "/compress", text: "Compress PDF", cat: "Edit PDF" },
-    { href: "/rotate", text: "Rotate PDF", cat: "Edit PDF" },
+    { href: "/merge-pdf", text: "Merge PDF", cat: "Edit PDF" },
+    { href: "/split-pdf", text: "Split PDF", cat: "Edit PDF" },
+    { href: "/compress-pdf", text: "Compress PDF", cat: "Edit PDF" },
+    { href: "/rotate-pdf", text: "Rotate PDF", cat: "Edit PDF" },
     { href: "/edit-pdf", text: "Edit PDF Text", cat: "Edit PDF" },
     { href: "/annotate-pdf", text: "Annotate PDF", cat: "Edit PDF" },
     { href: "/redact-pdf", text: "Redact PDF", cat: "Edit PDF" },

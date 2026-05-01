@@ -103,12 +103,12 @@ const NotFound = lazy(() => import("@/pages/not-found"));
 const ENGLISH_SLUG_TO_COMPONENT: Record<string, LazyExoticComponent<any>> = {};
 function _initSlugMap() {
   const m = ENGLISH_SLUG_TO_COMPONENT;
-  m["merge"] = MergePdfPage; m["split"] = SplitPdfPage; m["compress"] = CompressPdfPage;
+  m["merge-pdf"] = MergePdfPage; m["split-pdf"] = SplitPdfPage; m["compress-pdf"] = CompressPdfPage;
   m["pdf-to-jpg"] = PdfToJpgPage; m["jpg-to-pdf"] = JpgToPdfPage;
   m["pdf-to-word"] = PdfToWordPage; m["word-to-pdf"] = WordToPdfPage;
   m["pdf-to-png"] = PdfToPngPage; m["png-to-pdf"] = PngToPdfPage;
   m["pdf-to-excel"] = PdfToExcelPage; m["excel-to-pdf"] = ExcelToPdfPage;
-  m["rotate"] = RotatePdfPage; m["delete-pages"] = DeletePagesPage;
+  m["rotate-pdf"] = RotatePdfPage; m["delete-pages"] = DeletePagesPage;
   m["extract-pages"] = ExtractPagesPage; m["extract-text"] = ExtractTextPage;
   m["protect-pdf"] = ProtectPdfPage; m["unlock-pdf"] = UnlockPdfPage;
   m["add-page-numbers"] = AddPageNumbersPage; m["add-watermark"] = AddWatermarkPage;
@@ -180,9 +180,9 @@ function AppRoutes() {
       <LanguageBanner />
       <Switch>
         <Route path="/" component={HomeRoute} />
-        <Route path="/merge" component={MergePdfPage} />
-        <Route path="/split" component={SplitPdfPage} />
-        <Route path="/compress" component={CompressPdfPage} />
+        <Route path="/compress-pdf" component={CompressPdfPage} />
+        <Route path="/merge-pdf" component={MergePdfPage} />
+        <Route path="/split-pdf" component={SplitPdfPage} />
         <Route path="/pdf-to-jpg" component={PdfToJpgPage} />
         <Route path="/jpg-to-pdf" component={JpgToPdfPage} />
         <Route path="/pdf-to-word" component={PdfToWordPage} />
@@ -191,7 +191,7 @@ function AppRoutes() {
         <Route path="/png-to-pdf" component={PngToPdfPage} />
         <Route path="/pdf-to-excel" component={PdfToExcelPage} />
         <Route path="/excel-to-pdf" component={ExcelToPdfPage} />
-        <Route path="/rotate" component={RotatePdfPage} />
+        <Route path="/rotate-pdf" component={RotatePdfPage} />
         <Route path="/delete-pages" component={DeletePagesPage} />
         <Route path="/extract-pages" component={ExtractPagesPage} />
         <Route path="/extract-text" component={ExtractTextPage} />

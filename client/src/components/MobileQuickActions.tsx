@@ -2,11 +2,11 @@ import { Link } from "wouter";
 import { FileDown, Combine, FileText, Image, SplitSquareHorizontal, LayoutGrid } from "lucide-react";
 
 const quickActions = [
-  { id: "compress",    label: "Compress", icon: FileDown,               path: "/compress",     color: "text-orange-500" },
-  { id: "merge",       label: "Merge",    icon: Combine,                path: "/merge",         color: "text-blue-500" },
+  { id: "compress",    label: "Compress", icon: FileDown,               path: "/compress-pdf",     color: "text-orange-500" },
+  { id: "merge",       label: "Merge",    icon: Combine,                path: "/merge-pdf",         color: "text-blue-500" },
   { id: "pdf-to-word", label: "To Word",  icon: FileText,               path: "/pdf-to-word",  color: "text-indigo-500" },
   { id: "pdf-to-jpg",  label: "To JPG",   icon: Image,                  path: "/pdf-to-jpg",   color: "text-orange-400" },
-  { id: "split",       label: "Split",    icon: SplitSquareHorizontal,  path: "/split",         color: "text-purple-500" },
+  { id: "split",       label: "Split",    icon: SplitSquareHorizontal,  path: "/split-pdf",         color: "text-purple-500" },
   { id: "all-tools",   label: "More",     icon: LayoutGrid,             path: "/all-tools",     color: "text-teal-500" },
 ];
 

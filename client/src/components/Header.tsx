@@ -58,12 +58,12 @@ export default function Header() {
                 {t(lang, "pdfToWord")}
               </span>
             </Link>
-            <Link href="/merge" data-testid="link-nav-merge">
+            <Link href="/merge-pdf" data-testid="link-nav-merge">
               <span className="px-3 py-2 text-sm font-semibold rounded-lg hover-elevate active-elevate-2 cursor-pointer transition-all text-primary">
                 {t(lang, "merge")}
               </span>
             </Link>
-            <Link href="/compress" data-testid="link-nav-compress">
+            <Link href="/compress-pdf" data-testid="link-nav-compress">
               <span className="px-3 py-2 text-sm font-semibold rounded-lg hover-elevate active-elevate-2 cursor-pointer transition-all text-primary">
                 {t(lang, "compress")}
               </span>

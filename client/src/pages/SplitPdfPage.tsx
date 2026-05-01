@@ -27,7 +27,7 @@ export default function SplitPdfPage() {
     title: "Split PDF Free Online - Extract Pages from PDF | PDF HUB 24",
     description: "Split PDF free. Extract specific pages or separate PDF into multiple files. Best free PDF splitter. No signup.",
     keywords: "split pdf free, extract pages from pdf, divide pdf, pdf splitter free, separate pdf pages, split pdf online, extract pdf pages",
-    canonicalPath: "/split"
+    canonicalPath: "/split-pdf"
   });
 
   const { lang } = useLanguage();

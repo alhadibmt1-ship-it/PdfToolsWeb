@@ -76,8 +76,8 @@ export default function MobileMenu() {
               <div className="flex flex-col gap-1">
                 {[
                   { href: "/pdf-to-word", labelKey: "pdfToWord", testId: "mobile-link-pdf-to-word" },
-                  { href: "/merge", labelKey: "merge", testId: "mobile-link-merge" },
-                  { href: "/compress", labelKey: "compressPdf", testId: "mobile-link-compress" },
+                  { href: "/merge-pdf", labelKey: "merge", testId: "mobile-link-merge" },
+                  { href: "/compress-pdf", labelKey: "compressPdf", testId: "mobile-link-compress" },
                 ].map(({ href, labelKey, testId }) => (
                   <Link key={href} href={href} onClick={closeMenu}>
                     <div
