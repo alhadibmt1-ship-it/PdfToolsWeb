@@ -47,7 +47,7 @@ export default function MergePdfPage() {
     title: "Merge PDF Free - Combine PDF Files | PDF HUB 24",
     description: "Merge PDF files free. Combine multiple PDFs into one document. Drag and drop to reorder. Best free PDF merger.",
     keywords: "merge pdf free, combine pdf files, join pdf, merge pdf online, pdf merger free, combine multiple pdfs, merge pdfs into one",
-    canonicalPath: "/merge"
+    canonicalPath: "/merge-pdf"
   });
 
   const { lang } = useLanguage();

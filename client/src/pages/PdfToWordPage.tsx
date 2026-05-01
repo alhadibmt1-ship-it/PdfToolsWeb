@@ -277,7 +277,7 @@ export default function PdfToWordPage() {
                 Convert Word Back to PDF
               </Button>
             </Link>
-            <Link href="/compress" className="flex-1">
+            <Link href="/compress-pdf" className="flex-1">
               <Button variant="outline" className="w-full" size="lg" data-testid="link-cta-compress">
                 <FileDown className="w-4 h-4 mr-2" />
                 Compress PDF After Editing
@@ -389,7 +389,7 @@ export default function PdfToWordPage() {
                     <ArrowRight className="w-3 h-3 text-muted-foreground mt-0.5" />
                     <Link href="/word-to-pdf" className="text-xs text-primary hover:underline">Word to PDF</Link>
                     <ArrowRight className="w-3 h-3 text-muted-foreground mt-0.5" />
-                    <Link href="/compress" className="text-xs text-primary hover:underline">Compress PDF</Link>
+                    <Link href="/compress-pdf" className="text-xs text-primary hover:underline">Compress PDF</Link>
                   </div>
                 </CardContent>
               </Card>
@@ -491,9 +491,9 @@ export default function PdfToWordPage() {
                 { name: "PDF to JPG", href: "/pdf-to-jpg", desc: "Convert pages to images" },
                 { name: "PDF to PNG", href: "/pdf-to-png", desc: "Pages to PNG images" },
                 { name: "PDF to PowerPoint", href: "/pdf-to-ppt", desc: "Convert to PPT slides" },
-                { name: "Merge PDF", href: "/merge", desc: "Combine multiple PDFs" },
-                { name: "Split PDF", href: "/split", desc: "Extract specific pages" },
-                { name: "Compress PDF", href: "/compress", desc: "Reduce PDF file size" },
+                { name: "Merge PDF", href: "/merge-pdf", desc: "Combine multiple PDFs" },
+                { name: "Split PDF", href: "/split-pdf", desc: "Extract specific pages" },
+                { name: "Compress PDF", href: "/compress-pdf", desc: "Reduce PDF file size" },
                 { name: "Extract Text", href: "/extract-text", desc: "Get plain text from PDF" },
                 { name: "PDF Viewer", href: "/pdf-viewer", desc: "View PDF in browser" },
                 { name: "Compare PDF", href: "/compare-pdf", desc: "Find differences" }

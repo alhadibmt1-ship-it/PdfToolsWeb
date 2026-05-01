@@ -14,8 +14,8 @@ import {
 import { useSEO } from "@/hooks/useSEO";
 
 const popularTools = [
-  { path: "/merge", title: "Merge PDF", icon: Combine, description: "Combine multiple PDFs" },
-  { path: "/compress", title: "Compress PDF", icon: FileDown, description: "Reduce file size" },
+  { path: "/merge-pdf", title: "Merge PDF", icon: Combine, description: "Combine multiple PDFs" },
+  { path: "/compress-pdf", title: "Compress PDF", icon: FileDown, description: "Reduce file size" },
   { path: "/pdf-to-word", title: "PDF to Word", icon: FileText, description: "Convert to DOCX" },
 ];
 

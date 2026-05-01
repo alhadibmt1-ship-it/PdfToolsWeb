@@ -16,7 +16,7 @@ export const programmaticPages: ProgrammaticPage[] = [
     title: "Compress PDF Under 100KB Free Online | PDF HUB 24",
     h1: "Compress PDF to Under 100KB Free Online",
     description: "Reduce PDF file size to under 100KB free. Perfect for form submissions, online applications, and strict upload limits. No signup, no watermark.",
-    toolPath: "/compress",
+    toolPath: "/compress-pdf",
     toolName: "Compress PDF",
     content: `Many online forms, government portals, and application systems require PDF uploads under 100KB. This strict file size limit can be challenging when your document contains images, charts, or complex formatting. Our free PDF compressor helps you meet this requirement without losing readability.
 
@@ -43,7 +43,7 @@ For documents that still exceed 100KB after high compression, try this workflow:
     title: "Reduce PDF Size to 200KB Free Online | PDF HUB 24",
     h1: "Reduce PDF File Size to 200KB Free",
     description: "Reduce PDF file size to 200KB or less. Free online tool for meeting upload requirements. Maintain quality while shrinking files. No signup needed.",
-    toolPath: "/compress",
+    toolPath: "/compress-pdf",
     toolName: "Compress PDF",
     content: `A 200KB limit is common across many professional platforms, educational portals, and online submission systems. Whether you're uploading a resume, submitting coursework, or filing documents electronically, keeping your PDF under 200KB ensures smooth uploads without rejection errors.
 
@@ -70,7 +70,7 @@ Pro tip: If your first compression attempt brings the file to 250KB, try compres
     title: "Compress PDF to 1MB Free Online | PDF HUB 24",
     h1: "Compress PDF to 1MB or Less Free Online",
     description: "Compress large PDF files to 1MB or under. Free PDF compressor with quality options. Perfect for email and uploads. No signup, no watermark.",
-    toolPath: "/compress",
+    toolPath: "/compress-pdf",
     toolName: "Compress PDF",
     content: `A 1MB PDF is the sweet spot for most digital sharing scenarios. It's small enough for email attachments, fast to upload to cloud storage, and quick to download on mobile connections. Our free compression tool helps you reach this target while maintaining excellent document quality.
 
@@ -97,7 +97,7 @@ For businesses that regularly share PDFs internally, establishing a 1MB maximum 
     title: "Merge PDF for Visa Application Free Online | PDF HUB 24",
     h1: "Merge PDF Documents for Visa Application Free",
     description: "Combine passport, bank statements, photos, and supporting documents into one PDF for visa applications. Free online merger, no signup. Accepted by all embassies.",
-    toolPath: "/merge",
+    toolPath: "/merge-pdf",
     toolName: "Merge PDF",
     content: `Visa applications typically require multiple supporting documents combined into a single PDF file. Embassies, consulates, and online visa portals expect a well-organized document package with passport copies, photographs, bank statements, employment letters, travel itineraries, and hotel bookings all in one file.
 
@@ -159,7 +159,7 @@ This workflow is particularly valuable for digitizing old paper documents, makin
     title: "Make PDF Smaller for Email Free Online | PDF HUB 24",
     h1: "Make PDF Smaller for Email — Reduce Size Free",
     description: "Make your PDF smaller for email in seconds. Reduce under 25MB for Gmail, 20MB for Outlook. Free compressor with quality options. No signup required.",
-    toolPath: "/compress",
+    toolPath: "/compress-pdf",
     toolName: "Compress PDF",
     content: `Trying to attach a PDF to an email only to get a "file too large" error is one of the most frustrating everyday technology problems. Gmail limits attachments to 25MB, Outlook to 20MB, and many corporate email systems have even stricter limits of 10MB or less.
 
@@ -217,7 +217,7 @@ If you need transparent backgrounds or higher quality for graphics, consider usi
     title: "Merge PDF Free No Limit — Combine Unlimited Files | PDF HUB 24",
     h1: "Merge PDF Free with No File Limit",
     description: "Combine unlimited PDF files into one document free. No file count limits, no page limits, no daily caps. Drag and drop to merge PDFs. No signup required.",
-    toolPath: "/merge",
+    toolPath: "/merge-pdf",
     toolName: "Merge PDF",
     content: `Most free PDF merge tools restrict you to combining only 2-3 files or limit you to a handful of merges per day. PDF HUB 24 removes these frustrations completely — merge as many PDF files as you need with no artificial limits on file count, page numbers, or daily usage.
 
@@ -246,7 +246,7 @@ The merged output maintains the original quality of each source document. No com
     title: "Split PDF by Pages Free Online | PDF HUB 24",
     h1: "Split PDF by Page Number or Range Free",
     description: "Split PDF files by page number or range free. Extract specific pages, split into chapters, or divide large documents. No signup, no watermark.",
-    toolPath: "/split",
+    toolPath: "/split-pdf",
     toolName: "Split PDF",
     content: `Splitting a PDF by pages is one of the most common document tasks, whether you need to extract a specific section from a report, send just a few relevant pages to a colleague, or break a large document into manageable chapters.
 
@@ -304,7 +304,7 @@ After signing, the signature becomes a permanent part of the PDF. For additional
     title: "Compress PDF Without Losing Quality Free | PDF HUB 24",
     h1: "Compress PDF Without Losing Quality — Free Online",
     description: "Reduce PDF file size without visible quality loss. Free lossless-like compression preserves text and images. 3 quality levels. No signup, no watermark.",
-    toolPath: "/compress",
+    toolPath: "/compress-pdf",
     toolName: "Compress PDF",
     content: `The biggest concern when compressing PDFs is losing quality — blurry images, fuzzy text, or degraded graphics. Our compression technology addresses this by using intelligent algorithms that reduce file size while preserving the visual elements that matter most.
 
@@ -391,7 +391,7 @@ For documents that you own and want to re-protect with different settings, unloc
     title: "Rotate PDF and Save Permanently Free | PDF HUB 24",
     h1: "Rotate PDF Pages and Save Permanently Free",
     description: "Rotate PDF pages 90, 180, or 270 degrees and save permanently. Fix sideways or upside-down pages. Free online tool. No signup, no watermark.",
-    toolPath: "/rotate",
+    toolPath: "/rotate-pdf",
     toolName: "Rotate PDF",
     content: `Scanned documents often come out sideways or upside down. Photographs converted to PDF may have incorrect orientation. Presentations saved as PDF might have landscape pages mixed with portrait. Our free Rotate PDF tool fixes all these orientation issues permanently.
 
@@ -1179,7 +1179,7 @@ Security note: Our tool requires the correct document password to unlock files. 
     title: "Compress PDF to 50KB Free Online | PDF HUB 24",
     h1: "Compress PDF to 50KB Online Free",
     description: "Reduce PDF file size to under 50KB for strict upload portals. Free online PDF compressor with maximum compression. No signup required.",
-    toolPath: "/compress",
+    toolPath: "/compress-pdf",
     toolName: "Compress PDF",
     content: `A 50KB limit is one of the strictest PDF upload requirements, typically found on government immigration portals, court e-filing systems, and some university application platforms. Reaching this limit requires aggressive optimization of every element in your document.
 
@@ -1206,7 +1206,7 @@ If your document still exceeds 50KB after maximum compression and grayscale conv
     title: "Compress PDF for WhatsApp (Under 100MB) Free | PDF HUB 24",
     h1: "Compress PDF for WhatsApp Free Online",
     description: "Reduce PDF file size to send via WhatsApp. Compress PDF under 100MB for WhatsApp sharing. Free, fast, no signup needed.",
-    toolPath: "/compress",
+    toolPath: "/compress-pdf",
     toolName: "Compress PDF",
     content: `WhatsApp allows PDF attachments up to 100MB, but large PDFs slow upload times and consume mobile data. Compressing your PDF before sending improves the experience for both you and the recipient, especially when sharing with contacts on mobile connections.
 
@@ -1233,7 +1233,7 @@ For PDFs that still exceed WhatsApp's 100MB limit (typically large architectural
     title: "Compress PDF for Email (Under 25MB) Free Online | PDF HUB 24",
     h1: "Compress PDF for Email Attachment Free",
     description: "Make PDF small enough to email. Compress PDF under 25MB for Gmail, Outlook, and Yahoo Mail. Free, no signup, instant results.",
-    toolPath: "/compress",
+    toolPath: "/compress-pdf",
     toolName: "Compress PDF",
     content: `Email attachments have strict size limits: Gmail limits attachments to 25MB, Outlook to 20MB, and Yahoo Mail to 25MB. PDFs that exceed these limits bounce back as undeliverable. Our free PDF compressor helps you meet these limits without switching to file sharing services.
 
@@ -1260,7 +1260,7 @@ If you frequently email large PDF reports, establish a compression workflow: cre
     title: "Merge PDF for Job Application Free Online | PDF HUB 24",
     h1: "Merge PDF Files for Job Application Free",
     description: "Combine resume, cover letter, and certificates into one PDF for job applications. Free online PDF merger, no signup, unlimited files.",
-    toolPath: "/merge",
+    toolPath: "/merge-pdf",
     toolName: "Merge PDF",
     content: `Many job application portals accept only a single PDF file upload. When employers request your resume, cover letter, certificates, and reference letters as one document, you need to merge them quickly and professionally. Our free PDF merger lets you combine unlimited files into one organized submission.
 
@@ -1287,7 +1287,7 @@ After merging, use our Compress PDF tool to reduce the combined file size. Multi
     title: "Merge PDF for Immigration Application Free | PDF HUB 24",
     h1: "Merge PDF Documents for Immigration Application",
     description: "Combine immigration documents into one PDF. Merge passport, photos, forms, and certificates for visa applications. Free, secure, no signup.",
-    toolPath: "/merge",
+    toolPath: "/merge-pdf",
     toolName: "Merge PDF",
     content: `Immigration and visa applications require numerous documents: passport copies, bank statements, employment letters, tax returns, photos, and completed forms. Merging all supporting documents into organized PDF packages makes submission smoother and demonstrates professionalism to immigration officers.
 
@@ -1314,7 +1314,7 @@ After merging your immigration package, use our Compress PDF tool to ensure the 
     title: "Split PDF by File Size Free Online | PDF HUB 24",
     h1: "Split PDF by File Size Online Free",
     description: "Divide large PDF files into smaller parts by size. Split PDF to meet upload size limits. Free online PDF splitter, no signup required.",
-    toolPath: "/split",
+    toolPath: "/split-pdf",
     toolName: "Split PDF",
     content: `When a large PDF exceeds an upload portal's file size limit and compression is not sufficient, splitting by size is the practical solution. By dividing the PDF into parts, each segment meets the size requirement individually.
 
@@ -1341,7 +1341,7 @@ For government portals that require multiple attachments, splitting is often pre
     title: "Split PDF Into Single Pages Free Online | PDF HUB 24",
     h1: "Split PDF Into Individual Pages Free",
     description: "Extract every page of a PDF as a separate file. Split multi-page PDF into single pages. Free online, no signup, download as ZIP.",
-    toolPath: "/split",
+    toolPath: "/split-pdf",
     toolName: "Split PDF",
     content: `Splitting a PDF into individual pages is useful for extracting specific pages, rearranging documents, creating individual page images, or archiving each page separately. Our free tool extracts every page into its own PDF file and packages them in a ZIP download.
 
@@ -1449,7 +1449,7 @@ After converting, use Excel's data cleaning tools: Text to Columns for concatena
     title: "Compress PDF on Mobile (iPhone & Android) Free | PDF HUB 24",
     h1: "Compress PDF on Mobile — iPhone and Android",
     description: "Compress PDF on iPhone or Android without an app. Free browser-based PDF compression on any mobile device. No download required.",
-    toolPath: "/compress",
+    toolPath: "/compress-pdf",
     toolName: "Compress PDF",
     content: `You do not need to download an app to compress PDFs on your phone. PDF HUB 24 works in Safari (iPhone), Chrome (Android), and any mobile browser — just open the website, upload your PDF from your phone, and download the compressed version directly to your device.
 
@@ -1557,7 +1557,7 @@ For documents requiring legally binding electronic signatures with audit trails 
     title: "Extract Pages from PDF Free Online | PDF HUB 24",
     h1: "Extract Specific Pages from PDF Free Online",
     description: "Extract individual pages or page ranges from any PDF free. Save selected PDF pages as a new document. No signup, instant download.",
-    toolPath: "/split",
+    toolPath: "/split-pdf",
     toolName: "Split PDF",
     content: `When you need only specific pages from a large PDF — a single chapter from a report, specific exhibits from a legal filing, or selected pages from a reference document — extracting those pages creates a focused, lightweight document without unnecessary content.
 
@@ -1746,7 +1746,7 @@ After converting, open the PDF in Adobe Reader or Chrome to verify the formattin
     title: "Compress PDF to 300KB Free Online | PDF HUB 24",
     h1: "Compress PDF to Under 300KB Free Online",
     description: "Reduce PDF file size to 300KB or less. Free PDF compressor for portal uploads and email. No signup, three compression levels.",
-    toolPath: "/compress",
+    toolPath: "/compress-pdf",
     toolName: "Compress PDF",
     content: `The 300KB limit appears on many upload portals for identity documents, application supporting files, and records management systems. This size allows a complete multi-page text document with some images while remaining small enough for fast processing.
 
@@ -1800,7 +1800,7 @@ Transparent backgrounds are preserved in the conversion when the original PDF pa
     title: "Rotate PDF Pages Free Online | PDF HUB 24",
     h1: "Rotate PDF Pages Free Online — Permanent Rotation",
     description: "Rotate PDF pages 90°, 180°, or 270° online free. Rotate one page or all pages permanently. No signup, instant download.",
-    toolPath: "/rotate",
+    toolPath: "/rotate-pdf",
     toolName: "Rotate PDF",
     content: `PDFs with incorrectly oriented pages are a common problem — scanned documents often have pages rotated the wrong way, and some PDF generators output landscape-content pages in portrait orientation. Rotating PDF pages permanently fixes the orientation so every viewer sees the correct layout.
 
@@ -1854,7 +1854,7 @@ For professional use — client-facing documents, legal submissions, business pr
     title: "Merge Two PDF Files Online Free | PDF HUB 24",
     h1: "Merge Two PDF Files Into One Online Free",
     description: "Combine two PDF files into one document online free. No signup, no size limits, instant merge. Download combined PDF immediately.",
-    toolPath: "/merge",
+    toolPath: "/merge-pdf",
     toolName: "Merge PDF",
     content: `Combining two PDF files is one of the simplest and most common PDF tasks — attaching an additional page to a contract, combining a cover letter with a resume, or joining two separately-created document sections. Our free merger handles this in seconds.
 

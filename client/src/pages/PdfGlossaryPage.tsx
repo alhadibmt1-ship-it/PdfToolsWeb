@@ -36,7 +36,7 @@ const GLOSSARY: Record<string, GlossaryTerm[]> = {
     { term: "Certificate-based signature", definition: "A digital signature in a PDF that uses a public-key certificate to verify the identity of the signer. Certificate-based signatures provide stronger authenticity guarantees than basic electronic signatures.", seeAlso: ["Digital signature", "Electronic signature"] },
     { term: "CMapResource", definition: "A Character Map resource in PDF that maps character codes to Unicode values and glyph names. CMaps are essential for correct text search and extraction in PDFs with non-Latin scripts.", seeAlso: ["Unicode", "Text extraction"] },
     { term: "Color space", definition: "The mathematical model used to represent color in a PDF. Common PDF color spaces include DeviceRGB (screen), DeviceCMYK (print), DeviceGray (grayscale), and ICC-based profiles for device-independent color.", relatedTool: { name: "Grayscale PDF", href: "/grayscale-pdf" }, seeAlso: ["CMYK", "RGB", "ICC profile"] },
-    { term: "Compression", definition: "The process of reducing a PDF's file size by removing redundant data, downsampling images, and applying encoding algorithms like Flate (ZIP), JPEG, or JBIG2. PDF compression can reduce file size by 40-90% depending on content type.", relatedTool: { name: "Compress PDF", href: "/compress" }, seeAlso: ["Lossless compression", "Lossy compression", "Image downsampling"] },
+    { term: "Compression", definition: "The process of reducing a PDF's file size by removing redundant data, downsampling images, and applying encoding algorithms like Flate (ZIP), JPEG, or JBIG2. PDF compression can reduce file size by 40-90% depending on content type.", relatedTool: { name: "Compress PDF", href: "/compress-pdf" }, seeAlso: ["Lossless compression", "Lossy compression", "Image downsampling"] },
     { term: "Content stream", definition: "The low-level PDF data that describes what to draw on a page — text, graphics, and images. Content streams contain PostScript-like instructions interpreted by the PDF renderer to build the visual page.", seeAlso: ["PDF structure", "Page object"] },
     { term: "Crop box", definition: "A rectangle defining the visible region of a PDF page, trimming away content outside the box. The CropBox overrides the MediaBox for display purposes but does not permanently delete content outside it.", relatedTool: { name: "Crop PDF", href: "/crop-pdf" }, seeAlso: ["MediaBox", "TrimBox", "BleedBox"] },
     { term: "Cross-reference table (XRef)", definition: "An index at the end of a PDF file that records the byte offset of every object in the file. The XRef table enables random-access reading of PDF objects without parsing the entire file. Corrupted XRef tables are a common cause of unreadable PDFs.", seeAlso: ["PDF object", "PDF structure"] },
@@ -69,13 +69,13 @@ const GLOSSARY: Record<string, GlossaryTerm[]> = {
   ],
   I: [
     { term: "ICC profile", definition: "An International Color Consortium profile embedded in a PDF that describes the color characteristics of the device on which the content was created. ICC profiles enable consistent color reproduction across different displays and printers.", seeAlso: ["Color space", "Calibrated color", "PDF/X"] },
-    { term: "Image downsampling", definition: "Reducing the resolution of images in a PDF during compression. Downsampling from 300 DPI to 150 DPI significantly reduces file size. There are three methods: subsampling (fast, lower quality), averaging (moderate quality), and bicubic (slower, best quality).", relatedTool: { name: "Compress PDF", href: "/compress" }, seeAlso: ["DPI", "Compression"] },
+    { term: "Image downsampling", definition: "Reducing the resolution of images in a PDF during compression. Downsampling from 300 DPI to 150 DPI significantly reduces file size. There are three methods: subsampling (fast, lower quality), averaging (moderate quality), and bicubic (slower, best quality).", relatedTool: { name: "Compress PDF", href: "/compress-pdf" }, seeAlso: ["DPI", "Compression"] },
     { term: "Incremental update", definition: "A PDF modification method that appends changes to the end of the file rather than rewriting the entire file. Incremental updates allow digital signatures to remain valid because the original signed content is preserved. Also used by PDF viewers for efficient autosave.", seeAlso: ["Digital signature", "Cross-reference table"] },
     { term: "ISO 32000", definition: "The international standard (published by the International Organization for Standardization) that formally specifies the PDF format. ISO 32000-1 covers PDF 1.7, while ISO 32000-2 covers PDF 2.0.", seeAlso: ["PDF 2.0", "PDF/A", "PDF/X"] },
   ],
   J: [
     { term: "JBIG2", definition: "A compression standard designed for black-and-white images, commonly used for scanned text pages in PDFs. JBIG2 achieves very high compression ratios (often 2-5x better than G4 fax) while preserving sharp text edges.", seeAlso: ["Compression", "OCR"] },
-    { term: "JPEG compression", definition: "A lossy compression algorithm applied to color and grayscale images within PDFs. JPEG reduces file size by discarding some image detail. Higher compression levels produce smaller files but more visible artifacts, particularly around sharp edges.", relatedTool: { name: "Compress PDF", href: "/compress" }, seeAlso: ["Lossy compression", "Image downsampling"] },
+    { term: "JPEG compression", definition: "A lossy compression algorithm applied to color and grayscale images within PDFs. JPEG reduces file size by discarding some image detail. Higher compression levels produce smaller files but more visible artifacts, particularly around sharp edges.", relatedTool: { name: "Compress PDF", href: "/compress-pdf" }, seeAlso: ["Lossy compression", "Image downsampling"] },
     { term: "JavaScript in PDF", definition: "Embedded JavaScript code in a PDF that can perform calculations, validate form input, display alerts, or trigger other actions. PDF JavaScript is supported by Acrobat but disabled in many third-party PDF viewers for security reasons.", seeAlso: ["AcroForm", "Form field"] },
   ],
   L: [
@@ -86,7 +86,7 @@ const GLOSSARY: Record<string, GlossaryTerm[]> = {
   ],
   M: [
     { term: "MediaBox", definition: "The largest bounding box in a PDF page, defining the full extent of the page including bleed, printer marks, and any overflow content. The MediaBox defines the physical media size (e.g., A4, Letter). Other boxes — CropBox, TrimBox, BleedBox — must fit within the MediaBox.", seeAlso: ["CropBox", "TrimBox", "BleedBox"] },
-    { term: "Merge PDF", definition: "The operation of combining two or more PDF files into a single multi-page PDF. The page order follows the input file order. Merging preserves the bookmarks, annotations, and form fields from each source document.", relatedTool: { name: "Merge PDF", href: "/merge" }, seeAlso: ["Split PDF", "Page order"] },
+    { term: "Merge PDF", definition: "The operation of combining two or more PDF files into a single multi-page PDF. The page order follows the input file order. Merging preserves the bookmarks, annotations, and form fields from each source document.", relatedTool: { name: "Merge PDF", href: "/merge-pdf" }, seeAlso: ["Split PDF", "Page order"] },
     { term: "Metadata", definition: "Data about the PDF document stored separately from its content. PDF metadata includes author, title, subject, keywords, creation date, and modification date. Metadata can be stored in the Document Information Dictionary or in XMP format.", relatedTool: { name: "Edit PDF", href: "/edit-pdf" }, seeAlso: ["XMP metadata", "Document Information Dictionary"] },
     { term: "MRC (Mixed Raster Content)", definition: "A compression technique for scanned PDFs that separates the page into layers — foreground (text), background (images), and mask — and applies different compression to each. MRC significantly reduces scanned document file sizes while preserving text sharpness.", seeAlso: ["OCR", "Compression"] },
   ],
@@ -96,7 +96,7 @@ const GLOSSARY: Record<string, GlossaryTerm[]> = {
   O: [
     { term: "OCR (Optical Character Recognition)", definition: "The technology that converts images of text (from scans or photos) into machine-readable, searchable text within a PDF. OCR enables text search, copy-paste, and screen reader access for scanned documents.", relatedTool: { name: "OCR PDF", href: "/ocr-pdf" }, seeAlso: ["Scan to PDF", "Searchable PDF"] },
     { term: "Open password", definition: "A PDF password required to open and view the document. Also called the User password or Document Open password. Different from the Permissions (Owner) password, which controls editing rights without restricting viewing.", relatedTool: { name: "Protect PDF", href: "/protect" }, seeAlso: ["Permissions password", "Encryption"] },
-    { term: "Optimize PDF", definition: "The process of restructuring a PDF to improve performance. Optimization may include linearizing for fast web view, removing duplicate objects, compressing streams, downsampling images, and removing unused resources.", relatedTool: { name: "Compress PDF", href: "/compress" }, seeAlso: ["Linear PDF", "Compression"] },
+    { term: "Optimize PDF", definition: "The process of restructuring a PDF to improve performance. Optimization may include linearizing for fast web view, removing duplicate objects, compressing streams, downsampling images, and removing unused resources.", relatedTool: { name: "Compress PDF", href: "/compress-pdf" }, seeAlso: ["Linear PDF", "Compression"] },
     { term: "Owner password", definition: "A PDF password that controls document permissions (printing, copying, editing) without preventing the document from being opened. The owner password unlocks all restrictions and gives full control over the document.", relatedTool: { name: "Unlock PDF", href: "/unlock-pdf" }, seeAlso: ["Open password", "Permissions", "Encryption"] },
   ],
   P: [
@@ -119,7 +119,7 @@ const GLOSSARY: Record<string, GlossaryTerm[]> = {
   S: [
     { term: "Searchable PDF", definition: "A PDF in which text content is machine-readable and can be searched, selected, and copied. Searchable PDFs contain actual text objects (not just images), either from the source document or added via OCR processing.", relatedTool: { name: "OCR PDF", href: "/ocr-pdf" }, seeAlso: ["OCR", "Tagged PDF"] },
     { term: "Signature field", definition: "An interactive form field in a PDF designated to receive a digital or electronic signature. Signature fields have a defined location on the page and can be configured to require certificate-based or approval signatures.", relatedTool: { name: "Sign PDF", href: "/sign-pdf" }, seeAlso: ["Digital signature", "AcroForm"] },
-    { term: "Split PDF", definition: "Dividing a PDF into multiple smaller files by specifying page ranges or splitting at every page. Splitting is useful for sharing specific chapters, distributing reports by section, or reducing file sizes.", relatedTool: { name: "Split PDF", href: "/split" }, seeAlso: ["Extract pages", "Merge PDF"] },
+    { term: "Split PDF", definition: "Dividing a PDF into multiple smaller files by specifying page ranges or splitting at every page. Splitting is useful for sharing specific chapters, distributing reports by section, or reducing file sizes.", relatedTool: { name: "Split PDF", href: "/split-pdf" }, seeAlso: ["Extract pages", "Merge PDF"] },
     { term: "Structured PDF (Tagged PDF)", definition: "A PDF that contains semantic structure information (tags) describing the document's organization — headings, paragraphs, lists, tables, images. Tagged PDFs are required for accessibility compliance (PDF/UA) and enable reflowable reading on small screens.", seeAlso: ["PDF/UA", "Accessibility", "Reading order"] },
   ],
   T: [
@@ -343,10 +343,10 @@ export default function PdfGlossaryPage() {
               PDF HUB 24 offers 49+ free tools for every task in this glossary — from OCR and compression to PDF/A conversion and digital signing.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
-              <Link href="/compress">
+              <Link href="/compress-pdf">
                 <Button data-testid="button-cta-compress">Compress PDF</Button>
               </Link>
-              <Link href="/merge">
+              <Link href="/merge-pdf">
                 <Button variant="outline" data-testid="button-cta-merge">Merge PDF</Button>
               </Link>
               <Link href="/ocr-pdf">

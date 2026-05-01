@@ -102,7 +102,7 @@ export default function PdfStatisticsPage() {
                 <Link href="/pdf-to-excel" className="text-primary hover:underline"> PDF to Excel</Link> (8%).
               </p>
               <p>
-                <Link href="/compress" className="text-primary hover:underline">PDF compression</Link> has seen significant growth, 
+                <Link href="/compress-pdf" className="text-primary hover:underline">PDF compression</Link> has seen significant growth, 
                 with 45% of users citing email attachment limits as their primary reason for compressing PDFs. The average PDF file size 
                 before compression is 4.2MB, which typically reduces to 1.1MB after optimization.
               </p>
@@ -123,11 +123,11 @@ export default function PdfStatisticsPage() {
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 PDF file sizes vary dramatically depending on content type. Text-only documents average 200KB per page, while 
-                image-heavy PDFs can exceed 5MB per page. Our <Link href="/compress" className="text-primary hover:underline">PDF compression tool</Link> achieves 
+                image-heavy PDFs can exceed 5MB per page. Our <Link href="/compress-pdf" className="text-primary hover:underline">PDF compression tool</Link> achieves 
                 an average 74% reduction without visible quality loss.
               </p>
               <p>
-                For documents that need to meet strict size requirements, combining <Link href="/compress" className="text-primary hover:underline">compression</Link> with 
+                For documents that need to meet strict size requirements, combining <Link href="/compress-pdf" className="text-primary hover:underline">compression</Link> with 
                 <Link href="/grayscale-pdf" className="text-primary hover:underline"> grayscale conversion</Link> can achieve up to 90% size reduction.
               </p>
             </div>
@@ -170,10 +170,10 @@ export default function PdfStatisticsPage() {
             </div>
             <p className="text-muted-foreground leading-relaxed">
               PDF tools serve a wide range of users across industries. Business professionals make up the largest segment, 
-              primarily using tools like <Link href="/merge" className="text-primary hover:underline">Merge PDF</Link>, 
+              primarily using tools like <Link href="/merge-pdf" className="text-primary hover:underline">Merge PDF</Link>, 
               <Link href="/sign-pdf" className="text-primary hover:underline"> Sign PDF</Link>, and 
               <Link href="/protect-pdf" className="text-primary hover:underline"> Protect PDF</Link>. Students rely heavily on 
-              <Link href="/compress" className="text-primary hover:underline"> PDF compression</Link> and 
+              <Link href="/compress-pdf" className="text-primary hover:underline"> PDF compression</Link> and 
               <Link href="/pdf-to-word" className="text-primary hover:underline"> PDF to Word conversion</Link> for academic work.
             </p>
           </section>
@@ -200,13 +200,13 @@ export default function PdfStatisticsPage() {
             <div className="space-y-3">
               {[
                 { rank: 1, name: "PDF to Word", path: "/pdf-to-word", pct: "27%" },
-                { rank: 2, name: "Merge PDF", path: "/merge", pct: "19%" },
-                { rank: 3, name: "Compress PDF", path: "/compress", pct: "16%" },
-                { rank: 4, name: "Split PDF", path: "/split", pct: "11%" },
+                { rank: 2, name: "Merge PDF", path: "/merge-pdf", pct: "19%" },
+                { rank: 3, name: "Compress PDF", path: "/compress-pdf", pct: "16%" },
+                { rank: 4, name: "Split PDF", path: "/split-pdf", pct: "11%" },
                 { rank: 5, name: "PDF to JPG", path: "/pdf-to-jpg", pct: "8%" },
                 { rank: 6, name: "Sign PDF", path: "/sign-pdf", pct: "6%" },
                 { rank: 7, name: "Protect PDF", path: "/protect-pdf", pct: "5%" },
-                { rank: 8, name: "Rotate PDF", path: "/rotate", pct: "4%" },
+                { rank: 8, name: "Rotate PDF", path: "/rotate-pdf", pct: "4%" },
                 { rank: 9, name: "Add Watermark", path: "/add-watermark", pct: "2%" },
                 { rank: 10, name: "OCR PDF", path: "/ocr-pdf", pct: "2%" },
               ].map((item) => (

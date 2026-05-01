@@ -93,7 +93,7 @@ The compression workflow can be enhanced by combining multiple optimization step
 
 Our compression engine processes files entirely on secure servers with automatic deletion after one hour. No registration is required, no watermarks are added, and there are no daily usage limits. Whether you need to compress one file or dozens, our tools are ready whenever you need them.`,
     tools: [
-      { name: "Compress PDF", path: "/compress", description: "Reduce PDF file size with three compression levels: low, medium, and high" },
+      { name: "Compress PDF", path: "/compress-pdf", description: "Reduce PDF file size with three compression levels: low, medium, and high" },
       { name: "Grayscale PDF", path: "/grayscale-pdf", description: "Convert color PDFs to black and white to reduce file size and save ink" },
       { name: "Flatten PDF", path: "/flatten-pdf", description: "Merge all PDF layers into a single flat layer, reducing complexity and file size" },
       { name: "Resize PDF", path: "/resize-pdf", description: "Change PDF page dimensions to standard sizes like A4 or Letter" },
@@ -142,9 +142,9 @@ Every editing tool works on any device with a modern web browser. Upload your PD
 Professional document preparation often requires multiple editing steps. Our tools are designed to work together seamlessly. You might merge documents, reorder pages, add page numbers, insert a watermark, and then compress the final result — all using our free tools in sequence. This workflow gives you the same results as premium desktop software at zero cost.`,
     tools: [
       { name: "Edit PDF", path: "/edit-pdf", description: "Add text, images, shapes, and annotations to PDF documents with canvas-based editor" },
-      { name: "Merge PDF", path: "/merge", description: "Combine multiple PDF files into a single document with drag-and-drop reordering" },
-      { name: "Split PDF", path: "/split", description: "Extract specific pages or divide PDFs into separate files by page range" },
-      { name: "Rotate PDF", path: "/rotate", description: "Rotate PDF pages 90, 180, or 270 degrees to fix orientation issues" },
+      { name: "Merge PDF", path: "/merge-pdf", description: "Combine multiple PDF files into a single document with drag-and-drop reordering" },
+      { name: "Split PDF", path: "/split-pdf", description: "Extract specific pages or divide PDFs into separate files by page range" },
+      { name: "Rotate PDF", path: "/rotate-pdf", description: "Rotate PDF pages 90, 180, or 270 degrees to fix orientation issues" },
       { name: "Delete Pages", path: "/delete-pages", description: "Remove unwanted pages from PDF documents" },
       { name: "Reorder Pages", path: "/reorder-pages", description: "Rearrange PDF page order with intuitive drag-and-drop interface" },
       { name: "Add Page Numbers", path: "/add-page-numbers", description: "Insert page numbers with customizable position, format, and style" },

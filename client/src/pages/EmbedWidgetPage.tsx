@@ -14,14 +14,14 @@ import { useToast } from "@/hooks/use-toast";
 const BASE_URL = "https://pdfhub24.com";
 
 const embeddableTools = [
-  { id: "merge", name: "Merge PDF", path: "/merge" },
-  { id: "split", name: "Split PDF", path: "/split" },
-  { id: "compress", name: "Compress PDF", path: "/compress" },
+  { id: "merge", name: "Merge PDF", path: "/merge-pdf" },
+  { id: "split", name: "Split PDF", path: "/split-pdf" },
+  { id: "compress", name: "Compress PDF", path: "/compress-pdf" },
   { id: "pdf-to-word", name: "PDF to Word", path: "/pdf-to-word" },
   { id: "pdf-to-jpg", name: "PDF to JPG", path: "/pdf-to-jpg" },
   { id: "word-to-pdf", name: "Word to PDF", path: "/word-to-pdf" },
   { id: "jpg-to-pdf", name: "JPG to PDF", path: "/jpg-to-pdf" },
-  { id: "rotate", name: "Rotate PDF", path: "/rotate" },
+  { id: "rotate", name: "Rotate PDF", path: "/rotate-pdf" },
   { id: "protect-pdf", name: "Protect PDF", path: "/protect-pdf" },
   { id: "unlock-pdf", name: "Unlock PDF", path: "/unlock-pdf" },
   { id: "sign-pdf", name: "Sign PDF", path: "/sign-pdf" },

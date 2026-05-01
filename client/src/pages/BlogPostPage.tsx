@@ -111,7 +111,7 @@ function buildFAQSchema(faqs: { question: string; answer: string }[]) {
 function AdPlaceholder({ position }: { position: string }) {
   return (
     <div
-      className="w-full min-h-[90px] flex items-center justify-center"
+      className="hidden"
       data-ad-slot={position}
       data-testid={`ad-placeholder-${position}`}
       aria-hidden="true"

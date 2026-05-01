@@ -105,13 +105,13 @@ export default function FreePdfEditorPage() {
               {allEditorTools.length} powerful editing and utility tools with no signup and no downloads required.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-              <Link href="/merge">
+              <Link href="/merge-pdf">
                 <Button className="gap-2" data-testid="button-hero-merge">
                   Merge PDF
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
-              <Link href="/compress">
+              <Link href="/compress-pdf">
                 <Button variant="outline" className="gap-2" data-testid="button-hero-compress">
                   Compress PDF
                 </Button>
@@ -263,9 +263,9 @@ export default function FreePdfEditorPage() {
               <p>
                 Our editor supports the full range of PDF operations defined by the 
                 <a href="https://www.iso.org/standard/75839.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline"> ISO 32000 PDF standard</a>. 
-                Whether you need to <Link href="/merge" className="text-primary hover:underline">merge multiple PDFs</Link> into one document, 
-                <Link href="/split" className="text-primary hover:underline"> split a PDF</Link> into separate files, or 
-                <Link href="/compress" className="text-primary hover:underline"> compress a PDF</Link> for email, 
+                Whether you need to <Link href="/merge-pdf" className="text-primary hover:underline">merge multiple PDFs</Link> into one document, 
+                <Link href="/split-pdf" className="text-primary hover:underline"> split a PDF</Link> into separate files, or 
+                <Link href="/compress-pdf" className="text-primary hover:underline"> compress a PDF</Link> for email, 
                 our tools deliver professional results every time.
               </p>
               <p>

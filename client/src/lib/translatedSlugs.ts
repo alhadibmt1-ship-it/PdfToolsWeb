@@ -3,15 +3,15 @@
 // Non-Latin languages (ar, hi, zh, ja, ru, ur) keep English slugs (industry standard)
 
 export const TOOL_SLUG_TRANSLATIONS: Record<string, Partial<Record<string, string>>> = {
-  "merge": {
+  "merge-pdf": {
     es: "unir-pdf", fr: "fusionner-pdf", pt: "unir-pdf",
     de: "pdf-zusammenfuehren", it: "unire-pdf", id: "gabungkan-pdf",
   },
-  "split": {
+  "split-pdf": {
     es: "dividir-pdf", fr: "diviser-pdf", pt: "dividir-pdf",
     de: "pdf-teilen", it: "dividere-pdf", id: "pisahkan-pdf",
   },
-  "compress": {
+  "compress-pdf": {
     es: "comprimir-pdf", fr: "compresser-pdf", pt: "comprimir-pdf",
     de: "pdf-komprimieren", it: "comprimi-pdf", id: "kompres-pdf",
   },
@@ -47,7 +47,7 @@ export const TOOL_SLUG_TRANSLATIONS: Record<string, Partial<Record<string, strin
     es: "excel-a-pdf", fr: "excel-en-pdf", pt: "excel-para-pdf",
     de: "excel-in-pdf", it: "excel-in-pdf", id: "excel-ke-pdf",
   },
-  "rotate": {
+  "rotate-pdf": {
     es: "rotar-pdf", fr: "pivoter-pdf", pt: "rodar-pdf",
     de: "pdf-drehen", it: "ruota-pdf", id: "putar-pdf",
   },

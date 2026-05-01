@@ -20,7 +20,7 @@ const formats = [
     description: "The universal document format created by Adobe in 1993 and standardized as ISO 32000. PDF preserves fonts, images, graphics, and layout regardless of the application or platform used to view it. It is the most widely used document format globally with over 2.5 trillion PDF files opened annually.",
     specs: "Standard: ISO 32000-2:2020 | Max file size: Theoretically unlimited | Color spaces: RGB, CMYK, Grayscale | Compression: Multiple methods supported",
     useCases: ["Business documents, contracts, and invoices", "Academic papers and research publications", "Government forms and legal filings", "Print-ready materials and brochures", "Archival documents (PDF/A variant)"],
-    tools: [{ name: "Compress PDF", path: "/compress" }, { name: "Merge PDF", path: "/merge" }, { name: "Edit PDF", path: "/edit-pdf" }]
+    tools: [{ name: "Compress PDF", path: "/compress-pdf" }, { name: "Merge PDF", path: "/merge-pdf" }, { name: "Edit PDF", path: "/edit-pdf" }]
   },
   {
     name: "PDF/A (Archival PDF)",

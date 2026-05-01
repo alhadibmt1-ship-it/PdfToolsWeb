@@ -160,11 +160,11 @@ If you're working with large documents that need to be split before compressing,
 For specific file size targets, check out our dedicated guides: [compress PDF under 100KB](/tools/compress-pdf-under-100kb), [reduce PDF size to 200KB](/tools/reduce-pdf-size-to-200kb), [compress PDF to 1MB](/tools/compress-pdf-to-1mb), [make PDF smaller for email](/tools/make-pdf-smaller-for-email), and [compress PDF without losing quality](/tools/compress-pdf-without-losing-quality).
 `,
     relatedTools: [
-      { name: "Compress PDF", path: "/compress", description: "Reduce PDF file size instantly" },
-      { name: "Split PDF", path: "/split", description: "Divide large PDFs into smaller files" },
+      { name: "Compress PDF", path: "/compress-pdf", description: "Reduce PDF file size instantly" },
+      { name: "Split PDF", path: "/split-pdf", description: "Divide large PDFs into smaller files" },
       { name: "Grayscale PDF", path: "/grayscale-pdf", description: "Convert to black and white" },
       { name: "Delete Pages", path: "/delete-pages", description: "Remove unnecessary pages first" },
-      { name: "Merge PDF", path: "/merge", description: "Combine PDFs into one document" }
+      { name: "Merge PDF", path: "/merge-pdf", description: "Combine PDFs into one document" }
     ]
   },
   {
@@ -532,9 +532,9 @@ Merging PDF files doesn't have to be complicated or expensive. With our free Mer
 If you're a student, check out our [essential PDF tools for students](/blog/pdf-tools-for-students) guide for more academic workflows. Need to merge PDFs for a specific purpose? See our guides on [merging PDFs for visa applications](/tools/merge-pdf-for-visa-application) and [merging PDF free with no file limit](/tools/merge-pdf-free-no-limit). Ready to merge your PDFs? Get started now - it's free and takes just seconds.
 `,
     relatedTools: [
-      { name: "Merge PDF", path: "/merge", description: "Combine multiple PDFs into one" },
-      { name: "Split PDF", path: "/split", description: "Extract specific pages from PDFs" },
-      { name: "Compress PDF", path: "/compress", description: "Reduce PDF file size" },
+      { name: "Merge PDF", path: "/merge-pdf", description: "Combine multiple PDFs into one" },
+      { name: "Split PDF", path: "/split-pdf", description: "Extract specific pages from PDFs" },
+      { name: "Compress PDF", path: "/compress-pdf", description: "Reduce PDF file size" },
       { name: "Add Page Numbers", path: "/add-page-numbers", description: "Add professional page numbering" },
       { name: "Reorder Pages", path: "/reorder-pages", description: "Rearrange page order in merged PDFs" }
     ]
@@ -967,8 +967,8 @@ Our tools work with PDFs in any language. For scanned documents in languages oth
 For more tips on working with PDFs, check out our guides on [converting PDF to Word](/blog/convert-pdf-to-word-without-losing-formatting) and [splitting PDFs](/blog/how-to-split-pdf-pages).
 `,
     relatedTools: [
-      { name: "Merge PDF", path: "/merge", description: "Combine documents for submission" },
-      { name: "Compress PDF", path: "/compress", description: "Reduce size for upload limits" },
+      { name: "Merge PDF", path: "/merge-pdf", description: "Combine documents for submission" },
+      { name: "Compress PDF", path: "/compress-pdf", description: "Reduce size for upload limits" },
       { name: "PDF to Word", path: "/pdf-to-word", description: "Edit PDF content in Word" },
       { name: "Word to PDF", path: "/word-to-pdf", description: "Convert assignments to PDF format" },
       { name: "OCR PDF", path: "/ocr-pdf", description: "Make scanned documents searchable" }
@@ -1169,11 +1169,11 @@ Absolutely. Our Split PDF tool is fully responsive and works on any smartphone o
 Looking for more PDF tips? Check out our guide on [merging PDF files](/blog/merge-pdf-files-guide) if you need to recombine split documents. If your split files are too large for email, learn [how to compress PDFs for email](/blog/how-to-compress-pdf-for-email). After splitting, you may want to [add page numbers to your PDF](/blog/add-page-numbers-to-pdf) for professional formatting. For scanned documents, read our guide on [OCR for scanned PDFs](/blog/ocr-scanned-pdf-to-text) to make text searchable before or after splitting. You can also check out our guide on [splitting PDF by pages](/tools/split-pdf-by-pages) for more details.
 `,
     relatedTools: [
-      { name: "Split PDF", path: "/split", description: "Extract specific pages" },
+      { name: "Split PDF", path: "/split-pdf", description: "Extract specific pages" },
       { name: "Delete Pages", path: "/delete-pages", description: "Remove unwanted pages" },
-      { name: "Merge PDF", path: "/merge", description: "Combine PDFs back together" },
+      { name: "Merge PDF", path: "/merge-pdf", description: "Combine PDFs back together" },
       { name: "Reorder Pages", path: "/reorder-pages", description: "Rearrange page sequence" },
-      { name: "Compress PDF", path: "/compress", description: "Reduce split file sizes" }
+      { name: "Compress PDF", path: "/compress-pdf", description: "Reduce split file sizes" }
     ]
   },
   {
@@ -1394,8 +1394,8 @@ For more document formatting tips, check out our guide on [adding watermarks to 
       { name: "Add Page Numbers", path: "/add-page-numbers", description: "Number your PDF pages" },
       { name: "Add Watermark", path: "/add-watermark", description: "Brand your documents" },
       { name: "Edit PDF", path: "/edit-pdf", description: "Modify PDF content" },
-      { name: "Merge PDF", path: "/merge", description: "Combine documents before numbering" },
-      { name: "Compress PDF", path: "/compress", description: "Reduce file size after numbering" }
+      { name: "Merge PDF", path: "/merge-pdf", description: "Combine documents before numbering" },
+      { name: "Compress PDF", path: "/compress-pdf", description: "Reduce file size after numbering" }
     ]
   },
   {
@@ -1637,8 +1637,8 @@ For more tips on working with images and PDFs, check out our guide on [batch con
     relatedTools: [
       { name: "JPG to PDF", path: "/jpg-to-pdf", description: "Convert JPG images to PDF" },
       { name: "PNG to PDF", path: "/png-to-pdf", description: "Convert PNG images to PDF" },
-      { name: "Merge PDF", path: "/merge", description: "Combine multiple PDFs into one" },
-      { name: "Compress PDF", path: "/compress", description: "Reduce image PDF file sizes" },
+      { name: "Merge PDF", path: "/merge-pdf", description: "Combine multiple PDFs into one" },
+      { name: "Compress PDF", path: "/compress-pdf", description: "Reduce image PDF file sizes" },
       { name: "Add Watermark", path: "/add-watermark", description: "Brand your photo PDFs" }
     ]
   },
@@ -1900,7 +1900,7 @@ Want to learn more about working with scanned documents? Check out our guide on 
       { name: "Extract Text", path: "/extract-text", description: "Get text from digital PDFs" },
       { name: "PDF to Word", path: "/pdf-to-word", description: "Edit OCR-processed text in Word" },
       { name: "PDF to Excel", path: "/pdf-to-excel", description: "Extract tables from scanned PDFs" },
-      { name: "Compress PDF", path: "/compress", description: "Reduce OCR-processed file sizes" }
+      { name: "Compress PDF", path: "/compress-pdf", description: "Reduce OCR-processed file sizes" }
     ]
   },
   {
@@ -2135,7 +2135,7 @@ Absolutely. Our Rotate PDF tool is completely free with no registration, no wate
 After fixing page orientation, you may want to explore related guides. Learn about [OCR for scanned documents](/blog/ocr-scanned-pdf-to-text) to make your rotated scans searchable. Check out our [guide to cropping PDF pages](/blog/crop-pdf-pages-guide) to remove scanner borders after rotation. If you need to reorganize pages further, see our guide on [splitting PDF pages](/blog/how-to-split-pdf-pages). You might also find our tips on [adding page numbers](/blog/add-page-numbers-to-pdf) helpful for finishing your document. For a quick rotation fix, see our guide on [rotating PDF and saving permanently](/tools/rotate-pdf-and-save).
 `,
     relatedTools: [
-      { name: "Rotate PDF", path: "/rotate", description: "Fix page orientation" },
+      { name: "Rotate PDF", path: "/rotate-pdf", description: "Fix page orientation" },
       { name: "Crop PDF", path: "/crop-pdf", description: "Remove unwanted margins" },
       { name: "Resize PDF", path: "/resize-pdf", description: "Change page dimensions" },
       { name: "OCR PDF", path: "/ocr-pdf", description: "Make scanned pages searchable" },
@@ -2689,7 +2689,7 @@ For a quick start, see our guide on [adding watermarks to PDF free](/tools/add-w
       { name: "Flatten PDF", path: "/flatten-pdf", description: "Make watermarks permanent" },
       { name: "Protect PDF", path: "/protect-pdf", description: "Add password protection" },
       { name: "Redact PDF", path: "/redact-pdf", description: "Remove sensitive content first" },
-      { name: "Compress PDF", path: "/compress", description: "Optimize file size after watermarking" }
+      { name: "Compress PDF", path: "/compress-pdf", description: "Optimize file size after watermarking" }
     ]
   },
   {
@@ -2842,7 +2842,7 @@ Charts and graphs embedded in PDFs are images, not data. The converter extracts 
       { name: "OCR PDF", path: "/ocr-pdf", description: "Make scanned PDFs searchable first" },
       { name: "Extract Text", path: "/extract-text", description: "Extract raw text from PDFs" },
       { name: "PDF to Word", path: "/pdf-to-word", description: "Alternative conversion for mixed content" },
-      { name: "Split PDF", path: "/split", description: "Extract specific pages before converting" }
+      { name: "Split PDF", path: "/split-pdf", description: "Extract specific pages before converting" }
     ]
   },
   {
@@ -3240,7 +3240,7 @@ Need to flatten a PDF specifically for printing? Check out our dedicated guide o
 `,
     relatedTools: [
       { name: "Flatten PDF", path: "/flatten-pdf", description: "Merge all layers into one" },
-      { name: "Compress PDF", path: "/compress", description: "Reduce file size after flattening" },
+      { name: "Compress PDF", path: "/compress-pdf", description: "Reduce file size after flattening" },
       { name: "Sign PDF", path: "/sign-pdf", description: "Add signatures before flattening" },
       { name: "Edit PDF", path: "/edit-pdf", description: "Edit content before flattening" },
       { name: "Protect PDF", path: "/protect-pdf", description: "Password protect flattened documents" }
@@ -3394,7 +3394,7 @@ No. You can crop PDFs with any number of pages. The same crop area is applied un
       { name: "Resize PDF", path: "/resize-pdf", description: "Change page dimensions" },
       { name: "Delete Pages", path: "/delete-pages", description: "Remove unwanted pages" },
       { name: "OCR PDF", path: "/ocr-pdf", description: "Make scanned pages searchable" },
-      { name: "Compress PDF", path: "/compress", description: "Reduce file size after cropping" }
+      { name: "Compress PDF", path: "/compress-pdf", description: "Reduce file size after cropping" }
     ]
   },
   {
@@ -3585,8 +3585,8 @@ If all source documents need the same final size, resize each one individually f
     relatedTools: [
       { name: "Resize PDF", path: "/resize-pdf", description: "Change PDF page dimensions" },
       { name: "Crop PDF", path: "/crop-pdf", description: "Trim margins instead of resizing" },
-      { name: "Compress PDF", path: "/compress", description: "Reduce file size after resizing" },
-      { name: "Merge PDF", path: "/merge", description: "Combine pages before resizing" },
+      { name: "Compress PDF", path: "/compress-pdf", description: "Reduce file size after resizing" },
+      { name: "Merge PDF", path: "/merge-pdf", description: "Combine pages before resizing" },
       { name: "Rotate PDF", path: "/rotate-pdf", description: "Fix page orientation before resizing" }
     ]
   },
@@ -3957,8 +3957,8 @@ The converter works with standard HTML and CSS. Highly interactive single-page a
     relatedTools: [
       { name: "HTML to PDF", path: "/html-to-pdf", description: "Convert web pages to PDF" },
       { name: "Word to PDF", path: "/word-to-pdf", description: "Convert Word documents" },
-      { name: "Compress PDF", path: "/compress", description: "Reduce converted file size" },
-      { name: "Merge PDF", path: "/merge", description: "Combine multiple converted pages" },
+      { name: "Compress PDF", path: "/compress-pdf", description: "Reduce converted file size" },
+      { name: "Merge PDF", path: "/merge-pdf", description: "Combine multiple converted pages" },
       { name: "Add Page Numbers", path: "/add-page-numbers", description: "Number pages after conversion" }
     ]
   },
@@ -4348,8 +4348,8 @@ Looking for step-by-step guides on specific tools? Check out these popular artic
 You can also explore our specialized how-to guides: [compress PDF under 100KB](/tools/compress-pdf-under-100kb), [merge PDF for visa applications](/tools/merge-pdf-for-visa-application), [add signature to PDF free](/tools/add-signature-to-pdf-free), [compress PDF without losing quality](/tools/compress-pdf-without-losing-quality), and [convert PDF to editable Word free](/tools/pdf-to-word-editable-free).
 `,
     relatedTools: [
-      { name: "Compress PDF", path: "/compress", description: "Reduce PDF file size" },
-      { name: "Merge PDF", path: "/merge", description: "Combine multiple PDFs" },
+      { name: "Compress PDF", path: "/compress-pdf", description: "Reduce PDF file size" },
+      { name: "Merge PDF", path: "/merge-pdf", description: "Combine multiple PDFs" },
       { name: "PDF to Word", path: "/pdf-to-word", description: "Convert to editable Word" },
       { name: "Edit PDF", path: "/edit-pdf", description: "Add text and images" },
       { name: "OCR PDF", path: "/ocr-pdf", description: "Make scanned PDFs searchable" }
@@ -4559,7 +4559,7 @@ Deadlines vary by jurisdiction and organization type. US federal agencies have b
       { name: "Extract Text", path: "/extract-text", description: "Get plain text from PDFs" },
       { name: "Add Page Numbers", path: "/add-page-numbers", description: "Number pages for navigation" },
       { name: "Reorder Pages", path: "/reorder-pages", description: "Fix page sequence" },
-      { name: "Compress PDF", path: "/compress", description: "Optimize file size for access" }
+      { name: "Compress PDF", path: "/compress-pdf", description: "Optimize file size for access" }
     ]
   },
   {
@@ -4765,9 +4765,9 @@ Yes. After converting images to PDF, use Edit PDF to add text overlays, captions
     relatedTools: [
       { name: "JPG to PDF", path: "/jpg-to-pdf", description: "Convert JPG photos to PDF" },
       { name: "PNG to PDF", path: "/png-to-pdf", description: "Convert PNG images to PDF" },
-      { name: "Merge PDF", path: "/merge", description: "Combine converted PDFs" },
+      { name: "Merge PDF", path: "/merge-pdf", description: "Combine converted PDFs" },
       { name: "OCR PDF", path: "/ocr-pdf", description: "Make scanned images searchable" },
-      { name: "Compress PDF", path: "/compress", description: "Reduce PDF file size after conversion" }
+      { name: "Compress PDF", path: "/compress-pdf", description: "Reduce PDF file size after conversion" }
     ]
   },
   {
@@ -5194,7 +5194,7 @@ Yes, all supported languages can be translated in any direction — English to J
     relatedTools: [
       { name: "Translate PDF", path: "/translate-pdf", description: "Translate PDF to 100+ languages" },
       { name: "OCR PDF", path: "/ocr-pdf", description: "Extract text from scanned PDFs first" },
-      { name: "Compress PDF", path: "/compress", description: "Reduce PDF size before translating" },
+      { name: "Compress PDF", path: "/compress-pdf", description: "Reduce PDF size before translating" },
       { name: "Unlock PDF", path: "/unlock-pdf", description: "Remove password before translating" },
       { name: "PDF to Word", path: "/pdf-to-word", description: "Convert to Word for manual editing" }
     ]
@@ -5325,7 +5325,7 @@ For most files under 50MB, our online tool completes repair in 15–60 seconds. 
       { name: "Repair PDF", path: "/repair-pdf", description: "Fix corrupted and damaged PDF files" },
       { name: "PDF to Word", path: "/pdf-to-word", description: "Extract content from damaged PDFs" },
       { name: "PDF to JPG", path: "/pdf-to-jpg", description: "Render pages as images" },
-      { name: "Compress PDF", path: "/compress", description: "Optimize repaired PDFs" },
+      { name: "Compress PDF", path: "/compress-pdf", description: "Optimize repaired PDFs" },
       { name: "Protect PDF", path: "/protect-pdf", description: "Secure your repaired document" }
     ]
   },
@@ -5529,8 +5529,8 @@ Our tool handles mixed orientation batches. Each image is placed on its own PDF 
     relatedTools: [
       { name: "JPG to PDF", path: "/jpg-to-pdf", description: "Convert JPG images to PDF" },
       { name: "PNG to PDF", path: "/png-to-pdf", description: "Convert PNG images to PDF" },
-      { name: "Merge PDF", path: "/merge", description: "Combine multiple PDFs into one" },
-      { name: "Compress PDF", path: "/compress", description: "Reduce PDF file size" },
+      { name: "Merge PDF", path: "/merge-pdf", description: "Combine multiple PDFs into one" },
+      { name: "Compress PDF", path: "/compress-pdf", description: "Reduce PDF file size" },
       { name: "Add Page Numbers", path: "/add-page-numbers", description: "Number pages in your PDF" }
     ]
   },
@@ -5750,8 +5750,8 @@ Yes. The drag-and-drop interface works with touch on mobile devices, though a la
       { name: "Reorder Pages", path: "/reorder-pages", description: "Rearrange PDF pages by drag and drop" },
       { name: "Delete Pages", path: "/delete-pages", description: "Remove unwanted pages" },
       { name: "Extract Pages", path: "/extract-pages", description: "Pull out specific pages" },
-      { name: "Merge PDF", path: "/merge", description: "Combine multiple PDF files" },
-      { name: "Split PDF", path: "/split", description: "Split PDF into separate files" }
+      { name: "Merge PDF", path: "/merge-pdf", description: "Combine multiple PDF files" },
+      { name: "Split PDF", path: "/split-pdf", description: "Split PDF into separate files" }
     ]
   },
   {
@@ -6084,7 +6084,7 @@ Our tool handles Excel files up to 50MB. Files larger than this typically contai
       { name: "Excel to PDF", path: "/excel-to-pdf", description: "Convert Excel spreadsheets to PDF" },
       { name: "PDF to Excel", path: "/pdf-to-excel", description: "Extract PDF tables to spreadsheet" },
       { name: "Word to PDF", path: "/word-to-pdf", description: "Convert Word documents to PDF" },
-      { name: "Compress PDF", path: "/compress", description: "Reduce converted PDF file size" },
+      { name: "Compress PDF", path: "/compress-pdf", description: "Reduce converted PDF file size" },
       { name: "Protect PDF", path: "/protect-pdf", description: "Secure the converted PDF" }
     ]
   }
