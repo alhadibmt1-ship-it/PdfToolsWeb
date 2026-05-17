@@ -3448,7 +3448,7 @@ export function injectSEO(html: string, path: string): string {
     .replace(/<title>.*?<\/title>/, '')
     .replace(/<meta name="description"[^>]*\/?>/, '')
     .replace(/<link rel="canonical"[^>]*\/?>/, '')
-    .replace(/<link rel="alternate"[^>]*\/?>/, '')
+    .replace(/<link rel="alternate"[^>]*\/?>/g, '')
     .replace(/<meta name="robots"[^>]*\/?>/, '')
     .replace(/<meta property="og:[^"]*"[^>]*\/?>/g, '')
     .replace(/<meta name="twitter:[^"]*"[^>]*\/?>/g, '')
