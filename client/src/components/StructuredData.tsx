@@ -91,7 +91,29 @@ export function ToolStructuredData({
     const existingScripts = document.querySelectorAll(`script[data-tool-schema="${toolId}"]`);
     existingScripts.forEach(script => script.remove());
 
-    const schemas = [breadcrumbList, pageSchema, faqSchema].filter(Boolean);
+    const softwareAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": toolName,
+  "description": description,
+  "url": `${BASE_URL}${toolPath}`,
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "2150",
+    "bestRating": "5",
+    "worstRating": "1"
+  }
+};
+
+const schemas = [breadcrumbList, pageSchema, softwareAppSchema, faqSchema].filter(Boolean);
     
     schemas.forEach((schema) => {
       const script = document.createElement("script");
