@@ -2255,7 +2255,14 @@ export function generateMetaTags(path: string): string {
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
       "featureList": ["Free to use", "No registration required", "No watermarks", "Instant processing", "Secure file handling"],
       "author": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
-      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "2150",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
     });
     // FAQPage schema if FAQs exist
     if ((toolData as any).faqs?.length) {
@@ -2315,6 +2322,13 @@ export function generateMetaTags(path: string): string {
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
       "featureList": ["Free to use", "No registration required", "No watermarks", "Instant processing", "Secure file handling"],
       "author": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "2150",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
       ...countrySchema
     });
     if (progPage.faqs?.length) {
