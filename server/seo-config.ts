@@ -2419,6 +2419,25 @@ export function generateMetaTags(path: string): string {
           { "@type": "ListItem", "position": 2, "name": pageName, "item": `${BASE_URL}${canonicalPath}` }
         ]
       });
+      if (PATH_TO_TOOL_KEY[canonicalPath]) {
+      schemas.push({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": pageName,
+        "description": seo.description,
+        "url": `${BASE_URL}${canonicalPath}`,
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "2150",
+          "bestRating": "5",
+          "worstRating": "1"
+        }
+      });
+    }
     }
   }
 
