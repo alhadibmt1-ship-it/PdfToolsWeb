@@ -130,7 +130,9 @@ const uploadPng = multer({
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
-
+app.get('/compress', (req, res) => res.redirect(301, '/compress-pdf'));
+  app.get('/merge', (req, res) => res.redirect(301, '/merge-pdf'));
+  app.get('/split', (req, res) => res.redirect(301, '/split-pdf'));
   app.post("/api/merge", uploadPdf.array("files", 10), async (req, res) => {
     try {
       const files = req.files as Express.Multer.File[];
