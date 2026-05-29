@@ -255,7 +255,7 @@ function FeaturedToolCard({ tool, featured }: { tool: typeof PDF_TOOLS[0]; featu
   const translatedTitle = getToolTitle(tool.id, lang, tool.title);
   return (
     <Link href={tool.path} data-testid={`link-featured-${tool.id}`}>
-      <div className="group relative h-full overflow-hidden rounded-2xl bg-gradient-to-br from-card via-card to-muted/30 border border-border/50 p-6 sm:p-8 cursor-pointer transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5">
+      <div className="gradient-border group relative h-full overflow-hidden p-6 sm:p-8 cursor-pointer transition-all duration-300">
         <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity" />
         
         <div className="relative z-10">
