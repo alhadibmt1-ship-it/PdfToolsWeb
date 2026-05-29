@@ -528,9 +528,9 @@ export default function HomePage() {
                 </div>
                 <div className="mt-4 pt-4 border-t text-center">
                   <Link href="/all-tools" onClick={closeToolSelector}>
-                    <Button variant="outline" className="gap-2" data-testid="button-view-all-tools">
+                    <Button variant="outline" className="gap-2" data-testid="button-view-all-tools" aria-label="View all 49 free PDF tools">
                       <LayoutGrid className="w-4 h-4" />
-                      {t(lang, "viewAllTools")}
+                     View All 49 PDF Tools
                     </Button>
                   </Link>
                 </div>
