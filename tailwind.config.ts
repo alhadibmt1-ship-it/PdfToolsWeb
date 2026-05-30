@@ -6,12 +6,14 @@ export default {
   theme: {
     extend: {
       borderRadius: {
-        lg: ".5625rem", /* 9px */
-        md: ".375rem", /* 6px */
-        sm: ".1875rem", /* 3px */
+        lg: "1rem",      /* 16px — modern, rounded */
+        md: "0.75rem",   /* 12px */
+        sm: "0.5rem",    /* 8px */
+        xl: "1.25rem",   /* 20px */
+        "2xl": "1.5rem", /* 24px */
+        "3xl": "2rem",   /* 32px */
       },
       colors: {
-        // Flat / base colors (regular buttons)
         background: "hsl(var(--background) / <alpha-value>)",
         foreground: "hsl(var(--foreground) / <alpha-value>)",
         border: "hsl(var(--border) / <alpha-value>)",
@@ -87,6 +89,16 @@ export default {
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
       },
+      boxShadow: {
+        "card": "0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06)",
+        "card-hover": "0 20px 40px -12px rgb(37 99 235 / 0.15), 0 8px 16px -8px rgb(0 0 0 / 0.06)",
+        "card-dark": "0 1px 3px 0 rgb(0 0 0 / 0.4), inset 0 1px 0 0 rgb(255 255 255 / 0.04)",
+        "card-dark-hover": "0 20px 48px -12px rgb(59 130 246 / 0.3), 0 8px 16px -8px rgb(0 0 0 / 0.5)",
+        "glow-sm": "0 0 12px rgb(37 99 235 / 0.3)",
+        "glow": "0 0 24px rgb(37 99 235 / 0.4)",
+        "glow-lg": "0 0 40px rgb(37 99 235 / 0.5)",
+        "premium": "0 32px 64px -16px rgb(37 99 235 / 0.22)",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -96,10 +108,45 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "fade-in-up": {
+          from: { opacity: "0", transform: "translateY(16px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "fade-in": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        "scale-in": {
+          from: { opacity: "0", transform: "scale(0.95)" },
+          to: { opacity: "1", transform: "scale(1)" },
+        },
+        "slide-in-right": {
+          from: { opacity: "0", transform: "translateX(16px)" },
+          to: { opacity: "1", transform: "translateX(0)" },
+        },
+        "pulse-glow": {
+          "0%, 100%": { boxShadow: "0 0 0 0 rgb(37 99 235 / 0.3)" },
+          "50%": { boxShadow: "0 0 0 8px rgb(37 99 235 / 0)" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% center" },
+          "100%": { backgroundPosition: "200% center" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-6px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in-up": "fade-in-up 0.5s ease-out forwards",
+        "fade-in": "fade-in 0.4s ease-out forwards",
+        "scale-in": "scale-in 0.3s ease-out forwards",
+        "slide-in-right": "slide-in-right 0.4s ease-out forwards",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        "shimmer": "shimmer 2s linear infinite",
+        "float": "float 3s ease-in-out infinite",
       },
     },
   },
