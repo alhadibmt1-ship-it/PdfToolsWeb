@@ -890,7 +890,7 @@ export default function HomePage() {
             </div>
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-              <Card className="p-5 sm:p-6">
+              <Card className="premium-card p-5 sm:p-6">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center">
                     <GraduationCap className="w-5 h-5 text-blue-500" />
@@ -902,7 +902,7 @@ export default function HomePage() {
                 </p>
               </Card>
 
-              <Card className="p-5 sm:p-6">
+              <Card className="premium-card p-5 sm:p-6">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center">
                     <Building2 className="w-5 h-5 text-green-500" />
@@ -914,7 +914,7 @@ export default function HomePage() {
                 </p>
               </Card>
 
-              <Card className="p-5 sm:p-6">
+              <Card className="premium-card p-5 sm:p-6">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center">
                     <Briefcase className="w-5 h-5 text-purple-500" />
@@ -926,7 +926,7 @@ export default function HomePage() {
                 </p>
               </Card>
 
-              <Card className="p-5 sm:p-6">
+              <Card className="premium-card p-5 sm:p-6">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center">
                     <Users className="w-5 h-5 text-orange-500" />
@@ -938,7 +938,7 @@ export default function HomePage() {
                 </p>
               </Card>
 
-              <Card className="p-5 sm:p-6">
+              <Card className="premium-card p-5 sm:p-6">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center">
                     <Upload className="w-5 h-5 text-red-500" />
@@ -950,7 +950,7 @@ export default function HomePage() {
                 </p>
               </Card>
 
-              <Card className="p-5 sm:p-6">
+              <Card className="premium-card p-5 sm:p-6">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center">
                     <Smartphone className="w-5 h-5 text-cyan-500" />
@@ -982,7 +982,7 @@ export default function HomePage() {
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
               <Link href="/blog/how-to-compress-pdf-for-email">
-                <Card className="p-5 sm:p-6 h-full hover-elevate cursor-pointer">
+                <Card className="premium-card p-5 sm:p-6 h-full cursor-pointer">
                   <h3 className="font-semibold mb-2 text-foreground">How to Compress PDF for Email</h3>
                   <p className="text-sm text-muted-foreground mb-3">
                     Reduce PDF file size under 25MB for email attachments without losing quality.
@@ -994,7 +994,7 @@ export default function HomePage() {
               </Link>
               
               <Link href="/blog/convert-pdf-to-word-without-losing-formatting">
-                <Card className="p-5 sm:p-6 h-full hover-elevate cursor-pointer">
+                <Card className="premium-card p-5 sm:p-6 h-full cursor-pointer">
                   <h3 className="font-semibold mb-2 text-foreground">Convert PDF to Word Without Losing Formatting</h3>
                   <p className="text-sm text-muted-foreground mb-3">
                     Keep layout, fonts, and images intact when converting PDF to DOCX.
@@ -1006,7 +1006,7 @@ export default function HomePage() {
               </Link>
               
               <Link href="/blog/merge-pdf-files-guide">
-                <Card className="p-5 sm:p-6 h-full hover-elevate cursor-pointer">
+                <Card className="premium-card p-5 sm:p-6 h-full cursor-pointer">
                   <h3 className="font-semibold mb-2 text-foreground">How to Merge PDF Files</h3>
                   <p className="text-sm text-muted-foreground mb-3">
                     Combine multiple PDFs into one document in seconds - complete guide.
