@@ -602,7 +602,7 @@ export default function HomePage() {
               {displayedTools.map((tool, index) => (
                 <Link key={tool.id} href={tool.path} data-testid={`link-tool-${tool.id}`}>
                   <div 
-                    className="group relative h-full overflow-hidden rounded-xl bg-card border border-border/50 p-4 sm:p-5 cursor-pointer transition-all duration-200 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 active:scale-[0.98] touch-manipulation"
+                    className="premium-card group h-full p-4 sm:p-5 cursor-pointer active:scale-[0.98] touch-manipulation"
                     style={{ animationDelay: `${index * 30}ms` }}
                   >
                     <div className="flex flex-col h-full">
