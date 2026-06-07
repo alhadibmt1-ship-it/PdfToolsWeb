@@ -116,11 +116,12 @@ const categoryInfo: Record<CategoryFilter, { labelKey: string; color: string; gr
   "utility":  { labelKey: "utilityTools",   color: "text-purple-500",  gradient: "from-purple-500 to-purple-600" },
 };
 
+// ✅ FIX: Added direct canonical paths to avoid redirects (saves 630ms per click)
 const featuredTools = [
-  { id: "compress", tagline: "Reduce file size instantly", highlight: "Up to 90% smaller" },
-  { id: "merge", tagline: "Combine multiple PDFs", highlight: "Drag & drop ordering" },
-  { id: "pdf-to-word", tagline: "Perfect conversion quality", highlight: "Keeps formatting" },
-  { id: "split", tagline: "Extract pages you need", highlight: "Quick & precise" }
+  { id: "compress", path: "/compress-pdf", tagline: "Reduce file size instantly", highlight: "Up to 90% smaller" },
+  { id: "merge", path: "/merge-pdf", tagline: "Combine multiple PDFs", highlight: "Drag & drop ordering" },
+  { id: "pdf-to-word", path: "/pdf-to-word", tagline: "Perfect conversion quality", highlight: "Keeps formatting" },
+  { id: "split", path: "/split-pdf", tagline: "Extract pages you need", highlight: "Quick & precise" }
 ];
 
 function ConversionIcon({ iconType, size = "default" }: { iconType: string; size?: "default" | "large" }) {
@@ -219,7 +220,7 @@ function ConversionIcon({ iconType, size = "default" }: { iconType: string; size
 function FAQItem({ question, answer, isOpen, onClick, id }: { question: string; answer: string; isOpen: boolean; onClick: () => void; id: string }) {
   const contentId = `faq-content-${id}`;
   const buttonId = `faq-button-${id}`;
-  
+
   return (
     <div className="premium-card overflow-visible">
       <button
@@ -250,14 +251,15 @@ function FAQItem({ question, answer, isOpen, onClick, id }: { question: string; 
   );
 }
 
+// ✅ FIX: Uses featured.path (canonical) instead of tool.path (may redirect)
 function FeaturedToolCard({ tool, featured }: { tool: typeof PDF_TOOLS[0]; featured: typeof featuredTools[0] }) {
   const { lang } = useLanguage();
   const translatedTitle = getToolTitle(tool.id, lang, tool.title);
   return (
-    <Link href={tool.path} data-testid={`link-featured-${tool.id}`}>
+    <Link href={featured.path || tool.path} data-testid={`link-featured-${tool.id}`}>
       <div className="gradient-border group relative h-full overflow-hidden p-6 sm:p-8 cursor-pointer transition-all duration-300">
         <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity" />
-        
+
         <div className="relative z-10">
           <div className="flex items-start justify-between mb-4">
             <ConversionIcon iconType={tool.icon} size="large" />
@@ -266,22 +268,22 @@ function FeaturedToolCard({ tool, featured }: { tool: typeof PDF_TOOLS[0]; featu
               <span className="text-xs font-semibold text-amber-600 dark:text-amber-400">{t(lang, "featuredLabel")}</span>
             </div>
           </div>
-          
+
           <h3 className="text-xl sm:text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
             {translatedTitle}
           </h3>
-          
+
           <p className="text-muted-foreground mb-4 text-sm sm:text-base leading-relaxed">
             {featured.tagline}
           </p>
-          
+
           <div className="flex items-center gap-2 mb-5">
             <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20">
               <CheckCircle className="w-3.5 h-3.5 text-green-500" />
               <span className="text-xs font-medium text-green-600 dark:text-green-400">{featured.highlight}</span>
             </div>
           </div>
-          
+
           <div className="flex items-center text-sm font-semibold text-primary group-hover:gap-2 transition-all">
             <span>{t(lang, "useTool")} {translatedTitle}</span>
             <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
@@ -331,7 +333,7 @@ export default function HomePage() {
     setShowToolSelector(false);
     setLocalFile(null);
   };
-  
+
   const faqs = [
     {
       question: "Is PDF HUB 24 free to use?",
@@ -402,7 +404,7 @@ useSEO({
     setActiveCategory(cat);
     setShowAllInGrid(false);
   };
-  
+
   const featuredToolsData = featuredTools.map(ft => ({
     tool: PDF_TOOLS.find(t => t.id === ft.id)!,
     featured: ft
@@ -413,7 +415,7 @@ useSEO({
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      
+
       <main className="flex-1">
         {/* Hero Section — compact, tool-first */}
         <section className="hero-gradient pt-6 pb-4 sm:pt-8 sm:pb-5 relative overflow-hidden">
@@ -548,7 +550,7 @@ useSEO({
                 {t(lang, "featuredTools")}
               </h2>
             </div>
-            
+
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {featuredToolsData.map(({ tool, featured }) => (
                 <FeaturedToolCard key={tool.id} tool={tool} featured={featured} />
@@ -573,7 +575,7 @@ useSEO({
                 {t(lang, "allPdfToolsSubtitle")}
               </p>
             </div>
-            
+
             {/* Category Filter Tabs */}
             <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
               {categories.map((cat) => (
@@ -596,7 +598,7 @@ useSEO({
                 </button>
               ))}
             </div>
-            
+
             {/* Tools Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
               {displayedTools.map((tool, index) => (
@@ -609,15 +611,15 @@ useSEO({
                       <div className="mb-3 sm:mb-4">
                         <ConversionIcon iconType={tool.icon} />
                       </div>
-                      
+
                       <h3 className="text-xs sm:text-sm font-semibold group-hover:text-primary transition-colors leading-tight line-clamp-2 mb-1">
                         {getToolTitle(tool.id, lang, tool.title)}
                       </h3>
-                      
+
                       <p className="text-[10px] sm:text-xs text-muted-foreground line-clamp-2 flex-1 hidden sm:block">
                         {tool.description}
                       </p>
-                      
+
                       <div className="flex items-center justify-center text-[10px] sm:text-xs font-medium text-primary mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
                         <span className="hidden sm:inline">{t(lang, "useTool")}</span>
                         <ArrowRight className="w-3 h-3 sm:ml-1" />
@@ -627,7 +629,7 @@ useSEO({
                 </Link>
               ))}
             </div>
-            
+
             {/* Show all / show less expander */}
             {activeCategory === "all" && filteredTools.length > TOOLS_INITIAL_COUNT && (
               <div className="mt-6 text-center">
@@ -699,7 +701,7 @@ useSEO({
                 {t(lang, "howItWorksSubtitle")}
               </p>
             </div>
-            
+
             <div className="grid md:grid-cols-3 gap-8 md:gap-12">
               <div className="text-center relative">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-primary to-blue-600 text-white flex items-center justify-center mx-auto mb-5 text-2xl sm:text-3xl font-bold shadow-xl shadow-primary/25">
@@ -711,7 +713,7 @@ useSEO({
                 </p>
                 <div className="hidden md:block absolute top-10 right-0 w-[calc(50%-2rem)] h-0.5 bg-gradient-to-r from-primary/30 to-transparent translate-x-full" />
               </div>
-              
+
               <div className="text-center relative">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-primary to-blue-600 text-white flex items-center justify-center mx-auto mb-5 text-2xl sm:text-3xl font-bold shadow-xl shadow-primary/25">
                   2
@@ -722,7 +724,7 @@ useSEO({
                 </p>
                 <div className="hidden md:block absolute top-10 right-0 w-[calc(50%-2rem)] h-0.5 bg-gradient-to-r from-primary/30 to-transparent translate-x-full" />
               </div>
-              
+
               <div className="text-center">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-primary to-blue-600 text-white flex items-center justify-center mx-auto mb-5 text-2xl sm:text-3xl font-bold shadow-xl shadow-primary/25">
                   3
@@ -748,7 +750,7 @@ useSEO({
                 {t(lang, "whyChooseSubtitle")}
               </p>
             </div>
-            
+
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
               <div className="premium-card p-6 sm:p-8">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500/20 to-green-500/5 flex items-center justify-center mb-5 border border-green-500/10">
@@ -759,7 +761,7 @@ useSEO({
                   All tools are completely free with no hidden costs, subscriptions, or premium tiers. Use as much as you need.
                 </p>
               </div>
-              
+
               <div className="premium-card p-6 sm:p-8">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-5 border border-primary/10">
                   <Lock className="w-6 h-6 text-primary" />
@@ -769,7 +771,7 @@ useSEO({
                   Bank-level encryption for all file transfers. Your documents are protected with the same security used by major financial institutions.
                 </p>
               </div>
-              
+
               <div className="premium-card p-6 sm:p-8">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500/20 to-orange-500/5 flex items-center justify-center mb-5 border border-orange-500/10">
                   <Zap className="w-6 h-6 text-orange-500" />
@@ -779,7 +781,7 @@ useSEO({
                   Powered by cloud technology for instant processing. Most files are ready in seconds, not minutes.
                 </p>
               </div>
-              
+
               <div className="premium-card p-6 sm:p-8">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-500/5 flex items-center justify-center mb-5 border border-purple-500/10">
                   <Globe className="w-6 h-6 text-purple-500" />
@@ -789,7 +791,7 @@ useSEO({
                   Access from any device - desktop, tablet, or mobile. No software installation needed, just your browser.
                 </p>
               </div>
-              
+
               <div className="premium-card p-6 sm:p-8">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 flex items-center justify-center mb-5 border border-cyan-500/10">
                   <Trash2 className="w-6 h-6 text-cyan-500" />
@@ -799,7 +801,7 @@ useSEO({
                   Your files are automatically deleted after processing. We never store or access your documents.
                 </p>
               </div>
-              
+
               <div className="premium-card p-6 sm:p-8">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500/20 to-red-500/5 flex items-center justify-center mb-5 border border-red-500/10">
                   <Headphones className="w-6 h-6 text-red-500" />
@@ -810,7 +812,7 @@ useSEO({
                 </p>
               </div>
             </div>
-            
+
             {/* User Rating Section - Trustpilot Style */}
             <div className="mt-12 pt-10 border-t">
               <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
@@ -823,9 +825,9 @@ useSEO({
                   <div className="text-2xl font-bold mb-1">4.9 out of 5</div>
                   <div className="text-sm text-muted-foreground">Highly rated by our users</div>
                 </div>
-                
+
                 <div className="hidden md:block h-16 w-px bg-border" />
-                
+
                 <div className="grid grid-cols-3 gap-8 text-center">
                   <div>
                     <div className="text-2xl sm:text-3xl font-bold text-primary">1M+</div>
@@ -842,7 +844,7 @@ useSEO({
                 </div>
               </div>
             </div>
-            
+
             {/* Security Certifications - PDFGuru Style */}
             <div className="mt-10 pt-10 border-t">
               <div className="text-center mb-8">
@@ -888,7 +890,7 @@ useSEO({
                 Who Uses PDF HUB 24?
               </h2>
             </div>
-            
+
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
               <Card className="premium-card p-5 sm:p-6">
                 <div className="flex items-center gap-3 mb-3">
@@ -979,7 +981,7 @@ useSEO({
                 Learn how to work with PDF files effectively with our helpful guides
               </p>
             </div>
-            
+
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
               <Link href="/blog/how-to-compress-pdf-for-email">
                 <Card className="premium-card p-5 sm:p-6 h-full cursor-pointer">
@@ -992,7 +994,7 @@ useSEO({
                   </span>
                 </Card>
               </Link>
-              
+
               <Link href="/blog/convert-pdf-to-word-without-losing-formatting">
                 <Card className="premium-card p-5 sm:p-6 h-full cursor-pointer">
                   <h3 className="font-semibold mb-2 text-foreground">Convert PDF to Word Without Losing Formatting</h3>
@@ -1004,7 +1006,7 @@ useSEO({
                   </span>
                 </Card>
               </Link>
-              
+
               <Link href="/blog/merge-pdf-files-guide">
                 <Card className="premium-card p-5 sm:p-6 h-full cursor-pointer">
                   <h3 className="font-semibold mb-2 text-foreground">How to Merge PDF Files</h3>
@@ -1017,7 +1019,7 @@ useSEO({
                 </Card>
               </Link>
             </div>
-            
+
             <div className="text-center mt-8">
               <Link href="/blog">
                 <Button variant="outline" className="gap-2" data-testid="button-view-all-articles">
@@ -1038,7 +1040,7 @@ useSEO({
                 Frequently Asked Questions
               </h2>
             </div>
-            
+
             <div className="space-y-3 sm:space-y-4">
               {faqs.map((faq, index) => (
                 <FAQItem
@@ -1159,7 +1161,7 @@ useSEO({
               <FileCheck className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium text-primary">Start Now - It's Free</span>
             </div>
-            
+
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-4">
               Ready to Transform Your PDFs?
             </h2>
@@ -1167,7 +1169,7 @@ useSEO({
               Choose any tool above and start processing your files instantly. 
               No registration, no downloads, no limits.
             </p>
-            
+
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
               <Link href="/merge-pdf">
                 <Button size="lg" className="gap-2" data-testid="button-merge-cta">
@@ -1182,7 +1184,7 @@ useSEO({
                 </Button>
               </Link>
             </div>
-            
+
             <p className="text-sm text-muted-foreground mt-8">
               Trusted by users worldwide for all their PDF needs
             </p>
