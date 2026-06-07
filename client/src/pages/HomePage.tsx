@@ -380,13 +380,13 @@ export default function HomePage() {
     "numberOfEmployees": { "@type": "QuantitativeValue", "value": 5 }
   };
 
-  useSEO({
-    title: "PDF HUB 24 - 49+ Free PDF Tools | Convert, Edit, Compress",
-    description: "100% free PDF tools. Convert PDF to Word, JPG, Excel. Merge, split, compress PDFs instantly. Best free PDF converter - no signup, no watermarks.",
-    keywords: "free pdf tools, pdf converter free, pdf to word free, merge pdf free, compress pdf free, pdf editor free, convert pdf online, pdf to jpg, split pdf",
-    canonicalPath: "/",
-    structuredData: organizationSchema
-  });
+useSEO({
+  title: "PDF HUB 24 — 49+ Free PDF Tools Online | No Signup, No Watermark",
+  description: "49+ free online PDF tools — compress, merge, split, convert PDF to Word, JPG to PDF, sign, protect and edit PDFs instantly. No signup required, no watermarks, 100% secure. Works on any device in 2026.",
+  keywords: "pdf hub 24, pdfhub24, pdf hub online, free pdf tools online, free pdf tools no registration, pdf tools without signup, pdf tools 2026, online pdf editor free no download, free pdf converter online no watermark, compress pdf free online, compress pdf without losing quality, reduce pdf file size free, make pdf smaller free, compress pdf under 100kb, compress pdf for email, merge pdf files free online, combine pdf files free, merge pdf no limit, split pdf pages free, extract pages from pdf free, pdf to word free online, convert pdf to word keep formatting, word to pdf free online, jpg to pdf free online, pdf to jpg free, sign pdf online free, electronic signature pdf free, protect pdf with password free, unlock pdf free online, edit pdf online free, edit pdf without adobe acrobat, annotate pdf free, ocr pdf free online, translate pdf free, batch compress pdf free, best free pdf tools 2026, pdfhub24.com tools",
+  canonicalPath: "/",
+  structuredData: organizationSchema
+});
 
   const allTools = PDF_TOOLS;
   const filteredTools = activeCategory === "all" 
