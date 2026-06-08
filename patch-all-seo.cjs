@@ -437,6 +437,117 @@ const SEO_MAP = {
     keywords: "pdf hub 24 404, pdf hub 24 page not found, free pdf tools pdf hub 24",
     canonicalPath: "/404"
   },
+  "DataSecurityPage.tsx": {
+    title: "Data Security & Privacy — How We Protect Your Files | PDF HUB 24",
+    description: "PDF HUB 24 uses SSL encryption and automatic file deletion. Your files are never stored or shared. 100% secure free PDF tools. No signup required.",
+    keywords: "pdf hub 24 security, pdfhub24 privacy, pdf tools secure, file encryption pdf, automatic file deletion pdf, safe pdf converter, secure pdf tools online, pdfhub24 data protection",
+    canonicalPath: "/data-security"
+  },
+
+  "EmbedWidgetPage.tsx": {
+    title: "Embed PDF Tools on Your Website Free — Widget Generator | PDF HUB 24",
+    description: "Embed free PDF tools on your website with our widget generator. Get iframe code for compress, merge, convert and 40+ PDF tools. Free, no API key needed.",
+    keywords: "embed pdf tools website, pdf widget generator free, iframe pdf tools, embed pdf converter website, pdf tools widget, free pdf widget embed, pdfhub24 embed widget",
+    canonicalPath: "/embed-widget"
+  },
+
+  "ConvertImagePage.tsx": {
+    title: "Convert Image Format Free Online — JPG PNG WebP | PDF HUB 24",
+    description: "Convert image format free online. JPG to PNG, PNG to WebP, WebP to JPG and more. Best free image converter — no signup, no watermark. PDF HUB 24.",
+    keywords: "convert image free, image converter online free, jpg to png free, png to webp free, webp to jpg free, convert image format online, image format converter no signup, pdfhub24 image converter",
+    canonicalPath: "/convert-image"
+  },
+
+  "ExtractImagesPage.tsx": {
+    title: "Extract Images from PDF Free Online | PDF HUB 24",
+    description: "Extract all images from PDF files free online. Download pictures from PDF in JPG or PNG format instantly. No signup, no watermark. PDF HUB 24.",
+    keywords: "extract images from pdf free, download images from pdf, pdf image extractor free, extract pictures from pdf online, save images from pdf free, pdf to images free, pdfhub24 extract images",
+    canonicalPath: "/extract-images"
+  },
+
+  "ResizePdfPage.tsx": {
+    title: "Resize PDF Free Online — Change Page Size to A4 or Letter | PDF HUB 24",
+    description: "Resize PDF page size to A4, Letter, Legal or custom dimensions free online. Scale PDF pages for printing or submission. No signup, no watermark. PDF HUB 24.",
+    keywords: "resize pdf free, change pdf page size free, pdf to a4 free, pdf to letter size free, resize pdf online, pdf page resize free, change pdf size online, pdfhub24 resize pdf 2026",
+    canonicalPath: "/resize-pdf"
+  },
+
+  "BlogListPage.tsx": {
+    title: "PDF Tips, Guides & Tutorials — Free PDF Help | PDF HUB 24",
+    description: "Free PDF guides and tutorials. Learn to compress, merge, convert, edit and protect PDFs. Step-by-step tutorials for beginners and professionals. PDF HUB 24.",
+    keywords: "pdf tutorials free, pdf tips guides, how to compress pdf, how to merge pdf, pdf help guide, pdf tips 2026, free pdf tutorials, pdfhub24 blog, pdf hub 24 guides",
+    canonicalPath: "/blog"
+  },
+
+  "CropPdfPage.tsx": {
+    title: "Crop PDF Free Online — Trim Margins & White Space | PDF HUB 24",
+    description: "Crop PDF pages free online. Remove white margins, trim excess space, resize page content. Best free PDF cropper — no signup, no watermark. PDF HUB 24.",
+    keywords: "crop pdf free, crop pdf online, trim pdf margins free, remove pdf margins free, pdf cropper free, crop pdf pages online, resize pdf content free, pdfhub24 crop pdf 2026",
+    canonicalPath: "/crop-pdf"
+  },
+
+  "BestFreeToolsPage.tsx": {
+    title: "Best Free PDF Tools 2026 — Top Rated Online PDF Tools | PDF HUB 24",
+    description: "The best free PDF tools online in 2026. Top-rated compress, merge, split, convert PDF tools with no signup, no watermarks, unlimited use. PDF HUB 24.",
+    keywords: "best free pdf tools 2026, top pdf tools online, best pdf converter free, best pdf compressor free, best free pdf editor, top rated pdf tools, free pdf tools no signup, pdfhub24 best tools",
+    canonicalPath: "/best-free-tools"
+  },
+
+  "ExtractPagesPage.tsx": {
+    title: "Extract Pages from PDF Free — PDF Page Extractor | PDF HUB 24",
+    description: "Extract specific pages from PDF free online. Select single pages or page ranges to create a new PDF instantly. No signup, no watermark. PDF HUB 24.",
+    keywords: "extract pages from pdf free, pdf page extractor free, extract single page pdf, pull pages from pdf free, pdf page extraction online, extract pdf pages no signup, pdfhub24 extract pages",
+    canonicalPath: "/extract-pages"
+  },
+
+  "HomePage.tsx": {
+    title: "PDF HUB 24 — 49+ Free PDF Tools Online | No Signup, No Watermark",
+    description: "49+ free online PDF tools — compress, merge, split, convert PDF to Word, JPG to PDF, sign, protect and edit PDFs. No registration, no watermarks. PDF HUB 24.",
+    keywords: "free pdf tools online, compress pdf free, merge pdf free, split pdf free, pdf to word free, jpg to pdf free, sign pdf free, protect pdf free, pdf hub 24, pdfhub24, free pdf converter 2026",
+    canonicalPath: "/"
+  },
+
+  "CategoryHubPage.tsx": {
+    title: "Free PDF Tools — Convert, Edit & Manage PDFs Online | PDF HUB 24",
+    description: "Complete suite of free PDF tools — convert, compress, merge, split, edit, sign, and secure PDF files online. No registration, no watermarks. PDF HUB 24.",
+    keywords: "free pdf tools, convert pdf online free, edit pdf free, compress pdf free, pdf tools suite, pdf hub 24 tools, pdfhub24 tools, all pdf tools free 2026",
+    canonicalPath: "/convert-pdf"
+  },
+
+  "ContactPage.tsx": {
+    title: "Contact PDF HUB 24 — Support & Feedback | PDF HUB 24",
+    description: "Contact PDF HUB 24 for support, feedback, or questions about our free PDF tools. We respond to all inquiries. Get help with any PDF tool.",
+    keywords: "contact pdf hub 24, pdfhub24 support, pdf hub 24 help, pdfhub24 feedback, contact pdfhub24, pdf tools support, pdf hub 24 contact us",
+    canonicalPath: "/contact"
+  },
+
+  "BlogPostPage.tsx": {
+    title: "PDF Guides & Tutorials — Learn PDF Tools | PDF HUB 24",
+    description: "Step-by-step PDF guides and tutorials. Learn how to compress, merge, convert, sign, and protect PDF files free online. Expert tips from PDF HUB 24.",
+    keywords: "pdf guide, pdf tutorial, how to pdf, pdf tips, learn pdf, pdf help, pdfhub24 guide, pdf hub 24 tutorial, free pdf guide 2026",
+    canonicalPath: "/blog"
+  },
+
+  "DmcaPage.tsx": {
+    title: "DMCA Policy — Copyright Protection | PDF HUB 24",
+    description: "DMCA policy for PDF HUB 24. Learn how to report copyright infringement and how we handle takedown requests. We respect intellectual property rights.",
+    keywords: "dmca policy pdfhub24, pdf hub 24 dmca, copyright policy pdf tools, dmca takedown pdfhub24, intellectual property pdf hub 24",
+    canonicalPath: "/dmca"
+  },
+
+  "CropImagePage.tsx": {
+    title: "Crop Image Free Online — Trim & Cut Photos | PDF HUB 24",
+    description: "Crop image free online. Remove unwanted areas from photos. Set custom crop dimensions or aspect ratios. No signup, no watermark. PDF HUB 24.",
+    keywords: "crop image free, crop photo online free, image cropper free, trim photo online, cut image free, crop picture online, image crop tool free, pdfhub24 crop image 2026",
+    canonicalPath: "/crop-image"
+  },
+
+  "RotateImagePage.tsx": {
+    title: "Rotate Image Free Online — Flip & Rotate Photos | PDF HUB 24",
+    description: "Rotate image free online. Flip photos horizontally or vertically, rotate 90, 180, 270 degrees. No signup, no watermark. PDF HUB 24.",
+    keywords: "rotate image free, flip image online free, rotate photo free, flip photo online, rotate picture 90 degrees, image rotator free, rotate jpg free, pdfhub24 rotate image 2026",
+    canonicalPath: "/rotate-image"
+  },
 };
 
 // ── Patch function ───────────────────────────────────────────
