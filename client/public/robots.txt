@@ -10,9 +10,10 @@ Disallow: /html-sitemap
 Disallow: /embed
 Disallow: /seo-audit
 
-Crawl-delay: 1
-
 User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
 Allow: /
 
 User-agent: Google-Extended
@@ -25,9 +26,6 @@ User-agent: Amazonbot
 Allow: /
 
 User-agent: CCBot
-Allow: /
-
-User-agent: Bingbot
 Allow: /
 
 User-agent: DuckDuckBot
