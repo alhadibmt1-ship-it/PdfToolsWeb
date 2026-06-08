@@ -1695,4 +1695,7 @@ The redaction selection tool removes everything in the selected area — text, i
       "Protecting confidential data before sharing documents externally"
     ],
     faqs: [
-      { question: "Is redaction truly permanent?", answer: "Yes. Our tool permanently removes the underlying text data from the PDF file. The redacted information can
+      { question: "Is redaction truly permanent?", answer: "Yes. Our tool permanently removes the underlying text data from the PDF file. The redacted information cannot be recovered or revealed, even with specialized PDF editing software." }
+    ]
+  }
+];
