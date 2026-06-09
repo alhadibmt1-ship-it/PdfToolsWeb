@@ -2043,7 +2043,10 @@ export function generateMetaTags(path: string): string {
   const blogSlugMatch = canonicalPath.match(/^\/blog\/([^/]+)$/);
   const blogPost = blogSlugMatch ? blogPosts.find(p => p.slug === blogSlugMatch[1]) : null;
   const isUnknownBlogSlug = !!(blogSlugMatch && !blogPost);
-  const isNoindex = !!(seo.robots && seo.robots.includes("noindex")) || isUnknownBlogSlug;
+  // Language homepages (/es, /de, /fr etc) are thin duplicate-of-homepage pages.
+  // Noindex them to preserve crawl budget for indexable tool + blog pages.
+  const isLangHomepage = lang !== "en" && canonicalPath === "/";
+  const isNoindex = !!(seo.robots && seo.robots.includes("noindex")) || isUnknownBlogSlug || isLangHomepage;
   const hreflangBlock = isNoindex ? "" : `\n    <!-- Hreflang International SEO -->\n    ${hreflangTags}`;
 
   // ── Detect page type ──────────────────────────────────────────────────────
@@ -2192,7 +2195,7 @@ export function generateMetaTags(path: string): string {
   // Language blog pages: INDEXED — each has unique fully-translated content per language
   // All country pages: INDEXED — each has unique locally-enriched content
   // All other pages: standard index,follow with full preview directives
-  const robotsContent = (isUnknownBlogSlug || isTrulyUnknownPage)
+  const robotsContent = (isUnknownBlogSlug || isTrulyUnknownPage || isLangHomepage)
     ? "noindex, nofollow"
     : (seo.robots || "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
 
@@ -3460,6 +3463,7 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
   <main style="flex:1;max-width:1024px;margin:0 auto;padding:2.5rem 1.5rem;width:100%">
     <h1 style="font-size:clamp(1.5rem,5vw,2.75rem);font-weight:700;line-height:1.15;margin-bottom:1rem">${escHtml(h1Text)}</h1>
     <p style="font-size:1.05rem;line-height:1.7;margin-bottom:1.5rem;max-width:700px">${escHtml(descText)}</p>
+    ${toolData?.heroContent && lang === "en" ? `<p style="font-size:1rem;line-height:1.75;margin-bottom:2rem;max-width:800px;color:#334155">${escHtml(toolData.heroContent)}</p>` : ""}
     ${richContent}
   </main>
 </div>
