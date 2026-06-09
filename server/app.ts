@@ -25,6 +25,9 @@ export function log(message: string, source = "express") {
 
 export const app = express();
 
+// Trust Railway's proxy so x-forwarded-proto is read correctly for HTTP→HTTPS redirects
+app.set('trust proxy', 1);
+
 app.use(compression({
   level: 6,
   threshold: 1024,
