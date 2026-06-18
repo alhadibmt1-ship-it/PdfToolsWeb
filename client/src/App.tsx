@@ -88,6 +88,16 @@ const FreePdfConverterPage = lazy(() => import("@/pages/FreePdfConverterPage"));
 const FreePdfEditorPage = lazy(() => import("@/pages/FreePdfEditorPage"));
 const CategoryHubPage = lazy(() => import("@/pages/CategoryHubPage"));
 const ProgrammaticSeoPage = lazy(() => import("@/pages/ProgrammaticSeoPage"));
+const RemoveWatermarkPage = lazy(() => import("@/pages/RemoveWatermarkPage"));
+const EditMetadataPage = lazy(() => import("@/pages/EditMetadataPage"));
+const PdfToHtmlPage = lazy(() => import("@/pages/PdfToHtmlPage"));
+const InsertPagesPage = lazy(() => import("@/pages/InsertPagesPage"));
+const WhiteoutPdfPage = lazy(() => import("@/pages/WhiteoutPdfPage"));
+const PdfStamperPage = lazy(() => import("@/pages/PdfStamperPage"));
+const AddBookmarksPage = lazy(() => import("@/pages/AddBookmarksPage"));
+const AddHyperlinksPage = lazy(() => import("@/pages/AddHyperlinksPage"));
+const PdfFormsPage = lazy(() => import("@/pages/PdfFormsPage"));
+const PdfToCsvPage = lazy(() => import("@/pages/PdfToCsvPage"));
 const WriteForUsPage = lazy(() => import("@/pages/WriteForUsPage"));
 const DataSecurityPage = lazy(() => import("@/pages/DataSecurityPage"));
 const AutoDeletePage = lazy(() => import("@/pages/AutoDeletePage"));
@@ -259,7 +269,17 @@ function AppRoutes() {
         <Route path="/secure-pdf" component={CategoryHubPage} />
         <Route path="/image-tools" component={CategoryHubPage} />
         <TranslatedSlugRoutes />
-        <Route component={NotFound} />
+        <Route path="/remove-watermark" component={RemoveWatermarkPage} />
+        <Route path="/edit-metadata" component={EditMetadataPage} />
+        <Route path="/pdf-to-html" component={PdfToHtmlPage} />
+        <Route path="/insert-pages" component={InsertPagesPage} />
+        <Route path="/whiteout-pdf" component={WhiteoutPdfPage} />
+        <Route path="/pdf-stamper" component={PdfStamperPage} />
+        <Route path="/add-bookmarks" component={AddBookmarksPage} />
+        <Route path="/add-hyperlinks" component={AddHyperlinksPage} />
+        <Route path="/pdf-forms" component={PdfFormsPage} />
+        <Route path="/pdf-to-csv" component={PdfToCsvPage} />
+                <Route component={NotFound} />
       </Switch>
     </Suspense>
   );
