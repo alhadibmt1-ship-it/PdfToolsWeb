@@ -274,7 +274,7 @@ const PATH_TO_TOOL_KEY: Record<string, string> = {
   "/pdf-to-pdfa":      "pdf-to-pdfa",
   "/crop-pdf":         "crop-pdf",
   "/flatten-pdf":      "flatten-pdf",
-  "/compress-img":     "compress-img",
+  "/image-compressor":     "compress-img",
   "/compare-pdf":      "edit-pdf",
   "/pdf-viewer":       "edit-pdf",
   "/repair-pdf":       "edit-pdf",
@@ -2047,7 +2047,7 @@ export function generateMetaTags(path: string): string {
   // Noindex them to preserve crawl budget for indexable tool + blog pages.
   const isLangHomepage = lang !== "en" && canonicalPath === "/";
   const isNoindex = !!(seo.robots && seo.robots.includes("noindex")) || isUnknownBlogSlug || isLangHomepage;
-  const hreflangBlock = isNoindex ? "" : `\n    <!-- Hreflang International SEO -->\n    ${hreflangTags}`;
+  const hreflangBlock = `\n    <!-- Hreflang International SEO -->\n    ${hreflangTags}`;
 
   // ── Detect page type ──────────────────────────────────────────────────────
   const progSlugMatch = canonicalPath.match(/^\/tools\/([^/]+)$/);
@@ -2175,7 +2175,7 @@ export function generateMetaTags(path: string): string {
   const ogDescription = seo.ogDescription || effectiveDescription;
   const isLangBlogPage = lang !== "en" && canonicalPath.startsWith("/blog/");
   const isEffectivelyNoindex = isNoindex;
-  const ogUrl = isEffectivelyNoindex ? "" : (seo.ogUrl || canonicalUrl);
+  const ogUrl = isEffectivelyNoindex ? "" : canonicalUrl;
   const twitterTitle = seo.twitterTitle || ogTitle;
   const twitterDescription = seo.twitterDescription || ogDescription;
 
@@ -2910,6 +2910,139 @@ function getLangCatLabel(cat: string, lang: string): string {
   return key ? L[key] as string : cat;
 }
 
+// Internal links from tool pages to /tools/ pages — fixes orphan pages SEO issue
+const TOOLS_PAGE_LINKS: Record<string, {slug: string; title: string}[]> = {
+  "/add-page-numbers": [
+    { slug: "add-page-numbers-to-pdf-free", title: "Add Page Numbers to PDF" },
+    { slug: "add-page-numbers-to-pdf-automatically", title: "Add Page Numbers to PDF Automatically" },
+  ],
+  "/add-watermark": [
+    { slug: "watermark-pdf-free-online", title: "Add Watermark to PDF" },
+  ],
+  "/annotate-pdf": [
+    { slug: "annotate-pdf-highlight-text-free", title: "Annotate PDF Highlight Text" },
+  ],
+  "/compress-pdf": [
+    { slug: "compress-pdf-under-100kb", title: "Compress PDF Under 100KB" },
+    { slug: "reduce-pdf-size-to-200kb", title: "Reduce PDF Size to 200KB" },
+    { slug: "compress-pdf-to-1mb", title: "Compress PDF to 1MB" },
+    { slug: "make-pdf-smaller-for-email", title: "Make PDF Smaller for Email" },
+    { slug: "compress-pdf-without-losing-quality", title: "Compress PDF Without Losing Quality" },
+    { slug: "compress-pdf-to-50kb", title: "Compress PDF to 50KB" },
+  ],
+  "/crop-pdf": [
+    { slug: "crop-pdf-margins-free-online", title: "Crop PDF Margins" },
+  ],
+  "/delete-pages": [
+    { slug: "remove-pages-from-pdf", title: "Remove Pages from PDF" },
+    { slug: "delete-pages-from-pdf", title: "Delete Pages from PDF" },
+  ],
+  "/edit-pdf": [
+    { slug: "edit-pdf-text-online-free", title: "Edit PDF Text Online" },
+    { slug: "edit-pdf-without-adobe-acrobat", title: "Edit PDF Without Adobe Acrobat" },
+    { slug: "pdf-editor-free-without-watermark", title: "Free PDF Editor Online Without Watermark" },
+  ],
+  "/excel-to-pdf": [
+    { slug: "convert-excel-to-pdf-free", title: "Convert Excel to PDF" },
+  ],
+  "/flatten-pdf": [
+    { slug: "flatten-pdf-for-printing", title: "Flatten PDF for Printing" },
+  ],
+  "/grayscale-pdf": [
+    { slug: "grayscale-pdf-free-online", title: "Convert PDF to Grayscale" },
+  ],
+  "/html-to-pdf": [
+    { slug: "convert-html-webpage-to-pdf", title: "Convert HTML Webpage to PDF" },
+  ],
+  "/image-compressor": [
+    { slug: "compress-jpg-png-image-online", title: "Compress JPG PNG Image Online" },
+  ],
+  "/jpg-to-pdf": [
+    { slug: "convert-jpg-to-pdf-free-online", title: "Convert JPG to PDF" },
+    { slug: "convert-multiple-images-to-one-pdf", title: "Convert Multiple Images to One PDF" },
+    { slug: "convert-image-to-pdf-free", title: "Convert Image to PDF" },
+    { slug: "convert-jpg-to-pdf-multiple", title: "Convert Multiple JPG to PDF" },
+  ],
+  "/merge-pdf": [
+    { slug: "merge-pdf-for-visa-application", title: "Merge PDF for Visa Application" },
+    { slug: "merge-pdf-free-no-limit", title: "Merge PDF No Limit — Combine Unlimited Files" },
+    { slug: "merge-pdf-for-job-application", title: "Merge PDF for Job Application" },
+    { slug: "merge-pdf-for-immigration", title: "Merge PDF for Immigration Application" },
+    { slug: "merge-pdf-two-files", title: "Merge Two PDF Files Online" },
+  ],
+  "/ocr-pdf": [
+    { slug: "convert-scanned-pdf-to-word-editable", title: "Convert Scanned PDF to Editable Word" },
+    { slug: "ocr-pdf-online-free", title: "OCR PDF Online — Make Scanned PDF Searchable" },
+  ],
+  "/pdf-to-excel": [
+    { slug: "convert-pdf-to-excel-with-tables", title: "Convert PDF to Excel with Tables" },
+    { slug: "extract-tables-from-pdf-to-spreadsheet", title: "Extract Tables from PDF to Spreadsheet" },
+    { slug: "pdf-to-excel-free-online", title: "Convert PDF to Excel" },
+  ],
+  "/pdf-to-jpg": [
+    { slug: "pdf-to-jpg-high-quality", title: "PDF to JPG High Quality" },
+    { slug: "convert-pdf-to-jpg-all-pages", title: "Convert PDF to JPG All Pages" },
+    { slug: "pdf-to-jpg-online-free-high-quality", title: "PDF to JPG Online — High Quality" },
+  ],
+  "/pdf-to-png": [
+    { slug: "convert-pdf-to-png-high-resolution", title: "Convert PDF to PNG High Resolution" },
+    { slug: "pdf-to-png-all-pages-free", title: "Convert PDF to PNG All Pages" },
+  ],
+  "/pdf-to-ppt": [
+    { slug: "convert-pdf-to-powerpoint-free", title: "Convert PDF to PowerPoint" },
+    { slug: "pdf-to-powerpoint-online-free", title: "Convert PDF to PowerPoint Online" },
+  ],
+  "/pdf-to-word": [
+    { slug: "pdf-to-word-editable-free", title: "PDF to Word Editable" },
+    { slug: "convert-pdf-to-word-without-losing-formatting", title: "Convert PDF to Word Without Losing Formatting" },
+    { slug: "pdf-to-word-for-resume", title: "Convert PDF Resume to Word" },
+    { slug: "convert-pdf-to-word-free-online", title: "Convert PDF to Word No Email" },
+  ],
+  "/pdf-viewer": [
+    { slug: "pdf-viewer-online-free", title: "View PDF Online — No Download Required" },
+  ],
+  "/protect-pdf": [
+    { slug: "protect-pdf-with-password-free", title: "Password Protect PDF (AES-256)" },
+    { slug: "protect-pdf-with-password-256bit", title: "Password Protect PDF with AES-256 Encryption" },
+  ],
+  "/redact-pdf": [
+    { slug: "redact-pdf-black-out-text", title: "Redact PDF Black Out Text" },
+  ],
+  "/reorder-pages": [
+    { slug: "rearrange-pdf-pages-free", title: "Rearrange PDF Pages" },
+  ],
+  "/resize-pdf": [
+    { slug: "resize-pdf-to-a4-free", title: "Resize PDF to A4" },
+  ],
+  "/rotate-pdf": [
+    { slug: "rotate-pdf-and-save", title: "Rotate PDF and Save Permanently" },
+    { slug: "rotate-pdf-free-online", title: "Rotate PDF Pages" },
+  ],
+  "/sign-pdf": [
+    { slug: "add-signature-to-pdf-free", title: "Add Signature to PDF" },
+    { slug: "sign-pdf-online-free-no-signup", title: "Sign PDF Online No Signup" },
+  ],
+  "/split-pdf": [
+    { slug: "split-pdf-by-pages", title: "Split PDF by Pages" },
+    { slug: "split-pdf-by-size", title: "Split PDF by File Size" },
+    { slug: "split-pdf-into-single-pages", title: "Split PDF Into Single Pages" },
+    { slug: "extract-pages-from-pdf", title: "Extract Pages from PDF" },
+  ],
+  "/unlock-pdf": [
+    { slug: "unlock-pdf-for-editing", title: "Unlock PDF for Editing" },
+    { slug: "unlock-pdf-remove-password-online", title: "Unlock PDF Remove Password Online" },
+    { slug: "remove-password-from-pdf", title: "Remove Password from PDF" },
+  ],
+  "/watermark-pdf": [
+    { slug: "add-watermark-to-pdf-free", title: "Add Watermark to PDF" },
+  ],
+  "/word-to-pdf": [
+    { slug: "convert-word-to-pdf-free-online", title: "Convert Word to PDF" },
+    { slug: "convert-docx-to-pdf-keep-formatting", title: "Convert DOCX to PDF Keep Formatting" },
+    { slug: "word-to-pdf-free-online", title: "Convert Word to PDF" },
+  ],
+};
+
 function generatePreRenderShell(canonicalPath: string, lang: string = "en"): string {
   try {
   const config = seoConfig[canonicalPath];
@@ -3153,7 +3286,7 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
       {
         title: "Image Tools",
         tools: [
-          { href: "/compress-img", text: "Compress Image — Reduce image file size online" },
+          { href: "/image-compressor", text: "Compress Image — Reduce image file size online" },
           { href: "/resize-image", text: "Resize Image — Change image dimensions and resolution" },
           { href: "/crop-image", text: "Crop Image — Trim and crop images online" },
           { href: "/convert-image", text: "Convert Image — Convert between JPG, PNG, WebP formats" },
@@ -3243,6 +3376,17 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
       richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
         <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">Frequently Asked Questions</h2>
         ${faqs}
+      </section>`;
+    }
+    // Related guides — links to /tools/ pages so they get incoming internal links (fixes orphan pages)
+    const toolPageLinks: {slug: string; title: string}[] = TOOLS_PAGE_LINKS[toolData.toolPath || ""] || [];
+    if (toolPageLinks.length > 0 && lang === "en") {
+      const linkItems = toolPageLinks.map(l =>
+        `<li style="margin-bottom:0.4rem"><a href="/tools/${l.slug}" style="color:#2563eb;text-decoration:none">${escHtml(l.title)}</a></li>`
+      ).join("");
+      richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+        <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem">Related Guides</h2>
+        <ul style="list-style:disc;padding-left:1.5rem;line-height:1.8">${linkItems}</ul>
       </section>`;
     } else if (lang !== "en") {
       // Language pages: show native-language benefits + FAQs
@@ -3334,7 +3478,7 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
     { href: "/batch-compress", text: "Batch Compress", cat: "Utility" },
     { href: "/scan-to-pdf", text: "Scan to PDF", cat: "Utility" },
     { href: "/pdf-to-pdfa", text: "PDF to PDF/A", cat: "Utility" },
-    { href: "/compress-img", text: "Compress Image", cat: "Image Tools" },
+    { href: "/image-compressor", text: "Compress Image", cat: "Image Tools" },
     { href: "/resize-image", text: "Resize Image", cat: "Image Tools" },
     { href: "/crop-image", text: "Crop Image", cat: "Image Tools" },
     { href: "/convert-image", text: "Convert Image", cat: "Image Tools" },
@@ -3461,7 +3605,7 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
     <a href="/" style="font-size:1.25rem;font-weight:700;color:#E03535;text-decoration:none">PDF HUB 24</a>
   </div>
   <main style="flex:1;max-width:1024px;margin:0 auto;padding:2.5rem 1.5rem;width:100%">
-    <h1 style="font-size:clamp(1.5rem,5vw,2.75rem);font-weight:700;line-height:1.15;margin-bottom:1rem">${escHtml(h1Text)}</h1>
+    <div role="heading" aria-level="1" style="font-size:clamp(1.5rem,5vw,2.75rem);font-weight:700;line-height:1.15;margin-bottom:1rem">${escHtml(h1Text)}</div>
     <p style="font-size:1.05rem;line-height:1.7;margin-bottom:1.5rem;max-width:700px">${escHtml(descText)}</p>
     ${toolData?.heroContent && lang === "en" ? `<p style="font-size:1rem;line-height:1.75;margin-bottom:2rem;max-width:800px;color:#334155">${escHtml(toolData.heroContent)}</p>` : ""}
     ${richContent}
