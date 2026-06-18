@@ -1,6 +1,6 @@
 import { toolSEOData } from "../client/src/data/toolSEOData";
 import { blogPosts } from "../client/src/data/blogData";
-import { getProgrammaticPage } from "../client/src/data/programmaticSeoData";
+import { getProgrammaticPage, getAllProgrammaticPages } from "../client/src/data/programmaticSeoData";
 import { categoryHubs } from "../client/src/data/categoryHubData";
 import { TOOL_SLUG_TRANSLATIONS, TRANSLATED_TO_ENGLISH } from "../client/src/lib/translatedSlugs";
 import { COUNTRIES, COUNTRY_MAP, TOOL_CONFIGS } from "../client/src/data/countryData";
@@ -3209,6 +3209,29 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
         <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">${escHtml(faqLabel)}</h2>
         ${faqs}
       </section>`;
+    }
+    // Internal links — back to parent tool + sibling /tools/ guides (fixes orphan pages SEO issue)
+    {
+      const parentPath = progPage.toolPath || "";
+      const parentLabel = parentPath.replace(/^\//, "").replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const siblings = getAllProgrammaticPages()
+        .filter(p => p.toolPath === parentPath && p.slug !== progPage.slug)
+        .slice(0, 6);
+      let linksHtml = "";
+      if (parentPath) {
+        linksHtml += `<li style="margin-bottom:0.4rem"><a href="${escHtml(parentPath)}" style="color:#2563eb;text-decoration:none">${escHtml(parentLabel)}</a></li>`;
+      }
+      if (siblings.length) {
+        linksHtml += siblings.map(s =>
+          `<li style="margin-bottom:0.4rem"><a href="/tools/${escHtml(s.slug)}" style="color:#2563eb;text-decoration:none">${escHtml(s.title || s.slug)}</a></li>`
+        ).join("");
+      }
+      if (linksHtml) {
+        richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+        <h2 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem">Related Guides</h2>
+        <ul style="list-style:disc;padding-left:1.5rem;line-height:1.8">${linksHtml}</ul>
+      </section>`;
+      }
     }
   }
 
