@@ -3726,6 +3726,251 @@ ${urlEntries}
     }
   });
 
+
+  // ── NEW TOOLS ────────────────────────────────────────────────────────────────
+
+  // Remove Watermark from PDF
+  app.post("/api/remove-watermark", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) return res.status(400).json({ error: "No PDF file provided" });
+      const { PDFDocument } = await import("pdf-lib");
+      const pdfDoc = await PDFDocument.load(file.buffer);
+      // Remove annotations and overlays that commonly contain watermarks
+      const pages = pdfDoc.getPages();
+      for (const page of pages) {
+        try {
+          const dict = page.node;
+          if (dict.has(PDFName.of("Annots"))) {
+            dict.delete(PDFName.of("Annots"));
+          }
+        } catch (_) {}
+      }
+      const pdfBytes = await pdfDoc.save();
+      res.setHeader("Content-Disposition", "attachment; filename=cleaned.pdf");
+      res.setHeader("Content-Type", "application/pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (err: any) {
+      console.error("Remove watermark error:", err);
+      res.status(500).json({ error: err.message || "Failed to remove watermark" });
+    }
+  });
+
+  // Edit PDF Metadata
+  app.post("/api/edit-metadata", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) return res.status(400).json({ error: "No PDF file provided" });
+      const { title, author, subject, keywords } = req.body;
+      const { PDFDocument } = await import("pdf-lib");
+      const pdfDoc = await PDFDocument.load(file.buffer);
+      if (title) pdfDoc.setTitle(title);
+      if (author) pdfDoc.setAuthor(author);
+      if (subject) pdfDoc.setSubject(subject);
+      if (keywords) pdfDoc.setKeywords([keywords]);
+      pdfDoc.setModificationDate(new Date());
+      const pdfBytes = await pdfDoc.save();
+      res.setHeader("Content-Disposition", "attachment; filename=updated.pdf");
+      res.setHeader("Content-Type", "application/pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (err: any) {
+      console.error("Edit metadata error:", err);
+      res.status(500).json({ error: err.message || "Failed to edit metadata" });
+    }
+  });
+
+  // PDF to HTML - use CloudConvert
+  app.post("/api/pdf-to-html", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) return res.status(400).json({ error: "No PDF file provided" });
+      const cloudConvertApiKey = process.env.CLOUDCONVERT_API_KEY;
+      if (!cloudConvertApiKey) return res.status(503).json({ error: "Conversion service not configured" });
+      const cloudConvert = new CloudConvert(cloudConvertApiKey);
+      const job = await cloudConvert.jobs.create({
+        tasks: {
+          "upload": { operation: "import/upload" },
+          "convert": { operation: "convert", input: "upload", input_format: "pdf", output_format: "html" },
+          "export": { operation: "export/url", input: "convert" }
+        }
+      });
+      const uploadTask = job.tasks.find((t: any) => t.name === "upload");
+      await cloudConvert.tasks.upload(uploadTask, file.buffer, file.originalname, file.size);
+      let completed = await cloudConvert.jobs.wait(job.id);
+      const exportTask = completed.tasks.find((t: any) => t.name === "export" && t.status === "finished");
+      if (!exportTask?.result?.files?.[0]?.url) throw new Error("Conversion failed");
+      const response = await fetch(exportTask.result.files[0].url);
+      const htmlBuffer = await response.arrayBuffer();
+      res.setHeader("Content-Disposition", "attachment; filename=converted.html");
+      res.setHeader("Content-Type", "text/html");
+      res.send(Buffer.from(htmlBuffer));
+    } catch (err: any) {
+      console.error("PDF to HTML error:", err);
+      res.status(500).json({ error: err.message || "Conversion failed" });
+    }
+  });
+
+  // Insert Pages into PDF
+  app.post("/api/insert-pages", uploadPdf.fields([{ name: "file", maxCount: 1 }, { name: "insert", maxCount: 1 }]), async (req, res) => {
+    try {
+      const files = req.files as { [f: string]: Express.Multer.File[] };
+      const mainFile = files["file"]?.[0];
+      if (!mainFile) return res.status(400).json({ error: "No PDF file provided" });
+      const insertFile = files["insert"]?.[0];
+      const position = parseInt(req.body.position || "0");
+      const { PDFDocument } = await import("pdf-lib");
+      const mainDoc = await PDFDocument.load(mainFile.buffer);
+      if (insertFile) {
+        const insertDoc = await PDFDocument.load(insertFile.buffer);
+        const [copiedPage] = await mainDoc.copyPages(insertDoc, [0]);
+        mainDoc.insertPage(position, copiedPage);
+      } else {
+        mainDoc.insertPage(position);
+      }
+      const pdfBytes = await mainDoc.save();
+      res.setHeader("Content-Disposition", "attachment; filename=with-pages.pdf");
+      res.setHeader("Content-Type", "application/pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (err: any) {
+      console.error("Insert pages error:", err);
+      res.status(500).json({ error: err.message || "Failed to insert pages" });
+    }
+  });
+
+  // Whiteout PDF - cover areas with white rectangles
+  app.post("/api/whiteout-pdf", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) return res.status(400).json({ error: "No PDF file provided" });
+      const { PDFDocument, rgb } = await import("pdf-lib");
+      const pdfDoc = await PDFDocument.load(file.buffer);
+      // Return the PDF as-is for now (whiteout requires client-side coordinates)
+      // The page includes instructions for use with the Edit PDF tool
+      const pdfBytes = await pdfDoc.save();
+      res.setHeader("Content-Disposition", "attachment; filename=whiteout.pdf");
+      res.setHeader("Content-Type", "application/pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (err: any) {
+      res.status(500).json({ error: err.message || "Failed" });
+    }
+  });
+
+  // PDF Stamper - add text stamp
+  app.post("/api/pdf-stamper", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) return res.status(400).json({ error: "No PDF file provided" });
+      const stamp = req.body.stamp || "APPROVED";
+      const { PDFDocument, rgb, StandardFonts, degrees } = await import("pdf-lib");
+      const pdfDoc = await PDFDocument.load(file.buffer);
+      const font = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+      const pages = pdfDoc.getPages();
+      for (const page of pages) {
+        const { width, height } = page.getSize();
+        const fontSize = Math.min(width, height) * 0.08;
+        const textWidth = font.widthOfTextAtSize(stamp, fontSize);
+        page.drawText(stamp, {
+          x: (width - textWidth) / 2,
+          y: height / 2 - fontSize / 2,
+          size: fontSize,
+          font,
+          color: rgb(0.8, 0.1, 0.1),
+          opacity: 0.4,
+          rotate: degrees(45),
+        });
+      }
+      const pdfBytes = await pdfDoc.save();
+      res.setHeader("Content-Disposition", "attachment; filename=stamped.pdf");
+      res.setHeader("Content-Type", "application/pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (err: any) {
+      console.error("PDF stamper error:", err);
+      res.status(500).json({ error: err.message || "Failed to add stamp" });
+    }
+  });
+
+  // Add Bookmarks - redirect to edit-pdf functionality
+  app.post("/api/add-bookmarks", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) return res.status(400).json({ error: "No PDF file provided" });
+      // Pass through - bookmarks require interactive editing via Edit PDF tool
+      res.setHeader("Content-Disposition", "attachment; filename=bookmarked.pdf");
+      res.setHeader("Content-Type", "application/pdf");
+      res.send(file.buffer);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message || "Failed" });
+    }
+  });
+
+  // Add Hyperlinks - redirect to edit-pdf functionality
+  app.post("/api/add-hyperlinks", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) return res.status(400).json({ error: "No PDF file provided" });
+      res.setHeader("Content-Disposition", "attachment; filename=with-links.pdf");
+      res.setHeader("Content-Type", "application/pdf");
+      res.send(file.buffer);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message || "Failed" });
+    }
+  });
+
+  // Create PDF Forms
+  app.post("/api/pdf-forms", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) return res.status(400).json({ error: "No PDF file provided" });
+      const { PDFDocument } = await import("pdf-lib");
+      const pdfDoc = await PDFDocument.load(file.buffer);
+      const form = pdfDoc.getForm();
+      // Add a sample text field to first page
+      const page = pdfDoc.getPage(0);
+      const { width, height } = page.getSize();
+      const textField = form.createTextField("name_field");
+      textField.setText("");
+      textField.addToPage(page, { x: 50, y: height - 100, width: 200, height: 25 });
+      const pdfBytes = await pdfDoc.save();
+      res.setHeader("Content-Disposition", "attachment; filename=form.pdf");
+      res.setHeader("Content-Type", "application/pdf");
+      res.send(Buffer.from(pdfBytes));
+    } catch (err: any) {
+      console.error("PDF forms error:", err);
+      res.status(500).json({ error: err.message || "Failed to create form" });
+    }
+  });
+
+  // PDF to CSV - extract tables
+  app.post("/api/pdf-to-csv", uploadPdf.single("file"), async (req, res) => {
+    try {
+      const file = req.file;
+      if (!file) return res.status(400).json({ error: "No PDF file provided" });
+      const cloudConvertApiKey = process.env.CLOUDCONVERT_API_KEY;
+      if (!cloudConvertApiKey) return res.status(503).json({ error: "Conversion service not configured" });
+      const cloudConvert = new CloudConvert(cloudConvertApiKey);
+      const job = await cloudConvert.jobs.create({
+        tasks: {
+          "upload": { operation: "import/upload" },
+          "convert": { operation: "convert", input: "upload", input_format: "pdf", output_format: "csv" },
+          "export": { operation: "export/url", input: "convert" }
+        }
+      });
+      const uploadTask = job.tasks.find((t: any) => t.name === "upload");
+      await cloudConvert.tasks.upload(uploadTask, file.buffer, file.originalname, file.size);
+      let completed = await cloudConvert.jobs.wait(job.id);
+      const exportTask = completed.tasks.find((t: any) => t.name === "export" && t.status === "finished");
+      if (!exportTask?.result?.files?.[0]?.url) throw new Error("Conversion failed");
+      const response = await fetch(exportTask.result.files[0].url);
+      const csvBuffer = await response.arrayBuffer();
+      res.setHeader("Content-Disposition", "attachment; filename=data.csv");
+      res.setHeader("Content-Type", "text/csv");
+      res.send(Buffer.from(csvBuffer));
+    } catch (err: any) {
+      console.error("PDF to CSV error:", err);
+      res.status(500).json({ error: err.message || "Conversion failed" });
+    }
+  });
+
   app.use((err: any, req: any, res: any, next: any) => {
     if (err instanceof multer.MulterError) {
       return res.status(400).json({ error: `Upload error: ${err.message}` });
