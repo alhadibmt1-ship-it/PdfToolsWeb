@@ -3681,7 +3681,7 @@ toolSEOData["scan-to-pdf"] = {
     { text: "Compress PDF", href: "/compress-pdf", context: "Reduce the size of your scanned PDF for email" },
     { text: "JPG to PDF", href: "/jpg-to-pdf", context: "Convert individual photos to PDF" },
     { text: "Merge PDF", href: "/merge-pdf", context: "Combine multiple scanned pages into one PDF" },
-    { text: "Protect PDF", href: "/protect", context: "Password-protect your scanned documents" },
+    { text: "Protect PDF", href: "/protect-pdf", context: "Password-protect your scanned documents" },
     { text: "Rotate PDF", href: "/rotate-pdf", context: "Fix orientation of scanned pages" },
     { text: "/blog/pdf-tools-for-students", href: "/blog/pdf-tools-for-students", context: "Essential PDF tools for students including scanning workflows" }
   ]
@@ -3752,7 +3752,7 @@ toolSEOData["pdf-to-pdfa"] = {
   ],
   internalLinks: [
     { text: "Compress PDF", href: "/compress-pdf", context: "Reduce PDF file size before archiving" },
-    { text: "Protect PDF", href: "/protect", context: "Add password to archived documents" },
+    { text: "Protect PDF", href: "/protect-pdf", context: "Add password to archived documents" },
     { text: "OCR PDF", href: "/ocr-pdf", context: "Make scanned content searchable before archiving" },
     { text: "Merge PDF", href: "/merge-pdf", context: "Combine documents before converting to PDF/A" },
     { text: "Unlock PDF", href: "/unlock-pdf", context: "Remove passwords before PDF/A conversion" },
