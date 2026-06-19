@@ -1262,7 +1262,7 @@ export const seoConfig: Record<string, PageSEO> = {
       "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
-  "/free-pdf-converter": {
+  "/convert-pdf": {
     title: "Free PDF Converter (Any File, No Signup) | PDF HUB 24",
     description: "Best free PDF converter online. Convert PDF to Word, Excel, JPG, PNG, PPT and more. Convert images and documents to PDF. No signup, no watermark.",
     keywords: "free PDF converter, PDF converter online, convert PDF free, PDF to Word converter, image to PDF converter",
@@ -1582,7 +1582,7 @@ export const seoConfig: Record<string, PageSEO> = {
     schema: { "@context": "https://schema.org", "@type": "Article", "headline": "How to Convert Excel to PDF: Spreadsheets, Tables, and Formatting", "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }, "datePublished": "2026-03-28",
       "dateModified": "2026-04-18", "url": `${BASE_URL}/blog/excel-to-pdf` }
   },
-  "/free-pdf-editor": {
+  "/edit-pdf": {
     title: "Free PDF Editor Online — 49+ Tools (No Install) | PDF HUB 24",
     description: "Best free PDF editor online. Edit, merge, split, compress, rotate, sign, annotate, and redact PDFs. 49+ tools, no download, no registration needed.",
     keywords: "free PDF editor, edit PDF online, PDF editor free, online PDF editor, modify PDF free",
@@ -2532,8 +2532,8 @@ function generateCrawlableNav(currentPath: string): string {
     { href: "/secure-pdf", text: "Secure PDF Tools" },
     { href: "/image-tools", text: "Image Tools" },
     { href: "/all-tools", text: "All PDF Tools" },
-    { href: "/free-pdf-converter", text: "Free PDF Converter" },
-    { href: "/free-pdf-editor", text: "Free PDF Editor" },
+    { href: "/convert-pdf", text: "Free PDF Converter" },
+    { href: "/edit-pdf", text: "Free PDF Editor" },
   ];
 
   const programmaticLinks = [
