@@ -2792,7 +2792,7 @@ function genCountryToolPages(): ProgrammaticPage[] {
 function genImageToolPages(): ProgrammaticPage[] {
   const pages: ProgrammaticPage[] = [];
   const tools = [
-    { tool: "compress", label: "Compress Image", path: "/compress-img", verb: "compress" },
+    { tool: "compress", label: "Compress Image", path: "/image-compressor", verb: "compress" },
     { tool: "resize", label: "Resize Image", path: "/resize-image", verb: "resize" },
     { tool: "crop", label: "Crop Image", path: "/crop-image", verb: "crop" },
     { tool: "remove-background", label: "Remove Background", path: "/remove-bg", verb: "remove the background from" },
