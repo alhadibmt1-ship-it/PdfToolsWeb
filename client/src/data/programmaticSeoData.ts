@@ -12,6 +12,300 @@ export interface ProgrammaticPage {
 
 export const programmaticPages: ProgrammaticPage[] = [
   {
+    slug: "compress-pdf-for-uscis-immigration",
+    title: "Compress PDF for USCIS & Visa Applications Free | PDF HUB 24",
+    h1: "Compress PDF for USCIS and US Visa Applications",
+    description: "Compress PDF documents to meet USCIS and US visa application file size limits free online. Get scanned documents under 2MB per file. No signup needed.",
+    toolPath: "/compress-pdf",
+    toolName: "Compress PDF",
+    content: `
+If you're filing through USCIS online or submitting visa documents through the Consular Electronic Application Center (CEAC), you've likely hit a wall: individual scanned files must be no larger than 2MB each, and zipped files aren't accepted at all. A single passport-quality scan can easily exceed that.
+
+## The USCIS and CEAC File Size Problem
+
+Most immigration portals require each supporting document — your passport copy, bank statements, employment letters, marriage certificates — as a separate file capped at 2MB. USCIS forms like I-485 or I-765 also expect clear, readable scans, which pushes file sizes up even further if you scan at high resolution.
+
+## Steps to Compress PDF for USCIS Submission
+
+1. Go to [pdfhub24.com/compress-pdf](/compress-pdf)
+2. Upload each scanned document separately — don't combine multiple documents into one file unless the instructions say to
+3. Select **High Compression**
+4. Download and check the file size shows under 2MB
+5. Repeat for each required document, keeping them as individual files
+
+## Common Mistakes That Cause Rejections
+
+**Combining documents incorrectly:** CEAC treats a bill of lading, invoice, and license saved in one PDF as a single file — but immigration evidence usually needs to stay separated by document type. Check your specific form's instructions before merging anything.
+
+**Scanning too high:** 600 DPI color scans of a passport can hit 5-8MB before compression. Scan at 200-300 DPI in color for photos and ID pages — this alone keeps file sizes manageable without needing aggressive compression that blurs text.
+
+**Re-scanning printed PDFs:** If you already have a digital PDF (like an employment offer letter), never print and re-scan it. Compress the original digital file instead — it'll be a fraction of the size and far more legible.
+
+## For Large Document Bundles
+
+USCIS forms for marriage-based petitions or H-1B applications can require 100-200+ pages of combined evidence. If you must submit a large bundle as one file, split it first using [pdfhub24.com/split-pdf](/split-pdf), compress each part separately, then check whether your specific form portal accepts multi-part submissions.
+`,
+    useCases: [
+      "USCIS Form I-485, I-765, and I-130 supporting document uploads",
+      "CEAC visa application document submissions",
+      "Compressing passport and ID scans under 2MB",
+      "Marriage-based petition evidence bundles",
+      "H-1B and employment-based visa document packages"
+    ],
+    faqs: [
+      { question: "What is the USCIS file size limit for uploaded documents?", answer: "USCIS itself doesn't publish one universal limit across all forms, but CEAC (used for immigrant visa processing) caps each individual scanned file at 2MB. Always check your specific form's instructions, as limits vary by petition type." },
+      { question: "Can I zip multiple files together for USCIS or CEAC?", answer: "No. CEAC explicitly states zipped files will not be accepted for upload. Each document must be uploaded as an individual, unzipped file." },
+      { question: "Will compression make my scanned documents illegible?", answer: "Not at the compression levels needed here. High compression on a 5MB scan typically still produces a clear, fully readable 1-2MB file. Text and signatures remain sharp; only fine photo detail is slightly reduced." }
+    ]
+  },
+  {
+    slug: "compress-pdf-for-hmrc-uk-tax-documents",
+    title: "Compress PDF for HMRC & UK Tax Filing Free | PDF HUB 24",
+    h1: "Compress PDF for HMRC and UK Government Submissions",
+    description: "Compress PDF documents for HMRC, Customs Declaration Service, and UK government portals free online. Meet the 10MB file size limit instantly.",
+    toolPath: "/compress-pdf",
+    toolName: "Compress PDF",
+    content: `
+HMRC's Customs Declaration Service and most GOV.UK upload portals cap individual files at 10MB, with a maximum of 10 files per submission batch. If you're submitting invoices, licences, or supporting evidence for Self Assessment, VAT, or customs declarations, oversized scans are a common reason uploads fail or get rejected.
+
+## HMRC and GOV.UK File Size Rules
+
+The Customs Declaration Service accepts up to 10 files per submission, each up to 10MB. If you need to send more than 10 documents, HMRC requires you to split them into separate groups of 10 or fewer — meaning oversized files compound the problem by forcing more separate batches.
+
+## Steps to Compress PDF for HMRC Submission
+
+1. Open [pdfhub24.com/compress-pdf](/compress-pdf)
+2. Upload your scanned invoice, bill of lading, or supporting document
+3. Choose **Standard Compression** for most documents — HMRC's 10MB limit is generous enough that high compression usually isn't necessary
+4. Download and confirm the file is under 10MB
+5. Repeat for each file, grouping submissions in batches of 10 or fewer as required by the Customs Declaration Service
+
+## Government Gateway and Self Assessment Uploads
+
+If you're submitting documents through your Government Gateway account for Self Assessment, Corporation Tax, or VAT, the same principle applies — keep files well under any stated limit so the upload doesn't time out or fail silently. With GOV.UK gradually moving services to the newer One Login system through 2027, file handling on older HMRC services may behave inconsistently during the transition, so erring on the side of smaller, cleanly compressed files reduces friction.
+
+## What Compresses Well for HMRC Documents
+
+Invoices, bills of lading, and licences are typically text and table-heavy with minimal imagery — these compress extremely well, often dropping 60-80% in size with no visible quality loss. Scanned signatures and stamps remain legible at standard compression.
+
+## Multiple Documents in One Submission
+
+If a bill of lading, invoice, and licence belong together as one logical submission, HMRC treats them as a single file if combined into one PDF. Use [pdfhub24.com/merge-pdf](/merge-pdf) to combine them first, then compress the merged file once — this is often more efficient than compressing three separate files.
+`,
+    useCases: [
+      "HMRC Customs Declaration Service document uploads",
+      "Self Assessment and Corporation Tax supporting evidence",
+      "VAT return document submissions",
+      "Combining invoices and licences for customs declarations",
+      "Government Gateway and GOV.UK One Login document uploads"
+    ],
+    faqs: [
+      { question: "What is HMRC's file size limit for document uploads?", answer: "The Customs Declaration Service accepts files up to 10MB each, with a maximum of 10 files per submission. Other HMRC and GOV.UK services may have different limits depending on the specific form." },
+      { question: "Can I submit more than 10 documents to HMRC at once?", answer: "Yes, but they must be split into separate groups of no more than 10 files per submission, as instructed by HMRC's Customs Declaration Service guidance." },
+      { question: "Should I compress invoices and licences before combining them?", answer: "It's usually more efficient to merge related documents into a single PDF first, then compress the combined file once, rather than compressing each document separately." }
+    ]
+  },
+  {
+    slug: "compress-pdf-for-digilocker-india",
+    title: "Compress PDF for DigiLocker & Indian Government Portals Free | PDF HUB 24",
+    h1: "Compress PDF for DigiLocker and Indian Government Uploads",
+    description: "Compress PDF documents to meet DigiLocker's 10MB file size limit free online. Perfect for Aadhaar, PAN, and certificate uploads in India.",
+    toolPath: "/compress-pdf",
+    toolName: "Compress PDF",
+    content: `
+DigiLocker, India's official digital document wallet under the Ministry of Electronics & IT, limits individual file uploads to 10MB. If you're uploading scanned certificates, Aadhaar copies, or marksheets, high-resolution scans frequently exceed this without you realizing it.
+
+## DigiLocker's File Size and Format Rules
+
+DigiLocker supports PDF, JPG, and PNG formats with a 10MB cap per file. The platform itself provides up to 1GB of total storage, but each individual document upload must stay under the 10MB ceiling regardless of your total storage available.
+
+## Steps to Compress PDF for DigiLocker
+
+1. Visit [pdfhub24.com/compress-pdf](/compress-pdf)
+2. Upload your scanned certificate, marksheet, or ID document
+3. Select **Standard Compression** — DigiLocker's 10MB limit rarely requires aggressive compression
+4. Confirm the output is under 10MB
+5. Upload directly to your DigiLocker account, linked via your Aadhaar number
+
+## Common Documents That Need Compression
+
+**Educational certificates and marksheets:** CISCE and other board certificates scanned at high resolution for archival quality often land in the 8-15MB range. Standard compression typically brings these to 2-4MB with no loss of legibility.
+
+**Aadhaar and PAN scans:** These are usually small (under 2MB) since they're single-page ID documents, but multi-page scans combined into one file can add up quickly.
+
+**Medical records:** Hospitals using DigiLocker for patient records, like cancer treatment documentation, often submit multi-page reports that benefit significantly from compression before upload.
+
+## Linking Compressed Documents to Other Services
+
+Once uploaded to DigiLocker, your compressed documents can be linked to services like loan applications, EMI Network Cards, or KYC verification through partner platforms. Keeping files compressed and under the size limit from the start avoids upload failures during these downstream linking steps.
+
+## If You're Uploading Multiple Pages
+
+For multi-page certificates or reports, consider whether you need every page as a single file or whether splitting helps. Use [pdfhub24.com/split-pdf](/split-pdf) if a document needs to be broken into sections, or [pdfhub24.com/merge-pdf](/merge-pdf) if you need to combine several single-page scans into one certificate file before compressing.
+`,
+    useCases: [
+      "DigiLocker certificate and marksheet uploads",
+      "Aadhaar and PAN document compression",
+      "Medical records upload for hospital DigiLocker integration",
+      "KYC document compression for banking and loan applications",
+      "Educational certificate uploads under 10MB"
+    ],
+    faqs: [
+      { question: "What is DigiLocker's file size limit?", answer: "DigiLocker limits individual file uploads to 10MB. The platform provides 1GB of total storage per account, but each document must individually stay under the 10MB cap." },
+      { question: "What file formats does DigiLocker accept?", answer: "DigiLocker supports PDF, JPG, and PNG formats for document uploads." },
+      { question: "Do I need an Aadhaar number to use DigiLocker?", answer: "Yes, DigiLocker accounts are linked to your Aadhaar number, and registration requires OTP verification through your Aadhaar-linked mobile number." }
+    ]
+  },
+  {
+    slug: "compress-pdf-for-fbr-nadra-pakistan",
+    title: "Compress PDF for FBR & NADRA Pakistan Free Online | PDF HUB 24",
+    h1: "Compress PDF for FBR Tax Filing and NADRA Document Uploads",
+    description: "Compress PDF documents for FBR IRIS tax filing and NADRA Pak-ID uploads in Pakistan free online. Meet file size requirements instantly. No signup.",
+    toolPath: "/compress-pdf",
+    toolName: "Compress PDF",
+    content: `
+Filing taxes through FBR's IRIS portal or applying for identity documents through NADRA's Pak-ID app both require uploading scanned documents — and oversized files are one of the most common reasons uploads fail or get stuck processing.
+
+## FBR IRIS and NADRA Pak-ID Document Requirements
+
+FBR's IRIS portal is used for income tax return filing, NTN registration, and sales tax compliance. NADRA's Pak-ID app handles CNIC, Smart CNIC, NICOP, and other identity document applications entirely online, without needing to visit a registration center. Both platforms expect clear, readable scanned documents, and uploads can be rejected or delayed if files are too large or low quality.
+
+## Steps to Compress PDF for FBR or NADRA
+
+1. Go to [pdfhub24.com/compress-pdf](/compress-pdf)
+2. Upload your scanned CNIC, salary certificate, bank statement, or supporting tax document
+3. Select **High Compression** for most ID and financial documents
+4. Download and verify the file size and legibility
+5. Upload to FBR IRIS or the Pak-ID app as required by your application type
+
+## Filing Income Tax Returns Through FBR IRIS
+
+If you're registering for an NTN or filing your annual income tax return, you'll typically need to attach salary certificates, bank statements, and CNIC copies. These documents are usually text-heavy and compress very well — often reducible by 70-80% without affecting readability, which matters since FBR's review process relies on clearly legible scans.
+
+## NADRA Pak-ID Document Upload Tips
+
+The Pak-ID app's document upload step is described by NADRA as the most critical part of the process — incorrect or unclear uploads commonly cause application delays or rejections. Compress your CNIC and supporting documents to a reasonable size while keeping text and photos sharp; avoid over-compressing ID photos specifically, since facial recognition and manual verification both depend on image clarity.
+
+## Combining Multiple Pages for One Application
+
+If you need to submit several related documents — for example, a CNIC copy plus a utility bill for address verification — as a single file, use [pdfhub24.com/merge-pdf](/merge-pdf) to combine them first, then compress the merged file once before uploading.
+`,
+    useCases: [
+      "FBR IRIS income tax return filing document uploads",
+      "NTN registration supporting document compression",
+      "NADRA Pak-ID CNIC and Smart CNIC application uploads",
+      "NICOP and POC identity document submissions",
+      "Combining CNIC and utility bills for address verification"
+    ],
+    faqs: [
+      { question: "Do FBR and NADRA have specific file size limits?", answer: "Neither publishes one universal limit, but both platforms work best with clearly compressed, legible scans typically under a few megabytes. Oversized files are a common cause of upload failures or processing delays." },
+      { question: "Will compressing my CNIC photo affect verification?", answer: "Use moderate compression rather than the highest setting for ID photos specifically, since NADRA's verification process depends on facial clarity. Standard compression usually preserves enough detail while still reducing file size significantly." },
+      { question: "Can I apply for NADRA documents without visiting a registration center?", answer: "Yes, the Pak-ID app allows fully online applications for CNIC, Smart CNIC, NICOP, POC, and CRC without an in-person visit, provided your document uploads are clear and meet NADRA's requirements." }
+    ]
+  },
+  {
+    slug: "merge-pdf-for-uk-visa-application",
+    title: "Merge PDF for UK Visa Application Free | PDF HUB 24",
+    h1: "Merge PDF for UK Visa and Home Office Applications",
+    description: "Merge bank statements and supporting documents into a single PDF for UK visa applications free online. Meet Home Office upload requirements instantly.",
+    toolPath: "/merge-pdf",
+    toolName: "Merge PDF",
+    content: `
+UK visa applications, including spouse, work, and visitor visas, commonly require multi-page documents like bank statements to be uploaded as a single PDF file per category — not as separate page-by-page uploads. Getting this wrong is one of the more avoidable reasons applications get flagged for incomplete evidence.
+
+## Why UK Visa Applications Require Merged PDFs
+
+The Home Office's self-upload system organizes documents by category (financial evidence, accommodation, employment, relationship documents). If your bank statement spans 4-6 pages, all pages need to go into one PDF — uploading them as four separate single-page files makes it harder for caseworkers to review your evidence as a complete document and increases the risk of a page being missed.
+
+## Steps to Merge Documents for Your UK Visa Application
+
+1. Go to [pdfhub24.com/merge-pdf](/merge-pdf)
+2. Upload each page or section of your bank statement, payslip, or other multi-part document in the correct order
+3. Click Merge PDF
+4. Download the combined file
+5. Upload the single merged PDF under the correct category in your visa application
+
+## What Needs to Be Merged
+
+**Bank statements:** UK visit visa applications typically require up to 6 months of statements. If downloaded as separate monthly PDFs, merge them into one continuous file in chronological order before uploading.
+
+**Payslips:** Multiple months of payslips for financial evidence should be combined into a single PDF, matching the "combine all payslips" guidance used by UK visa application centres.
+
+**Translated documents:** If a document like a birth or marriage certificate isn't in English, the original and certified translation should either be merged into one PDF or uploaded as clearly linked adjacent files — check your specific visa category's instructions.
+
+## After Merging — Check the File Size
+
+Once merged, your combined PDF should still be compressed if it's large, since high-resolution bank statement scans can add up quickly across many pages. Use [pdfhub24.com/compress-pdf](/compress-pdf) after merging if your file is too large for the upload portal.
+
+## For Pakistani and Indian Applicants
+
+If you're applying for a UK visa from Pakistan or India, the same merging principle applies to your 6-month bank statements and any notarized affidavits or invitation letters — keep each document type as one combined file rather than splitting across multiple uploads.
+`,
+    useCases: [
+      "UK spouse visa bank statement compilation",
+      "UK visitor visa financial evidence merging",
+      "Combining multiple payslips into one PDF for employment evidence",
+      "Merging original documents with certified translations",
+      "UK work and student visa supporting document organization"
+    ],
+    faqs: [
+      { question: "Does the UK Home Office require bank statements as one PDF?", answer: "Yes, multi-page documents such as bank statements should be merged into a single PDF rather than uploaded as separate files, according to UK visa application guidance." },
+      { question: "How many months of bank statements do I need for a UK visa?", answer: "This varies by visa type, but visitor and spouse visa applications commonly require up to 6 months of statements, all merged into one document covering that period." },
+      { question: "Should translated documents be merged with the original?", answer: "Translations should be combined with the original document in a single PDF or uploaded as clearly linked adjacent files. Check your specific visa category's guidance, as requirements can differ." }
+    ]
+  },
+  {
+    slug: "merge-pdf-for-us-visa-application-india",
+    title: "Merge PDF for US Visa Application (DS-160) Free | PDF HUB 24",
+    h1: "Merge PDF for US Visa Applications from India",
+    description: "Merge bank statements, ITR and supporting documents for US visa (DS-160) applications from India free online. No signup, no watermark. PDF HUB 24.",
+    toolPath: "/merge-pdf",
+    toolName: "Merge PDF",
+    content: `
+Indian applicants for US visitor, student, or work visas typically need to present 6 months of bank statements, 2-3 years of Income Tax Returns (ITR), and employment verification as part of their supporting evidence. Organizing these into clean, combined PDFs makes your interview preparation noticeably smoother.
+
+## What US Visa Applications from India Typically Require
+
+After completing the DS-160 form and scheduling your interview through the US Travel Docs portal, you'll need supporting documents demonstrating financial stability and ties to India: bank statements covering the last six months, ITR filings for the past two to three years, property or fixed deposit documentation, and an employer verification letter confirming your designation, salary, and approved leave.
+
+## Steps to Merge Your Supporting Documents
+
+1. Go to [pdfhub24.com/merge-pdf](/merge-pdf)
+2. Upload your bank statement pages in chronological order (oldest to newest, or as your bank exports them)
+3. Click Merge PDF to combine them into one file
+4. Repeat separately for your ITR filings if you have multiple years as separate PDFs
+5. Download each merged document, ready for your interview folder
+
+## Keep Document Types Separate
+
+Unlike a single combined "evidence pack," US visa interviews typically work better with each document type as its own clearly labeled file — one merged PDF for bank statements, one for ITR returns, one for employment verification. Don't merge unrelated document types together; keep bank statements separate from tax returns even though both are financial evidence.
+
+## Bank Statement Formatting Tips
+
+If your bank provides monthly statements as separate downloads, merging six months into one continuous PDF (in date order) makes it far easier for a consular officer to review your financial history at a glance, rather than flipping between six different files.
+
+## After Merging — Check File Size and Clarity
+
+Multi-month bank statements with transaction tables can produce large files once merged. If the combined PDF feels unwieldy, run it through [pdfhub24.com/compress-pdf](/compress-pdf) afterward — this keeps file sizes manageable for printing or for any portal that asks you to upload documents digitally beforehand.
+
+## For Other Visa Categories
+
+F-1 student visa applicants combining I-20 forms with financial sponsor documents, and H-1B applicants merging employment contracts with supporting letters, can use the same merge-then-compress workflow described above.
+`,
+    useCases: [
+      "US visitor visa (B1/B2) financial document compilation",
+      "Merging 6 months of bank statements for DS-160 interviews",
+      "Combining multiple years of ITR filings into one file",
+      "F-1 student visa I-20 and financial sponsor document merging",
+      "H-1B employment verification document organization"
+    ],
+    faqs: [
+      { question: "How many months of bank statements do I need for a US visa from India?", answer: "Most guidance recommends bank statements covering the last six months to demonstrate sufficient funds and financial stability." },
+      { question: "Should I merge my bank statements and ITR into one file?", answer: "It's generally better to keep them as separate merged files — one combined PDF for bank statements, another for ITR returns — rather than mixing different document types into a single file." },
+      { question: "Do I need to upload documents before my US visa interview?", answer: "Typically you bring printed or digital copies to your interview rather than uploading them in advance, but having clean, merged PDFs ready makes both printing and digital sharing easier." }
+    ]
+  },
+  {
     slug: "compress-pdf-under-100kb",
     title: "Compress PDF Under 100KB Free Online | PDF HUB 24",
     h1: "Compress PDF to Under 100KB Free Online",
