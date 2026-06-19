@@ -282,18 +282,11 @@ const PATH_TO_TOOL_KEY: Record<string, string> = {
 
 // All country pages get indexed with unique, locally-enriched content — no tier/noindex system.
 
-function detectCountryPage(slug: string): { countryLabel: string; countryHreflang: string; toolPath: string } | null {
-  const sorted = [...COUNTRIES].sort((a, b) => b.slug.length - a.slug.length);
-  for (const country of sorted) {
-    const suffix = "-" + country.slug;
-    if (slug.endsWith(suffix)) {
-      const toolSlug = slug.slice(0, slug.length - suffix.length);
-      const toolConfig = TOOL_CONFIGS[toolSlug];
-      if (toolConfig) {
-        return { countryLabel: country.label, countryHreflang: country.hreflang, toolPath: toolConfig.toolPath };
-      }
-    }
-  }
+// Templated country-page generator (170 countries x 14 tools = ~2,380 near-duplicate
+// pages) was disabled — it was creating thin, doorway-style content at scale that
+// hurt the whole domain's indexing. Replaced with a small number of genuinely
+// researched country pages added directly to programmaticSeoData.ts instead.
+function detectCountryPage(_slug: string): { countryLabel: string; countryHreflang: string; toolPath: string } | null {
   return null;
 }
 
