@@ -1229,6 +1229,21 @@ const COUNTRY_DOC_SCENARIOS: Record<string, Record<string, string>> = {
 
 // Countries with near-zero PDF tool search volume — skip from output
 const NOINDEX_COUNTRY_SLUGS = new Set([
+  // ── Newly disabled: low/unverified PDF-tool search demand ──────────────
+  "spain","italy","japan","turkey","china","sri-lanka","nepal","thailand",
+  "vietnam","egypt","morocco","ghana","ethiopia","argentina","colombia","chile",
+  "peru","poland","netherlands","romania","ukraine","greece","portugal","qatar",
+  "kuwait","russia","sweden","norway","denmark","finland","belgium","switzerland",
+  "austria","czech-republic","hungary","slovakia","serbia","croatia","bulgaria","ireland",
+  "belarus","estonia","latvia","lithuania","slovenia","luxembourg","malta","cyprus",
+  "iceland","andorra","south-korea","taiwan","hong-kong","cambodia","kazakhstan","uzbekistan",
+  "brunei","azerbaijan","armenia","georgia","iran","israel","jordan","lebanon",
+  "oman","bahrain","tanzania","uganda","cameroon","ivory-coast","algeria","tunisia",
+  "sudan","zimbabwe","angola","zambia","mozambique","senegal","rwanda","drc",
+  "botswana","namibia","gabon","congo","mauritius","malawi","venezuela","bolivia",
+  "ecuador","uruguay","paraguay","guatemala","honduras","el-salvador","nicaragua","costa-rica",
+  "panama","dominican-republic","jamaica","trinidad-tobago","barbados","guyana","suriname","belize",
+  "bahamas","new-zealand","fiji","papua-new-guinea",
   "tonga","solomon-islands","samoa","vanuatu","east-timor","bhutan","maldives",
   "eritrea","djibouti","south-sudan","central-african-republic","chad",
   "lesotho","eswatini","gambia","cuba","haiti","yemen","syria","somalia",
