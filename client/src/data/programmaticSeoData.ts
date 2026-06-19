@@ -381,7 +381,7 @@ A 200KB limit is common on university submission portals, scholarship applicatio
 
 **Step 3 — Split the document.** A 10-page document at 2MB compresses to roughly 200KB per page. If you need the full document under 200KB total, you may need to remove unnecessary pages first using [pdfhub24.com/delete-pages](/delete-pages).
 
-**Step 4 — Convert images before including them.** If your document contains photos, compress those images first with [pdfhub24.com/compress-img](/compress-img), then rebuild the PDF.
+**Step 4 — Convert images before including them.** If your document contains photos, compress those images first with [pdfhub24.com/image-compressor](/image-compressor), then rebuild the PDF.
 
 ## Common File Types and Expected Results
 
@@ -2168,7 +2168,7 @@ Uncompressed images slow down websites, fail email attachment limits, and eat st
 
 ## How to Compress Images Free
 
-1. Visit [pdfhub24.com/compress-img](/compress-img)
+1. Visit [pdfhub24.com/image-compressor](/image-compressor)
 2. Upload your JPG or PNG (also supports WebP)
 3. Choose compression level
 4. Download the compressed image
