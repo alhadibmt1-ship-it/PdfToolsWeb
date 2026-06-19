@@ -806,7 +806,7 @@ The placement of page numbers depends on the type of document:
 
 ### Adding Page Numbers to Merged Documents
 
-When you [merge multiple PDFs](/merge) into one file, the combined document often lacks consistent page numbering. Here is the recommended workflow:
+When you [merge multiple PDFs](/merge-pdf) into one file, the combined document often lacks consistent page numbering. Here is the recommended workflow:
 
 1. Gather all your PDF files
 2. Combine them into a single document using the merge tool
@@ -816,7 +816,7 @@ When you [merge multiple PDFs](/merge) into one file, the combined document ofte
 
 ### Numbering After Splitting
 
-If you [split a large PDF](/split) into sections, each section starts with its own page count. You may want to add sequential page numbers:
+If you [split a large PDF](/split-pdf) into sections, each section starts with its own page count. You may want to add sequential page numbers:
 
 1. Split the document into sections
 2. Add page numbers to the first section starting at 1
@@ -830,7 +830,7 @@ For polished business reports:
 1. Create your report content in Word and [convert to PDF](/word-to-pdf)
 2. [Add a watermark](/add-watermark) with your company name or "CONFIDENTIAL" if needed
 3. Add page numbers at the bottom center
-4. [Compress the final file](/compress) for easy email distribution
+4. [Compress the final file](/compress-pdf) for easy email distribution
 5. [Protect with a password](/protect-pdf) if the content is sensitive
 
 ## Advanced Tips
@@ -1015,8 +1015,8 @@ When converting many images at once:
 
 - **Group similar images** together for consistent quality settings
 - **Sort by filename** before uploading to maintain a logical order
-- **Check orientation** and use [Rotate PDF](/rotate) if any pages end up sideways after conversion
-- **Compress afterwards** with [Compress PDF](/compress) if the combined file is too large
+- **Check orientation** and use [Rotate PDF](/rotate-pdf) if any pages end up sideways after conversion
+- **Compress afterwards** with [Compress PDF](/compress-pdf) if the combined file is too large
 
 ## Quality Settings Explained
 
@@ -1112,7 +1112,7 @@ After converting your images to PDF, consider these enhancements:
 1. **Compress the PDF** - Image-based PDFs can be large. Use the compress tool to shrink the file without noticeable quality loss
 2. **Add page numbers** - Add sequential numbering for easy navigation through multi-page image PDFs
 3. **Add watermarks** - Protect your photos with a watermark to prevent unauthorized use
-4. **Merge with other PDFs** - Use [Merge PDF](/merge) to combine your image PDF with text documents, cover pages, or other files
+4. **Merge with other PDFs** - Use [Merge PDF](/merge-pdf) to combine your image PDF with text documents, cover pages, or other files
 5. **Protect with a password** - Keep sensitive images secure
 
 ## Troubleshooting Common Issues
@@ -1130,7 +1130,7 @@ Some phone cameras embed rotation metadata that may not be read correctly:
 Image-heavy PDFs can easily exceed email size limits:
 
 1. Use the compress tool to reduce the file size
-2. If still too large, [split the PDF](/split) into smaller sections
+2. If still too large, [split the PDF](/split-pdf) into smaller sections
 3. Or reduce the quality setting during conversion
 
 ### Images Look Blurry in the PDF
@@ -1321,7 +1321,7 @@ Most documents are portrait by default. When a landscape page appears in a mostl
 
 ### Step 1: Upload Your PDF
 
-Visit our [Rotate PDF](/rotate) tool and upload your document. You can drag and drop the file directly into the upload area or click to browse your device. The tool supports PDFs of any size with any number of pages.
+Visit our [Rotate PDF](/rotate-pdf) tool and upload your document. You can drag and drop the file directly into the upload area or click to browse your device. The tool supports PDFs of any size with any number of pages.
 
 ### Step 2: Preview Your Pages
 
@@ -1383,7 +1383,7 @@ Older documents received via fax or legacy systems sometimes have random page or
 
 **Solution:**
 1. Upload to Rotate PDF and fix all misoriented pages
-2. [Compress the PDF](/compress) since older documents may have unnecessarily large file sizes
+2. [Compress the PDF](/compress-pdf) since older documents may have unnecessarily large file sizes
 
 ## Rotation Best Practices
 
@@ -1426,7 +1426,7 @@ These tools work well together. For example, you might rotate a scanned page, th
 ### Preparing a Merged Document
 
 1. Rotate all source PDFs to the correct orientation
-2. [Merge them](/merge) into a single document
+2. [Merge them](/merge-pdf) into a single document
 3. Reorder pages if the sequence needs adjustment
 4. Add page numbers to the final document
 5. Compress for email distribution
@@ -1930,7 +1930,7 @@ Documents containing both tables and paragraphs of text will have tables extract
 For documents with multiple tables, complex layouts, or mixed content, follow this enhanced workflow:
 
 ### Step 1: Prepare Your PDF
-- If the PDF has many pages but you only need specific tables, use [Split PDF](/split) to extract just the relevant pages
+- If the PDF has many pages but you only need specific tables, use [Split PDF](/split-pdf) to extract just the relevant pages
 - For scanned documents, run OCR to make the text machine-readable
 
 ### Step 2: Convert to Excel
@@ -2009,7 +2009,7 @@ Tables spanning multiple pages are extracted page by page. Each page becomes row
 Our tool handles PDFs up to 50MB. For larger files, use Split PDF to break the document into smaller sections, convert each section, then combine the results in Excel.
 
 ### Can I convert multiple PDFs at once?
-Currently, our tool processes one PDF at a time. For batch conversion, upload and convert each file individually, then use [Merge PDF](/merge) to combine the source documents first if you want a single Excel output.
+Currently, our tool processes one PDF at a time. For batch conversion, upload and convert each file individually, then use [Merge PDF](/merge-pdf) to combine the source documents first if you want a single Excel output.
 
 ### Will it convert charts and graphs?
 Charts and graphs embedded in PDFs are images, not data. The converter extracts the underlying data tables but not the visual chart representations.
@@ -2172,7 +2172,7 @@ For additional security, consider [protecting the flattened PDF with a password]
 
 ### Reduce File Size
 
-Interactive elements add weight to PDFs. Form fields store metadata about field types, validation rules, and default values. Annotations carry author information, timestamps, and styling data. Flattening strips all of this overhead, often reducing file size by 10-30 percent. For further compression, run the result through our [Compress PDF](/compress) tool to achieve even smaller files suitable for email attachments.
+Interactive elements add weight to PDFs. Form fields store metadata about field types, validation rules, and default values. Annotations carry author information, timestamps, and styling data. Flattening strips all of this overhead, often reducing file size by 10-30 percent. For further compression, run the result through our [Compress PDF](/compress-pdf) tool to achieve even smaller files suitable for email attachments.
 
 ### Fix Display Issues
 
@@ -2294,7 +2294,7 @@ No. Images and text remain at their original resolution. Only interactive elemen
 Flattening merges visible interactive content. Document-level metadata like author, title, and creation date remain unless separately removed. If you need to strip metadata, use additional privacy tools after flattening.
 
 ### Can I flatten only specific pages?
-Our tool flattens all pages in the document at once. If you need to flatten only certain pages, [split the PDF](/split) first, flatten the pages you need, then [merge everything back together](/merge).
+Our tool flattens all pages in the document at once. If you need to flatten only certain pages, [split the PDF](/split-pdf) first, flatten the pages you need, then [merge everything back together](/merge-pdf).
 
 ### Is flattening the same as converting to PDF/A?
 No. PDF/A is an archival format standard that includes specific requirements for font embedding, color profiles, and metadata. Flattening is one step toward PDF/A compliance, but additional processing may be needed for full compliance.
@@ -2392,9 +2392,9 @@ Scanned documents are among the most common candidates for cropping. Here is a c
 1. **Scan your document** at 300 DPI or higher for best quality
 2. **Upload to the crop tool** and trim the scanner borders and dark edges
 3. **Run OCR** on the cropped pages to make the text searchable
-4. **[Compress the PDF](/compress)** to reduce file size while maintaining readability
+4. **[Compress the PDF](/compress-pdf)** to reduce file size while maintaining readability
 5. **Add page numbers** if the document has multiple pages
-6. **[Merge with other documents](/merge)** if needed to create a complete package
+6. **[Merge with other documents](/merge-pdf)** if needed to create a complete package
 
 This workflow transforms raw scans into professional, searchable documents ready for sharing or archiving.
 
@@ -2411,7 +2411,7 @@ This workflow transforms raw scans into professional, searchable documents ready
 
 ### Batch Cropping Multiple Documents
 
-If you have several PDFs that all need the same margins removed, process them one by one with the same crop settings. Alternatively, merge them first, apply a single crop operation, then [split them back](/split) into individual files.
+If you have several PDFs that all need the same margins removed, process them one by one with the same crop settings. Alternatively, merge them first, apply a single crop operation, then [split them back](/split-pdf) into individual files.
 
 ### Cropping for Presentation Slides
 
@@ -2543,7 +2543,7 @@ Resizing changes the entire page dimensions and scales content to fit. [Cropping
 1. **Check orientation first**: Make sure your document is in portrait or landscape to match the target size. Use [Rotate PDF](/rotate-pdf) to fix orientation before resizing.
 2. **Use Crop first**: If you have unwanted margins, crop them before resizing for a cleaner result. See our [cropping guide](/blog/crop-pdf-pages-guide) for detailed instructions.
 3. **Flatten interactive elements**: [Flatten the PDF](/flatten-pdf) before resizing forms to preserve field positions. Learn more in our [flattening guide](/blog/how-to-flatten-pdf).
-4. **Compress after resizing**: Use [Compress PDF](/compress) if the resized file is larger than expected. Scaling up can increase file size.
+4. **Compress after resizing**: Use [Compress PDF](/compress-pdf) if the resized file is larger than expected. Scaling up can increase file size.
 5. **Verify the result**: Always review the resized PDF to confirm content looks correct before printing or sharing.
 6. **Maintain aspect ratio**: When possible, resize between sizes with similar aspect ratios to minimize distortion. A4 and US Letter are close enough that content scales well between them.
 
@@ -2572,7 +2572,7 @@ When sending documents to recipients in the United States:
 
 For conference posters, banners, or large charts:
 
-1. [Merge all pages](/merge) into a single document if needed
+1. [Merge all pages](/merge-pdf) into a single document if needed
 2. Resize to the target poster dimensions (A3, A2, or custom)
 3. Add a watermark with your branding or conference name
 4. Verify image resolution is sufficient for the larger size
@@ -2582,7 +2582,7 @@ For conference posters, banners, or large charts:
 
 When merging PDFs from different sources, pages may have different sizes:
 
-1. [Split the merged document](/split) by page size groups
+1. [Split the merged document](/split-pdf) by page size groups
 2. Resize each group to the target size
 3. Merge everything back together for a uniform document
 4. [Add page numbers](/add-page-numbers) to the final version
@@ -2894,7 +2894,7 @@ Click convert. The tool renders the page and produces a high-quality PDF that pr
 ## Tips for Better Conversions
 
 1. **Use Reader Mode**: Before saving the page, activate your browser's reader mode to strip ads and navigation. This produces significantly cleaner PDFs.
-2. **Check images**: Large background images may increase file size dramatically. [Compress the PDF](/compress) afterwards if the file is too large for your needs.
+2. **Check images**: Large background images may increase file size dramatically. [Compress the PDF](/compress-pdf) afterwards if the file is too large for your needs.
 3. **Verify links**: Internal links within the page are preserved in the PDF and remain clickable. External links also remain functional.
 4. **Handle multi-page content**: For long articles, the converter automatically paginates the content with proper page breaks.
 5. **Save complete pages**: When saving HTML files, choose "Web Page, Complete" to include all images and CSS files. Without these assets, the PDF may look different from the original page.
@@ -2904,7 +2904,7 @@ Click convert. The tool renders the page and produces a high-quality PDF that pr
 
 ### Archiving Web Articles and Research
 
-Save important news articles, blog posts, research papers, and online documentation before they change or get removed. Convert them to PDF and store them in organized folders. For research projects, convert multiple articles and [merge them into a single document](/merge) for easy reference.
+Save important news articles, blog posts, research papers, and online documentation before they change or get removed. Convert them to PDF and store them in organized folders. For research projects, convert multiple articles and [merge them into a single document](/merge-pdf) for easy reference.
 
 Researchers and journalists frequently need to preserve online content as evidence or source material. A PDF provides a timestamped snapshot that proves the content existed at a specific point in time.
 
@@ -3125,7 +3125,7 @@ For formatted output with layout preservation, use [PDF to Word](/pdf-to-word). 
 2. **Check the source quality**: Higher resolution scans produce better OCR results - aim for 300 DPI or higher
 3. **Extract images separately**: If you also need images from the PDF, use Extract Images alongside text extraction
 4. **Handle multi-column layouts**: Text from multi-column PDFs (like newspapers or academic journals) may need manual reordering after extraction since columns are read sequentially
-5. **Remove unnecessary pages first**: If you only need text from specific pages, use [Split PDF](/split) or [Delete Pages](/delete-pages) to isolate the relevant sections before extracting
+5. **Remove unnecessary pages first**: If you only need text from specific pages, use [Split PDF](/split-pdf) or [Delete Pages](/delete-pages) to isolate the relevant sections before extracting
 6. **Verify the output**: Always review extracted text for accuracy, especially from OCR-processed documents where character recognition errors may occur
 
 ## Practical Workflows
@@ -3146,7 +3146,7 @@ When moving content from old PDF documents to a modern website or content manage
 1. Extract text from legacy documents
 2. Clean up and format the content in your text editor
 3. Paste into your website CMS, blog platform, or new document template
-4. Use [Compress PDF](/compress) to optimize any new PDF files for web distribution
+4. Use [Compress PDF](/compress-pdf) to optimize any new PDF files for web distribution
 
 ### Data Processing and Analysis
 
@@ -3155,7 +3155,7 @@ For business intelligence and data extraction workflows:
 1. Extract text from financial reports, invoices, or inventory documents
 2. Paste tabular data into Excel or Google Sheets for analysis
 3. Or use PDF to Excel directly for structured table extraction with cell boundaries preserved
-4. Combine data from multiple PDFs by [merging them first](/merge) and then extracting all text at once
+4. Combine data from multiple PDFs by [merging them first](/merge-pdf) and then extracting all text at once
 
 ### Legal Document Review
 
@@ -3378,7 +3378,7 @@ Apply sequential page numbers to any PDF. Choose position, font, and starting nu
 
 Beyond PDFs, PDF HUB 24 also has genuinely useful free image tools:
 
-- **[Compress Image](/compress-img)** — Reduce JPG, PNG, and WebP file size
+- **[Compress Image](/image-compressor)** — Reduce JPG, PNG, and WebP file size
 - **[Remove Background](/remove-bg)** — AI background removal
 - **[Resize Image](/resize-image)** — Change image dimensions
 - **[Convert Image](/convert-image)** — Convert between image formats (JPG ↔ PNG ↔ WebP etc.)
@@ -3511,7 +3511,7 @@ Interactive forms can cause issues with certain assistive technologies. After fo
 
 ### Optimize File Size
 
-Large PDF files load slowly, which creates barriers for users on slow connections or mobile devices. [Compress](/compress) your documents to keep file sizes manageable while maintaining readability.
+Large PDF files load slowly, which creates barriers for users on slow connections or mobile devices. [Compress](/compress-pdf) your documents to keep file sizes manageable while maintaining readability.
 
 ### Remove Unnecessary Restrictions
 
@@ -3659,7 +3659,7 @@ Choosing the right converter ensures your images are processed optimally. For ex
 
 Pick the converter that matches your image format. For JPG photos from your camera or phone, start with JPG to PDF. For PNG screenshots or design exports, use PNG to PDF. For professional scans saved as TIFF, use TIFF to PDF.
 
-If you have a mix of formats, convert each type separately and then [merge the resulting PDFs](/merge) into one document. Our [guide to merging PDFs](/blog/merge-pdf-files-guide) covers this workflow in detail.
+If you have a mix of formats, convert each type separately and then [merge the resulting PDFs](/merge-pdf) into one document. Our [guide to merging PDFs](/blog/merge-pdf-files-guide) covers this workflow in detail.
 
 ### Step 2: Upload Multiple Images
 
@@ -3703,7 +3703,7 @@ If you converted different batches or formats separately, use Merge PDF to combi
 
 ### Optimize for Sharing
 
-- [Compress the PDF](/compress) if the file is too large for email (keep it under 25MB for most email providers). See our [guide to compressing PDFs for email](/blog/how-to-compress-pdf-for-email) for tips
+- [Compress the PDF](/compress-pdf) if the file is too large for email (keep it under 25MB for most email providers). See our [guide to compressing PDFs for email](/blog/how-to-compress-pdf-for-email) for tips
 - Resize pages to a standard size like A4 or Letter for printing
 - Protect with a password if the images are confidential or proprietary
 
@@ -4333,7 +4333,7 @@ Navigate to our [PDF to PowerPoint](/pdf-to-ppt) converter. This tool processes 
 
 ### Step 3: Upload Your PDF
 
-Drag your PDF file into the upload area or click to browse. Files up to 100MB are supported. If your file is larger, use [Compress PDF](/compress) to reduce the size first.
+Drag your PDF file into the upload area or click to browse. Files up to 100MB are supported. If your file is larger, use [Compress PDF](/compress-pdf) to reduce the size first.
 
 ### Step 4: Convert and Download
 
@@ -4444,7 +4444,7 @@ To combine multiple JPG images into a single PDF document:
 
 This workflow is perfect for scanned documents where you have one JPG per page, photo albums, portfolios, and similar multi-image collections.
 
-Alternatively, you can convert each JPG separately, then use [Merge PDF](/merge) to combine the resulting PDFs in any order.
+Alternatively, you can convert each JPG separately, then use [Merge PDF](/merge-pdf) to combine the resulting PDFs in any order.
 
 ## JPG Quality and PDF File Size
 
@@ -4452,8 +4452,8 @@ The quality of the original JPG directly affects the quality of the PDF output. 
 
 - **Higher quality JPGs produce larger PDFs** — A 5MB high-resolution photo will create a 5MB+ PDF
 - **The conversion doesn't improve JPEG quality** — If your original is low quality or heavily compressed, the PDF will also look low quality
-- **For smaller PDFs**: Use our [Compress Image](/compress-img) tool to reduce the JPG size before converting, which will produce a smaller PDF
-- **For best print quality**: Use the highest quality JPG available; you can always [Compress PDF](/compress) afterward if the file is too large
+- **For smaller PDFs**: Use our [Compress Image](/image-compressor) tool to reduce the JPG size before converting, which will produce a smaller PDF
+- **For best print quality**: Use the highest quality JPG available; you can always [Compress PDF](/compress-pdf) afterward if the file is too large
 
 ## Other Image Formats
 
@@ -4470,7 +4470,7 @@ For batch converting many different image types at once, see our guide to [batch
 When submitting identification documents (passport, driver's license), scan or photograph them as JPGs and convert to PDF. This meets most submission requirements while keeping file sizes manageable.
 
 ### Portfolio Submission
-Artists, photographers, and designers often need to submit portfolios as PDF. Convert your best JPG images to PDF and combine them with [Merge PDF](/merge) for a professional presentation.
+Artists, photographers, and designers often need to submit portfolios as PDF. Convert your best JPG images to PDF and combine them with [Merge PDF](/merge-pdf) for a professional presentation.
 
 ### Receipt and Invoice Filing
 Photograph paper receipts with your phone and convert the JPGs to PDF for organized digital record-keeping. Multiple receipts can be combined into a single monthly PDF file.
@@ -4487,7 +4487,7 @@ Yes, by default the JPG is embedded in the PDF at its original quality. No addit
 Yes, our tool handles batches of images. For very large batches (50+ images), working in groups of 20–30 is recommended for best performance.
 
 ### Why is my converted PDF very large?
-Large PDFs from JPG conversion are usually due to high-resolution source images. Use [Compress PDF](/compress) to reduce the file size while maintaining acceptable visual quality.
+Large PDFs from JPG conversion are usually due to high-resolution source images. Use [Compress PDF](/compress-pdf) to reduce the file size while maintaining acceptable visual quality.
 
 ### Can I add page numbers to the converted PDF?
 Yes. After converting, use our [Add Page Numbers](/add-page-numbers) tool to add automatic page numbering to your PDF.
@@ -4538,7 +4538,7 @@ Lossless compression reduces file size by eliminating redundant data without rem
 
 ### Step 1: Open the Compress Image Tool
 
-Go to our [Compress Image](/compress-img) tool. This tool uses intelligent compression algorithms that analyze each image and remove only data that will not be visibly perceived.
+Go to our [Compress Image](/image-compressor) tool. This tool uses intelligent compression algorithms that analyze each image and remove only data that will not be visibly perceived.
 
 ### Step 2: Upload Your Images
 
@@ -4610,7 +4610,7 @@ Yes, for lossy formats. Each round of JPEG compression degrades quality. Compres
 WebP for photographs (lossy), PNG for logos and graphics (lossless), SVG for icons and illustrations that need to scale. Convert your images to the appropriate format with our [Convert Image](/convert-image) tool.
 `,
     relatedTools: [
-      { name: "Compress Image", path: "/compress-img", description: "Reduce image file size" },
+      { name: "Compress Image", path: "/image-compressor", description: "Reduce image file size" },
       { name: "Resize Image", path: "/resize-image", description: "Change image dimensions" },
       { name: "Convert Image", path: "/convert-image", description: "Convert between image formats" },
       { name: "JPG to PDF", path: "/jpg-to-pdf", description: "Convert compressed images to PDF" },
@@ -4788,7 +4788,7 @@ Create clean product or portrait images that pop against any social media backgr
 
 After removing the background, you may want to:
 - **[Resize Image](/resize-image)** — Scale the transparent PNG to specific dimensions for your use case
-- **[Compress Image](/compress-img)** — Reduce the PNG file size while preserving transparency
+- **[Compress Image](/image-compressor)** — Reduce the PNG file size while preserving transparency
 - **[Convert Image](/convert-image)** — Convert the transparent PNG to WebP for web use
 
 For using the cutout image in a document, you can [convert it back to PDF](/jpg-to-pdf) after placing it over a colored background.
@@ -4813,7 +4813,7 @@ No — process as many images as you need, one at a time or in batches.
     relatedTools: [
       { name: "Remove Background", path: "/remove-bg", description: "Remove image backgrounds automatically" },
       { name: "Resize Image", path: "/resize-image", description: "Scale images to specific dimensions" },
-      { name: "Compress Image", path: "/compress-img", description: "Reduce PNG file size" },
+      { name: "Compress Image", path: "/image-compressor", description: "Reduce PNG file size" },
       { name: "Convert Image", path: "/convert-image", description: "Convert between image formats" },
       { name: "JPG to PDF", path: "/jpg-to-pdf", description: "Add your cutout to a PDF" }
     ]
@@ -4910,13 +4910,13 @@ Transparent background conversion is useful when your PDF has design elements (l
 High-resolution PNG files from PDF conversion can be large. To reduce file size while maintaining quality:
 
 1. **Resize first** — If you only need the image at 800px wide, use [Resize Image](/resize-image) to scale it down before sharing
-2. **Compress the PNG** — Use [Compress Image](/compress-img) with lossless PNG compression to reduce file size without any quality loss
+2. **Compress the PNG** — Use [Compress Image](/image-compressor) with lossless PNG compression to reduce file size without any quality loss
 3. **Convert to WebP** — WebP lossless is 25–35% smaller than equivalent PNG, supported by all modern browsers
 
 ## Frequently Asked Questions
 
 ### Why are my converted PNG files very large?
-PNG is lossless, so file sizes are naturally larger than JPEG. A high-resolution PDF page at 300 PPI can produce 2–8MB PNG files. Use [Compress Image](/compress-img) or convert to WebP for smaller sizes.
+PNG is lossless, so file sizes are naturally larger than JPEG. A high-resolution PDF page at 300 PPI can produce 2–8MB PNG files. Use [Compress Image](/image-compressor) or convert to WebP for smaller sizes.
 
 ### Can I convert a multi-page PDF to a single PNG?
 Our tool converts each page to an individual PNG. To create a single long image combining all pages, you would need image editing software to stitch the individual PNGs together.
@@ -4933,7 +4933,7 @@ Choose transparent background if you plan to place the image over a colored or p
     relatedTools: [
       { name: "PDF to PNG", path: "/pdf-to-png", description: "Convert PDF pages to PNG images" },
       { name: "PDF to JPG", path: "/pdf-to-jpg", description: "Convert PDF to JPEG images" },
-      { name: "Compress Image", path: "/compress-img", description: "Reduce PNG file size" },
+      { name: "Compress Image", path: "/image-compressor", description: "Reduce PNG file size" },
       { name: "Resize Image", path: "/resize-image", description: "Scale images to specific dimensions" },
       { name: "Extract Pages", path: "/extract-pages", description: "Extract specific pages before converting" }
     ]
@@ -4995,7 +4995,7 @@ Conditional formatting (color scales, data bars, icon sets) is rendered in the P
 Merged cells, bordered tables, and complex cell layouts convert well. Very complex multi-level merged header structures may occasionally need minor review after conversion.
 
 ### Large Spreadsheets
-For very large spreadsheets (thousands of rows), the PDF will have many pages. Consider filtering to only the relevant data before converting, or using page breaks to structure the output. Use [Compress PDF](/compress) to reduce the output file size if needed.
+For very large spreadsheets (thousands of rows), the PDF will have many pages. Consider filtering to only the relevant data before converting, or using page breaks to structure the output. Use [Compress PDF](/compress-pdf) to reduce the output file size if needed.
 
 ## Excel to PDF vs. PDF to Excel
 
