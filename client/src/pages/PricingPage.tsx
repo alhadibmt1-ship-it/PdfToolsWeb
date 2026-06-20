@@ -48,27 +48,19 @@ const faqs = [
   { question: "Are the free tools really unlimited?", answer: "Yes. All 49+ tools are completely free with no daily limits, no file count restrictions, and no feature limitations. You can use any tool as many times as you need, every day." },
   { question: "Do free tools add watermarks?", answer: "No. Our free tools never add watermarks, branding, or any marks to your processed files. The output is clean and professional." },
   { question: "Do I need to create an account?", answer: "No. All free tools work without any registration, email verification, or account creation. Just upload your file and get your result." },
-  { question: "What is the file size limit?", answer: "The free plan supports files up to 50MB, which covers the vast majority of PDF documents. The Pro plan (coming soon) will support files up to 500MB." },
-  { question: "When will the Pro plan be available?", answer: "The Pro plan is currently in development. Sign up for our newsletter to be notified when it launches. All current free features will remain free forever." },
-  { question: "Will free features be removed when Pro launches?", answer: "Never. All features currently available for free will remain free permanently. The Pro plan adds premium capabilities on top of the existing free tools." }
+  { question: "What is the file size limit?", answer: "The free plan supports files up to 50MB, which covers the vast majority of PDF documents." },
+  { question: "Is there a paid plan right now?", answer: "No. There is currently no paid tier on PDF HUB 24 — everything on the site today is free, with no credit card required anywhere." },
+  { question: "Is PDF HUB 24 going to start charging for things that are free today?", answer: "No. Everything that is free today will stay free permanently. We are exploring an optional, separate Pro plan in the future for users who need larger file sizes (up to 500MB), but it would only add new capability — it will never restrict, paywall, or remove anything currently free, and it will never automatically enroll or charge any existing user." }
 ];
 
 export default function PricingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useSEO({
-    title: "Pricing — 49+ Free PDF Tools (No Hidden Costs) | PDF HUB 24",
-    description: "All 49+ PDF tools are 100% free. No signup, no watermarks, no limits. See our free plan features and upcoming Pro plan details.",
-    keywords: "free pdf tools, pdf tool pricing, free pdf converter, free pdf editor, pdf hub pricing",
-    canonicalPath: "/pricing",
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Pricing - Free PDF Tools",
-      "description": "All PDF HUB 24 tools are free with no hidden costs",
-      "url": `${BASE_URL}/pricing`,
-      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
-    }
+    title: "PDF HUB 24 Pricing — 100% Free, No Plans | PDF HUB 24",
+    description: "PDF HUB 24 is completely free. No subscription, no premium tier, no hidden fees. All 49+ PDF tools are free forever with no file limits or watermarks.",
+    keywords: "pdf hub 24 pricing, pdfhub24 free, pdf hub 24 cost, is pdf hub 24 free, pdf hub 24 subscription, pdfhub24 no cost, pdf tools free no subscription 2026",
+    canonicalPath: "/pricing"
   });
 
   return (
