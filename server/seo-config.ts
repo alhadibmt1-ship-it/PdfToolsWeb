@@ -3036,6 +3036,49 @@ const TOOLS_PAGE_LINKS: Record<string, {slug: string; title: string}[]> = {
   ],
 };
 
+// Static info/trust pages — gives crawlers and link-preview tools real content for
+// About, Pricing, Data Security, and Auto-Delete instead of just the generic nav shell.
+// Fixes the "thin/templated About page" issue flagged in third-party trust audits.
+const INFO_PAGES: Record<string, { paragraphs: string[]; faqs?: { question: string; answer: string }[] }> = {
+  "/about": {
+    paragraphs: [
+      "PDF HUB 24 started with a simple frustration: every time we needed to convert or edit a PDF, we hit a paywall, a sign-up form, or a watermark. So we built the tool we always wished existed — completely free, no strings attached.",
+      "PDF HUB 24 offers 49+ PDF and image tools, all completely free. Students editing lecture notes, freelancers sending polished proposals, small business owners handling invoices, HR teams processing applications — these are the people we built this for.",
+      "We're a small, dedicated team of developers who genuinely care about making everyday document tasks easier. We keep the platform free by running unobtrusive ads — never paywalls, never file limits, never forced sign-ups.",
+      "Who uses PDF HUB 24? Students combining assignment PDFs and compressing thesis files for university upload limits. Freelancers merging portfolios and signing contracts electronically. Office workers compressing scanned invoices and extracting tables from reports. Visa applicants merging passport copies, bank statements, and supporting letters into a single properly formatted PDF. Healthcare staff converting medical forms and protecting patient documents with passwords. Small business owners creating PDF quotes and invoices.",
+    ],
+  },
+  "/pricing": {
+    paragraphs: [
+      "All 49+ PDF tools on PDF HUB 24 are 100% free today, with no signup, no watermarks, no daily limits, and no file size cap below 50MB. There is no current paid tier — every tool you see on the site is fully usable right now at no cost.",
+      "We keep the platform free by running unobtrusive advertising rather than charging users. There is no credit card requirement anywhere on the site, and no feature is artificially limited to push you toward a purchase.",
+      "We are exploring an optional Pro plan for the future, aimed at users who need larger file size limits (up to 500MB) for very large documents. This is still in development and has no firm launch date. Critically: nothing currently free will ever be moved behind a paywall or removed. The Pro plan, if and when it launches, will only add new capability on top of the existing free tools — it will not require you to pay for anything you can already do today, and it will never auto-enroll any existing user.",
+    ],
+    faqs: [
+      { question: "Is PDF HUB 24 actually free, or is this a free trial?", answer: "It's genuinely free, not a trial. There is no time limit, no feature lock, and no credit card requirement. All 49+ tools work exactly the same whether you use them once or every day." },
+      { question: "Will my access change if a Pro plan launches?", answer: "No. Every feature available today will remain free permanently. A future Pro plan would only add new, separate capabilities — it will never restrict or remove anything currently free, and no existing user will be automatically charged or enrolled." },
+    ],
+  },
+  "/data-security": {
+    paragraphs: [
+      "Every file transfer between your device and our servers uses 256-bit SSL/TLS encryption — the same standard used by banks and financial institutions. Your files are encrypted in transit and cannot be intercepted.",
+      "Uploaded files are automatically and permanently deleted from our servers within 1 hour of processing. No copies are retained, no backups are made, and no file content is stored long-term. File processing happens on isolated, secure servers with strict access controls — each processing session is sandboxed so no other user's files can interact with yours, and processing is fully automated with zero human access to your document content.",
+      "Our data handling practices comply with the EU's General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA), including the right to know, delete, and opt out of data sales — which we do not engage in regardless.",
+    ],
+  },
+  "/auto-delete": {
+    paragraphs: [
+      "Every file you upload to PDF HUB 24 is automatically and permanently deleted within 1 hour. No exceptions, no extensions, no copies retained — this applies whether or not you've downloaded your processed file.",
+      "Deletion is based on upload time, not download status. All temporary files, processing artifacts, cached data, and intermediate outputs are deleted along with the primary files — nothing related to your document remains on our servers afterward.",
+      "Files are permanently removed from the filesystem, not merely marked as deleted; storage space is overwritten, making recovery impossible even with forensic tools. Once deleted, files cannot be recovered by anyone, including our own team — we do not maintain backups of user files, so always download your processed output before the deletion window expires.",
+    ],
+    faqs: [
+      { question: "When exactly are my files deleted?", answer: "All uploaded files and processed outputs are permanently deleted within 1 hour of upload. The deletion process runs automatically and cannot be delayed or prevented." },
+      { question: "Can I recover a deleted file?", answer: "No. Once deleted, files cannot be recovered by anyone, including our team. We do not maintain backups of user files." },
+    ],
+  },
+};
+
 function generatePreRenderShell(canonicalPath: string, lang: string = "en"): string {
   try {
   const config = seoConfig[canonicalPath];
@@ -3061,6 +3104,7 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
 
   // Category hub: /convert-pdf, /edit-pdf-tools, etc.
   const categoryHub = categoryHubs.find(h => `/${h.slug}` === canonicalPath);
+  const infoPage = lang === "en" ? INFO_PAGES[canonicalPath] : undefined;
 
   // Helper: strip brand suffix from any translated title string
   const stripBrand = (s: string) =>
@@ -3142,6 +3186,22 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
 
   // Build rich content sections
   let richContent = "";
+
+  // ── STATIC INFO/TRUST PAGES (About, Pricing, Data Security, Auto-Delete) ────
+  if (infoPage) {
+    richContent += infoPage.paragraphs.map(p =>
+      `<p style="line-height:1.75;margin-bottom:1.25rem;max-width:800px">${escHtml(p)}</p>`
+    ).join("");
+    if (infoPage.faqs?.length) {
+      const faqs = infoPage.faqs.map(f =>
+        `<div style="margin-bottom:1rem"><h3 style="font-size:1rem;font-weight:600;margin-bottom:0.25rem">${escHtml(f.question)}</h3><p style="line-height:1.7">${escHtml(f.answer)}</p></div>`
+      ).join("");
+      richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+        <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">Frequently Asked Questions</h2>
+        ${faqs}
+      </section>`;
+    }
+  }
 
   // ── BLOG ARTICLE ────────────────────────────────────────────────────────────
   if (blogPost) {
