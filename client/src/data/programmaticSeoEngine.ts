@@ -1334,10 +1334,10 @@ const PDF_TO_FORMATS = [
   { slug: "markdown", label: "Markdown", ext: ".md",       description: "ideal for documentation, GitHub, Notion, or static site generators" },
 ];
 
-const MERGE_COUNTS = [2,3,4,5,6,7,8,9,10,12,15,20,25,30,50];
-const SPLIT_INTO_COUNTS = [2,3,4,5,6,7,8,9,10,12,15,20,25];
-const SPLIT_EVERY_COUNTS = [1,2,3,4,5,6,7,8,9,10,15,20];
-const EXTRACT_N_COUNTS = [1,2,3,4,5,6,7,8,9,10,15,20];
+const MERGE_COUNTS = [2,3,4,5,6,7,8,9,10];
+const SPLIT_INTO_COUNTS = [2,3,4,5,6,7,8,9,10];
+const SPLIT_EVERY_COUNTS = [1,2,3,4,5,6,7,8,9,10];
+const EXTRACT_N_COUNTS = [1,2,3,4,5,6,7,8,9,10];
 
 const EXISTING_SLUGS = new Set([
   "compress-pdf-for-email","compress-pdf-for-whatsapp","compress-pdf-mobile",
@@ -2910,8 +2910,11 @@ function buildAllPages(): ProgrammaticPage[] {
     ...genOcrAndSecurityPages(),
     ...genBatchAndWorkflowPages(),
     ...genCountryToolPages(),
-    ...genImageToolPages(),
-    ...genConversionQualityPages(),
+    // genImageToolPages() and genConversionQualityPages() disabled — 69 pages total,
+    // 43-52 words each, near-identical template with only 2-3 words swapped per page
+    // (e.g. "PDF to JPG lossless" vs "PDF to JPG high-quality"). Real doorway-page
+    // pattern with no genuine search differentiation. Removed to protect domain
+    // quality signal rather than leave thin content live.
   ];
 
   // Deduplicate by slug, keeping first occurrence
