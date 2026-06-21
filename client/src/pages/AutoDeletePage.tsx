@@ -25,18 +25,10 @@ export default function AutoDeletePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useSEO({
-    title: "Auto-Delete — How We Remove Your Files | PDF HUB 24",
-    description: "PDF HUB 24 automatically deletes all uploaded files within 1 hour. Learn how our automatic file deletion works to protect your privacy and security.",
-    keywords: "auto delete files, file deletion, privacy, secure deletion, temporary files",
-    canonicalPath: "/auto-delete",
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Automatic File Deletion",
-      "description": "How PDF HUB 24 automatically deletes uploaded files",
-      "url": `${BASE_URL}/auto-delete`,
-      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
-    }
+    title: "Auto-Delete Policy — Files Deleted After Processing | PDF HUB 24",
+    description: "Learn how PDF HUB 24 automatically deletes your files after processing. Your documents are permanently removed from our servers within minutes. Privacy guaranteed.",
+    keywords: "pdf hub 24 auto delete policy, pdfhub24 file deletion, pdf files deleted after processing, pdf tool data security, pdf hub 24 privacy, pdfhub24 file safety",
+    canonicalPath: "/auto-delete"
   });
 
   return (
@@ -171,7 +163,7 @@ export default function AutoDeletePage() {
           </div>
         </div>
       </main>
-      <Footer />
+      <Footer hideCta />
     </div>
   );
 }
