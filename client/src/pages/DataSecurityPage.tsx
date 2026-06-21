@@ -23,17 +23,9 @@ const securityFeatures = [
 export default function DataSecurityPage() {
   useSEO({
     title: "Data Security & Privacy — How We Protect Your Files | PDF HUB 24",
-    description: "Learn how PDF HUB 24 protects your files. SSL encryption, automatic deletion within 1 hour, zero-access policy, GDPR compliance. Your documents are safe.",
-    keywords: "data security, file privacy, PDF security, GDPR, file encryption, auto delete",
-    canonicalPath: "/data-security",
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Data Security & Privacy",
-      "description": "How PDF HUB 24 protects your uploaded files and personal data",
-      "url": `${BASE_URL}/data-security`,
-      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
-    }
+    description: "PDF HUB 24 uses SSL encryption and automatic file deletion. Your files are never stored or shared. 100% secure free PDF tools. No signup required.",
+    keywords: "pdf hub 24 security, pdfhub24 privacy, pdf tools secure, file encryption pdf, automatic file deletion pdf, safe pdf converter, secure pdf tools online, pdfhub24 data protection",
+    canonicalPath: "/data-security"
   });
 
   return (
@@ -178,7 +170,7 @@ export default function DataSecurityPage() {
           </div>
         </div>
       </main>
-      <Footer />
+      <Footer hideCta />
     </div>
   );
 }
