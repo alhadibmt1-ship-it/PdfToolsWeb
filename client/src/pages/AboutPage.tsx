@@ -8,9 +8,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function AboutPage() {
   useSEO({
-    title: "About PDF HUB 24 — Free Online PDF Tools Built for Everyone",
-    description: "PDF HUB 24 was built because PDF tools should be free, fast, and simple. No subscriptions, no sign-ups. Learn our story and why millions trust us.",
-    keywords: "about pdf hub 24, free pdf tools, pdf converter online, who made pdf hub 24",
+    title: "About PDF HUB 24 — Free PDF Tools for Everyone | PDF HUB 24",
+    description: "Learn about PDF HUB 24 — the free online PDF toolkit with 49+ tools. No registration, no watermarks, 100% secure. Trusted by professionals worldwide.",
+    keywords: "about pdf hub 24, pdfhub24 about, about pdfhub24, pdf hub 24 company, who made pdf hub 24, free pdf tools platform, pdfhub24.com about us",
     canonicalPath: "/about"
   });
 
@@ -278,7 +278,7 @@ export default function AboutPage() {
 
       </main>
 
-      <Footer />
+      <Footer hideCta />
     </div>
   );
 }
