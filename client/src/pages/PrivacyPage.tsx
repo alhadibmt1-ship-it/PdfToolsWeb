@@ -7,9 +7,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function PrivacyPage() {
   useSEO({
-    title: "Privacy Policy - PDF HUB 24",
-    description: "Read PDF HUB 24's privacy policy to understand how we protect your data and respect your privacy when using our free PDF tools.",
-    keywords: "privacy policy, data protection, pdf hub 24 privacy",
+    title: "Privacy Policy — Your Files Stay Private | PDF HUB 24",
+    description: "PDF HUB 24 privacy policy. Your files are processed securely and automatically deleted. We never store or share your documents.",
+    keywords: "pdf hub 24 privacy policy, pdfhub24 privacy, pdf tools privacy, secure pdf processing, pdf hub 24 data privacy, pdfhub24 file security",
     canonicalPath: "/privacy"
   });
 
@@ -153,7 +153,7 @@ export default function PrivacyPage() {
         </div>
       </main>
 
-      <Footer />
+      <Footer hideCta />
     </div>
   );
 }
