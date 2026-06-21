@@ -221,7 +221,7 @@ export default function PricingPage() {
           </div>
         </div>
       </main>
-      <Footer />
+      <Footer hideCta />
     </div>
   );
 }
