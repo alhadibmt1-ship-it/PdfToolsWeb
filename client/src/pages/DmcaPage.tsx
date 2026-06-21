@@ -7,9 +7,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function DmcaPage() {
   useSEO({
-    title: "DMCA Policy - PDF HUB 24",
-    description: "DMCA policy for PDF HUB 24. Learn how to report copyright infringement and our procedures for handling DMCA takedown requests.",
-    keywords: "dmca policy, copyright, takedown request, pdf hub 24",
+    title: "DMCA Policy — Copyright Protection | PDF HUB 24",
+    description: "DMCA policy for PDF HUB 24. Learn how to report copyright infringement and how we handle takedown requests. We respect intellectual property rights.",
+    keywords: "dmca policy pdfhub24, pdf hub 24 dmca, copyright policy pdf tools, dmca takedown pdfhub24, intellectual property pdf hub 24",
     canonicalPath: "/dmca"
   });
 
@@ -128,7 +128,7 @@ export default function DmcaPage() {
         </div>
       </main>
 
-      <Footer />
+      <Footer hideCta />
     </div>
   );
 }
