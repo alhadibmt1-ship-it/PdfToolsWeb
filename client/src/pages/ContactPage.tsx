@@ -8,9 +8,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function ContactPage() {
   useSEO({
-    title: "Contact Us - PDF HUB 24 | Get in Touch",
-    description: "Contact PDF HUB 24 for support, feedback, or questions about our free PDF tools. We're here to help!",
-    keywords: "contact pdf hub 24, support, help, feedback, customer service",
+    title: "Contact PDF HUB 24 — Support & Feedback | PDF HUB 24",
+    description: "Contact PDF HUB 24 for support, feedback, or questions about our free PDF tools. We respond to all inquiries. Get help with any PDF tool.",
+    keywords: "contact pdf hub 24, pdfhub24 support, pdf hub 24 help, pdfhub24 feedback, contact pdfhub24, pdf tools support, pdf hub 24 contact us",
     canonicalPath: "/contact"
   });
 
@@ -166,7 +166,7 @@ export default function ContactPage() {
         </div>
       </main>
 
-      <Footer />
+      <Footer hideCta />
     </div>
   );
 }
