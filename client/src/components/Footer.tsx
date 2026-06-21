@@ -52,7 +52,7 @@ function FooterLink({ href, testId, children, isVisible }: FooterLinkProps) {
   );
 }
 
-export default function Footer() {
+export default function Footer({ hideCta = false }: { hideCta?: boolean } = {}) {
   const [isFromPdfOpen, setIsFromPdfOpen] = useState(false);
   const [isToPdfOpen, setIsToPdfOpen] = useState(false);
   const [isEditPdfOpen, setIsEditPdfOpen] = useState(false);
@@ -84,7 +84,8 @@ export default function Footer() {
   return (
     <footer className="mt-12 sm:mt-16 md:mt-20">
 
-      {/* ── CTA Banner ───────────────────────────── */}
+      {/* ── CTA Banner — hidden on About/Pricing/Privacy/etc via hideCta prop ── */}
+      {!hideCta && (
       <div className="bg-gradient-to-r from-primary via-blue-500 to-cyan-500 py-10 sm:py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center text-white">
           <p className="text-xs font-bold uppercase tracking-widest opacity-80 mb-3">Free Forever</p>
@@ -103,6 +104,7 @@ export default function Footer() {
           </a>
         </div>
       </div>
+      )}
 
       {/* ── Trust Bar ────────────────────────────── */}
       <div className="bg-slate-900 border-b border-slate-800 py-5">
