@@ -7,9 +7,9 @@ import { useSEO } from "@/hooks/useSEO";
 
 export default function TermsPage() {
   useSEO({
-    title: "Terms of Service - PDF HUB 24",
-    description: "Read PDF HUB 24's terms of service to understand the rules and guidelines for using our free online PDF tools.",
-    keywords: "terms of service, terms and conditions, pdf hub 24 terms",
+    title: "Terms of Service | PDF HUB 24",
+    description: "Terms of Service for PDF HUB 24. Read our usage terms and conditions for all free PDF tools. Simple, fair terms with no hidden restrictions or fees.",
+    keywords: "pdf hub 24 terms of service, pdfhub24 terms, pdf hub 24 usage terms, pdf tools terms and conditions",
     canonicalPath: "/terms"
   });
 
@@ -175,7 +175,7 @@ export default function TermsPage() {
         </div>
       </main>
 
-      <Footer />
+      <Footer hideCta />
     </div>
   );
 }
