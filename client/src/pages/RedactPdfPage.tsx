@@ -313,6 +313,13 @@ export default function RedactPdfPage() {
                   </Button>
                 )}
               </div>
+              {status === "success" && resultUrl && (
+                <div className="pt-3 border-t border-border/50 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm">
+                  <span className="text-muted-foreground">What's next?</span>
+                  <Link href="/flatten-pdf" className="text-primary hover:underline font-medium" data-testid="link-post-download-1">Flatten PDF →</Link>
+                  <Link href="/protect-pdf" className="text-primary hover:underline font-medium" data-testid="link-post-download-2">Protect PDF →</Link>
+                </div>
+              )}
             </div>
           )}
 
