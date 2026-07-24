@@ -1763,18 +1763,6 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "scanned pdf to word, ocr pdf to word, convert scan to editable, scanned document to word",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert Scanned PDF to Word", "url": `${BASE_URL}/tools/convert-scanned-pdf-to-word-editable`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
-  "/tools/make-pdf-smaller-for-email": {
-    title: "Make PDF Smaller for Email Free Online | PDF HUB 24",
-    description: "Make any PDF small enough for email. Shrink under 25MB for Gmail or 20MB for Outlook in seconds. Free online PDF compressor with adjustable quality. No signup.",
-    keywords: "make pdf smaller email, compress pdf email, pdf too large email, reduce pdf for gmail",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Make PDF Smaller for Email", "url": `${BASE_URL}/tools/make-pdf-smaller-for-email`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/pdf-to-jpg-high-quality": {
-    title: "PDF to JPG High Quality Free Online | PDF HUB 24",
-    description: "Convert PDF pages to high-resolution JPG images. Free online converter with 300 DPI output. Perfect for presentations and social media.",
-    keywords: "pdf to jpg high quality, pdf to image hd, convert pdf jpg high resolution, pdf to jpg 300dpi",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "PDF to JPG High Quality", "url": `${BASE_URL}/tools/pdf-to-jpg-high-quality`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
   "/tools/merge-pdf-free-no-limit": {
     title: "Merge PDF Free No Limit — Combine Unlimited Files | PDF HUB 24",
     description: "Combine unlimited PDF files into one document free online. No file count limits, no page limits, no daily caps. Merge as many PDFs as you need.",
@@ -1787,95 +1775,11 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "split pdf by pages, extract pdf pages, split pdf page range, separate pdf pages",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Split PDF by Pages", "url": `${BASE_URL}/tools/split-pdf-by-pages`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
-  "/tools/add-signature-to-pdf-free": {
-    title: "Add Signature to PDF Free Online | PDF HUB 24",
-    description: "Sign PDF documents free online. Draw, type, or upload your signature. No printing, no scanning needed. Legally recognized e-signatures.",
-    keywords: "add signature pdf, sign pdf free, electronic signature pdf, e-sign pdf online",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Add Signature to PDF", "url": `${BASE_URL}/tools/add-signature-to-pdf-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
   "/tools/compress-pdf-without-losing-quality": {
     title: "Compress PDF Without Losing Quality Free | PDF HUB 24",
     description: "Reduce PDF file size without visible quality loss. Free lossless compression preserves text, images & formatting. Choose from 3 adjustable quality levels.",
     keywords: "compress pdf without losing quality, lossless pdf compression, reduce pdf keep quality",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Compress PDF Without Losing Quality", "url": `${BASE_URL}/tools/compress-pdf-without-losing-quality`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/pdf-to-word-editable-free": {
-    title: "PDF to Word Editable Free Online | PDF HUB 24",
-    description: "Convert any PDF to fully editable Word (DOCX) format free online. Preserves tables, images, headers, and formatting perfectly. No email or signup required.",
-    keywords: "pdf to word editable, convert pdf to editable word, pdf to docx free, editable word from pdf",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "PDF to Editable Word", "url": `${BASE_URL}/tools/pdf-to-word-editable-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/unlock-pdf-for-editing": {
-    title: "Unlock PDF for Editing Free Online | PDF HUB 24",
-    description: "Remove editing restrictions from password-protected PDFs for free. Unlock PDFs for copying, printing, and editing. Owner password required. No signup needed.",
-    keywords: "unlock pdf editing, remove pdf restrictions, unlock pdf free, pdf remove password editing",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Unlock PDF for Editing", "url": `${BASE_URL}/tools/unlock-pdf-for-editing`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/rotate-pdf-and-save": {
-    title: "Rotate PDF and Save Permanently Free | PDF HUB 24",
-    description: "Rotate PDF pages 90, 180, or 270 degrees and save permanently. Fix sideways or upside-down scanned pages instantly. Free online tool, no signup.",
-    keywords: "rotate pdf save, fix sideways pdf, rotate pdf permanently, turn pdf pages",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Rotate PDF and Save", "url": `${BASE_URL}/tools/rotate-pdf-and-save`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/convert-pdf-to-jpg-all-pages": {
-    title: "Convert PDF to JPG All Pages Free Online | PDF HUB 24",
-    description: "Convert every page of your PDF to individual JPG images free online. Download all pages as a ZIP file. High quality 300 DPI output, no signup needed.",
-    keywords: "pdf to jpg all pages, convert all pdf pages jpg, pdf pages to images, extract all pages jpg",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert PDF to JPG All Pages", "url": `${BASE_URL}/tools/convert-pdf-to-jpg-all-pages`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/protect-pdf-with-password-free": {
-    title: "Password Protect PDF Free Online (AES-256) | PDF HUB 24",
-    description: "Add AES-256 password protection to PDF files free online. Set open and edit passwords, control printing and copying permissions. Enterprise-grade encryption.",
-    keywords: "password protect pdf, encrypt pdf free, aes 256 pdf, pdf password protection online",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Password Protect PDF", "url": `${BASE_URL}/tools/protect-pdf-with-password-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/remove-pages-from-pdf": {
-    title: "Remove Pages from PDF Free Online | PDF HUB 24",
-    description: "Delete specific pages from PDF documents free online. Select and remove unwanted pages instantly with visual preview. Keep your documents clean and organized.",
-    keywords: "remove pages pdf, delete pdf pages, remove page from pdf free, delete pages pdf online",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Remove Pages from PDF", "url": `${BASE_URL}/tools/remove-pages-from-pdf`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/flatten-pdf-for-printing": {
-    title: "Flatten PDF for Printing Free Online | PDF HUB 24",
-    description: "Flatten PDF forms and layers for reliable printing. Convert fillable fields to static text. Ensures consistent print output across all printers and devices.",
-    keywords: "flatten pdf printing, flatten pdf forms, pdf print correctly, flatten fillable pdf",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Flatten PDF for Printing", "url": `${BASE_URL}/tools/flatten-pdf-for-printing`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/add-watermark-to-pdf-free": {
-    title: "Add Watermark to PDF Free Online | PDF HUB 24",
-    description: "Add text or image watermarks to PDF files online for free. Customize position, opacity, and rotation. Protect your documents with professional watermarks.",
-    keywords: "add watermark pdf free, watermark pdf online, text watermark pdf, image watermark pdf, stamp pdf",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Add Watermark to PDF Free", "url": `${BASE_URL}/tools/add-watermark-to-pdf-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/convert-excel-to-pdf-free": {
-    title: "Convert Excel to PDF Free Online | PDF HUB 24",
-    description: "Convert Excel XLS and XLSX spreadsheets to PDF online for free. Preserves cell formatting, formulas display, column widths, and styles. No signup, no watermark.",
-    keywords: "excel to pdf free, convert xlsx to pdf, spreadsheet to pdf, xls to pdf online, excel pdf converter",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert Excel to PDF Free", "url": `${BASE_URL}/tools/convert-excel-to-pdf-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/convert-word-to-pdf-free-online": {
-    title: "Convert Word to PDF Free Online | PDF HUB 24",
-    description: "Convert Word DOC and DOCX files to PDF free online. Preserves fonts, images, and formatting perfectly. No signup, no watermark required.",
-    keywords: "convert word to pdf free, word to pdf online, docx to pdf free, doc to pdf converter, word pdf free online",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert Word to PDF Free Online", "url": `${BASE_URL}/tools/convert-word-to-pdf-free-online`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/convert-docx-to-pdf-keep-formatting": {
-    title: "Convert DOCX to PDF Keep Formatting Free | PDF HUB 24",
-    description: "Convert DOCX to PDF while preserving all formatting, fonts, and layout. Free online tool ensures your Word document looks identical as a PDF.",
-    keywords: "docx to pdf keep formatting, word to pdf preserve layout, convert docx pdf formatting, word pdf same format",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert DOCX to PDF Keep Formatting", "url": `${BASE_URL}/tools/convert-docx-to-pdf-keep-formatting`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/edit-pdf-text-online-free": {
-    title: "Edit PDF Text Online Free | PDF HUB 24",
-    description: "Edit text in PDF documents online for free. Add, modify, or delete text directly in your PDF files. No software download or signup required.",
-    keywords: "edit pdf text online free, modify pdf text, change text in pdf, pdf text editor free, edit pdf content",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Edit PDF Text Online Free", "url": `${BASE_URL}/tools/edit-pdf-text-online-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/edit-pdf-without-adobe-acrobat": {
-    title: "Edit PDF Without Adobe Acrobat Free Online | PDF HUB 24",
-    description: "Edit PDFs without Adobe Acrobat. Free online PDF editor with text editing, image insertion, shapes, and annotations. No signup, no software installation required.",
-    keywords: "edit pdf without adobe, pdf editor no acrobat, free alternative adobe acrobat, edit pdf free no adobe",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Edit PDF Without Adobe Acrobat", "url": `${BASE_URL}/tools/edit-pdf-without-adobe-acrobat`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/tools/convert-pdf-to-excel-with-tables": {
     title: "Convert PDF to Excel With Tables Free Online | PDF HUB 24",
@@ -1889,35 +1793,11 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "extract tables pdf, pdf table to spreadsheet, pdf table extractor, copy table from pdf to excel",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Extract Tables From PDF to Spreadsheet", "url": `${BASE_URL}/tools/extract-tables-from-pdf-to-spreadsheet`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
-  "/tools/convert-jpg-to-pdf-free-online": {
-    title: "Convert JPG to PDF Free Online | PDF HUB 24",
-    description: "Convert JPG and JPEG images to PDF free online. Combine multiple photos into one PDF document. Adjust page size and orientation. No signup needed.",
-    keywords: "convert jpg to pdf free, jpeg to pdf online, jpg to pdf converter, image to pdf free online",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert JPG to PDF Free Online", "url": `${BASE_URL}/tools/convert-jpg-to-pdf-free-online`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
   "/tools/convert-multiple-images-to-one-pdf": {
     title: "Convert Multiple Images to One PDF Free Online | PDF HUB 24",
     description: "Combine multiple images into a single PDF document. Supports JPG, PNG, WebP, and more. Drag and drop to reorder pages. Free online, no signup.",
     keywords: "multiple images to pdf, combine images pdf, merge photos to pdf, images to one pdf free",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert Multiple Images to One PDF", "url": `${BASE_URL}/tools/convert-multiple-images-to-one-pdf`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/add-page-numbers-to-pdf-free": {
-    title: "Add Page Numbers to PDF Free Online | PDF HUB 24",
-    description: "Add page numbers to any PDF document free online. Customize position, font, size, and starting number. Perfect for reports and manuscripts.",
-    keywords: "add page numbers pdf free, number pdf pages, pdf page numbering, insert page numbers pdf online",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Add Page Numbers to PDF Free", "url": `${BASE_URL}/tools/add-page-numbers-to-pdf-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/redact-pdf-black-out-text": {
-    title: "Redact PDF Black Out Text Free Online | PDF HUB 24",
-    description: "Black out sensitive text in PDF documents permanently. Free PDF redaction tool removes confidential information securely. GDPR and HIPAA compliant.",
-    keywords: "redact pdf black out text, censor pdf text, black out pdf, remove sensitive info pdf, pdf redaction tool",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Redact PDF Black Out Text", "url": `${BASE_URL}/tools/redact-pdf-black-out-text`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/crop-pdf-margins-free-online": {
-    title: "Crop PDF Margins Free Online | PDF HUB 24",
-    description: "Crop and remove PDF margins free online. Trim white space, adjust page boundaries, and resize PDF content area. Perfect for printing and presentations.",
-    keywords: "crop pdf margins free, trim pdf margins, remove pdf white space, pdf margin cutter online",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Crop PDF Margins Free Online", "url": `${BASE_URL}/tools/crop-pdf-margins-free-online`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
   "/tools/resize-pdf-to-a4-free": {
     title: "Resize PDF to A4 Free Online | PDF HUB 24",
@@ -1925,54 +1805,6 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "resize pdf a4 free, change pdf to a4, pdf a4 size converter, convert pdf page size a4",
     schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Resize PDF to A4 Free", "url": `${BASE_URL}/tools/resize-pdf-to-a4-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
-  "/tools/convert-html-webpage-to-pdf": {
-    title: "Convert HTML Webpage to PDF Free Online | PDF HUB 24",
-    description: "Convert any HTML webpage to PDF free online. Render web pages with CSS styling, images, and layout preserved. Save websites as PDF documents.",
-    keywords: "convert html to pdf, webpage to pdf, save website as pdf, html page to pdf online free",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert HTML Webpage to PDF", "url": `${BASE_URL}/tools/convert-html-webpage-to-pdf`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/compress-jpg-png-image-online": {
-    title: "Compress JPG PNG Image Online Free | PDF HUB 24",
-    description: "Compress JPG and PNG images online for free. Reduce image file size by up to 80% without visible quality loss. Perfect for web and email.",
-    keywords: "compress jpg png online, image compressor free, reduce image size, compress photo online free",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Compress JPG PNG Image Online", "url": `${BASE_URL}/tools/compress-jpg-png-image-online`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/rearrange-pdf-pages-free": {
-    title: "Rearrange PDF Pages Free Online | PDF HUB 24",
-    description: "Rearrange and reorder PDF pages free online. Drag and drop to change page sequence. Move, swap, or reverse page order instantly. No signup needed.",
-    keywords: "rearrange pdf pages free, reorder pdf pages, change pdf page order, move pdf pages, sort pdf pages",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Rearrange PDF Pages Free", "url": `${BASE_URL}/tools/rearrange-pdf-pages-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/convert-pdf-to-png-high-resolution": {
-    title: "Convert PDF to PNG High Resolution Free | PDF HUB 24",
-    description: "Convert PDF pages to high-resolution PNG images free online. 300 DPI output with transparency support. Perfect for graphics and design work.",
-    keywords: "pdf to png high resolution, convert pdf png hd, pdf to png 300dpi, high quality pdf to png",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert PDF to PNG High Resolution", "url": `${BASE_URL}/tools/convert-pdf-to-png-high-resolution`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/annotate-pdf-highlight-text-free": {
-    title: "Annotate PDF Highlight Text Free Online | PDF HUB 24",
-    description: "Highlight, underline, and annotate text in PDF documents free online. Add notes, comments, and markup to any PDF. Perfect for study and review.",
-    keywords: "annotate pdf highlight text, highlight pdf free, pdf annotation tool, mark up pdf online free",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Annotate PDF Highlight Text Free", "url": `${BASE_URL}/tools/annotate-pdf-highlight-text-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/convert-pdf-to-powerpoint-free": {
-    title: "Convert PDF to PowerPoint Free Online | PDF HUB 24",
-    description: "Convert PDF files to editable PowerPoint (PPTX) presentations free online. Preserves slides, text, images, and layout. No signup or watermark.",
-    keywords: "convert pdf to powerpoint free, pdf to pptx online, pdf to ppt converter free, pdf to slides free",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert PDF to PowerPoint Free", "url": `${BASE_URL}/tools/convert-pdf-to-powerpoint-free`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/convert-pdf-to-word-without-losing-formatting": {
-    title: "Convert PDF to Word Without Losing Formatting Free | PDF HUB 24",
-    description: "Convert PDF to Word DOCX without losing formatting. Free online converter preserves fonts, tables, images, and layout exactly as in the original PDF.",
-    keywords: "pdf to word without losing formatting, convert pdf word keep format, pdf to docx preserve layout",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Convert PDF to Word Without Losing Formatting", "url": `${BASE_URL}/tools/convert-pdf-to-word-without-losing-formatting`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  },
-  "/tools/unlock-pdf-remove-password-online": {
-    title: "Unlock PDF Remove Password Online Free | PDF HUB 24",
-    description: "Remove password protection from PDF files online for free. Unlock PDFs for editing, printing, and copying. Requires your password. 100% secure.",
-    keywords: "unlock pdf remove password, remove pdf password online, pdf password remover free, unlock protected pdf",
-    schema: { "@context": "https://schema.org", "@type": "WebPage", "name": "Unlock PDF Remove Password Online", "url": `${BASE_URL}/tools/unlock-pdf-remove-password-online`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
-  }
 };
 
 const SUPPORTED_HREFLANG_LANGS = ["en", "es", "ar", "hi", "fr", "pt", "de", "zh", "ja", "id", "ru", "it", "ur"];
@@ -2251,14 +2083,7 @@ export function generateMetaTags(path: string): string {
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
       "featureList": ["Free to use", "No registration required", "No watermarks", "Instant processing", "Secure file handling"],
       "author": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
-      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "2150",
-        "bestRating": "5",
-        "worstRating": "1"
-      }
+      "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }
     });
     // FAQPage schema if FAQs exist
     if ((toolData as any).faqs?.length) {
@@ -2318,13 +2143,6 @@ export function generateMetaTags(path: string): string {
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
       "featureList": ["Free to use", "No registration required", "No watermarks", "Instant processing", "Secure file handling"],
       "author": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "2150",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
       ...countrySchema
     });
     if (progPage.faqs?.length) {
@@ -2424,14 +2242,7 @@ export function generateMetaTags(path: string): string {
         "url": `${BASE_URL}${canonicalPath}`,
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": "Any",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "ratingCount": "2150",
-          "bestRating": "5",
-          "worstRating": "1"
-        }
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
       });
     }
     }
@@ -2542,41 +2353,41 @@ function generateCrawlableNav(currentPath: string): string {
     { href: "/tools/compress-pdf-to-1mb", text: "Compress PDF to 1MB" },
     { href: "/tools/merge-pdf-for-visa-application", text: "Merge PDF for Visa Application" },
     { href: "/tools/convert-scanned-pdf-to-word-editable", text: "Convert Scanned PDF to Word" },
-    { href: "/tools/make-pdf-smaller-for-email", text: "Make PDF Smaller for Email" },
-    { href: "/tools/pdf-to-jpg-high-quality", text: "PDF to JPG High Quality" },
+    { href: "/tools/compress-pdf-for-email", text: "Make PDF Smaller for Email" },
+    { href: "/pdf-to-jpg", text: "PDF to JPG High Quality" },
     { href: "/tools/merge-pdf-free-no-limit", text: "Merge PDF Free No Limit" },
     { href: "/tools/split-pdf-by-pages", text: "Split PDF by Pages" },
-    { href: "/tools/add-signature-to-pdf-free", text: "Add Signature to PDF Free" },
+    { href: "/sign-pdf", text: "Add Signature to PDF Free" },
     { href: "/tools/compress-pdf-without-losing-quality", text: "Compress PDF Without Losing Quality" },
-    { href: "/tools/pdf-to-word-editable-free", text: "PDF to Word Editable Free" },
-    { href: "/tools/unlock-pdf-for-editing", text: "Unlock PDF for Editing" },
-    { href: "/tools/rotate-pdf-and-save", text: "Rotate PDF and Save" },
-    { href: "/tools/convert-pdf-to-jpg-all-pages", text: "Convert PDF to JPG All Pages" },
-    { href: "/tools/protect-pdf-with-password-free", text: "Protect PDF with Password Free" },
-    { href: "/tools/remove-pages-from-pdf", text: "Remove Pages from PDF" },
-    { href: "/tools/flatten-pdf-for-printing", text: "Flatten PDF for Printing" },
-    { href: "/tools/add-watermark-to-pdf-free", text: "Add Watermark to PDF Free" },
-    { href: "/tools/convert-excel-to-pdf-free", text: "Convert Excel to PDF Free" },
-    { href: "/tools/convert-word-to-pdf-free-online", text: "Convert Word to PDF Free Online" },
-    { href: "/tools/convert-docx-to-pdf-keep-formatting", text: "Convert DOCX to PDF Keep Formatting" },
-    { href: "/tools/edit-pdf-text-online-free", text: "Edit PDF Text Online Free" },
-    { href: "/tools/edit-pdf-without-adobe-acrobat", text: "Edit PDF Without Adobe Acrobat" },
+    { href: "/pdf-to-word", text: "PDF to Word Editable Free" },
+    { href: "/unlock-pdf", text: "Unlock PDF for Editing" },
+    { href: "/rotate-pdf", text: "Rotate PDF and Save" },
+    { href: "/pdf-to-jpg", text: "Convert PDF to JPG All Pages" },
+    { href: "/protect-pdf", text: "Protect PDF with Password Free" },
+    { href: "/delete-pages", text: "Remove Pages from PDF" },
+    { href: "/flatten-pdf", text: "Flatten PDF for Printing" },
+    { href: "/add-watermark", text: "Add Watermark to PDF Free" },
+    { href: "/excel-to-pdf", text: "Convert Excel to PDF Free" },
+    { href: "/word-to-pdf", text: "Convert Word to PDF Free Online" },
+    { href: "/word-to-pdf", text: "Convert DOCX to PDF Keep Formatting" },
+    { href: "/edit-pdf", text: "Edit PDF Text Online Free" },
+    { href: "/edit-pdf", text: "Edit PDF Without Adobe Acrobat" },
     { href: "/tools/convert-pdf-to-excel-with-tables", text: "Convert PDF to Excel With Tables" },
     { href: "/tools/extract-tables-from-pdf-to-spreadsheet", text: "Extract Tables From PDF to Spreadsheet" },
-    { href: "/tools/convert-jpg-to-pdf-free-online", text: "Convert JPG to PDF Free Online" },
+    { href: "/jpg-to-pdf", text: "Convert JPG to PDF Free Online" },
     { href: "/tools/convert-multiple-images-to-one-pdf", text: "Convert Multiple Images to One PDF" },
-    { href: "/tools/add-page-numbers-to-pdf-free", text: "Add Page Numbers to PDF Free" },
-    { href: "/tools/redact-pdf-black-out-text", text: "Redact PDF Black Out Text" },
-    { href: "/tools/crop-pdf-margins-free-online", text: "Crop PDF Margins Free Online" },
+    { href: "/add-page-numbers", text: "Add Page Numbers to PDF Free" },
+    { href: "/redact-pdf", text: "Redact PDF Black Out Text" },
+    { href: "/crop-pdf", text: "Crop PDF Margins Free Online" },
     { href: "/tools/resize-pdf-to-a4-free", text: "Resize PDF to A4 Free" },
-    { href: "/tools/convert-html-webpage-to-pdf", text: "Convert HTML Webpage to PDF" },
-    { href: "/tools/compress-jpg-png-image-online", text: "Compress JPG PNG Image Online" },
-    { href: "/tools/rearrange-pdf-pages-free", text: "Rearrange PDF Pages Free" },
-    { href: "/tools/convert-pdf-to-png-high-resolution", text: "Convert PDF to PNG High Resolution" },
-    { href: "/tools/annotate-pdf-highlight-text-free", text: "Annotate PDF Highlight Text Free" },
-    { href: "/tools/convert-pdf-to-powerpoint-free", text: "Convert PDF to PowerPoint Free" },
-    { href: "/tools/convert-pdf-to-word-without-losing-formatting", text: "Convert PDF to Word Without Losing Formatting" },
-    { href: "/tools/unlock-pdf-remove-password-online", text: "Unlock PDF Remove Password Online" },
+    { href: "/html-to-pdf", text: "Convert HTML Webpage to PDF" },
+    { href: "/image-compressor", text: "Compress JPG PNG Image Online" },
+    { href: "/reorder-pages", text: "Rearrange PDF Pages Free" },
+    { href: "/pdf-to-png", text: "Convert PDF to PNG High Resolution" },
+    { href: "/annotate-pdf", text: "Annotate PDF Highlight Text Free" },
+    { href: "/pdf-to-ppt", text: "Convert PDF to PowerPoint Free" },
+    { href: "/pdf-to-word", text: "Convert PDF to Word Without Losing Formatting" },
+    { href: "/unlock-pdf", text: "Unlock PDF Remove Password Online" },
   ];
 
   const blogLinks = [
@@ -2725,18 +2536,18 @@ const LANG_LABELS: Record<string, LangLabels> = {
 
 // 3 how-to steps per language: [stepTitle, stepDescription with {name} placeholder]
 const LANG_HOW_TO_STEPS: Record<string, [string,string][]> = {
-  es: [["Subir archivo","Haz clic en el botón o arrastra tu archivo. {name} acepta archivos de hasta 100 MB."],["Iniciar proceso","Haz clic en 'Iniciar' y {name} procesa todo automáticamente en segundos."],["Descargar resultado","Descarga el archivo final gratis. Sin cuenta, sin correo, sin marcas de agua."]],
+  es: [["Subir archivo","Haz clic en el botón o arrastra tu archivo. {name} acepta archivos de hasta 50 MB."],["Iniciar proceso","Haz clic en 'Iniciar' y {name} procesa todo automáticamente en segundos."],["Descargar resultado","Descarga el archivo final gratis. Sin cuenta, sin correo, sin marcas de agua."]],
   ar: [["رفع الملف","انقر على الزر أو اسحب ملفك. {name} يقبل ملفات حتى 100 ميغابايت."],["بدء المعالجة","انقر على 'ابدأ' و{name} يعالج كل شيء تلقائيًا في ثوانٍ."],["تنزيل النتيجة","نزّل الملف النهائي مجانًا. بدون حساب، بدون بريد إلكتروني، بدون علامات مائية."]],
-  hi: [["फ़ाइल अपलोड करें","बटन पर क्लिक करें या अपनी फ़ाइल खींचें। {name} 100 MB तक की फ़ाइलें स्वीकार करता है।"],["प्रक्रिया शुरू करें","'शुरू करें' पर क्लिक करें और {name} सब कुछ स्वचालित रूप से सेकंड में करता है।"],["डाउनलोड करें","अपनी तैयार फ़ाइल मुफ़्त में डाउनलोड करें। कोई अकाउंट, ईमेल या वॉटरमार्क नहीं।"]],
+  hi: [["फ़ाइल अपलोड करें","बटन पर क्लिक करें या अपनी फ़ाइल खींचें। {name} 50 MB तक की फ़ाइलें स्वीकार करता है।"],["प्रक्रिया शुरू करें","'शुरू करें' पर क्लिक करें और {name} सब कुछ स्वचालित रूप से सेकंड में करता है।"],["डाउनलोड करें","अपनी तैयार फ़ाइल मुफ़्त में डाउनलोड करें। कोई अकाउंट, ईमेल या वॉटरमार्क नहीं।"]],
   fr: [["Téléverser le fichier","Cliquez sur le bouton ou glissez votre fichier. {name} accepte les fichiers jusqu'à 100 Mo."],["Lancer le traitement","Cliquez sur 'Démarrer' et {name} traite tout automatiquement en quelques secondes."],["Télécharger le résultat","Téléchargez votre fichier final gratuitement. Sans compte, sans email, sans filigrane."]],
-  pt: [["Fazer upload do arquivo","Clique no botão ou arraste seu arquivo. {name} aceita arquivos de até 100 MB."],["Iniciar o processo","Clique em 'Iniciar' e {name} processa tudo automaticamente em segundos."],["Baixar o resultado","Baixe o arquivo final gratuitamente. Sem conta, sem e-mail, sem marca d'água."]],
-  de: [["Datei hochladen","Klicken Sie auf die Schaltfläche oder ziehen Sie Ihre Datei per Drag & Drop. {name} akzeptiert Dateien bis zu 100 MB."],["Verarbeitung starten","Klicken Sie auf 'Starten' und {name} erledigt alles automatisch in Sekundenschnelle."],["Herunterladen","Laden Sie Ihre fertige Datei kostenlos herunter. Kein Konto, keine E-Mail, keine Wasserzeichen."]],
-  zh: [["上传文件","点击按钮或拖放您的文件。{name}接受最大100MB的文件。"],["开始处理","点击'开始'，{name}将在数秒内自动完成处理。"],["下载结果","免费下载处理后的文件。无需账户、电子邮件或水印。"]],
-  ja: [["ファイルをアップロード","ボタンをクリックするかファイルをドラッグ＆ドロップ。{name}は最大100MBのファイルに対応しています。"],["処理を開始","「開始」をクリックすると、{name}が数秒で自動的に処理します。"],["ダウンロード","完成したファイルを無料でダウンロード。アカウント、メール、透かし不要。"]],
-  id: [["Unggah file","Klik tombol atau seret file Anda. {name} menerima file hingga 100 MB."],["Mulai proses","Klik 'Mulai' dan {name} memproses semuanya secara otomatis dalam hitungan detik."],["Unduh hasilnya","Unduh file Anda secara gratis. Tanpa akun, tanpa email, tanpa watermark."]],
+  pt: [["Fazer upload do arquivo","Clique no botão ou arraste seu arquivo. {name} aceita arquivos de até 50 MB."],["Iniciar o processo","Clique em 'Iniciar' e {name} processa tudo automaticamente em segundos."],["Baixar o resultado","Baixe o arquivo final gratuitamente. Sem conta, sem e-mail, sem marca d'água."]],
+  de: [["Datei hochladen","Klicken Sie auf die Schaltfläche oder ziehen Sie Ihre Datei per Drag & Drop. {name} akzeptiert Dateien bis zu 50 MB."],["Verarbeitung starten","Klicken Sie auf 'Starten' und {name} erledigt alles automatisch in Sekundenschnelle."],["Herunterladen","Laden Sie Ihre fertige Datei kostenlos herunter. Kein Konto, keine E-Mail, keine Wasserzeichen."]],
+  zh: [["上传文件","点击按钮或拖放您的文件。{name}接受最大50MB的文件。"],["开始处理","点击'开始'，{name}将在数秒内自动完成处理。"],["下载结果","免费下载处理后的文件。无需账户、电子邮件或水印。"]],
+  ja: [["ファイルをアップロード","ボタンをクリックするかファイルをドラッグ＆ドロップ。{name}は最大50MBのファイルに対応しています。"],["処理を開始","「開始」をクリックすると、{name}が数秒で自動的に処理します。"],["ダウンロード","完成したファイルを無料でダウンロード。アカウント、メール、透かし不要。"]],
+  id: [["Unggah file","Klik tombol atau seret file Anda. {name} menerima file hingga 50 MB."],["Mulai proses","Klik 'Mulai' dan {name} memproses semuanya secara otomatis dalam hitungan detik."],["Unduh hasilnya","Unduh file Anda secara gratis. Tanpa akun, tanpa email, tanpa watermark."]],
   ru: [["Загрузить файл","Нажмите кнопку или перетащите файл. {name} принимает файлы до 100 МБ."],["Начать обработку","Нажмите 'Начать' и {name} всё сделает автоматически за считанные секунды."],["Скачать результат","Скачайте готовый файл бесплатно. Без аккаунта, без email, без водяных знаков."]],
-  it: [["Carica il file","Clicca sul pulsante o trascina il tuo file. {name} accetta file fino a 100 MB."],["Avviare l'elaborazione","Clicca su 'Avvia' e {name} elabora tutto automaticamente in pochi secondi."],["Scaricare il risultato","Scarica il file finale gratuitamente. Senza account, email o filigrana."]],
-  ur: [["فائل اپلوڈ کریں","بٹن پر کلک کریں یا اپنی فائل گھسیٹیں۔ {name} 100 MB تک کی فائلیں قبول کرتا ہے۔"],["عمل شروع کریں","'شروع کریں' پر کلک کریں اور {name} چند سیکنڈ میں سب کچھ خودکار طریقے سے کرتا ہے۔"],["ڈاؤن لوڈ کریں","اپنی مکمل فائل مفت ڈاؤن لوڈ کریں۔ کوئی اکاؤنٹ، ای میل یا واٹر مارک نہیں۔"]],
+  it: [["Carica il file","Clicca sul pulsante o trascina il tuo file. {name} accetta file fino a 50 MB."],["Avviare l'elaborazione","Clicca su 'Avvia' e {name} elabora tutto automaticamente in pochi secondi."],["Scaricare il risultato","Scarica il file finale gratuitamente. Senza account, email o filigrana."]],
+  ur: [["فائل اپلوڈ کریں","بٹن پر کلک کریں یا اپنی فائل گھسیٹیں۔ {name} 50 MB تک کی فائلیں قبول کرتا ہے۔"],["عمل شروع کریں","'شروع کریں' پر کلک کریں اور {name} چند سیکنڈ میں سب کچھ خودکار طریقے سے کرتا ہے۔"],["ڈاؤن لوڈ کریں","اپنی مکمل فائل مفت ڈاؤن لوڈ کریں۔ کوئی اکاؤنٹ، ای میل یا واٹر مارک نہیں۔"]],
 };
 
 // 5 FAQ Q&A pairs per language with {name} placeholder
@@ -2745,7 +2556,7 @@ const LANG_TOOL_FAQS: Record<string, Array<{q:string;a:string}>> = {
     {q:"¿{name} es realmente gratis?",a:"Sí, {name} es 100% gratuito. Sin costos ocultos, sin suscripción y sin necesidad de registrarse."},
     {q:"¿Qué tan seguros están mis archivos con {name}?",a:"Tus archivos se transfieren mediante cifrado SSL y se eliminan automáticamente de nuestros servidores después de 1 hora. Nadie tiene acceso a tus documentos."},
     {q:"¿Necesito instalar software para usar {name}?",a:"No. {name} funciona completamente en tu navegador — sin instalación, sin descarga, sin complementos necesarios."},
-    {q:"¿Qué tamaño de archivo acepta {name}?",a:"{name} procesa archivos de hasta 100 MB. Para archivos muy grandes, te recomendamos dividirlos primero con nuestra herramienta Dividir PDF."},
+    {q:"¿Qué tamaño de archivo acepta {name}?",a:"{name} procesa archivos de hasta 50 MB. Para archivos muy grandes, te recomendamos dividirlos primero con nuestra herramienta Dividir PDF."},
     {q:"¿{name} funciona en dispositivos móviles?",a:"Sí, {name} funciona en todos los dispositivos — PC, Mac, smartphone y tablet. No es necesario descargar ninguna app."},
   ],
   ar: [
@@ -2759,7 +2570,7 @@ const LANG_TOOL_FAQS: Record<string, Array<{q:string;a:string}>> = {
     {q:"{name} क्या सच में मुफ़्त है?",a:"हाँ, {name} 100% मुफ़्त है। कोई छिपी लागत नहीं, कोई सदस्यता नहीं और पंजीकरण की कोई ज़रूरत नहीं।"},
     {q:"{name} से मेरी फ़ाइलें कितनी सुरक्षित हैं?",a:"आपकी फ़ाइलें SSL एन्क्रिप्शन से ट्रांसफर होती हैं और 1 घंटे के बाद हमारे सर्वर से स्वत: हटा दी जाती हैं। आपके दस्तावेज़ों तक किसी की पहुँच नहीं है।"},
     {q:"{name} इस्तेमाल करने के लिए कोई सॉफ़्टवेयर इंस्टॉल करना होगा?",a:"नहीं। {name} पूरी तरह आपके ब्राउज़र में चलता है — कोई इंस्टॉलेशन, डाउनलोड या प्लगइन की ज़रूरत नहीं।"},
-    {q:"{name} कितने बड़े आकार की फ़ाइल संभाल सकता है?",a:"{name} 100 MB तक की फ़ाइलें प्रोसेस करता है। बहुत बड़ी फ़ाइलों के लिए हम उन्हें पहले विभाजित करने की सलाह देते हैं।"},
+    {q:"{name} कितने बड़े आकार की फ़ाइल संभाल सकता है?",a:"{name} 50 MB तक की फ़ाइलें प्रोसेस करता है। बहुत बड़ी फ़ाइलों के लिए हम उन्हें पहले विभाजित करने की सलाह देते हैं।"},
     {q:"क्या {name} मोबाइल डिवाइस पर काम करता है?",a:"हाँ, {name} सभी उपकरणों पर काम करता है — PC, Mac, स्मार्टफोन और टैबलेट। कोई ऐप डाउनलोड ज़रूरी नहीं।"},
   ],
   fr: [
@@ -2773,35 +2584,35 @@ const LANG_TOOL_FAQS: Record<string, Array<{q:string;a:string}>> = {
     {q:"{name} é realmente gratuito?",a:"Sim, {name} é 100% gratuito. Sem custos ocultos, sem assinatura e sem necessidade de registro."},
     {q:"Meus arquivos estão seguros com {name}?",a:"Seus arquivos são transferidos com criptografia SSL e excluídos automaticamente dos nossos servidores após 1 hora. Ninguém tem acesso aos seus documentos."},
     {q:"Preciso instalar algum software para usar {name}?",a:"Não. {name} funciona completamente no seu navegador — sem instalação, sem download, sem extensões necessárias."},
-    {q:"Qual o tamanho de arquivo que {name} suporta?",a:"{name} processa arquivos de até 100 MB. Para arquivos muito grandes, recomendamos dividi-los primeiro."},
+    {q:"Qual o tamanho de arquivo que {name} suporta?",a:"{name} processa arquivos de até 50 MB. Para arquivos muito grandes, recomendamos dividi-los primeiro."},
     {q:"{name} funciona em dispositivos móveis?",a:"Sim, {name} funciona em todos os dispositivos — PC, Mac, smartphone e tablet. Sem necessidade de baixar nenhum app."},
   ],
   de: [
     {q:"Ist {name} wirklich kostenlos?",a:"Ja, {name} ist 100% kostenlos. Es gibt keine versteckten Kosten, kein Abonnement und keine Registrierung erforderlich."},
     {q:"Wie sicher sind meine Dateien bei {name}?",a:"Ihre Dateien werden per SSL-Verschlüsselung übertragen und automatisch nach 1 Stunde von unseren Servern gelöscht. Niemand hat Zugriff auf Ihre Dokumente."},
     {q:"Muss ich Software installieren, um {name} zu nutzen?",a:"Nein. {name} läuft vollständig in Ihrem Browser — keine Installation, kein Download, kein Plugin erforderlich."},
-    {q:"Welche Dateigröße unterstützt {name}?",a:"{name} verarbeitet Dateien bis zu 100 MB. Bei sehr großen Dateien empfehlen wir, diese zuerst aufzuteilen."},
+    {q:"Welche Dateigröße unterstützt {name}?",a:"{name} verarbeitet Dateien bis zu 50 MB. Bei sehr großen Dateien empfehlen wir, diese zuerst aufzuteilen."},
     {q:"Funktioniert {name} auf Mobilgeräten?",a:"Ja, {name} funktioniert auf allen Geräten — PC, Mac, Smartphone und Tablet. Kein App-Download erforderlich."},
   ],
   zh: [
     {q:"{name}真的免费吗？",a:"是的，{name}完全免费。没有隐藏费用，无需订阅，也无需注册。"},
     {q:"使用{name}我的文件安全吗？",a:"您的文件通过SSL加密传输，并在1小时后从我们的服务器自动删除。没有人能访问您的文档。"},
     {q:"使用{name}需要安装软件吗？",a:"不需要。{name}完全在您的浏览器中运行——无需安装、下载或插件。"},
-    {q:"{name}支持什么大小的文件？",a:"{name}处理最大100MB的文件。对于非常大的文件，我们建议先拆分它们。"},
+    {q:"{name}支持什么大小的文件？",a:"{name}处理最大50MB的文件。对于非常大的文件，我们建议先拆分它们。"},
     {q:"{name}在移动设备上可以使用吗？",a:"是的，{name}适用于所有设备——PC、Mac、智能手机和平板电脑。无需下载任何应用程序。"},
   ],
   ja: [
     {q:"{name}は本当に無料ですか？",a:"はい、{name}は100%無料です。隠れた費用なし、サブスクリプションなし、登録も不要です。"},
     {q:"{name}を使うとファイルは安全ですか？",a:"ファイルはSSL暗号化で転送され、1時間後に自動的にサーバーから削除されます。誰もあなたの文書にアクセスできません。"},
     {q:"{name}を使うためにソフトウェアをインストールする必要がありますか？",a:"いいえ。{name}はブラウザで完全に動作します——インストール、ダウンロード、プラグイン不要です。"},
-    {q:"{name}はどのサイズのファイルに対応していますか？",a:"{name}は最大100MBのファイルを処理します。非常に大きなファイルの場合は、まず分割することをお勧めします。"},
+    {q:"{name}はどのサイズのファイルに対応していますか？",a:"{name}は最大50MBのファイルを処理します。非常に大きなファイルの場合は、まず分割することをお勧めします。"},
     {q:"{name}はモバイルデバイスで使えますか？",a:"はい、{name}はすべてのデバイスで動作します——PC、Mac、スマートフォン、タブレット。アプリのダウンロードは不要です。"},
   ],
   id: [
     {q:"Apakah {name} benar-benar gratis?",a:"Ya, {name} 100% gratis. Tidak ada biaya tersembunyi, tidak ada langganan, dan tidak perlu mendaftar."},
     {q:"Apakah file saya aman dengan {name}?",a:"File Anda ditransfer dengan enkripsi SSL dan dihapus secara otomatis dari server kami setelah 1 jam. Tidak ada yang bisa mengakses dokumen Anda."},
     {q:"Apakah saya perlu menginstal perangkat lunak untuk menggunakan {name}?",a:"Tidak. {name} bekerja sepenuhnya di browser Anda — tanpa instalasi, unduhan, atau plugin."},
-    {q:"Ukuran file apa yang didukung {name}?",a:"{name} memproses file hingga 100 MB. Untuk file yang sangat besar, kami sarankan untuk membaginya terlebih dahulu."},
+    {q:"Ukuran file apa yang didukung {name}?",a:"{name} memproses file hingga 50 MB. Untuk file yang sangat besar, kami sarankan untuk membaginya terlebih dahulu."},
     {q:"Apakah {name} bekerja di perangkat mobile?",a:"Ya, {name} bekerja di semua perangkat — PC, Mac, smartphone, dan tablet. Tidak perlu mengunduh aplikasi apapun."},
   ],
   ru: [
@@ -2815,14 +2626,14 @@ const LANG_TOOL_FAQS: Record<string, Array<{q:string;a:string}>> = {
     {q:"{name} è davvero gratuito?",a:"Sì, {name} è 100% gratuito. Nessun costo nascosto, nessun abbonamento e nessuna registrazione richiesta."},
     {q:"I miei file sono al sicuro con {name}?",a:"I tuoi file vengono trasferiti con crittografia SSL ed eliminati automaticamente dai nostri server dopo 1 ora. Nessuno ha accesso ai tuoi documenti."},
     {q:"Devo installare del software per usare {name}?",a:"No. {name} funziona interamente nel tuo browser — nessuna installazione, download o plugin richiesto."},
-    {q:"Quale dimensione di file supporta {name}?",a:"{name} elabora file fino a 100 MB. Per file molto grandi, ti consigliamo di dividerli prima."},
+    {q:"Quale dimensione di file supporta {name}?",a:"{name} elabora file fino a 50 MB. Per file molto grandi, ti consigliamo di dividerli prima."},
     {q:"{name} funziona su dispositivi mobili?",a:"Sì, {name} funziona su tutti i dispositivi — PC, Mac, smartphone e tablet. Non è necessario scaricare nessuna app."},
   ],
   ur: [
     {q:"کیا {name} واقعی مفت ہے؟",a:"ہاں، {name} 100% مفت ہے۔ کوئی پوشیدہ اخراجات نہیں، کوئی سبسکرپشن نہیں اور رجسٹریشن کی ضرورت نہیں۔"},
     {q:"{name} کے ساتھ میری فائلیں کتنی محفوظ ہیں؟",a:"آپ کی فائلیں SSL انکرپشن کے ذریعے منتقل ہوتی ہیں اور 1 گھنٹے کے بعد ہمارے سرورز سے خودکار طریقے سے حذف ہو جاتی ہیں۔ کوئی بھی آپ کے دستاویزات تک رسائی نہیں پا سکتا۔"},
     {q:"{name} استعمال کرنے کے لیے کیا کوئی سافٹ ویئر انسٹال کرنا ہوگا؟",a:"نہیں۔ {name} مکمل طور پر آپ کے براؤزر میں چلتا ہے — کوئی انسٹالیشن، ڈاؤن لوڈ یا پلگ ان کی ضرورت نہیں۔"},
-    {q:"{name} کتنے بڑے فائل سائز کو سپورٹ کرتا ہے؟",a:"{name} 100 MB تک کی فائلیں پروسیس کرتا ہے۔ بہت بڑی فائلوں کے لیے ہم پہلے انہیں تقسیم کرنے کی سفارش کرتے ہیں۔"},
+    {q:"{name} کتنے بڑے فائل سائز کو سپورٹ کرتا ہے؟",a:"{name} 50 MB تک کی فائلیں پروسیس کرتا ہے۔ بہت بڑی فائلوں کے لیے ہم پہلے انہیں تقسیم کرنے کی سفارش کرتے ہیں۔"},
     {q:"کیا {name} موبائل ڈیوائسز پر کام کرتا ہے؟",a:"ہاں، {name} تمام ڈیوائسز پر کام کرتا ہے — PC، Mac، سمارٹ فون اور ٹیبلیٹ۔ کوئی ایپ ڈاؤن لوڈ کرنے کی ضرورت نہیں۔"},
   ],
 };
@@ -2905,56 +2716,16 @@ function getLangCatLabel(cat: string, lang: string): string {
 
 // Internal links from tool pages to /tools/ pages — fixes orphan pages SEO issue
 const TOOLS_PAGE_LINKS: Record<string, {slug: string; title: string}[]> = {
-  "/add-page-numbers": [
-    { slug: "add-page-numbers-to-pdf-free", title: "Add Page Numbers to PDF" },
-    { slug: "add-page-numbers-to-pdf-automatically", title: "Add Page Numbers to PDF Automatically" },
-  ],
-  "/add-watermark": [
-    { slug: "watermark-pdf-free-online", title: "Add Watermark to PDF" },
-  ],
-  "/annotate-pdf": [
-    { slug: "annotate-pdf-highlight-text-free", title: "Annotate PDF Highlight Text" },
-  ],
   "/compress-pdf": [
     { slug: "compress-pdf-under-100kb", title: "Compress PDF Under 100KB" },
     { slug: "reduce-pdf-size-to-200kb", title: "Reduce PDF Size to 200KB" },
     { slug: "compress-pdf-to-1mb", title: "Compress PDF to 1MB" },
-    { slug: "make-pdf-smaller-for-email", title: "Make PDF Smaller for Email" },
     { slug: "compress-pdf-without-losing-quality", title: "Compress PDF Without Losing Quality" },
     { slug: "compress-pdf-to-50kb", title: "Compress PDF to 50KB" },
   ],
-  "/crop-pdf": [
-    { slug: "crop-pdf-margins-free-online", title: "Crop PDF Margins" },
-  ],
-  "/delete-pages": [
-    { slug: "remove-pages-from-pdf", title: "Remove Pages from PDF" },
-    { slug: "delete-pages-from-pdf", title: "Delete Pages from PDF" },
-  ],
-  "/edit-pdf": [
-    { slug: "edit-pdf-text-online-free", title: "Edit PDF Text Online" },
-    { slug: "edit-pdf-without-adobe-acrobat", title: "Edit PDF Without Adobe Acrobat" },
-    { slug: "pdf-editor-free-without-watermark", title: "Free PDF Editor Online Without Watermark" },
-  ],
-  "/excel-to-pdf": [
-    { slug: "convert-excel-to-pdf-free", title: "Convert Excel to PDF" },
-  ],
-  "/flatten-pdf": [
-    { slug: "flatten-pdf-for-printing", title: "Flatten PDF for Printing" },
-  ],
-  "/grayscale-pdf": [
-    { slug: "grayscale-pdf-free-online", title: "Convert PDF to Grayscale" },
-  ],
-  "/html-to-pdf": [
-    { slug: "convert-html-webpage-to-pdf", title: "Convert HTML Webpage to PDF" },
-  ],
-  "/image-compressor": [
-    { slug: "compress-jpg-png-image-online", title: "Compress JPG PNG Image Online" },
-  ],
   "/jpg-to-pdf": [
-    { slug: "convert-jpg-to-pdf-free-online", title: "Convert JPG to PDF" },
     { slug: "convert-multiple-images-to-one-pdf", title: "Convert Multiple Images to One PDF" },
     { slug: "convert-image-to-pdf-free", title: "Convert Image to PDF" },
-    { slug: "convert-jpg-to-pdf-multiple", title: "Convert Multiple JPG to PDF" },
   ],
   "/merge-pdf": [
     { slug: "merge-pdf-for-visa-application", title: "Merge PDF for Visa Application" },
@@ -2965,74 +2736,24 @@ const TOOLS_PAGE_LINKS: Record<string, {slug: string; title: string}[]> = {
   ],
   "/ocr-pdf": [
     { slug: "convert-scanned-pdf-to-word-editable", title: "Convert Scanned PDF to Editable Word" },
-    { slug: "ocr-pdf-online-free", title: "OCR PDF Online — Make Scanned PDF Searchable" },
   ],
   "/pdf-to-excel": [
     { slug: "convert-pdf-to-excel-with-tables", title: "Convert PDF to Excel with Tables" },
     { slug: "extract-tables-from-pdf-to-spreadsheet", title: "Extract Tables from PDF to Spreadsheet" },
-    { slug: "pdf-to-excel-free-online", title: "Convert PDF to Excel" },
-  ],
-  "/pdf-to-jpg": [
-    { slug: "pdf-to-jpg-high-quality", title: "PDF to JPG High Quality" },
-    { slug: "convert-pdf-to-jpg-all-pages", title: "Convert PDF to JPG All Pages" },
-    { slug: "pdf-to-jpg-online-free-high-quality", title: "PDF to JPG Online — High Quality" },
-  ],
-  "/pdf-to-png": [
-    { slug: "convert-pdf-to-png-high-resolution", title: "Convert PDF to PNG High Resolution" },
-    { slug: "pdf-to-png-all-pages-free", title: "Convert PDF to PNG All Pages" },
-  ],
-  "/pdf-to-ppt": [
-    { slug: "convert-pdf-to-powerpoint-free", title: "Convert PDF to PowerPoint" },
-    { slug: "pdf-to-powerpoint-online-free", title: "Convert PDF to PowerPoint Online" },
   ],
   "/pdf-to-word": [
-    { slug: "pdf-to-word-editable-free", title: "PDF to Word Editable" },
-    { slug: "convert-pdf-to-word-without-losing-formatting", title: "Convert PDF to Word Without Losing Formatting" },
     { slug: "pdf-to-word-for-resume", title: "Convert PDF Resume to Word" },
-    { slug: "convert-pdf-to-word-free-online", title: "Convert PDF to Word No Email" },
-  ],
-  "/pdf-viewer": [
-    { slug: "pdf-viewer-online-free", title: "View PDF Online — No Download Required" },
   ],
   "/protect-pdf": [
-    { slug: "protect-pdf-with-password-free", title: "Password Protect PDF (AES-256)" },
     { slug: "protect-pdf-with-password-256bit", title: "Password Protect PDF with AES-256 Encryption" },
-  ],
-  "/redact-pdf": [
-    { slug: "redact-pdf-black-out-text", title: "Redact PDF Black Out Text" },
-  ],
-  "/reorder-pages": [
-    { slug: "rearrange-pdf-pages-free", title: "Rearrange PDF Pages" },
   ],
   "/resize-pdf": [
     { slug: "resize-pdf-to-a4-free", title: "Resize PDF to A4" },
-  ],
-  "/rotate-pdf": [
-    { slug: "rotate-pdf-and-save", title: "Rotate PDF and Save Permanently" },
-    { slug: "rotate-pdf-free-online", title: "Rotate PDF Pages" },
-  ],
-  "/sign-pdf": [
-    { slug: "add-signature-to-pdf-free", title: "Add Signature to PDF" },
-    { slug: "sign-pdf-online-free-no-signup", title: "Sign PDF Online No Signup" },
   ],
   "/split-pdf": [
     { slug: "split-pdf-by-pages", title: "Split PDF by Pages" },
     { slug: "split-pdf-by-size", title: "Split PDF by File Size" },
     { slug: "split-pdf-into-single-pages", title: "Split PDF Into Single Pages" },
-    { slug: "extract-pages-from-pdf", title: "Extract Pages from PDF" },
-  ],
-  "/unlock-pdf": [
-    { slug: "unlock-pdf-for-editing", title: "Unlock PDF for Editing" },
-    { slug: "unlock-pdf-remove-password-online", title: "Unlock PDF Remove Password Online" },
-    { slug: "remove-password-from-pdf", title: "Remove Password from PDF" },
-  ],
-  "/watermark-pdf": [
-    { slug: "add-watermark-to-pdf-free", title: "Add Watermark to PDF" },
-  ],
-  "/word-to-pdf": [
-    { slug: "convert-word-to-pdf-free-online", title: "Convert Word to PDF" },
-    { slug: "convert-docx-to-pdf-keep-formatting", title: "Convert DOCX to PDF Keep Formatting" },
-    { slug: "word-to-pdf-free-online", title: "Convert Word to PDF" },
   ],
 };
 
