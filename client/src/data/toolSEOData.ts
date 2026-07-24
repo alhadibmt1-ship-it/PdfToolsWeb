@@ -64,7 +64,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     tutorial: {
       title: "How to Compress PDF for Email Step by Step",
       steps: [
-        { step: "Upload Your PDF", detail: "Drag and drop your PDF file or click to browse. We accept files up to 100MB for compression." },
+        { step: "Upload Your PDF", detail: "Drag and drop your PDF file or click to browse. We accept files up to 50MB for compression." },
         { step: "Choose Compression Level", detail: "Select Low for best quality (20-40% reduction), Medium for balanced results (40-70% reduction), or High for maximum size savings (70-90% reduction)." },
         { step: "Start Compression", detail: "Click 'Compress PDF' and wait a few seconds while our advanced algorithms optimize your file." },
         { step: "Download & Verify", detail: "Preview the compression results showing original size, new size, and percentage saved. Download your optimized PDF." }
@@ -107,7 +107,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { question: "How much can I reduce my PDF file size?", answer: "Depending on content, you can reduce PDF size by 30-90%. Image-heavy PDFs and scanned documents see the largest reductions. Text-only PDFs may compress less since text is already efficient." },
       { question: "Will compression affect my PDF quality?", answer: "Low compression keeps quality nearly identical to the original. Medium offers a good balance. High compression may slightly reduce image sharpness but keeps text perfectly readable." },
       { question: "Can I compress multiple PDFs at once?", answer: "You can process files one at a time using any individual tool, or use our Batch Compress feature to process up to 20 files at once and download as ZIP." },
-      { question: "Is there a maximum file size limit?", answer: "Yes, we accept PDF files up to 100MB for compression. For larger files, try splitting them first with our Split PDF tool." },
+      { question: "Is there a maximum file size limit?", answer: "Yes, we accept PDF files up to 50MB for compression. For larger files, try splitting them first with our Split PDF tool." },
       { question: "Why is my compressed PDF sometimes larger?", answer: "This rarely happens with PDFs that are already highly optimized. In such cases, the original file is returned unchanged." }
     ],
     relatedWorkflows: [
@@ -124,7 +124,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Compress PDF Under 100KB", href: "/tools/compress-pdf-under-100kb", context: "Meet strict 100KB upload limits for government portals and applications" },
       { text: "Reduce PDF Size to 200KB", href: "/tools/reduce-pdf-size-to-200kb", context: "Reduce PDF to 200KB for resume uploads and academic submissions" },
       { text: "Compress PDF to 1MB", href: "/tools/compress-pdf-to-1mb", context: "Get your PDF under 1MB for fast mobile viewing and email sharing" },
-      { text: "Make PDF Smaller for Email", href: "/tools/make-pdf-smaller-for-email", context: "Reduce PDF size to fit Gmail 25MB and Outlook 20MB attachment limits" },
+      { text: "Make PDF Smaller for Email", href: "/tools/compress-pdf-for-email", context: "Reduce PDF size to fit Gmail 25MB and Outlook 20MB attachment limits" },
       { text: "Compress PDF Without Losing Quality", href: "/tools/compress-pdf-without-losing-quality", context: "Reduce file size while preserving text clarity and image sharpness" }
     ]
   },
@@ -305,7 +305,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Extract Images", href: "/extract-images", context: "Extract all images from your PDF document" },
       { text: "Convert PDF to Word Without Losing Formatting", href: "/blog/convert-pdf-to-word-without-losing-formatting", context: "Best practices to preserve tables, images, and fonts during PDF to Word conversion" },
       { text: "Essential PDF Tools for Students", href: "/blog/pdf-tools-for-students", context: "How students use PDF to Word conversion for editing research papers and assignments" },
-      { text: "PDF to Word Editable Free", href: "/tools/pdf-to-word-editable-free", context: "Convert any PDF to a fully editable Word document with preserved formatting" }
+      { text: "Add Watermark", href: "/add-watermark", context: "Stamp your converted Word document's source PDF before sharing" }
     ]
   },
   "split": {
@@ -367,7 +367,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     },
     faqs: [
       { question: "Can I split a PDF into individual pages?", answer: "Yes, you can extract any combination of pages. Enter page numbers like '1,2,3,4' to get each page separately." },
-      { question: "Is there a maximum file size for splitting?", answer: "We support PDFs up to 100MB for splitting operations. Large files may take slightly longer to process." },
+      { question: "Is there a maximum file size for splitting?", answer: "We support PDFs up to 50MB for splitting operations. Large files may take slightly longer to process." },
       { question: "Can I extract non-consecutive pages?", answer: "Absolutely. Enter any combination like '1,3,7-10,15' to extract exactly the pages you need." },
       { question: "What happens to bookmarks and links?", answer: "Bookmarks and internal links that point to extracted pages are preserved. Links to removed pages won't function." },
       { question: "Can I split password-protected PDFs?", answer: "You'll need to unlock the PDF first using our Unlock PDF tool, then split the unprotected file." }
@@ -461,8 +461,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Resize Image", href: "/resize-image", context: "Adjust image dimensions for your needs" },
       { text: "How to Convert Images to PDF", href: "/blog/convert-images-to-pdf", context: "Guide to converting JPG, PNG, and other image formats to and from PDF" },
       { text: "Best Free PDF Tools in 2026", href: "/blog/best-free-pdf-tools-2026", context: "Discover the top free PDF conversion tools including PDF to image converters" },
-      { text: "PDF to JPG High Quality", href: "/tools/pdf-to-jpg-high-quality", context: "Convert PDF pages to high-resolution JPG images for presentations and social media" },
-      { text: "Convert PDF to JPG All Pages", href: "/tools/convert-pdf-to-jpg-all-pages", context: "Convert every page of your PDF to individual JPG images in one batch" }
+      { text: "Crop PDF", href: "/crop-pdf", context: "Trim margins before converting pages to images" },
+      { text: "Rotate PDF", href: "/rotate-pdf", context: "Fix sideways or upside-down pages before converting to JPG" }
     ]
   },
   "protect-pdf": {
@@ -540,7 +540,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Flatten PDF", href: "/flatten-pdf", context: "Lock form fields and layers before protection" },
       { text: "How to Password Protect a PDF", href: "/blog/protect-pdf-with-password", context: "Security best practices for encrypting and password-protecting PDF documents" },
       { text: "Best Free PDF Tools in 2026", href: "/blog/best-free-pdf-tools-2026", context: "Overview of the best free PDF security and protection tools available" },
-      { text: "Password Protect PDF Free with AES-256", href: "/tools/protect-pdf-with-password-free", context: "Add bank-grade AES-256 encryption to your PDF with open and edit passwords" }
+      { text: "Sign PDF", href: "/sign-pdf", context: "Add your signature before or after password-protecting the document" }
     ]
   },
   "add-page-numbers": {
@@ -877,7 +877,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     tutorial: {
       title: "How to Extract Text from PDF Step by Step",
       steps: [
-        { step: "Upload Your PDF", detail: "Drag and drop your PDF file or click to browse. We support documents up to 100MB." },
+        { step: "Upload Your PDF", detail: "Drag and drop your PDF file or click to browse. We support documents up to 50MB." },
         { step: "Extract Text", detail: "Click 'Extract Text' to pull all text content from your document. Processing is instant for most files." },
         { step: "Review Extracted Text", detail: "Preview the extracted text in our viewer. All text maintains paragraph structure." },
         { step: "Copy or Download", detail: "Copy text to clipboard or download as a .txt file for use in any application." }
@@ -907,7 +907,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     faqs: [
       { question: "Can I extract text from scanned PDFs?", answer: "Scanned PDFs contain images, not text. Use our OCR PDF tool to recognize and extract text from scanned documents." },
       { question: "Does it preserve formatting like bold and italics?", answer: "Plain text extraction removes formatting. For formatted text, convert to Word using our PDF to Word tool." },
-      { question: "Is there a character or page limit?", answer: "We support PDFs up to 100MB with no character limit. All text from all pages is extracted." },
+      { question: "Is there a character or page limit?", answer: "We support PDFs up to 50MB with no character limit. All text from all pages is extracted." },
       { question: "Can I extract text from password-protected PDFs?", answer: "You'll need to unlock the PDF first using our Unlock PDF tool, then extract text." },
       { question: "What format is the extracted text?", answer: "Text is extracted as plain text (.txt) which can be opened in any text editor or word processor." }
     ],
@@ -1384,7 +1384,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Word to PDF", href: "/word-to-pdf", context: "Convert Word documents to PDF format" },
       { text: "Compress PDF", href: "/compress-pdf", context: "Reduce PDF file size for email sharing" },
       { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection to sensitive spreadsheets" },
-      { text: "Convert Excel to PDF Free", href: "/tools/convert-excel-to-pdf-free", context: "Transform XLSX spreadsheets to professional PDF documents with perfect formatting" }
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine multiple converted spreadsheets into a single PDF report" }
     ]
   },
   "powerpoint-to-pdf": {
@@ -1505,7 +1505,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       title: "TIFF to PDF — File Size and Multi-Page Issues",
       issues: [
         { problem: "My multi-page TIFF converted to PDF but all pages are merged as one page instead of separate pages", solution: "This is a file structure issue: some TIFF files store multiple 'pages' as separate image frames within one file (a true multi-page TIFF), while others store them as separate files. The converter treats each uploaded TIFF as one file. If your TIFF viewer shows multiple pages but the PDF only has one, your TIFF file may not be a true multi-page TIFF. Try opening it in an image editor and exporting each frame as a separate TIFF, then upload all the individual TIFFs together for conversion." },
-        { problem: "TIFF converted to PDF but the file is 500MB", solution: "TIFF is the least compressed image format — it stores full uncompressed pixel data. A scanned A4 page at 300 DPI in TIFF is typically 25-75MB. Multiple scanned pages multiply this. After converting to PDF, immediately run through our Compress PDF tool on High setting. This re-encodes the embedded TIFF data as JPEG internally, typically reducing size by 80-90%. A 500MB TIFF-based PDF usually becomes 50-100MB after compression." },
+        { problem: "TIFF converted to PDF but the file is 500MB", solution: "TIFF is the least compressed image format — it stores full uncompressed pixel data. A scanned A4 page at 300 DPI in TIFF is typically 25-75MB. Multiple scanned pages multiply this. After converting to PDF, immediately run through our Compress PDF tool on High setting. This re-encodes the embedded TIFF data as JPEG internally, typically reducing size by 80-90%. A 500MB TIFF-based PDF usually becomes 50-50MB after compression." },
         { problem: "Bi-tonal (black and white scan) TIFF looks fuzzy in the PDF", solution: "This is a common issue with legal and archival bi-tonal (1-bit) TIFFs using CCITT Group 4 compression. These are specifically designed for black-and-white document archiving. When converted, some PDF generators decompress and re-compress these using JPEG, which introduces fuzziness on sharp text. After conversion, test the PDF by zooming in to 200% — if text edges look jagged or grey instead of crisp black, avoid High compression when compressing, as that would worsen it. Use Low or Medium compression." },
         { problem: "TIFF with LZW compression won't upload or errors out", solution: "LZW-compressed TIFF is widely supported but some LZW variants (specifically those with horizontal differencing predictor) can cause issues with some conversion libraries. If your upload fails or errors, open the TIFF in a free tool like IrfanView or Preview (Mac), and resave it as an uncompressed TIFF or as a JPEG, then upload the JPEG for conversion using our JPG to PDF tool." }
       ]
@@ -1844,7 +1844,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Split PDF", href: "/split-pdf", context: "Extract specific pages before rotating" },
       { text: "Merge PDF", href: "/merge-pdf", context: "Combine rotated pages with other documents" },
       { text: "OCR PDF", href: "/ocr-pdf", context: "Extract text from rotated scanned documents" },
-      { text: "Rotate PDF and Save Permanently", href: "/tools/rotate-pdf-and-save", context: "Fix sideways or upside-down pages and save the corrected orientation permanently" }
+      { text: "Crop PDF", href: "/crop-pdf", context: "Trim margins after fixing page orientation" }
     ]
   },
   "delete-pages": {
@@ -1920,7 +1920,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Merge PDF", href: "/merge-pdf", context: "Combine remaining pages with other documents" },
       { text: "Reorder Pages", href: "/reorder-pages", context: "Rearrange pages after removing unwanted ones" },
       { text: "Add Page Numbers", href: "/add-page-numbers", context: "Add new page numbers after deletion" },
-      { text: "Remove Pages from PDF", href: "/tools/remove-pages-from-pdf", context: "Select and delete unwanted pages to create cleaner, more focused documents" }
+      { text: "Extract Pages", href: "/extract-pages", context: "Pull out and save specific pages instead of deleting the rest" }
     ]
   },
   "unlock-pdf": {
@@ -1997,7 +1997,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Edit PDF", href: "/edit-pdf", context: "Make changes to your unlocked document" },
       { text: "How to Remove PDF Password", href: "/blog/unlock-pdf-remove-password", context: "Step-by-step guide to removing password restrictions from PDF documents" },
       { text: "How to Password Protect a PDF", href: "/blog/protect-pdf-with-password", context: "Learn about PDF security best practices and how to re-protect documents after unlocking" },
-      { text: "Unlock PDF for Editing", href: "/tools/unlock-pdf-for-editing", context: "Remove editing restrictions from password-protected PDFs to enable copying, printing, and modifications" }
+      { text: "Sign PDF", href: "/sign-pdf", context: "Add an electronic signature once your document is unlocked" }
     ]
   },
   "add-watermark": {
@@ -2072,8 +2072,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection after watermarking" },
       { text: "Add Page Numbers", href: "/add-page-numbers", context: "Add page numbers along with watermarks" },
       { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size after adding watermarks" },
-      { text: "Merge PDF", href: "/merge-pdf", context: "Combine watermarked documents together" },
-      { text: "Add Watermark to PDF Free", href: "/tools/add-watermark-to-pdf-free", context: "Add custom text or image watermarks to protect your PDF documents" }
+      { text: "Merge PDF", href: "/merge-pdf", context: "Combine watermarked documents together" }
     ]
   },
   "reorder-pages": {
@@ -2457,7 +2456,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size of signed documents for email" },
       { text: "How to Sign PDF Electronically", href: "/blog/sign-pdf-electronically", context: "Complete guide to adding electronic signatures to PDF documents legally" },
       { text: "Best Free PDF Tools in 2026", href: "/blog/best-free-pdf-tools-2026", context: "Discover the top free PDF signing and document tools available online" },
-      { text: "Add Signature to PDF Free", href: "/tools/add-signature-to-pdf-free", context: "Draw, type, or upload your signature to sign PDF documents without printing" }
+      { text: "Unlock PDF", href: "/unlock-pdf", context: "Remove a password first if your PDF is locked before signing" }
     ]
   },
   "flatten-pdf": {
@@ -2535,7 +2534,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size of flattened documents" },
       { text: "How to Flatten PDF", href: "/blog/how-to-flatten-pdf", context: "Guide to flattening form fields, annotations, and layers in PDF documents" },
       { text: "How to Password Protect a PDF", href: "/blog/protect-pdf-with-password", context: "Learn about flattening as a security measure before password-protecting documents" },
-      { text: "Flatten PDF for Printing", href: "/tools/flatten-pdf-for-printing", context: "Convert fillable form fields to static content for reliable, consistent printing" }
+      { text: "Add Watermark", href: "/add-watermark", context: "Stamp a permanent watermark before flattening the document" }
     ]
   },
   "grayscale-pdf": {
@@ -2676,7 +2675,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { question: "What types of corruption can be fixed?", answer: "We can repair broken cross-references, damaged headers, incomplete structures, and many internal errors. Physical file damage is harder to recover." },
       { question: "Will I lose any content during repair?", answer: "Heavily corrupted sections may not be recoverable. We preserve all content that can be successfully reconstructed." },
       { question: "How long does repair take?", answer: "Most repairs complete in seconds. Severely damaged files requiring deep analysis may take up to a minute." },
-      { question: "Is there a file size limit for repair?", answer: "We accept damaged PDFs up to 100MB. Larger files may have longer processing times." }
+      { question: "Is there a file size limit for repair?", answer: "We accept damaged PDFs up to 50MB. Larger files may have longer processing times." }
     ],
     relatedWorkflows: [
       { title: "Document Recovery Workflow", description: "Recover and verify damaged documents", tools: ["repair-pdf", "compress", "ocr-pdf"] },
@@ -2978,7 +2977,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
     },
     faqs: [
       { question: "Do I need to create an account to view PDFs?", answer: "No, our PDF viewer is completely free and requires no registration. Just upload your file and start reading immediately." },
-      { question: "Is there a file size limit for viewing?", answer: "We support PDF files up to 100MB. Larger files may take slightly longer to load but will display normally." },
+      { question: "Is there a file size limit for viewing?", answer: "We support PDF files up to 50MB. Larger files may take slightly longer to load but will display normally." },
       { question: "Can I view password-protected PDFs?", answer: "Yes, if you know the password. You'll be prompted to enter it when opening a protected document." },
       { question: "Does viewing leave the PDF on your servers?", answer: "Documents are temporarily cached for viewing only and automatically deleted when your session ends. We don't store your files." },
       { question: "Can I print or download from the viewer?", answer: "Yes, use your browser's print function or download the original file using the download button in our viewer." }
@@ -3955,7 +3954,7 @@ toolSEOData["watermark-pdf"] = {
   ],
   internalLinks: [
     { text: "Protect PDF", href: "/protect-pdf", context: "Add password encryption alongside your watermark" },
-    { text: "Add Page Numbers", href: "/page-numbers", context: "Number pages in addition to watermarking" },
+    { text: "Add Page Numbers", href: "/add-page-numbers", context: "Number pages in addition to watermarking" },
     { text: "Sign PDF", href: "/sign-pdf", context: "Digitally sign the watermarked document" },
     { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size after watermarking" }
   ]
@@ -4006,7 +4005,7 @@ toolSEOData["page-numbers"] = {
   ],
   internalLinks: [
     { text: "Merge PDF", href: "/merge-pdf", context: "Combine chapters before adding page numbers" },
-    { text: "Add Watermark", href: "/watermark-pdf", context: "Add a watermark alongside page numbers" },
+    { text: "Add Watermark", href: "/add-watermark", context: "Add a watermark alongside page numbers" },
     { text: "Compress PDF", href: "/compress-pdf", context: "Reduce size after formatting your document" },
     { text: "Protect PDF", href: "/protect-pdf", context: "Password-protect the numbered document" }
   ]
@@ -4056,10 +4055,10 @@ toolSEOData["jpg-to-png"] = {
     { title: "Web Asset Pipeline", description: "Prepare optimized images for websites", tools: ["jpg-to-png", "image-compressor", "resize-image"] }
   ],
   internalLinks: [
-    { text: "PNG to JPG", href: "/png-to-jpg", context: "Convert PNG back to JPG for smaller file size" },
+    { text: "PNG to JPG", href: "/convert-image", context: "Convert PNG back to JPG for smaller file size" },
     { text: "Resize Image", href: "/resize-image", context: "Resize the converted PNG to specific dimensions" },
     { text: "Compress Image", href: "/image-compressor", context: "Reduce PNG file size after conversion" },
-    { text: "Image Converter", href: "/image-converter", context: "Convert between any image formats" }
+    { text: "Image Converter", href: "/convert-image", context: "Convert between any image formats" }
   ]
 } as unknown as ToolSEOData;
 
@@ -4107,10 +4106,10 @@ toolSEOData["png-to-jpg"] = {
     { title: "Photo Sharing Workflow", description: "Prepare photos for social media and email", tools: ["png-to-jpg", "crop-image", "resize-image"] }
   ],
   internalLinks: [
-    { text: "JPG to PNG", href: "/jpg-to-png", context: "Convert JPG back to lossless PNG" },
+    { text: "JPG to PNG", href: "/convert-image", context: "Convert JPG back to lossless PNG" },
     { text: "Compress Image", href: "/image-compressor", context: "Further compress the JPG for even smaller files" },
     { text: "Resize Image", href: "/resize-image", context: "Resize the image before or after conversion" },
-    { text: "Image Converter", href: "/image-converter", context: "Convert between any image formats" }
+    { text: "Image Converter", href: "/convert-image", context: "Convert between any image formats" }
   ]
 } as unknown as ToolSEOData;
 
@@ -4159,8 +4158,8 @@ toolSEOData["image-converter"] = {
   ],
   internalLinks: [
     { text: "Compress Image", href: "/image-compressor", context: "Compress the converted image for smaller file size" },
-    { text: "JPG to PNG", href: "/jpg-to-png", context: "Specifically convert JPG to PNG with transparency" },
-    { text: "PNG to JPG", href: "/png-to-jpg", context: "Specifically convert PNG to smaller JPG" },
+    { text: "JPG to PNG", href: "/convert-image", context: "Specifically convert JPG to PNG with transparency" },
+    { text: "PNG to JPG", href: "/convert-image", context: "Specifically convert PNG to smaller JPG" },
     { text: "Resize Image", href: "/resize-image", context: "Resize image after format conversion" }
   ]
 } as unknown as ToolSEOData;
@@ -4209,9 +4208,7 @@ toolSEOData["epub-to-pdf"] = {
     { title: "Document Review Workflow", description: "Convert ebook manuscripts for annotation and review", tools: ["epub-to-pdf", "annotate-pdf", "sign-pdf"] }
   ],
   internalLinks: [
-    { text: "PDF to EPUB", href: "/pdf-to-epub", context: "Convert PDF documents back to EPUB ebook format" },
     { text: "Compress PDF", href: "/compress-pdf", context: "Reduce the converted PDF file size" },
-    { text: "PDF Page Size", href: "/pdf-page-size", context: "Adjust PDF page dimensions after conversion" },
     { text: "Protect PDF", href: "/protect-pdf", context: "Password-protect the converted PDF" }
   ]
 } as unknown as ToolSEOData;
@@ -4260,9 +4257,8 @@ toolSEOData["pdf-to-epub"] = {
     { title: "Mobile Reading Workflow", description: "Optimize PDFs for reading on phones and tablets", tools: ["pdf-to-epub", "pdf-to-text", "extract-text"] }
   ],
   internalLinks: [
-    { text: "EPUB to PDF", href: "/epub-to-pdf", context: "Convert EPUB back to PDF format" },
     { text: "OCR PDF", href: "/ocr-pdf", context: "Make scanned PDFs text-selectable before conversion" },
-    { text: "PDF to Text", href: "/pdf-to-text", context: "Extract plain text before converting to EPUB" },
+    { text: "PDF to Text", href: "/extract-text", context: "Extract plain text before converting to EPUB" },
     { text: "Compress PDF", href: "/compress-pdf", context: "Reduce PDF size before format conversion" }
   ]
 } as unknown as ToolSEOData;
@@ -4312,7 +4308,7 @@ toolSEOData["pdf-to-xml"] = {
   ],
   internalLinks: [
     { text: "PDF to HTML", href: "/pdf-to-html", context: "Convert PDF to HTML web format" },
-    { text: "PDF to Text", href: "/pdf-to-text", context: "Extract plain text from PDF" },
+    { text: "PDF to Text", href: "/extract-text", context: "Extract plain text from PDF" },
     { text: "OCR PDF", href: "/ocr-pdf", context: "Add text layer to scanned PDFs before XML extraction" },
     { text: "Extract Text", href: "/extract-text", context: "Extract raw text content from PDF" }
   ]
@@ -4362,8 +4358,7 @@ toolSEOData["pdf-to-html"] = {
     { title: "Document Migration Workflow", description: "Migrate PDF archives to web-based content", tools: ["pdf-to-html", "pdf-to-xml", "ocr-pdf"] }
   ],
   internalLinks: [
-    { text: "PDF to XML", href: "/pdf-to-xml", context: "Convert PDF to structured XML format" },
-    { text: "PDF to Text", href: "/pdf-to-text", context: "Extract plain text from PDF" },
+    { text: "PDF to Text", href: "/extract-text", context: "Extract plain text from PDF" },
     { text: "OCR PDF", href: "/ocr-pdf", context: "Make scanned PDFs text-searchable before conversion" },
     { text: "Extract Text", href: "/extract-text", context: "Extract raw text for web content" }
   ]
@@ -4415,7 +4410,6 @@ toolSEOData["pdf-to-text"] = {
   internalLinks: [
     { text: "OCR PDF", href: "/ocr-pdf", context: "Add text layer to scanned PDFs before extraction" },
     { text: "Extract Text", href: "/extract-text", context: "Extract text with additional formatting options" },
-    { text: "PDF to XML", href: "/pdf-to-xml", context: "Extract text in structured XML format" },
     { text: "PDF to HTML", href: "/pdf-to-html", context: "Extract text as web-ready HTML" }
   ]
 } as unknown as ToolSEOData;
@@ -4464,8 +4458,6 @@ toolSEOData["heic-to-jpg"] = {
     { title: "Photo Library Migration", description: "Convert entire iPhone photo collections to universal format", tools: ["heic-to-jpg", "heic-to-png", "heic-to-pdf"] }
   ],
   internalLinks: [
-    { text: "HEIC to PNG", href: "/heic-to-png", context: "Convert HEIC to PNG with transparency support" },
-    { text: "HEIC to PDF", href: "/heic-to-pdf", context: "Convert HEIC photos into a PDF document" },
     { text: "Image Compressor", href: "/image-compressor", context: "Compress JPG files after conversion" },
     { text: "Resize Image", href: "/resize-image", context: "Resize converted JPG photos" }
   ]
@@ -4515,8 +4507,6 @@ toolSEOData["heic-to-png"] = {
     { title: "Photo Archive Workflow", description: "Archive iPhone photos in lossless format", tools: ["heic-to-png", "heic-to-jpg", "heic-to-pdf"] }
   ],
   internalLinks: [
-    { text: "HEIC to JPG", href: "/heic-to-jpg", context: "Convert HEIC to smaller JPG format" },
-    { text: "HEIC to PDF", href: "/heic-to-pdf", context: "Combine HEIC photos into a PDF" },
     { text: "Crop Image", href: "/crop-image", context: "Crop the converted PNG to specific dimensions" },
     { text: "Resize Image", href: "/resize-image", context: "Resize the PNG output" }
   ]
@@ -4566,7 +4556,6 @@ toolSEOData["heic-to-pdf"] = {
     { title: "Receipt & Expense Workflow", description: "Convert receipt photos to PDF for expense reporting", tools: ["heic-to-pdf", "merge", "compress"] }
   ],
   internalLinks: [
-    { text: "HEIC to JPG", href: "/heic-to-jpg", context: "Convert HEIC to JPG for universal compatibility" },
     { text: "JPG to PDF", href: "/jpg-to-pdf", context: "Convert JPG photos to PDF" },
     { text: "Merge PDF", href: "/merge-pdf", context: "Combine multiple PDFs after conversion" },
     { text: "Compress PDF", href: "/compress-pdf", context: "Reduce the PDF file size after photo compilation" }
@@ -4722,6 +4711,225 @@ toolSEOData["pdf-metadata"] = {
     { text: "Redact PDF", href: "/redact-pdf", context: "Remove sensitive content from PDF pages" },
     { text: "Protect PDF", href: "/protect-pdf", context: "Add password protection to the document" },
     { text: "Flatten PDF", href: "/flatten-pdf", context: "Flatten form fields before finalizing metadata" },
-    { text: "PDF to Text", href: "/pdf-to-text", context: "Extract the text content from the PDF" }
+    { text: "PDF to Text", href: "/extract-text", context: "Extract the text content from the PDF" }
   ]
+} as unknown as ToolSEOData;
+
+toolSEOData["batch-compress"] = {
+  id: "batch-compress",
+  primaryKeyword: "batch compress pdf free",
+  longTailH1: "Batch Compress Multiple PDFs Free — Bulk PDF Compressor",
+  secondaryKeywords: ["compress multiple pdfs at once", "bulk pdf compressor free", "compress several pdf files online", "batch pdf size reducer", "compress 20 pdfs at once"],
+  metaDescription: "Batch compress multiple PDF files at once online free. Bulk PDF compressor reduces all files simultaneously. No signup required.",
+  heroContent: "When you have a folder of PDFs that all need the same size reduction — a semester of scanned lecture notes, a quarter's worth of invoices, or a batch of contracts before archiving — compressing them one at a time wastes real time. PDF HUB 24's batch compressor applies the same compression settings to every file in a single upload, so 20 PDFs take the same number of clicks as one.",
+  useCases: {
+    title: "When to Batch Compress PDFs",
+    description: "Batch compression is built for volume, not one-off files:",
+    items: [
+      "Compressing a full semester or year of scanned documents before archiving",
+      "Reducing a batch of supplier invoices before uploading to accounting software",
+      "Shrinking a folder of contracts before bulk email or cloud upload",
+      "Preparing multiple reports for a shared drive with storage limits",
+      "Compressing an entire photo-scanned book or manual, chapter by chapter",
+      "Cleaning up a backlog of oversized PDFs cluttering local storage",
+    ],
+  },
+  tutorial: {
+    title: "How to Batch Compress PDFs: Step by Step",
+    steps: [
+      { step: "Upload multiple files", detail: "Select or drag in as many PDFs as you need to compress — there's no one-at-a-time limit." },
+      { step: "Choose one compression level", detail: "Pick Low, Medium, or High compression — this setting applies identically to every file in the batch." },
+      { step: "Process all files at once", detail: "All files compress in parallel on our servers, so batch size doesn't multiply your wait time linearly." },
+      { step: "Download individually or as a ZIP", detail: "Grab each compressed file separately, or download the whole batch as one ZIP archive." },
+    ],
+  },
+  troubleshooting: {
+    title: "Common Batch Compression Issues",
+    issues: [
+      { problem: "One file in the batch is much larger after compression than the others", solution: "That file likely has more or higher-resolution images than the rest. Compress it separately with a higher compression level rather than reprocessing the whole batch." },
+      { problem: "The batch is taking a long time to process", solution: "Very large batches (20+ files, or files over 20MB each) take longer since every file still needs full processing. Consider splitting into 2 smaller batches for faster turnaround." },
+    ],
+  },
+  securitySection: {
+    title: "Security & Your Batch of Documents",
+    content: "Every file in a batch is processed and deleted under the same security standard as a single-file upload — batching doesn't change how your data is handled.",
+    points: ["256-bit SSL encryption for every file in the batch", "All files auto-deleted after processing, no exceptions", "No permanent storage or human access to batch contents", "Each file processed independently — no cross-file data mixing"],
+  },
+  faqs: [
+    { question: "Is there a limit to how many PDFs I can batch compress?", answer: "Most users compress 10-20 files per batch comfortably. For very large batches, we recommend splitting into 2 rounds for the fastest processing time." },
+    { question: "Can I use different compression levels for different files in one batch?", answer: "Not in a single batch — one compression level applies to all files uploaded together. Run a second batch with a different setting if you need mixed levels." },
+    { question: "Do I have to download every file separately?", answer: "No — you can download all compressed files together as a single ZIP archive, or grab them one at a time if you only need a few." },
+  ],
+  relatedWorkflows: [
+    { title: "Archive Preparation Workflow", description: "Shrink a large document backlog before long-term storage", tools: ["batch-compress", "pdf-to-pdfa", "add-page-numbers"] },
+  ],
+  internalLinks: [
+    { text: "Compress PDF", href: "/compress-pdf", context: "Compress a single PDF file" },
+    { text: "Merge PDF", href: "/merge-pdf", context: "Combine compressed files into one document" },
+    { text: "PDF to PDF/A", href: "/pdf-to-pdfa", context: "Convert compressed files to archival format" },
+  ],
+} as unknown as ToolSEOData;
+
+toolSEOData["pdf-to-pdfa"] = {
+  id: "pdf-to-pdfa",
+  primaryKeyword: "convert pdf to pdf/a free",
+  longTailH1: "Convert PDF to PDF/A Online Free — Long-Term Archival Format",
+  secondaryKeywords: ["pdf to pdf/a converter free", "iso archival pdf format", "pdf/a compliance online", "long term pdf archiving", "government pdf archival standard"],
+  metaDescription: "Convert PDF to PDF/A online free. Create ISO-compliant archival PDFs for legal, government, and long-term document storage. No signup.",
+  heroContent: "PDF/A is the ISO-standardized version of PDF built specifically for long-term archiving — it embeds all fonts, disables external dependencies, and avoids encryption or JavaScript, so a document opens identically whether it's read today or in 20 years. Many courts, government agencies, and institutional archives require PDF/A specifically, not standard PDF, for permanent records. PDF HUB 24 converts any regular PDF into ISO 19005-compliant PDF/A in seconds.",
+  useCases: {
+    title: "When You Need PDF/A Instead of Regular PDF",
+    description: "PDF/A conversion matters most for documents meant to last, or where a specific standard is required:",
+    items: [
+      "Court filings and legal records requiring long-term archival compliance",
+      "Government submissions that specify PDF/A as the accepted format",
+      "Corporate records retention for financial, medical, or HR documents",
+      "Academic theses and dissertations submitted to institutional repositories",
+      "Digitized historical documents intended for permanent digital preservation",
+      "Any document where you need certainty it will render identically decades from now",
+    ],
+  },
+  tutorial: {
+    title: "How to Convert PDF to PDF/A: Step by Step",
+    steps: [
+      { step: "Upload your PDF", detail: "Drag in the PDF you need converted to the archival PDF/A standard." },
+      { step: "Automatic compliance conversion", detail: "We embed all fonts, remove non-compliant elements (like JavaScript or external links), and restructure the file to meet ISO 19005." },
+      { step: "Verify and download", detail: "Download your PDF/A-compliant file, ready for submission to any system that requires the archival standard." },
+    ],
+  },
+  troubleshooting: {
+    title: "Common PDF/A Conversion Issues",
+    issues: [
+      { problem: "The converted file is rejected by a government or court e-filing system", solution: "Some systems require a specific PDF/A conformance level (A-1b, A-2b, A-3b). Check the exact level required by the recipient system — most general archival needs are satisfied by the standard conversion, but strict legal e-filing portals sometimes specify a particular level." },
+      { problem: "Interactive form fields or hyperlinks stopped working after conversion", solution: "This is expected, not a bug — PDF/A intentionally restricts interactive and external-dependency features to guarantee long-term stability. If you need the PDF to stay interactive, keep a standard PDF copy alongside the PDF/A archival version." },
+    ],
+  },
+  securitySection: {
+    title: "Security for Sensitive Archival Documents",
+    content: "PDF/A conversion often involves legal, medical, or government records — we treat every file with the same strict security standard regardless of use case.",
+    points: ["256-bit SSL encryption during upload and download", "Files auto-deleted from our servers after conversion", "No permanent storage or manual access to document content", "Conversion happens server-side with no third-party data sharing"],
+  },
+  faqs: [
+    { question: "What's the difference between PDF and PDF/A?", answer: "PDF/A is a restricted, ISO-standardized subset of PDF designed for long-term archiving — it requires embedded fonts, disallows encryption and JavaScript, and guarantees the document will render the same way indefinitely. Regular PDF has no such guarantees." },
+    { question: "Will my document look different after converting to PDF/A?", answer: "Visually, no — text, layout, and images remain the same. What changes is internal structure: fonts get embedded, and any non-compliant interactive elements are removed." },
+    { question: "Is PDF/A required for all government submissions?", answer: "It depends on the specific agency or court — many require PDF/A for permanent records, but not all. Check the submission guidelines for your specific filing." },
+  ],
+  relatedWorkflows: [
+    { title: "Long-Term Archival Workflow", description: "Prepare documents for permanent digital storage", tools: ["pdf-to-pdfa", "add-page-numbers", "edit-pdf"] },
+  ],
+  internalLinks: [
+    { text: "Repair PDF", href: "/repair-pdf", context: "Fix a damaged PDF before archival conversion" },
+    { text: "Add Page Numbers", href: "/add-page-numbers", context: "Number pages before final archiving" },
+    { text: "Batch Compress", href: "/batch-compress", context: "Reduce file size for multiple documents before archiving" },
+  ],
+} as unknown as ToolSEOData;
+
+toolSEOData["scan-to-pdf"] = {
+  id: "scan-to-pdf",
+  primaryKeyword: "scan to pdf free online",
+  longTailH1: "Scan to PDF Online Free — Convert Camera Photos to PDF",
+  secondaryKeywords: ["turn photo into pdf free", "phone scanner to pdf", "convert scanned image to pdf", "camera photo to pdf online", "document scanner app alternative"],
+  metaDescription: "Scan to PDF online free. Convert camera photos and images to PDF instantly from your browser. No app download needed.",
+  heroContent: "You don't need a dedicated scanning app to turn a photo of a document into a proper PDF. PDF HUB 24's Scan to PDF tool takes photos straight from your phone or computer camera — a receipt, a signed contract page, a whiteboard, a printed form — and converts them into a clean, shareable PDF in your browser, no app install required.",
+  useCases: {
+    title: "When to Use Scan to PDF",
+    description: "This tool replaces a phone scanning app for one-off or occasional needs:",
+    items: [
+      "Turning a photographed receipt or invoice into a PDF for expense reports",
+      "Converting a photo of a signed paper contract into a shareable document",
+      "Digitizing handwritten notes or a whiteboard photo for storage",
+      "Submitting a photographed ID or document where a PDF is required, not an image",
+      "Combining several photographed pages of a paper document into one PDF",
+      "Converting a photo of a printed form for email submission",
+    ],
+  },
+  tutorial: {
+    title: "How to Scan to PDF: Step by Step",
+    steps: [
+      { step: "Take or upload your photo", detail: "Use your phone camera directly, or upload an existing photo from your gallery or computer." },
+      { step: "Adjust if needed", detail: "Crop the image to the document's edges and straighten the angle if the photo was taken off-axis." },
+      { step: "Convert to PDF", detail: "Your photo is converted into a properly formatted, printable PDF page." },
+      { step: "Download your PDF", detail: "Download the finished PDF, ready to email, print, or store." },
+    ],
+  },
+  troubleshooting: {
+    title: "Common Scan to PDF Issues",
+    issues: [
+      { problem: "Text in the scanned photo is blurry or hard to read", solution: "Retake the photo in better lighting and hold the camera directly above the document rather than at an angle — this is the single biggest factor in scan clarity, more than any setting in the tool itself." },
+      { problem: "The document appears skewed or crooked in the final PDF", solution: "Use the crop/straighten step before converting — aligning the photo's edges to the document's edges fixes most skew issues automatically." },
+    ],
+  },
+  securitySection: {
+    title: "Security for Your Scanned Documents",
+    content: "Photos of documents often contain sensitive information — IDs, signatures, financial details — and we treat them with the same protection as any uploaded PDF.",
+    points: ["256-bit SSL encryption during upload and conversion", "Photos and resulting PDFs auto-deleted after processing", "No permanent storage of images or generated documents", "No use of uploaded photos for any purpose beyond conversion"],
+  },
+  faqs: [
+    { question: "Do I need to install an app to scan a document?", answer: "No — everything happens in your browser. Take the photo with your phone's camera app as usual, then upload it here to convert to PDF." },
+    { question: "Can I combine multiple scanned photos into one PDF?", answer: "Yes — upload multiple photos and they'll be combined into a single multi-page PDF in the order you upload them." },
+    { question: "Will the PDF be a searchable text document?", answer: "The conversion itself produces an image-based PDF. If you need searchable text from a scanned document, run the result through our OCR PDF tool afterward." },
+  ],
+  relatedWorkflows: [
+    { title: "Document Digitization Workflow", description: "Turn paper documents into searchable digital PDFs", tools: ["scan-to-pdf", "ocr-pdf", "compress"] },
+  ],
+  internalLinks: [
+    { text: "OCR PDF", href: "/ocr-pdf", context: "Make your scanned PDF searchable" },
+    { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size of photo-based PDFs" },
+    { text: "Merge PDF", href: "/merge-pdf", context: "Combine multiple scanned documents" },
+  ],
+} as unknown as ToolSEOData;
+
+toolSEOData["translate-pdf"] = {
+  id: "translate-pdf",
+  primaryKeyword: "translate pdf online free",
+  longTailH1: "Translate PDF Online Free — Convert PDF to Any Language",
+  secondaryKeywords: ["pdf translator free online", "translate pdf document to spanish", "translate pdf to english free", "multilingual pdf converter", "pdf language translator no signup"],
+  metaDescription: "Translate PDF online free. Convert your PDF document to Spanish, French, German, Chinese, Arabic and 50+ languages instantly.",
+  heroContent: "Reading a contract, research paper, or manual in a language you don't speak fluently usually means copying text into a separate translator, piece by piece, and losing the document's formatting entirely. PDF HUB 24's Translate PDF tool translates the full document in place, into any of 50+ languages, keeping it as a single readable PDF rather than a wall of copy-pasted text.",
+  useCases: {
+    title: "When to Translate a PDF",
+    description: "Full-document translation matters whenever copy-pasting piece by piece isn't practical:",
+    items: [
+      "Reading foreign-language contracts or legal documents before signing",
+      "Translating research papers or academic articles for study",
+      "Understanding a product manual or instructions written in another language",
+      "Preparing a business document for international colleagues or clients",
+      "Translating personal documents like letters or certificates",
+      "Making business content readable for international teams",
+    ],
+  },
+  tutorial: {
+    title: "How to Translate a PDF: Step by Step",
+    steps: [
+      { step: "Upload your PDF", detail: "Select the document you need translated — contracts, articles, books, or any text-based PDF." },
+      { step: "Choose source and target language", detail: "Select the document's current language and the language you want it translated into, from 50+ supported languages." },
+      { step: "Translate", detail: "The full document text is translated while preserving the original page structure as closely as possible." },
+      { step: "Download the translated PDF", detail: "Download your translated document, ready to read or share." },
+    ],
+  },
+  troubleshooting: {
+    title: "Common PDF Translation Issues",
+    issues: [
+      { problem: "Some formatting or layout looks different after translation", solution: "Translated text often takes up more or less space than the original language, which can shift layout slightly — this is a normal side effect of translation, not an error. The text content itself is fully translated." },
+      { problem: "Translation quality varies for technical or legal terms", solution: "Machine translation handles general language well but can miss nuance in highly technical, legal, or domain-specific terminology. For contracts or legal documents with binding consequences, have a professional human translator review critical sections." },
+    ],
+  },
+  securitySection: {
+    title: "Security for Translated Documents",
+    content: "Documents submitted for translation are often personal or confidential — contracts, certificates, business records — and are handled with the same security as any other upload.",
+    points: ["256-bit SSL encryption during upload and translation", "Documents auto-deleted from our servers after translation", "No permanent storage of source or translated content", "No use of document content for any purpose beyond translation"],
+  },
+  faqs: [
+    { question: "How many languages does the translator support?", answer: "50+ languages are supported, including Spanish, French, German, Chinese, Arabic, Hindi, Portuguese, Russian, Japanese, and many more." },
+    { question: "Will the translated PDF keep the same formatting as the original?", answer: "We preserve the page structure as closely as possible, but translated text can take up more or less space than the original, which may shift layout slightly." },
+    { question: "Is machine translation accurate enough for legal documents?", answer: "It's a strong starting point for understanding a document, but for legally binding contracts we recommend having a professional human translator verify critical terms before signing." },
+  ],
+  relatedWorkflows: [
+    { title: "International Document Workflow", description: "Prepare foreign-language documents for review and sharing", tools: ["translate-pdf", "ocr-pdf", "compress"] },
+  ],
+  internalLinks: [
+    { text: "OCR PDF", href: "/ocr-pdf", context: "Extract text from a scanned document before translating" },
+    { text: "Edit PDF", href: "/edit-pdf", context: "Adjust layout after translation" },
+    { text: "Compress PDF", href: "/compress-pdf", context: "Reduce file size of the translated document" },
+  ],
 } as unknown as ToolSEOData;
