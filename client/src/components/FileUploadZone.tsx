@@ -235,6 +235,9 @@ export default function FileUploadZone({
               <FileIcon className="w-3.5 h-3.5 text-primary" aria-hidden="true" />
               <span className="font-medium">{formatDisplay}</span>
             </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/60 border border-border/50 text-xs text-muted-foreground">
+              <span className="font-medium">Up to 50MB</span>
+            </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 text-xs text-green-600 dark:text-green-400">
               <Shield className="w-3.5 h-3.5" aria-hidden="true" />
               <span className="font-medium">{t(lang, "secure")}</span>
