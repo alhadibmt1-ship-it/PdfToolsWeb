@@ -143,7 +143,7 @@ export default function ContactPage() {
                 <CardContent className="p-6">
                   <h3 className="font-semibold mb-2">What is the file size limit?</h3>
                   <p className="text-sm text-muted-foreground">
-                    We support files up to 100MB for most operations. Larger files may take longer 
+                    We support files up to 50MB for most operations. Larger files may take longer 
                     to process but are generally supported.
                   </p>
                 </CardContent>
