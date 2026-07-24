@@ -11,6 +11,7 @@ import rateLimit from "express-rate-limit";
 
 import { registerRoutes } from "./routes";
 import { TOOL_SLUG_TRANSLATIONS } from "../client/src/lib/translatedSlugs";
+import { DUPLICATE_TOOL_PAGE_REDIRECTS } from "../client/src/lib/duplicateToolPageRedirects";
 
 export function log(message: string, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {
@@ -260,6 +261,21 @@ app.use((req, res, next) => {
 // "compress-pdf-online-{country}" → "compress-pdf-{country}"
 // Orphan compress-to-size sizes → nearest canonical size in sitemap
 app.use((req, res, next) => {
+  // Legacy route names from before these tools were renamed. No client route
+  // matches them anymore, but they were still referenced in old internal
+  // links and sitemap entries — redirect in case of old bookmarks/backlinks.
+  if (req.path === '/page-numbers') return res.redirect(301, '/add-page-numbers');
+  if (req.path === '/watermark-pdf') return res.redirect(301, '/add-watermark');
+
+  // Generic /tools/* pages that duplicate an existing primary tool page
+  // (same tool, same steps, same FAQ, no real differentiation beyond SEO
+  // keyword stuffing). See duplicateToolPageRedirects.ts for the full list
+  // and the reasoning for what's included vs deliberately kept separate.
+  const duplicateTarget = DUPLICATE_TOOL_PAGE_REDIRECTS[req.path.replace(/^\/tools\//, "")];
+  if (req.path.startsWith("/tools/") && duplicateTarget) {
+    return res.redirect(301, duplicateTarget);
+  }
+
   const m1 = req.path.match(/^\/tools\/compress-pdf-under-(.+)$/);
   if (m1) return res.redirect(301, `/tools/compress-pdf-to-${m1[1]}`);
 
