@@ -6,10 +6,10 @@ import { Link } from "wouter";
 import { PDF_TOOLS } from "@shared/schema";
 import SocialShare from "./SocialShare";
 import { getToolSEOData, ToolSEOData } from "@/data/toolSEOData";
+import { getGeneratedPagesForTool } from "@/data/programmaticSeoData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { t, getLang } from "@/lib/languages";
 import { TOOL_CONTENT_TRANSLATIONS } from "@/lib/toolContentTranslations";
-import { TOOL_CATEGORY_MAP, CATEGORY_CONTENT } from "@/lib/toolCategoryContent";
 
 const FEATURED_BLOG_POSTS = [
   { slug: "best-free-pdf-tools-2026", title: "Best Free PDF Tools in 2026: The Complete Roundup", desc: "A comprehensive guide to the most useful PDF tools available for free online." },
@@ -58,23 +58,30 @@ export default function EnhancedToolSEOContent({
   const toolPath = tool?.path || "/";
   const category = tool?.category || "edit-pdf";
 
-  // Category-specific content override (ensures uniqueness across tools in same language)
-  const toolCat = TOOL_CATEGORY_MAP[toolId ?? ""];
-  const catContent = (tc && toolCat) ? (CATEGORY_CONTENT[lang]?.[toolCat] ?? null) : null;
+  // Tool-specific translated content, if it exists for this tool + language yet.
+  // Populated incrementally in toolContentTranslations.ts — see the `tools` map
+  // under each language. Falls back to generic language-level content, then
+  // to English seoData, so pages never break while content is still being written.
+  const toolSpecific = tc?.tools?.[toolId ?? ""];
 
   // Derived content: use translation if available, fall back to English seoData
   const aboutText = tc ? tc.about(toolName) : seoData.heroContent;
-  const ucTitle = tc ? tc.useCases.title(toolName) : seoData.useCases.title;
-  const ucDesc = tc ? tc.useCases.desc : seoData.useCases.description;
-  const ucItems = catContent?.useCaseItems ?? (tc ? tc.useCases.items : seoData.useCases.items);
+  const ucTitle = toolSpecific ? toolSpecific.useCases.title(toolName) : tc ? tc.defaultUseCases.title(toolName) : seoData.useCases.title;
+  const ucDesc = toolSpecific ? toolSpecific.useCases.desc : tc ? tc.defaultUseCases.desc : seoData.useCases.description;
+  const ucItems = toolSpecific ? toolSpecific.useCases.items : tc ? tc.defaultUseCases.items : seoData.useCases.items;
   const tutTitle = tc ? tc.tutorial.title(toolName) : seoData.tutorial.title;
   const tutSteps = tc ? tc.tutorial.steps : seoData.tutorial.steps;
   const faqItemsTranslated = tc ? tc.faqs(toolName) : (seoData?.faqs || fallbackFaqs);
-  const trTitle = tc ? tc.troubleshooting.title : seoData.troubleshooting.title;
-  const trIssues = catContent?.troubleshooting ?? (tc ? tc.troubleshooting.issues : seoData.troubleshooting.issues);
+  const trTitle = toolSpecific ? toolSpecific.troubleshooting.title : tc ? tc.defaultTroubleshooting.title : seoData.troubleshooting.title;
+  const trIssues = toolSpecific ? toolSpecific.troubleshooting.issues : tc ? tc.defaultTroubleshooting.issues : seoData.troubleshooting.issues;
   const secTitle = tc ? tc.security.title : seoData.securitySection.title;
   const secContent = tc ? tc.security.content : seoData.securitySection.content;
   const secPoints = tc ? tc.security.points : seoData.securitySection.points;
+
+  // Auto-generated long-tail pages belonging to this tool (fixes the ~700-page
+  // orphan problem — these previously had zero incoming internal links).
+  // English-only: the generator only produces English content.
+  const generatedPages = !tc ? getGeneratedPagesForTool(toolPath) : [];
 
   const categoryLabels: Record<string, string> = {
     "from-pdf": t(lang, "convertFromPdf"),
@@ -82,6 +89,11 @@ export default function EnhancedToolSEOContent({
     "edit-pdf": t(lang, "editPdf"),
     "utility": t(lang, "utilityTools"),
   };
+  // Pillar/hub page for this tool's category — used for both the breadcrumb
+  // and the in-body "up" link (Rule 1 of the internal linking plan: every
+  // cluster member links to its pillar via a real content link, not just nav).
+  const hubPath = category === "from-pdf" ? "/convert-pdf" : category === "to-pdf" ? "/convert-pdf" : category === "edit-pdf" ? "/edit-pdf-tools" : "/image-tools";
+  const hubLabel = categoryLabels[category] || "PDF Tools";
 
   useEffect(() => {
     const existingScripts = document.querySelectorAll('script[data-enhanced-seo="true"]');
@@ -133,13 +145,6 @@ export default function EnhancedToolSEOContent({
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "3200",
-        "bestRating": "5",
-        "worstRating": "1"
       },
       "description": seoData?.metaDescription || fallbackDescription || "",
       "provider": {
@@ -215,11 +220,11 @@ export default function EnhancedToolSEOContent({
         </Link>
         <ChevronRight className="w-3.5 h-3.5 flex-shrink-0" aria-hidden="true" />
         <Link
-          href={`/${category === "from-pdf" ? "convert-pdf" : category === "to-pdf" ? "convert-pdf" : category === "edit-pdf" ? "edit-pdf-tools" : "image-tools"}`}
+          href={hubPath}
           className="hover:text-foreground transition-colors"
           data-testid="breadcrumb-category"
         >
-          {categoryLabels[category] || "PDF Tools"}
+          {hubLabel}
         </Link>
         <ChevronRight className="w-3.5 h-3.5 flex-shrink-0" aria-hidden="true" />
         <span className="text-foreground font-medium truncate" aria-current="page" data-testid="breadcrumb-current">{toolName}</span>
@@ -244,6 +249,15 @@ export default function EnhancedToolSEOContent({
         <p className="text-lg text-muted-foreground leading-relaxed" {...contentProps}>
           {aboutText}
         </p>
+        {!tc && (
+          <p className="text-muted-foreground leading-relaxed mt-4" lang="en" dir="ltr">
+            {toolName} is one of PDF HUB 24's{" "}
+            <Link href={hubPath} className="text-primary hover:underline" data-testid="link-hub-inline">
+              {hubLabel.toLowerCase()}
+            </Link>
+            {" "}for working with PDF documents online, free.
+          </p>
+        )}
         {!tc && seoData.secondaryKeywords.length > 0 && (
           <p className="text-muted-foreground leading-relaxed mt-4" {...contentProps}>
             People searching for{" "}
@@ -290,7 +304,7 @@ export default function EnhancedToolSEOContent({
             data-testid="button-cta-start-now"
           >
             <Zap className="w-4 h-4 mr-2" />
-            {t(lang, "startNowFree")}
+            {tc ? t(lang, "startNowFree") : `${toolName} Now — It's Free`}
           </Button>
         </div>
       </section>
@@ -437,6 +451,32 @@ export default function EnhancedToolSEOContent({
                         <ArrowRight className="w-3 h-3" aria-hidden="true" />
                       </h3>
                       <p className="text-xs text-muted-foreground">{link.context}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {generatedPages.length > 0 && (
+        <section>
+          <h2 className="text-2xl font-bold mb-4">More Ways to Use {toolName}</h2>
+          <p className="text-muted-foreground mb-4">
+            Specific scenarios and requirements this tool also covers:
+          </p>
+          <div className="grid md:grid-cols-2 gap-3">
+            {generatedPages.map((page, index) => (
+              <Link key={index} href={`/tools/${page.slug}`}>
+                <Card className="hover-elevate cursor-pointer h-full">
+                  <CardContent className="p-4 flex items-center gap-3" lang="en" dir="ltr">
+                    <FileText className="w-5 h-5 text-primary flex-shrink-0" aria-hidden="true" />
+                    <div className="flex-1">
+                      <h3 className="font-medium text-sm flex items-center gap-1">
+                        {page.h1}
+                        <ArrowRight className="w-3 h-3 flex-shrink-0" aria-hidden="true" />
+                      </h3>
                     </div>
                   </CardContent>
                 </Card>
