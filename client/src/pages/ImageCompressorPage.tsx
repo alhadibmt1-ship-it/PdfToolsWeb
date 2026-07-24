@@ -257,6 +257,11 @@ export default function ImageCompressorPage() {
                 >
                   Convert Another File
                 </Button>
+                <div className="pt-3 border-t border-border/50 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm">
+                  <span className="text-muted-foreground">What's next?</span>
+                  <Link href="/convert-image" className="text-primary hover:underline font-medium" data-testid="link-post-download-1">Convert Image →</Link>
+                  <Link href="/resize-image" className="text-primary hover:underline font-medium" data-testid="link-post-download-2">Resize Image →</Link>
+                </div>
               </div>
             )}
           </div>
