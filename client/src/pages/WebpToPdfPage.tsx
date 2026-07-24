@@ -208,6 +208,11 @@ export default function WebpToPdfPage() {
                 >
                   Convert More Images
                 </Button>
+                <div className="pt-3 border-t border-border/50 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm">
+                  <span className="text-muted-foreground">What's next?</span>
+                  <Link href="/compress-pdf" className="text-primary hover:underline font-medium" data-testid="link-post-download-1">Compress PDF →</Link>
+                  <Link href="/merge-pdf" className="text-primary hover:underline font-medium" data-testid="link-post-download-2">Merge PDF →</Link>
+                </div>
               </div>
             )}
           </div>
