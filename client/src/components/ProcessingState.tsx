@@ -1,6 +1,7 @@
-import { Loader2, CheckCircle2, XCircle, Sparkles, Download } from "lucide-react";
+import { Loader2, CheckCircle2, XCircle, Sparkles, Download, ArrowRight } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { t, tFormat } from "@/lib/languages";
@@ -14,6 +15,11 @@ interface ProcessingStateProps {
   downloadLabel?: string;
   resultInfo?: string;
   fileCount?: number;
+  // Post-download funnel: 1-2 relevant next tools, shown right after the
+  // download button — the highest-attention moment on the page. Pass
+  // seoData.internalLinks.slice(0, 2) from the tool page's own SEO data so
+  // suggestions stay genuinely relevant rather than generic.
+  relatedLinks?: { text: string; href: string }[];
 }
 
 export default function ProcessingState({ 
@@ -24,7 +30,8 @@ export default function ProcessingState({
   onDownload,
   downloadLabel,
   resultInfo,
-  fileCount
+  fileCount,
+  relatedLinks
 }: ProcessingStateProps) {
   const { lang } = useLanguage();
 
@@ -107,6 +114,23 @@ export default function ProcessingState({
                   <Download className="w-4 h-4" aria-hidden="true" />
                   {downloadLabel || t(lang, "downloadBtn")}
                 </Button>
+              )}
+
+              {relatedLinks && relatedLinks.length > 0 && (
+                <div className="w-full max-w-sm mt-4 pt-4 border-t border-border/50 space-y-2" lang="en" dir="ltr">
+                  <p className="text-xs text-muted-foreground text-center">What's next?</p>
+                  {relatedLinks.slice(0, 2).map((link, i) => (
+                    <Link
+                      key={i}
+                      href={link.href}
+                      className="flex items-center justify-center gap-1.5 text-sm font-medium text-primary hover:underline"
+                      data-testid={`link-post-download-${i}`}
+                    >
+                      {link.text}
+                      <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                    </Link>
+                  ))}
+                </div>
               )}
             </>
           )}
