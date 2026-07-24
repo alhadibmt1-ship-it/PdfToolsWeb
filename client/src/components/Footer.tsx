@@ -22,13 +22,8 @@ const FOOTER_HOWTO_GUIDES = [
   { slug: "compress-pdf-under-100kb", label: "Compress PDF to Under 100KB" },
   { slug: "merge-pdf-for-visa-application", label: "Merge PDF for Visa Application" },
   { slug: "convert-scanned-pdf-to-word-editable", label: "Scanned PDF to Editable Word" },
-  { slug: "make-pdf-smaller-for-email", label: "Make PDF Smaller for Email" },
-  { slug: "pdf-to-jpg-high-quality", label: "PDF to High Quality JPG" },
-  { slug: "add-signature-to-pdf-free", label: "Add Signature to PDF Free" },
   { slug: "compress-pdf-without-losing-quality", label: "Compress PDF Without Losing Quality" },
   { slug: "split-pdf-by-pages", label: "Split PDF by Page Number" },
-  { slug: "protect-pdf-with-password-free", label: "Protect PDF with Password" },
-  { slug: "add-page-numbers-to-pdf-free", label: "Add Page Numbers to PDF" },
 ];
 
 interface FooterLinkProps {
