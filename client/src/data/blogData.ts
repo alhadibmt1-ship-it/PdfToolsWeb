@@ -919,7 +919,7 @@ Absolutely. Our Add Page Numbers tool is completely free with no registration, n
 
 ## Related Reading
 
-For more document formatting tips, check out our guide on [adding watermarks to PDF documents](/blog/watermark-pdf-documents). If you need to combine files before numbering, see our [complete guide to merging PDFs](/blog/merge-pdf-files-guide). Learn about [splitting PDF pages](/blog/how-to-split-pdf-pages) when you need different numbering for different sections. You may also find our guide on [flattening PDFs](/blog/how-to-flatten-pdf) useful when dealing with existing page numbers that need to be replaced. Before numbering, you might want to [remove unnecessary pages from your PDF](/tools/remove-pages-from-pdf) first.
+For more document formatting tips, check out our guide on [adding watermarks to PDF documents](/blog/watermark-pdf-documents). If you need to combine files before numbering, see our [complete guide to merging PDFs](/blog/merge-pdf-files-guide). Learn about [splitting PDF pages](/blog/how-to-split-pdf-pages) when you need different numbering for different sections. You may also find our guide on [flattening PDFs](/blog/how-to-flatten-pdf) useful when dealing with existing page numbers that need to be replaced. Before numbering, you might want to [remove unnecessary pages from your PDF](/delete-pages) first.
 `,
     relatedTools: [
       { name: "Add Page Numbers", path: "/add-page-numbers", description: "Number your PDF pages" },
@@ -1163,7 +1163,7 @@ Yes. All our image-to-PDF tools are fully responsive and work on any smartphone 
 
 ## Related Reading
 
-For more tips on working with images and PDFs, check out our guide on [batch converting images to PDF](/blog/batch-convert-images-to-pdf) for handling large collections. If your image PDFs are too large, learn [how to compress PDFs for email](/blog/how-to-compress-pdf-for-email). After converting scanned pages, you may want to read our guide on [OCR for scanned documents](/blog/ocr-scanned-pdf-to-text) to make text searchable. See also our tips on [adding page numbers](/blog/add-page-numbers-to-pdf) for a polished, professional result. If you need the reverse conversion, see our guides on [converting PDF to JPG in high quality](/tools/pdf-to-jpg-high-quality) and [converting all PDF pages to JPG](/tools/convert-pdf-to-jpg-all-pages).
+For more tips on working with images and PDFs, check out our guide on [batch converting images to PDF](/blog/batch-convert-images-to-pdf) for handling large collections. If your image PDFs are too large, learn [how to compress PDFs for email](/blog/how-to-compress-pdf-for-email). After converting scanned pages, you may want to read our guide on [OCR for scanned documents](/blog/ocr-scanned-pdf-to-text) to make text searchable. See also our tips on [adding page numbers](/blog/add-page-numbers-to-pdf) for a polished, professional result. If you need the reverse conversion, see our guides on [converting PDF to JPG in high quality](/pdf-to-jpg) and [converting all PDF pages to JPG](/pdf-to-jpg).
 `,
     relatedTools: [
       { name: "JPG to PDF", path: "/jpg-to-pdf", description: "Convert JPG images to PDF" },
@@ -1502,7 +1502,7 @@ Absolutely. Our Rotate PDF tool is completely free with no registration, no wate
 
 ## Related Reading
 
-After fixing page orientation, you may want to explore related guides. Learn about [OCR for scanned documents](/blog/ocr-scanned-pdf-to-text) to make your rotated scans searchable. Check out our [guide to cropping PDF pages](/blog/crop-pdf-pages-guide) to remove scanner borders after rotation. If you need to reorganize pages further, see our guide on [splitting PDF pages](/blog/how-to-split-pdf-pages). You might also find our tips on [adding page numbers](/blog/add-page-numbers-to-pdf) helpful for finishing your document. For a quick rotation fix, see our guide on [rotating PDF and saving permanently](/tools/rotate-pdf-and-save).
+After fixing page orientation, you may want to explore related guides. Learn about [OCR for scanned documents](/blog/ocr-scanned-pdf-to-text) to make your rotated scans searchable. Check out our [guide to cropping PDF pages](/blog/crop-pdf-pages-guide) to remove scanner borders after rotation. If you need to reorganize pages further, see our guide on [splitting PDF pages](/blog/how-to-split-pdf-pages). You might also find our tips on [adding page numbers](/blog/add-page-numbers-to-pdf) helpful for finishing your document. For a quick rotation fix, see our guide on [rotating PDF and saving permanently](/rotate-pdf).
 `,
     relatedTools: [
       { name: "Rotate PDF", path: "/rotate-pdf", description: "Fix page orientation" },
@@ -1982,7 +1982,7 @@ Extract employee data from PDF reports for payroll processing, headcount analysi
 | PDF to Word | Text-heavy documents with some tables | [PDF to Word](/pdf-to-word) |
 | Extract Text | Raw text content without formatting | Extract Text |
 
-Choose PDF to Excel when your primary goal is extracting structured numeric or tabular data. Choose PDF to Word when you need to preserve the overall document layout and edit narrative text around tables. For a complete overview of conversion options, check out our [best free PDF tools guide](/blog/best-free-pdf-tools-2026). If you need the reverse conversion, see our guide on [converting Excel to PDF free](/tools/convert-excel-to-pdf-free).
+Choose PDF to Excel when your primary goal is extracting structured numeric or tabular data. Choose PDF to Word when you need to preserve the overall document layout and edit narrative text around tables. For a complete overview of conversion options, check out our [best free PDF tools guide](/blog/best-free-pdf-tools-2026). If you need the reverse conversion, see our guide on [converting Excel to PDF free](/excel-to-pdf).
 
 ## What If Conversion Is Not Perfect?
 
@@ -2302,7 +2302,7 @@ No. PDF/A is an archival format standard that includes specific requirements for
 ### Should I flatten before or after adding page numbers?
 Flatten first, then add page numbers. This way the page numbers appear on top of the flattened content and remain clearly visible. See our [guide to adding page numbers](/blog/add-page-numbers-to-pdf) for detailed instructions.
 
-Need to flatten a PDF specifically for printing? Check out our dedicated guide on [flattening PDF for printing](/tools/flatten-pdf-for-printing).
+Need to flatten a PDF specifically for printing? Check out our dedicated guide on [flattening PDF for printing](/flatten-pdf).
 `,
     relatedTools: [
       { name: "Flatten PDF", path: "/flatten-pdf", description: "Merge all layers into one" },
@@ -4333,7 +4333,7 @@ Navigate to our [PDF to PowerPoint](/pdf-to-ppt) converter. This tool processes 
 
 ### Step 3: Upload Your PDF
 
-Drag your PDF file into the upload area or click to browse. Files up to 100MB are supported. If your file is larger, use [Compress PDF](/compress-pdf) to reduce the size first.
+Drag your PDF file into the upload area or click to browse. Files up to 50MB are supported. If your file is larger, use [Compress PDF](/compress-pdf) to reduce the size first.
 
 ### Step 4: Convert and Download
 
@@ -4614,7 +4614,6 @@ WebP for photographs (lossy), PNG for logos and graphics (lossless), SVG for ico
       { name: "Resize Image", path: "/resize-image", description: "Change image dimensions" },
       { name: "Convert Image", path: "/convert-image", description: "Convert between image formats" },
       { name: "JPG to PDF", path: "/jpg-to-pdf", description: "Convert compressed images to PDF" },
-      { name: "Remove Background", path: "/remove-bg", description: "Remove image backgrounds" }
     ]
   },
   {
@@ -4811,7 +4810,6 @@ Yes. The tool removes the background regardless of logo color complexity. A mult
 No — process as many images as you need, one at a time or in batches.
 `,
     relatedTools: [
-      { name: "Remove Background", path: "/remove-bg", description: "Remove image backgrounds automatically" },
       { name: "Resize Image", path: "/resize-image", description: "Scale images to specific dimensions" },
       { name: "Compress Image", path: "/image-compressor", description: "Reduce PNG file size" },
       { name: "Convert Image", path: "/convert-image", description: "Convert between image formats" },
