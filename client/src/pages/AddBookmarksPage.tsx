@@ -77,6 +77,11 @@ export default function AddBookmarksPage() {
                 <h3 className="font-semibold">Done! Your file is ready.</h3>
                 <Button onClick={() => { const a = document.createElement("a"); a.href = resultUrl!; a.download = (files[0]?.name?.replace(/\.pdf$/i, "") || "file") + ".pdf"; a.click(); }} className="w-full" size="lg"><Download className="w-4 h-4 mr-2" />Download File</Button>
                 <Button variant="outline" onClick={() => { setFiles([]); setStatus("idle"); setResultUrl(null); }} className="w-full">Process Another File</Button>
+                <div className="pt-3 border-t border-border/50 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm">
+                  <span className="text-muted-foreground">What's next?</span>
+                  <Link href="/add-page-numbers" className="text-primary hover:underline font-medium" data-testid="link-post-download-1">Add Page Numbers →</Link>
+                  <Link href="/merge-pdf" className="text-primary hover:underline font-medium" data-testid="link-post-download-2">Merge PDF →</Link>
+                </div>
               </div>
             )}
           </div>
