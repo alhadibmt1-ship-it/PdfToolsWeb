@@ -1532,7 +1532,7 @@ Security on ${p.label} is handled identically to desktop: your files are never s
     ],
     [
       { question: `Does PDF compression work on ${p.label}?`, answer: `Our web-based tool works fully in any modern browser on ${p.label}. No app download, plugin, or software installation is required.` },
-      { question: "What file size limit applies?", answer: "You can compress PDFs of any size. Very large files (100MB+) may take slightly longer to process but are fully supported." },
+      { question: "What file size limit applies?", answer: "You can compress PDFs of any size. Very large files (50MB+) may take slightly longer to process but are fully supported." },
       { question: "Are my files safe on this device?", answer: "All processing happens over HTTPS, and files are permanently deleted from our servers within 1 hour. Nothing is saved or shared." },
     ]
   ));
@@ -2301,7 +2301,7 @@ function genBatchAndWorkflowPages(): ProgrammaticPage[] {
   const batchPages = [
     { slug: "batch-compress-pdf-files", h1: "Batch Compress Multiple PDF Files", desc: "Compress multiple PDF files at once online free. Batch PDF compression saves time when processing large document sets." },
     { slug: "bulk-pdf-compressor", h1: "Bulk PDF Compressor — Compress Many PDFs", desc: "Compress many PDF files in bulk online free. Perfect for processing invoice archives, scanned documents, and report collections." },
-    { slug: "compress-large-pdf-free", h1: "Compress Large PDF Files Free Online", desc: "Compress very large PDF files online free. Handle 50MB, 100MB, or larger PDFs with our high-performance compression tool." },
+    { slug: "compress-large-pdf-free", h1: "Compress Large PDF Files Free Online", desc: "Compress very large PDF files online free. Handle 50MB, 50MB, or larger PDFs with our high-performance compression tool." },
     { slug: "compress-pdf-fast-online", h1: "Compress PDF Fast Online — Instant Results", desc: "Compress PDF files fast online free. Instant compression with no upload queue, no waiting, and no signup required." },
     { slug: "compress-pdf-without-software", h1: "Compress PDF Without Software or Installation", desc: "Compress PDF files without installing any software. Works entirely in your browser on any device, any operating system." },
     { slug: "pdf-size-reducer-online", h1: "Online PDF Size Reducer — Free Tool", desc: "Reduce PDF file size online free. Powerful compression with three quality settings for any document type." },
