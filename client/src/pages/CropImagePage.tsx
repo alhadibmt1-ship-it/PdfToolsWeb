@@ -258,6 +258,11 @@ export default function CropImagePage() {
                   <Download className="w-4 h-4 mr-2" />
                   Download Cropped Image
                 </Button>
+                <div className="pt-3 border-t border-border/50 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm">
+                  <span className="text-muted-foreground">What's next?</span>
+                  <Link href="/resize-image" className="text-primary hover:underline font-medium" data-testid="link-post-download-1">Resize Image →</Link>
+                  <Link href="/convert-image" className="text-primary hover:underline font-medium" data-testid="link-post-download-2">Convert Image →</Link>
+                </div>
               </div>
             )}
           </div>
