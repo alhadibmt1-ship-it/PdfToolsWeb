@@ -402,6 +402,13 @@ export default function EditPdfPage() {
                   </Button>
                 )}
               </div>
+              {status === "success" && resultUrl && (
+                <div className="pt-3 border-t border-border/50 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm">
+                  <span className="text-muted-foreground">What's next?</span>
+                  <Link href="/annotate-pdf" className="text-primary hover:underline font-medium" data-testid="link-post-download-1">Annotate PDF →</Link>
+                  <Link href="/sign-pdf" className="text-primary hover:underline font-medium" data-testid="link-post-download-2">Sign PDF →</Link>
+                </div>
+              )}
             </div>
           )}
 
