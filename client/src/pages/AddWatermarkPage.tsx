@@ -278,6 +278,11 @@ export default function AddWatermarkPage() {
                 >
                   Convert Another File
                 </Button>
+                <div className="pt-3 border-t border-border/50 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm">
+                  <span className="text-muted-foreground">What's next?</span>
+                  <Link href="/protect-pdf" className="text-primary hover:underline font-medium" data-testid="link-post-download-protect">Protect PDF →</Link>
+                  <Link href="/compress-pdf" className="text-primary hover:underline font-medium" data-testid="link-post-download-compress">Compress PDF →</Link>
+                </div>
               </div>
             )}
           </div>
