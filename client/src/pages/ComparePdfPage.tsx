@@ -191,6 +191,11 @@ export default function ComparePdfPage() {
                 >
                   Compare Other PDFs
                 </Button>
+                <div className="pt-3 border-t border-border/50 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm">
+                  <span className="text-muted-foreground">What's next?</span>
+                  <Link href="/merge-pdf" className="text-primary hover:underline font-medium" data-testid="link-post-download-1">Merge PDF →</Link>
+                  <Link href="/annotate-pdf" className="text-primary hover:underline font-medium" data-testid="link-post-download-2">Annotate PDF →</Link>
+                </div>
               </div>
             )}
           </div>
