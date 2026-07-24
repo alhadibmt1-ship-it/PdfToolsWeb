@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "wouter";
+import { TOOL_SLUG_TRANSLATIONS } from "@/lib/translatedSlugs";
 
 interface SEOProps {
   title: string;
@@ -100,12 +101,19 @@ export function useSEO({
     canonical.setAttribute("href", canonicalUrl);
 
     // ✅ HREFLANG — fixes 32% of pages missing hreflang
+    // Uses the same slug-translation lookup as the server (server/seo-config.ts
+    // getTranslatedPathForLang) so client and server hreflang always agree, and
+    // so hreflang links point directly to the real final URL instead of a URL
+    // that 301-redirects (e.g. /es/marca-de-agua-pdf, not /es/add-watermark).
     document.querySelectorAll('link[data-useseo-hreflang="true"]').forEach(el => el.remove());
+    const englishSlug = normalizedPath.replace(/^\//, "");
     SUPPORTED_LANGUAGES.forEach(lang => {
       const link = document.createElement("link");
       link.setAttribute("rel", "alternate");
       link.setAttribute("hreflang", lang);
-      link.setAttribute("href", lang === "en" ? canonicalUrl : `${BASE_URL}/${lang}${normalizedPath}`);
+      const translatedSlug = lang !== "en" ? TOOL_SLUG_TRANSLATIONS[englishSlug]?.[lang] : undefined;
+      const langPath = translatedSlug ? `/${translatedSlug}` : normalizedPath;
+      link.setAttribute("href", lang === "en" ? canonicalUrl : `${BASE_URL}/${lang}${langPath}`);
       link.setAttribute("data-useseo-hreflang", "true");
       document.head.appendChild(link);
     });
