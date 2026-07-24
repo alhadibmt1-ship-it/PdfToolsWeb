@@ -198,6 +198,11 @@ export default function ExtractTextPage() {
                 <p className="text-xs text-muted-foreground">
                   {extractedText.length} characters extracted
                 </p>
+                <div className="pt-3 border-t border-border/50 flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm">
+                  <span className="text-muted-foreground">What's next?</span>
+                  <Link href="/ocr-pdf" className="text-primary hover:underline font-medium" data-testid="link-post-download-1">OCR PDF →</Link>
+                  <Link href="/pdf-to-word" className="text-primary hover:underline font-medium" data-testid="link-post-download-2">PDF to Word →</Link>
+                </div>
               </div>
             )}
           </div>
