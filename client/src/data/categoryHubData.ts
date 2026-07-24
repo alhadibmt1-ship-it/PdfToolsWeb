@@ -48,6 +48,7 @@ Our conversion technology uses advanced parsing algorithms that intelligently de
       { name: "GIF to PDF", path: "/gif-to-pdf", description: "Convert GIF images to PDF preserving all frames" },
       { name: "WebP to PDF", path: "/webp-to-pdf", description: "Convert modern WebP images to universally compatible PDF format" },
       { name: "HTML to PDF", path: "/html-to-pdf", description: "Convert web pages and HTML code to PDF documents with CSS styling" },
+      { name: "OCR PDF", path: "/ocr-pdf", description: "Convert scanned PDFs and images into searchable, selectable text using optical character recognition" },
       { name: "Extract Text", path: "/extract-text", description: "Extract all text content from PDF files for editing or analysis" },
       { name: "Extract Images", path: "/extract-images", description: "Download all embedded images from PDF documents in original quality" }
     ],
@@ -64,11 +65,11 @@ Our conversion technology uses advanced parsing algorithms that intelligently de
       { title: "Convert PDF Tables to Excel Accurately", path: "/blog/pdf-to-excel-convert-tables" },
       { title: "Convert Images to PDF Free", path: "/blog/convert-images-to-pdf" },
       { title: "HTML to PDF Conversion Guide", path: "/blog/html-to-pdf-conversion" },
-      { title: "Convert PDF to Editable Word Free", path: "/tools/pdf-to-word-editable-free" },
+      { title: "Convert PDF to Editable Word Free", path: "/pdf-to-word" },
       { title: "Convert Scanned PDF to Editable Word", path: "/tools/convert-scanned-pdf-to-word-editable" },
-      { title: "Convert PDF to JPG High Quality", path: "/tools/pdf-to-jpg-high-quality" },
-      { title: "Convert All PDF Pages to JPG", path: "/tools/convert-pdf-to-jpg-all-pages" },
-      { title: "Convert Excel to PDF Free", path: "/tools/convert-excel-to-pdf-free" }
+      { title: "Convert PDF to JPG High Quality", path: "/pdf-to-jpg" },
+      { title: "Convert All PDF Pages to JPG", path: "/pdf-to-jpg" },
+      { title: "Convert Excel to PDF Free", path: "/excel-to-pdf" }
     ],
     relatedCategories: [
       { name: "Edit PDF Tools", path: "/edit-pdf-tools" },
@@ -89,7 +90,7 @@ Understanding compression is key to getting the best results. PDF files become l
 
 For email attachments, medium compression typically reduces files by 40-70%, bringing most documents well under the 25MB Gmail limit. For web uploads and archiving, high compression can achieve 70-90% reduction, dramatically saving storage space. And for documents where every detail matters, low compression provides 20-40% reduction with virtually zero quality impact.
 
-The compression workflow can be enhanced by combining multiple optimization steps. Removing unnecessary pages, converting color documents to grayscale when color is not needed, and flattening interactive layers before compression can multiply your size savings. A 100MB document can often be reduced to under 5MB using this multi-step approach.
+The compression workflow can be enhanced by combining multiple optimization steps. Removing unnecessary pages, converting color documents to grayscale when color is not needed, and flattening interactive layers before compression can multiply your size savings. A 50MB document can often be reduced to under 5MB using this multi-step approach.
 
 Our compression engine processes files entirely on secure servers with automatic deletion after one hour. No registration is required, no watermarks are added, and there are no daily usage limits. Whether you need to compress one file or dozens, our tools are ready whenever you need them.`,
     tools: [
@@ -115,7 +116,7 @@ Our compression engine processes files entirely on secure servers with automatic
       { title: "Compress PDF Under 100KB", path: "/tools/compress-pdf-under-100kb" },
       { title: "Reduce PDF Size to 200KB", path: "/tools/reduce-pdf-size-to-200kb" },
       { title: "Compress PDF to 1MB", path: "/tools/compress-pdf-to-1mb" },
-      { title: "Make PDF Smaller for Email", path: "/tools/make-pdf-smaller-for-email" },
+      { title: "Make PDF Smaller for Email", path: "/tools/compress-pdf-for-email" },
       { title: "Compress PDF Without Losing Quality", path: "/tools/compress-pdf-without-losing-quality" }
     ],
     relatedCategories: [
@@ -147,6 +148,7 @@ Professional document preparation often requires multiple editing steps. Our too
       { name: "Rotate PDF", path: "/rotate-pdf", description: "Rotate PDF pages 90, 180, or 270 degrees to fix orientation issues" },
       { name: "Delete Pages", path: "/delete-pages", description: "Remove unwanted pages from PDF documents" },
       { name: "Reorder Pages", path: "/reorder-pages", description: "Rearrange PDF page order with intuitive drag-and-drop interface" },
+      { name: "Extract Pages", path: "/extract-pages", description: "Pull out and save specific pages from a PDF as a new, separate document" },
       { name: "Add Page Numbers", path: "/add-page-numbers", description: "Insert page numbers with customizable position, format, and style" },
       { name: "Add Watermark", path: "/add-watermark", description: "Add text watermarks with custom font, position, opacity, and color" },
       { name: "Sign PDF", path: "/sign-pdf", description: "Add electronic signatures by drawing, typing, or uploading signature images" },
@@ -177,11 +179,11 @@ Professional document preparation often requires multiple editing steps. Our too
       { title: "Merge PDF Free with No File Limit", path: "/tools/merge-pdf-free-no-limit" },
       { title: "Merge PDF for Visa Application", path: "/tools/merge-pdf-for-visa-application" },
       { title: "Split PDF by Pages Free", path: "/tools/split-pdf-by-pages" },
-      { title: "Add Signature to PDF Free", path: "/tools/add-signature-to-pdf-free" },
-      { title: "Rotate PDF and Save Permanently", path: "/tools/rotate-pdf-and-save" },
-      { title: "Remove Pages from PDF Free", path: "/tools/remove-pages-from-pdf" },
-      { title: "Flatten PDF for Printing", path: "/tools/flatten-pdf-for-printing" },
-      { title: "Add Watermark to PDF Free", path: "/tools/add-watermark-to-pdf-free" }
+      { title: "Add Signature to PDF Free", path: "/sign-pdf" },
+      { title: "Rotate PDF and Save Permanently", path: "/rotate-pdf" },
+      { title: "Remove Pages from PDF Free", path: "/delete-pages" },
+      { title: "Flatten PDF for Printing", path: "/flatten-pdf" },
+      { title: "Add Watermark to PDF Free", path: "/add-watermark" }
     ],
     relatedCategories: [
       { name: "Convert PDF Tools", path: "/convert-pdf" },
@@ -225,10 +227,10 @@ Every security tool is free to use with no registration required. Whether you ar
       { title: "Redact Sensitive Information in PDFs", path: "/blog/redact-sensitive-pdf-information" },
       { title: "How to Unlock PDF and Remove Password", path: "/blog/unlock-pdf-remove-password" },
       { title: "How to Flatten PDF Forms", path: "/blog/how-to-flatten-pdf" },
-      { title: "Password Protect PDF Free (AES-256)", path: "/tools/protect-pdf-with-password-free" },
-      { title: "Unlock PDF for Editing Free", path: "/tools/unlock-pdf-for-editing" },
-      { title: "Flatten PDF for Printing Free", path: "/tools/flatten-pdf-for-printing" },
-      { title: "Add Watermark to PDF Free", path: "/tools/add-watermark-to-pdf-free" }
+      { title: "Password Protect PDF Free (AES-256)", path: "/protect-pdf" },
+      { title: "Unlock PDF for Editing Free", path: "/unlock-pdf" },
+      { title: "Flatten PDF for Printing Free", path: "/flatten-pdf" },
+      { title: "Add Watermark to PDF Free", path: "/add-watermark" }
     ],
     relatedCategories: [
       { name: "Edit PDF Tools", path: "/edit-pdf-tools" },
@@ -254,6 +256,7 @@ Image format conversion is equally important. WebP offers superior compression f
 Every image tool processes files in your browser or on our secure servers with automatic deletion. No registration is needed, no watermarks are added, and there are no limits on the number of images you can process. Our tools work on any device with a web browser, making professional image editing accessible to everyone.`,
     tools: [
       { name: "Image Compressor", path: "/image-compressor", description: "Reduce image file sizes by up to 80% while maintaining visual quality. Supports JPG, PNG, and WebP" },
+      { name: "PDF Viewer", path: "/pdf-viewer", description: "View and read PDF files directly in your browser with no download or software required" },
       { name: "Resize Image", path: "/resize-image", description: "Scale images to exact pixel dimensions or by percentage. Perfect for social media and web optimization" },
       { name: "Crop Image", path: "/crop-image", description: "Trim images to remove unwanted areas with precise selection tools" },
       { name: "Rotate Image", path: "/rotate-image", description: "Rotate images 90, 180, or 270 degrees, or flip horizontally and vertically" },
@@ -275,8 +278,8 @@ Every image tool processes files in your browser or on our secure servers with a
       { title: "Convert Images to PDF Free", path: "/blog/convert-images-to-pdf" },
       { title: "Batch Convert Images to PDF", path: "/blog/batch-convert-images-to-pdf" },
       { title: "How to Compress PDF for Email", path: "/blog/how-to-compress-pdf-for-email" },
-      { title: "Convert PDF to JPG High Quality", path: "/tools/pdf-to-jpg-high-quality" },
-      { title: "Convert All PDF Pages to JPG", path: "/tools/convert-pdf-to-jpg-all-pages" }
+      { title: "Convert PDF to JPG High Quality", path: "/pdf-to-jpg" },
+      { title: "Convert All PDF Pages to JPG", path: "/pdf-to-jpg" }
     ],
     relatedCategories: [
       { name: "Convert PDF Tools", path: "/convert-pdf" },
