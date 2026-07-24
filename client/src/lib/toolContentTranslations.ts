@@ -1,31 +1,130 @@
+export interface ToolUseCases {
+  title: (toolName: string) => string;
+  desc: string;
+  items: string[];
+}
+
+export interface ToolTroubleshooting {
+  title: string;
+  issues: { problem: string; solution: string }[];
+}
+
+// Per-tool translated content. Only useCases/troubleshooting are tool-specific —
+// about/faqs/security are legitimately generic across tools (GDPR messaging,
+// "is this safe" FAQ, etc.) and stay at the language level below.
+export interface ToolSpecificTranslation {
+  useCases: ToolUseCases;
+  troubleshooting: ToolTroubleshooting;
+}
+
 export interface TranslatedToolContent {
   about: (toolName: string) => string;
-  useCases: {
-    title: (toolName: string) => string;
-    desc: string;
-    items: string[];
-  };
   tutorial: {
     title: (toolName: string) => string;
     steps: { step: string; detail: string }[];
   };
   faqs: (toolName: string) => { question: string; answer: string }[];
-  troubleshooting: {
-    title: string;
-    issues: { problem: string; solution: string }[];
-  };
   security: {
     title: string;
     content: string;
     points: string[];
   };
+
+  // NEW: tool-specific useCases/troubleshooting, keyed by tool id (e.g. "add-watermark").
+  // Populate incrementally — any tool not present here falls back to
+  // defaultUseCases/defaultTroubleshooting below, so pages never break
+  // while content is still being written.
+  tools?: Partial<Record<string, ToolSpecificTranslation>>;
+
+  // Fallback used only for tools not yet present in `tools` above.
+  // Kept generic on purpose — this is the safety net, not the target state.
+  defaultUseCases: ToolUseCases;
+  defaultTroubleshooting: ToolTroubleshooting;
 }
 
 export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolContent>> = {
 
   es: {
     about: (n) => `Nuestra herramienta ${n} es completamente gratuita y funciona directamente en tu navegador sin necesidad de instalar ningún software. Todos los archivos se protegen con cifrado SSL de 256 bits y se eliminan automáticamente tras el procesamiento, en plena conformidad con el RGPD europeo y la LOPD española. Miles de profesionales en España, México, Argentina, Colombia y Chile confían en PDF HUB 24 para gestionar sus documentos con rapidez y total seguridad.`,
-    useCases: {
+    tools: {
+      "add-watermark": {
+        useCases: {
+          title: (n) => `¿Cuándo añadir una marca de agua a tu PDF?`,
+          desc: "Marcar tus documentos PDF sirve para muchos propósitos distintos, desde proteger tu trabajo hasta indicar su estado:",
+          items: [
+            "Marcar documentos como Confidencial o Uso Interno",
+            "Añadir el logotipo de tu empresa a propuestas e informes",
+            "Sellar como Borrador los documentos pendientes de aprobación",
+            "Identificar PDFs con tu nombre o el de tu negocio",
+            "Añadir avisos de copyright a trabajos creativos",
+            "Marcar documentos según su estado de aprobación",
+            "Proteger imágenes y diseños de un uso no autorizado",
+            "Añadir sellos de fecha a documentos con vigencia limitada",
+          ],
+        },
+        troubleshooting: {
+          title: "Problemas frecuentes con la marca de agua — y cómo resolverlos",
+          issues: [
+            { problem: "La marca de agua se ve en pantalla pero desaparece al imprimir", solution: "Suele deberse a que la marca se guardó como anotación y no como parte del contenido de la página. Solución: pasa el PDF por nuestra herramienta Aplanar PDF para fusionar la marca de agua de forma permanente con el contenido. Un PDF aplanado imprimirá la marca de agua de forma fiable en cualquier impresora." },
+            { problem: "Añadí una marca «CONFIDENCIAL» pero alguien la eliminó editando el PDF", solution: "Las marcas de agua añadidas como anotaciones se pueden quitar con un editor de PDF básico. Para dificultarlo: usa la opacidad más alta y aplana el PDF con nuestra herramienta Aplanar PDF, que integra la marca como contenido permanente de la página. Para documentos sensibles, combina la marca de agua con protección por contraseña." },
+            { problem: "El texto de la marca de agua no tiene la fuente o el estilo que quiero", solution: "Para un control total sobre el aspecto, crea tu marca de agua como imagen: escribe el texto en un editor gráfico (incluso Word o PowerPoint sirve), dale el estilo exacto que buscas, expórtalo como PNG con fondo transparente y súbelo como marca de imagen en lugar de usar la opción de texto." },
+            { problem: "La marca de agua tiene un tamaño distinto en cada página", solution: "Si tu PDF mezcla páginas A4, A5 y tamaños personalizados, una marca de tamaño fijo se verá desproporcionada. Usa un ajuste basado en porcentaje si está disponible, o normaliza antes todas las páginas al mismo tamaño con nuestra herramienta Redimensionar PDF." },
+          ],
+        },
+      },
+      "compress": {
+        useCases: {
+          title: (n) => `¿Cuándo comprimir tus archivos PDF?`,
+          desc: "Comprimir un PDF es imprescindible en muchas situaciones habituales. Estos son los casos donde más se nota la diferencia:",
+          items: [
+            "Adjuntos de correo que superan el límite de 25 MB en Gmail o Outlook",
+            "Subida de documentos a sedes electrónicas y portales con límite de tamaño",
+            "Envío de archivos por WhatsApp, Telegram o Messenger",
+            "Liberar espacio de almacenamiento en tu ordenador, móvil o nube",
+            "Acelerar la carga de PDFs en páginas web o blogs",
+            "Enviar candidaturas de trabajo con CV y portafolio en PDF",
+            "Enviar facturas, contratos y documentos legales a clientes",
+            "Archivar documentos antiguos para ahorrar espacio en disco",
+          ],
+        },
+        troubleshooting: {
+          title: "Por qué tu PDF sigue pesando demasiado — y cómo solucionarlo de verdad",
+          issues: [
+            { problem: "Lo comprimí y sigue pesando más de 10 MB — el correo lo sigue rechazando", solution: "El peso suele venir de las imágenes, no del texto. Prueba primero con compresión Alta. Si sigue siendo demasiado grande, probablemente el PDF contiene muchas páginas escaneadas o fotos en alta resolución: usa nuestra herramienta Dividir PDF para separarlo en 2-3 documentos más pequeños que sí pasarán el límite de 25 MB de Gmail." },
+            { problem: "Las imágenes se ven borrosas o pixeladas tras comprimir — ¿cómo mantengo la calidad?", solution: "La compresión Alta reduce la resolución de imagen de ~150 a ~72 DPI, adecuado para pantalla pero se nota al imprimir. Usa compresión Media para cualquier documento que se vaya a imprimir: reduce el tamaño un 50-60% sin apenas diferencia visible en pantalla." },
+            { problem: "Un PDF con fuentes incrustadas comprime menos de lo esperado", solution: "El texto en sí ocupa muy poco y se comprime mínimamente. Si tu PDF es sobre todo texto (contratos, informes), ya era bastante eficiente de partida. Las mayores reducciones vienen de las imágenes — un contrato de 5 MB solo de texto puede quedar en 4,2 MB, y es normal." },
+            { problem: "El PDF comprimido pesa igual o más que el original", solution: "Significa que el original ya estaba optimizado — algo habitual en PDFs exportados desde Adobe Acrobat o Word, que aplican su propia compresión. En ese caso, la herramienta devuelve el archivo original sin alterar. Si necesitas un resultado más ligero, prueba a dividir el PDF y compartir solo las páginas relevantes." },
+          ],
+        },
+      },
+      "merge": {
+        useCases: {
+          title: (n) => `¿Cuándo necesitas unir archivos PDF?`,
+          desc: "Unir PDFs es esencial para organizar documentos de forma eficiente. Estos son los casos más habituales:",
+          items: [
+            "Combinar CV, carta de presentación y portafolio en una sola candidatura",
+            "Unir varias páginas de facturas en un único documento de cobro",
+            "Recomponer las páginas escaneadas de un documento de varias hojas",
+            "Crear informes completos a partir de capítulos individuales",
+            "Juntar las páginas de un contrato con su página de firmas",
+            "Combinar DNI, certificados y formularios para trámites y solicitudes",
+            "Unir diapositivas de una presentación exportadas como PDFs sueltos",
+            "Agrupar colecciones de fotos o bocetos de diseño en un solo archivo",
+          ],
+        },
+        troubleshooting: {
+          title: "Problemas frecuentes al unir PDFs — soluciones concretas",
+          issues: [
+            { problem: "El archivo unido pesa 80 MB — ¿cómo lo bajo de 25 MB para enviarlo por correo?", solution: "Unir archivos no los comprime, solo los junta: el resultado pesa la suma de todos los originales. Después de unirlos, pasa el resultado por nuestra herramienta Comprimir PDF. Si sigue pesando demasiado, identifica qué archivo de origen es el más pesado (normalmente páginas escaneadas), compímelo por separado primero y luego únelos." },
+            { problem: "Las páginas quedan en el orden equivocado en el archivo final", solution: "El orden de unión sigue el orden en que aparecen los archivos en la lista de subida, no el alfabético. Antes de unir, arrastra los archivos hasta el orden que quieras. Si ya descargaste el PDF con el orden incorrecto, no hace falta empezar de nuevo: usa nuestra herramienta Reordenar Páginas sobre el archivo ya unido." },
+            { problem: "Uno de mis PDFs se sube pero desaparece de la lista", solution: "Normalmente significa que el archivo tiene contraseña. Incluso una contraseña solo de permisos puede bloquear la unión. Pasa el archivo problemático primero por nuestra herramienta Desbloquear PDF. Si el archivo viene de una aplicación poco común, prueba a abrirlo en el navegador e «imprimir a PDF» para generar una copia limpia." },
+            { problem: "Algunas páginas cambian de tipografía después de unir los archivos", solution: "Cada PDF lleva sus propias fuentes incrustadas, y la herramienta de unión las respeta tal cual sin normalizarlas. Si una página se ve distinta, el PDF de origen probablemente usaba una fuente no estándar. La solución es aplanar antes el PDF problemático con nuestra herramienta Aplanar PDF y luego unirlo." },
+          ],
+        },
+      },
+    },
+
+    defaultUseCases: {
       title: (n) => `¿Para qué se usa ${n}?`,
       desc: "Ideal para particulares, autónomos, estudiantes, administraciones públicas y empresas que gestionan documentos PDF en su día a día.",
       items: [
@@ -51,9 +150,9 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
       { question: "¿Necesito registrarme o crear una cuenta?", answer: "No. PDF HUB 24 es 100 % gratuito y no requiere ningún registro. Puedes usar todas las herramientas sin límites, sin marcas de agua y sin necesidad de proporcionar tu dirección de correo." },
       { question: "¿Cumple con el RGPD y la LOPD?", answer: "Sí. Operamos en pleno cumplimiento con el Reglamento General de Protección de Datos (RGPD) de la Unión Europea y la Ley Orgánica de Protección de Datos y Garantía de Derechos Digitales (LOPDGDD) española." },
       { question: `¿Funciona ${n} en dispositivos móviles?`, answer: "Sí. Puedes acceder a PDF HUB 24 desde cualquier dispositivo: ordenadores, tablets y smartphones. La interfaz se adapta perfectamente a todas las resoluciones de pantalla." },
-      { question: "¿Hay límite de tamaño en los archivos?", answer: "Aceptamos archivos de hasta 100 MB en la mayoría de herramientas. Para archivos de mayor tamaño, te recomendamos comprimirlos primero con nuestra herramienta de compresión PDF." },
+      { question: "¿Hay límite de tamaño en los archivos?", answer: "Aceptamos archivos de hasta 50 MB en la mayoría de herramientas. Para archivos de mayor tamaño, te recomendamos comprimirlos primero con nuestra herramienta de compresión PDF." },
     ],
-    troubleshooting: {
+    defaultTroubleshooting: {
       title: "Solución de problemas habituales",
       issues: [
         { problem: "El archivo PDF no se carga o aparece un mensaje de error", solution: "Comprueba que el archivo no esté protegido con contraseña ni dañado. Si está cifrado, utiliza primero nuestra herramienta para desbloquear PDFs y vuelve a intentarlo." },
@@ -69,7 +168,11 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
 
   ar: {
     about: (n) => `تتيح لك أداة ${n} معالجة ملفاتك بشكل احترافي وسريع مباشرةً من متصفحك دون الحاجة إلى تثبيت أي برنامج أو إنشاء حساب. نحمي ملفاتك بتشفير SSL بقوة 256 بت ونحذفها تلقائياً بعد المعالجة وفقاً للوائح حماية البيانات الدولية. يثق بـ PDF HUB 24 آلاف المستخدمين في المملكة العربية السعودية ومصر والإمارات والأردن وسائر الدول العربية للتعامل مع وثائقهم اليومية بثقة وأمان.`,
-    useCases: {
+    tools: {
+      // TODO: add tool-specific entries here (see add-watermark/compress/merge in `es` for the pattern)
+    },
+
+    defaultUseCases: {
       title: (n) => `متى تستخدم ${n}؟`,
       desc: "هذه الأداة مثالية للأفراد والطلاب والشركات والمؤسسات الحكومية التي تتعامل مع ملفات PDF بشكل يومي في بيئة العمل.",
       items: [
@@ -97,7 +200,7 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
       { question: `هل تعمل ${n} على الأجهزة المحمولة؟`, answer: "نعم. يمكنك الوصول إلى PDF HUB 24 من أي جهاز سواء كان حاسوباً أو لوحياً أو هاتفاً ذكياً. تتكيف الواجهة تلقائياً مع جميع أحجام الشاشات بما فيها شاشات الهواتف الصغيرة." },
       { question: "هل هناك حد أقصى لحجم الملفات؟", answer: "نقبل ملفات يصل حجمها إلى 100 ميجابايت في معظم الأدوات. إذا كان ملفك أكبر من ذلك، يمكنك استخدام أداة ضغط PDF لتصغيره أولاً ثم معالجته بسهولة." },
     ],
-    troubleshooting: {
+    defaultTroubleshooting: {
       title: "حل المشكلات الشائعة",
       issues: [
         { problem: "تعذّر رفع الملف أو ظهور رسالة خطأ", solution: "تأكد من أن الملف غير محمي بكلمة مرور وغير تالف. إذا كان مشفراً، استخدم أداة إلغاء حماية PDF أولاً ثم أعد المحاولة." },
@@ -113,7 +216,11 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
 
   hi: {
     about: (n) => `${n} टूल बिना कोई सॉफ़्टवेयर इंस्टॉल किए सीधे आपके ब्राउज़र में काम करता है। आपकी फ़ाइलें 256-बिट SSL एन्क्रिप्शन से सुरक्षित रहती हैं और प्रोसेसिंग के बाद स्वचालित रूप से डिलीट हो जाती हैं — भारत के डिजिटल पर्सनल डेटा प्रोटेक्शन एक्ट 2023 (DPDPA) और अंतरराष्ट्रीय मानकों के अनुरूप। PDF HUB 24 पर भारत, पाकिस्तान और दक्षिण एशिया के हजारों छात्रों, सरकारी कर्मचारियों और व्यवसायियों का भरोसा है।`,
-    useCases: {
+    tools: {
+      // TODO: add tool-specific entries here (see add-watermark/compress/merge in `es` for the pattern)
+    },
+
+    defaultUseCases: {
       title: (n) => `${n} का उपयोग कब करें?`,
       desc: "यह टूल व्यक्तिगत उपयोगकर्ताओं, छात्रों, सरकारी कर्मचारियों, वकीलों और व्यवसायों के लिए अत्यंत उपयोगी है।",
       items: [
@@ -139,9 +246,9 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
       { question: "क्या मुझे अकाउंट बनाना होगा?", answer: "नहीं। PDF HUB 24 पूरी तरह मुफ़्त है और किसी रजिस्ट्रेशन की ज़रूरत नहीं। बिना किसी सीमा के, बिना वॉटरमार्क के, और बिना ईमेल दिए सभी टूल का उपयोग करें।" },
       { question: "क्या यह DPDPA 2023 का पालन करता है?", answer: "हाँ। हम भारत के डिजिटल पर्सनल डेटा प्रोटेक्शन एक्ट 2023 (DPDPA) और IT Act 2000 के प्रावधानों के साथ-साथ अंतरराष्ट्रीय GDPR मानकों का पालन करते हैं।" },
       { question: `${n} मोबाइल पर काम करता है?`, answer: "हाँ। PDF HUB 24 Android और iOS स्मार्टफोन, टैबलेट और कंप्यूटर — सभी डिवाइस पर बेहतरीन तरीके से काम करता है। किसी ऐप को इंस्टॉल करने की ज़रूरत नहीं।" },
-      { question: "फ़ाइल का अधिकतम आकार क्या है?", answer: "अधिकांश टूल में 100 MB तक की फ़ाइलें स्वीकार की जाती हैं। बड़ी फ़ाइलों के लिए पहले हमारे PDF Compress टूल का उपयोग करके फ़ाइल का आकार कम करें।" },
+      { question: "फ़ाइल का अधिकतम आकार क्या है?", answer: "अधिकांश टूल में 50 MB तक की फ़ाइलें स्वीकार की जाती हैं। बड़ी फ़ाइलों के लिए पहले हमारे PDF Compress टूल का उपयोग करके फ़ाइल का आकार कम करें।" },
     ],
-    troubleshooting: {
+    defaultTroubleshooting: {
       title: "सामान्य समस्याओं का समाधान",
       issues: [
         { problem: "फ़ाइल अपलोड नहीं हो रही या त्रुटि दिख रही है", solution: "जाँचें कि फ़ाइल पासवर्ड से सुरक्षित या खराब तो नहीं है। पासवर्ड वाली PDF के लिए पहले Unlock PDF टूल का उपयोग करें।" },
@@ -157,7 +264,11 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
 
   fr: {
     about: (n) => `L'outil ${n} fonctionne entièrement dans votre navigateur, sans installation de logiciel ni création de compte. Vos fichiers sont protégés par un chiffrement SSL 256 bits et supprimés automatiquement après traitement, en pleine conformité avec le RGPD et la loi française Informatique et Libertés. Des milliers d'utilisateurs en France, en Belgique, en Suisse, au Canada et dans toute la Francophonie font confiance à PDF HUB 24 pour gérer leurs documents professionnels et personnels.`,
-    useCases: {
+    tools: {
+      // TODO: add tool-specific entries here (see add-watermark/compress/merge in `es` for the pattern)
+    },
+
+    defaultUseCases: {
       title: (n) => `À quoi sert ${n} ?`,
       desc: "Conçu pour les particuliers, les professionnels libéraux, les administrations publiques et les entreprises qui traitent des fichiers PDF au quotidien.",
       items: [
@@ -185,7 +296,7 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
       { question: `Puis-je utiliser ${n} sur mobile ?`, answer: "Oui. PDF HUB 24 fonctionne parfaitement sur tous les appareils : ordinateurs, tablettes et smartphones. L'interface s'adapte à toutes les tailles d'écran sans nécessiter d'application dédiée." },
       { question: "Y a-t-il une limite de taille de fichier ?", answer: "Nous acceptons des fichiers jusqu'à 100 Mo pour la plupart des outils. Pour les fichiers plus volumineux, commencez par les compresser avec notre outil de compression PDF." },
     ],
-    troubleshooting: {
+    defaultTroubleshooting: {
       title: "Résolution des problèmes courants",
       issues: [
         { problem: "Le fichier PDF ne se charge pas ou une erreur s'affiche", solution: "Vérifiez que le fichier n'est pas protégé par un mot de passe et qu'il n'est pas corrompu. Si le PDF est chiffré, utilisez d'abord notre outil de déverrouillage, puis réessayez." },
@@ -201,7 +312,85 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
 
   pt: {
     about: (n) => `A ferramenta ${n} funciona diretamente no seu navegador, sem precisar instalar nenhum software ou criar uma conta. Seus arquivos são protegidos com criptografia SSL de 256 bits e excluídos automaticamente após o processamento, em total conformidade com a Lei Geral de Proteção de Dados (LGPD) do Brasil. Milhares de usuários no Brasil, Portugal, Angola e em toda a comunidade lusófona confiam no PDF HUB 24 para gerenciar seus documentos com rapidez e segurança.`,
-    useCases: {
+    tools: {
+      "add-watermark": {
+        useCases: {
+          title: (n) => `Quando adicionar marca d'água a um PDF?`,
+          desc: "Marcar seus documentos PDF serve para diversos propósitos, desde proteger seu trabalho até indicar o status do arquivo:",
+          items: [
+            "Marcar documentos como Confidencial ou Uso Interno",
+            "Adicionar a logomarca da empresa a propostas e relatórios",
+            "Carimbar como Rascunho documentos pendentes de aprovação",
+            "Identificar PDFs com seu nome ou o da sua empresa",
+            "Adicionar avisos de direitos autorais a trabalhos criativos",
+            "Marcar documentos conforme o status de aprovação",
+            "Proteger imagens e designs contra uso não autorizado",
+            "Adicionar carimbo de data em documentos com prazo de validade",
+          ],
+        },
+        troubleshooting: {
+          title: "Problemas comuns com marca d'água — e como resolver",
+          issues: [
+            { problem: "A marca d'água aparece na tela mas some ao imprimir", solution: "Geralmente acontece porque a marca foi salva como anotação, e não como parte do conteúdo da página. Solução: passe o PDF pela nossa ferramenta Achatar PDF para fundir a marca d'água permanentemente ao conteúdo. Um PDF achatado imprime a marca d'água de forma confiável em qualquer impressora." },
+            { problem: "Adicionei uma marca 'CONFIDENCIAL' mas alguém removeu editando o PDF", solution: "Marcas d'água adicionadas como anotações podem ser removidas com um editor de PDF básico. Para dificultar: use a opacidade máxima e achate o PDF com nossa ferramenta Achatar PDF, que incorpora a marca como conteúdo permanente da página. Para documentos sensíveis, combine a marca d'água com proteção por senha." },
+            { problem: "O texto da marca d'água não está na fonte ou estilo que eu quero", solution: "Para controle total da aparência, crie sua marca d'água como imagem: digite o texto em um editor gráfico (até o Word ou PowerPoint servem), estilize como quiser, exporte como PNG com fundo transparente e faça upload dessa imagem em vez de usar a opção de texto." },
+            { problem: "A marca d'água tem um tamanho diferente em cada página", solution: "Se seu PDF mistura páginas A4, A5 e tamanhos personalizados, uma marca de tamanho fixo vai aparecer desproporcional. Use um ajuste baseado em porcentagem se disponível, ou normalize antes todas as páginas para o mesmo tamanho com nossa ferramenta Redimensionar PDF." },
+          ],
+        },
+      },
+      "compress": {
+        useCases: {
+          title: (n) => `Quando comprimir seus arquivos PDF?`,
+          desc: "Comprimir um PDF é essencial em muitas situações do dia a dia. Veja os casos em que isso faz mais diferença:",
+          items: [
+            "Anexos de e-mail que ultrapassam o limite de 25 MB do Gmail ou Outlook",
+            "Envio de documentos a portais governamentais com limite de tamanho",
+            "Compartilhamento de arquivos via WhatsApp, Telegram ou Messenger",
+            "Liberar espaço de armazenamento no computador, celular ou nuvem",
+            "Acelerar o carregamento de PDFs em sites e blogs",
+            "Enviar candidaturas de emprego com currículo e portfólio em PDF",
+            "Enviar faturas, contratos e documentos jurídicos a clientes",
+            "Arquivar documentos antigos para economizar espaço em disco",
+          ],
+        },
+        troubleshooting: {
+          title: "Por que seu PDF continua pesado — e como resolver de verdade",
+          issues: [
+            { problem: "Comprimi e ainda passa de 10 MB — o e-mail continua recusando", solution: "O peso geralmente vem das imagens, não do texto. Tente primeiro a compressão Alta. Se ainda estiver grande, o PDF provavelmente tem muitas páginas escaneadas ou fotos em alta resolução: use nossa ferramenta Dividir PDF para separar em 2-3 documentos menores que passarão no limite de 25 MB do Gmail." },
+            { problem: "As imagens ficam borradas ou pixeladas após comprimir — como manter a qualidade?", solution: "A compressão Alta reduz a resolução de imagem de ~150 para ~72 DPI, ok para tela mas visível na impressão. Use compressão Média para qualquer documento que será impresso: reduz o tamanho em 50-60% com pouquíssima diferença visível na tela." },
+            { problem: "Um PDF com fontes incorporadas comprime menos do que eu esperava", solution: "O texto em si ocupa muito pouco espaço e se comprime minimamente. Se seu PDF é majoritariamente texto (contratos, relatórios), ele já era bastante eficiente. Os maiores ganhos vêm das imagens — um contrato de 5 MB só de texto pode ficar em 4,2 MB, e isso é normal." },
+            { problem: "O PDF comprimido ficou do mesmo tamanho ou maior que o original", solution: "Isso significa que o original já estava otimizado — comum em PDFs exportados do Adobe Acrobat ou Word, que aplicam sua própria compressão. Nesse caso, a ferramenta devolve o arquivo original sem alterações. Se precisar de um resultado menor, tente dividir o PDF e compartilhar só as páginas relevantes." },
+          ],
+        },
+      },
+      "merge": {
+        useCases: {
+          title: (n) => `Quando você precisa juntar arquivos PDF?`,
+          desc: "Juntar PDFs é essencial para organizar documentos com eficiência. Veja os casos mais comuns:",
+          items: [
+            "Combinar currículo, carta de apresentação e portfólio em uma candidatura só",
+            "Juntar várias páginas de faturas em um único documento de cobrança",
+            "Recompor as páginas escaneadas de um documento de várias folhas",
+            "Criar relatórios completos a partir de capítulos individuais",
+            "Juntar as páginas de um contrato com a página de assinaturas",
+            "Combinar RG, certidões e formulários para trâmites e solicitações",
+            "Juntar slides de apresentação exportados como PDFs separados",
+            "Agrupar coleções de fotos ou rascunhos de design em um único arquivo",
+          ],
+        },
+        troubleshooting: {
+          title: "Problemas comuns ao juntar PDFs — soluções concretas",
+          issues: [
+            { problem: "O arquivo juntado ficou com 80 MB — como reduzir para menos de 25 MB para enviar por e-mail?", solution: "Juntar arquivos não comprime, apenas une: o resultado pesa a soma de todos os originais. Depois de juntar, passe o resultado pela nossa ferramenta Comprimir PDF. Se ainda estiver muito grande, identifique qual arquivo de origem é o mais pesado (geralmente páginas escaneadas), comprima-o separadamente primeiro e depois junte." },
+            { problem: "As páginas ficam na ordem errada no arquivo final", solution: "A ordem de junção segue a ordem em que os arquivos aparecem na lista de upload, não a ordem alfabética. Antes de juntar, arraste os arquivos até a ordem desejada. Se você já baixou o PDF com a ordem errada, não precisa recomeçar: use nossa ferramenta Reordenar Páginas no arquivo já juntado." },
+            { problem: "Um dos meus PDFs faz upload mas some da lista", solution: "Geralmente significa que o arquivo tem senha. Mesmo uma senha só de permissões pode bloquear a junção. Passe o arquivo problemático primeiro pela nossa ferramenta Desbloquear PDF. Se o arquivo veio de um aplicativo incomum, tente abri-lo no navegador e 'imprimir como PDF' para gerar uma cópia limpa." },
+            { problem: "Algumas páginas mudam de fonte depois de juntar os arquivos", solution: "Cada PDF traz suas próprias fontes incorporadas, e a ferramenta de junção as preserva sem normalizar. Se uma página parece diferente, o PDF de origem provavelmente usava uma fonte não padrão. A solução é achatar antes o PDF problemático com nossa ferramenta Achatar PDF e depois juntá-lo." },
+          ],
+        },
+      },
+    },
+
+    defaultUseCases: {
       title: (n) => `Para que serve ${n}?`,
       desc: "Ideal para pessoas físicas, autônomos, empresas, escritórios de advocacia e órgãos públicos que lidam com arquivos PDF no dia a dia.",
       items: [
@@ -227,9 +416,9 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
       { question: "Preciso criar uma conta ou me cadastrar?", answer: "Não. O PDF HUB 24 é 100% gratuito e não exige nenhum cadastro. Você pode usar todas as ferramentas sem limites, sem marcas d'água e sem precisar informar seu e-mail." },
       { question: `${n} está em conformidade com a LGPD?`, answer: "Sim. Operamos em total conformidade com a Lei Geral de Proteção de Dados (LGPD) — Lei nº 13.709/2018 — e com as normas internacionais do GDPR europeu, garantindo a máxima proteção dos seus dados pessoais." },
       { question: `Posso usar ${n} no celular?`, answer: "Sim. O PDF HUB 24 funciona perfeitamente em celulares Android e iOS, tablets e computadores. A interface se adapta automaticamente ao tamanho da tela sem necessidade de instalar nenhum aplicativo." },
-      { question: "Qual é o tamanho máximo do arquivo?", answer: "Aceitamos arquivos de até 100 MB na maioria das ferramentas. Para arquivos maiores, recomendamos usar primeiro a ferramenta de compressão de PDF disponível em nossa plataforma." },
+      { question: "Qual é o tamanho máximo do arquivo?", answer: "Aceitamos arquivos de até 50 MB na maioria das ferramentas. Para arquivos maiores, recomendamos usar primeiro a ferramenta de compressão de PDF disponível em nossa plataforma." },
     ],
-    troubleshooting: {
+    defaultTroubleshooting: {
       title: "Solução de problemas comuns",
       issues: [
         { problem: "O arquivo PDF não carrega ou exibe uma mensagem de erro", solution: "Verifique se o arquivo não está protegido por senha ou corrompido. Se estiver criptografado, use primeiro a ferramenta para desbloquear PDF e depois tente novamente." },
@@ -245,7 +434,11 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
 
   de: {
     about: (n) => `Das ${n}-Tool funktioniert direkt in Ihrem Browser — ohne Software-Installation oder Kontoerstellung. Alle Dateien werden mit 256-Bit-SSL-Verschlüsselung gesichert und nach der Verarbeitung automatisch gelöscht, in vollständiger Konformität mit der DSGVO und dem deutschen Bundesdatenschutzgesetz (BDSG). Tausende Nutzer in Deutschland, Österreich und der Schweiz vertrauen PDF HUB 24 täglich für ihre geschäftlichen und privaten Dokumente.`,
-    useCases: {
+    tools: {
+      // TODO: add tool-specific entries here (see add-watermark/compress/merge in `es` for the pattern)
+    },
+
+    defaultUseCases: {
       title: (n) => `Wofür wird ${n} verwendet?`,
       desc: "Dieses Tool ist ideal für Privatpersonen, Freiberufler, Unternehmen und Behörden, die täglich mit PDF-Dokumenten arbeiten.",
       items: [
@@ -271,9 +464,9 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
       { question: "Muss ich ein Konto erstellen oder mich registrieren?", answer: "Nein. PDF HUB 24 ist vollständig kostenlos und erfordert keine Registrierung. Nutzen Sie alle Tools ohne Einschränkungen, ohne Wasserzeichen und ohne Angabe Ihrer E-Mail-Adresse." },
       { question: `Ist ${n} DSGVO-konform?`, answer: "Ja. Wir betreiben unsere Dienste in vollständiger Konformität mit der Datenschutz-Grundverordnung (DSGVO) der Europäischen Union sowie dem deutschen Bundesdatenschutzgesetz (BDSG n. F.)." },
       { question: `Funktioniert ${n} auf Mobilgeräten?`, answer: "Ja. PDF HUB 24 ist vollständig responsiv und funktioniert auf Smartphones, Tablets und Computern mit jedem modernen Browser — ohne App-Installation." },
-      { question: "Gibt es eine maximale Dateigröße?", answer: "Wir akzeptieren Dateien bis zu 100 MB bei den meisten Tools. Für größere Dateien empfehlen wir, diese zunächst mit unserem PDF-Komprimierungstool zu verkleinern." },
+      { question: "Gibt es eine maximale Dateigröße?", answer: "Wir akzeptieren Dateien bis zu 50 MB bei den meisten Tools. Für größere Dateien empfehlen wir, diese zunächst mit unserem PDF-Komprimierungstool zu verkleinern." },
     ],
-    troubleshooting: {
+    defaultTroubleshooting: {
       title: "Häufige Probleme und Lösungen",
       issues: [
         { problem: "Die PDF-Datei lässt sich nicht hochladen oder eine Fehlermeldung erscheint", solution: "Prüfen Sie, ob die Datei passwortgeschützt oder beschädigt ist. Bei verschlüsselten PDFs nutzen Sie zunächst unser PDF-Entsperrungstool und versuchen Sie es danach erneut." },
@@ -289,7 +482,11 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
 
   zh: {
     about: (n) => `${n} 工具完全在浏览器中运行，无需安装任何软件或注册账号。我们采用256位SSL加密技术保护您的文件，处理完成后自动删除，完全符合《个人信息保护法》（PIPL）的要求。数以千计的用户在中国大陆、香港、台湾、新加坡和全球华人社区每天使用PDF HUB 24处理他们的PDF文件，快速、安全、完全免费。`,
-    useCases: {
+    tools: {
+      // TODO: add tool-specific entries here (see add-watermark/compress/merge in `es` for the pattern)
+    },
+
+    defaultUseCases: {
       title: (n) => `${n} 的适用场景`,
       desc: "适合个人用户、学生、企业员工、律师和政府工作人员在日常工作和学习中处理各类PDF文件。",
       items: [
@@ -315,9 +512,9 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
       { question: "需要注册账户吗？", answer: "不需要。PDF HUB 24 完全免费，无需注册、无需填写任何个人信息。您可以无限制地使用所有工具，无水印，随时可用。" },
       { question: `${n} 符合《个人信息保护法》吗？`, answer: "是的。我们完全遵守中国《个人信息保护法》（PIPL）及《数据安全法》的相关要求，同时符合欧盟GDPR等国际数据保护标准，确保您的个人信息和文件内容的安全。" },
       { question: `${n} 支持手机使用吗？`, answer: "支持。PDF HUB 24 完全响应式设计，可在iPhone、Android手机、iPad及各种电脑上流畅使用，支持微信内置浏览器和所有主流浏览器。" },
-      { question: "文件大小有限制吗？", answer: "大多数工具支持最大100MB的文件。如果您的文件较大，建议先使用我们的PDF压缩工具减小文件大小后再进行处理。" },
+      { question: "文件大小有限制吗？", answer: "大多数工具支持最大50MB的文件。如果您的文件较大，建议先使用我们的PDF压缩工具减小文件大小后再进行处理。" },
     ],
-    troubleshooting: {
+    defaultTroubleshooting: {
       title: "常见问题解决方案",
       issues: [
         { problem: "文件无法上传或出现错误提示", solution: "请检查文件是否设有密码保护或文件已损坏。如果PDF加密，请先使用我们的PDF解锁工具移除密码，然后重新尝试上传。" },
@@ -333,7 +530,11 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
 
   ja: {
     about: (n) => `${n}ツールは、ソフトウェアのインストールやアカウント登録なしに、ブラウザ上で直接ご利用いただけます。ファイルは256ビットSSL暗号化で保護され、処理完了後に自動削除されます。個人情報の保護に関する法律（個人情報保護法）に完全準拠しており、日本全国の個人ユーザー・企業・官公庁の数千人が毎日PDF HUB 24を信頼してご利用いただいています。`,
-    useCases: {
+    tools: {
+      // TODO: add tool-specific entries here (see add-watermark/compress/merge in `es` for the pattern)
+    },
+
+    defaultUseCases: {
       title: (n) => `${n}の活用シーン`,
       desc: "個人ユーザー、学生、ビジネスパーソン、士業、公務員など、日常的にPDFファイルを扱うすべての方に最適なツールです。",
       items: [
@@ -359,9 +560,9 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
       { question: "アカウント登録は必要ですか？", answer: "必要ありません。PDF HUB 24は完全無料で、登録不要です。すべてのツールを制限なく、透かしなし、メールアドレス不要でご利用いただけます。" },
       { question: `${n}は個人情報保護法に対応していますか？`, answer: "はい。日本の個人情報の保護に関する法律（個人情報保護法・改正APPI）および欧州GDPRを含む国際的なデータ保護基準に完全準拠して運営しています。" },
       { question: `${n}はスマートフォンで使えますか？`, answer: "はい。PDF HUB 24はiPhone・Android両対応のスマートフォン、タブレット、パソコンのすべてのデバイスで快適にご利用いただけます。アプリのインストールは不要です。" },
-      { question: "ファイルサイズの上限はありますか？", answer: "ほとんどのツールで最大100MBまでのファイルに対応しています。それ以上のファイルは、まずPDF圧縮ツールでサイズを小さくしてからご利用ください。" },
+      { question: "ファイルサイズの上限はありますか？", answer: "ほとんどのツールで最大50MBまでのファイルに対応しています。それ以上のファイルは、まずPDF圧縮ツールでサイズを小さくしてからご利用ください。" },
     ],
-    troubleshooting: {
+    defaultTroubleshooting: {
       title: "よくある問題と解決方法",
       issues: [
         { problem: "PDFファイルがアップロードできない、またはエラーが表示される", solution: "ファイルにパスワード保護がかかっていないか、または破損していないか確認してください。暗号化されている場合は、まずPDFロック解除ツールをご利用の上、再度お試しください。" },
@@ -377,7 +578,11 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
 
   id: {
     about: (n) => `Alat ${n} bekerja langsung di browser Anda tanpa memerlukan instalasi perangkat lunak atau pembuatan akun. File Anda dilindungi dengan enkripsi SSL 256-bit dan dihapus otomatis setelah diproses, sesuai dengan Undang-Undang Perlindungan Data Pribadi (UU PDP No. 27 Tahun 2022) Indonesia. Ribuan pengguna di Indonesia, Malaysia, Singapura, dan seluruh Asia Tenggara mempercayai PDF HUB 24 untuk mengelola dokumen mereka setiap hari.`,
-    useCases: {
+    tools: {
+      // TODO: add tool-specific entries here (see add-watermark/compress/merge in `es` for the pattern)
+    },
+
+    defaultUseCases: {
       title: (n) => `Kapan menggunakan ${n}?`,
       desc: "Alat ini ideal untuk perorangan, pelajar, mahasiswa, ASN, dan pelaku usaha yang berurusan dengan file PDF sehari-hari.",
       items: [
@@ -403,9 +608,9 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
       { question: "Apakah perlu membuat akun atau mendaftar?", answer: "Tidak. PDF HUB 24 sepenuhnya gratis dan tidak memerlukan pendaftaran apapun. Anda bisa menggunakan semua alat tanpa batas, tanpa tanda air, dan tanpa perlu memberikan alamat email." },
       { question: `Apakah ${n} sesuai dengan UU PDP Indonesia?`, answer: "Ya. Kami beroperasi sesuai dengan Undang-Undang Perlindungan Data Pribadi (UU PDP No. 27 Tahun 2022) Indonesia dan standar perlindungan data internasional termasuk GDPR Uni Eropa." },
       { question: `Bisakah ${n} digunakan di ponsel?`, answer: "Bisa. PDF HUB 24 berfungsi sempurna di ponsel Android dan iPhone, tablet, serta komputer. Tampilan menyesuaikan secara otomatis tanpa perlu instal aplikasi tambahan." },
-      { question: "Berapa batas ukuran file maksimum?", answer: "Kami menerima file hingga 100 MB untuk sebagian besar alat. Untuk file yang lebih besar, gunakan alat kompresi PDF kami terlebih dahulu untuk memperkecil ukurannya." },
+      { question: "Berapa batas ukuran file maksimum?", answer: "Kami menerima file hingga 50 MB untuk sebagian besar alat. Untuk file yang lebih besar, gunakan alat kompresi PDF kami terlebih dahulu untuk memperkecil ukurannya." },
     ],
-    troubleshooting: {
+    defaultTroubleshooting: {
       title: "Solusi masalah umum",
       issues: [
         { problem: "File PDF tidak dapat diunggah atau muncul pesan error", solution: "Pastikan file tidak diproteksi dengan kata sandi dan tidak rusak atau korup. Jika PDF terenkripsi, gunakan alat buka kunci PDF kami terlebih dahulu, lalu coba unggah kembali." },
@@ -421,7 +626,11 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
 
   ru: {
     about: (n) => `Инструмент ${n} работает прямо в вашем браузере без установки программ или создания учётной записи. Все файлы защищены 256-битным SSL-шифрованием и автоматически удаляются после обработки в соответствии с Федеральным законом №152-ФЗ «О персональных данных». Тысячи пользователей в России, Казахстане, Беларуси и других странах СНГ доверяют PDF HUB 24 для ежедневной работы с документами.`,
-    useCases: {
+    tools: {
+      // TODO: add tool-specific entries here (see add-watermark/compress/merge in `es` for the pattern)
+    },
+
+    defaultUseCases: {
       title: (n) => `Где применяется ${n}?`,
       desc: "Инструмент подходит для физических лиц, самозанятых специалистов, предприятий, юристов и государственных учреждений, работающих с PDF-файлами каждый день.",
       items: [
@@ -449,7 +658,7 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
       { question: `Работает ли ${n} на мобильных устройствах?`, answer: "Да. PDF HUB 24 отлично работает на смартфонах, планшетах и компьютерах с любым современным браузером — установка приложения не требуется." },
       { question: "Есть ли ограничение по размеру файла?", answer: "Большинство инструментов принимают файлы до 100 МБ. Для больших файлов рекомендуем сначала воспользоваться нашим инструментом сжатия PDF." },
     ],
-    troubleshooting: {
+    defaultTroubleshooting: {
       title: "Решение распространённых проблем",
       issues: [
         { problem: "Файл не загружается или появляется сообщение об ошибке", solution: "Убедитесь, что файл не защищён паролем и не повреждён. Если PDF зашифрован, сначала воспользуйтесь инструментом снятия защиты с PDF, затем повторите попытку." },
@@ -465,7 +674,11 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
 
   it: {
     about: (n) => `Lo strumento ${n} funziona direttamente nel tuo browser, senza installare software né creare un account. I tuoi file sono protetti con crittografia SSL a 256 bit ed eliminati automaticamente dopo l'elaborazione, in piena conformità con il GDPR e il Codice in materia di protezione dei dati personali (D.Lgs. 196/2003). Migliaia di utenti in Italia e nel mondo italofono si affidano a PDF HUB 24 ogni giorno per gestire i propri documenti in modo rapido e sicuro.`,
-    useCases: {
+    tools: {
+      // TODO: add tool-specific entries here (see add-watermark/compress/merge in `es` for the pattern)
+    },
+
+    defaultUseCases: {
       title: (n) => `A cosa serve ${n}?`,
       desc: "Questo strumento è ideale per privati, professionisti, studi legali, commercialisti e pubbliche amministrazioni che gestiscono file PDF ogni giorno.",
       items: [
@@ -491,9 +704,9 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
       { question: "Devo creare un account o registrarmi?", answer: "No. PDF HUB 24 è completamente gratuito e non richiede alcuna registrazione. Puoi usare tutti gli strumenti senza limiti, senza filigrane e senza fornire il tuo indirizzo e-mail." },
       { question: `${n} è conforme al GDPR e al Codice Privacy italiano?`, answer: "Sì. Operiamo in piena conformità con il Regolamento Generale sulla Protezione dei Dati (GDPR) dell'UE e con il Codice in materia di protezione dei dati personali (D.Lgs. 196/2003 come modificato dal D.Lgs. 101/2018)." },
       { question: `Posso usare ${n} da cellulare?`, answer: "Sì. PDF HUB 24 funziona perfettamente su smartphone iOS e Android, tablet e computer con qualsiasi browser moderno, senza installare alcuna applicazione." },
-      { question: "C'è un limite alla dimensione del file?", answer: "Accettiamo file fino a 100 MB per la maggior parte degli strumenti. Per file di dimensioni maggiori, ti consigliamo di comprimerli prima con il nostro strumento di compressione PDF." },
+      { question: "C'è un limite alla dimensione del file?", answer: "Accettiamo file fino a 50 MB per la maggior parte degli strumenti. Per file di dimensioni maggiori, ti consigliamo di comprimerli prima con il nostro strumento di compressione PDF." },
     ],
-    troubleshooting: {
+    defaultTroubleshooting: {
       title: "Risoluzione dei problemi più comuni",
       issues: [
         { problem: "Il file PDF non si carica o appare un messaggio di errore", solution: "Verifica che il file non sia protetto da password e non sia danneggiato o corrotto. Se il PDF è cifrato, usa prima il nostro strumento per sbloccare il PDF, poi riprova." },
@@ -509,7 +722,11 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
 
   ur: {
     about: (n) => `${n} ٹول آپ کے براؤزر میں براہ راست کام کرتا ہے — کوئی سافٹ ویئر انسٹال کرنے یا اکاؤنٹ بنانے کی ضرورت نہیں۔ آپ کی فائلیں 256-بٹ SSL خفیہ کاری سے محفوظ ہوتی ہیں اور پروسیسنگ کے بعد خودبخود حذف ہو جاتی ہیں — پاکستان کے سائبر قوانین اور بین الاقوامی ڈیٹا تحفظ معیارات کے مطابق۔ پاکستان، بھارت اور پوری اردو دنیا کے ہزاروں طالب علموں، سرکاری ملازمین اور تاجروں کا PDF HUB 24 پر مکمل بھروسہ ہے۔`,
-    useCases: {
+    tools: {
+      // TODO: add tool-specific entries here (see add-watermark/compress/merge in `es` for the pattern)
+    },
+
+    defaultUseCases: {
       title: (n) => `${n} کب استعمال کریں؟`,
       desc: "یہ ٹول طالب علموں، دفتری ملازمین، کاروباری افراد، وکلاء اور سرکاری اداروں کے لیے انتہائی مفید ہے۔",
       items: [
@@ -535,9 +752,9 @@ export const TOOL_CONTENT_TRANSLATIONS: Partial<Record<string, TranslatedToolCon
       { question: "کیا اکاؤنٹ بنانا ضروری ہے؟", answer: "نہیں۔ PDF HUB 24 مکمل طور پر مفت ہے اور کسی رجسٹریشن کی ضرورت نہیں۔ بغیر کسی حد کے، بغیر واٹر مارک کے، اور بغیر ای میل دیے تمام ٹولز استعمال کریں۔" },
       { question: "کیا یہ پاکستان کے ڈیٹا تحفظ قوانین کے مطابق ہے؟", answer: "جی ہاں۔ ہم پاکستان کے PECA 2016 اور Personal Data Protection Bill کی روح کے مطابق، نیز یورپی GDPR سمیت بین الاقوامی ڈیٹا تحفظ معیارات پر عمل کرتے ہیں۔" },
       { question: `کیا ${n} موبائل پر کام کرتا ہے؟`, answer: "جی ہاں۔ PDF HUB 24 Android اور iPhone اسمارٹ فون، ٹیبلٹ اور کمپیوٹر تینوں پر بہترین طریقے سے کام کرتا ہے۔ کوئی ایپ انسٹال کرنے کی ضرورت نہیں — براؤزر میں فوری کام کریں۔" },
-      { question: "فائل کا زیادہ سے زیادہ سائز کیا ہے؟", answer: "زیادہ تر ٹولز میں 100 MB تک کی فائلیں قبول کی جاتی ہیں۔ بڑی فائلوں کے لیے پہلے ہمارا PDF Compress ٹول استعمال کریں اور پھر دوبارہ کوشش کریں۔" },
+      { question: "فائل کا زیادہ سے زیادہ سائز کیا ہے؟", answer: "زیادہ تر ٹولز میں 50 MB تک کی فائلیں قبول کی جاتی ہیں۔ بڑی فائلوں کے لیے پہلے ہمارا PDF Compress ٹول استعمال کریں اور پھر دوبارہ کوشش کریں۔" },
     ],
-    troubleshooting: {
+    defaultTroubleshooting: {
       title: "عام مسائل کا حل",
       issues: [
         { problem: "فائل اپ لوڈ نہیں ہو رہی یا غلطی ظاہر ہو رہی ہے", solution: "یقینی بنائیں کہ فائل پاس ورڈ سے محفوظ یا خراب نہ ہو۔ اگر PDF انکرپٹڈ ہے تو پہلے ہمارا Unlock PDF ٹول استعمال کریں، پھر دوبارہ کوشش کریں۔" },
