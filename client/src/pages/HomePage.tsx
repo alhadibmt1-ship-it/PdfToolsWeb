@@ -348,7 +348,7 @@ export default function HomePage() {
     const priorityIds: string[] = isPdf
       ? ['compress','merge','split','pdf-to-word','pdf-to-jpg','pdf-to-excel','sign','protect','ocr','rotate','edit-pdf','annotate']
       : isImage
-      ? ['jpg-to-pdf','png-to-pdf','image-compressor','resize-image','crop-image','rotate-image','convert-image','remove-bg','webp-to-pdf']
+      ? ['jpg-to-pdf','png-to-pdf','image-compressor','resize-image','crop-image','rotate-image','convert-image','webp-to-pdf']
       : isWord
       ? ['word-to-pdf','pdf-to-word','merge','split','compress']
       : isExcel
