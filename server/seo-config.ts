@@ -3061,10 +3061,6 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
           { href: "/crop-image", text: "Crop Image — Trim and crop images online" },
           { href: "/convert-image", text: "Convert Image — Convert between JPG, PNG, WebP formats" },
           { href: "/rotate-image", text: "Rotate Image — Rotate and flip images" },
-          { href: "/remove-bg", text: "Remove Background — Remove image background automatically" },
-          { href: "/jpg-to-png", text: "JPG to PNG — Convert JPEG to PNG with transparency" },
-          { href: "/png-to-jpg", text: "PNG to JPG — Convert PNG to JPEG format" },
-          { href: "/image-to-text", text: "Image to Text — Extract text from image with OCR" },
         ],
       },
     ];
@@ -3253,10 +3249,6 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
     { href: "/crop-image", text: "Crop Image", cat: "Image Tools" },
     { href: "/convert-image", text: "Convert Image", cat: "Image Tools" },
     { href: "/rotate-image", text: "Rotate Image", cat: "Image Tools" },
-    { href: "/remove-bg", text: "Remove Background", cat: "Image Tools" },
-    { href: "/jpg-to-png", text: "JPG to PNG", cat: "Image Tools" },
-    { href: "/png-to-jpg", text: "PNG to JPG", cat: "Image Tools" },
-    { href: "/image-to-text", text: "Image to Text", cat: "Image Tools" },
   ];
 
   const ALL_BLOGS = [
@@ -3292,7 +3284,6 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
     { href: "/blog/jpg-to-pdf-guide", text: "How to Convert JPG to PDF" },
     { href: "/blog/compress-images-online", text: "How to Compress Images" },
     { href: "/blog/reorder-pdf-pages", text: "How to Reorder PDF Pages" },
-    { href: "/blog/remove-background-from-image", text: "Remove Image Background" },
     { href: "/blog/convert-pdf-to-png", text: "PDF to PNG Guide" },
     { href: "/blog/excel-to-pdf", text: "How to Convert Excel to PDF" },
   ];
