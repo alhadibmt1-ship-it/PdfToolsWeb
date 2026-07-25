@@ -274,7 +274,6 @@ const PATH_TO_TOOL_KEY: Record<string, string> = {
   "/pdf-to-pdfa":      "pdf-to-pdfa",
   "/crop-pdf":         "crop-pdf",
   "/flatten-pdf":      "flatten-pdf",
-  "/image-compressor":     "compress-img",
   "/compare-pdf":      "edit-pdf",
   "/pdf-viewer":       "edit-pdf",
   "/repair-pdf":       "edit-pdf",
@@ -1262,19 +1261,6 @@ export const seoConfig: Record<string, PageSEO> = {
       "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
     }
   },
-  "/convert-pdf": {
-    title: "Free PDF Converter (Any File, No Signup) | PDF HUB 24",
-    description: "Best free PDF converter online. Convert PDF to Word, Excel, JPG, PNG, PPT and more. Convert images and documents to PDF. No signup, no watermark.",
-    keywords: "free PDF converter, PDF converter online, convert PDF free, PDF to Word converter, image to PDF converter",
-    schema: {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Free PDF Converter - PDF HUB 24",
-      "url": `${BASE_URL}/free-pdf-converter`,
-      "description": "Convert PDF files to and from Word, Excel, JPG, PNG, PowerPoint and more formats for free",
-      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
-    }
-  },
   "/dmca": {
     title: "DMCA Policy — Copyright Compliance | PDF HUB 24",
     description: "Read the PDF HUB 24 DMCA policy. Learn how to report copyright infringement, our content takedown procedures, and how we handle intellectual property claims.",
@@ -1581,19 +1567,6 @@ export const seoConfig: Record<string, PageSEO> = {
     keywords: "Excel to PDF, XLSX to PDF, convert spreadsheet to PDF, Excel PDF converter",
     schema: { "@context": "https://schema.org", "@type": "Article", "headline": "How to Convert Excel to PDF: Spreadsheets, Tables, and Formatting", "author": { "@type": "Organization", "name": "PDF HUB 24" }, "publisher": { "@type": "Organization", "name": "PDF HUB 24", "url": BASE_URL }, "datePublished": "2026-03-28",
       "dateModified": "2026-04-18", "url": `${BASE_URL}/blog/excel-to-pdf` }
-  },
-  "/edit-pdf": {
-    title: "Free PDF Editor Online — 49+ Tools (No Install) | PDF HUB 24",
-    description: "Best free PDF editor online. Edit, merge, split, compress, rotate, sign, annotate, and redact PDFs. 49+ tools, no download, no registration needed.",
-    keywords: "free PDF editor, edit PDF online, PDF editor free, online PDF editor, modify PDF free",
-    schema: {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Free PDF Editor - PDF HUB 24",
-      "url": `${BASE_URL}/free-pdf-editor`,
-      "description": "Edit PDF files online for free - merge, split, compress, rotate, sign, annotate, and more",
-      "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL }
-    }
   },
   "/convert-pdf": {
     title: "Convert PDF Online Free — All Formats Supported | PDF HUB 24",
