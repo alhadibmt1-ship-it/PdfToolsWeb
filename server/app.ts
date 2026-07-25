@@ -261,6 +261,17 @@ app.use((req, res, next) => {
 // "compress-pdf-online-{country}" → "compress-pdf-{country}"
 // Orphan compress-to-size sizes → nearest canonical size in sitemap
 app.use((req, res, next) => {
+  // /blog/remove-background-from-image was a complete how-to guide for a
+  // "Remove Background" tool that was never actually built — misleading
+  // content, removed entirely. Redirect any existing inbound links/indexed
+  // URLs to the Image Compressor hub instead of leaving a 404.
+  if (req.path === '/blog/remove-background-from-image') return res.redirect(301, '/image-compressor');
+  // jpg-to-png / png-to-jpg were referenced as if they were real tools (in
+  // homepage listings, blog posts) but never had their own page built —
+  // /convert-image already handles this exact format conversion.
+  if (req.path === '/jpg-to-png') return res.redirect(301, '/convert-image');
+  if (req.path === '/png-to-jpg') return res.redirect(301, '/convert-image');
+
   // Legacy route names from before these tools were renamed. No client route
   // matches them anymore, but they were still referenced in old internal
   // links and sitemap entries — redirect in case of old bookmarks/backlinks.
