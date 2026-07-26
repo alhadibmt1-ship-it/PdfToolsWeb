@@ -189,7 +189,7 @@ export const PDF_TOOLS: PDFTool[] = [
     title: "Merge PDF",
     description: "Combine multiple PDF files into one document",
     icon: "merge",
-    path: "/merge",
+    path: "/merge-pdf",
     acceptedFormats: ".pdf",
     category: "edit-pdf"
   },
@@ -198,7 +198,7 @@ export const PDF_TOOLS: PDFTool[] = [
     title: "Split PDF",
     description: "Extract specific pages from your PDF file",
     icon: "split",
-    path: "/split",
+    path: "/split-pdf",
     acceptedFormats: ".pdf",
     category: "edit-pdf"
   },
@@ -207,7 +207,7 @@ export const PDF_TOOLS: PDFTool[] = [
     title: "Compress PDF",
     description: "Reduce PDF file size without losing quality",
     icon: "compress",
-    path: "/compress",
+    path: "/compress-pdf",
     acceptedFormats: ".pdf",
     category: "edit-pdf"
   },
@@ -216,7 +216,7 @@ export const PDF_TOOLS: PDFTool[] = [
     title: "Rotate PDF",
     description: "Rotate pages in your PDF document",
     icon: "rotate-cw",
-    path: "/rotate",
+    path: "/rotate-pdf",
     acceptedFormats: ".pdf",
     category: "edit-pdf"
   },
