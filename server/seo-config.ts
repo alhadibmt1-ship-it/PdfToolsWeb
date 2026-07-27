@@ -2778,8 +2778,11 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
   const config = seoConfig[canonicalPath];
   const isHome = canonicalPath === "/";
 
-  // Derive tool id from path (e.g. "/merge" → "merge")
-  const toolId = canonicalPath.replace(/^\//, "");
+  // Derive tool id from path, using the known path->id alias map first
+  // (handles cases like "/merge-pdf" -> "merge" where the route path and
+  // toolSEOData key differ), falling back to the bare path for tools where
+  // they're the same.
+  const toolId = PATH_TO_TOOL_KEY[canonicalPath] || canonicalPath.replace(/^\//, "");
   const toolData = toolSEOData[toolId as keyof typeof toolSEOData];
 
   // Blog article: /blog/:slug
