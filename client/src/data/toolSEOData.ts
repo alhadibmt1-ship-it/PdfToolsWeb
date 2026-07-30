@@ -215,6 +215,7 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       "pdf to word converter free no email",
       "convert pdf to editable word document",
       "pdf to docx online free",
+      "pdf to doc converter",
       "extract text from pdf to word",
       "pdf to word without losing formatting"
     ],
@@ -281,7 +282,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { question: "Can I convert scanned PDFs to Word?", answer: "Scanned PDFs contain images instead of selectable text, so they need OCR (Optical Character Recognition) processing first. Use our free OCR PDF tool to extract text from scanned documents, then convert the result to an editable Word file." },
       { question: "Is this PDF to Word tool free?", answer: "Yes, our PDF to Word converter is 100% free with no hidden fees, no email required, no watermarks on output files, and no daily usage limits. Convert as many PDFs as you need." },
       { question: "Is my document secure during conversion?", answer: "Absolutely. All files are transferred using SSL encryption, processed in isolated server environments, and automatically deleted after conversion. No human ever accesses your files, and we comply with GDPR privacy regulations." },
-      { question: "What file format do I receive after conversion?", answer: "You receive a .docx file (Microsoft Word format), which is compatible with Microsoft Word 2007 and later, Google Docs, LibreOffice Writer, Apple Pages, and most modern word processors." }
+      { question: "What file format do I receive after conversion?", answer: "You receive a .docx file (Microsoft Word format), which is compatible with Microsoft Word 2007 and later, Google Docs, LibreOffice Writer, Apple Pages, and most modern word processors." },
+      { question: "Does this convert PDF to DOC or DOCX format?", answer: "This tool outputs .docx, the modern Word format used by Word 2007 and every version since. It's not the older .doc format. In practice this makes no difference for almost everyone — .docx opens fine in current Word, Google Docs, and LibreOffice, and is the format Word itself saves in by default. You'd only need true .doc if you're working with Word 2003 or earlier." }
     ],
     relatedWorkflows: [
       { title: "Resume Update Workflow", description: "Edit and update your resume from PDF", tools: ["pdf-to-word", "word-to-pdf", "compress"] },
@@ -3079,7 +3081,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       "compress jpg without losing quality",
       "image compression tool free",
       "optimize images for web free",
-      "shrink photo size for email"
+      "shrink photo size for email",
+      "jpg size reducer"
     ],
     metaDescription: "Compress images free. Reduce JPG, PNG, WebP file sizes up to 80% without quality loss. Best free image compressor - no signup.",
     heroContent: "Need to reduce image file sizes for faster website loading or email attachments? Our free image compressor shrinks JPG, PNG, and WebP files by up to 80% while maintaining excellent visual quality. Whether you're optimizing website images for better page speed, preparing photos for email, reducing storage usage, or meeting upload size limits on social media and platforms, PDF HUB 24 delivers professional-grade compression instantly. Our smart algorithms analyze each image and apply optimal compression settings automatically — preserving important details while eliminating unnecessary data. No software installation, no technical knowledge required. Just upload your images and download optimized versions ready for the web, email, or any purpose that demands smaller file sizes without sacrificing appearance.",
@@ -3132,7 +3135,8 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       { question: "How much can I reduce image file size?", answer: "Typical reductions range from 40-80% depending on the image and quality setting. Photos with lots of detail compress more than simple graphics." },
       { question: "Will compression affect image quality?", answer: "High quality compression is nearly indistinguishable from the original. Medium provides good balance. Low prioritizes size reduction." },
       { question: "Can I compress images in bulk?", answer: "Yes, upload multiple images and compress them all. Each compressed image is available for individual download." },
-      { question: "What's the maximum file size for upload?", answer: "We accept images up to 50MB each. Most web and mobile images are well under this limit." }
+      { question: "What's the maximum file size for upload?", answer: "We accept images up to 50MB each. Most web and mobile images are well under this limit." },
+      { question: "How do I reduce a JPG to a specific file size, like under 100KB?", answer: "Choose a compression level and check the resulting file size shown before downloading — if it's still above your target, re-run the tool with a lower quality setting, since compression here works by quality percentage rather than a fixed target size. For a hard size limit (a form or upload field that rejects anything over a specific KB), start with the Low quality setting and adjust upward only if the image looks too degraded." }
     ],
     relatedWorkflows: [
       { title: "Website Optimization Workflow", description: "Prepare images for fast-loading websites", tools: ["image-compressor", "resize-image", "convert-image"] },
