@@ -271,11 +271,37 @@ app.use((req, res, next) => {
   // /convert-image already handles this exact format conversion.
   if (req.path === '/jpg-to-png') return res.redirect(301, '/convert-image');
   if (req.path === '/png-to-jpg') return res.redirect(301, '/convert-image');
+  // heic-to-jpg/png/pdf never had real backend conversion logic (verified:
+  // no HEIC decode capability exists anywhere in routes.ts, and
+  // /convert-image doesn't accept .heic as input). Redirecting to a specific
+  // tool would falsely imply it handles HEIC files — the category hub is the
+  // honest destination until/unless real HEIC support is built.
+  if (req.path === '/heic-to-jpg') return res.redirect(301, '/image-tools');
+  if (req.path === '/heic-to-png') return res.redirect(301, '/image-tools');
+  if (req.path === '/heic-to-pdf') return res.redirect(301, '/image-tools');
+  // pdf-page-size is a genuine match for the real, existing resize-pdf tool
+  // (same capability: resize PDF pages to A4/Letter/A3/Legal/custom).
+  if (req.path === '/pdf-page-size') return res.redirect(301, '/resize-pdf');
+  // epub-to-pdf, pdf-to-epub, pdf-to-xml have no real equivalent tool
+  // anywhere on the site (no EPUB/XML handling exists in the backend) —
+  // the conversion hub is the honest destination, not a specific tool that
+  // would falsely imply this capability exists.
+  if (req.path === '/epub-to-pdf') return res.redirect(301, '/convert-pdf');
+  if (req.path === '/pdf-to-epub') return res.redirect(301, '/convert-pdf');
+  if (req.path === '/pdf-to-xml') return res.redirect(301, '/convert-pdf');
+  if (req.path === '/remove-bg') return res.redirect(301, '/image-tools');
 
   // Legacy route names from before these tools were renamed. No client route
   // matches them anymore, but they were still referenced in old internal
   // links and sitemap entries — redirect in case of old bookmarks/backlinks.
   if (req.path === '/page-numbers') return res.redirect(301, '/add-page-numbers');
+  // /free-pdf-editor and /free-pdf-converter previously redirected via
+  // client-side JS only (useEffect + history navigation) — Googlebot's
+  // first-pass crawl sees a plain HTTP 200 with no real redirect status,
+  // which Search Console flagged as a "redirect error." Real server-side
+  // 301s remove the ambiguity.
+  if (req.path === '/free-pdf-editor') return res.redirect(301, '/edit-pdf');
+  if (req.path === '/free-pdf-converter') return res.redirect(301, '/convert-pdf');
   if (req.path === '/watermark-pdf') return res.redirect(301, '/add-watermark');
 
   // Generic /tools/* pages that duplicate an existing primary tool page
