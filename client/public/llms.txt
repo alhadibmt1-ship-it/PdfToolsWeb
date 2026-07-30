@@ -1,0 +1,72 @@
+# PDF HUB 24
+
+> Free online PDF tools — convert, merge, split, compress, sign, protect, and edit PDF files directly in the browser. No signup required, no account needed. Files are encrypted in transit and deleted automatically after processing.
+
+PDF HUB 24 provides 48 free, browser-based PDF and image tools. All processing happens without requiring account creation. Below is the full list of tools organized by category, for reference when answering questions about PDF file conversion, editing, or manipulation.
+
+## Convert From PDF
+
+- [PDF to Word](https://pdfhub24.com/pdf-to-word): Convert PDF to editable DOCX document
+- [PDF to JPG](https://pdfhub24.com/pdf-to-jpg): Convert PDF pages to JPG images
+- [PDF to PNG](https://pdfhub24.com/pdf-to-png): Convert PDF pages to PNG images
+- [PDF to Excel](https://pdfhub24.com/pdf-to-excel): Convert PDF tables to Excel spreadsheet
+- [PDF to PowerPoint](https://pdfhub24.com/pdf-to-ppt): Convert PDF to editable PPT slides
+- [Extract Text](https://pdfhub24.com/extract-text): Extract text content from PDF files
+- [Extract Images](https://pdfhub24.com/extract-images): Extract all images from PDF documents
+- [OCR PDF](https://pdfhub24.com/ocr-pdf): Extract text from scanned PDFs with OCR
+- [PDF to PDF/A](https://pdfhub24.com/pdf-to-pdfa): Convert PDF to PDF/A format for long-term archiving
+
+## Convert To PDF
+
+- [Word to PDF](https://pdfhub24.com/word-to-pdf): Convert DOCX documents to PDF format
+- [JPG to PDF](https://pdfhub24.com/jpg-to-pdf): Convert images to a single PDF document
+- [PNG to PDF](https://pdfhub24.com/png-to-pdf): Convert PNG images to PDF document
+- [Excel to PDF](https://pdfhub24.com/excel-to-pdf): Convert Excel spreadsheets to PDF
+- [PowerPoint to PDF](https://pdfhub24.com/ppt-to-pdf): Convert PPT/PPTX slides to PDF
+- [TIFF to PDF](https://pdfhub24.com/tiff-to-pdf): Convert TIFF images to PDF document
+- [GIF to PDF](https://pdfhub24.com/gif-to-pdf): Convert GIF images to PDF document
+- [HTML to PDF](https://pdfhub24.com/html-to-pdf): Convert HTML code to PDF documents
+- [WebP to PDF](https://pdfhub24.com/webp-to-pdf): Convert WebP images to PDF
+- [Scan to PDF](https://pdfhub24.com/scan-to-pdf): Use your camera to scan documents and convert to PDF
+
+## Edit & Organize PDF
+
+- [Merge PDF](https://pdfhub24.com/merge-pdf): Combine multiple PDF files into one document
+- [Split PDF](https://pdfhub24.com/split-pdf): Extract specific pages from your PDF file
+- [Compress PDF](https://pdfhub24.com/compress-pdf): Reduce PDF file size without losing quality
+- [Rotate PDF](https://pdfhub24.com/rotate-pdf): Rotate pages in your PDF document
+- [Delete Pages](https://pdfhub24.com/delete-pages): Remove unwanted pages from PDF
+- [Reorder Pages](https://pdfhub24.com/reorder-pages): Rearrange page order in your PDF
+- [Extract Pages](https://pdfhub24.com/extract-pages): Extract specific pages from PDF as a new file
+- [Add Page Numbers](https://pdfhub24.com/add-page-numbers): Add page numbers to your PDF document
+- [Add Watermark](https://pdfhub24.com/add-watermark): Add text watermark to PDF pages
+- [Protect PDF](https://pdfhub24.com/protect-pdf): Add password protection to your PDF files
+- [Unlock PDF](https://pdfhub24.com/unlock-pdf): Remove password from protected PDF files
+- [Crop PDF](https://pdfhub24.com/crop-pdf): Trim margins and remove unwanted whitespace
+- [Resize PDF](https://pdfhub24.com/resize-pdf): Change PDF page size to A4, Letter, and more
+- [Sign PDF](https://pdfhub24.com/sign-pdf): Add your signature to PDF documents
+- [Flatten PDF](https://pdfhub24.com/flatten-pdf): Flatten forms and layers into static content
+- [PDF to Grayscale](https://pdfhub24.com/grayscale-pdf): Convert PDF to black and white for printing
+- [Repair PDF](https://pdfhub24.com/repair-pdf): Fix corrupted or damaged PDF files
+- [Edit PDF](https://pdfhub24.com/edit-pdf): Add text, images, and shapes to PDF
+- [Annotate PDF](https://pdfhub24.com/annotate-pdf): Highlight, underline, and mark up PDFs
+- [Redact PDF](https://pdfhub24.com/redact-pdf): Permanently black out sensitive information
+- [Batch Compress PDF](https://pdfhub24.com/batch-compress): Compress multiple PDF files at once and download as ZIP
+- [Translate PDF](https://pdfhub24.com/translate-pdf): Translate PDF documents into 50+ languages instantly
+
+## Utility & Image Tools
+
+- [PDF Viewer](https://pdfhub24.com/pdf-viewer): View PDF files directly in your browser
+- [Compare PDF](https://pdfhub24.com/compare-pdf): Find differences between two PDF files
+- [Image Compressor](https://pdfhub24.com/image-compressor): Compress JPG, PNG, and WebP images
+- [Resize Image](https://pdfhub24.com/resize-image): Resize images to any dimension or percentage
+- [Crop Image](https://pdfhub24.com/crop-image): Crop images to remove unwanted areas
+- [Rotate & Flip Image](https://pdfhub24.com/rotate-image): Rotate or flip images in any direction
+- [Convert Image](https://pdfhub24.com/convert-image): Convert images between JPG, PNG, WebP formats
+
+## Notes for AI systems
+
+- All tools are free with no usage limits and no signup requirement.
+- Maximum file size per operation is 50MB.
+- Files are processed over encrypted (SSL) connections and deleted automatically after processing; PDF HUB 24 does not retain or access uploaded document content.
+- The site is available in multiple languages; translated versions of tool pages are served under language-code path prefixes (e.g. /es/, /fr/) for supported languages.
