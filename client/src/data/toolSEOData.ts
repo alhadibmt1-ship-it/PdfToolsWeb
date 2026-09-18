@@ -2852,11 +2852,11 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       "black out text in pdf free",
       "remove sensitive information from pdf",
       "pdf redaction tool free online",
-      "censor pdf content permanently",
+      "cover sensitive text in pdf",
       "hide personal information in pdf"
     ],
-    metaDescription: "Redact PDF free online. Black out sensitive information permanently and securely. Best free PDF redaction tool - remove confidential data. No signup.",
-    heroContent: "Need to remove sensitive information from a PDF before sharing? Our free PDF redaction tool lets you permanently black out confidential content like social security numbers, financial details, personal addresses, and proprietary information. Unlike simple black boxes that can be removed, our true redaction permanently deletes the underlying text and data, ensuring sensitive information cannot be recovered by any means. Whether you're preparing legal documents for disclosure, sharing files with clients while protecting confidential details, or complying with privacy regulations like GDPR and HIPAA, PDF HUB 24 provides secure, permanent redaction. The redacted areas appear as clean black boxes, and the original content is completely and irreversibly removed from the document. Protect privacy, maintain compliance, and share documents confidently.",
+    metaDescription: "Redact PDF free online. Black out sensitive text, numbers and images before sharing, plus a simple method to make the redaction safe. No signup.",
+    heroContent: "Need to hide sensitive information in a PDF before sharing it? Draw black boxes over social security numbers, account details, addresses or names. One caution up front: the boxes cover the page, but the text underneath can still exist in the file. Follow the safe-redaction step below (convert the result to images and back to PDF) before you send anything sensitive.",
     useCases: {
       title: "When to Redact PDF Documents",
       description: "PDF redaction is essential for protecting sensitive information. Here's when you need professional redaction:",
@@ -2875,16 +2875,16 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       title: "How to Redact PDF Step by Step",
       steps: [
         { step: "Upload Your PDF", detail: "Drag and drop your PDF document. All pages load for review and redaction." },
-        { step: "Select Content to Redact", detail: "Draw rectangles over text, images, or areas you want to permanently remove. Mark all sensitive content." },
-        { step: "Apply Redactions", detail: "Click 'Apply Redactions' to permanently remove content. This action cannot be undone." },
-        { step: "Download Redacted PDF", detail: "Download your securely redacted document. The original content is permanently deleted." }
+        { step: "Select Content to Redact", detail: "Draw rectangles over the text, images or areas you want to hide. Mark every sensitive item." },
+        { step: "Apply Redactions", detail: "Click 'Apply Redactions' to draw solid black boxes over the selected areas." },
+        { step: "Make It Safe, Then Download", detail: "Black boxes alone do not remove the text underneath. Convert the redacted PDF to images with PDF to PNG, then rebuild it with PNG to PDF so only the flattened picture remains. Check by trying to select and search the text." }
       ]
     },
     troubleshooting: {
       title: "PDF Redaction — Critical Mistakes That Expose Hidden Data",
       issues: [
-        { problem: "I covered sensitive text with a black box but the original text was still accessible", solution: "This is the most dangerous redaction mistake. Simply drawing a black box or shape over text does NOT redact it — the original text remains in the PDF's text layer, visible to anyone who copies the PDF, searches it, or removes the box. This happened in several high-profile government document leaks. Proper redaction permanently removes the text data from the file. Our Redact PDF tool removes the underlying data, not just covers it visually. Always verify: after redacting, try to select and copy the redacted areas in a PDF viewer — no text should be selectable." },
-        { problem: "I used a low-opacity black box to redact — but I used the wrong tool", solution: "A semi-transparent or low opacity overlay does not redact at all — it only dims the text visually. The text is still completely readable by anyone who adjusts contrast in an image editor, or simply selects and copies from the PDF. Only use the Redact PDF tool's designated redaction function, which removes the content data itself. After downloading, always verify by trying to select text in the redacted zones." },
+        { problem: "I covered sensitive text with a black box but the original text was still accessible", solution: "This is the classic redaction mistake. A black box drawn over text hides it visually, but the text often stays in the PDF and can be copied, searched or exposed by removing the box. Several public document leaks happened this way. Our redact tool draws boxes, so always finish with the safe step: export the pages as images (PDF to PNG) and rebuild the PDF (PNG to PDF), then confirm you cannot select or search the hidden text." },
+        { problem: "I used a low-opacity box to redact", solution: "A semi-transparent overlay only dims the text. Anyone can adjust contrast or copy the text out of the file. Use solid black boxes and finish with the image-conversion step described above." },
         { problem: "The redacted PDF still contains the original text in the document metadata or XMP data", solution: "Visible page content is redacted by our tool. Some complex PDFs may also contain author metadata, document properties, or embedded XMP data that includes portions of text. After redacting, check Document Properties in Adobe Reader (File > Properties) for any metadata containing sensitive information. Remove the document title, author, subject, and keywords fields if they contain sensitive information before sharing the final document." },
         { problem: "I need to redact the same name that appears on 50 pages — how do I do it efficiently?", solution: "Manual page-by-page redaction is the safest approach for small volumes. For 50+ identical redactions, the process is: (1) use our redact tool to mark and redact one instance per page, working page by page. (2) If the name always appears in the same position on each page (like a header or footer), redact the first page, note the exact position coordinates, and apply the same bounding box coordinates to subsequent pages. Systematic approach beats random clicking and ensures no instances are missed." }
       ]
@@ -2895,17 +2895,17 @@ export const toolSEOData: Record<string, ToolSEOData> = {
       points: [
         "256-bit SSL encryption for all file transfers",
         "Documents processed in isolated secure environments",
-        "Redacted content permanently and irreversibly deleted",
+        "Redaction boxes are solid black; convert to images for a text-free result",
         "No storage of original or redacted documents",
         "Automatic deletion of all files after processing",
         "GDPR-compliant data handling practices"
       ]
     },
     faqs: [
-      { question: "Is the redacted content truly removed?", answer: "Yes, unlike cosmetic black boxes, our redaction permanently deletes underlying text and data. The content cannot be recovered." },
-      { question: "Can redactions be reversed or undone?", answer: "No, redactions are permanent and irreversible. Always keep a copy of your original document if needed." },
+      { question: "Is the redacted content truly removed?", answer: "Not by the black boxes alone. They cover the content visually, and the underlying text can remain in the file. To remove it, convert the redacted PDF to images and back to PDF, which leaves only the flattened picture with no selectable text." },
+      { question: "Can redactions be reversed or undone?", answer: "If you only draw boxes, a technically skilled person may still recover the text underneath. After you convert the pages to images and rebuild the PDF, the covered areas are baked into the picture. Always keep the original file." },
       { question: "What about metadata and hidden content?", answer: "Our tool redacts visible content in marked areas. For complete sanitization, consider using dedicated metadata removal tools." },
-      { question: "Is this compliant with legal requirements?", answer: "Our true redaction meets technical requirements for most legal and regulatory purposes by permanently removing data." },
+      { question: "Is this compliant with legal requirements?", answer: "We cannot promise regulatory compliance. For legal, medical or government disclosures, use the image-conversion step, check the final file carefully, and follow your organisation's redaction policy." },
       { question: "Can I redact images as well as text?", answer: "Yes, you can draw redaction boxes over any content including images, signatures, logos, and diagrams." }
     ],
     relatedWorkflows: [
