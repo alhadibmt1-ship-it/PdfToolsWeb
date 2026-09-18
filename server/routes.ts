@@ -22,6 +22,7 @@ import {
   extractPagesOptionsSchema
 } from "@shared/schema";
 import { z } from "zod";
+import { blogPosts as blogPostsData } from "../client/src/data/blogData";
 import CloudConvert from "cloudconvert";
 import { Readable } from "stream";
 import https from "https";
@@ -3143,13 +3144,7 @@ app.get('/compress', (req, res) => res.redirect(301, '/compress-pdf'));
     const baseUrl = "https://pdfhub24.com";
     const now = new Date().toUTCString();
     
-    const blogPosts = [
-      { slug: "how-to-compress-pdf-for-email", title: "How to Compress PDF for Email: Reduce File Size Under 25MB", description: "Email providers limit attachment sizes. Learn how to compress your PDF files to send them via email without losing quality.", date: "2025-12-16" },
-      { slug: "convert-pdf-to-word-without-losing-formatting", title: "How to Convert PDF to Word Without Losing Formatting", description: "Converting PDFs to Word documents while preserving layout, fonts, and images is easier than you think.", date: "2025-12-16" },
-      { slug: "how-to-merge-pdf-files", title: "How to Merge PDF Files: Complete Guide for 2025", description: "Need to combine multiple PDFs into one document? Here's everything you need to know about merging PDF files.", date: "2025-12-16" },
-      { slug: "password-protect-pdf-complete-guide", title: "How to Password Protect a PDF: Complete Security Guide", description: "Keep your sensitive documents secure. Learn how to add password protection to PDF files in minutes.", date: "2025-12-16" },
-      { slug: "pdf-tools-for-students", title: "Essential PDF Tools for Students: Complete Guide", description: "From combining research papers to annotating lecture notes, discover the PDF tools every student needs.", date: "2025-12-16" }
-    ];
+    const blogPosts = [...blogPostsData].sort((x, y) => y.publishDate.localeCompare(x.publishDate)).map(p => ({ slug: p.slug, title: p.title, description: p.excerpt, date: p.modifiedDate || p.publishDate }));
 
     const rssItems = blogPosts.map(post => `
     <item>
