@@ -31,7 +31,7 @@ interface RedactionArea {
 export default function RedactPdfPage() {
   useSEO({
     title: "Redact PDF Free - Black Out Sensitive Info | PDF HUB 24",
-    description: "Redact PDF free. Permanently black out sensitive info in PDFs. Best free PDF redaction tool. No signup.",
+    description: "Redact PDF free. Black out sensitive info in PDFs, with a safe-redaction tip. No signup.",
     keywords: "redact pdf free, black out pdf, censor pdf free, remove sensitive info pdf, pdf privacy tool, hide text in pdf",
     canonicalPath: "/redact-pdf"
   });
@@ -39,7 +39,7 @@ export default function RedactPdfPage() {
   const { lang } = useLanguage();
 
   const toolTitle = getToolTitle("redact-pdf", lang, getToolSEOData("redact-pdf")?.longTailH1 || "Redact PDF");
-  const toolDesc = getToolDesc("redact-pdf", lang, "Permanently black out sensitive information in your PDF documents. Protect privacy by redacting personal data.");
+  const toolDesc = getToolDesc("redact-pdf", lang, "Black out sensitive information in your PDF documents before you share them.");
 
   const [files, setFiles] = useState<File[]>([]);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
@@ -200,12 +200,12 @@ export default function RedactPdfPage() {
                   <EyeOff className="w-6 h-6 text-amber-600 dark:text-amber-400 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold text-amber-800 dark:text-amber-200 mb-1">
-                      Important: Redaction is Permanent
+                      Important: Finish With a Safe Step
                     </h3>
                     <p className="text-sm text-amber-700 dark:text-amber-300">
-                      Redacted content is permanently removed from the PDF and cannot be recovered. 
-                      The original text and images under redaction areas are completely deleted, 
-                      not just covered. Keep a backup of your original file.
+                      The tool draws black boxes over the areas you select. The text under a box can still 
+                      exist in the file. Before sharing anything sensitive, convert the result to images (PDF to PNG) 
+                      and rebuild it (PNG to PDF) so no selectable text remains. Keep a backup of your original file.
                     </p>
                   </div>
                 </div>
