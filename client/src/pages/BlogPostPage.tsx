@@ -82,7 +82,7 @@ function buildArticleSchema(post: BlogPost) {
       }
     },
     "datePublished": post.publishDate,
-    "dateModified": post.publishDate,
+    "dateModified": post.modifiedDate || post.publishDate,
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": `${BASE_URL}/blog/${post.slug}`
