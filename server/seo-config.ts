@@ -1,5 +1,7 @@
 import { toolSEOData } from "../client/src/data/toolSEOData";
 import { blogPosts } from "../client/src/data/blogData";
+
+export const INDEX_TRANSLATED_BLOG = false;
 import { getProgrammaticPage, getAllProgrammaticPages } from "../client/src/data/programmaticSeoData";
 import { categoryHubs } from "../client/src/data/categoryHubData";
 import { TOOL_SLUG_TRANSLATIONS, TRANSLATED_TO_ENGLISH } from "../client/src/lib/translatedSlugs";
@@ -775,8 +777,8 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/redact-pdf": {
     title: "Redact PDF Free — Remove Sensitive Info | PDF HUB 24",
-    description: "Redact PDF online free. Permanently black out sensitive information. Secure and irreversible redaction. No signup required. Free online PDF redaction tool.",
-    keywords: "redact PDF, black out PDF text free, censor pdf online, PDF redaction tool, redact pdf online free, permanently remove text pdf",
+    description: "Redact PDF online free. Black out sensitive information before sharing, with a simple method to make it safe. No signup required.",
+    keywords: "redact PDF, black out PDF text free, censor pdf online, PDF redaction tool, redact pdf online free",
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -1060,8 +1062,9 @@ export const seoConfig: Record<string, PageSEO> = {
     }
   },
   "/blog": {
-    title: "PDF Tips & Tutorials Blog (25+ Free Guides) | PDF HUB 24",
-    description: "25+ free PDF tutorials and guides. Learn to compress, convert, merge, edit, sign, and secure PDFs with step-by-step instructions. Updated for 2026.",
+    title: `PDF Tips & Tutorials Blog (${blogPosts.length} Free Guides) | PDF HUB 24`,
+    h1: "PDF Tips, Tutorials and How-To Guides",
+    description: `${blogPosts.length} free PDF guides: compress, convert, merge, split, sign and protect PDFs with clear step-by-step instructions.`,
     keywords: "PDF tips, PDF tutorials, how to PDF, PDF guide, PDF help",
     schema: {
       "@context": "https://schema.org",
@@ -1588,7 +1591,7 @@ export const seoConfig: Record<string, PageSEO> = {
   },
   "/secure-pdf": {
     title: "Secure PDF Free — Encrypt, Redact & Protect | PDF HUB 24",
-    description: "Password protect, encrypt, redact, and secure PDF documents free online. AES-256 encryption, permanent redaction, and file privacy tools.",
+    description: "Password protect, encrypt, redact, and secure PDF documents free online. AES-256 encryption, redaction, and file privacy tools.",
     keywords: "secure PDF, protect PDF, encrypt PDF, redact PDF, password protect PDF",
     schema: { "@context": "https://schema.org", "@type": "CollectionPage", "name": "Secure PDF Tools", "url": `${BASE_URL}/secure-pdf`, "isPartOf": { "@type": "WebSite", "name": "PDF HUB 24", "url": BASE_URL } }
   },
@@ -1822,7 +1825,19 @@ function getLangAttribute(lang: string): string {
 
 export function generateMetaTags(path: string): string {
   const { lang, canonicalPath, localPath } = stripLangPrefix(path);
-  const seo = seoConfig[canonicalPath] || seoConfig["/"];
+  // Blog posts: blogData.ts is the single source of truth for title/description.
+  // (Previously the 5 newest posts had no seoConfig entry and inherited the HOMEPAGE title,
+  // description and schema.)
+  const blogForSeo = (canonicalPath.match(/^\/blog\/([^/]+)$/) || [])[1];
+  const blogSeoPost = blogForSeo ? blogPosts.find(p => p.slug === blogForSeo) : undefined;
+  const seo: PageSEO = blogSeoPost
+    ? ({
+        ...(seoConfig[canonicalPath] || {}),
+        title: blogSeoPost.metaTitle.replace(/"/g, "&quot;"),
+        description: (blogSeoPost.metaDescription || blogSeoPost.excerpt).replace(/"/g, "&quot;"),
+        keywords: (blogSeoPost.tags || []).join(", "),
+      } as PageSEO)
+    : (seoConfig[canonicalPath] || seoConfig["/"]);
   // canonical uses the translated slug so Google indexes the correct language URL.
   // For non-English pages: prefer translated slug (e.g. /es/comprimir-pdf) over
   // the English slug path (e.g. /es/compress) so canonical always matches hreflang.
@@ -1844,7 +1859,11 @@ export function generateMetaTags(path: string): string {
   // Language homepages (/es, /de, /fr etc) are thin duplicate-of-homepage pages.
   // Noindex them to preserve crawl budget for indexable tool + blog pages.
   const isLangHomepage = lang !== "en" && canonicalPath === "/";
-  const isNoindex = !!(seo.robots && seo.robots.includes("noindex")) || isUnknownBlogSlug || isLangHomepage;
+  // Translated blog URLs reuse a generic how-to/FAQ template (the article itself is English-only),
+  // so they are thin near-duplicates. Keep them crawlable but out of the index.
+  // Flip INDEX_TRANSLATED_BLOG to true only after real translated articles exist.
+  const isTranslatedBlog = !!(blogPost && lang !== "en" && !INDEX_TRANSLATED_BLOG);
+  const isNoindex = !!(seo.robots && seo.robots.includes("noindex")) || isUnknownBlogSlug || isLangHomepage || isTranslatedBlog;
   const hreflangBlock = `\n    <!-- Hreflang International SEO -->\n    ${hreflangTags}`;
 
   // ── Detect page type ──────────────────────────────────────────────────────
@@ -1995,6 +2014,8 @@ export function generateMetaTags(path: string): string {
   // All other pages: standard index,follow with full preview directives
   const robotsContent = (isUnknownBlogSlug || isTrulyUnknownPage || isLangHomepage)
     ? "noindex, nofollow"
+    : isTranslatedBlog
+    ? "noindex, follow"
     : (seo.robots || "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
 
   // ── og:type + article-specific OG tags ───────────────────────────────────
@@ -2023,7 +2044,7 @@ export function generateMetaTags(path: string): string {
         "logo": { "@type": "ImageObject", "url": `${BASE_URL}/og-image.png` }
       },
       "datePublished": blogPost.publishDate || "",
-      "dateModified": blogPost.publishDate || "",
+      "dateModified": blogPost.modifiedDate || blogPost.publishDate || "",
       "url": `${BASE_URL}/blog/${blogPost.slug}`,
       "mainEntityOfPage": { "@type": "WebPage", "@id": `${BASE_URL}/blog/${blogPost.slug}` },
       "keywords": (blogPost.tags || []).join(", "),
@@ -2429,54 +2450,72 @@ function escHtml(str: string): string {
 }
 
 // Convert markdown text to plain HTML for crawler visibility
+function inlineMd(raw: string): string {
+  let t = escHtml(raw);
+  t = t.replace(/\[([^\]]+)\]\(((?:\/|https?:\/\/)[^)\s]*)\)/g, (_m, txt, href) => {
+    const ext = /^https?:/.test(href) && !href.startsWith("https://pdfhub24.com");
+    return `<a href="${href}" style="color:#E03535"${ext ? ' rel="noopener"' : ""}>${txt}</a>`;
+  });
+  t = t.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  t = t.replace(/(^|[\s(])\*([^*\s][^*]*?)\*(?=[\s).,;:!?]|$)/g, "$1<em>$2</em>");
+  return t.replace(/`([^`]+)`/g, "<code>$1</code>");
+}
+
 function markdownToHtml(md: string, maxWords = 600): string {
   const lines = md.split("\n");
   const parts: string[] = [];
   let wordCount = 0;
-  let ulOpen = false;
+  let listOpen: "" | "ul" | "ol" = "";
+  let table: string[][] = [];
 
-  const closeUl = () => { if (ulOpen) { parts.push("</ul>"); ulOpen = false; } };
-  const countWords = (s: string) => s.trim().split(/\s+/).filter(Boolean).length;
+  const closeList = () => { if (listOpen) { parts.push(`</${listOpen}>`); listOpen = ""; } };
+  const flushTable = () => {
+    if (!table.length) return;
+    const [head, ...body] = table;
+    const cell = (tag: string, c: string) => `<${tag} style="border:1px solid #cbd5e1;padding:0.4rem 0.6rem;text-align:left">${inlineMd(c)}</${tag}>`;
+    parts.push(`<div style="overflow-x:auto"><table style="border-collapse:collapse;margin:1rem 0;font-size:0.95rem"><thead><tr>${head.map(c => cell("th", c)).join("")}</tr></thead><tbody>${body.map(r => `<tr>${r.map(c => cell("td", c)).join("")}</tr>`).join("")}</tbody></table></div>`);
+    table = [];
+  };
+  const countWords = (x: string) => x.trim().split(/\s+/).filter(Boolean).length;
 
   for (const rawLine of lines) {
     if (wordCount >= maxWords) break;
     const line = rawLine.trim();
 
-    if (!line) { closeUl(); continue; }
+    if (line.startsWith("|")) {
+      closeList();
+      if (!/^\|[\s:|-]+\|?$/.test(line)) table.push(line.replace(/^\||\|$/g, "").split("|").map(c => c.trim()));
+      wordCount += countWords(line);
+      continue;
+    }
+    flushTable();
 
-    if (line.startsWith("#### ")) {
-      closeUl();
-      const text = escHtml(line.slice(5));
-      parts.push(`<h4 style="font-size:0.95rem;font-weight:600;margin:1rem 0 0.4rem">${text}</h4>`);
-      wordCount += countWords(line.slice(5));
-    } else if (line.startsWith("### ")) {
-      closeUl();
-      const text = escHtml(line.slice(4));
-      parts.push(`<h3 style="font-size:1.05rem;font-weight:700;margin:1.25rem 0 0.5rem">${text}</h3>`);
-      wordCount += countWords(line.slice(4));
-    } else if (line.startsWith("## ")) {
-      closeUl();
-      const text = escHtml(line.slice(3));
-      parts.push(`<h2 style="font-size:1.2rem;font-weight:700;margin:1.5rem 0 0.6rem">${text}</h2>`);
-      wordCount += countWords(line.slice(3));
-    } else if (line.startsWith("- ") || line.startsWith("* ")) {
-      if (!ulOpen) { parts.push('<ul style="padding-left:1.5rem;line-height:1.8;margin:0.5rem 0">'); ulOpen = true; }
-      const text = escHtml(line.slice(2)).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
-      parts.push(`<li>${text}</li>`);
-      wordCount += countWords(line.slice(2));
+    if (!line) { closeList(); continue; }
+    if (/^# /.test(line)) continue; // page H1 is rendered separately from the post title
+
+    const h = line.match(/^(#{2,4}) (.*)$/);
+    if (h) {
+      closeList();
+      const lvl = h[1].length;
+      const sty = lvl === 2 ? "font-size:1.2rem;font-weight:700;margin:1.5rem 0 0.6rem" : lvl === 3 ? "font-size:1.05rem;font-weight:700;margin:1.25rem 0 0.5rem" : "font-size:0.95rem;font-weight:600;margin:1rem 0 0.4rem";
+      parts.push(`<h${lvl} style="${sty}">${inlineMd(h[2])}</h${lvl}>`);
+      wordCount += countWords(h[2]);
+    } else if (/^[-*] /.test(line)) {
+      if (listOpen !== "ul") { closeList(); parts.push('<ul style="padding-left:1.5rem;line-height:1.8;margin:0.5rem 0">'); listOpen = "ul"; }
+      parts.push(`<li>${inlineMd(line.slice(2))}</li>`);
+      wordCount += countWords(line);
     } else if (/^\d+\.\s/.test(line)) {
-      closeUl();
-      const text = escHtml(line.replace(/^\d+\.\s/, "")).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
-      parts.push(`<p style="margin:0.3rem 0;padding-left:1.2rem">${text}</p>`);
-      wordCount += countWords(text);
+      if (listOpen !== "ol") { closeList(); parts.push('<ol style="padding-left:1.5rem;line-height:1.8;margin:0.5rem 0">'); listOpen = "ol"; }
+      parts.push(`<li>${inlineMd(line.replace(/^\d+\.\s/, ""))}</li>`);
+      wordCount += countWords(line);
     } else {
-      closeUl();
-      const text = escHtml(line).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
-      parts.push(`<p style="line-height:1.75;margin:0.6rem 0">${text}</p>`);
+      closeList();
+      parts.push(`<p style="line-height:1.75;margin:0.6rem 0">${inlineMd(line)}</p>`);
       wordCount += countWords(line);
     }
   }
-  closeUl();
+  closeList();
+  flushTable();
   return parts.join("\n");
 }
 
@@ -2909,8 +2948,20 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
       </p>`;
       richContent += meta;
       richContent += `<article style="text-align:left;max-width:800px;width:100%;line-height:1.75">
-        ${markdownToHtml(blogPost.content, 800)}
+        ${markdownToHtml(blogPost.content, 20000)}
       </article>`;
+      {
+        const tagSet = new Set(blogPost.tags || []);
+        const rel = blogPosts
+          .filter(p => p.slug !== blogPost.slug)
+          .map(p => ({ p, score: (p.category === blogPost.category ? 1 : 0) + (p.tags || []).filter(x => tagSet.has(x)).length * 2 }))
+          .sort((x, y) => y.score - x.score)
+          .slice(0, 4).map(x => x.p);
+        richContent += `<section style="margin:2rem 0;text-align:left;max-width:800px;width:100%">
+          <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem">Keep reading</h2>
+          <ul style="padding-left:1.25rem;line-height:1.8">${rel.map(p => `<li><a href="/blog/${escHtml(p.slug)}" style="color:#E03535">${escHtml(p.title)}</a></li>`).join("")}</ul>
+        </section>`;
+      }
       if (blogPost.relatedTools?.length) {
         const links = blogPost.relatedTools.map(t =>
           `<a href="${escHtml(t.path)}" style="color:#E03535;text-decoration:none">${escHtml(t.name)} — ${escHtml(t.description)}</a>`
@@ -2985,6 +3036,16 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
     }
   }
 
+  // ── BLOG INDEX ───────────────────────────────────────────────────────────────
+  else if (canonicalPath === "/blog" && lang === "en") {
+    const sorted = [...blogPosts].sort((x, y) => (y.publishDate || "").localeCompare(x.publishDate || ""));
+    richContent += `<section style="text-align:left;max-width:800px;width:100%">${sorted.map(p => `<article style="margin:0 0 1.5rem">
+      <h2 style="font-size:1.15rem;font-weight:700;margin:0 0 0.25rem"><a href="/blog/${escHtml(p.slug)}" style="color:#0f172a;text-decoration:none">${escHtml(p.title)}</a></h2>
+      <p style="font-size:0.8rem;color:#64748b;margin:0 0 0.35rem">${escHtml(p.publishDate || "")} &bull; ${escHtml(p.readTime || "")} &bull; ${escHtml(p.category || "")}</p>
+      <p style="line-height:1.7;margin:0">${escHtml(p.excerpt || "")}</p>
+    </article>`).join("")}</section>`;
+  }
+
   // ── HTML SITEMAP PAGE ─────────────────────────────────────────────────────────
   else if (canonicalPath === "/sitemap" || canonicalPath === "/html-sitemap") {
     const sitemapCategories = [
@@ -3032,7 +3093,7 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
           { href: "/add-watermark", text: "Add Watermark to PDF — Stamp text or image watermark" },
           { href: "/edit-pdf", text: "Edit PDF Text — Add and edit text directly in PDF" },
           { href: "/annotate-pdf", text: "Annotate PDF — Add comments, highlights, and notes" },
-          { href: "/redact-pdf", text: "Redact PDF — Permanently black out sensitive information" },
+          { href: "/redact-pdf", text: "Redact PDF — Black out sensitive information" },
           { href: "/flatten-pdf", text: "Flatten PDF — Merge form fields and annotations" },
           { href: "/repair-pdf", text: "Repair PDF — Fix corrupted or damaged PDF files" },
           { href: "/batch-compress", text: "Batch Compress PDF — Compress multiple PDFs at once" },
@@ -3067,27 +3128,7 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
         ],
       },
     ];
-    const blogLinks = [
-      { href: "/blog/how-to-compress-pdf-for-email", text: "How to Compress PDF for Email" },
-      { href: "/blog/convert-pdf-to-word-without-losing-formatting", text: "How to Convert PDF to Word Without Losing Formatting" },
-      { href: "/blog/merge-pdf-files-guide", text: "How to Merge PDF Files Online for Free" },
-      { href: "/blog/protect-pdf-with-password", text: "How to Password Protect a PDF" },
-      { href: "/blog/pdf-tools-for-students", text: "Essential PDF Tools Every Student Needs" },
-      { href: "/blog/how-to-split-pdf-pages", text: "How to Split PDF Pages" },
-      { href: "/blog/add-page-numbers-to-pdf", text: "How to Add Page Numbers to PDF" },
-      { href: "/blog/convert-images-to-pdf", text: "How to Convert Images to PDF" },
-      { href: "/blog/ocr-scanned-pdf-to-text", text: "OCR PDF: Convert Scanned Documents to Searchable Text" },
-      { href: "/blog/rotate-pdf-pages", text: "How to Rotate PDF Pages" },
-      { href: "/blog/sign-pdf-electronically", text: "How to Sign a PDF Electronically" },
-      { href: "/blog/edit-pdf-text-images", text: "How to Edit a PDF: Text, Images and Shapes" },
-      { href: "/blog/watermark-pdf-documents", text: "How to Add a Watermark to PDF" },
-      { href: "/blog/pdf-to-excel-convert-tables", text: "How to Convert PDF Tables to Excel" },
-      { href: "/blog/redact-sensitive-pdf-information", text: "How to Redact Sensitive Information in PDF" },
-      { href: "/blog/how-to-flatten-pdf", text: "How to Flatten a PDF" },
-      { href: "/blog/crop-pdf-pages-guide", text: "How to Crop PDF Pages" },
-      { href: "/blog/resize-pdf-to-a4", text: "How to Resize PDF to A4 or Letter" },
-      { href: "/blog/compare-two-pdf-files", text: "How to Compare Two PDF Files" },
-    ];
+    const blogLinks = blogPosts.map(p => ({ href: `/blog/${p.slug}`, text: p.title }));
     const catSections = sitemapCategories.map(cat => {
       const items = cat.tools.map(t =>
         `<li style="margin-bottom:0.4rem"><a href="${t.href}" style="color:#1e40af;text-decoration:none">${escHtml(t.text)}</a></li>`
@@ -3254,42 +3295,7 @@ function generatePreRenderShell(canonicalPath: string, lang: string = "en"): str
     { href: "/rotate-image", text: "Rotate Image", cat: "Image Tools" },
   ];
 
-  const ALL_BLOGS = [
-    { href: "/blog/how-to-compress-pdf-for-email", text: "How to Compress PDF for Email" },
-    { href: "/blog/convert-pdf-to-word-without-losing-formatting", text: "Convert PDF to Word Without Losing Formatting" },
-    { href: "/blog/merge-pdf-files-guide", text: "How to Merge PDF Files Online for Free" },
-    { href: "/blog/protect-pdf-with-password", text: "How to Password Protect a PDF" },
-    { href: "/blog/pdf-tools-for-students", text: "Essential PDF Tools Every Student Needs" },
-    { href: "/blog/how-to-split-pdf-pages", text: "How to Split PDF Pages" },
-    { href: "/blog/add-page-numbers-to-pdf", text: "How to Add Page Numbers to PDF" },
-    { href: "/blog/convert-images-to-pdf", text: "How to Convert Images to PDF" },
-    { href: "/blog/ocr-scanned-pdf-to-text", text: "OCR PDF: Convert Scanned Documents to Text" },
-    { href: "/blog/rotate-pdf-pages", text: "How to Rotate PDF Pages" },
-    { href: "/blog/sign-pdf-electronically", text: "How to Sign a PDF Electronically" },
-    { href: "/blog/edit-pdf-text-images", text: "How to Edit a PDF" },
-    { href: "/blog/watermark-pdf-documents", text: "How to Add Watermark to PDF" },
-    { href: "/blog/pdf-to-excel-convert-tables", text: "Convert PDF Tables to Excel" },
-    { href: "/blog/redact-sensitive-pdf-information", text: "How to Redact Sensitive Information in PDF" },
-    { href: "/blog/how-to-flatten-pdf", text: "How to Flatten a PDF" },
-    { href: "/blog/crop-pdf-pages-guide", text: "How to Crop PDF Pages" },
-    { href: "/blog/resize-pdf-to-a4", text: "How to Resize PDF to A4" },
-    { href: "/blog/compare-two-pdf-files", text: "How to Compare Two PDF Files" },
-    { href: "/blog/html-to-pdf-conversion", text: "How to Convert HTML to PDF" },
-    { href: "/blog/extract-text-from-pdf", text: "How to Extract Text from PDF" },
-    { href: "/blog/best-free-pdf-tools-2026", text: "Best Free PDF Tools in 2026" },
-    { href: "/blog/pdf-accessibility-guide", text: "Making PDFs Accessible" },
-    { href: "/blog/batch-convert-images-to-pdf", text: "Batch Convert Images to PDF" },
-    { href: "/blog/unlock-pdf-remove-password", text: "How to Unlock a PDF" },
-    { href: "/blog/annotate-pdf-comments", text: "How to Annotate PDF" },
-    { href: "/blog/translate-pdf-documents", text: "How to Translate a PDF" },
-    { href: "/blog/repair-corrupted-pdf", text: "How to Repair a Corrupted PDF" },
-    { href: "/blog/pdf-to-powerpoint-guide", text: "PDF to PowerPoint Guide" },
-    { href: "/blog/jpg-to-pdf-guide", text: "How to Convert JPG to PDF" },
-    { href: "/blog/compress-images-online", text: "How to Compress Images" },
-    { href: "/blog/reorder-pdf-pages", text: "How to Reorder PDF Pages" },
-    { href: "/blog/convert-pdf-to-png", text: "PDF to PNG Guide" },
-    { href: "/blog/excel-to-pdf", text: "How to Convert Excel to PDF" },
-  ];
+  const ALL_BLOGS = blogPosts.map(p => ({ href: `/blog/${p.slug}`, text: p.title }));
 
   const lnkStyle = `display:inline-block;padding:0.35rem 0.75rem;background:#f1f5f9;color:#1e40af;text-decoration:none;border-radius:4px;font-size:0.875rem;font-weight:500;margin:0.2rem`;
 
@@ -3388,7 +3394,13 @@ export function injectSEO(html: string, path: string): string {
   const preRenderShell = generatePreRenderShell(canonicalPath, lang);
   const dir = (lang === "ar" || lang === "ur") ? "rtl" : "ltr";
   
-  return html
+  const isEnHome = canonicalPath === "/" && lang === "en";
+  // index.html ships the whole homepage (H1, FAQ, ~150 links) inside <noscript>.
+  // Every other route must not inherit it: it duplicates the homepage and adds a wrong H1.
+  const trimmed = isEnHome ? html : html.replace(/<noscript>[\s\S]*?<\/noscript>/g, (m) =>
+    m.length > 2000 ? '<noscript><p>PDF HUB 24 needs JavaScript to process files. <a href="/all-tools">Browse all tools</a>.</p></noscript>' : m);
+
+  return trimmed
     .replace(/<html([^>]*)>/, `<html lang="${lang}" dir="${dir}">`)
     .replace(/<title>.*?<\/title>/, '')
     .replace(/<meta name="description"[^>]*\/?>/, '')
