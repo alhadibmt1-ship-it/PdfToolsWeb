@@ -1,3 +1,4 @@
+import { blogPosts as blogData } from "@/data/blogData";
 import { useEffect } from "react";
 import { Link } from "wouter";
 import Header from "@/components/Header";
@@ -100,33 +101,7 @@ const toolSections = [
   },
 ];
 
-const blogPosts = [
-  { path: "/blog/how-to-compress-pdf-for-email", label: "How to Compress PDF for Email" },
-  { path: "/blog/merge-pdf-files-guide", label: "How to Merge PDF Files" },
-  { path: "/blog/pdf-to-word-conversion-guide", label: "PDF to Word Conversion Guide" },
-  { path: "/blog/best-pdf-tools-2025", label: "Best Free PDF Tools 2025" },
-  { path: "/blog/how-to-protect-pdf-with-password", label: "How to Password Protect a PDF" },
-  { path: "/blog/pdf-vs-word-which-format", label: "PDF vs Word: Which Format to Use?" },
-  { path: "/blog/how-to-reduce-pdf-file-size", label: "How to Reduce PDF File Size" },
-  { path: "/blog/split-pdf-pages-guide", label: "How to Split PDF Pages" },
-  { path: "/blog/jpg-to-pdf-conversion-tips", label: "JPG to PDF Conversion Tips" },
-  { path: "/blog/ocr-pdf-extract-text", label: "How OCR PDF Works" },
-  { path: "/blog/add-page-numbers-to-pdf", label: "How to Add Page Numbers to PDF" },
-  { path: "/blog/rotate-pdf-pages-guide", label: "How to Rotate PDF Pages" },
-  { path: "/blog/watermark-pdf-guide", label: "Adding Watermarks to PDF" },
-  { path: "/blog/sign-pdf-digitally-guide", label: "How to Sign PDF Digitally" },
-  { path: "/blog/pdf-accessibility-guide", label: "PDF Accessibility Guide" },
-  { path: "/blog/excel-to-pdf-guide", label: "Excel to PDF Conversion Guide" },
-  { path: "/blog/word-to-pdf-guide", label: "Word to PDF: Complete Guide" },
-  { path: "/blog/unlock-pdf-guide", label: "How to Unlock a PDF" },
-  { path: "/blog/pdf-file-formats-explained", label: "PDF File Formats Explained" },
-  { path: "/blog/compress-images-for-web", label: "Compress Images for Web" },
-  { path: "/blog/convert-pdf-to-jpg-guide", label: "Convert PDF to JPG Guide" },
-  { path: "/blog/batch-process-pdf-files", label: "Batch Processing PDF Files" },
-  { path: "/blog/pdf-form-filling-guide", label: "PDF Form Filling Guide" },
-  { path: "/blog/pdf-annotation-guide", label: "PDF Annotation Guide" },
-  { path: "/blog/pdf-security-best-practices", label: "PDF Security Best Practices" },
-];
+const blogPosts = blogData.map((p) => ({ path: `/blog/${p.slug}`, label: p.title }));
 
 const infoPages = [
   { path: "/about", label: "About PDF HUB 24" },
